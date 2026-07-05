@@ -476,7 +476,7 @@ export function renderErasePanel(doc, view) {
   const count = clearableObjects(doc, activeLayerId).length;
   return `
     <div class="inspector-content">
-      <div class="inspector-empty">Click an object on the map to delete it.</div>
+      <div class="inspector-empty">Click an object on the ACTIVE layer (${escapeHtml(layerName)}) to delete it. Objects on other layers can't be erased until you switch to them.</div>
       <div class="section-label">Clear by category — ${escapeHtml(layerName)}</div>
       <div class="erase-scope-note">Clears affect the active layer only.</div>
       <div class="erase-category-list">${renderEraseCategories(objectCountsByKind(doc, activeLayerId))}</div>

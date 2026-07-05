@@ -15,7 +15,7 @@
 // (canvas-helpers.resolveHitId). The selection shows a padded dashed bbox outline with four corner
 // resize handles that scale about the opposite corner; Delete/Backspace removes the selection.
 
-import { activeTactic, visibleObjects, positionAt } from '../core/playbook.mjs';
+import { activeTactic, interactableObjects, positionAt } from '../core/playbook.mjs';
 import { createDrawHandlers } from './drawtools.mjs';
 import { renderCanvas, wrapperTransform, MIN_MARKER_SIZE, MAX_MARKER_SIZE } from './canvas-objects.mjs';
 import { wheelZoom, stepZoom, panForZoomAtCursor, clientToPercent, round2, ZOOM_DEFAULT } from './canvas-view.mjs';
@@ -327,18 +327,17 @@ export function mount(el, ctx) {
     return domHit ? domHit.dataset.id : null;
   }
 
-  /** Objects eligible for click/marquee selection: visible-layer objects (visibleObjects()
-   * already filters those) minus anything on a LOCKED layer — visibleObjects() does not filter
-   * by lock, only by visibility, so that check is added here (mirrors the pre-existing
-   * isLayerLockedForObject drag-start guard). */
+  /** Objects eligible for click/marquee selection: core/playbook.mjs's interactableObjects()
+   * (Jasper's ruling — the active layer is the WHOLE interaction scope). A click/marquee over a
+   * non-active-layer object now behaves exactly like clicking empty ground: it never resolves
+   * as a hit, so selectGestureIntent sees hitId===null and starts a marquee / clears selection,
+   * same as it already did for a locked-layer object pre-this-change. */
   function selectableObjects() {
     const doc = ctx.store.getDoc();
     const view = ctx.store.getView();
     const tactic = activeTactic(doc);
     if (!tactic) return [];
-    return visibleObjects(tactic, doc.layers, view.currentKeyframe).filter(
-      (obj) => !canvasApi.blocked(obj.layerId)
-    );
+    return interactableObjects(tactic, doc.layers, view.currentKeyframe, view.activeLayerId);
   }
 
   /**
@@ -418,11 +417,23 @@ export function mount(el, ctx) {
     ctx.exec({ type: 'doc/placeObject', object });
   }
 
-  function isLayerLockedForObject(objectId) {
+  /** True when `objectId` is NOT interactable right now — either its own layer is
+   * locked/hidden, OR it sits on a non-active layer (Jasper's active-layer-only ruling).
+   * Named for what it guards (kept the historic isLayerLockedForObject name at call sites below
+   * is misleading now that it also gates on active-layer, so every caller was updated alongside
+   * this rename — see startDrag/deleteSelection). A stale selection id from BEFORE the user
+   * switched the active layer (view.selection isn't auto-pruned on an active-layer switch) is
+   * exactly the case this defensively excludes at the drag/delete call sites, even though the
+   * normal path (selectableObjects() gating click/marquee) already prevents a NEW selection
+   * from ever containing a non-active-layer id. */
+  function isBlockedForInteraction(objectId) {
     const doc = ctx.store.getDoc();
+    const view = ctx.store.getView();
     const tactic = activeTactic(doc);
     const obj = tactic && tactic.objects.find((o) => o.id === objectId);
-    return !!(obj && canvasApi.blocked(obj.layerId));
+    if (!obj) return true;
+    if (obj.layerId !== view.activeLayerId) return true; // non-active layer — always excluded
+    return canvasApi.blocked(obj.layerId);
   }
 
   // ---- drag: single object OR a whole multi-select group together (increment 5) ---------
@@ -430,14 +441,15 @@ export function mount(el, ctx) {
   /**
    * Starts a drag of an explicit set of object ids (the caller — startSelectGesture — has already
    * decided single vs whole-group via selectGestureIntent, so this no longer re-derives the group
-   * from the store). A locked-layer object is never dragged: for a single-object drag on a locked
-   * object we bail entirely; in a group drag, locked members are simply dropped from the anchor
-   * set so the rest of the group still moves.
+   * from the store). An object that's locked, on a hidden layer, OR on a non-active layer is
+   * never dragged: for a single-object drag we bail entirely; in a group drag, blocked members
+   * are simply dropped from the anchor set (defensive — normally selectableObjects() already
+   * kept them out of the selection in the first place) so the rest of the group still moves.
    * @param {string[]} ids
    * @param {PointerEvent} event
    */
   function startDrag(ids, event) {
-    if (ids.length === 1 && isLayerLockedForObject(ids[0])) return;
+    if (ids.length === 1 && isBlockedForInteraction(ids[0])) return;
     const view = ctx.store.getView();
     const rect = mapEl.getBoundingClientRect();
     const { x, y } = clientToPercent(event.clientX, event.clientY, rect);
@@ -445,7 +457,7 @@ export function mount(el, ctx) {
     const tactic = activeTactic(doc);
     const anchors = {};
     ids.forEach((objId) => {
-      if (isLayerLockedForObject(objId)) return;
+      if (isBlockedForInteraction(objId)) return;
       const obj = tactic?.objects.find((o) => o.id === objId);
       if (obj && obj.kind === 'unit') anchors[objId] = positionAt(obj, view.currentKeyframe);
     });
@@ -612,12 +624,16 @@ export function mount(el, ctx) {
 
   /** Resolved {id,x,y,size} for every currently-selected object that is a unit marker (routes/
    * zones/sketches/text in a mixed selection are excluded from group-resize — see fixPlan's
-   * documented scope decision: group-resize/move initially handles unit kinds only). */
+   * documented scope decision: group-resize/move initially handles unit kinds only). Also drops
+   * any id that is blocked for interaction (locked/hidden layer, or a non-active layer — same
+   * defensive guard as startDrag/deleteSelection): a stale selection surviving a lock toggle or
+   * an active-layer switch must not still be corner-resizable. */
   function resolvedSelectedUnits(view) {
     const doc = ctx.store.getDoc();
     const tactic = activeTactic(doc);
     if (!tactic) return [];
     return view.selection
+      .filter((id) => !isBlockedForInteraction(id))
       .map((id) => tactic.objects.find((o) => o.id === id))
       .filter((obj) => obj && obj.kind === 'unit')
       .map((obj) => ({ id: obj.id, size: Number(obj.size) || MARKER_SIZE_DEFAULT, ...positionAt(obj, view.currentKeyframe) }));
@@ -788,15 +804,10 @@ export function mount(el, ctx) {
   function deleteSelection() {
     const view = ctx.store.getView();
     if (view.selection.length === 0) return;
-    const doc = ctx.store.getDoc();
-    const tactic = activeTactic(doc);
-    // Respect the locked-layer guard (matches the existing drag-start/erase-tool behavior):
-    // an object on a locked layer is excluded from the delete, not silently deleted alongside
-    // an otherwise-valid multi-select.
-    const deletable = view.selection.filter((id) => {
-      const obj = tactic?.objects.find((o) => o.id === id);
-      return obj && !canvasApi.blocked(obj.layerId);
-    });
+    // Exclude-not-refuse (matches the existing drag-start/erase-tool precedent): an object that
+    // is locked, on a hidden layer, OR on a non-active layer (Jasper's active-layer-only ruling)
+    // is dropped from the batch rather than blocking deletion of the rest of a valid selection.
+    const deletable = view.selection.filter((id) => !isBlockedForInteraction(id));
     if (deletable.length === 0) return;
     // app.mjs's exec() already prunes any deleted id out of view.selection after doc/
     // deleteObject(s) — no separate view/select dispatch needed here, and dispatching one

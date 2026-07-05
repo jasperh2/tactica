@@ -43,6 +43,49 @@ function resolveObject(obj, kf) {
   return { ...obj, x, y };
 }
 
+/**
+ * Objects the ACTIVE layer's tools may interact with (Jasper's standing ruling: "you cannot
+ * ever interact with another layer if its not active thats the point of layers" — the active
+ * layer is the WHOLE interaction scope, non-active layers are strictly view-only). This is the
+ * ONE shared gate every interaction path routes through — select/click, marquee, drag-move,
+ * corner-resize, erase, Delete key, inspector single-object edits, and text-note inline
+ * editing — so "what can this gesture touch" is defined exactly once, not re-derived per panel.
+ *
+ * Built as visibleObjects() (kf-appearance + layer-visibility, already resolved-position) plus
+ * TWO additional narrowings, in order:
+ *   1. active-layer scope — `obj.layerId === activeLayerId`, dropping every other layer's
+ *      objects entirely (not merely refusing an action on them — they never become candidates,
+ *      so a click that would land on a non-active-layer object behaves exactly like clicking
+ *      empty ground: it starts a marquee / clears selection, same as the pre-existing
+ *      locked-layer exclusion already worked).
+ *   2. locked-OR-hidden guard on the active layer itself — kept from the pre-existing
+ *      selectableObjects()/eraseCandidates()/clearableObjects() precedent: a locked or hidden
+ *      ACTIVE layer yields an empty list (all its own objects become uninteractable too), not
+ *      just "other layers are excluded."
+ *
+ * A layer that isn't `visible` was already excluded by visibleObjects() itself before this
+ * function's own filters run, so hiding the active layer already empties the result via that
+ * upstream check; the explicit `layer.visible === false` re-check here exists only so a caller
+ * never has to special-case "what if activeLayerId itself resolves to no live layer" (a
+ * malformed/missing activeLayerId falls through `layerById.get` to `undefined`, and
+ * `!(undefined && ...)` is `true` — i.e. defensively NOT blocked — so an unresolvable
+ * activeLayerId still gates purely on step 1's equality check, never throws, never mistakenly
+ * unlocks everything).
+ * @param {Tactic} tactic
+ * @param {Layer[]} layers
+ * @param {number} kf
+ * @param {string} activeLayerId view.activeLayerId — the sole interaction scope
+ * @returns {object[]}
+ */
+export function interactableObjects(tactic, layers, kf, activeLayerId) {
+  const layerById = new Map(layers.map((layer) => [layer.id, layer]));
+  return visibleObjects(tactic, layers, kf).filter((obj) => {
+    if (obj.layerId !== activeLayerId) return false; // non-active layers are view-only
+    const layer = layerById.get(obj.layerId);
+    return !(layer && (layer.locked || layer.visible === false));
+  });
+}
+
 /** Map-center fallback for a marker with no usable position data (contract: never throw). */
 const POSITION_FALLBACK = { x: 50, y: 50 };
 

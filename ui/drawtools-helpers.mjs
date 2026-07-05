@@ -7,6 +7,18 @@ import { strokeWidthViewBox, dashArray, arrowheadSize } from '../core/stroke.mjs
 import { safeColor } from './sanitize.mjs';
 
 const MIN_DRAG_PCT = 0.3; // ignore drags shorter than this (accidental click-drags)
+// Shape-tool click debounce (Jasper: "add a delay between clicks... pretty short just to
+// prevent accidental double clicks" — SHAPES only, never units/heroes/artillery placement).
+// This guards a DIFFERENT accident than MIN_DRAG_PCT above: MIN_DRAG_PCT is spatial (was the
+// mouse movement between two points big enough to count as a real drag), CLICK_DEBOUNCE_MS is
+// temporal (did the second click of a would-be commit arrive suspiciously fast after the first
+// — a genuine accidental double-click can land its second click a pixel or two off the first,
+// past MIN_DRAG_PCT's tiny 0.3% radius, producing a degenerate sliver shape nobody wanted).
+// 250ms is comfortably above a real double-click's ~100-300ms inter-click gap (fast enough that
+// a deliberate click-pause-click authoring gesture, which is always well over 250ms apart in
+// practice, is never mistaken for an accidental double-click) while staying "pretty short" per
+// Jasper's own qualifier.
+export const CLICK_DEBOUNCE_MS = 250;
 const CLOSE_VERTEX_TOL_PCT = 1.5; // "click near the first vertex" close-gesture radius (% of map width)
 // Erase-by-click hit tolerance (bug-hunt fix): matches canvas.mjs's HIT_TOLERANCE_PCT so the
 // erase tool's forgiving click radius feels identical to the Select tool's — a click that would
@@ -21,6 +33,26 @@ const ERASE_HIT_TOLERANCE_PCT = 1.6;
 /** True when a drag from `a` to `b` is long enough to commit (not a stray click). */
 export function isMeaningfulDrag(a, b) {
   return Math.hypot(b[0] - a[0], b[1] - a[1]) >= MIN_DRAG_PCT;
+}
+
+/**
+ * True when a click arriving at `now` is too soon after the PREVIOUS click at `lastClickAt` to
+ * be treated as a deliberate second click — i.e. it should be ignored rather than committing/
+ * advancing a shape-tool gesture (Jasper's debounce ask). `lastClickAt` is `null` for "no prior
+ * click yet in this gesture" (e.g. the very first click that anchors a two-point tool, or the
+ * first vertex of a zone polygon), which always returns false — there is nothing to debounce
+ * against yet. Pure function of its inputs; callers own tracking `lastClickAt` and supplying
+ * `now` from an injected clock (never `Date.now()` directly — that's exactly the
+ * test-flakiness trap this shape is designed to avoid: every caller and every test passes its
+ * own `now`/fake clock explicitly).
+ * @param {number|null} lastClickAt ms timestamp of the previous click in this gesture, or null
+ * @param {number} now ms timestamp of the click being evaluated (from the caller's clock)
+ * @param {number} [debounceMs] the debounce window; defaults to CLICK_DEBOUNCE_MS
+ * @returns {boolean}
+ */
+export function isDebouncedClick(lastClickAt, now, debounceMs = CLICK_DEBOUNCE_MS) {
+  if (lastClickAt === null || lastClickAt === undefined) return false;
+  return now - lastClickAt < debounceMs;
 }
 
 /**

@@ -51,9 +51,10 @@
 // vs 'ellipse' {cx,cy,rx,ry} (pre-existing saved zones — rendering/hit-test/persist/export all
 // keep dispatching on `shape` so old ellipse zones round-trip byte-identical, no migration).
 import { simplify } from '../core/geometry.mjs';
-import { activeTactic, visibleObjects } from '../core/playbook.mjs';
+import { activeTactic, interactableObjects } from '../core/playbook.mjs';
 import {
   isMeaningfulDrag,
+  isDebouncedClick,
   isNearFirstVertex,
   strokeMarkup,
   rectMarkup,
@@ -134,24 +135,42 @@ function selectLatest(ctx) {
  * including the rubber-band cursor point when authoring); `buildObject(dc, points)` returns the doc
  * object to commit (or falsy to silently discard, e.g. a degenerate below-threshold shape).
  *
+ * Click debounce (Jasper: "add a delay between clicks... pretty short just to prevent
+ * accidental double clicks" — shapes only, never units/heroes/artillery placement, which don't
+ * go through this primitive at all). Scoped narrowly to the anchor->first-commit transition: the
+ * FIRST click anchors (unconditionally — an anchor is never itself "too soon," there is no
+ * earlier click to debounce against yet); the very next click, if it arrives within
+ * CLICK_DEBOUNCE_MS of the anchor, is treated as an accidental repeat and ignored (the gesture
+ * stays pending, exactly like the pre-existing "this IS the anchoring click" same-point no-op —
+ * this is the SAME kind of no-op, just gated on time instead of position). Every click while
+ * authoring (accepted or debounced) updates the tracked timestamp, so a burst of rapid
+ * accidental clicks can't accumulate into a commit just because enough time passed since the
+ * very first one. dblclick/Enter-finish (>=2 points already placed) and drag-commit
+ * (onPointerUp) never consult this — see their own comments below.
+ *
  * @param {object} ctx
  * @param {CanvasApi} canvasApi
  * @param {(dc:object, points:[number,number][]) => string} renderGhost
  * @param {(dc:object, points:[number,number][]) => (object|null)} buildObject
- * @param {{selectAfter?: boolean, allowCheckpoints?: boolean}} [opts]
+ * @param {{selectAfter?: boolean, allowCheckpoints?: boolean, now?: () => number}} [opts]
  */
 function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {}) {
-  const { selectAfter = false, allowCheckpoints = false } = opts;
+  const { selectAfter = false, allowCheckpoints = false, now = Date.now } = opts;
   /** Committed points so far while authoring; null = idle. points[0] is the anchored start; a
    * no-checkpoint tool only ever holds the single start point here until commit. */
   let points = null;
   /** The current press's pointerdown point (percent space); non-null only between a pointerdown and
    * its pointerup, so the pointerup can measure the drag distance. */
   let pressStart = null;
+  /** ms timestamp of the most recent click received while authoring (set by the anchoring click
+   * AND every click after it, accepted or debounced); null when idle. Feeds isDebouncedClick() —
+   * see the click-debounce doc above. */
+  let lastClickAt = null;
 
   function cancel() {
     points = null;
     pressStart = null;
+    lastClickAt = null;
     clearGhost(canvasApi);
   }
 
@@ -163,6 +182,7 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
     const dc = drawContext(ctx);
     points = null;
     pressStart = null;
+    lastClickAt = null;
     clearGhost(canvasApi);
     const object = buildObject(dc, pts);
     if (!object) return;
@@ -181,6 +201,12 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
       // reset the anchor — the click/pointerup decides.
       if (!points) {
         points = [[p.x, p.y]];
+        // The REAL browser event order for a plain click is pointerdown -> pointerup -> click, so
+        // THIS is where the anchor is actually placed in practice — lastClickAt must be seeded
+        // here, not only in onClick's defensive no-anchor-yet branch (which only fires if a click
+        // ever arrives with pointerdown having been swallowed). Without this, the debounce below
+        // never sees a real previous-click timestamp for the realistic tap-tap sequence.
+        lastClickAt = now();
         drawGhost([[p.x, p.y], [p.x, p.y]]);
       }
     },
@@ -194,7 +220,8 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
     onPointerUp(e) {
       // Only the DRAG-COMMIT bonus lives here: a pointerup that moved past the threshold since its
       // pointerdown commits anchor..release. A plain click's pointerup did NOT move far, so it falls
-      // through to `click` (the click-move-click path) — no double-handling.
+      // through to `click` (the click-move-click path) — no double-handling. Never debounced: a
+      // genuine press-drag-release has already proven deliberate intent via the movement itself.
       const start = pressStart;
       pressStart = null;
       if (!points || !start) return;
@@ -211,22 +238,40 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
       const p = canvasApi.toPct(e.clientX, e.clientY);
 
       // Defensive: if a click ever arrives with no anchor (e.g. pointerdown was swallowed), treat it
-      // as the anchoring click so the gesture still starts cleanly.
+      // as the anchoring click so the gesture still starts cleanly. An anchor is never itself "too
+      // soon" (there is no earlier click yet), so this always seeds lastClickAt unconditionally.
       if (!points) {
         points = [[p.x, p.y]];
+        lastClickAt = now();
         return;
       }
 
       if (allowCheckpoints && e.shiftKey) {
         // Shift-click — add a checkpoint corner and keep authoring; the next plain click commits.
+        // Not debounced: a modifier-key click is a deliberate, distinct gesture from an accidental
+        // double-click, and it doesn't commit anything (Jasper's ask is scoped to the commit).
         points.push([p.x, p.y]);
+        lastClickAt = now();
         drawGhost(points);
         return;
       }
 
       if (points.length === 1 && samePoint(points[0], [p.x, p.y])) {
         // This IS the anchoring click (its own pointerdown seeded points[0] at the same point). Stay
-        // pending; the rubber-band is already live from pointermove.
+        // pending; the rubber-band is already live from pointermove. lastClickAt is already set from
+        // the branch above (or the pointerdown-seeded first click) — nothing new to record here.
+        return;
+      }
+
+      // This click would COMMIT — the anchor->first-commit transition the debounce guards. If it
+      // arrives within CLICK_DEBOUNCE_MS of the previous click, treat it as an accidental repeat:
+      // ignore it, stay pending (same shape as the same-point no-op above), but DO advance
+      // lastClickAt so a subsequent rapid click must clear its own gap from THIS one, not the
+      // original anchor — a burst of clicks can't outlast the debounce just by accumulating time
+      // since the very first click.
+      const clickAt = now();
+      if (isDebouncedClick(lastClickAt, clickAt)) {
+        lastClickAt = clickAt;
         return;
       }
       // Committing click — the far end lands here.
@@ -235,7 +280,9 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
 
     // Enter / double-click finish an in-progress checkpointed gesture at its current points; for a
     // gesture with only the anchor (or the trailing dblclick after a plain-click commit, when
-    // points is already null) they are a safe no-op.
+    // points is already null) they are a safe no-op. Never debounced (mission requirement): these
+    // only ever fire once >=2 points are already placed — a deliberate multi-click authoring
+    // session, not the anchor->first-commit transition the guard targets.
     onDblClick() {
       if (points && points.length >= 2) doCommit(points);
     },
@@ -298,13 +345,13 @@ function routeObject(dc, points, head) {
 // just a thin wiring of that primitive to the route ghost + route builder, no bespoke state machine.
 // =============================================================================
 
-function createArrowTool(ctx, canvasApi) {
+function createArrowTool(ctx, canvasApi, now) {
   return createTwoPointTool(
     ctx,
     canvasApi,
     (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), ...boxOpt(canvasApi) }),
     (dc, points) => routeObject(dc, points, dc.opts.head),
-    { allowCheckpoints: true }
+    { allowCheckpoints: true, now }
   );
 }
 
@@ -385,12 +432,13 @@ function createFreehandTool(ctx, canvasApi) {
 // [start, end] pair the primitive commits.
 // =============================================================================
 
-function createLineTool(ctx, canvasApi) {
+function createLineTool(ctx, canvasApi, now) {
   return createTwoPointTool(
     ctx,
     canvasApi,
     (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), head: 'none', ...boxOpt(canvasApi) }),
-    (dc, points) => sketchStrokeObject(dc, 'line', twoPoints(points), 'none')
+    (dc, points) => sketchStrokeObject(dc, 'line', twoPoints(points), 'none'),
+    { now }
   );
 }
 
@@ -427,21 +475,23 @@ function twoPoints(points) {
   return [points[0], points[points.length - 1]];
 }
 
-function createBoxTool(ctx, canvasApi) {
+function createBoxTool(ctx, canvasApi, now) {
   return createTwoPointTool(
     ctx,
     canvasApi,
     (dc, points) => rectMarkup(points[0], points[points.length - 1], { ...fillOpts(dc), ...boxOpt(canvasApi) }),
-    (dc, points) => sketchObject(dc, 'rect', points[0], points[points.length - 1])
+    (dc, points) => sketchObject(dc, 'rect', points[0], points[points.length - 1]),
+    { now }
   );
 }
 
-function createCircleTool(ctx, canvasApi) {
+function createCircleTool(ctx, canvasApi, now) {
   return createTwoPointTool(
     ctx,
     canvasApi,
     (dc, points) => ellipseMarkup(points[0], points[points.length - 1], { ...fillOpts(dc), ...boxOpt(canvasApi) }),
-    (dc, points) => sketchObject(dc, 'ellipse', points[0], points[points.length - 1])
+    (dc, points) => sketchObject(dc, 'ellipse', points[0], points[points.length - 1]),
+    { now }
   );
 }
 
@@ -454,9 +504,20 @@ function createCircleTool(ctx, canvasApi) {
 // exporter.mjs; this tool only ever AUTHORS the new polygon shape (no migration needed).
 // =============================================================================
 
-function createZoneTool(ctx, canvasApi) {
+/**
+ * @param {object} ctx
+ * @param {CanvasApi} canvasApi
+ * @param {() => number} [now] injected clock (defaults to Date.now) — see createTwoPointTool's
+ *   click-debounce doc for why this is never Date.now() called directly.
+ */
+function createZoneTool(ctx, canvasApi, now = Date.now) {
   /** @type {[number,number][]|null} */
   let polygonPoints = null; // non-null while building a click-vertex zone polygon
+  /** ms timestamp of the most recently placed vertex; null when idle. Feeds the duplicate-vertex
+   * debounce below (Jasper's ask, scoped narrowly to "adding a duplicate vertex at the same
+   * spot" — NOT a blanket delay on every vertex click, which would fight normal fast polygon
+   * authoring). */
+  let lastVertexAt = null;
 
   function drawPolygonGhost(points, dc) {
     // Authoring ghost = open solid polyline (polygonGhostMarkup), NOT the committed dashed+filled
@@ -468,6 +529,7 @@ function createZoneTool(ctx, canvasApi) {
 
   function cancel() {
     polygonPoints = null;
+    lastVertexAt = null;
     clearGhost(canvasApi);
   }
 
@@ -489,6 +551,7 @@ function createZoneTool(ctx, canvasApi) {
       appearsAt: dc.appearsAt,
     };
     polygonPoints = null;
+    lastVertexAt = null;
     clearGhost(canvasApi);
     commit(ctx, canvasApi, dc.layerId, object);
     // README §5: "zones get an optional label" — surface it in the inspector immediately via
@@ -504,8 +567,9 @@ function createZoneTool(ctx, canvasApi) {
       const p = canvasApi.toPct(e.clientX, e.clientY);
 
       if (!polygonPoints) {
-        // First vertex of a new polygon.
+        // First vertex of a new polygon — never debounced (there is no earlier vertex yet).
         polygonPoints = [[p.x, p.y]];
+        lastVertexAt = now();
         drawPolygonGhost(polygonPoints, dc);
         return;
       }
@@ -516,7 +580,22 @@ function createZoneTool(ctx, canvasApi) {
         closeAndCommit(dc);
         return;
       }
+
+      // Duplicate-vertex debounce (Jasper's ask, scoped narrowly): a click landing at
+      // essentially the SAME spot as the just-placed vertex, arriving within
+      // CLICK_DEBOUNCE_MS of it, is an accidental repeat — ignore it rather than pushing a
+      // zero-length degenerate edge onto the polygon. Deliberately does NOT gate normal fast
+      // clicking of DISTINCT corners (samePoint() is false for any real next vertex, so this
+      // branch never fires for a genuine polygon-authoring click, however quick).
+      const lastVertex = polygonPoints[polygonPoints.length - 1];
+      const clickAt = now();
+      if (samePoint(lastVertex, [p.x, p.y]) && isDebouncedClick(lastVertexAt, clickAt)) {
+        lastVertexAt = clickAt;
+        return;
+      }
+
       polygonPoints.push([p.x, p.y]);
+      lastVertexAt = clickAt;
       drawPolygonGhost(polygonPoints, dc);
     },
 
@@ -597,24 +676,22 @@ function createTextTool(ctx, canvasApi) {
 
 function createEraseTool(ctx, canvasApi) {
   /**
-   * Erase-eligible objects at the current keyframe: visible-layer objects (visibleObjects()
-   * already filters to layer.visible, so a hidden layer's objects are never erase candidates)
-   * minus anything on a LOCKED layer — mirrors canvas.mjs's selectableObjects() exactly (the
-   * Select tool's own click-candidate list), just resolved independently here since this module
-   * does not import canvas.mjs (a different panel's owned file). Excluding locked-layer objects
-   * from the candidate list itself (rather than checking lock only after a hit resolves) means a
-   * locked layer's markers are never even hit-tested — locked = no-op, same guarantee the old
-   * per-id isObjectLocked() check gave, arrived at the same way canvas.mjs's own click-select
-   * path already does it.
+   * Erase-eligible objects at the current keyframe: core/playbook.mjs's interactableObjects()
+   * — active layer ONLY (Jasper's ruling), minus anything on a LOCKED or hidden layer. Mirrors
+   * canvas.mjs's selectableObjects() exactly (the Select tool's own click-candidate list), just
+   * resolved independently here since this module does not import canvas.mjs (a different
+   * panel's owned file) — both call the same shared core helper, so the two candidate lists
+   * can never drift. Excluding non-active/locked-layer objects from the candidate list itself
+   * (rather than checking after a hit resolves) means they are never even hit-tested: a click
+   * that would land on a non-active-layer object is a clean no-op, same as clicking empty
+   * ground — the same guarantee the old per-id isObjectLocked() check gave for locked layers.
    */
   function eraseCandidates() {
     const doc = ctx.store.getDoc();
     const view = ctx.store.getView();
     const tactic = activeTactic(doc);
     if (!tactic) return [];
-    return visibleObjects(tactic, doc.layers, view.currentKeyframe).filter(
-      (obj) => !canvasApi.blocked(obj.layerId)
-    );
+    return interactableObjects(tactic, doc.layers, view.currentKeyframe, view.activeLayerId);
   }
 
   /**
@@ -707,15 +784,19 @@ function withEventAliases(tool) {
  * ghost (contract: "Escape cancels").
  * @param {{store:object, history:object, roster:object, maps:object, exec:Function}} ctx
  * @param {CanvasApi} canvasApi
+ * @param {() => number} [now] injected clock for the shape-tool click debounce (Arrow/Line/Box/
+ *   Circle/Zone only — units/heroes/artillery placement and every other tool never read it).
+ *   Defaults to Date.now in production; tests pass a controllable fake clock so the debounce
+ *   logic is never subject to real-wall-clock timing flakiness.
  */
-export function createDrawHandlers(ctx, canvasApi) {
+export function createDrawHandlers(ctx, canvasApi, now = Date.now) {
   return {
-    arrow: withEventAliases(createArrowTool(ctx, canvasApi)),
+    arrow: withEventAliases(createArrowTool(ctx, canvasApi, now)),
     draw: withEventAliases(createFreehandTool(ctx, canvasApi)),
-    line: withEventAliases(createLineTool(ctx, canvasApi)),
-    box: withEventAliases(createBoxTool(ctx, canvasApi)),
-    circle: withEventAliases(createCircleTool(ctx, canvasApi)),
-    zone: withEventAliases(createZoneTool(ctx, canvasApi)),
+    line: withEventAliases(createLineTool(ctx, canvasApi, now)),
+    box: withEventAliases(createBoxTool(ctx, canvasApi, now)),
+    circle: withEventAliases(createCircleTool(ctx, canvasApi, now)),
+    zone: withEventAliases(createZoneTool(ctx, canvasApi, now)),
     text: withEventAliases(createTextTool(ctx, canvasApi)),
     erase: withEventAliases(createEraseTool(ctx, canvasApi)),
   };

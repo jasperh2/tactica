@@ -102,22 +102,28 @@ function findObject(tactic, id) {
 }
 
 /**
- * Bug-hunt fix: every Inspector-driven object edit (delete, resize, recolor, text/zone-label
- * setObjectProps) used to dispatch its doc/* action unconditionally, regardless of the target
- * object's own layer lock state — zero 'locked'/'blocked' references existed anywhere in this
- * file. Mirrors canvas.mjs's own (private, non-exported per that module's convention, so
- * duplicated here rather than cross-panel-imported) isLayerLockedForObject: resolve the
- * object's layerId from the active tactic, then check doc.layers for that layer's lock flag.
- * An id that doesn't resolve to a live object is treated as locked (refuse) — defensive, not
- * normally reachable since callers only pass ids already known to be selected/present.
+ * Bug-hunt fix, extended by Jasper's active-layer-only ruling: every Inspector-driven object
+ * edit (delete, resize, recolor, text/zone-label setObjectProps) must refuse a target that is
+ * EITHER on a locked/hidden layer OR on a layer that isn't the active one — "you cannot ever
+ * interact with another layer if its not active thats the point of layers." Mirrors
+ * canvas.mjs's own (private, non-exported per that module's convention, so duplicated here
+ * rather than cross-panel-imported) isBlockedForInteraction: resolve the object's layerId from
+ * the active tactic, refuse on active-layer mismatch first, then check doc.layers for that
+ * layer's lock flag. An id that doesn't resolve to a live object is treated as locked (refuse)
+ * — defensive, not normally reachable since callers only pass ids already known to be
+ * selected/present (and selection itself is already active-layer-gated at the point of
+ * selection — this is the belt-and-suspenders check for a stale selection surviving an
+ * active-layer switch).
  * @param {object} doc
+ * @param {{activeLayerId:string}} view
  * @param {string} objectId
  * @returns {boolean}
  */
-function isObjectLocked(doc, objectId) {
+function isObjectLocked(doc, view, objectId) {
   const tactic = activeTactic(doc);
   const obj = findObject(tactic, objectId);
   if (!obj) return true;
+  if (obj.layerId !== view.activeLayerId) return true; // non-active layer — always excluded
   const layer = doc.layers.find((l) => l.id === obj.layerId);
   return !!(layer && layer.locked);
 }
@@ -418,7 +424,7 @@ function applyRoleColor(store, ctx, hex) {
     // recoloring the rest of a multi-select.
     const doc = store.getDoc();
     view.selection
-      .filter((id) => !isObjectLocked(doc, id))
+      .filter((id) => !isObjectLocked(doc, view, id))
       .forEach((id) => ctx.exec({ type: 'doc/recolorObject', id, role: hex }));
     return;
   }
@@ -606,10 +612,11 @@ export function mount(el, ctx) {
     if (deleteBtn) {
       const doc = store.getDoc();
       const view = store.getView();
-      // Layer-lock enforcement (bug-hunt fix): exclude locked-layer objects from the delete
-      // rather than refusing the whole batch — matches canvas.mjs's deleteSelection precedent
-      // exactly (locking one object in a multi-select must not block deleting the rest).
-      const deletable = view.selection.filter((id) => !isObjectLocked(doc, id));
+      // Layer-lock + active-layer enforcement: exclude locked/hidden/non-active-layer objects
+      // from the delete rather than refusing the whole batch — matches canvas.mjs's
+      // deleteSelection precedent exactly (locking one object in a multi-select must not block
+      // deleting the rest).
+      const deletable = view.selection.filter((id) => !isObjectLocked(doc, view, id));
       if (deletable.length === 1) {
         ctx.exec({ type: 'doc/deleteObject', id: deletable[0] });
       } else if (deletable.length > 1) {
@@ -716,15 +723,16 @@ export function mount(el, ctx) {
       const view = store.getView();
       if (dispatchNamedSliderValue(key, value)) return;
       if (key === 'size') {
-        // Layer-lock enforcement (bug-hunt fix): refuse to resize an object on a locked layer.
-        if (view.selection.length === 1 && !isObjectLocked(store.getDoc(), view.selection[0])) {
+        // Layer-lock + active-layer enforcement: refuse to resize an object that is locked,
+        // hidden, or on a non-active layer.
+        if (view.selection.length === 1 && !isObjectLocked(store.getDoc(), view, view.selection[0])) {
           ctx.exec({ type: 'doc/resizeMarker', id: view.selection[0], size: value });
         }
         return;
       }
       const editing = key === 'textSize' ? editingTextNote(store) : null;
       if (editing) {
-        if (!isObjectLocked(store.getDoc(), editing.id)) debouncedSetObjectProps(editing.id, { size: value });
+        if (!isObjectLocked(store.getDoc(), view, editing.id)) debouncedSetObjectProps(editing.id, { size: value });
       } else {
         ctx.exec({ type: 'view/setToolOption', key, value });
       }
@@ -762,7 +770,7 @@ export function mount(el, ctx) {
       const key = target.dataset.toggle;
       const editing = key === 'textChip' ? editingTextNote(store) : null;
       if (editing) {
-        if (!isObjectLocked(store.getDoc(), editing.id)) debouncedSetObjectProps(editing.id, { chip: target.checked });
+        if (!isObjectLocked(store.getDoc(), store.getView(), editing.id)) debouncedSetObjectProps(editing.id, { chip: target.checked });
       } else {
         ctx.exec({ type: 'view/setToolOption', key, value: target.checked });
       }
@@ -782,7 +790,7 @@ export function mount(el, ctx) {
 
     if (target.matches('[data-text-input]')) {
       const editing = editingTextNote(store);
-      if (editing && !isObjectLocked(store.getDoc(), editing.id)) {
+      if (editing && !isObjectLocked(store.getDoc(), store.getView(), editing.id)) {
         debouncedSetObjectProps(editing.id, { text: target.value });
       }
       return;
@@ -799,7 +807,7 @@ export function mount(el, ctx) {
     if (target.matches('[data-zone-label-input]')) {
       const view = store.getView();
       const doc = store.getDoc();
-      if (view.selection.length === 1 && !isObjectLocked(doc, view.selection[0])) {
+      if (view.selection.length === 1 && !isObjectLocked(doc, view, view.selection[0])) {
         debouncedSetObjectProps(view.selection[0], { label: target.value });
       }
     }
