@@ -1,0 +1,352 @@
+/**
+ * TACTICA — app layout grid + shared primitives
+ * Panel-specific styling (topbar/layers/canvas/toolrail/inspector/playbookbar/exportmodal)
+ * lives in ui/<panel>.css, pulled in below. This file only owns:
+ *   1) the outer grid contract (contract §5 / handoff README §Screen)
+ *   2) primitives reused across panels: chips, pills, buttons, inputs, scrollbars, hairlines.
+ */
+
+@import url('../vendor/fonts.css');
+@import url('../vendor/phosphor/phosphor.css');
+
+/* Panel stylesheets — all seven landed at integration (contract §5). */
+@import url('../ui/topbar.css');
+@import url('../ui/layers.css');
+@import url('../ui/canvas.css');
+@import url('../ui/toolrail.css');
+@import url('../ui/inspector.css');
+@import url('../ui/playbookbar.css');
+@import url('../ui/exportmodal.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 1280px;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------- */
+/* App shell grid — contract §5: rows 52px/1fr/118px, middle columns      */
+/* 230px/1fr/48px/288px.                                                   */
+/* ---------------------------------------------------------------------- */
+
+#app-shell {
+  display: grid;
+  grid-template-rows: var(--layout-topbar-h) 1fr var(--layout-playbookbar-h);
+  grid-template-columns: 100%;
+  height: 100vh;
+  min-height: 640px;
+  background: var(--bg-app);
+  overflow: hidden;
+}
+
+#topbar {
+  grid-row: 1;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--line-hairline);
+}
+
+#middle {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns:
+    var(--layout-layers-w) 1fr var(--layout-toolrail-w) var(--layout-inspector-w);
+  min-height: 0;
+}
+
+#layers {
+  grid-column: 1;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--line-hairline);
+  overflow-y: auto;
+}
+
+#canvas {
+  grid-column: 2;
+  position: relative;
+  background: var(--bg-void);
+  overflow: hidden;
+  min-width: 0;
+}
+
+#toolrail {
+  grid-column: 3;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--line-hairline);
+  border-right: 1px solid var(--line-hairline);
+  overflow-y: auto;
+}
+
+#inspector {
+  grid-column: 4;
+  background: var(--bg-panel);
+  overflow-y: auto;
+}
+
+#playbookbar {
+  grid-row: 3;
+  background: var(--bg-panel);
+  border-top: 1px solid var(--line-hairline);
+}
+
+#modal-root:empty {
+  display: none;
+}
+
+#modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Hairline utilities                                                      */
+/* ---------------------------------------------------------------------- */
+
+.hairline-b {
+  border-bottom: 1px solid var(--line-hairline);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--line-hairline);
+}
+
+.hairline-r {
+  border-right: 1px solid var(--line-hairline);
+}
+
+.hairline-l {
+  border-left: 1px solid var(--line-hairline);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Buttons                                                                  */
+/* ---------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: var(--text-scale-12-5);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  transition: background var(--duration-drop) var(--ease-tween),
+    border-color var(--duration-drop) var(--ease-tween);
+}
+
+.btn:hover {
+  border-color: var(--line-control);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.btn-icon:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-icon.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  border-color: var(--accent-light-alt);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Inputs                                                                   */
+/* ---------------------------------------------------------------------- */
+
+.input {
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--text-scale-12-5);
+  padding: var(--space-3) var(--space-4);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Chips / pills                                                           */
+/* ---------------------------------------------------------------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-xs);
+  padding: 2px var(--space-2);
+  font-size: var(--text-scale-9-5);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.chip-mono {
+  font-family: var(--font-mono);
+}
+
+.chip-neutral {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-scale-10);
+  font-family: var(--font-mono);
+  background: rgba(8, 10, 14, 0.8);
+  color: var(--text-primary);
+}
+
+.pill-accent {
+  background: var(--accent-soft);
+  color: var(--accent-light);
+  border: 1px solid rgba(76, 141, 255, 0.4);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Scrollbars (webkit + firefox fallback)                                 */
+/* ---------------------------------------------------------------------- */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-menu) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--line-menu);
+  border-radius: var(--radius-pill);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Section label (uppercase mono headers used across panels)              */
+/* ---------------------------------------------------------------------- */
+
+.section-label {
+  font-size: var(--text-scale-11);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Visually-hidden utility (a11y labels without layout impact)            */
+/* ---------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Read-only viewer mode (share link #pb=…) — hide edit affordances       */
+/* (tool rail, inspector body, layer/keyframe controls, share button).    */
+/* The map, layers list, keyframe strip and Play stay usable for viewing. */
+/* ---------------------------------------------------------------------- */
+
+body.readonly #toolrail,
+body.readonly #inspector .inspector-content,
+body.readonly #inspector .inspector-notes,
+body.readonly .layers-panel__add,
+body.readonly .layer-row__icon-btn,
+body.readonly .pb-transport .pb-export-btn,
+body.readonly .tb-share-btn,
+body.readonly .canvas-hud .canvas-pill--hint {
+  display: none !important;
+}
+
+/* Give the middle grid its space back once the tool rail is hidden. */
+body.readonly #middle {
+  grid-template-columns:
+    var(--layout-layers-w) 1fr 0 var(--layout-inspector-w);
+}

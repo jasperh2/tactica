@@ -1,0 +1,113 @@
+{
+  "tactic": "A-Point Push",
+  "map": "Western City",
+  "map_file": "map/western-city.png",
+  "map_size": { "w": 822, "h": 786 },
+  "coordinate_space": "percent 0-100 of map, origin top-left",
+  "linear": true,
+  "fps_suggested": 30,
+  "keyframes": [
+    {
+      "keyframe": 1, "label": "Deploy", "t": "0:00",
+      "note": "Spawn south. Shields form the line, muskets and archers stay one street behind, cav tucks right out of arty sightlines.",
+      "units": [
+        { "code": "SHD", "name": "Shieldmaidens", "x": 40, "y": 60, "role": "#e5484d", "layer": "units" },
+        { "code": "SPR", "name": "Spear Sergeants", "x": 37, "y": 63, "role": "#e5484d", "layer": "units" },
+        { "code": "PIK", "name": "Pike Militia", "x": 43, "y": 64, "role": "#e5484d", "layer": "units" },
+        { "code": "GLV", "name": "Iron Reapers", "x": 47, "y": 62, "role": "#f2801f", "layer": "units" },
+        { "code": "SWD", "name": "Sword Sergeants", "x": 50, "y": 64, "role": "#f2801f", "layer": "units" },
+        { "code": "MSK", "name": "Tercio Arquebusiers", "x": 54, "y": 67, "role": "#38b26b", "layer": "units" },
+        { "code": "ARC", "name": "Zykali Archers", "x": 57, "y": 69, "role": "#38b26b", "layer": "units" },
+        { "code": "HCV", "name": "Cataphract Lancers", "x": 62, "y": 69, "role": "#f5c518", "layer": "units" },
+        { "code": "LCV", "name": "Hussars", "x": 65, "y": 67, "role": "#f5c518", "layer": "units" },
+        { "code": "CAN", "name": "Field Cannon", "x": 60, "y": 38, "role": "#33b7d4", "layer": "arty" },
+        { "code": "NOB", "name": "Nest of Bees", "x": 63, "y": 43, "role": "#33b7d4", "layer": "arty" }
+      ],
+      "routes": [],
+      "zones": []
+    },
+    {
+      "keyframe": 2, "label": "Engage", "t": "1:30",
+      "note": "Vanguard pushes the west flag while arty suppresses the crossroads. Do not chase — hold the push lane.",
+      "units": [
+        { "code": "SHD", "name": "Shieldmaidens", "x": 40, "y": 60, "role": "#e5484d", "layer": "units" },
+        { "code": "SPR", "name": "Spear Sergeants", "x": 37, "y": 63, "role": "#e5484d", "layer": "units" },
+        { "code": "PIK", "name": "Pike Militia", "x": 43, "y": 64, "role": "#e5484d", "layer": "units" },
+        { "code": "GLV", "name": "Iron Reapers", "x": 47, "y": 62, "role": "#f2801f", "layer": "units" },
+        { "code": "SWD", "name": "Sword Sergeants", "x": 50, "y": 64, "role": "#f2801f", "layer": "units" },
+        { "code": "MSK", "name": "Tercio Arquebusiers", "x": 54, "y": 67, "role": "#38b26b", "layer": "units" },
+        { "code": "ARC", "name": "Zykali Archers", "x": 57, "y": 69, "role": "#38b26b", "layer": "units" },
+        { "code": "HCV", "name": "Cataphract Lancers", "x": 62, "y": 69, "role": "#f5c518", "layer": "units" },
+        { "code": "LCV", "name": "Hussars", "x": 65, "y": 67, "role": "#f5c518", "layer": "units" },
+        { "code": "CAN", "name": "Field Cannon", "x": 60, "y": 38, "role": "#33b7d4", "layer": "arty" },
+        { "code": "NOB", "name": "Nest of Bees", "x": 63, "y": 43, "role": "#33b7d4", "layer": "arty" },
+        { "code": "CAT", "name": "Fire Catapult", "x": 59, "y": 48, "role": "#33b7d4", "layer": "arty" },
+        { "code": "PLG", "name": "Palace Guards", "x": 41, "y": 50, "role": "#e5484d", "layer": "units" }
+      ],
+      "routes": [
+        { "points": [[43, 60], [41, 52], [40, 45]], "color": "#e5484d" }
+      ],
+      "zones": [
+        { "cx": 39, "cy": 42, "rx": 9, "ry": 8, "color": "#38b26b", "label": "SECURE WEST FLAG" }
+      ]
+    },
+    {
+      "keyframe": 3, "label": "Push", "t": "3:00",
+      "note": "Cav swings through the east streets onto the objective while Fenrir breaks the inner gate. Converge on X together.",
+      "units": [
+        { "code": "SHD", "name": "Shieldmaidens", "x": 40, "y": 60, "role": "#e5484d", "layer": "units" },
+        { "code": "SPR", "name": "Spear Sergeants", "x": 37, "y": 63, "role": "#e5484d", "layer": "units" },
+        { "code": "PIK", "name": "Pike Militia", "x": 43, "y": 64, "role": "#e5484d", "layer": "units" },
+        { "code": "GLV", "name": "Iron Reapers", "x": 47, "y": 62, "role": "#f2801f", "layer": "units" },
+        { "code": "SWD", "name": "Sword Sergeants", "x": 50, "y": 64, "role": "#f2801f", "layer": "units" },
+        { "code": "MSK", "name": "Tercio Arquebusiers", "x": 54, "y": 67, "role": "#38b26b", "layer": "units" },
+        { "code": "ARC", "name": "Zykali Archers", "x": 57, "y": 69, "role": "#38b26b", "layer": "units" },
+        { "code": "HCV", "name": "Cataphract Lancers", "x": 62, "y": 69, "role": "#f5c518", "layer": "units" },
+        { "code": "LCV", "name": "Hussars", "x": 65, "y": 67, "role": "#f5c518", "layer": "units" },
+        { "code": "CAN", "name": "Field Cannon", "x": 60, "y": 38, "role": "#33b7d4", "layer": "arty" },
+        { "code": "NOB", "name": "Nest of Bees", "x": 63, "y": 43, "role": "#33b7d4", "layer": "arty" },
+        { "code": "CAT", "name": "Fire Catapult", "x": 59, "y": 48, "role": "#33b7d4", "layer": "arty" },
+        { "code": "PLG", "name": "Palace Guards", "x": 41, "y": 50, "role": "#e5484d", "layer": "units" },
+        { "code": "BSK", "name": "Sons of Fenrir", "x": 46, "y": 50, "role": "#f2801f", "layer": "units" }
+      ],
+      "routes": [
+        { "points": [[43, 60], [41, 52], [40, 45]], "color": "#e5484d" },
+        { "points": [[63, 66], [57, 56], [50, 53]], "color": "#f5c518" },
+        { "points": [[45, 49], [47, 53]], "color": "#e5484d" }
+      ],
+      "zones": [
+        { "cx": 39, "cy": 42, "rx": 9, "ry": 8, "color": "#38b26b", "label": "SECURE WEST FLAG" },
+        { "cx": 47, "cy": 52, "rx": 7, "ry": 6, "color": "#e5484d", "label": "CONTEST OBJECTIVE" }
+      ]
+    },
+    {
+      "keyframe": 4, "label": "Capture", "t": "5:00",
+      "note": "Everything collapses onto X. Support resets respawns to the west flag; arty shifts fire past the point to cut reinforcements.",
+      "units": [
+        { "code": "SHD", "name": "Shieldmaidens", "x": 40, "y": 60, "role": "#e5484d", "layer": "units" },
+        { "code": "SPR", "name": "Spear Sergeants", "x": 37, "y": 63, "role": "#e5484d", "layer": "units" },
+        { "code": "PIK", "name": "Pike Militia", "x": 43, "y": 64, "role": "#e5484d", "layer": "units" },
+        { "code": "GLV", "name": "Iron Reapers", "x": 47, "y": 62, "role": "#f2801f", "layer": "units" },
+        { "code": "SWD", "name": "Sword Sergeants", "x": 50, "y": 64, "role": "#f2801f", "layer": "units" },
+        { "code": "MSK", "name": "Tercio Arquebusiers", "x": 54, "y": 67, "role": "#38b26b", "layer": "units" },
+        { "code": "ARC", "name": "Zykali Archers", "x": 57, "y": 69, "role": "#38b26b", "layer": "units" },
+        { "code": "HCV", "name": "Cataphract Lancers", "x": 62, "y": 69, "role": "#f5c518", "layer": "units" },
+        { "code": "LCV", "name": "Hussars", "x": 65, "y": 67, "role": "#f5c518", "layer": "units" },
+        { "code": "CAN", "name": "Field Cannon", "x": 60, "y": 38, "role": "#33b7d4", "layer": "arty" },
+        { "code": "NOB", "name": "Nest of Bees", "x": 63, "y": 43, "role": "#33b7d4", "layer": "arty" },
+        { "code": "CAT", "name": "Fire Catapult", "x": 59, "y": 48, "role": "#33b7d4", "layer": "arty" },
+        { "code": "PLG", "name": "Palace Guards", "x": 41, "y": 50, "role": "#e5484d", "layer": "units" },
+        { "code": "BSK", "name": "Sons of Fenrir", "x": 46, "y": 50, "role": "#f2801f", "layer": "units" }
+      ],
+      "routes": [
+        { "points": [[43, 60], [41, 52], [40, 45]], "color": "#e5484d" },
+        { "points": [[63, 66], [57, 56], [50, 53]], "color": "#f5c518" },
+        { "points": [[45, 49], [47, 53]], "color": "#e5484d" }
+      ],
+      "zones": [
+        { "cx": 39, "cy": 42, "rx": 9, "ry": 8, "color": "#38b26b", "label": "SECURE WEST FLAG" },
+        { "cx": 47, "cy": 52, "rx": 7, "ry": 6, "color": "#e5484d", "label": "CONTEST OBJECTIVE" }
+      ]
+    }
+  ]
+}

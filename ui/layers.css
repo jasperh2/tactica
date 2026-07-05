@@ -1,0 +1,215 @@
+/**
+ * ui/layers.css — [ui-layers] Layers panel
+ * Handoff README §2 "Layers panel" — pixel values traced to that section.
+ * #layers itself (230px column, bg-panel, hairline border, overflow-y) is app.css's;
+ * this file owns everything inside the panel's own flex layout.
+ */
+
+.layers-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+/* ---- Header: "LAYERS" label + add button ---- */
+
+.layers-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-5) var(--space-3);
+  flex: none;
+}
+
+.layers-panel__add {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  cursor: pointer;
+  padding: 0;
+}
+
+.layers-panel__add:hover {
+  color: var(--text-primary);
+  border-color: var(--line-menu);
+}
+
+.layers-panel__add i {
+  font-size: var(--text-scale-13);
+}
+
+/* ---- Row list ---- */
+
+.layers-panel__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 var(--space-3) var(--space-3);
+  min-height: 0;
+}
+
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md-alt);
+  background: transparent;
+  border: 1px solid transparent;
+  margin-bottom: var(--space-1);
+  cursor: pointer;
+  position: relative;
+}
+
+.layer-row.is-active {
+  background: var(--accent-soft);
+  border-color: rgba(76, 141, 255, 0.4);
+}
+
+.layer-row.is-hidden {
+  opacity: 0.5;
+}
+
+.layer-row.is-dragging {
+  opacity: 0.4;
+}
+
+.layer-row.drop-before {
+  box-shadow: inset 0 2px 0 var(--accent);
+}
+
+.layer-row.drop-after {
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+/* Renaming is blocked on locked layers (dblclick handler no-ops) — signal it on the name. */
+.layer-row.is-locked .layer-row__name {
+  cursor: not-allowed;
+}
+
+.layer-row__dot {
+  width: 11px;
+  height: 11px;
+  flex: none;
+  border-radius: var(--radius-dot);
+}
+
+.layer-row__name {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-scale-12);
+  font-weight: 600;
+  color: var(--text-body);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.layer-row.is-active .layer-row__name {
+  color: var(--text-primary);
+}
+
+.layer-row__name-input {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  font-size: var(--text-scale-12);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-well);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-xs);
+  padding: 1px var(--space-2);
+  outline: none;
+}
+
+.layer-row__count {
+  flex: none;
+  color: var(--text-muted);
+  background: var(--bg-well);
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-scale-9);
+  font-weight: 700;
+}
+
+.layer-row__icon-btn {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary-alt);
+  cursor: pointer;
+  padding: 0;
+  border-radius: var(--radius-xs);
+}
+
+.layer-row__icon-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.layer-row__icon-btn i {
+  font-size: var(--text-scale-13);
+}
+
+.layer-row__delete {
+  color: var(--text-faint);
+  opacity: 0;
+  transition: opacity var(--duration-drop) var(--ease-tween);
+}
+
+.layer-row:hover .layer-row__delete {
+  opacity: 1;
+}
+
+.layer-row__delete:hover {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* ---- Footer: active-layer indicator ---- */
+
+.layers-panel__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--line-hairline);
+  flex: none;
+}
+
+.layers-panel__footer-dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: var(--radius-dot);
+}
+
+.layers-panel__footer-label {
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  flex: none;
+}
+
+.layers-panel__footer-name {
+  font-size: var(--text-scale-11-5);
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

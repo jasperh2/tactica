@@ -1,0 +1,1016 @@
+{
+  "roles": [
+    {
+      "hex": "#e5484d",
+      "name": "Vanguard"
+    },
+    {
+      "hex": "#f2801f",
+      "name": "Flank"
+    },
+    {
+      "hex": "#f5c518",
+      "name": "Cavalry"
+    },
+    {
+      "hex": "#38b26b",
+      "name": "Support"
+    },
+    {
+      "hex": "#33b7d4",
+      "name": "Artillery"
+    },
+    {
+      "hex": "#6ea0ff",
+      "name": "Recon"
+    },
+    {
+      "hex": "#b070f0",
+      "name": "Reserve"
+    },
+    {
+      "hex": "#ffffff",
+      "name": "Ping"
+    }
+  ],
+  "rarity": {
+    "1": {
+      "name": "Uncommon",
+      "color": "#46c46e"
+    },
+    "2": {
+      "name": "Rare",
+      "color": "#4c9bef"
+    },
+    "3": {
+      "name": "Epic",
+      "color": "#b45ce6"
+    },
+    "4": {
+      "name": "Legendary",
+      "color": "#e6b24c"
+    }
+  },
+  "classTints": {
+    "Spear": "#6a86b8",
+    "Pike": "#6a86b8",
+    "Shield": "#7a8194",
+    "Sword": "#7a8194",
+    "Glaive": "#7a8194",
+    "Berserker": "#7a8194",
+    "Archer": "#3fa38a",
+    "Crossbow": "#3fa38a",
+    "Musket": "#3fa38a",
+    "Heavy Cav": "#c08a3e",
+    "Light Cav": "#c08a3e",
+    "Cav Archer": "#c08a3e",
+    "heroes": "#8a7bd8",
+    "artillery": "#c0653e",
+    "extra": "#5f6b7a"
+  },
+  "units": [
+    {
+      "code": "AZA",
+      "name": "Azaps",
+      "slug": "azaps",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 225,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/AZA.png"
+    },
+    {
+      "code": "BER",
+      "name": "Berserkers",
+      "slug": "berserkers",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 245,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/BER.png"
+    },
+    {
+      "code": "CLA",
+      "name": "Claymores",
+      "slug": "claymores",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 235,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/CLA.png"
+    },
+    {
+      "code": "CC",
+      "name": "Companion Cavalry",
+      "slug": "companion-cavalry",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 230,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "CG",
+      "name": "Condottieri Guards",
+      "slug": "condottieri-guards",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 160,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/CG.png"
+    },
+    {
+      "code": "COU",
+      "name": "Coutiliers",
+      "slug": "coutiliers",
+      "class": "Heavy Cav",
+      "gameClass": "Cavalry",
+      "leadership": 115,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/COU.png"
+    },
+    {
+      "code": "DAL",
+      "name": "Dagger Axe Lancers",
+      "slug": "dagger-axe-lancers",
+      "class": "Heavy Cav",
+      "gameClass": "Cavalry",
+      "leadership": 245,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/DAL.png"
+    },
+    {
+      "code": "DA",
+      "name": "Demesne Arbalists",
+      "slug": "demesne-arbalists",
+      "class": "Crossbow",
+      "gameClass": "Ranged Infantry",
+      "leadership": 160,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/DA.png"
+    },
+    {
+      "code": "FP",
+      "name": "Fortebraccio Pikemen",
+      "slug": "fortebraccio-pikemen",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 235,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/FP.png"
+    },
+    {
+      "code": "HE",
+      "name": "Halberd Elite",
+      "slug": "halberd-elite",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 225,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/HE.png"
+    },
+    {
+      "code": "HAL",
+      "name": "Halberdiers",
+      "slug": "halberdiers",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 165,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/HAL.png"
+    },
+    {
+      "code": "HWA",
+      "name": "Hwarang",
+      "slug": "hwarang",
+      "class": "Archer",
+      "gameClass": "Ranged Infantry",
+      "leadership": 295,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/HWA.png"
+    },
+    {
+      "code": "IPG",
+      "name": "Imperial Pike Guards",
+      "slug": "imperial-pike-guards",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 240,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/IPG.png"
+    },
+    {
+      "code": "ISG",
+      "name": "Imperial Spear Guards",
+      "slug": "imperial-spear-guards",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 240,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/ISG.png"
+    },
+    {
+      "code": "IR",
+      "name": "Iron Reapers",
+      "slug": "iron-reapers",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 270,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/IR.png"
+    },
+    {
+      "code": "IA",
+      "name": "Ironcap Archers",
+      "slug": "ironcap-archers",
+      "class": "Archer",
+      "gameClass": "Ranged Infantry",
+      "leadership": 110,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry"
+    },
+    {
+      "code": "ISC",
+      "name": "Ironcap Scout Cavalry",
+      "slug": "ironcap-scout-cavalry",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 120,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/ISC.png"
+    },
+    {
+      "code": "IS",
+      "name": "Ironcap Swordsmen",
+      "slug": "ironcap-swordsmen",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 100,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "JS",
+      "name": "Javelin Sergeants",
+      "slug": "javelin-sergeants",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 230,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/JS.png"
+    },
+    {
+      "code": "LAN",
+      "name": "Lancastrian Billmen",
+      "slug": "lancastrian-billmen",
+      "class": "Pike",
+      "gameClass": "Melee Infantry",
+      "leadership": 220,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/LAN.png"
+    },
+    {
+      "code": "LR",
+      "name": "Liaos Rangers",
+      "slug": "liaos-rangers",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 315,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/LR.png"
+    },
+    {
+      "code": "LC",
+      "name": "Lionroar Crew",
+      "slug": "lionroar-crew",
+      "class": "Musket",
+      "gameClass": "Ranged Infantry",
+      "leadership": 325,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/LC.png"
+    },
+    {
+      "code": "MAA",
+      "name": "Men-at-Arms",
+      "slug": "men-at-arms",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 215,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/MAA.png"
+    },
+    {
+      "code": "MB",
+      "name": "Modao Battalion",
+      "slug": "modao-battalion",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 310,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/MB.png"
+    },
+    {
+      "code": "MYR",
+      "name": "Myrmillones",
+      "slug": "myrmillones",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 245,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/MYR.png"
+    },
+    {
+      "code": "OD",
+      "name": "Order of the Dragon",
+      "slug": "order-of-the-dragon",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 310,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/OD.png"
+    },
+    {
+      "code": "OS",
+      "name": "Orochi Samurai",
+      "slug": "orochi-samurai",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 295,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/OS.png"
+    },
+    {
+      "code": "OUT",
+      "name": "Outriders",
+      "slug": "outriders",
+      "class": "Cav Archer",
+      "gameClass": "Cavalry",
+      "leadership": 180,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/OUT.png"
+    },
+    {
+      "code": "PP",
+      "name": "Prefecture Pikemen",
+      "slug": "prefecture-pikemen",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 165,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/PP.png"
+    },
+    {
+      "code": "QK",
+      "name": "Queens Knights",
+      "slug": "queens-knights",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 280,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/QK.png"
+    },
+    {
+      "code": "RM",
+      "name": "Rattan Marksmen",
+      "slug": "rattan-marksmen",
+      "class": "Crossbow",
+      "gameClass": "Ranged Infantry",
+      "leadership": 175,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/RM.png"
+    },
+    {
+      "code": "RP",
+      "name": "Rattan Pikemen",
+      "slug": "rattan-pikemen",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 95,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/RP.png"
+    },
+    {
+      "code": "RR",
+      "name": "Rattan Roundshields",
+      "slug": "rattan-roundshields",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 115,
+      "tier": 2,
+      "rarity": 1,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/RR.png"
+    },
+    {
+      "code": "RV",
+      "name": "Rattan Vipers",
+      "slug": "rattan-vipers",
+      "class": "Archer",
+      "gameClass": "Ranged Infantry",
+      "leadership": 155,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/RV.png"
+    },
+    {
+      "code": "RL",
+      "name": "Royal Longbowmen",
+      "slug": "royal-longbowmen",
+      "class": "Archer",
+      "gameClass": "Ranged Infantry",
+      "leadership": 315,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/RL.png"
+    },
+    {
+      "code": "SG",
+      "name": "Shenji Grenadiers",
+      "slug": "shenji-grenadiers",
+      "class": "Musket",
+      "gameClass": "Ranged Infantry",
+      "leadership": 315,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/SG.png"
+    },
+    {
+      "code": "SHI",
+      "name": "Shieldmaidens",
+      "slug": "shieldmaidens",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 280,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SHI.png"
+    },
+    {
+      "code": "SIL",
+      "name": "Silahdars",
+      "slug": "silahdars",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 300,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/SIL.png"
+    },
+    {
+      "code": "SIP",
+      "name": "Sipahis",
+      "slug": "sipahis",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 215,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "SIPH",
+      "name": "Siphonarioi",
+      "slug": "siphonarioi",
+      "class": "Musket",
+      "gameClass": "Ranged Infantry",
+      "leadership": 300,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/SIPH.png"
+    },
+    {
+      "code": "SC",
+      "name": "Spartan Chosen",
+      "slug": "spartan-chosen",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 305,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SC.png"
+    },
+    {
+      "code": "SS",
+      "name": "Spear Sergeants",
+      "slug": "spear-sergeants",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 215,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SS.png"
+    },
+    {
+      "code": "SUN",
+      "name": "Sunward Phalanx",
+      "slug": "sunward-phalanx",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 295,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/SUN.png"
+    },
+    {
+      "code": "SYM",
+      "name": "Symmachean Paladins",
+      "slug": "symmachean-paladins",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 235,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SYM.png"
+    },
+    {
+      "code": "SYMM",
+      "name": "Symmachean Stalwarts",
+      "slug": "symmachean-stalwarts",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 240,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SYMM.png"
+    },
+    {
+      "code": "TLC",
+      "name": "Tiger and Leopard Cavalry",
+      "slug": "tiger-and-leopard-cavalry",
+      "class": "Heavy Cav",
+      "gameClass": "Cavalry",
+      "leadership": 310,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "VG",
+      "name": "Varangian Guards",
+      "slug": "varangian-guards",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 290,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire"
+    },
+    {
+      "code": "WPG",
+      "name": "White Plume Guards",
+      "slug": "white-plume-guards",
+      "class": "Shield",
+      "gameClass": "Melee Infantry",
+      "leadership": 305,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "WUW",
+      "name": "WuWei",
+      "slug": "wuwei",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 235,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/WUW.png"
+    },
+    {
+      "code": "WP",
+      "name": "Wuxing Pikemen",
+      "slug": "wuxing-pikemen",
+      "class": "Pike",
+      "gameClass": "Pike/Polearm Infantry",
+      "leadership": 155,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged",
+      "icon": "assets/units/WP.png"
+    },
+    {
+      "code": "YC",
+      "name": "Yanyuedao Cavalry",
+      "slug": "yanyuedao-cavalry",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 320,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/YC.png"
+    },
+    {
+      "code": "YEO",
+      "name": "Yeomen",
+      "slug": "yeomen",
+      "class": "Heavy Cav",
+      "gameClass": "Cavalry",
+      "leadership": 225,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav"
+    },
+    {
+      "code": "YHK",
+      "name": "Yorkist Household Knights",
+      "slug": "yorkist-household-knights",
+      "class": "Light Cav",
+      "gameClass": "Cavalry",
+      "leadership": 265,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Ranged/Flanks",
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/YHK.png"
+    },
+    {
+      "code": "ZEA",
+      "name": "Zealot",
+      "slug": "zealot",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 235,
+      "tier": 4,
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/ZEA.png"
+    },
+    {
+      "code": "ZWE",
+      "name": "Zweihanders",
+      "slug": "zweihanders",
+      "class": "Sword",
+      "gameClass": "Melee Infantry",
+      "leadership": 310,
+      "tier": 5,
+      "rarity": 4,
+      "strongVs": "Clusters",
+      "weakVs": "Focus fire",
+      "icon": "assets/units/ZWE.png"
+    },
+    {
+      "code": "ZM",
+      "name": "Zykalian Militia",
+      "slug": "zykalian-militia",
+      "class": "Musket",
+      "gameClass": "Ranged Infantry",
+      "leadership": 175,
+      "tier": 3,
+      "rarity": 2,
+      "strongVs": "Infantry",
+      "weakVs": "Cavalry",
+      "icon": "assets/units/ZM.png"
+    }
+  ],
+  "heroes": [
+    {
+      "code": "LS",
+      "name": "Longsword & Shield",
+      "weapon": "Longsword",
+      "style": "Guardian",
+      "rarity": 4,
+      "strongVs": "Duelists",
+      "weakVs": "Kiting"
+    },
+    {
+      "code": "PA",
+      "name": "Poleaxe",
+      "weapon": "Poleaxe",
+      "style": "Breaker",
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Ranged"
+    },
+    {
+      "code": "ND",
+      "name": "Nodachi",
+      "weapon": "Nodachi",
+      "style": "Duelist",
+      "rarity": 4,
+      "strongVs": "Single",
+      "weakVs": "Crowds"
+    },
+    {
+      "code": "GL",
+      "name": "Glaive",
+      "weapon": "Glaive",
+      "style": "Skirmisher",
+      "rarity": 3,
+      "strongVs": "Infantry",
+      "weakVs": "Focus"
+    },
+    {
+      "code": "SP",
+      "name": "Spear",
+      "weapon": "Spear",
+      "style": "Lancer",
+      "rarity": 2,
+      "strongVs": "Cavalry",
+      "weakVs": "Bursts"
+    },
+    {
+      "code": "MU",
+      "name": "Musket",
+      "weapon": "Musket",
+      "style": "Marksman",
+      "rarity": 4,
+      "strongVs": "Backline",
+      "weakVs": "Melee"
+    },
+    {
+      "code": "LB",
+      "name": "Longbow",
+      "weapon": "Longbow",
+      "style": "Ranger",
+      "rarity": 3,
+      "strongVs": "Clusters",
+      "weakVs": "Melee"
+    },
+    {
+      "code": "SB",
+      "name": "Shortbow",
+      "weapon": "Shortbow",
+      "style": "Trapper",
+      "rarity": 2,
+      "strongVs": "Chasers",
+      "weakVs": "Armor"
+    },
+    {
+      "code": "DB",
+      "name": "Dual Blades",
+      "weapon": "Dual Blades",
+      "style": "Assassin",
+      "rarity": 4,
+      "strongVs": "Squishies",
+      "weakVs": "Tanks"
+    },
+    {
+      "code": "ML",
+      "name": "Maul",
+      "weapon": "Maul",
+      "style": "Crusher",
+      "rarity": 2,
+      "strongVs": "Shields",
+      "weakVs": "Ranged"
+    },
+    {
+      "code": "PK",
+      "name": "Pike",
+      "weapon": "Pike",
+      "style": "Pikemaster",
+      "rarity": 3,
+      "strongVs": "Cavalry",
+      "weakVs": "Ranged"
+    }
+  ],
+  "artillery": [
+    {
+      "code": "CAN",
+      "name": "Field Cannon",
+      "type": "Direct",
+      "range": "Med",
+      "rarity": 2
+    },
+    {
+      "code": "HCN",
+      "name": "Heavy Cannon",
+      "type": "Siege",
+      "range": "Long",
+      "rarity": 4
+    },
+    {
+      "code": "CAT",
+      "name": "Fire Catapult",
+      "type": "AoE Fire",
+      "range": "Med",
+      "rarity": 3
+    },
+    {
+      "code": "BAL",
+      "name": "Ballista",
+      "type": "Anti-Armor",
+      "range": "Long",
+      "rarity": 3
+    },
+    {
+      "code": "FBL",
+      "name": "Fire Ballista",
+      "type": "AoE Fire",
+      "range": "Med",
+      "rarity": 3
+    },
+    {
+      "code": "NOB",
+      "name": "Nest of Bees",
+      "type": "Rocket AoE",
+      "range": "Med",
+      "rarity": 4
+    },
+    {
+      "code": "TRB",
+      "name": "Trebuchet",
+      "type": "Siege",
+      "range": "V.Long",
+      "rarity": 4
+    },
+    {
+      "code": "MOR",
+      "name": "Mortar",
+      "type": "Arc AoE",
+      "range": "Long",
+      "rarity": 3
+    },
+    {
+      "code": "RBL",
+      "name": "Repeating Ballista",
+      "type": "Suppress",
+      "range": "Med",
+      "rarity": 2
+    },
+    {
+      "code": "RAM",
+      "name": "Battering Ram",
+      "type": "Breach",
+      "range": "Melee",
+      "rarity": 2
+    }
+  ],
+  "extra": [
+    {
+      "code": "OBJ",
+      "name": "Objective",
+      "desc": "Primary capture point",
+      "rarity": 2
+    },
+    {
+      "code": "CAP",
+      "name": "Capture Point",
+      "desc": "Flag to secure",
+      "rarity": 2
+    },
+    {
+      "code": "RLY",
+      "name": "Rally Point",
+      "desc": "Regroup location",
+      "rarity": 2
+    },
+    {
+      "code": "FCS",
+      "name": "Focus Fire",
+      "desc": "Priority target",
+      "rarity": 2
+    },
+    {
+      "code": "WRD",
+      "name": "Ward",
+      "desc": "Vision / watch post",
+      "rarity": 2
+    },
+    {
+      "code": "BRK",
+      "name": "Wall Breach",
+      "desc": "Entry via broken wall",
+      "rarity": 2
+    },
+    {
+      "code": "BMB",
+      "name": "Bomb",
+      "desc": "Explosive charge",
+      "rarity": 2
+    },
+    {
+      "code": "PNG",
+      "name": "Ping",
+      "desc": "Quick alert marker",
+      "rarity": 2
+    }
+  ]
+}

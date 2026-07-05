@@ -1,0 +1,511 @@
+/**
+ * ui/exportmodal.css — [ui-export] Export "animation package" modal
+ * Handoff README §7 + the live prototype's EXPORT MODAL block (pixel-traced from
+ * `design/handoff-tactics-tool/Conquerors Blade Tactics.dc.html`). 912px card, scrim,
+ * 2-col manifest/preview, 2-col keyframe cards, icon strip, footer actions.
+ */
+
+/* ---------------------------------------------------------------------- */
+/* Scrim + card shell                                                      */
+/* ---------------------------------------------------------------------- */
+
+.xm-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(6, 8, 11, 0.74);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.xm-card {
+  width: 912px;
+  max-width: 100%;
+  max-height: 100%;
+  background: var(--bg-app);
+  border: 1px solid var(--line-menu);
+  border-radius: var(--radius-xl-alt);
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Header                                                                   */
+/* ---------------------------------------------------------------------- */
+
+.xm-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid var(--line-hairline);
+  flex: none;
+}
+
+.xm-header-tile {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md-alt);
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.xm-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.xm-title {
+  margin: 0;
+  font-size: var(--text-scale-15);
+  font-weight: 800;
+  color: #f2f4f8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xm-subtitle {
+  margin: 2px 0 0;
+  font-size: var(--text-scale-11-5);
+  color: var(--text-secondary-alt);
+}
+
+.xm-close {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  color: var(--text-body);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.xm-close:hover {
+  color: var(--text-primary);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Body                                                                     */
+/* ---------------------------------------------------------------------- */
+
+.xm-body {
+  padding: var(--space-6) var(--space-8);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.xm-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 50px;
+  color: var(--text-secondary-alt);
+  font-size: var(--text-scale-13);
+}
+
+.xm-spin {
+  animation: xm-pulse var(--duration-pulse) infinite;
+}
+
+@keyframes xm-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---- manifest + preview (2-col) --------------------------------------- */
+
+.xm-cols {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.xm-panel-label,
+.xm-section-label {
+  font-size: var(--text-scale-10);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-bottom: var(--space-3);
+}
+
+.xm-section-label {
+  margin-bottom: var(--space-5);
+}
+
+.xm-icons-label {
+  margin-top: var(--space-8);
+}
+
+.xm-manifest {
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg-alt);
+  padding: var(--space-5) var(--space-6);
+}
+
+.xm-manifest-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-1) 0;
+}
+
+.xm-manifest-check {
+  flex: none;
+  font-size: var(--text-scale-15);
+  color: var(--success);
+}
+
+.xm-manifest-icon {
+  flex: none;
+  font-size: var(--text-scale-14);
+  color: var(--accent-light-alt);
+}
+
+.xm-manifest-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.xm-manifest-label {
+  font-size: var(--text-scale-12);
+  font-weight: 600;
+  color: #dfe4ec;
+}
+
+.xm-manifest-detail {
+  font-size: var(--text-scale-10);
+  color: var(--text-label);
+}
+
+/* ---- map preview -------------------------------------------------------- */
+
+.xm-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.xm-preview-frame {
+  position: relative;
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg-alt);
+  overflow: hidden;
+  aspect-ratio: 822 / 786;
+}
+
+.xm-preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.xm-preview-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--text-scale-11);
+}
+
+.xm-preview-filename {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  font-size: var(--text-scale-9);
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(8, 10, 14, 0.72);
+  border: 1px solid var(--line-menu);
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-xs);
+}
+
+.xm-claude-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: rgba(76, 141, 255, 0.08);
+  border: 1px solid rgba(76, 141, 255, 0.22);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-scale-11);
+  line-height: 1.45;
+  color: #b9c2d0;
+}
+
+.xm-claude-note i {
+  flex: none;
+  margin-top: 1px;
+  font-size: var(--text-scale-14);
+  color: var(--accent-light-alt);
+}
+
+.xm-claude-note b {
+  color: #dfe7f2;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Keyframe cards (2-col grid)                                            */
+/* ---------------------------------------------------------------------- */
+
+.xm-kf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.xm-kf-card {
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg-alt);
+  overflow: hidden;
+}
+
+.xm-kf-thumb {
+  position: relative;
+  aspect-ratio: 822 / 786;
+  background: var(--bg-void);
+}
+
+.xm-kf-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.xm-kf-pill {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-size: var(--text-scale-10);
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(8, 10, 14, 0.72);
+  border: 1px solid var(--line-menu);
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-xs);
+}
+
+.xm-kf-note {
+  padding: var(--space-4) var(--space-5) var(--space-1);
+  font-size: var(--text-scale-11);
+  line-height: 1.45;
+  min-height: 19px;
+}
+
+.xm-kf-note-row {
+  display: flex;
+  gap: var(--space-3);
+  color: #b9c2d0;
+}
+
+.xm-kf-note-row i {
+  flex: none;
+  margin-top: 2px;
+  font-size: var(--text-scale-12);
+  color: var(--accent-light-alt);
+}
+
+.xm-kf-note-empty {
+  color: var(--text-faint);
+}
+
+.xm-kf-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-1) var(--space-5) var(--space-5);
+}
+
+.xm-kf-filename {
+  font-size: var(--text-scale-9-5);
+  color: var(--text-label);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xm-kf-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary-alt);
+  font-size: var(--text-scale-11);
+  font-weight: 600;
+  text-decoration: none;
+  flex: none;
+}
+
+.xm-kf-download:hover {
+  border-color: var(--accent-light-alt);
+  color: var(--accent-light);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Icons to rebuild strip                                                  */
+/* ---------------------------------------------------------------------- */
+
+.xm-icon-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.xm-icon-tile-wrap {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.xm-icon-tile {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  background: var(--bg-well);
+}
+
+.xm-icon-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.xm-icon-filename {
+  font-size: var(--text-scale-8-5);
+  color: var(--text-secondary-alt);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Footer                                                                   */
+/* ---------------------------------------------------------------------- */
+
+.xm-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-8);
+  border-top: 1px solid var(--line-hairline);
+  flex: none;
+}
+
+.xm-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md-alt);
+  color: var(--text-primary-alt);
+  cursor: pointer;
+  font-size: var(--text-scale-12-5);
+  font-weight: 600;
+  flex: none;
+}
+
+.xm-copy-btn:hover {
+  border-color: var(--line-menu);
+}
+
+.xm-copy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.xm-copy-check {
+  color: var(--success);
+}
+
+.xm-footer-note {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-scale-10-5);
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.xm-footer-note b {
+  color: var(--text-secondary-alt);
+}
+
+.xm-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-md-alt);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: var(--text-scale-12-5);
+  font-weight: 700;
+  flex: none;
+}
+
+.xm-download-btn:hover {
+  background: var(--accent-light-alt);
+}
+
+.xm-download-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive: modal never causes page horizontal scroll on narrow viewports */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .xm-cols,
+  .xm-kf-grid {
+    grid-template-columns: 1fr;
+  }
+}

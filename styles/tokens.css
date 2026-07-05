@@ -1,0 +1,140 @@
+/**
+ * TACTICA — design tokens
+ * Source of truth: design/handoff-tactics-tool/design_handoff_tactica/README.md §Design Tokens
+ * Every custom property below traces to one bullet in that section. Do not add tokens that
+ * aren't backed by the handoff — panel-specific one-offs belong in the owning ui/<panel>.css.
+ *
+ * Mapping (handoff term -> --custom-property):
+ *   Bg void/app/panel/elevated/well/row/menu       -> --bg-*
+ *   Lines hairline/.08/control/menu                -> --line-*
+ *   Text primary/secondary/muted/faint/labels      -> --text-*
+ *   Accent + soft/light/gradient                   -> --accent-*
+ *   Roles (Vanguard..Ping)                         -> --role-*
+ *   Rarity (Legendary..Uncommon)                   -> --rarity-*
+ *   Semantic danger/success                        -> --danger-* , --success-*
+ *   Type families + scale                          -> --font-* , --text-scale-*
+ *   Radius steps                                   -> --radius-*
+ *   Spacing rhythm                                 -> --space-*
+ *   Shadows                                        -> --shadow-*
+ *   Motion durations/easing                        -> --duration-* , --ease-*
+ */
+
+:root {
+  /* ---- Backgrounds ---- */
+  --bg-void: #0d0f13;       /* map canvas backdrop */
+  --bg-app: #14171d;        /* app shell background */
+  --bg-panel: #171b22;      /* top bar, side panels */
+  --bg-elevated: #1e232c;   /* buttons, dropdown triggers */
+  --bg-well: #12151b;       /* inputs, wells */
+  --bg-row: #161a21;        /* list rows */
+  --bg-menu: #1b2029;       /* dropdown/menu surfaces */
+
+  /* ---- Hairlines / borders ---- */
+  --line-hairline: rgba(255, 255, 255, 0.07);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-control: rgba(255, 255, 255, 0.10);
+  --line-menu: rgba(255, 255, 255, 0.12);
+
+  /* ---- Text ---- */
+  --text-primary: #eef1f6;
+  --text-primary-alt: #e7eaf0;
+  --text-body: #c7cdd8;
+  --text-secondary: #9aa3b2;
+  --text-secondary-alt: #8b93a4;
+  --text-label: #7b8494;    /* section labels, uppercase mono headers */
+  --text-muted: #6b7280;
+  --text-faint: #5b6270;
+
+  /* ---- Accent ---- */
+  --accent: #4c8dff;
+  --accent-soft: rgba(76, 141, 255, 0.16);
+  --accent-light: #cfe0ff;
+  --accent-light-alt: #8fb4ff;
+  --accent-gradient: linear-gradient(135deg, #4c8dff, #8a7bd8);
+
+  /* ---- Roles (the 15-player briefing language) ---- */
+  --role-vanguard: #e5484d;
+  --role-flank: #f2801f;
+  --role-cavalry: #f5c518;
+  --role-support: #38b26b;
+  --role-artillery: #33b7d4;
+  --role-recon: #6ea0ff;
+  --role-reserve: #b070f0;
+  --role-ping: #ffffff;
+
+  /* ---- Rarity ---- */
+  --rarity-legendary: #e6b24c;
+  --rarity-epic: #b45ce6;
+  --rarity-rare: #4c9bef;
+  --rarity-uncommon: #46c46e;
+
+  /* ---- Semantic ---- */
+  --danger: #e5484d;
+  --danger-bg: rgba(229, 72, 77, 0.12);
+  --danger-border: rgba(229, 72, 77, 0.3);
+  --success: #38b26b;
+  --success-light: #7fe0a6;
+
+  /* ---- Type families ---- */
+  --font-ui: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* ---- Type scale (px) ---- */
+  --text-scale-8: 8px;
+  --text-scale-8-5: 8.5px;
+  --text-scale-9: 9px;
+  --text-scale-9-5: 9.5px;
+  --text-scale-10: 10px;
+  --text-scale-10-5: 10.5px;
+  --text-scale-11: 11px;
+  --text-scale-11-5: 11.5px;
+  --text-scale-12: 12px;
+  --text-scale-12-5: 12.5px;
+  --text-scale-13: 13px;
+  --text-scale-13-5: 13.5px;
+  --text-scale-14: 14px;
+  --text-scale-15: 15px;
+
+  /* ---- Radius ---- */
+  --radius-dot: 3px;
+  --radius-xs: 5px;
+  --radius-sm: 7px;
+  --radius-md: 8px;
+  --radius-md-alt: 9px;
+  --radius-lg: 10px;
+  --radius-lg-alt: 11px;
+  --radius-xl: 13px;
+  --radius-xl-alt: 14px;
+  --radius-pill: 20px;
+
+  /* ---- Spacing rhythm (px) ---- */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 14px;
+  --space-7: 16px;
+  --space-8: 20px;
+
+  /* ---- Shadows ---- */
+  --shadow-app: 0 24px 70px rgba(0, 0, 0, 0.55);
+  --shadow-modal: 0 30px 90px rgba(0, 0, 0, 0.6);
+  --shadow-menu: 0 18px 44px rgba(0, 0, 0, 0.6);
+  --shadow-marker: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-selected: 0 0 0 2px #ffffff, 0 2px 8px rgba(0, 0, 0, 0.55);
+
+  /* ---- Motion ---- */
+  --duration-drop: 200ms;      /* marker drop-in scale .4 -> 1.12 -> 1 */
+  --duration-tween: 500ms;     /* play-mode position tween */
+  --duration-keyframe: 1050ms; /* play engine keyframe interval */
+  --duration-pulse: 1s;        /* spinner pulse */
+  --ease-tween: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Layout (grid contract, §5 Screen) ---- */
+  --layout-topbar-h: 52px;
+  --layout-playbookbar-h: 118px;
+  --layout-layers-w: 230px;
+  --layout-toolrail-w: 48px;
+  --layout-inspector-w: 288px;
+}

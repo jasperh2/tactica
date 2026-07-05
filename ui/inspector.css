@@ -1,0 +1,494 @@
+/**
+ * ui/inspector.css — TACTICA contextual inspector [ui-inspector]
+ * Handoff README §5 Contextual inspector (288px): header (30px accent tile + tool name +
+ * hint + shortcut chip), content swaps per tool, persistent bottom (mini selection card +
+ * frame notes). All colors/sizes/radii via tokens.css.
+ */
+
+#inspector {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ---- Header ------------------------------------------------------------------ */
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--line-hairline);
+}
+
+.inspector-header-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.inspector-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.inspector-header-name {
+  font-size: var(--text-scale-13);
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inspector-header-hint {
+  font-size: var(--text-scale-9-5);
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.inspector-header-key {
+  flex: none;
+}
+
+/* ---- Content shell ------------------------------------------------------------- */
+
+.inspector-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.inspector-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inspector-empty {
+  font-size: var(--text-scale-11-5);
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: var(--space-3) 0;
+}
+
+.inspector-note-hint {
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent-soft);
+  border: 1px solid rgba(76, 141, 255, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--accent-light);
+}
+
+/* ---- Place: hint chip, tabs, search, rarity legend, roster grid ---------------- */
+
+.place-hint-chip {
+  align-self: flex-start;
+  background: var(--accent-soft);
+  color: var(--accent-light);
+  border: 1px solid rgba(76, 141, 255, 0.35);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-scale-10-5);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-4);
+}
+
+.roster-tabs {
+  display: flex;
+  gap: var(--space-1);
+  background: var(--bg-well);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+
+.roster-tab {
+  flex: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-scale-10-5);
+  font-weight: 600;
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+
+.roster-tab.is-active {
+  background: #212633;
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.rarity-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.rarity-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-scale-9-5);
+  color: var(--text-secondary);
+}
+
+.rarity-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.roster-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2);
+  background: var(--bg-row);
+  border: 1.5px solid;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-drop) var(--ease-tween);
+  /* Grid items default to min-width:auto (their content's intrinsic size), which stops the
+     3-col track from shrinking below a long unit name's natural width and forces the whole
+     grid to overflow horizontally. min-width:0 lets .roster-tile-name's ellipsis truncation
+     actually take effect instead of blowing out the column. */
+  min-width: 0;
+}
+
+.roster-tile:hover {
+  background: var(--bg-elevated);
+}
+
+.roster-tile.is-armed {
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.roster-tile-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.roster-tile-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roster-tile-code-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-9);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.roster-tile-name {
+  font-size: var(--text-scale-9);
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* ---- Armed card ----------------------------------------------------------------- */
+
+.armed-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.armed-card-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.armed-code-chip {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  font-weight: 700;
+  border-radius: var(--radius-xs);
+  padding: var(--space-2) var(--space-3);
+}
+
+.armed-card-titles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.armed-card-name {
+  font-size: var(--text-scale-12-5);
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rarity-pill {
+  align-self: flex-start;
+  font-size: var(--text-scale-8-5);
+  font-weight: 700;
+  border: 1px solid;
+  border-radius: var(--radius-xs);
+  padding: 1px var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.armed-disarm {
+  flex: none;
+}
+
+.armed-stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.armed-matchup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.matchup-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--text-scale-9-5);
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  padding: 2px var(--space-2);
+}
+
+.matchup-strong {
+  background: rgba(56, 178, 107, 0.14);
+  color: var(--success-light);
+}
+
+.matchup-weak {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.armed-desc {
+  font-size: var(--text-scale-10-5);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- Select / Move: object card, size slider ------------------------------------- */
+
+.object-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.object-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.object-card-kind {
+  font-size: var(--text-scale-12);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.slider-value {
+  font-size: var(--text-scale-9-5);
+  color: var(--text-secondary);
+}
+
+/* ---- Toggles, segmented control -------------------------------------------------- */
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-scale-11-5);
+  color: var(--text-body);
+  cursor: pointer;
+}
+
+.toggle-row input[type='checkbox'] {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+}
+
+.segmented {
+  display: flex;
+  gap: var(--space-1);
+  background: var(--bg-well);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+
+.segmented-btn {
+  flex: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-scale-10-5);
+  font-weight: 600;
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+
+.segmented-btn.is-active {
+  background: #212633;
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* ---- Role color swatches ---------------------------------------------------------- */
+
+.role-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.role-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line-control);
+  cursor: pointer;
+  padding: 0;
+}
+
+.role-swatch.is-active {
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.role-custom-input {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--line-control);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.role-custom-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.role-custom-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* ---- Danger button (erase clear-placed) ------------------------------------------- */
+
+.btn-danger {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  border-color: var(--danger);
+}
+
+/* ---- Persistent bottom: mini selection + frame notes ------------------------------- */
+
+.mini-selection-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px solid var(--line-hairline);
+}
+
+.mini-selection-coords {
+  font-size: var(--text-scale-9-5);
+  color: var(--text-muted);
+}
+
+.inspector-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-6);
+  border-top: 1px solid var(--line-hairline);
+  flex: none;
+}
+
+.inspector-notes-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.notes-textarea {
+  resize: none;
+}
+
+.inspector-notes-hint {
+  font-size: var(--text-scale-8-5);
+  color: var(--text-faint);
+}
+
+/* ---- Shared field styling ---------------------------------------------------------- */
+
+.textarea {
+  width: 100%;
+  font-family: var(--font-ui);
+  line-height: 1.5;
+}
