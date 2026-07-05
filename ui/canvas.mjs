@@ -35,7 +35,10 @@ const DEFAULT_ASPECT_H = 786;
 const DRAG_THRESHOLD_PX = 3;
 const MARKER_SIZE_DEFAULT = 26;
 const BLOCKED_FLASH_MS = 260;
-const OWN_TOOLS = new Set(['select', 'move', 'pan', 'place']);
+// 'locator' is owned-but-inert here: the Cursor Locator handles its own gestures in
+// ui/locator.mjs's self-contained overlay; canvas.mjs must neither forward it to drawtools
+// nor start a select gesture for it.
+const OWN_TOOLS = new Set(['select', 'move', 'pan', 'place', 'locator']);
 const HIT_TOLERANCE_PCT = 1.6; // forgiving click-select radius, % of map width (increment 1)
 const RESIZE_HANDLE_SELECTOR = '[data-resize-handle]';
 // Extra breathing room (percent-of-map-width) added on every side of the selection bbox on top
@@ -179,6 +182,10 @@ export function mount(el, ctx) {
     viewportEl.addEventListener('pointercancel', onPointerUp);
     mapEl.addEventListener('click', onClick);
     mapEl.addEventListener('dblclick', onDblClick);
+    // Chrome arms middle-click autoscroll on mousedown — suppress it so MMB is a clean pan.
+    mapEl.addEventListener('mousedown', (e) => {
+      if (e.button === 1) e.preventDefault();
+    });
     viewportEl.addEventListener('wheel', onWheel, { passive: false });
     hudEl.addEventListener('click', onHudClick);
     window.addEventListener('keydown', onKeyDown);
@@ -200,6 +207,15 @@ export function mount(el, ctx) {
     // wrongly swallow the next real click. The next pointerdown always precedes the next click,
     // so clearing here bounds the latch to exactly the one click after its own pointerup.
     suppressNextClick = false;
+
+    // Middle-mouse ALWAYS pans, in every tool (Jasper hot fix 2026-07-06) — the universal
+    // canvas-editor convention. preventDefault also runs on 'mousedown' (wireEvents) because
+    // Chrome's middle-click autoscroll arms there, not on pointerdown.
+    if (event.button === 1) {
+      event.preventDefault();
+      startPan(event);
+      return;
+    }
 
     if (isPanning()) {
       startPan(event);

@@ -453,6 +453,9 @@ function renderBody(doc, view, roster) {
   if (tool === 'text') return renderTextToolPanel(doc, view, roster);
   if (tool === 'erase') return renderErasePanel(doc, view);
   if (tool === 'pan') return renderPanPanel();
+  if (tool === 'locator') {
+    return `<div class="inspector-content"><div class="inspector-empty">Hold the left button and move to point — pulses and a fading trail follow the cursor (uses the role color). Nothing is drawn on the map. Middle-mouse drags the map in any tool.</div></div>`;
+  }
   return `<div class="inspector-content"><div class="inspector-empty">Select a tool from the rail.</div></div>`;
 }
 

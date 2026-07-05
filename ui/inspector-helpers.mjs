@@ -7,6 +7,7 @@
 import { activeTactic } from '../core/playbook.mjs';
 
 const TOOL_META = {
+  locator: { icon: 'ph-cursor-click', name: 'Pointer', key: 'Q' },
   select: { icon: 'ph-cursor', name: 'Select', key: 'V' },
   move: { icon: 'ph-arrows-out-cardinal', name: 'Move / Resize', key: 'G' },
   pan: { icon: 'ph-hand', name: 'Pan', key: 'H' },

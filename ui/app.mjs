@@ -15,6 +15,7 @@ import { mount as mountToolrail } from './toolrail.mjs';
 import { mount as mountInspector } from './inspector.mjs';
 import { mount as mountPlaybookbar } from './playbookbar.mjs';
 import { mount as mountExportModal } from './exportmodal.mjs';
+import { mountLocator } from './locator.mjs';
 import { createLayout } from './panelresize.mjs';
 
 const STORAGE_KEY = 'tactica:doc';
@@ -51,6 +52,7 @@ const DEFAULT_TOOL_OPTIONS = {
 
 // Single-key tool shortcuts (contract §5, toolrail order). Uppercased key -> tool id.
 const KEY_TO_TOOL = {
+  Q: 'locator',
   V: 'select',
   G: 'move',
   H: 'pan',
@@ -150,6 +152,9 @@ async function boot() {
   mountTopbar(document.getElementById('topbar'), ctx);
   mountLayers(document.getElementById('layers'), ctx);
   mountCanvas(document.getElementById('canvas'), ctx);
+  // Cursor Locator overlay rides on the canvas viewport canvas.mjs just mounted; fully
+  // self-contained (own SVG, own listeners, active only when view.tool === 'locator').
+  mountLocator(document.querySelector('#canvas .canvas-viewport'), store);
   mountToolrail(document.getElementById('toolrail'), ctx);
   mountInspector(document.getElementById('inspector'), ctx);
   mountPlaybookbar(document.getElementById('playbookbar'), ctx);
@@ -215,7 +220,10 @@ function freshView() {
     // Default tool on open = PAN, not select (sidebar-v2 v3 item f): a fresh board has nothing
     // to select, and pan/zoom is the first thing anyone does to frame the map. Read-only share
     // links keep this same neutral default — the viewer wants to move around the map, not draw.
-    tool: 'pan',
+    // Cursor Locator is the default tool (Jasper 2026-07-06): harmless to open on (no doc
+    // writes), and the laser-pointer flow is the primary "show someone the plan" mode. Pan
+    // stays one key away (H) and middle-mouse drag pans in EVERY tool.
+    tool: 'locator',
     roleColor: '#e5484d',
     activeLayerId: 'units',
     currentKeyframe: 1,

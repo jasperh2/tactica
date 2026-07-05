@@ -12,6 +12,7 @@
 
 /** @type {ToolDef[]} */
 const TOOLS = [
+  { id: 'locator', icon: 'ph-cursor-click', key: 'Q', label: 'Pointer' },
   { id: 'select', icon: 'ph-cursor', key: 'V', label: 'Select' },
   { id: 'move', icon: 'ph-arrows-out-cardinal', key: 'G', label: 'Move / Resize' },
   { id: 'pan', icon: 'ph-hand', key: 'H', label: 'Pan' },
