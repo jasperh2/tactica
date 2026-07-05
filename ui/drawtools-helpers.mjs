@@ -3,10 +3,10 @@
 // Complex numeric work (arrowheads, simplification, distance) stays in core/geometry.mjs —
 // this file only shapes those results into SVG fragments and small drag-state helpers.
 import { arrowhead, hitTest } from '../core/geometry.mjs';
+import { strokeWidthViewBox, dashArray, arrowheadSize } from '../core/stroke.mjs';
 import { safeColor } from './sanitize.mjs';
 
 const MIN_DRAG_PCT = 0.3; // ignore drags shorter than this (accidental click-drags)
-const METERS_PER_WORLD_UNIT = 1; // README: world units ARE the "in-game units" meters figure
 const CLOSE_VERTEX_TOL_PCT = 1.5; // "click near the first vertex" close-gesture radius (% of map width)
 // Erase-by-click hit tolerance (bug-hunt fix): matches canvas.mjs's HIT_TOLERANCE_PCT so the
 // erase tool's forgiving click radius feels identical to the Select tool's — a click that would
@@ -58,85 +58,117 @@ function pointsAttr(points) {
   return points.map(([x, y]) => `${Number(x)},${Number(y)}`).join(' ');
 }
 
+const HEAD_OUTLINE_FACTOR = 0.6; // open-arrowhead outline width as a multiple of the stroke width
+// — matches canvas-objects.mjs's HEAD_STROKE_FACTOR so the committed open-arrow outline matches
+// the ghost's exactly (parity).
+
 /**
- * SVG markup for a straight/polyline stroke ghost or commit, with an optional arrowhead.
+ * SVG markup for a straight/polyline stroke ghost, with an optional arrowhead. `thickness` is the
+ * authored width in SCREEN PX; it is converted to a viewBox stroke-width via the shared
+ * core/stroke.mjs model — the SAME conversion the committed renderer (canvas-objects.mjs
+ * renderRoute) applies to the same `thickness`, so the ghost and the committed stroke are
+ * pixel-identical by construction. Pre-fix this wrote the raw px thickness straight into the
+ * viewBox stroke-width, rendering 8-13x too thick (the ghost-inflation bug). `boxWidthPx` is the
+ * on-screen map-box width the conversion needs.
  * @param {Point[]} points
- * @param {{color:string, thickness:number, dashed:boolean, head:'solid'|'open'|'none', aspect:number}} opts
+ * @param {{color:string, thickness:number, dashed:boolean, head:'solid'|'open'|'none', aspect:number, boxWidthPx:number}} opts
  * @returns {string}
  */
-export function strokeMarkup(points, { color, thickness, dashed, head, aspect }) {
+export function strokeMarkup(points, { color, thickness, dashed, head, aspect, boxWidthPx }) {
   if (points.length < 2) return '';
   const safe = safeColor(color);
-  const dash = dashed ? ` stroke-dasharray="${thickness * 2.2},${thickness * 1.6}"` : '';
-  const { tri, trimmed } = head === 'none' ? { tri: null, trimmed: points } : arrowhead(points, { aspect });
+  const strokeWidth = strokeWidthViewBox(thickness, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidth);
+  const dash = dashed ? ` stroke-dasharray="${dashOn},${dashOff}"` : '';
+  const { tri, trimmed } = head === 'none'
+    ? { tri: null, trimmed: points }
+    : arrowhead(points, { aspect, size: arrowheadSize(thickness) }); // head scales with px thickness
   const linePts = tri ? trimmed : points;
 
-  const line = `<polyline points="${pointsAttr(linePts)}" fill="none" stroke="${safe}" stroke-width="${thickness}" stroke-linecap="round" stroke-linejoin="round"${dash}/>`;
+  const line = `<polyline points="${pointsAttr(linePts)}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"${dash}/>`;
 
   if (!tri || head === 'none') return line;
 
   const fill = head === 'open' ? 'none' : safe;
-  const strokeAttr = head === 'open' ? ` stroke="${safe}" stroke-width="${Math.max(1, thickness * 0.5)}"` : '';
+  const strokeAttr = head === 'open' ? ` stroke="${safe}" stroke-width="${strokeWidth * HEAD_OUTLINE_FACTOR}"` : '';
   const triMarkup = `<polygon points="${pointsAttr(tri)}" fill="${fill}"${strokeAttr}/>`;
   return line + triMarkup;
 }
 
-/** SVG markup for a rect ghost/commit (percent-space corner points). */
-export function rectMarkup(a, b, { color, fillOpacity, border, dashed }) {
+/** SVG markup for a rect ghost (percent-space corner points). `border` is authored screen px,
+ * converted to a viewBox stroke-width via the shared core/stroke.mjs model so the ghost matches
+ * the committed shape (canvas-objects.mjs renderSketchShape) by construction — pre-fix the raw px
+ * border went straight into viewBox units and rendered ~8-13x too thick. */
+export function rectMarkup(a, b, { color, fillOpacity, border, dashed, boxWidthPx }) {
   const { x, y, w, h } = rectFromCorners(a, b);
   const safe = safeColor(color);
-  const dash = dashed ? ` stroke-dasharray="${border * 2.5},${border * 2}"` : '';
-  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${safe}" fill-opacity="${fillOpacity / 100}" stroke="${safe}" stroke-width="${border}"${dash}/>`;
+  const strokeWidth = strokeWidthViewBox(border, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidth);
+  const dash = dashed ? ` stroke-dasharray="${dashOn},${dashOff}"` : '';
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${safe}" fill-opacity="${fillOpacity / 100}" stroke="${safe}" stroke-width="${strokeWidth}"${dash}/>`;
 }
 
-/** SVG markup for an ellipse ghost/commit (percent-space corner points). */
-export function ellipseMarkup(a, b, { color, fillOpacity, border, dashed }) {
+/** SVG markup for an ellipse ghost (percent-space corner points). `border` screen px -> viewBox
+ * via the shared model, matching the committed shape (see rectMarkup). */
+export function ellipseMarkup(a, b, { color, fillOpacity, border, dashed, boxWidthPx }) {
   const { cx, cy, rx, ry } = ellipseFromCorners(a, b);
   const safe = safeColor(color);
-  const dash = dashed ? ` stroke-dasharray="${border * 2.5},${border * 2}"` : '';
-  return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${safe}" fill-opacity="${fillOpacity / 100}" stroke="${safe}" stroke-width="${border}"${dash}/>`;
+  const strokeWidth = strokeWidthViewBox(border, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidth);
+  const dash = dashed ? ` stroke-dasharray="${dashOn},${dashOff}"` : '';
+  return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${safe}" fill-opacity="${fillOpacity / 100}" stroke="${safe}" stroke-width="${strokeWidth}"${dash}/>`;
 }
 
 /** SVG markup for a zone ghost/commit: dashed ellipse, fill @ fixed 13% per handoff README §3. */
 const ZONE_FILL_OPACITY_PCT = 13;
-const ZONE_BORDER_PX = 2;
+const ZONE_BORDER_PX = 2; // authored screen-px zone border — converted to viewBox units via the
+// shared core/stroke.mjs model at render time (matches canvas-objects.mjs's DEFAULT_BORDER_PX).
+const ZONE_DASH = '6,4'; // fixed authored dash pattern for the zone's signature dashed outline.
 
-export function zoneMarkup(a, b, { color }) {
+export function zoneMarkup(a, b, { color, boxWidthPx }) {
   const { cx, cy, rx, ry } = ellipseFromCorners(a, b);
   const safe = safeColor(color);
-  return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${ZONE_BORDER_PX}" stroke-dasharray="6,4"/>`;
+  const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
+  return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${strokeWidth}" stroke-dasharray="${ZONE_DASH}"/>`;
 }
 
 /**
- * SVG markup for a polygon zone ghost/commit: dashed closed polygon, same 13% fill treatment
- * as zoneMarkup (sibling helper — click-vertex zone authoring, bug 4 fix). Used both for the
- * in-progress rubber-band preview (as few as 2 points, an open-looking shape since a real
- * `<polygon>` element auto-closes visually) and the final commit markup.
+ * SVG markup for a COMMITTED polygon zone: dashed closed polygon, same 13% fill treatment as
+ * zoneMarkup (sibling helper — the committed-zone style, bug 4). A real `<polygon>` element
+ * auto-closes visually and fills, which is exactly right for a finished zone but WRONG for the
+ * in-progress authoring ghost (Jasper's v2 feedback: the auto-closing edge reads as a phantom
+ * box, and the fill/dashes muddy what you're drawing). Authoring now uses polygonGhostMarkup
+ * below; this helper is retained for the committed-zone identity (dashed outline + fill) that
+ * exporter.mjs/SPEC treat as the zone's visual signature.
  * @param {Point[]} points
  * @param {{color:string}} opts
  * @returns {string} empty string when fewer than 2 points (nothing meaningful to preview yet)
  */
-export function polygonMarkup(points, { color }) {
+export function polygonMarkup(points, { color, boxWidthPx }) {
   if (points.length < 2) return '';
   const safe = safeColor(color);
-  return `<polygon points="${pointsAttr(points)}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${ZONE_BORDER_PX}" stroke-dasharray="6,4"/>`;
+  const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
+  return `<polygon points="${pointsAttr(points)}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${strokeWidth}" stroke-dasharray="${ZONE_DASH}"/>`;
 }
 
 /**
- * Live measure-tool overlay: a plain line + a distance label near the midpoint.
- * Distance shown in world units (README: "world units 48000 across the map") and meters.
- * @param {Point} a @param {Point} b @param {number} worldDistancePct value already converted by geometry.worldDistance
- * @returns {string}
+ * SVG markup for the in-progress polygon-zone AUTHORING ghost (Jasper v2 fix): an OPEN
+ * `<polyline>` over exactly the segments the user has drawn so far plus the single rubber-band
+ * segment to the cursor — NO phantom closing edge (a polyline, unlike `<polygon>`, does not
+ * auto-close the last vertex back to the first), NO fill (`fill="none"`, no fill-opacity), and a
+ * SOLID stroke (no dasharray). This matches Excalidraw/tldraw, which draw an in-progress polygon
+ * as a solid open path — you see only the edges you've actually placed, so authoring reads
+ * clearly. The committed zone still renders dashed+filled via polygonMarkup / canvas-objects.mjs
+ * (unchanged) — only the live authoring preview switches to this open, solid, fill-free form.
+ * @param {Point[]} points every placed vertex, plus the cursor as the tentative next vertex
+ * @param {{color:string}} opts
+ * @returns {string} empty string when fewer than 2 points (a lone vertex has no segment to draw)
  */
-export function measureMarkup(a, b, worldDistanceValue) {
-  const midX = (a[0] + b[0]) / 2;
-  const midY = (a[1] + b[1]) / 2;
-  const meters = Math.round(worldDistanceValue * METERS_PER_WORLD_UNIT);
-  const label = `${Math.round(worldDistanceValue)} units / ~${meters}m`;
-  return (
-    `<polyline points="${pointsAttr([a, b])}" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,3"/>` +
-    `<text x="${midX}" y="${midY}" fill="#ffffff" font-size="3" font-family="monospace" text-anchor="middle" dominant-baseline="text-after-edge">${label}</text>`
-  );
+export function polygonGhostMarkup(points, { color, boxWidthPx }) {
+  if (points.length < 2) return '';
+  const safe = safeColor(color);
+  const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
+  return `<polyline points="${pointsAttr(points)}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>`;
 }
 
 /** Adapts a resolved unit marker {x,y,size} into geometry.hitTest's marker contract
@@ -146,9 +178,10 @@ export function measureMarkup(a, b, worldDistanceValue) {
  * here rather than imported, per the no-cross-panel-imports rule; core/playbook.mjs's
  * visibleObjects() merges plain {x,y} onto unit objects the same way in both callers, so the
  * two copies read identical input shapes. */
-function toEraseHitTestShape(obj) {
+function toEraseHitTestShape(obj, boxWidthPx) {
   if (obj.kind !== 'unit') return obj;
-  return { ...obj, resolved: { x: obj.resolved?.x ?? obj.x, y: obj.resolved?.y ?? obj.y } };
+  const size = boxWidthPx > 0 ? (obj.size / boxWidthPx) * 100 : obj.size;
+  return { ...obj, size, resolved: { x: obj.resolved?.x ?? obj.x, y: obj.resolved?.y ?? obj.y } };
 }
 
 /**
@@ -168,12 +201,15 @@ function toEraseHitTestShape(obj) {
  *   order (last = drawn on top = highest erase priority) — same contract as canvas-helpers.mjs's
  *   resolveHitId.
  * @param {[number,number]} pt percent-space point (canvasApi.toPct's output shape)
+ * @param {number} [boxWidthPx] current map-box layout width — marker `size` is stored in px,
+ *   so it must be scaled into percent space exactly like canvas-helpers.mjs's resolveHitId does
+ *   (without it, a size-26 marker's hit box spans 26% of the map and steals erase clicks)
  * @returns {string|null}
  */
-export function resolveEraseTargetId(objects, pt) {
+export function resolveEraseTargetId(objects, pt, boxWidthPx) {
   for (let i = objects.length - 1; i >= 0; i -= 1) {
     const obj = objects[i];
-    if (hitTest(toEraseHitTestShape(obj), pt, ERASE_HIT_TOLERANCE_PCT)) return obj.id;
+    if (hitTest(toEraseHitTestShape(obj, boxWidthPx), pt, ERASE_HIT_TOLERANCE_PCT)) return obj.id;
   }
   return null;
 }

@@ -25,7 +25,6 @@ import {
   renderNextLabelBlock,
   renderRoleSwatches,
   renderMultiSelectPanel,
-  renderMeasurePanel,
   renderErasePanel,
   renderPanPanel,
   renderFrameNotes,
@@ -43,8 +42,23 @@ const MIN_MARKER_SIZE = 16;
 const MAX_MARKER_SIZE = 54;
 const MIN_TEXT_SIZE = 8;
 const MAX_TEXT_SIZE = 40;
-const MIN_THICKNESS = 1;
-const MAX_THICKNESS = 10;
+// Stroke-width recalibration (Jasper v2 + stage-1 bigger-map): now that a typed thickness value
+// means genuine SCREEN PX (core/stroke.mjs converts px->viewBox at render), the old 1-10 range on
+// the much larger map made even "1" read heavy and offered no finer widths. Recalibrated so ~1px
+// sits just below the slider midpoint with real sub-1px widths BELOW it (0.25/0.5/0.75) for fine
+// linework, capped at 3px — a bold-but-not-blobby max on the big map (strokes scale with zoom, so
+// 3px @100% becomes plenty heavy zoomed in). step=0.25 exposes the fractional widths. Typed px
+// stays consistent: the number IS the on-screen px width.
+const MIN_THICKNESS = 0.25;
+const MAX_THICKNESS = 3;
+const THICKNESS_STEP = 0.25;
+// Box/Circle border: Jasper's spec is literal — "1px size should be in the middle of the
+// slider" — so the range is 0.25..1.75, putting 1.0 at the exact midpoint with sub-1px fine
+// borders below it. (Routes/draw keep the wider 0.25..3 THICKNESS range above; the midpoint
+// ask was specific to box/circle borders.)
+const MIN_BORDER = 0.25;
+const MAX_BORDER = 1.75;
+const BORDER_STEP = 0.25;
 const MIN_LABEL_SIZE = 6;
 const MAX_LABEL_SIZE = 20;
 
@@ -286,7 +300,7 @@ function renderLineToolPanel(toolId, view, roster) {
     <div class="inspector-content">
       <div class="inspector-section">
         <div class="section-label">Thickness</div>
-        <input type="range" class="slider" data-slider="thickness" min="${MIN_THICKNESS}" max="${MAX_THICKNESS}" value="${opts.thickness}" />
+        <input type="range" class="slider" data-slider="thickness" min="${MIN_THICKNESS}" max="${MAX_THICKNESS}" step="${THICKNESS_STEP}" value="${opts.thickness}" />
         <div class="slider-value chip-mono">${opts.thickness}px</div>
       </div>
       <label class="toggle-row">
@@ -313,7 +327,7 @@ function renderShapeToolPanel(view, roster) {
       </div>
       <div class="inspector-section">
         <div class="section-label">Border width</div>
-        <input type="range" class="slider" data-slider="border" min="0" max="10" value="${opts.border}" />
+        <input type="range" class="slider" data-slider="border" min="${MIN_BORDER}" max="${MAX_BORDER}" step="${BORDER_STEP}" value="${opts.border}" />
         <div class="slider-value chip-mono">${opts.border}px</div>
       </div>
       <label class="toggle-row">
@@ -333,17 +347,37 @@ function renderTextToolPanel(doc, view, roster) {
   const selected = singleSelected(tactic, view);
   const editingExisting = selected?.kind === 'text' ? selected : null;
   const opts = view.toolOptions;
-  const textValue = editingExisting ? editingExisting.text : '';
   const sizeValue = editingExisting ? editingExisting.size : opts.textSize;
-  const chipValue = editingExisting ? editingExisting.chip : opts.textChip;
+  const chipValue = editingExisting ? editingExisting.chip : (opts.textChip ?? true);
+
+  // Two distinct Text fields depending on mode (Jasper v2 fix — the placement seam used to be
+  // hardcoded 'Label'):
+  //  - EDITING an existing selected note: a textarea bound to data-text-input, which edits that
+  //    object's `text` via doc/setObjectProps (the pre-existing seam).
+  //  - PLACEMENT (nothing / non-text selected): a prefill INPUT bound to data-text-prefill,
+  //    which sets view.toolOptions.textPrefill (view/setToolOption). drawtools' Text tool drops
+  //    that string on click; an empty prefill places an empty note and selects it, so this panel
+  //    immediately swaps to the editing textarea for an inline edit.
+  const textField = editingExisting
+    ? `
+      <div class="inspector-section">
+        <div class="section-label">Text</div>
+        <textarea class="input textarea" data-text-input data-field="text-body" rows="3" placeholder="Label…">${escapeHtml(editingExisting.text)}</textarea>
+      </div>
+    `
+    : `
+      <div class="inspector-section">
+        <div class="section-label">Text — next placement</div>
+        <input type="text" class="input" data-text-prefill data-field="text-prefill" placeholder="Type a label, then click the map…" value="${escapeHtml(opts.textPrefill ?? '')}" />
+      </div>
+    `;
 
   return `
     <div class="inspector-content">
-      ${editingExisting ? '<div class="inspector-empty inspector-note-hint">Editing selected text note.</div>' : ''}
-      <div class="inspector-section">
-        <div class="section-label">Text</div>
-        <textarea class="input textarea" data-text-input data-field="text-body" rows="3" placeholder="Label…">${escapeHtml(textValue)}</textarea>
-      </div>
+      ${editingExisting
+        ? '<div class="inspector-empty inspector-note-hint">Editing selected text note.</div>'
+        : '<div class="inspector-empty inspector-note-hint">Click the map to drop this label. Leave it blank to place an empty note and type it inline.</div>'}
+      ${textField}
       <div class="inspector-section">
         <div class="section-label">Size</div>
         <input type="range" class="slider" data-slider="textSize" min="${MIN_TEXT_SIZE}" max="${MAX_TEXT_SIZE}" value="${sizeValue}" />
@@ -415,7 +449,6 @@ function renderBody(doc, view, roster) {
   if (isLineLikeTool(tool)) return renderLineToolPanel(tool, view, roster);
   if (isShapeTool(tool)) return renderShapeToolPanel(view, roster);
   if (tool === 'text') return renderTextToolPanel(doc, view, roster);
-  if (tool === 'measure') return renderMeasurePanel(view);
   if (tool === 'erase') return renderErasePanel(doc);
   if (tool === 'pan') return renderPanPanel();
   return `<div class="inspector-content"><div class="inspector-empty">Select a tool from the rail.</div></div>`;
@@ -741,6 +774,14 @@ export function mount(el, ctx) {
       return;
     }
 
+    // Text tool's "next placement" prefill (Jasper v2 fix): a view-only preference (never a doc
+    // field, never persisted) that drawtools' Text tool reads at click time. Distinct from
+    // data-text-input above, which edits the ALREADY-PLACED selected note's `text`.
+    if (target.matches('[data-text-prefill]')) {
+      ctx.exec({ type: 'view/setToolOption', key: 'textPrefill', value: target.value });
+      return;
+    }
+
     if (target.matches('[data-zone-label-input]')) {
       const view = store.getView();
       const doc = store.getDoc();
@@ -752,7 +793,7 @@ export function mount(el, ctx) {
 
   draw();
   let lastSeenKeyframe = store.getView().currentKeyframe;
-  store.subscribe(() => {
+  store.subscribe((_doc, _view, action) => {
     // Bug 1 fix: flush any pending frame-note write the INSTANT the keyframe changes, before
     // the redraw below can swap the textarea's underlying kf out from under it. Must run
     // before draw() (not after) — the whole point is to commit the KF-N-1 text before
@@ -786,6 +827,13 @@ export function mount(el, ctx) {
           restored.setSelectionRange(selection.start, selection.end);
         }
       }
+    } else if (action && action.type === 'view/select' && store.getView().tool === 'text') {
+      // Inline-edit affordance (Jasper v2 text flow): an empty-prefill placement selects the new
+      // empty note (drawtools selectLatest -> view/select) and this panel swaps to the editing
+      // textarea — land the caret in it so the user types immediately, no extra click. Only for
+      // an EMPTY note: selecting an existing labeled note must not yank keyboard focus.
+      const textarea = typeof document !== 'undefined' ? el.querySelector('[data-text-input]') : null;
+      if (textarea && textarea.value === '') textarea.focus();
     }
   });
 }

@@ -134,7 +134,22 @@
   /* ---- Layout (grid contract, §5 Screen) ---- */
   --layout-topbar-h: 52px;
   --layout-playbookbar-h: 118px;
-  --layout-layers-w: 230px;
+  /* Layers panel widened 230 -> 260 (sidebar-v2 v3 item b/g): at 230px the layer NAME column was
+     squeezed to "De…"/"Art…" once the dot + count badge + hover icon-buttons took their share;
+     260px + the 12 -> 13px name bump below lets full labels ("Deployments", "Artillery Line",
+     "Control Zones") sit untruncated at the default width on both 1080p and 1440p. This is the
+     DEFAULT only — panelresize.mjs lets the user drag it anywhere in [--layers-w-min, -max]. */
+  --layout-layers-w: 260px;
+  /* Resizable-panel bounds (item c). Defaults feed panelresize.mjs's clamp + double-click reset;
+     the live width is the runtime --layers-w / --dock-w custom props app.mjs writes onto
+     #app-shell (persisted to view-prefs localStorage, NEVER the doc schema). */
+  --layers-w-min: 200px;
+  --layers-w-max: 420px;
+  --layers-rail-w: 48px; /* collapsed slim rail (item d) — dots + add button only */
+  --dock-w-default: 360px; /* 336 -> 360 on 1440p (item g): inspector roster tiles + toggles were
+                              tuned to 288px content; the extra room reads comfortably. */
+  --dock-w-min: 300px;
+  --dock-w-max: 520px;
   --layout-toolrail-w: 48px;
   --layout-inspector-w: 288px;
 

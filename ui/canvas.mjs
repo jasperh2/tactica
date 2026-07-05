@@ -8,19 +8,27 @@
 // No cross-panel imports besides the one documented seam. No direct DOM access outside this
 // panel's own element. Re-renders from store.subscribe; never mutates doc/view.
 //
-// Multi-select rework (bugs 5/6 diagnosis): view.selection is now string[] (increment 3).
-// Click-select uses a geometry-based hit-test with a forgiving tolerance radius instead of the
-// old exact-DOM-box lookup (increment 1); shift-click adds/toggles; dragging from empty ground
-// starts a marquee-select rectangle (increment 4); dragging any object already part of a
-// multi-object selection moves the whole group together (increment 5); a resize handle on the
-// selection outline scales the group about its bbox anchor (increment 6); Delete/Backspace
-// removes the current selection (increment 1/6).
+// Selection model (bugs 5/6 + v3 select-ux diagnosis): view.selection is a string[]. Selection
+// switches on pointerDOWN via the pure selectGestureIntent (canvas-helpers.mjs) — clicking an
+// unselected object re-targets AND lets the same gesture drag it (tldraw/Excalidraw), empty ground
+// always marquees, shift toggles (no drag). Hit-test is geometry-based with a forgiving tolerance
+// (canvas-helpers.resolveHitId). The selection shows a padded dashed bbox outline with four corner
+// resize handles that scale about the opposite corner; Delete/Backspace removes the selection.
 
 import { activeTactic, visibleObjects, positionAt } from '../core/playbook.mjs';
 import { createDrawHandlers } from './drawtools.mjs';
 import { renderCanvas, wrapperTransform, MIN_MARKER_SIZE, MAX_MARKER_SIZE } from './canvas-objects.mjs';
 import { wheelZoom, stepZoom, panForZoomAtCursor, clientToPercent, round2, ZOOM_DEFAULT } from './canvas-view.mjs';
-import { resolveHitId, rectFromDrag, marqueeMatches, groupBBox, scaleAboutAnchor } from './canvas-helpers.mjs';
+import {
+  resolveHitId,
+  rectFromDrag,
+  marqueeMatches,
+  groupBBox,
+  padBBox,
+  oppositeCornerAnchor,
+  selectGestureIntent,
+  scaleAboutAnchor,
+} from './canvas-helpers.mjs';
 
 const DEFAULT_ASPECT_W = 822;
 const DEFAULT_ASPECT_H = 786;
@@ -30,6 +38,10 @@ const BLOCKED_FLASH_MS = 260;
 const OWN_TOOLS = new Set(['select', 'move', 'pan', 'place']);
 const HIT_TOLERANCE_PCT = 1.6; // forgiving click-select radius, % of map width (increment 1)
 const RESIZE_HANDLE_SELECTOR = '[data-resize-handle]';
+// Extra breathing room (percent-of-map-width) added on every side of the selection bbox on top
+// of the marker half-size, so the dashed outline + corner handles sit clear of the markers
+// instead of cutting through them (item b — the outline must frame the selection, not trace it).
+const OUTLINE_MARGIN_PCT = 0.9;
 
 /**
  * @param {HTMLElement} el
@@ -71,7 +83,10 @@ export function mount(el, ctx) {
           <svg class="canvas-svg-preview" preserveAspectRatio="none"></svg>
           <div class="canvas-marquee" hidden></div>
           <div class="canvas-group-outline" hidden>
-            <div class="canvas-resize-handle" data-resize-handle="se"></div>
+            <div class="canvas-resize-handle canvas-resize-handle--nw" data-resize-handle="nw"></div>
+            <div class="canvas-resize-handle canvas-resize-handle--ne" data-resize-handle="ne"></div>
+            <div class="canvas-resize-handle canvas-resize-handle--sw" data-resize-handle="sw"></div>
+            <div class="canvas-resize-handle canvas-resize-handle--se" data-resize-handle="se"></div>
           </div>
         </div>
       </div>
@@ -105,6 +120,16 @@ export function mount(el, ctx) {
     previewEl: els.previewEl,
     getAspect() {
       return currentAspect;
+    },
+    /** UNZOOMED map-box layout width in px — the input core/stroke.mjs needs to convert an
+     * authored px thickness/border into the viewBox stroke-width the ghost writes, so the ghost
+     * renders at the SAME width as the committed stroke (canvas-objects.mjs renderObjects uses
+     * the same offsetWidth source). offsetWidth, NOT getBoundingClientRect().width: the rect
+     * includes the zoom transform, which would make the ghost diverge from the committed
+     * world-space stroke at any zoom != 100%. Read live each gesture so it tracks panel/window
+     * resizes. Falls back to the default map width if unmeasured. */
+    getBoxWidth() {
+      return mapEl.offsetWidth || DEFAULT_ASPECT_W;
     },
     blocked(layerId) {
       const doc = ctx.store.getDoc();
@@ -277,7 +302,7 @@ export function mount(el, ctx) {
     const rect = mapEl.getBoundingClientRect();
     const pt = clientToPercent(event.clientX, event.clientY, rect);
     const objects = selectableObjects();
-    const geometryHit = resolveHitId(objects, [pt.x, pt.y], HIT_TOLERANCE_PCT);
+    const geometryHit = resolveHitId(objects, [pt.x, pt.y], HIT_TOLERANCE_PCT, canvasApi.getBoxWidth());
     if (geometryHit) return geometryHit;
     const domHit = event.target.closest('[data-id]');
     return domHit ? domHit.dataset.id : null;
@@ -297,28 +322,56 @@ export function mount(el, ctx) {
     );
   }
 
+  /**
+   * Pointerdown routing for select/move (the select-lock fix, item a). Selection switches on
+   * pointerDOWN — the tldraw/Excalidraw model — so the same gesture can immediately drag the
+   * freshly-selected object. Grabbing a corner handle takes priority (resize), then the pure
+   * selectGestureIntent decides marquee / toggle / drag / reselect-drag from
+   * (selection, hitId, shift). This REPLACES the old "startDrag whatever is under the pointer,
+   * never switching selection" path that let you move B while A stayed selected.
+   */
   function startSelectGesture(event) {
-    if (event.target.closest(RESIZE_HANDLE_SELECTOR)) {
-      startGroupResize(event);
+    const handle = event.target.closest(RESIZE_HANDLE_SELECTOR);
+    if (handle) {
+      startGroupResize(event, handle.dataset.resizeHandle);
       return;
     }
+    const view = ctx.store.getView();
     const hitId = resolvePointerHit(event);
-    if (hitId) {
-      startDrag(hitId, event);
+    const intent = selectGestureIntent(view.selection, hitId, event.shiftKey);
+
+    if (intent === 'marquee') {
+      // Empty ground always marquees; the movement threshold (updateMarquee) decides at commit time
+      // whether it was a real marquee or a click-to-clear (handleSelectClick handles the latter).
+      startMarquee(event);
       return;
     }
-    // Empty ground with select/move active: no existing object under the pointer — start a
-    // marquee-select rectangle instead of the old no-op (increment 4).
-    startMarquee(event);
+    if (intent === 'toggle') {
+      // Shift+click on an object: add/remove from selection, never a drag (tldraw model).
+      ctx.exec({ type: 'view/select', ids: [hitId], mode: 'toggle' });
+      return;
+    }
+    if (intent === 'reselect-drag') {
+      // Object not in the selection: switch selection to it FIRST (synchronous store dispatch),
+      // THEN drag it in the same gesture, passing the known id straight into startDrag.
+      ctx.exec({ type: 'view/select', ids: [hitId], mode: 'replace' });
+      startDrag([hitId], event);
+      return;
+    }
+    // intent === 'drag': object already selected — drag the existing single OR whole-group
+    // selection together (preserves the multi-select group-drag path).
+    startDrag(view.selection.includes(hitId) && view.selection.length > 1 ? view.selection : [hitId], event);
   }
 
   function handleSelectClick(event) {
+    // Selection now switches on pointerdown (startSelectGesture), so the trailing click's only job
+    // is the zero-movement empty-ground CLEAR (a plain click too short to arm a marquee). Re-select
+    // on an object hit already happened at pointerdown, so this only clears — never re-selects.
     const hitId = resolvePointerHit(event);
-    if (hitId) {
-      const mode = event.shiftKey ? 'toggle' : 'replace';
-      ctx.exec({ type: 'view/select', ids: [hitId], mode });
-    } else if (event.target === mapEl || event.target.closest('.canvas-mapbox') === mapEl) {
-      if (!event.shiftKey) ctx.exec({ type: 'view/select', ids: [] });
+    if (hitId) return;
+    if (event.shiftKey) return;
+    if (event.target === mapEl || event.target.closest('.canvas-mapbox') === mapEl) {
+      ctx.exec({ type: 'view/select', ids: [] });
     }
   }
 
@@ -355,21 +408,29 @@ export function mount(el, ctx) {
 
   // ---- drag: single object OR a whole multi-select group together (increment 5) ---------
 
-  function startDrag(id, event) {
-    if (isLayerLockedForObject(id)) return;
+  /**
+   * Starts a drag of an explicit set of object ids (the caller — startSelectGesture — has already
+   * decided single vs whole-group via selectGestureIntent, so this no longer re-derives the group
+   * from the store). A locked-layer object is never dragged: for a single-object drag on a locked
+   * object we bail entirely; in a group drag, locked members are simply dropped from the anchor
+   * set so the rest of the group still moves.
+   * @param {string[]} ids
+   * @param {PointerEvent} event
+   */
+  function startDrag(ids, event) {
+    if (ids.length === 1 && isLayerLockedForObject(ids[0])) return;
     const view = ctx.store.getView();
-    const isGroupMember = view.selection.length > 1 && view.selection.includes(id);
-    const ids = isGroupMember ? view.selection : [id];
-
     const rect = mapEl.getBoundingClientRect();
     const { x, y } = clientToPercent(event.clientX, event.clientY, rect);
     const doc = ctx.store.getDoc();
     const tactic = activeTactic(doc);
     const anchors = {};
     ids.forEach((objId) => {
+      if (isLayerLockedForObject(objId)) return;
       const obj = tactic?.objects.find((o) => o.id === objId);
       if (obj && obj.kind === 'unit') anchors[objId] = positionAt(obj, view.currentKeyframe);
     });
+    if (Object.keys(anchors).length === 0) return;
 
     dragState = { ids: Object.keys(anchors), startX: x, startY: y, moved: false, lastDx: 0, lastDy: 0, anchors };
   }
@@ -396,11 +457,17 @@ export function mount(el, ctx) {
     });
   }
 
-  function livePreviewMarker(id, x, y) {
+  function livePreviewMarker(id, x, y, sizePx) {
     const nodeEl = markersLayerEl.querySelector(`[data-id="${cssEscape(id)}"]`);
     if (nodeEl) {
       nodeEl.style.left = `${x}%`;
       nodeEl.style.top = `${y}%`;
+      // Corner-resize live preview: the marker itself must visibly scale during the drag, not
+      // just the dashed outline (the committed size lands via doc/resizeMarkers on pointerup).
+      if (typeof sizePx === 'number' && Number.isFinite(sizePx)) {
+        nodeEl.style.width = `${sizePx}px`;
+        nodeEl.style.height = `${sizePx}px`;
+      }
     }
   }
 
@@ -481,16 +548,14 @@ export function mount(el, ctx) {
     ctx.exec({ type: 'view/select', ids: matches, mode: additive ? 'add' : 'replace' });
   }
 
-  // ---- resize handle: single-object (increment 2) AND multi-select group (increment 6) --
-  // Both share one code path — a single selected unit is just a 1-object "group", and
-  // scaleAboutAnchor/groupBBox degenerate correctly for a single point (bbox = a zero-area box
-  // at the object's own position, scale-about-anchor = scale-about-self).
+  // ---- resize handles: single-object AND multi-select group share one code path --
+  // A single selected unit is just a 1-object "group"; paddedSelectionBBox inflates its zero-area
+  // point box into a real frame so the four corner handles land outside the marker (not on it).
 
   function renderGroupChrome() {
-    // While a resize gesture is in progress, updateGroupResize already owns the outline's
-    // rect every pointermove — a store-driven re-render (which fires on every store.subscribe
-    // tick, including from unrelated actions) must not clobber that live preview back to the
-    // pre-drag bbox before pointerup commits it.
+    // While a resize gesture is in progress, updateGroupResize owns the outline rect every
+    // pointermove — a store-driven re-render (fires on every store.subscribe tick, incl. unrelated
+    // actions) must not clobber that live preview back to the pre-drag bbox before pointerup.
     if (resizeState) return;
     const view = ctx.store.getView();
     if (view.selection.length === 0) {
@@ -503,7 +568,27 @@ export function mount(el, ctx) {
       return;
     }
     groupOutlineEl.hidden = false;
-    renderGroupOutlineRect(groupBBox(units));
+    renderGroupOutlineRect(paddedSelectionBBox(units));
+  }
+
+  /**
+   * The selection bbox the outline + corner handles are drawn from: the point-only groupBBox
+   * inflated by the largest marker's half-size (px -> percent-of-map-width) plus a margin. Fixes
+   * the "blue blob dead-center on a single marker" — a single unit's zero-area point box becomes a
+   * real box framing the marker, so the dashed outline is visible and the corner handles land just
+   * outside the marker instead of stacking on its center.
+   * @param {{id:string,x:number,y:number,size:number}[]} units
+   * @returns {{minX:number,minY:number,maxX:number,maxY:number}}
+   */
+  function paddedSelectionBBox(units) {
+    const bbox = groupBBox(units);
+    const boxWidthPx = mapEl.getBoundingClientRect().width || DEFAULT_ASPECT_W;
+    const maxSizePx = units.reduce((m, u) => Math.max(m, u.size || MARKER_SIZE_DEFAULT), 0);
+    // marker half-size as a percentage of map width; the vertical pad divides by aspect so the
+    // px margin is visually equal on both axes (percent-of-HEIGHT = percent-of-width / aspect).
+    const padX = ((maxSizePx / 2) / boxWidthPx) * 100 + OUTLINE_MARGIN_PCT;
+    const padY = padX / (currentAspect || 1);
+    return padBBox(bbox, padX, padY);
   }
 
   /** Resolved {id,x,y,size} for every currently-selected object that is a unit marker (routes/
@@ -519,12 +604,20 @@ export function mount(el, ctx) {
       .map((obj) => ({ id: obj.id, size: Number(obj.size) || MARKER_SIZE_DEFAULT, ...positionAt(obj, view.currentKeyframe) }));
   }
 
-  function startGroupResize(event) {
+  /**
+   * Begins a corner-handle resize. The grabbed corner (nw/ne/sw/se) scales the selection ABOUT the
+   * diagonally-opposite corner of the PADDED bbox — standard editor resize, the opposite corner
+   * stays pinned while the grabbed corner tracks the pointer (was: always scale about bbox center).
+   * Reuses scaleAboutAnchor's arbitrary-anchor support — no second scaling path.
+   * @param {PointerEvent} event
+   * @param {'nw'|'ne'|'sw'|'se'} corner
+   */
+  function startGroupResize(event, corner) {
     const view = ctx.store.getView();
     const units = resolvedSelectedUnits(view);
     if (units.length === 0) return;
-    const bbox = groupBBox(units);
-    const anchor = { x: (bbox.minX + bbox.maxX) / 2, y: (bbox.minY + bbox.maxY) / 2 };
+    const bbox = paddedSelectionBBox(units);
+    const anchor = oppositeCornerAnchor(bbox, corner);
     const rect = mapEl.getBoundingClientRect();
     const pt = clientToPercent(event.clientX, event.clientY, rect);
     const startDistance = Math.max(Math.hypot(pt.x - anchor.x, pt.y - anchor.y), 0.01);
@@ -541,8 +634,8 @@ export function mount(el, ctx) {
     resizeState.lastScaleFactor = scaleFactor;
 
     const scaled = scaleAboutAnchor(originals, anchor, scaleFactor, { minSize: MIN_MARKER_SIZE, maxSize: MAX_MARKER_SIZE });
-    scaled.forEach((obj) => livePreviewMarker(obj.id, round2(obj.x), round2(obj.y)));
-    renderGroupOutlineRect(groupBBox(scaled));
+    scaled.forEach((obj) => livePreviewMarker(obj.id, round2(obj.x), round2(obj.y), obj.size));
+    renderGroupOutlineRect(paddedSelectionBBox(scaled));
   }
 
   function renderGroupOutlineRect(bbox) {
@@ -648,6 +741,11 @@ export function mount(el, ctx) {
         marqueeEl.hidden = true;
       }
       resizeState = null;
+      // Esc also clears the selection (select-UX contract: outline/handles disappear). Runs after
+      // the gesture cancels; selection is empty during draw authoring, so no double-duty conflict.
+      if (ctx.store.getView().selection.length > 0) {
+        ctx.exec({ type: 'view/select', ids: [] });
+      }
       return;
     }
     // Enter closes an in-progress draw gesture that opts in via onEnter (only the Zone polygon

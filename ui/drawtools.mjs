@@ -17,18 +17,19 @@
 // annotations excluded from playbook.json by exporter design (see exporter.test.mjs's
 // "buildPlaybook ignores non-unit/route/zone object kinds" test), matching canvas-objects.mjs's
 // renderSketch() dispatch for those four shapes.
-//   - Arrow (drag + click-polyline) commits kind:'route' — the ONLY sketch-family gesture that
-//     produces exported motion data; both its rendering (renderRoute) and hit-testing
-//     (core/geometry.mjs hitTest's 'route' case) already exist and are tested.
+//   - Arrow (click-driven: click1 anchors, plain click2 commits, Shift-click adds a checkpoint —
+//     Jasper v2 rework) commits kind:'route' — the ONLY sketch-family gesture that produces
+//     exported motion data; both its rendering (renderRoute) and hit-testing (core/geometry.mjs
+//     hitTest's 'route' case) already exist and are tested.
 //   - Draw/Line/Box/Circle commit as kind:'sketch' and are UI-only: they will not appear in the
 //     exported animation.
 //   - Text commits as kind:'text' — also UI-only per the same test/schema (playbook.json has
 //     no text-note array; only per-keyframe `note` strings, owned by the inspector/playbookbar).
 //   - Zone remains kind:'zone', which IS read by the exporter.
 //
-// Most tools share one gesture shape (pointerdown anchors a start point, pointermove renders a
-// ghost, pointerup commits or discards a too-short drag) — createDragTool() below is that shared
-// lifecycle; only Arrow (polyline branch), Zone (closed-polygon branch, bug 4 fix), Draw
+// Line/Box/Circle share one gesture shape (pointerdown anchors a start point, pointermove renders
+// a ghost, pointerup commits or discards a too-short drag) — createDragTool() below is that shared
+// lifecycle; Arrow (click-driven state machine), Zone (closed-polygon branch, bug 4 fix), Draw
 // (continuous sampling), Text (single click), and Erase (click-to-delete) need bespoke state
 // machines.
 //
@@ -41,7 +42,7 @@
 // Committed zones now carry a `shape` discriminator: 'polygon' {points} (this tool's new output)
 // vs 'ellipse' {cx,cy,rx,ry} (pre-existing saved zones — rendering/hit-test/persist/export all
 // keep dispatching on `shape` so old ellipse zones round-trip byte-identical, no migration).
-import { simplify, worldDistance } from '../core/geometry.mjs';
+import { simplify } from '../core/geometry.mjs';
 import { activeTactic, visibleObjects } from '../core/playbook.mjs';
 import {
   isMeaningfulDrag,
@@ -49,13 +50,11 @@ import {
   strokeMarkup,
   rectMarkup,
   ellipseMarkup,
-  polygonMarkup,
-  measureMarkup,
+  polygonGhostMarkup,
   resolveEraseTargetId,
 } from './drawtools-helpers.mjs';
 
 const FREEHAND_SIMPLIFY_EPSILON = 0.35; // core/geometry.mjs default, named here for clarity
-const DEFAULT_TEXT = 'Label';
 const DEFAULT_ZONE_LABEL = '';
 const MIN_ZONE_POLYGON_VERTICES = 3; // a polygon needs >=3 points to be a renderable shape
 
@@ -148,91 +147,85 @@ function createDragTool(ctx, canvasApi, renderGhost, buildObject, opts = {}) {
       if (opts.selectAfter) selectLatest(ctx);
     },
 
-    /** Exposes the in-progress anchor (or null) — Arrow uses this to reinterpret a too-short
-     * drag as the first click of a polyline route instead of a silent no-op. */
-    peekStart() {
-      return dragStart;
-    },
-
     cancel,
   };
 }
 
 // =============================================================================
-// Arrow — drag = straight 2-point route; click-click-…-dblclick = polyline route.
-// Both commit as kind:'route' (see file header for the kind decision) — this is the
-// playbook.json movement-arrow channel, not a UI-only sketch.
+// Arrow — click-driven authoring (Jasper v2 spec, verbatim from the arrow-interaction diagnosis):
+//   • click 1 anchors the start and begins a live rubber-band from the anchor to the cursor;
+//   • a plain click 2 COMMITS the arrow with the arrowhead landing at click 2;
+//   • a Shift-click adds a checkpoint corner and KEEPS authoring (the next plain click commits);
+//   • Esc cancels (canvas.mjs Escape -> cancel()); switching tools mid-arrow cancels clean
+//     (canvas.mjs store.subscribe -> cancel() on tool change);
+//   • exactly ONE undo entry per committed arrow (a single ctx.exec(doc/placeObject)).
+// The old dblclick-only commit + drag-to-draw reinterpretation are GONE — every plain click with
+// an anchor present commits, so a fast native double-click fires click(commit),click,dblclick:
+// the 2nd click commits (points -> null) and the trailing click/dblclick are guarded no-ops.
+// Commits kind:'route' (the playbook.json movement-arrow channel — see file header). This is a
+// deliberate behavior change to a shipped gesture (was: every click added a waypoint, only
+// dblclick finished — Jasper's "always holding shift, can never let go").
 // =============================================================================
 
 function createArrowTool(ctx, canvasApi) {
-  const drag = createDragTool(
-    ctx,
-    canvasApi,
-    (dc, start, end) => strokeMarkup([start, end], { ...strokeOpts(dc), aspect: canvasApi.getAspect() }),
-    (dc, start, end) => routeObject(dc, [start, end], dc.opts.head)
-  );
-
   /** @type {[number,number][]|null} */
-  let polylinePoints = null; // non-null while building a click-polyline arrow
+  let points = null; // null = idle; non-null while authoring, points[0] is the committed start.
 
-  function drawPolylineGhost(points, dc) {
-    canvasApi.previewEl.innerHTML = strokeMarkup(points, { ...strokeOpts(dc), aspect: canvasApi.getAspect() });
+  function drawGhost(pts, dc) {
+    canvasApi.previewEl.innerHTML = strokeMarkup(pts, {
+      ...strokeOpts(dc),
+      aspect: canvasApi.getAspect(),
+      ...boxOpt(canvasApi),
+    });
   }
 
   function cancel() {
-    polylinePoints = null;
-    drag.cancel();
+    points = null;
+    clearGhost(canvasApi);
   }
 
   return {
-    onPointerDown(e) {
-      if (!polylinePoints) {
-        drag.onPointerDown(e);
+    // Anchoring, checkpoints, and commit ALL happen on `click` (not pointerdown/up) so a click is
+    // never ambiguous with a drag — there is no drag gesture on this tool anymore.
+    onClick(e) {
+      const dc = drawContext(ctx);
+      if (canvasApi.blocked(dc.layerId)) return;
+      const p = canvasApi.toPct(e.clientX, e.clientY);
+
+      if (!points) {
+        // click 1 — anchor the start. No ghost yet (a single point has no segment to draw; the
+        // rubber-band appears on the first pointermove, matching the Zone tool's first-click gap).
+        points = [[p.x, p.y]];
         return;
       }
-      // continuing an in-progress polyline
-      const dc = drawContext(ctx);
-      const p = canvasApi.toPct(e.clientX, e.clientY);
-      polylinePoints.push([p.x, p.y]);
-      drawPolylineGhost(polylinePoints, dc);
+
+      if (e.shiftKey) {
+        // Shift-click — add a checkpoint corner and keep authoring. The next PLAIN click commits.
+        points.push([p.x, p.y]);
+        drawGhost(points, dc);
+        return;
+      }
+
+      // Plain click with an anchor present — commit. The arrowhead lands at this click point.
+      const committed = [...points, [p.x, p.y]];
+      points = null;
+      clearGhost(canvasApi);
+      commit(ctx, canvasApi, dc.layerId, routeObject(dc, committed, dc.opts.head));
     },
 
     onPointerMove(e) {
-      if (!polylinePoints) {
-        drag.onPointerMove(e);
-        return;
-      }
+      if (!points) return; // idle — no rubber-band until the start is anchored.
       const dc = drawContext(ctx);
       const p = canvasApi.toPct(e.clientX, e.clientY);
-      drawPolylineGhost([...polylinePoints, [p.x, p.y]], dc);
+      drawGhost([...points, [p.x, p.y]], dc); // committed corners + rubber-band to the cursor.
     },
 
-    onPointerUp(e) {
-      if (polylinePoints) return; // polyline mode commits on dblclick, not pointerup
-
-      const dc = drawContext(ctx);
-      const p = canvasApi.toPct(e.clientX, e.clientY);
-      // Peek at drag's own anchor before delegating, so a too-short drag can be reinterpreted
-      // as "first click of a polyline" instead of silently discarded.
-      const startedDrag = drag.peekStart();
-      drag.onPointerUp(e);
-
-      if (startedDrag && !isMeaningfulDrag([startedDrag.x, startedDrag.y], [p.x, p.y])) {
-        polylinePoints = [[startedDrag.x, startedDrag.y]];
-        drawPolylineGhost(polylinePoints, dc);
-      }
-    },
-
+    // The browser fires click,click,dblclick on a fast second click; the 2nd click already
+    // committed (points === null), so the trailing dblclick must be a safe no-op (guard) rather
+    // than the old "dblclick commits" path (removed). Never starts or commits an arrow.
     onDblClick() {
-      if (!polylinePoints || polylinePoints.length < 2) {
-        cancel();
-        return;
-      }
-      const dc = drawContext(ctx);
-      const object = routeObject(dc, polylinePoints, dc.opts.head);
-      polylinePoints = null;
-      clearGhost(canvasApi);
-      commit(ctx, canvasApi, dc.layerId, object);
+      // no-op by design — see comment above. Guarded implicitly: with points===null there is
+      // nothing to do, and with points!==null a dblclick shouldn't force a commit.
     },
 
     cancel,
@@ -243,9 +236,18 @@ function strokeOpts(dc) {
   return { color: dc.role, thickness: dc.opts.thickness, dashed: dc.opts.dashed, head: dc.opts.head };
 }
 
+/** The one input core/stroke.mjs needs to make the ghost's stroke width px-identical to the
+ * committed stroke: the live on-screen map-box width, read fresh each render. Every ghost-markup
+ * call spreads this so the preview and the eventual committed object convert the same authored px
+ * thickness/border through the same shared model. */
+function boxOpt(canvasApi) {
+  return { boxWidthPx: canvasApi.getBoxWidth() };
+}
+
 /**
  * Builds a Route object (architecture doc §3 / handoff README Route typedef) for the Arrow
- * tool's drag or click-polyline gesture. This is the playbook.json movement-arrow channel —
+ * tool's click-driven gesture (anchor -> optional Shift checkpoints -> commit). This is the
+ * playbook.json movement-arrow channel —
  * core/exporter.mjs's buildKeyframeEntry reads kind:'route' objects into routes[] (see file
  * header re: the kind decision). Rendering (canvas-objects.mjs renderRoute) and hit-testing
  * (core/geometry.mjs hitTest's 'route' case) already dispatch on this kind.
@@ -314,6 +316,7 @@ function createFreehandTool(ctx, canvasApi) {
         ...strokeOpts(dc),
         head: 'none',
         aspect: canvasApi.getAspect(),
+        ...boxOpt(canvasApi),
       });
     },
 
@@ -342,7 +345,7 @@ function createLineTool(ctx, canvasApi) {
     ctx,
     canvasApi,
     (dc, start, end) =>
-      strokeMarkup([start, end], { ...strokeOpts(dc), head: 'none', aspect: canvasApi.getAspect() }),
+      strokeMarkup([start, end], { ...strokeOpts(dc), head: 'none', aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
     (dc, start, end) => sketchStrokeObject(dc, 'line', [start, end], 'none')
   );
 }
@@ -374,7 +377,7 @@ function createBoxTool(ctx, canvasApi) {
   return createDragTool(
     ctx,
     canvasApi,
-    (dc, start, end) => rectMarkup(start, end, fillOpts(dc)),
+    (dc, start, end) => rectMarkup(start, end, { ...fillOpts(dc), ...boxOpt(canvasApi) }),
     (dc, start, end) => sketchObject(dc, 'rect', start, end)
   );
 }
@@ -383,7 +386,7 @@ function createCircleTool(ctx, canvasApi) {
   return createDragTool(
     ctx,
     canvasApi,
-    (dc, start, end) => ellipseMarkup(start, end, fillOpts(dc)),
+    (dc, start, end) => ellipseMarkup(start, end, { ...fillOpts(dc), ...boxOpt(canvasApi) }),
     (dc, start, end) => sketchObject(dc, 'ellipse', start, end)
   );
 }
@@ -402,7 +405,11 @@ function createZoneTool(ctx, canvasApi) {
   let polygonPoints = null; // non-null while building a click-vertex zone polygon
 
   function drawPolygonGhost(points, dc) {
-    canvasApi.previewEl.innerHTML = polygonMarkup(points, { color: dc.role });
+    // Authoring ghost = open solid polyline (polygonGhostMarkup), NOT the committed dashed+filled
+    // polygonMarkup: the finished zone's auto-closing filled `<polygon>` reads as a phantom box
+    // while you're still placing vertices (Jasper v2 fix). Committed zones stay dashed+filled via
+    // their own render path (canvas-objects.mjs) — this only changes the in-progress preview.
+    canvasApi.previewEl.innerHTML = polygonGhostMarkup(points, { color: dc.role, ...boxOpt(canvasApi) });
   }
 
   function cancel() {
@@ -487,7 +494,15 @@ function createZoneTool(ctx, canvasApi) {
 }
 
 // =============================================================================
-// Text — click -> kind:'text' {x,y,text:'Label',size,chip}, then select it.
+// Text — click -> kind:'text' {x,y,text,size,chip}, then select it.
+// The placed string comes from the Text options dock's prefill input (view.toolOptions
+// .textPrefill, set via view/setToolOption — Jasper v2 fix: type the label once, then click to
+// drop it, instead of every placement dropping a hardcoded 'Label' you must re-edit). An empty
+// prefill places an empty text object and selects it, so the inspector's text panel opens for an
+// immediate inline edit (the existing "edit selected note via the panel textarea" seam — there
+// is no on-canvas contenteditable in this tool, and adding one is out of this lane's scope).
+// The `chip` (background pill) reads dc.opts.textChip, which DEFAULT_TOOL_OPTIONS seeds ON, so
+// placed labels get the background pill by default per Jasper's ask.
 // =============================================================================
 
 function createTextTool(ctx, canvasApi) {
@@ -501,59 +516,24 @@ function createTextTool(ctx, canvasApi) {
         kind: 'text',
         x: p.x,
         y: p.y,
-        text: DEFAULT_TEXT,
+        text: dc.opts.textPrefill ?? '',
         size: dc.opts.textSize,
         chip: dc.opts.textChip,
         role: dc.role,
         layerId: dc.layerId,
         appearsAt: dc.appearsAt,
       });
-      // Inspector edits the text via a doc action keyed on the object id — no generic
-      // "update object field" doc action exists yet in store.mjs (recolorObject only touches
-      // `role`, resizeMarker only touches `size`). Selecting here is the seam; the inspector
-      // owner needs a new reducer case (e.g. doc/updateText or a generic doc/setObjectField)
-      // to actually commit textarea edits.
+      // selectLatest is both the "prefilled label placed, now selected" affordance AND the
+      // empty-prefill inline-edit fallback: the inspector's Text panel renders an editable
+      // textarea for the selected text object (editingTextNote), so an empty placement lands the
+      // user straight in that textarea. Text edits commit via doc/setObjectProps (store.mjs
+      // whitelists text/size/chip) — the seam the inspector already drives.
       selectLatest(ctx);
     },
 
     cancel() {
       clearGhost(canvasApi);
     },
-  };
-}
-
-// =============================================================================
-// Measure — drag: live overlay line + distance label; NEVER persisted, clears on pointerup.
-// =============================================================================
-
-function createMeasureTool(ctx, canvasApi) {
-  /** @type {{x:number,y:number}|null} */
-  let dragStart = null;
-
-  function cancel() {
-    dragStart = null;
-    clearGhost(canvasApi);
-  }
-
-  return {
-    onPointerDown(e) {
-      dragStart = canvasApi.toPct(e.clientX, e.clientY);
-    },
-
-    onPointerMove(e) {
-      if (!dragStart) return;
-      const p = canvasApi.toPct(e.clientX, e.clientY);
-      const dist = worldDistance([dragStart.x, dragStart.y], [p.x, p.y]);
-      canvasApi.previewEl.innerHTML = measureMarkup([dragStart.x, dragStart.y], [p.x, p.y], dist);
-    },
-
-    onPointerUp() {
-      // Measure is explicitly non-persistent (README §3, contract seam docstring): clear and
-      // forget, no exec() call of any kind.
-      cancel();
-    },
-
-    cancel,
   };
 }
 
@@ -598,7 +578,7 @@ function createEraseTool(ctx, canvasApi) {
    */
   function resolveTargetId(e) {
     const p = canvasApi.toPct(e.clientX, e.clientY);
-    return resolveEraseTargetId(eraseCandidates(), [p.x, p.y]);
+    return resolveEraseTargetId(eraseCandidates(), [p.x, p.y], canvasApi.getBoxWidth());
   }
 
   return {
@@ -655,7 +635,6 @@ export function createDrawHandlers(ctx, canvasApi) {
     circle: withEventAliases(createCircleTool(ctx, canvasApi)),
     zone: withEventAliases(createZoneTool(ctx, canvasApi)),
     text: withEventAliases(createTextTool(ctx, canvasApi)),
-    measure: withEventAliases(createMeasureTool(ctx, canvasApi)),
     erase: withEventAliases(createEraseTool(ctx, canvasApi)),
   };
 }

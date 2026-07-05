@@ -15,6 +15,7 @@ import { mount as mountToolrail } from './toolrail.mjs';
 import { mount as mountInspector } from './inspector.mjs';
 import { mount as mountPlaybookbar } from './playbookbar.mjs';
 import { mount as mountExportModal } from './exportmodal.mjs';
+import { createLayout } from './panelresize.mjs';
 
 const STORAGE_KEY = 'tactica:doc';
 const PERSIST_DEBOUNCE_MS = 500;
@@ -33,11 +34,14 @@ const DEFAULT_LAYERS = [
 
 // Default toolOptions (contract §3 ViewState.toolOptions).
 const DEFAULT_TOOL_OPTIONS = {
-  thickness: 3,
+  // thickness/border are true screen px since the core/stroke.mjs recalibration; the old 3/2
+  // seeds were tuned for the pre-v3 viewBox inflation and opened new docs at slider max
+  // (B2's own DECISIONS follow-up, landed at final review).
+  thickness: 1.5,
   dashed: false,
   head: 'solid',
   fillOpacity: 14,
-  border: 2,
+  border: 1,
   textSize: 14,
   textChip: true,
   snap: false,
@@ -56,7 +60,6 @@ const KEY_TO_TOOL = {
   C: 'circle',
   Z: 'zone',
   T: 'text',
-  U: 'measure',
   E: 'erase',
 };
 
@@ -118,16 +121,14 @@ async function boot() {
     store.dispatch({ type: 'doc/replace', doc: next });
   }
 
-  function share() {
-    const encoded = base64UrlEncode(serialize(store.getDoc()));
-    const url = `${location.origin}${location.pathname}${SHARE_HASH_PREFIX}${encoded}`;
-    location.hash = `${SHARE_HASH_PREFIX.slice(1)}${encoded}`;
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(url).catch(() => {
-        /* clipboard can reject when the tab lacks focus/permission — link is still in the URL */
-      });
-    }
-  }
+  // Resizable/collapsible side panels (sidebar-v2 v3 item c/d). Created before the panels mount
+  // so ctx.layout is present when layers.mjs renders its collapse chevron. Applies persisted
+  // view-pref widths + collapsed flag onto #app-shell and mounts the two drag handles into
+  // #middle. View-pref only — nothing here touches the doc/persist.mjs schema.
+  const layout = createLayout({
+    shell: document.getElementById('app-shell'),
+    middle: document.getElementById('middle'),
+  });
 
   // openExport is set once the export modal mounts (below); the playbookbar's Export button
   // calls ctx.openExport, so it has to be present on ctx before playbookbar mounts.
@@ -139,7 +140,7 @@ async function boot() {
     exec,
     undo,
     redo,
-    share,
+    layout,
     toggleTheme: themeApi.toggleTheme,
     openExport: () => {},
   };
@@ -209,7 +210,10 @@ function freshDoc() {
 
 function freshView() {
   return {
-    tool: 'select',
+    // Default tool on open = PAN, not select (sidebar-v2 v3 item f): a fresh board has nothing
+    // to select, and pan/zoom is the first thing anyone does to frame the map. Read-only share
+    // links keep this same neutral default — the viewer wants to move around the map, not draw.
+    tool: 'pan',
     roleColor: '#e5484d',
     activeLayerId: 'units',
     currentKeyframe: 1,
@@ -261,7 +265,10 @@ function installPersistence(store) {
 }
 
 // ---------------------------------------------------------------------------
-// Share link — base64url of the serialized doc in location.hash (#pb=…)
+// Share link — read path only. Existing #pb=<base64url-of-serialized-doc> links still boot into
+// read-only viewer mode; the WRITE path (the old share() encoder + Share button) was removed in
+// sidebar-v2 v3 item e as dead single-user UI. base64UrlDecode stays; the matching encoder is
+// gone with its only caller.
 // ---------------------------------------------------------------------------
 
 function readSharedDocFromHash() {
@@ -273,11 +280,6 @@ function readSharedDocFromHash() {
   } catch {
     return null; // malformed share link — boot the normal (persisted/fresh) doc instead
   }
-}
-
-function base64UrlEncode(str) {
-  const b64 = btoa(unescape(encodeURIComponent(str)));
-  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
 function base64UrlDecode(encoded) {

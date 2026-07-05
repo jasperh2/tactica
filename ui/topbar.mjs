@@ -1,8 +1,14 @@
 // ui/topbar.mjs — TACTICA top bar [ui-topbar]
 // Handoff README §1 Top bar (52px). Brand tile + map picker (dropdown w/ live search,
-// placeholder tiles for unavailable maps) + undo/redo (history seam) + theme toggle + static
-// avatars + share (seam). Contract §5: mount(el, ctx), re-render from store.subscribe, event
-// delegation on the panel root, no cross-panel imports, no direct doc/view mutation.
+// placeholder tiles for unavailable maps) + undo/redo (history seam) + theme toggle. Contract §5:
+// mount(el, ctx), re-render from store.subscribe, event delegation on the panel root, no
+// cross-panel imports, no direct doc/view mutation.
+//
+// The fake collaborator-avatar stack and the Share button were removed in sidebar-v2 v3 (item e):
+// this is a single-user local tool, not a collaboration surface, and the avatars were hardcoded
+// placeholder initials that read as a broken/unimplemented feature. The #pb= share-LINK read path
+// (readonly viewer mode) is unaffected — it lives entirely in app.mjs and never depended on this
+// button.
 //
 // Theme toggle (sidebar-v2 S1): this module never imports ui/theme.mjs directly — same
 // no-cross-panel-imports rule as everything else here. It just renders a button and reads
@@ -13,17 +19,10 @@
 // @typedef {import('../core/store.mjs').DocState} DocState
 // @typedef {{id:string, name:string, asset?:string, assetSize?:{w:number,h:number}, available:boolean}} MapEntry
 
-const AVATAR_SEED = [
-  { initials: 'JH', color: '#4c8dff' },
-  { initials: 'MK', color: '#f2801f' },
-  { initials: 'SR', color: '#38b26b' },
-];
-
 /**
  * @param {HTMLElement} el
  * @param {{store:object, history:object, roster:object, maps:{worldSize:number, maps:MapEntry[]},
- *   exec:(action:object)=>void, undo?:Function, redo?:Function, share?:Function,
- *   toggleTheme?:Function}} ctx
+ *   exec:(action:object)=>void, undo?:Function, redo?:Function, toggleTheme?:Function}} ctx
  */
 export function mount(el, ctx) {
   el.id = 'topbar-root';
@@ -85,18 +84,6 @@ export function mount(el, ctx) {
         <button type="button" class="btn-icon" data-action="toggle-theme"
                 title="Toggle theme" aria-label="Toggle color theme">
           <i class="ph ${isDarkTheme() ? 'ph-sun' : 'ph-moon'}"></i>
-        </button>
-
-        <div class="tb-avatars" aria-hidden="true">
-          ${AVATAR_SEED.map(
-            (a) => `<div class="tb-avatar" style="background:${a.color}">${a.initials}</div>`
-          ).join('')}
-        </div>
-
-        <button type="button" class="btn tb-share-btn" data-action="share"
-                ${ctx.share ? '' : 'title="share coming at integration"'}>
-          <i class="ph ph-share"></i>
-          <span>Share</span>
         </button>
       </div>
     `;
@@ -175,10 +162,6 @@ export function mount(el, ctx) {
       // resolves — absent, this is a no-op rather than a throw (stub-tolerant per mission).
       if (typeof ctx.toggleTheme === 'function') ctx.toggleTheme();
       render(); // re-read documentElement.dataset.theme so the icon flips immediately
-      return;
-    }
-    if (action === 'share') {
-      if (typeof ctx.share === 'function') ctx.share();
       return;
     }
   }

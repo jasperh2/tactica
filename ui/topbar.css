@@ -1,7 +1,8 @@
 /**
  * TACTICA — top bar [ui-topbar]
- * Handoff README §1 Top bar (52px). Brand tile, map picker + dropdown, undo/redo,
- * collaborator avatars (static), share. All colors/sizes via tokens.css — no hardcoding.
+ * Handoff README §1 Top bar (52px). Brand tile, map picker + dropdown, undo/redo, theme toggle.
+ * (Fake collaborator avatars + Share button removed in sidebar-v2 v3 item e.)
+ * All colors/sizes via tokens.css — no hardcoding.
  */
 
 #topbar-root {
@@ -220,7 +221,9 @@
 }
 
 /* ---------------------------------------------------------------------- */
-/* Right cluster: undo/redo, avatars, share                                */
+/* Right cluster: undo/redo + theme toggle                                  */
+/* (the fake collaborator avatars and Share button were removed in          */
+/* sidebar-v2 v3 item e — this is a single-user local tool).                */
 /* ---------------------------------------------------------------------- */
 
 .tb-right {
@@ -234,32 +237,4 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
-}
-
-.tb-avatars {
-  display: flex;
-  align-items: center;
-}
-
-.tb-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid var(--bg-panel);
-  margin-left: -8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-scale-9);
-  font-weight: 700;
-  color: #ffffff;
-  flex: 0 0 auto;
-}
-
-.tb-avatar:first-child {
-  margin-left: 0;
-}
-
-.tb-share-btn {
-  position: relative;
 }

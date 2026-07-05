@@ -5,8 +5,16 @@
 
 import { activeTactic, visibleObjects } from '../core/playbook.mjs';
 import { arrowhead, polygonBounds } from '../core/geometry.mjs';
+import { strokeWidthViewBox, dashArray, arrowheadSize } from '../core/stroke.mjs';
 import { round2, ZOOM_DEFAULT } from './canvas-view.mjs';
 import { safeColor } from './sanitize.mjs';
+
+const DEFAULT_THICKNESS_PX = 3; // matches app.mjs DEFAULT_TOOL_OPTIONS.thickness — an object with
+// no stored thickness (shouldn't happen post-persist-coercion, defensive) falls back to this.
+const DEFAULT_BORDER_PX = 2; // matches app.mjs DEFAULT_TOOL_OPTIONS.border for shape sketches.
+const SEL_RING_FACTOR = 2.2; // selection ring width as a multiple of the object's stroke width.
+const SEL_RING_SHAPE_FACTOR = 0.7; // thinner ring for filled shapes (zone/box/circle borders).
+const HEAD_STROKE_FACTOR = 0.6; // open-arrowhead outline width as a multiple of the stroke width.
 
 const MARKER_SIZE_DEFAULT = 26;
 // Clamp bounds for the on-canvas resize handle (increment 2/6) — MUST stay numerically equal
@@ -153,34 +161,45 @@ function pointsAttr(points) {
 }
 
 /**
- * Renders a route (unit-to-unit push line): polyline + optional arrowhead triangle.
+ * Renders a route (unit-to-unit push line): polyline + optional arrowhead triangle. The route's
+ * OWN stored `thickness` (screen px) is converted to a viewBox stroke-width via the shared
+ * core/stroke.mjs model — the SAME seam the ghost preview and the export path use, so all three
+ * are pixel-identical by construction (parity fix). Pre-fix this ignored the object's stored
+ * thickness entirely and used the current tool option, so every route rendered at one width that
+ * changed live with the slider; now each route renders at its own authored width (matching what
+ * the export path already did).
  * @param {object} route {points, role, thickness, dashed, head}
  * @param {function} arrowheadFn geometry.arrowhead, injected so this stays pure/testable-by-eye
  * @param {number} aspect map h/w, for arrowhead visual symmetry
- * @param {number} strokeWidthPct stroke-width in viewBox units (recomputed on resize)
+ * @param {number} boxWidthPx on-screen map-box width (getBoundingClientRect().width) for px->viewBox
  * @param {string[]} selection
  * @returns {string}
  */
-export function renderRoute(route, arrowheadFn, aspect, strokeWidthPct, selection) {
+export function renderRoute(route, arrowheadFn, aspect, boxWidthPx, selection) {
   const isSelected = selection.includes(route.id);
   const head = route.head || 'solid';
   const role = safeColor(route.role);
-  const dash = route.dashed ? `stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}"` : '';
+  const thicknessPx = route.thickness ?? DEFAULT_THICKNESS_PX;
+  const strokeWidthPct = strokeWidthViewBox(thicknessPx, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidthPct);
+  const dash = route.dashed ? `stroke-dasharray="${dashOn},${dashOff}"` : '';
   let points = route.points;
   let headMarkup = '';
 
   if (head !== 'none' && points.length >= 2) {
-    const { tri, trimmed } = arrowheadFn(points, { aspect, size: Math.max(strokeWidthPct * 1.6, 1) });
+    // Head size scales with the AUTHORED px thickness (not the tiny viewBox-unit width) — see
+    // core/stroke.mjs arrowheadSize, which fixes the old Math.max(...,1) pinned-head floor.
+    const { tri, trimmed } = arrowheadFn(points, { aspect, size: arrowheadSize(thicknessPx) });
     if (tri) {
       points = trimmed;
       const fill = head === 'open' ? 'none' : role;
-      headMarkup = `<polygon points="${triToPoints(tri)}" fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct * 0.6}" stroke-linejoin="round" />`;
+      headMarkup = `<polygon points="${triToPoints(tri)}" fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct * HEAD_STROKE_FACTOR}" stroke-linejoin="round" />`;
     }
   }
 
   const pts = pointsAttr(points);
   const selRing = isSelected
-    ? `<polyline points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * 2.2}" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />`
+    ? `<polyline points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * SEL_RING_FACTOR}" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />`
     : '';
 
   return `
@@ -200,18 +219,18 @@ export function renderRoute(route, arrowheadFn, aspect, strokeWidthPct, selectio
  * pill above the shape (SVG text on a dark rect) when `zone.label` is set — the ellipse branch
  * is byte-identical to before this dispatch was added (regression safety).
  * @param {object} zone {shape?, cx,cy,rx,ry, points, role, label}
- * @param {number} strokeWidthPct
+ * @param {number} boxWidthPx on-screen map-box width for the shared px->viewBox stroke conversion
  * @param {string[]} selection
  * @returns {string}
  */
-export function renderZone(zone, strokeWidthPct, selection) {
+export function renderZone(zone, boxWidthPx, selection) {
   if (zone.shape === 'polygon') {
-    return renderPolygonZone(zone, strokeWidthPct, selection);
+    return renderPolygonZone(zone, boxWidthPx, selection);
   }
-  return renderEllipseZone(zone, strokeWidthPct, selection);
+  return renderEllipseZone(zone, boxWidthPx, selection);
 }
 
-function renderEllipseZone(zone, strokeWidthPct, selection) {
+function renderEllipseZone(zone, boxWidthPx, selection) {
   const isSelected = selection.includes(zone.id);
   const role = safeColor(zone.role);
   const fill = hexToRgba(role, 0.13);
@@ -219,13 +238,15 @@ function renderEllipseZone(zone, strokeWidthPct, selection) {
   const cy = Number(zone.cy) || 0;
   const rx = Number(zone.rx) || 0;
   const ry = Number(zone.ry) || 0;
+  const strokeWidthPct = strokeWidthViewBox(DEFAULT_BORDER_PX, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidthPct);
   const labelMarkup = zone.label ? renderZoneLabelAt(zone.label, cx, cy - ry - 3) : '';
 
   return `
     <g data-id="${escapeHtml(zone.id)}" data-kind="zone" class="canvas-svg-obj${isSelected ? ' is-selected' : ''}">
       <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"
-        fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct}" stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}" />
-      ${isSelected ? `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * 0.7}" opacity="0.6" />` : ''}
+        fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct}" stroke-dasharray="${dashOn},${dashOff}" />
+      ${isSelected ? `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * SEL_RING_SHAPE_FACTOR}" opacity="0.6" />` : ''}
       ${labelMarkup}
     </g>
   `;
@@ -238,20 +259,22 @@ function renderEllipseZone(zone, strokeWidthPct, selection) {
  * analogue of the ellipse's "anchor above cy-ry" rule, avoiding a full centroid computation for
  * a UI-only label placement.
  */
-function renderPolygonZone(zone, strokeWidthPct, selection) {
+function renderPolygonZone(zone, boxWidthPx, selection) {
   const isSelected = selection.includes(zone.id);
   const role = safeColor(zone.role);
   const fill = hexToRgba(role, 0.13);
   const points = Array.isArray(zone.points) ? zone.points : [];
   const pts = pointsAttr(points);
+  const strokeWidthPct = strokeWidthViewBox(DEFAULT_BORDER_PX, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(strokeWidthPct);
   const bounds = points.length > 0 ? polygonBounds(points) : { cx: 0, minY: 0 };
   const labelMarkup = zone.label ? renderZoneLabelAt(zone.label, bounds.cx, bounds.minY - 3) : '';
 
   return `
     <g data-id="${escapeHtml(zone.id)}" data-kind="zone" class="canvas-svg-obj${isSelected ? ' is-selected' : ''}">
       <polygon points="${pts}"
-        fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct}" stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}" />
-      ${isSelected ? `<polygon points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * 0.7}" opacity="0.6" />` : ''}
+        fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct}" stroke-dasharray="${dashOn},${dashOff}" />
+      ${isSelected ? `<polygon points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * SEL_RING_SHAPE_FACTOR}" opacity="0.6" />` : ''}
       ${labelMarkup}
     </g>
   `;
@@ -279,24 +302,24 @@ function renderZoneLabelAt(label, anchorX, anchorY) {
  * @param {object} sketch
  * @param {function} arrowheadFn
  * @param {number} aspect
- * @param {number} strokeWidthPct
+ * @param {number} boxWidthPx on-screen map-box width for the shared px->viewBox conversion
  * @param {string[]} selection
  * @returns {string}
  */
-export function renderSketch(sketch, arrowheadFn, aspect, strokeWidthPct, selection) {
+export function renderSketch(sketch, arrowheadFn, aspect, boxWidthPx, selection) {
   if (sketch.shape === 'arrow' || sketch.shape === 'line' || sketch.shape === 'free') {
     return renderRoute(
       { ...sketch, head: sketch.shape === 'arrow' ? (sketch.head || 'solid') : 'none' },
       arrowheadFn,
       aspect,
-      strokeWidthPct,
+      boxWidthPx,
       selection
     );
   }
-  return renderSketchShape(sketch, strokeWidthPct, selection);
+  return renderSketchShape(sketch, boxWidthPx, selection);
 }
 
-function renderSketchShape(sketch, strokeWidthPct, selection) {
+function renderSketchShape(sketch, boxWidthPx, selection) {
   const isSelected = selection.includes(sketch.id);
   const [[rawX1, rawY1], [rawX2, rawY2]] = sketch.points;
   const x1 = Number(rawX1) || 0;
@@ -305,12 +328,16 @@ function renderSketchShape(sketch, strokeWidthPct, selection) {
   const y2 = Number(rawY2) || 0;
   const role = safeColor(sketch.role);
   const fill = hexToRgba(role, (sketch.fillOpacity ?? 14) / 100);
-  const dash = sketch.dashed ? `stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}"` : '';
-  const borderWidth = (sketch.border ?? strokeWidthPct) || strokeWidthPct;
+  // Border authored in screen px (sketch.border / DEFAULT_BORDER_PX) -> viewBox units via the
+  // shared model, SAME as ghost + export. Pre-fix this used the raw stored border as viewBox
+  // units, so a border=2 rendered at 2*(boxW/100) ~ 16-40px (Jasper's "even 1px looks too thick").
+  const borderWidthPct = strokeWidthViewBox(sketch.border ?? DEFAULT_BORDER_PX, boxWidthPx);
+  const [dashOn, dashOff] = dashArray(borderWidthPct);
+  const dash = sketch.dashed ? `stroke-dasharray="${dashOn},${dashOff}"` : '';
 
   const shapeMarkup = sketch.shape === 'ellipse'
-    ? `<ellipse cx="${(x1 + x2) / 2}" cy="${(y1 + y2) / 2}" rx="${Math.abs(x2 - x1) / 2}" ry="${Math.abs(y2 - y1) / 2}" fill="${fill}" stroke="${role}" stroke-width="${borderWidth}" ${dash} />`
-    : `<rect x="${Math.min(x1, x2)}" y="${Math.min(y1, y2)}" width="${Math.abs(x2 - x1)}" height="${Math.abs(y2 - y1)}" fill="${fill}" stroke="${role}" stroke-width="${borderWidth}" ${dash} />`;
+    ? `<ellipse cx="${(x1 + x2) / 2}" cy="${(y1 + y2) / 2}" rx="${Math.abs(x2 - x1) / 2}" ry="${Math.abs(y2 - y1) / 2}" fill="${fill}" stroke="${role}" stroke-width="${borderWidthPct}" ${dash} />`
+    : `<rect x="${Math.min(x1, x2)}" y="${Math.min(y1, y2)}" width="${Math.abs(x2 - x1)}" height="${Math.abs(y2 - y1)}" fill="${fill}" stroke="${role}" stroke-width="${borderWidthPct}" ${dash} />`;
 
   return `
     <g data-id="${escapeHtml(sketch.id)}" data-kind="sketch" class="canvas-svg-obj${isSelected ? ' is-selected' : ''}">
@@ -407,7 +434,11 @@ export function renderCanvas(els, ctx, action) {
 
 function renderMapBox(els, mapMeta, size) {
   els.mapEl.style.aspectRatio = `${size.w} / ${size.h}`;
-  els.mapEl.style.setProperty('--map-native-w', `${size.w}px`);
+  // --map-aspect (h/w, unitless) drives the fit-on-load contain sizing in canvas.css
+  // (item a): box width = min(100cqw, 100cqh / --map-aspect). Replaces the old --map-native-w
+  // px cap that froze the default map at native size regardless of monitor. Kept in sync with
+  // the inline aspect-ratio above so the box's SHAPE and its width cap agree.
+  els.mapEl.style.setProperty('--map-aspect', `${round2(size.h / size.w)}`);
   const available = !!(mapMeta && mapMeta.available && mapMeta.asset);
   els.mapEl.classList.toggle('is-empty', !available);
   if (available) {
@@ -423,9 +454,16 @@ function renderMapBox(els, mapMeta, size) {
 }
 
 function renderObjects(els, doc, view, roster, aspect) {
-  const rect = els.mapEl.getBoundingClientRect();
-  const thickness = view.toolOptions?.thickness ?? 3;
-  const strokeWidthPct = rect.width ? (thickness / rect.width) * 100 : 0.3;
+  // UNZOOMED layout width of the map box — the ONE input the shared core/stroke.mjs model needs
+  // to convert each object's authored px thickness/border into viewBox units. Every route/zone/
+  // sketch converts its OWN stored width (not the current tool option), so committed weight
+  // matches both the ghost preview and the export path by construction. Must be offsetWidth, NOT
+  // getBoundingClientRect().width: the rect includes the CSS zoom transform, which (a) breaks the
+  // world-space model (strokes must scale WITH the map on zoom, not stay screen-constant) and
+  // (b) is one zoom-step stale here because renderObjects runs before renderZoomTransform writes
+  // the new scale. Falls back to the default map width if the box is unmeasured (pre-layout first
+  // paint) so strokes are never NaN/0.
+  const boxWidthPx = els.mapEl.offsetWidth || DEFAULT_ASPECT_W;
 
   const tactic = activeTactic(doc);
   const viewBoxH = round2(100 * aspect);
@@ -440,7 +478,7 @@ function renderObjects(els, doc, view, roster, aspect) {
   if (!tactic) {
     els.markersLayerEl.innerHTML = '';
     els.svgEl.innerHTML = '';
-    return strokeWidthPct;
+    return boxWidthPx;
   }
 
   const objects = visibleObjects(tactic, doc.layers, view.currentKeyframe);
@@ -454,11 +492,11 @@ function renderObjects(els, doc, view, roster, aspect) {
     + textNotes.map((t) => renderTextNote(t, view.selection)).join('');
 
   els.svgEl.innerHTML =
-    routes.map((r) => renderRoute(r, arrowhead, aspect, strokeWidthPct, view.selection)).join('')
-    + zones.map((z) => renderZone(z, strokeWidthPct, view.selection)).join('')
-    + sketches.map((s) => renderSketch(s, arrowhead, aspect, strokeWidthPct, view.selection)).join('');
+    routes.map((r) => renderRoute(r, arrowhead, aspect, boxWidthPx, view.selection)).join('')
+    + zones.map((z) => renderZone(z, boxWidthPx, view.selection)).join('')
+    + sketches.map((s) => renderSketch(s, arrowhead, aspect, boxWidthPx, view.selection)).join('');
 
-  return strokeWidthPct;
+  return boxWidthPx;
 }
 
 function renderHud(els, doc, view, roster) {

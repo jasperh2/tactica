@@ -18,7 +18,6 @@ const TOOL_META = {
   circle: { icon: 'ph-circle', name: 'Circle', key: 'C' },
   zone: { icon: 'ph-polygon', name: 'Zone', key: 'Z' },
   text: { icon: 'ph-text-t', name: 'Text', key: 'T' },
-  measure: { icon: 'ph-ruler', name: 'Measure', key: 'U' },
   erase: { icon: 'ph-eraser', name: 'Erase', key: 'E' },
 };
 
@@ -438,18 +437,6 @@ export function renderMultiSelectPanel(count) {
         </div>
       </div>
       <div class="inspector-empty">Drag any selected unit to move the whole group. Drag the group handle to resize.</div>
-    </div>
-  `;
-}
-
-export function renderMeasurePanel(view) {
-  return `
-    <div class="inspector-content">
-      <label class="toggle-row">
-        <input type="checkbox" data-toggle="snap" ${view.toolOptions.snap ? 'checked' : ''} />
-        <span>Snap to grid</span>
-      </label>
-      <div class="inspector-empty">Drag on the map for a live distance readout (world units + meters). Not persisted.</div>
     </div>
   `;
 }

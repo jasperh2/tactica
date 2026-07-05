@@ -12,6 +12,7 @@
 // Not pure (draws to a real <canvas> and loads <img> elements) but holds no store/DOM-panel
 // state of its own — a self-contained function of (doc-derived args) -> canvas.
 import { arrowhead, polygonBounds } from '../core/geometry.mjs';
+import { strokeWidthExportPx, dashArray, arrowheadSize } from '../core/stroke.mjs';
 
 const SHIPPED_FRAME_WIDTH_PX = 900;
 // Bug-hunt fix: overlays/ pass mapImg=null (exportmodal-helpers.mjs's renderAllFrames always
@@ -32,7 +33,8 @@ const MARKER_FILL_ALPHA = 0.9;
 const MARKER_FONT_PX = 9;
 const ROUTE_ROUND = 'round';
 const ZONE_DASH = [5, 4];
-const ZONE_STROKE_PX = 2;
+const ZONE_STROKE_PX = 2; // authored screen-px zone border (matches on-screen DEFAULT_BORDER_PX);
+// scaled onto the export canvas via strokeWidthExportPx so it looks proportional to the editor.
 const ZONE_FILL_ALPHA = 0.13;
 const ZONE_LABEL_FONT_PX = 8.5;
 const ZONE_LABEL_PAD_X = 6;
@@ -45,7 +47,8 @@ const FONT_UI = 'Hanken Grotesk, system-ui, -apple-system, sans-serif';
 const FONT_MONO = 'JetBrains Mono, ui-monospace, monospace';
 const ICON_LOAD_TIMEOUT_MS = 4000;
 const SKETCH_FILL_OPACITY_DEFAULT = 14; // matches canvas-objects.mjs renderSketchShape default
-const SKETCH_DASH_FACTORS = [2.4, 1.6]; // matches canvas-objects.mjs's dash pattern factors
+const DEFAULT_ROUTE_THICKNESS_PX = 3; // matches app.mjs DEFAULT_TOOL_OPTIONS.thickness
+const DEFAULT_SKETCH_BORDER_PX = 2; // matches app.mjs DEFAULT_TOOL_OPTIONS.border
 
 const iconImageCache = new Map();
 
@@ -207,19 +210,34 @@ function drawRouteOrSketch(ctx, obj, w, h) {
   drawPolylineStroke(ctx, obj, w, h);
 }
 
-/** Draws a polyline stroke (route or line/free sketch) with an optional triangular arrowhead. */
-function drawPolylineStroke(ctx, obj, w, h) {
+// drawPolylineStroke / drawSketchShape are exported ONLY so ui/render.test.mjs can drive them with
+// a captured canvas2d stub (they mutate a real 2d context, so this is the only node-testable seam
+// for the shared-stroke-model export widths); they are otherwise module-internal helpers.
+/**
+ * Draws a polyline stroke (route or line/free sketch) with an optional triangular arrowhead.
+ * Stroke width + arrowhead size both flow through the shared core/stroke.mjs model so the exported
+ * frame matches the on-screen editor by construction: the authored px thickness scales onto the
+ * fixed export-canvas width (strokeWidthExportPx), and the arrowhead scales with the equivalent
+ * stroke width the same way the on-screen head does (fixes the pre-fix pinned-tiny-head, which
+ * always used the size=1 default here). */
+export function drawPolylineStroke(ctx, obj, w, h) {
   if (!obj.points || obj.points.length < 2) return;
   const aspect = h / w;
-  const { tri, trimmed } = arrowhead(obj.points, { aspect });
+  const thickness = obj.thickness ?? DEFAULT_ROUTE_THICKNESS_PX;
+  // Arrowhead size scales with the authored px thickness — the SAME arrowheadSize(thicknessPx) the
+  // on-screen surfaces use, so the exported head matches the editor head for a given thickness.
+  const { tri, trimmed } = arrowhead(obj.points, { aspect, size: arrowheadSize(thickness) });
   const head = obj.head || 'solid'; // matches canvas-objects.mjs renderRoute's default
 
   ctx.save();
   ctx.strokeStyle = obj.role;
-  ctx.lineWidth = obj.thickness ?? 3;
+  ctx.lineWidth = strokeWidthExportPx(thickness, w);
   ctx.lineCap = ROUTE_ROUND;
   ctx.lineJoin = ROUTE_ROUND;
-  if (obj.dashed) ctx.setLineDash([ctx.lineWidth * 2, ctx.lineWidth * 1.5]);
+  if (obj.dashed) {
+    const [dashOn, dashOff] = dashArray(ctx.lineWidth);
+    ctx.setLineDash([dashOn, dashOff]);
+  }
 
   const linePoints = tri && head !== 'none' ? trimmed : obj.points;
   ctx.beginPath();
@@ -256,21 +274,25 @@ function drawPolylineStroke(ctx, obj, w, h) {
  * bordered at `border` width, optionally dashed. Ported from canvas-objects.mjs's
  * renderSketchShape (SVG) to canvas2d — same corner math, same fill/border/dash defaults.
  */
-function drawSketchShape(ctx, sketch, w, h) {
+export function drawSketchShape(ctx, sketch, w, h) {
   const [[x1pct, y1pct], [x2pct, y2pct]] = sketch.points;
   const x1 = toPx(x1pct, w);
   const y1 = toPx(y1pct, h);
   const x2 = toPx(x2pct, w);
   const y2 = toPx(y2pct, h);
   const fillAlpha = (sketch.fillOpacity ?? SKETCH_FILL_OPACITY_DEFAULT) / 100;
-  const borderWidth = (sketch.border ?? 1) || 1;
+  // Border authored in screen px -> export device px via the shared model, SAME seam as the route
+  // stroke and the on-screen border (pre-fix this drew the raw px border on the 900px canvas,
+  // decoupled from the on-screen look).
+  const borderWidth = strokeWidthExportPx(sketch.border ?? DEFAULT_SKETCH_BORDER_PX, w);
 
   ctx.save();
   ctx.fillStyle = withAlpha(sketch.role, fillAlpha);
   ctx.strokeStyle = sketch.role;
   ctx.lineWidth = borderWidth;
   if (sketch.dashed) {
-    ctx.setLineDash([borderWidth * SKETCH_DASH_FACTORS[0], borderWidth * SKETCH_DASH_FACTORS[1]]);
+    const [dashOn, dashOff] = dashArray(borderWidth);
+    ctx.setLineDash([dashOn, dashOff]);
   }
 
   ctx.beginPath();
@@ -317,7 +339,7 @@ function drawEllipseZone(ctx, zone, w, h) {
   ctx.fillStyle = withAlpha(zone.role, ZONE_FILL_ALPHA);
   ctx.fill();
   ctx.setLineDash(ZONE_DASH);
-  ctx.lineWidth = ZONE_STROKE_PX;
+  ctx.lineWidth = strokeWidthExportPx(ZONE_STROKE_PX, w);
   ctx.strokeStyle = zone.role;
   ctx.stroke();
   ctx.setLineDash([]);
@@ -351,7 +373,7 @@ function drawPolygonZone(ctx, zone, w, h) {
   ctx.fillStyle = withAlpha(zone.role, ZONE_FILL_ALPHA);
   ctx.fill();
   ctx.setLineDash(ZONE_DASH);
-  ctx.lineWidth = ZONE_STROKE_PX;
+  ctx.lineWidth = strokeWidthExportPx(ZONE_STROKE_PX, w);
   ctx.strokeStyle = zone.role;
   ctx.stroke();
   ctx.setLineDash([]);

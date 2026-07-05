@@ -20,22 +20,28 @@ import { hitTest } from '../core/geometry.mjs';
  * @param {object[]} objects objects in RENDER order (last = drawn on top = highest priority)
  * @param {[number,number]} pt percent-space point
  * @param {number} tolPct hit-tolerance in percent-of-map-width units
+ * @param {number} [boxWidthPx] on-screen map-box layout width; when given, unit marker `size`
+ *   (stored in PX) is converted into percent-of-map-width before hit-testing. Without it a
+ *   26px marker reads as a ±13%-of-map hit box and the top-most marker steals clicks map-wide.
  * @returns {string|null}
  */
-export function resolveHitId(objects, pt, tolPct) {
+export function resolveHitId(objects, pt, tolPct, boxWidthPx) {
   for (let i = objects.length - 1; i >= 0; i -= 1) {
     const obj = objects[i];
-    if (hitTest(toHitTestShape(obj), pt, tolPct)) return obj.id;
+    if (hitTest(toHitTestShape(obj, boxWidthPx), pt, tolPct)) return obj.id;
   }
   return null;
 }
 
 /** Adapts a resolved unit marker {x,y,size} into geometry.hitTest's marker contract
- * ({size, resolved:{x,y}}) — every other kind's shape already matches hitTest's expectations
- * as-is (route/sketch read .points, zone reads cx/cy/rx/ry, text reads x/y). */
-function toHitTestShape(obj) {
+ * ({size, resolved:{x,y}}, size in PERCENT units per its documented contract) — every other
+ * kind's shape already matches hitTest's expectations as-is (route/sketch read .points, zone
+ * reads cx/cy/rx/ry or .points, text reads x/y). Marker `size` is authored/stored in map-box
+ * px, so it is scaled into percent space whenever the caller supplies the box width. */
+function toHitTestShape(obj, boxWidthPx) {
   if (obj.kind !== 'unit') return obj;
-  return { ...obj, resolved: { x: obj.resolved?.x ?? obj.x, y: obj.resolved?.y ?? obj.y } };
+  const size = boxWidthPx > 0 ? (obj.size / boxWidthPx) * 100 : obj.size;
+  return { ...obj, size, resolved: { x: obj.resolved?.x ?? obj.x, y: obj.resolved?.y ?? obj.y } };
 }
 
 /**
@@ -93,6 +99,86 @@ export function groupBBox(objects) {
   const xs = objects.map((o) => o.x);
   const ys = objects.map((o) => o.y);
   return { minX: Math.min(...xs), minY: Math.min(...ys), maxX: Math.max(...xs), maxY: Math.max(...ys) };
+}
+
+/**
+ * Inflates a point-only group bbox outward by `padX`/`padY` (percent-of-map units) on every
+ * side. The raw groupBBox is point-only (marker `size` deliberately not factored in there), so a
+ * SINGLE selected unit collapses to a zero-area box at its own center — which is exactly the
+ * "blue blob dead-center on the marker" defect. Padding by the selection's marker half-size (plus
+ * a small margin) turns that into a real box framing the marker, and gives multi-select a little
+ * breathing room outside its tightest point-box so corner handles sit clear of the outermost
+ * markers. Pure geometry; the caller supplies the pad derived from marker size / map width.
+ * @param {{minX:number,minY:number,maxX:number,maxY:number}} bbox
+ * @param {number} padX percent-of-map-width padding per side
+ * @param {number} padY percent-of-map-width padding per side (usually padX scaled by aspect)
+ * @returns {{minX:number,minY:number,maxX:number,maxY:number}}
+ */
+export function padBBox(bbox, padX, padY = padX) {
+  return {
+    minX: bbox.minX - padX,
+    minY: bbox.minY - padY,
+    maxX: bbox.maxX + padX,
+    maxY: bbox.maxY + padY,
+  };
+}
+
+/**
+ * The four named corners of a bbox, keyed nw/ne/sw/se (n=top/small-y, w=left/small-x — screen
+ * convention). Used to (a) position the corner resize handles and (b) look up the OPPOSITE corner
+ * as the scale anchor for a corner-grab resize.
+ * @param {{minX:number,minY:number,maxX:number,maxY:number}} bbox
+ * @returns {{nw:{x,y}, ne:{x,y}, sw:{x,y}, se:{x,y}}}
+ */
+export function bboxCorners(bbox) {
+  return {
+    nw: { x: bbox.minX, y: bbox.minY },
+    ne: { x: bbox.maxX, y: bbox.minY },
+    sw: { x: bbox.minX, y: bbox.maxY },
+    se: { x: bbox.maxX, y: bbox.maxY },
+  };
+}
+
+const OPPOSITE_CORNER = { nw: 'se', ne: 'sw', sw: 'ne', se: 'nw' };
+
+/**
+ * The point a corner-grab resize should scale ABOUT: the corner diagonally opposite the grabbed
+ * one, which stays pinned while the grabbed corner tracks the pointer (standard editor resize —
+ * tldraw/Excalidraw). Feed the result straight into scaleAboutAnchor as its `anchor`.
+ * @param {{minX:number,minY:number,maxX:number,maxY:number}} bbox padded selection bbox
+ * @param {'nw'|'ne'|'sw'|'se'} corner the grabbed corner
+ * @returns {{x:number,y:number}}
+ */
+export function oppositeCornerAnchor(bbox, corner) {
+  return bboxCorners(bbox)[OPPOSITE_CORNER[corner]];
+}
+
+/**
+ * Pure decision for what a select/move pointerdown over the map should DO, given the current
+ * selection, the id under the pointer (or null for empty ground), and whether Shift is held.
+ * This is the fix for the "select-lock" defect: selection must switch on pointerDOWN (so the same
+ * gesture can drag the freshly-selected object), empty ground must ALWAYS be able to marquee, and
+ * shift is toggle-only (no drag) — the tldraw/Excalidraw model (see
+ * knowledge/research/canvas-tool-interaction-patterns.md §1). Extracted as a pure function so the
+ * routing contract is locked by a unit test and a future refactor can't silently reintroduce the
+ * lock.
+ *
+ *   - hitId null                      -> 'marquee'      (empty ground: clear-or-marquee, movement
+ *                                                        threshold decides which at commit time)
+ *   - shift held, hitId set           -> 'toggle'       (add/remove from selection, never drags)
+ *   - hitId already in selection      -> 'drag'         (drag the existing single/group selection)
+ *   - hitId NOT in selection, no shift -> 'reselect-drag' (switch selection to it, THEN drag it)
+ *
+ * @param {string[]} selection current view.selection
+ * @param {string|null} hitId id under the pointer, or null for empty ground
+ * @param {boolean} shiftKey
+ * @returns {'marquee'|'toggle'|'drag'|'reselect-drag'}
+ */
+export function selectGestureIntent(selection, hitId, shiftKey) {
+  if (hitId === null || hitId === undefined) return 'marquee';
+  if (shiftKey) return 'toggle';
+  if (selection.includes(hitId)) return 'drag';
+  return 'reselect-drag';
 }
 
 /**

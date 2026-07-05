@@ -1,5 +1,6 @@
 // ui/toolrail.mjs — TACTICA dock tools cluster [ui-inspector / sidebar-v2 S1]
-// 13 tool buttons (Select..Erase) in the fixed TOOLS cluster atop the dock (design
+// 12 tool buttons (Select..Erase; Measure removed in v2 — Jasper cut the tool) in the fixed
+// TOOLS cluster atop the dock (design
 // sidebar-v2 §2a), Phosphor icon + mono shortcut badge, active state. Clicking a tool
 // dispatches view/setTool. Keyboard shortcuts themselves belong to the integrator
 // (app.mjs) — this module only renders the buttons and handles clicks.
@@ -22,7 +23,6 @@ const TOOLS = [
   { id: 'circle', icon: 'ph-circle', key: 'C', label: 'Circle' },
   { id: 'zone', icon: 'ph-polygon', key: 'Z', label: 'Zone' },
   { id: 'text', icon: 'ph-text-t', key: 'T', label: 'Text' },
-  { id: 'measure', icon: 'ph-ruler', key: 'U', label: 'Measure' },
   { id: 'erase', icon: 'ph-eraser', key: 'E', label: 'Erase' },
 ];
 

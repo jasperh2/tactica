@@ -50,16 +50,20 @@ select {
 }
 
 /* ---------------------------------------------------------------------- */
-/* App shell grid — sidebar-v2 dock (design/handoff-tactics-tool/sidebar-v2  */
-/* section 2a): rows 52px/1fr/118px, middle columns 230px/1fr/336px. The    */
-/* dock REPLACES the old 48px tool rail + 288px inspector at the SAME total */
-/* 336px width (--dock-w below, defined locally since tokens.css's split    */
-/* --layout-toolrail-w/--layout-inspector-w pair is superseded here but not */
-/* owned by this file — see CHANGES-sidebar-v2.md §1).                     */
+/* App shell grid — sidebar-v2 dock. Rows 52px/1fr/118px, middle columns    */
+/* [layers]/1fr/[dock]. Both side columns are now user-resizable (item c):  */
+/* the live widths are the --layers-w / --dock-w custom props panelresize.  */
+/* mjs writes onto #app-shell, defaulting to the tokens. When layers is     */
+/* collapsed (item d) #app-shell carries .layers-collapsed and the layers   */
+/* column drops to the slim rail width. tokens.css's superseded             */
+/* --layout-toolrail-w/--layout-inspector-w pair is untouched (unowned).    */
 /* ---------------------------------------------------------------------- */
 
 #app-shell {
-  --dock-w: 336px; /* 48px tools + 288px options/notes, merged into one panel */
+  /* Live column widths — panelresize.mjs overrides these inline; the tokens are the defaults
+     (and the double-click-reset target). View-pref only: never part of the doc schema. */
+  --layers-w: var(--layout-layers-w);
+  --dock-w: var(--dock-w-default);
 
   display: grid;
   grid-template-rows: var(--layout-topbar-h) 1fr var(--layout-playbookbar-h);
@@ -70,6 +74,12 @@ select {
   overflow: hidden;
 }
 
+/* Collapsed layers panel (item d): the whole column shrinks to a slim rail; layers.mjs hides
+   names/counts/footer and shows only the color dots + add button behind .is-collapsed. */
+#app-shell.layers-collapsed {
+  --layers-w: var(--layers-rail-w);
+}
+
 #topbar {
   grid-row: 1;
   background: var(--bg-panel);
@@ -78,8 +88,9 @@ select {
 
 #middle {
   grid-row: 2;
+  position: relative; /* positioning context for the panel resize handles */
   display: grid;
-  grid-template-columns: var(--layout-layers-w) 1fr var(--dock-w);
+  grid-template-columns: var(--layers-w) 1fr var(--dock-w);
   min-height: 0;
 }
 
@@ -96,6 +107,60 @@ select {
   background: var(--bg-void);
   overflow: hidden;
   min-width: 0;
+}
+
+/* ---- Panel resize handles (item c) — thin drag strips at the layers/canvas and canvas/dock
+   column boundaries. panelresize.mjs appends both into #middle (NOT into #layers/#dock, whose
+   innerHTML the panels rewrite on every render — a child there would be clobbered). Each handle
+   is absolutely positioned at its column edge via the same --layers-w / --dock-w vars that drive
+   the grid, so it tracks the live width for free. It sits above panel content but under
+   dropdowns/modals, and reveals a 2px accent line on hover. cursor:col-resize; double-click
+   resets that panel to its token default. The layers handle hides while the panel is collapsed
+   (nothing to drag the rail wider by — expand first). */
+.panel-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  z-index: 5;
+  cursor: col-resize;
+  background: transparent;
+  touch-action: none;
+  user-select: none;
+}
+
+/* layers handle sits ON the layers/canvas boundary (x = --layers-w), centered on the seam. */
+.panel-resize-handle--layers {
+  left: var(--layers-w);
+  margin-left: -3px;
+}
+
+/* dock handle sits ON the canvas/dock boundary (x = 100% - --dock-w), centered on the seam. */
+.panel-resize-handle--dock {
+  right: var(--dock-w);
+  margin-right: -3px;
+}
+
+.panel-resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: transparent;
+  transition: background var(--duration-drop) var(--ease-tween);
+}
+
+.panel-resize-handle:hover::after,
+.panel-resize-handle.is-dragging::after {
+  background: var(--accent);
+  width: 2px;
+}
+
+#app-shell.layers-collapsed .panel-resize-handle--layers {
+  display: none;
 }
 
 /* ---- Dock shell (tools cluster + options/notes column) ----------------- */
@@ -359,11 +424,13 @@ select {
 /* ---------------------------------------------------------------------- */
 /* Read-only viewer mode (share link #pb=…) — hide edit affordances       */
 /* (dock tools cluster, dock options body + notes band, layer/keyframe    */
-/* controls, share button). Matches the pre-dock behavior: the whole      */
-/* tools cluster hides (dock §S1 "you may keep the tools cluster hidden   */
-/* too") and the inspector's scrolling content + pinned notes hide while  */
-/* its header (active-tool name) stays, same as before the dock merge.    */
-/* The map, layers list, keyframe strip and Play stay usable for viewing. */
+/* controls). Matches the pre-dock behavior: the whole tools cluster hides */
+/* (dock §S1 "you may keep the tools cluster hidden too") and the          */
+/* inspector's scrolling content + pinned notes hide while its header      */
+/* (active-tool name) stays, same as before the dock merge. The map,       */
+/* layers list, keyframe strip and Play stay usable for viewing. The old   */
+/* .tb-share-btn hide-rule was dropped with the Share button itself        */
+/* (sidebar-v2 v3 item e) — the #pb= read path is unchanged.               */
 /* ---------------------------------------------------------------------- */
 
 body.readonly #toolrail,
@@ -372,7 +439,6 @@ body.readonly #inspector .inspector-notes,
 body.readonly .layers-panel__add,
 body.readonly .layer-row__icon-btn,
 body.readonly .pb-transport .pb-export-btn,
-body.readonly .tb-share-btn,
 body.readonly .canvas-hud .canvas-pill--hint {
   display: none !important;
 }

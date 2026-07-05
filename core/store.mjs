@@ -15,7 +15,10 @@ import { keyframeOps, addObject, moveMarker } from './playbook.mjs';
 // @typedef {{ mapId:string, layers:Layer[], tactics:Tactic[], activeTacticId:string }} DocState
 // @typedef {{ thickness:number, dashed:boolean, head:'solid'|'open'|'none',
 //             fillOpacity:number, border:number, textSize:number,
-//             textChip:boolean, snap:boolean }} ToolOptions
+//             textChip:boolean, textPrefill:string, snap:boolean }} ToolOptions
+// textPrefill (v2) is the Text tool's "next placement" label string — a VIEW preference only
+// (set via view/setToolOption, read by drawtools' Text tool at click time), never a doc field,
+// never persisted. Absent on a pre-v2 view seed; drawtools + the inspector both `?? ''` it.
 // @typedef {{ text:string, background:boolean, size:number, position:string }} NextLabel
 // @typedef {{ tool:string, roleColor:string, activeLayerId:string,
 //             currentKeyframe:number, playing:boolean, selection:string[],

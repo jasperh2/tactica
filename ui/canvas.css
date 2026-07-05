@@ -26,6 +26,12 @@
     var(--bg-void);
   cursor: default;
   touch-action: none;
+  /* Size container for the fit-on-load map box (item a). The viewport fills the #canvas grid
+     cell exactly (inset:0), so 100cqw/100cqh below == the true canvas-column size — and because
+     it's the resizable panels that move that cell's edges, cq units re-measure on every panel
+     drag with zero JS, alongside canvas.mjs's ResizeObserver re-render. */
+  container-type: size;
+  container-name: canvasview;
 }
 
 .canvas-viewport.is-space-pan,
@@ -60,17 +66,25 @@
   will-change: transform;
 }
 
-/* Width is a CSS custom property (--map-native-w) canvas-objects.mjs sets per the active
-   map's assetSize.w (defaulting to western-city's 822 — see renderMapBox). Height follows
-   from the inline aspect-ratio JS also sets, so the box's on-screen SHAPE is always correct;
-   this just caps how large any given map renders before the layout gets cramped. Capping at
-   the native px avoids upscaling small assets past their real resolution. */
+/* Fit-on-load sizing (item a — sidebar-v2 v3 layout lever). "100% zoom" now means "the map
+   box CONTAINS the canvas column", not "the map at min(native, 92vh, …) px". The old cap froze
+   western-city (822px native) at 822px on every monitor >=~1200px wide — 41% of a 1440p column —
+   forcing a manual ~162% zoom just to draw. Now the box fills the column at zoom 100 on every
+   screen (node-verified: WC 822->1328px @1440p, 952px @1080p; TW 1274px @1440p).
+
+   `--map-aspect` (h/w, unitless) is set per-map by canvas-objects.mjs renderMapBox. Contain math:
+   the box must be no wider than the column (100cqw) AND no taller than the column, i.e. its width
+   must also be <= colH/aspect (100cqh / --map-aspect). min() of the two = the contain fit. Height
+   follows from the inline `aspect-ratio` renderMapBox also writes, so the SHAPE stays exact.
+   cq units read the .canvas-viewport size container (== canvas column), so this re-fits live when
+   the resizable panels change the column width — no per-frame JS. The MIN_FIT_W floor guards the
+   1280px body min-width edge so a narrow window / wide panels can't collapse the box to nothing. */
 .canvas-mapbox {
   position: relative;
-  /* 78vh -> 92vh, 400px -> 360px sidebar reservation (bug 2 diagnosis): the old caps were
-     tuned against western-city's smaller box and under-used available screen space on the
-     larger 2071x2064 TW maps, making "100% zoom" look small even before the ZOOM_MAX bump. */
-  width: min(var(--map-native-w, 822px), 92vh, calc(100vw - 360px));
+  width: max(
+    var(--map-fit-min-w, 320px),
+    min(100cqw, calc(100cqh / var(--map-aspect, 0.956)))
+  );
   border-radius: var(--radius-md);
   border: 1px solid var(--line-hairline);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
@@ -254,20 +268,57 @@
   position: absolute;
   border: 1px dashed var(--accent-light-alt);
   border-radius: var(--radius-xs);
+  /* The outline itself is a non-interactive frame — NO background fill (the old "blue blob" was
+     the single centered handle showing through a zero-area box, not a fill). Only the corner
+     handles below are grabbable. */
   pointer-events: none;
 }
 
+/* Four corner resize handles on the selection bbox (item b — replaces the single central widget).
+   8px visual square with a generous transparent hit-padding (::before) so the grab target is
+   ~16px even though the dot stays small — the tldraw/Excalidraw "small dot, forgiving hit-area"
+   convention. Each corner sits centered ON its bbox corner (offset by half its own size) and
+   carries the correct diagonal resize cursor. */
 .canvas-resize-handle {
   position: absolute;
-  right: -5px;
-  bottom: -5px;
-  width: 10px;
-  height: 10px;
-  border-radius: var(--radius-xs);
-  background: var(--accent);
-  border: 1.5px solid #ffffff;
-  cursor: nwse-resize;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: var(--bg-panel);
+  border: 1.5px solid var(--accent);
   pointer-events: auto;
+}
+
+/* Invisible hit-padding so a near-miss on the small dot still grabs the handle. */
+.canvas-resize-handle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+}
+
+.canvas-resize-handle--nw {
+  top: -4px;
+  left: -4px;
+  cursor: nwse-resize;
+}
+
+.canvas-resize-handle--ne {
+  top: -4px;
+  right: -4px;
+  cursor: nesw-resize;
+}
+
+.canvas-resize-handle--sw {
+  bottom: -4px;
+  left: -4px;
+  cursor: nesw-resize;
+}
+
+.canvas-resize-handle--se {
+  bottom: -4px;
+  right: -4px;
+  cursor: nwse-resize;
 }
 
 /* ---------------------------------------------------------------------- */

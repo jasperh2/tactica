@@ -23,6 +23,12 @@ export function mount(el, ctx) {
   let dragLayerId = null;
 
   render();
+  // Collapse (item d) is a view-pref, not a store change, so it won't come through
+  // store.subscribe — re-render on the layout api's collapse callback to flip the chevron +
+  // toggle the .is-collapsed rail styling. ctx.layout is absent only in a stripped test harness.
+  if (ctx.layout && typeof ctx.layout.onCollapseChange === 'function') {
+    ctx.layout.onCollapseChange(() => render());
+  }
   el.addEventListener('click', onClick);
   el.addEventListener('dblclick', onDblClick);
   el.addEventListener('keydown', onKeydown);
@@ -42,9 +48,22 @@ export function mount(el, ctx) {
     const tactic = activeTactic(doc);
     const kf = view.currentKeyframe;
     const activeLayer = doc.layers.find((layer) => layer.id === view.activeLayerId);
+    const isCollapsed = !!(ctx.layout && ctx.layout.isLayersCollapsed && ctx.layout.isLayersCollapsed());
 
+    el.classList.toggle('is-collapsed', isCollapsed);
+
+    // Collapse chevron (item d): points left ("collapse") when open, right ("expand") when the
+    // panel is a slim rail. It stays visible in both states — it's the only way back out of the
+    // rail. Placed before the "Layers" label so it anchors the panel's leading edge, and it's the
+    // one header control that survives into the collapsed rail (add + label hide via CSS).
     el.innerHTML = `
       <div class="layers-panel__header">
+        <button type="button" class="layers-panel__collapse" data-action="toggle-collapse"
+                title="${isCollapsed ? 'Expand layers panel' : 'Collapse layers panel'}"
+                aria-label="${isCollapsed ? 'Expand layers panel' : 'Collapse layers panel'}"
+                aria-expanded="${!isCollapsed}">
+          <i class="ph ${isCollapsed ? 'ph-caret-right' : 'ph-caret-left'}"></i>
+        </button>
         <span class="section-label">Layers</span>
         <button type="button" class="layers-panel__add" data-action="add-layer" title="Add layer">
           <i class="ph ph-plus"></i>
@@ -112,11 +131,18 @@ export function mount(el, ctx) {
   function onClick(event) {
     const actionEl = event.target.closest('[data-action]');
 
-    // Add-layer lives in the panel header, outside any .layer-row — handle it before the
-    // row guard below (which would otherwise swallow the click and it would never fire).
+    // Header controls live outside any .layer-row — handle them before the row guard below
+    // (which would otherwise never see the click).
     if (actionEl && actionEl.dataset.action === 'add-layer') {
       event.stopPropagation();
       addLayer();
+      return;
+    }
+    if (actionEl && actionEl.dataset.action === 'toggle-collapse') {
+      event.stopPropagation();
+      if (ctx.layout && typeof ctx.layout.toggleLayersCollapsed === 'function') {
+        ctx.layout.toggleLayersCollapsed();
+      }
       return;
     }
 

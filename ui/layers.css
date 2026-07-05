@@ -17,9 +17,41 @@
 .layers-panel__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-2);
   padding: var(--space-5) var(--space-5) var(--space-3);
   flex: none;
+}
+
+/* The "Layers" label takes the slack between the leading chevron and the trailing add button
+   (replacing the old justify-content:space-between now that there are two edge controls). */
+.layers-panel__header .section-label {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapse chevron (item d) — leading control, mirrors the add button's affordance. */
+.layers-panel__collapse {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary-alt);
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+}
+
+.layers-panel__collapse:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.layers-panel__collapse i {
+  font-size: var(--text-scale-13);
 }
 
 .layers-panel__add {
@@ -103,7 +135,10 @@
 .layer-row__name {
   flex: 1;
   min-width: 0;
-  font-size: var(--text-scale-12);
+  /* 12 -> 13px (item b): with the 260px default panel this lands the full label ("Deployments",
+     "Artillery Line", "Control Zones") untruncated on both 1080p and 1440p, and reads far better
+     than the physically-tiny 12px did on a 1440p monitor. */
+  font-size: var(--text-scale-13);
   font-weight: 600;
   color: var(--text-body);
   white-space: nowrap;
@@ -119,7 +154,7 @@
   flex: 1;
   min-width: 0;
   font-family: inherit;
-  font-size: var(--text-scale-12);
+  font-size: var(--text-scale-13); /* match .layer-row__name so rename doesn't jump size */
   font-weight: 600;
   color: var(--text-primary);
   background: var(--bg-well);
@@ -163,13 +198,23 @@
   font-size: var(--text-scale-13);
 }
 
-.layer-row__rename {
-  opacity: 0;
-  transition: opacity var(--duration-drop) var(--ease-tween);
+/* Hover-only actions use display:none, NOT opacity:0 — invisible-but-in-flow buttons
+   reserved ~60px per row and re-truncated the layer names Jasper flagged as unreadable.
+   They are flex-ordered BEFORE the flexible name (left cluster, right after the dot) so
+   popping in on hover eats the name's slack instead of shifting the always-visible
+   count/lock/eye targets a user is aiming at. */
+.layer-row__dot {
+  order: -3;
 }
 
-.layer-row:hover .layer-row__rename:not(:disabled) {
-  opacity: 1;
+.layer-row__rename {
+  display: none;
+  order: -2;
+}
+
+.layer-row:hover .layer-row__rename:not(:disabled),
+.layer-row:focus-within .layer-row__rename:not(:disabled) {
+  display: flex;
 }
 
 .layer-row__rename:disabled {
@@ -178,12 +223,13 @@
 
 .layer-row__delete {
   color: var(--text-faint);
-  opacity: 0;
-  transition: opacity var(--duration-drop) var(--ease-tween);
+  display: none;
+  order: -1;
 }
 
-.layer-row:hover .layer-row__delete {
-  opacity: 1;
+.layer-row:hover .layer-row__delete,
+.layer-row:focus-within .layer-row__delete {
+  display: flex;
 }
 
 .layer-row__delete:hover {
@@ -225,4 +271,56 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ---- Collapsed rail (item d) — the panel is ~48px wide (#app-shell.layers-collapsed sets
+   --layers-w to --layers-rail-w). Keep only the vertical stack of color dots (each dot still
+   selects/holds its row's identity) plus the chevron to expand and the add button; everything
+   textual folds away. The dots stay clickable so a row is still selectable from the rail. */
+
+.layers-panel.is-collapsed .layers-panel__header {
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0 var(--space-3);
+  align-items: center;
+}
+
+.layers-panel.is-collapsed .section-label {
+  display: none;
+}
+
+.layers-panel.is-collapsed .layers-panel__list {
+  padding: 0 0 var(--space-3);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.layers-panel.is-collapsed .layer-row {
+  justify-content: center;
+  padding: var(--space-3) 0;
+  width: 100%;
+  gap: 0;
+}
+
+/* Hide every textual/interactive bit of a row in the rail — only the color dot remains. */
+.layers-panel.is-collapsed .layer-row__name,
+.layers-panel.is-collapsed .layer-row__name-input,
+.layers-panel.is-collapsed .layer-row__count,
+.layers-panel.is-collapsed .layer-row__icon-btn,
+.layers-panel.is-collapsed .layers-panel__footer-label,
+.layers-panel.is-collapsed .layers-panel__footer-name {
+  display: none;
+}
+
+/* The active-layer dot is the only footer content worth keeping as a rail status cue. */
+.layers-panel.is-collapsed .layers-panel__footer {
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+
+/* Make the rail dots a touch larger so they're comfortable click targets on their own. */
+.layers-panel.is-collapsed .layer-row__dot {
+  width: 14px;
+  height: 14px;
 }
