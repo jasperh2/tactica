@@ -635,14 +635,42 @@ function createEraseTool(ctx, canvasApi) {
     return resolveEraseTargetId(eraseCandidates(), [p.x, p.y], canvasApi.getBoxWidth());
   }
 
+  // Hold-and-drag sweep (Jasper hot fix 2026-07-06): press, drag over everything you want
+  // gone, release. Each object deletes the moment the cursor touches it (immediate feedback);
+  // deletions go through the same guarded resolveTargetId path as click-erase, so layer rules
+  // hold identically. `sweeping` is plain gesture state — a pointerup/cancel anywhere ends it.
+  let sweeping = false;
+
+  function deleteAt(e) {
+    const id = resolveTargetId(e);
+    if (!id) return;
+    ctx.exec({ type: 'doc/deleteObject', id });
+  }
+
   return {
+    onPointerDown(e) {
+      if (e.button !== 0) return;
+      sweeping = true;
+      deleteAt(e);
+    },
+
+    onPointerMove(e) {
+      if (sweeping) deleteAt(e);
+    },
+
+    onPointerUp() {
+      sweeping = false;
+    },
+
     onClick(e) {
-      const id = resolveTargetId(e);
-      if (!id) return;
-      ctx.exec({ type: 'doc/deleteObject', id });
+      // The pointerdown already deleted at this spot when the press started here; the trailing
+      // click re-resolves (usually a no-op because the object is gone) to keep pure-click
+      // behavior identical for callers/tests that only dispatch click.
+      deleteAt(e);
     },
 
     cancel() {
+      sweeping = false;
       clearGhost(canvasApi);
     },
   };
