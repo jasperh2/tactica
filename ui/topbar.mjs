@@ -1,8 +1,14 @@
 // ui/topbar.mjs — TACTICA top bar [ui-topbar]
 // Handoff README §1 Top bar (52px). Brand tile + map picker (dropdown w/ live search,
-// placeholder tiles for unavailable maps) + undo/redo (history seam) + static avatars +
-// share (seam). Contract §5: mount(el, ctx), re-render from store.subscribe, event
+// placeholder tiles for unavailable maps) + undo/redo (history seam) + theme toggle + static
+// avatars + share (seam). Contract §5: mount(el, ctx), re-render from store.subscribe, event
 // delegation on the panel root, no cross-panel imports, no direct doc/view mutation.
+//
+// Theme toggle (sidebar-v2 S1): this module never imports ui/theme.mjs directly — same
+// no-cross-panel-imports rule as everything else here. It just renders a button and reads
+// document.documentElement.dataset.theme for the icon; app.mjs (integration layer) owns the
+// stub-tolerant dynamic import of theme.mjs and passes ctx.toggleTheme down. If theme.mjs
+// isn't wired yet, ctx.toggleTheme is simply absent and the click is a no-op (see onClick).
 //
 // @typedef {import('../core/store.mjs').DocState} DocState
 // @typedef {{id:string, name:string, asset?:string, assetSize?:{w:number,h:number}, available:boolean}} MapEntry
@@ -16,7 +22,8 @@ const AVATAR_SEED = [
 /**
  * @param {HTMLElement} el
  * @param {{store:object, history:object, roster:object, maps:{worldSize:number, maps:MapEntry[]},
- *   exec:(action:object)=>void, undo?:Function, redo?:Function, share?:Function}} ctx
+ *   exec:(action:object)=>void, undo?:Function, redo?:Function, share?:Function,
+ *   toggleTheme?:Function}} ctx
  */
 export function mount(el, ctx) {
   el.id = 'topbar-root';
@@ -74,6 +81,11 @@ export function mount(el, ctx) {
             <i class="ph ph-arrow-clockwise"></i>
           </button>
         </div>
+
+        <button type="button" class="btn-icon" data-action="toggle-theme"
+                title="Toggle theme" aria-label="Toggle color theme">
+          <i class="ph ${isDarkTheme() ? 'ph-sun' : 'ph-moon'}"></i>
+        </button>
 
         <div class="tb-avatars" aria-hidden="true">
           ${AVATAR_SEED.map(
@@ -158,6 +170,13 @@ export function mount(el, ctx) {
       if (typeof ctx.redo === 'function') ctx.redo();
       return;
     }
+    if (action === 'toggle-theme') {
+      // ctx.toggleTheme is only present once app.mjs's dynamic import of ui/theme.mjs (S2)
+      // resolves — absent, this is a no-op rather than a throw (stub-tolerant per mission).
+      if (typeof ctx.toggleTheme === 'function') ctx.toggleTheme();
+      render(); // re-read documentElement.dataset.theme so the icon flips immediately
+      return;
+    }
     if (action === 'share') {
       if (typeof ctx.share === 'function') ctx.share();
       return;
@@ -205,6 +224,17 @@ export function mount(el, ctx) {
 /** @param {MapEntry[]} maps @param {string} mapId @returns {MapEntry|undefined} */
 function findMap(maps, mapId) {
   return maps.find((m) => m.id === mapId);
+}
+
+/**
+ * Reads the current theme straight off documentElement.dataset.theme (set by ui/theme.mjs's
+ * initTheme/toggleTheme, S2) rather than importing that module — dark is the default/absent
+ * state until theme.mjs actually sets the dataset attribute, so an un-set dataset (theme.mjs
+ * not wired yet, or first paint before initTheme runs) safely reads as dark.
+ * @returns {boolean}
+ */
+function isDarkTheme() {
+  return document.documentElement.dataset.theme !== 'light';
 }
 
 /** maps.json asset paths are relative to site/tactics/ (data-maps ownership); topbar

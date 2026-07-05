@@ -11,9 +11,20 @@
 //
 // Not pure (draws to a real <canvas> and loads <img> elements) but holds no store/DOM-panel
 // state of its own — a self-contained function of (doc-derived args) -> canvas.
-import { arrowhead } from '../core/geometry.mjs';
+import { arrowhead, polygonBounds } from '../core/geometry.mjs';
 
 const SHIPPED_FRAME_WIDTH_PX = 900;
+// Bug-hunt fix: overlays/ pass mapImg=null (exportmodal-helpers.mjs's renderAllFrames always
+// calls renderFrame(..., null, roster) for the overlay half of each keyframe), so the OLD
+// fallback here — Western City's own 786/822 asset ratio — silently applied to every map
+// EXCEPT Western City, a ~4% height mismatch vs. frames/ (which DOES get the real ratio via
+// mapImg.naturalHeight/naturalWidth) for 16 of the 17 maps in data/maps.json. Per that file,
+// every map other than western-city (822x786) ships at 2071x2064 — this constant is that
+// majority ratio, used only when the caller has NOT supplied an explicit mapAspect (see
+// renderFrame's new parameter) and there is no mapImg to derive it from either. Once a caller
+// threads the active map's real assetSize through as mapAspect, this constant stops mattering
+// for that call; it remains the best available default for callers that don't (yet).
+const MAJORITY_MAP_ASPECT = 2064 / 2071;
 const MARKER_SIZE_PX = 26; // matches handoff default marker size (16-54 resizable range)
 const MARKER_RADIUS_PX = 7;
 const MARKER_BORDER_PX = 1.5;
@@ -279,8 +290,22 @@ function drawSketchShape(ctx, sketch, w, h) {
   ctx.restore();
 }
 
-/** Draws one zone: dashed fill ellipse + mono label pill above it (if labeled). */
+/**
+ * Draws one zone, dispatching on `zone.shape`: 'ellipse' (or a missing shape field, for
+ * backward compat with zone objects that predate the shape discriminator) draws a dashed fill
+ * ellipse; 'polygon' draws a dashed closed polygon path from `zone.points`. Both get a mono
+ * label pill above the shape (if labeled) — ported from canvas-objects.mjs's renderZone/
+ * renderPolygonZone dispatch so frames/overlays match the DOM look exactly (see module header).
+ */
 function drawZone(ctx, zone, w, h) {
+  if (zone.shape === 'polygon') {
+    drawPolygonZone(ctx, zone, w, h);
+    return;
+  }
+  drawEllipseZone(ctx, zone, w, h);
+}
+
+function drawEllipseZone(ctx, zone, w, h) {
   const cx = toPx(zone.cx, w);
   const cy = toPx(zone.cy, h);
   const rx = toPx(zone.rx, w);
@@ -300,6 +325,41 @@ function drawZone(ctx, zone, w, h) {
 
   if (zone.label) {
     drawLabelPill(ctx, zone.label, cx, cy - ry - ZONE_LABEL_GAP_PX);
+  }
+}
+
+/**
+ * Draws a polygon zone: dashed fill/stroke closed path from `zone.points` (percent-space,
+ * converted to output px via toPx) + the same label-pill treatment as an ellipse zone. Label
+ * anchors above the polygon's bounding-box top, horizontally centered on the bbox midpoint
+ * (geometry.polygonBounds, converted to px) — matches canvas-objects.mjs's renderPolygonZone
+ * label placement exactly.
+ */
+function drawPolygonZone(ctx, zone, w, h) {
+  const points = Array.isArray(zone.points) ? zone.points : [];
+  if (points.length < 3) return; // degenerate — nothing renderable, matches hitTest's guard
+
+  const pxPoints = points.map(([x, y]) => [toPx(x, w), toPx(y, h)]);
+
+  ctx.save();
+  ctx.beginPath();
+  pxPoints.forEach(([x, y], i) => {
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.fillStyle = withAlpha(zone.role, ZONE_FILL_ALPHA);
+  ctx.fill();
+  ctx.setLineDash(ZONE_DASH);
+  ctx.lineWidth = ZONE_STROKE_PX;
+  ctx.strokeStyle = zone.role;
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  if (zone.label) {
+    const bounds = polygonBounds(pxPoints);
+    drawLabelPill(ctx, zone.label, bounds.cx, bounds.minY - ZONE_LABEL_GAP_PX);
   }
 }
 
@@ -350,6 +410,26 @@ function drawTextNote(ctx, note, w, h) {
 }
 
 /**
+ * Resolves the h/w aspect ratio a rendered frame/overlay canvas should use (bug-hunt fix — pure
+ * function, no DOM, so it is unit-testable without a browser). Priority order:
+ *   1. `mapImg`'s own natural dimensions, when present (the frames/ case — always correct for
+ *      whichever map is actually active, since it's the real loaded asset).
+ *   2. An explicit `mapAspect` (h/w) the caller resolved from the active map's real
+ *      `assetSize` (e.g. data/maps.json), when supplied — this is what lets the overlays/ case
+ *      (which always passes `mapImg=null`) match frames/ for every map, not just Western City.
+ *   3. MAJORITY_MAP_ASPECT — the best available default when neither of the above is present;
+ *      correct for 16 of the 17 maps in data/maps.json (every one except western-city itself).
+ * @param {{naturalWidth:number, naturalHeight:number}|null} mapImg
+ * @param {number|null|undefined} mapAspect
+ * @returns {number}
+ */
+export function resolveFrameAspect(mapImg, mapAspect) {
+  if (mapImg) return mapImg.naturalHeight / mapImg.naturalWidth;
+  if (typeof mapAspect === 'number' && Number.isFinite(mapAspect) && mapAspect > 0) return mapAspect;
+  return MAJORITY_MAP_ASPECT;
+}
+
+/**
  * Renders one keyframe of `tactic` onto a fresh canvas. Draws the map image for frames/
  * (pass `mapImg`), or leaves the canvas transparent for overlays/ (pass `null`).
  * @param {object} doc unused directly (kept for API symmetry / future doc-level needs)
@@ -358,13 +438,17 @@ function drawTextNote(ctx, note, w, h) {
  * @param {number} kf 1-based keyframe number
  * @param {HTMLImageElement|null} mapImg preloaded map image, or null for a transparent overlay
  * @param {object} roster {units,heroes,artillery,extra} — resolves marker icons
- * @param {number} [size=900] output width in px; height derives from mapImg's aspect ratio
- *   (falls back to a square canvas when mapImg is null, matching the overlay's paired frame
- *   via the caller passing a consistent aspect through repeated calls)
+ * @param {number} [size=900] output width in px; height derives from the resolved aspect ratio
+ *   (see resolveFrameAspect) so overlay renders (mapImg=null) match their paired frame render
+ *   for whichever map is actually active, not just Western City (bug-hunt fix).
+ * @param {number} [mapAspect] the active map's real h/w aspect (e.g. from
+ *   mapMeta.assetSize.h/assetSize.w in data/maps.json) — a caller that has this on hand should
+ *   pass it for the overlay render (mapImg=null) so it doesn't silently fall back to
+ *   MAJORITY_MAP_ASPECT. Ignored when `mapImg` is present (its natural size is authoritative).
  * @returns {Promise<HTMLCanvasElement>}
  */
-export async function renderFrame(doc, layers, tactic, kf, mapImg, roster, size = SHIPPED_FRAME_WIDTH_PX) {
-  const aspect = mapImg ? mapImg.naturalHeight / mapImg.naturalWidth : 786 / 822;
+export async function renderFrame(doc, layers, tactic, kf, mapImg, roster, size = SHIPPED_FRAME_WIDTH_PX, mapAspect) {
+  const aspect = resolveFrameAspect(mapImg, mapAspect);
   const w = size;
   const h = Math.round(size * aspect);
 

@@ -17,6 +17,7 @@
 @import url('../ui/inspector.css');
 @import url('../ui/playbookbar.css');
 @import url('../ui/exportmodal.css');
+@import url('../ui/gate.css');
 
 *,
 *::before,
@@ -49,11 +50,17 @@ select {
 }
 
 /* ---------------------------------------------------------------------- */
-/* App shell grid — contract §5: rows 52px/1fr/118px, middle columns      */
-/* 230px/1fr/48px/288px.                                                   */
+/* App shell grid — sidebar-v2 dock (design/handoff-tactics-tool/sidebar-v2  */
+/* section 2a): rows 52px/1fr/118px, middle columns 230px/1fr/336px. The    */
+/* dock REPLACES the old 48px tool rail + 288px inspector at the SAME total */
+/* 336px width (--dock-w below, defined locally since tokens.css's split    */
+/* --layout-toolrail-w/--layout-inspector-w pair is superseded here but not */
+/* owned by this file — see CHANGES-sidebar-v2.md §1).                     */
 /* ---------------------------------------------------------------------- */
 
 #app-shell {
+  --dock-w: 336px; /* 48px tools + 288px options/notes, merged into one panel */
+
   display: grid;
   grid-template-rows: var(--layout-topbar-h) 1fr var(--layout-playbookbar-h);
   grid-template-columns: 100%;
@@ -72,8 +79,7 @@ select {
 #middle {
   grid-row: 2;
   display: grid;
-  grid-template-columns:
-    var(--layout-layers-w) 1fr var(--layout-toolrail-w) var(--layout-inspector-w);
+  grid-template-columns: var(--layout-layers-w) 1fr var(--dock-w);
   min-height: 0;
 }
 
@@ -92,18 +98,34 @@ select {
   min-width: 0;
 }
 
-#toolrail {
+/* ---- Dock shell (tools cluster + options/notes column) ----------------- */
+/* Panel-internal styling: ui/toolrail.css (tools cluster) + ui/inspector.css */
+/* (options body + pinned notes band, unowned by this stage — S4).          */
+
+#dock {
   grid-column: 3;
   background: var(--bg-panel);
   border-left: 1px solid var(--line-hairline);
-  border-right: 1px solid var(--line-hairline);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#toolrail {
+  flex: none;
+}
+
+/* #dock-options wraps #inspector purely as a stable data hook (data-dock-region="options")
+   for the next stage's rework — display:contents keeps it out of the flex layout so #inspector
+   (flex:1, min-height:0 below) is still the direct flex child of #dock and fills the space
+   between the fixed tools cluster and its own internally-pinned notes band unchanged. */
+#dock-options {
+  display: contents;
 }
 
 #inspector {
-  grid-column: 4;
-  background: var(--bg-panel);
-  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 #playbookbar {
@@ -255,6 +277,12 @@ select {
   color: var(--text-secondary);
 }
 
+/* Map-overlay chips (placement-hint pill, object counter, zoom pill) float over map art and
+   MUST keep a fixed dark surface + light text in BOTH themes (CHANGES-sidebar-v2.md §2) — theme
+   tokens must not apply here, or light mode paints dark text on the dark surface (counter/zoom)
+   and translucent-blue on the white map (hint). The colors below are therefore fixed literals,
+   not the swapping --text-primary / --accent-* tokens; they equal those tokens' dark-mode
+   values so dark mode is unchanged. */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -264,13 +292,13 @@ select {
   font-size: var(--text-scale-10);
   font-family: var(--font-mono);
   background: rgba(8, 10, 14, 0.8);
-  color: var(--text-primary);
+  color: #eef1f6;
 }
 
 .pill-accent {
-  background: var(--accent-soft);
-  color: var(--accent-light);
-  border: 1px solid rgba(76, 141, 255, 0.4);
+  background: rgba(10, 14, 22, 0.88);
+  color: #d6e5ff;
+  border: 1px solid rgba(76, 141, 255, 0.6);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -330,7 +358,11 @@ select {
 
 /* ---------------------------------------------------------------------- */
 /* Read-only viewer mode (share link #pb=…) — hide edit affordances       */
-/* (tool rail, inspector body, layer/keyframe controls, share button).    */
+/* (dock tools cluster, dock options body + notes band, layer/keyframe    */
+/* controls, share button). Matches the pre-dock behavior: the whole      */
+/* tools cluster hides (dock §S1 "you may keep the tools cluster hidden   */
+/* too") and the inspector's scrolling content + pinned notes hide while  */
+/* its header (active-tool name) stays, same as before the dock merge.    */
 /* The map, layers list, keyframe strip and Play stay usable for viewing. */
 /* ---------------------------------------------------------------------- */
 
@@ -343,10 +375,4 @@ body.readonly .pb-transport .pb-export-btn,
 body.readonly .tb-share-btn,
 body.readonly .canvas-hud .canvas-pill--hint {
   display: none !important;
-}
-
-/* Give the middle grid its space back once the tool rail is hidden. */
-body.readonly #middle {
-  grid-template-columns:
-    var(--layout-layers-w) 1fr 0 var(--layout-inspector-w);
 }

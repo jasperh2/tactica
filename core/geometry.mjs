@@ -275,7 +275,7 @@ function hitTestPolyline(obj, pt, tolPct) {
  * @param {number} tolPct
  * @returns {boolean}
  */
-function hitTestZone(zone, [px, py], tolPct) {
+function hitTestZoneEllipse(zone, [px, py], tolPct) {
   const { cx, cy, rx, ry } = zone;
   const dx = px - cx;
   const dy = py - cy;
@@ -287,6 +287,66 @@ function hitTestZone(zone, [px, py], tolPct) {
   // checking against an ellipse expanded by tolPct on both radii
   const expanded = (dx / (rx + tolPct)) ** 2 + (dy / (ry + tolPct)) ** 2;
   return expanded <= 1;
+}
+
+/**
+ * Point-in-polygon test via ray casting (even-odd rule), correct for both convex and concave
+ * simple polygons (verified against a concave L-shape's notch). `points` need at least 3
+ * vertices; the polygon is treated as implicitly closed (last vertex connects back to the
+ * first) — callers do not need to repeat the first point at the end of the array.
+ * @param {Point[]} points
+ * @param {Point} pt
+ * @returns {boolean}
+ */
+function pointInPolygon(points, [px, py]) {
+  let inside = false;
+  for (let i = 0, j = points.length - 1; i < points.length; j = i, i += 1) {
+    const [xi, yi] = points[i];
+    const [xj, yj] = points[j];
+    const crosses = yi > py !== yj > py;
+    if (!crosses) continue;
+    const xIntersect = ((xj - xi) * (py - yi)) / (yj - yi) + xi;
+    if (px < xIntersect) inside = !inside;
+  }
+  return inside;
+}
+
+/**
+ * Hit-tests a zone polygon: true when `pt` is inside the fill (ray-casting point-in-polygon,
+ * correct on concave shapes) OR within `tolPct` of any edge — including the implicit closing
+ * edge from the last vertex back to the first — mirroring hitTestZoneEllipse's fill-OR-edge-
+ * tolerance behavior. Degenerate polygons (fewer than 3 points) always miss rather than throw.
+ * @param {{ points: Point[] }} zone
+ * @param {Point} pt
+ * @param {number} tolPct
+ * @returns {boolean}
+ */
+function hitTestZonePolygon(zone, pt, tolPct) {
+  const points = zone.points;
+  if (!Array.isArray(points) || points.length < 3) {
+    return false;
+  }
+  if (pointInPolygon(points, pt)) {
+    return true;
+  }
+  const closed = [...points, points[0]];
+  return minDistanceToPolyline(closed, pt) <= tolPct;
+}
+
+/**
+ * Dispatches zone hit-testing by `zone.shape`: 'polygon' uses point-in-polygon + edge
+ * tolerance; anything else (including a missing `shape` field, for backward compatibility with
+ * zone objects that predate the shape discriminator) falls back to the ellipse path.
+ * @param {{ shape?: string }} zone
+ * @param {Point} pt
+ * @param {number} tolPct
+ * @returns {boolean}
+ */
+function hitTestZone(zone, pt, tolPct) {
+  if (zone.shape === 'polygon') {
+    return hitTestZonePolygon(zone, pt, tolPct);
+  }
+  return hitTestZoneEllipse(zone, pt, tolPct);
 }
 
 /**
@@ -324,6 +384,27 @@ export function hitTest(obj, pt, tolPct) {
     default:
       return false;
   }
+}
+
+/**
+ * Bounding box of a polygon's vertices, plus the box's horizontal midpoint (`cx`) — the label
+ * anchor for a polygon zone (renderZoneLabel-equivalent logic needs an {cx, top} pair to
+ * position the label pill above the shape, mirroring how an ellipse zone anchors above
+ * `cy - ry`). Deliberately the bounding-box midpoint rather than a full signed-area centroid:
+ * simpler, no div-by-zero risk on a degenerate (near-zero-area) polygon, and visually
+ * equivalent for the label-placement use case. Returns NaN bounds for an empty array rather
+ * than throwing — callers should guard on `points.length` same as hitTestZonePolygon does.
+ * @param {Point[]} points
+ * @returns {{ minX:number, maxX:number, minY:number, maxY:number, cx:number }}
+ */
+export function polygonBounds(points) {
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+  return { minX, maxX, minY, maxY, cx: (minX + maxX) / 2 };
 }
 
 /**

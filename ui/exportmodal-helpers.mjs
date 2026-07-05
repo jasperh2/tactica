@@ -69,13 +69,34 @@ export function loadMapImage(assetPath) {
   });
 }
 
-/** Renders every keyframe's frame (map+annotations) and overlay (annotations only) canvas. */
-export async function renderAllFrames(doc, layers, tactic, mapImg, roster) {
+/**
+ * Resolves the h/w aspect ratio to pass as renderFrame's `mapAspect` param from a map's
+ * `assetSize` (data/maps.json), for the overlay render (mapImg=null) so it matches its paired
+ * frame render on every map, not just Western City — see render.mjs's resolveFrameAspect for
+ * the full priority order this feeds into. Returns undefined (not a number) when assetSize is
+ * absent/malformed so resolveFrameAspect's own MAJORITY_MAP_ASPECT fallback still applies,
+ * matching its documented `mapAspect?: number` contract.
+ * @param {{assetSize?:{w:number,h:number}}} [mapMeta]
+ * @returns {number|undefined}
+ */
+export function resolveMapAspect(mapMeta) {
+  const w = mapMeta?.assetSize?.w;
+  const h = mapMeta?.assetSize?.h;
+  if (typeof w !== 'number' || typeof h !== 'number' || !(w > 0) || !(h > 0)) return undefined;
+  return h / w;
+}
+
+/** Renders every keyframe's frame (map+annotations) and overlay (annotations only) canvas.
+ * `mapMeta` (optional) supplies the active map's real aspect for the overlay render (which
+ * always passes mapImg=null to renderFrame) via resolveMapAspect — bug-hunt fix: without it,
+ * overlays/ silently defaulted to the hardcoded Western-City aspect on every other map. */
+export async function renderAllFrames(doc, layers, tactic, mapImg, roster, mapMeta) {
+  const mapAspect = resolveMapAspect(mapMeta);
   const frames = [];
   const overlays = [];
   for (const kfMeta of tactic.keyframes) {
-    frames.push(await renderFrame(doc, layers, tactic, kfMeta.n, mapImg, roster));
-    overlays.push(await renderFrame(doc, layers, tactic, kfMeta.n, null, roster));
+    frames.push(await renderFrame(doc, layers, tactic, kfMeta.n, mapImg, roster, undefined, mapAspect));
+    overlays.push(await renderFrame(doc, layers, tactic, kfMeta.n, null, roster, undefined, mapAspect));
   }
   return { frames, overlays };
 }
@@ -201,7 +222,15 @@ function findRosterEntry(roster, code) {
 
 /**
  * Assembles the full zip byte array for the current tactic/map/frames/overlays.
- * @returns {Promise<{bytes:Uint8Array, playbook:object, fileName:string}>}
+ *
+ * `mapPngFailed` is true when fetchAssetBytes(mapMeta.asset) resolved null (network hiccup,
+ * moved/renamed asset, non-ok response). The zip is still assembled in that case — the map
+ * entry falls back to an empty Uint8Array so the rest of the package (playbook.json, frames,
+ * overlays, icons) isn't lost — but callers MUST check this flag before treating the export as
+ * successful. Bug this fixes: previously `mapPng ?? new Uint8Array()` shipped a silent 0-byte
+ * map/<id>.png with no signal anywhere that the fetch failed (see exportmodal.mjs's
+ * downloadZipPackage, which now aborts the download and shows an error instead of proceeding).
+ * @returns {Promise<{bytes:Uint8Array, playbook:object, fileName:string, mapPngFailed:boolean}>}
  */
 export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, frames, overlays }) {
   const playbook = buildPlaybook(doc, roster, mapMeta);
@@ -214,6 +243,8 @@ export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, 
     fetchAssetBytes(mapMeta.asset),
     buildIconPngs(manifest, roster),
   ]);
+
+  const mapPngFailed = mapPng === null;
 
   const entries = packageEntries({
     playbook,
@@ -228,7 +259,7 @@ export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, 
 
   const bytes = createZip(entries);
   const fileName = `${slugifyTacticName(tactic.name)}-animation-package.zip`;
-  return { bytes, playbook, fileName };
+  return { bytes, playbook, fileName, mapPngFailed };
 }
 
 /** Renders one keyframe card: thumbnail w/ "KF n · name" pill, note (icon-prefixed or empty

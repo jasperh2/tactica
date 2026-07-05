@@ -14,13 +14,24 @@
     <div id="middle">
       <div id="layers" role="complementary" aria-label="Layers"></div>
       <div id="canvas" role="main" aria-label="Map canvas"></div>
-      <div id="toolrail" role="toolbar" aria-label="Tools" aria-orientation="vertical"></div>
-      <div id="inspector" role="complementary" aria-label="Inspector"></div>
+      <div id="dock" role="complementary" aria-label="Tools and options">
+        <div id="toolrail" role="toolbar" aria-label="Tools"></div>
+        <div id="dock-options" data-dock-region="options">
+          <div id="inspector" aria-label="Inspector"></div>
+        </div>
+      </div>
     </div>
     <div id="playbookbar" role="region" aria-label="Playbook"></div>
   </div>
   <div id="modal-root"></div>
+  <div id="gate-root"></div>
 
+  <script type="module">
+    // Cosmetic testing-build password gate (see ui/gate.mjs threat model). Mounts an overlay that
+    // covers the app until unlocked; app.mjs below keeps booting normally underneath.
+    import { mountGate } from './ui/gate.mjs';
+    mountGate(document.getElementById('gate-root'));
+  </script>
   <script type="module" src="./ui/app.mjs"></script>
 </body>
 </html>

@@ -63,22 +63,28 @@ function renderDropdown(doc, activeTacticRef) {
  * @param {object} tactic
  * @param {{currentKeyframe:number}} view
  * @param {number|null} contextMenuN
+ * @param {number|null} renamingFrameN
  * @returns {string}
  */
-export function renderKeyframeCards(tactic, view, contextMenuN) {
+export function renderKeyframeCards(tactic, view, contextMenuN, renamingFrameN) {
   const cards = tactic.keyframes
     .map((kf) => {
       const n = Number(kf.n) || 0;
       const state = n < view.currentKeyframe ? 'past' : n > view.currentKeyframe ? 'future' : 'active';
       const hasNote = Boolean(tactic.notes && tactic.notes[n]);
+      const isRenaming = renamingFrameN === n;
+      const nameHtml = isRenaming
+        ? `<input type="text" class="input pb-kf-rename-input" value="${escapeAttr(kf.name)}"
+            data-role="rename-frame-input" data-kf-n="${escapeAttr(n)}" autofocus />`
+        : `<div class="pb-kf-name" title="Double-click to rename">${escapeHtml(kf.name)}</div>`;
       return `
-        <div class="pb-kf-card is-${state}" role="listitem" draggable="true" data-kf-n="${escapeAttr(n)}"
-          data-action="jump-keyframe" tabindex="0">
+        <div class="pb-kf-card is-${state}" role="listitem" draggable="${isRenaming ? 'false' : 'true'}"
+          data-kf-n="${escapeAttr(n)}" data-action="jump-keyframe" tabindex="0">
           <div class="pb-kf-top">
             <span class="pb-kf-number ${n <= view.currentKeyframe ? 'is-reached' : ''}">${n}</span>
             ${hasNote ? '<span class="pb-kf-notedot" title="Has a frame note"></span>' : ''}
           </div>
-          <div class="pb-kf-name">${escapeHtml(kf.name)}</div>
+          ${nameHtml}
           <div class="pb-kf-meta chip-mono">KEYFRAME · T+${escapeHtml(kf.t)}</div>
           ${contextMenuN === n ? renderContextMenu(tactic, { ...kf, n }) : ''}
         </div>

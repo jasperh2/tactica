@@ -2,11 +2,17 @@
 // No DOM mutation happens here; callers own writing the returned strings into previewEl.
 // Complex numeric work (arrowheads, simplification, distance) stays in core/geometry.mjs —
 // this file only shapes those results into SVG fragments and small drag-state helpers.
-import { arrowhead } from '../core/geometry.mjs';
+import { arrowhead, hitTest } from '../core/geometry.mjs';
 import { safeColor } from './sanitize.mjs';
 
 const MIN_DRAG_PCT = 0.3; // ignore drags shorter than this (accidental click-drags)
 const METERS_PER_WORLD_UNIT = 1; // README: world units ARE the "in-game units" meters figure
+const CLOSE_VERTEX_TOL_PCT = 1.5; // "click near the first vertex" close-gesture radius (% of map width)
+// Erase-by-click hit tolerance (bug-hunt fix): matches canvas.mjs's HIT_TOLERANCE_PCT so the
+// erase tool's forgiving click radius feels identical to the Select tool's — a click that would
+// select an object also erases it. Kept as this module's own constant (not imported from
+// canvas-helpers.mjs, a different panel's owned file) per the no-cross-panel-imports rule.
+const ERASE_HIT_TOLERANCE_PCT = 1.6;
 
 /**
  * @typedef {[number, number]} Point
@@ -15,6 +21,23 @@ const METERS_PER_WORLD_UNIT = 1; // README: world units ARE the "in-game units" 
 /** True when a drag from `a` to `b` is long enough to commit (not a stray click). */
 export function isMeaningfulDrag(a, b) {
   return Math.hypot(b[0] - a[0], b[1] - a[1]) >= MIN_DRAG_PCT;
+}
+
+/**
+ * True when `candidate` is within the polygon-closing tolerance radius of `points[0]` — the
+ * Zone tool's "click near the first vertex to close" gesture (bug 4 fix). Deliberately a small,
+ * fixed radius (distinct from MIN_DRAG_PCT, which governs a different gesture — "was this drag
+ * long enough to count") so an ordinary next-vertex click elsewhere on the map is never
+ * mistaken for a close. Returns false for an empty points array rather than throwing.
+ * @param {Point[]} points
+ * @param {Point} candidate
+ * @returns {boolean}
+ */
+export function isNearFirstVertex(points, candidate) {
+  if (points.length === 0) return false;
+  const [fx, fy] = points[0];
+  const [cx, cy] = candidate;
+  return Math.hypot(cx - fx, cy - fy) <= CLOSE_VERTEX_TOL_PCT;
 }
 
 /** Axis-aligned rect {x,y,w,h} (percent space) spanning two corner points. */
@@ -85,6 +108,21 @@ export function zoneMarkup(a, b, { color }) {
 }
 
 /**
+ * SVG markup for a polygon zone ghost/commit: dashed closed polygon, same 13% fill treatment
+ * as zoneMarkup (sibling helper — click-vertex zone authoring, bug 4 fix). Used both for the
+ * in-progress rubber-band preview (as few as 2 points, an open-looking shape since a real
+ * `<polygon>` element auto-closes visually) and the final commit markup.
+ * @param {Point[]} points
+ * @param {{color:string}} opts
+ * @returns {string} empty string when fewer than 2 points (nothing meaningful to preview yet)
+ */
+export function polygonMarkup(points, { color }) {
+  if (points.length < 2) return '';
+  const safe = safeColor(color);
+  return `<polygon points="${pointsAttr(points)}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${ZONE_BORDER_PX}" stroke-dasharray="6,4"/>`;
+}
+
+/**
  * Live measure-tool overlay: a plain line + a distance label near the midpoint.
  * Distance shown in world units (README: "world units 48000 across the map") and meters.
  * @param {Point} a @param {Point} b @param {number} worldDistancePct value already converted by geometry.worldDistance
@@ -99,4 +137,43 @@ export function measureMarkup(a, b, worldDistanceValue) {
     `<polyline points="${pointsAttr([a, b])}" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,3"/>` +
     `<text x="${midX}" y="${midY}" fill="#ffffff" font-size="3" font-family="monospace" text-anchor="middle" dominant-baseline="text-after-edge">${label}</text>`
   );
+}
+
+/** Adapts a resolved unit marker {x,y,size} into geometry.hitTest's marker contract
+ * ({size, resolved:{x,y}}) — every other kind's shape already matches hitTest's expectations
+ * as-is (route/sketch read .points, zone reads its shape-specific fields, text reads x/y).
+ * Mirrors canvas-helpers.mjs's toHitTestShape (a different panel's owned file) — duplicated
+ * here rather than imported, per the no-cross-panel-imports rule; core/playbook.mjs's
+ * visibleObjects() merges plain {x,y} onto unit objects the same way in both callers, so the
+ * two copies read identical input shapes. */
+function toEraseHitTestShape(obj) {
+  if (obj.kind !== 'unit') return obj;
+  return { ...obj, resolved: { x: obj.resolved?.x ?? obj.x, y: obj.resolved?.y ?? obj.y } };
+}
+
+/**
+ * Resolves the id of the topmost (last-in-array-wins, matching render z-order) object under
+ * `pt` within the erase tool's forgiving hit tolerance — geometry-based via core/geometry.mjs's
+ * hitTest, exactly mirroring the Select tool's click-resolution approach (canvas.mjs's
+ * resolvePointerHit / canvas-helpers.mjs's resolveHitId) instead of the erase tool's old DOM
+ * `event.target.closest('[data-id]')` lookup.
+ *
+ * Bug-hunt fix: the SVG annotation overlay sits visually above the markers layer, so a real
+ * click on a unit marker's screen position often lands its `event.target` on the (pointer-
+ * events-enabled) overlay `<svg>` element instead of the marker's own DOM node — closest()
+ * from there never finds a `[data-id]` ancestor, and the erase click silently does nothing. This
+ * resolves purely from the object list + a percent-space point, independent of DOM stacking, so
+ * it hits kind:'unit' markers exactly as reliably as routes/zones/sketches/text.
+ * @param {object[]} objects objects already visibility/lock-filtered by the caller, in RENDER
+ *   order (last = drawn on top = highest erase priority) — same contract as canvas-helpers.mjs's
+ *   resolveHitId.
+ * @param {[number,number]} pt percent-space point (canvasApi.toPct's output shape)
+ * @returns {string|null}
+ */
+export function resolveEraseTargetId(objects, pt) {
+  for (let i = objects.length - 1; i >= 0; i -= 1) {
+    const obj = objects[i];
+    if (hitTest(toEraseHitTestShape(obj), pt, ERASE_HIT_TOLERANCE_PCT)) return obj.id;
+  }
+  return null;
 }

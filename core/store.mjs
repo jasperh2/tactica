@@ -16,14 +16,40 @@ import { keyframeOps, addObject, moveMarker } from './playbook.mjs';
 // @typedef {{ thickness:number, dashed:boolean, head:'solid'|'open'|'none',
 //             fillOpacity:number, border:number, textSize:number,
 //             textChip:boolean, snap:boolean }} ToolOptions
+// @typedef {{ text:string, background:boolean, size:number, position:string }} NextLabel
 // @typedef {{ tool:string, roleColor:string, activeLayerId:string,
-//             currentKeyframe:number, playing:boolean, selection:(string|null),
+//             currentKeyframe:number, playing:boolean, selection:string[],
 //             armedUnit:(object|null), query:string,
 //             rosterTab:'units'|'heroes'|'artillery'|'extra',
+//             sortMode:('rarity'|'type'), markerSize:number, nextLabel:NextLabel,
 //             zoom:number, pan:{x:number,y:number}, toolOptions:ToolOptions }} ViewState
+// sortMode is the Unit options panel's roster sort preference (sidebar-v2 S4, Jasper bug 3
+// ruling 2026-07-05): 'rarity' (default, rarity-desc/name-asc, applies to every tab) or 'type'
+// (Units tab only — 3 gameClass buckets melee/ranged/cavalry, see inspector-helpers.mjs).
+// markerSize/nextLabel are the Unit options panel's "applies at next placement" preferences
+// (design 1a U8/U9). NOTE for the next integration pass: canvas.mjs's handlePlaceClick
+// currently hardcodes a local MARKER_SIZE_DEFAULT and has no label concept at all in the
+// object model (units carry no `label` field — only zones do, via the setObjectProps
+// whitelist) — wiring these view preferences into the actual placed-object shape is a
+// cross-cutting change spanning canvas.mjs/playbook.mjs/exporter.mjs, none of which this
+// stage owns (already flagged as an open build-scope delta in DECISIONS.md 2026-07-04: "unit
+// label block (props + playbook export)"). This stage builds the view-state seam + UI only.
+// selection is ALWAYS an array (empty = nothing selected) — multi-select rework, bug 5/6
+// diagnosis. view/select accepts either the legacy {id} single-object payload (kept for
+// drawtools.mjs's selectLatest(), which this store.mjs owner doesn't touch) or the new
+// {ids, mode} payload; see the view/select reducer case below for exact semantics.
 
 const DOC_PREFIX = 'doc/';
 const VIEW_PREFIX = 'view/';
+
+// Mirrors inspector.mjs's own DEFAULT_NEXT_LABEL (mockup defaults: 26px marker, 9px label,
+// background on, south position) — kept here too, not imported (core must not depend on ui),
+// so view/setNextLabel can merge against a COMPLETE object even on a real fresh boot where
+// app.mjs's freshView() doesn't yet seed view.nextLabel (open seam, noted above). Spreading
+// `undefined` (`{...view.nextLabel}` when nextLabel was never set) silently produces `{}`, not
+// a throw — so before this fix, the FIRST setNextLabel dispatch of a session ever would leave
+// nextLabel with only the one just-set key, permanently missing the other three defaults.
+const DEFAULT_NEXT_LABEL = { text: '', background: true, size: 9, position: 'S' };
 
 /**
  * Creates a minimal pub-sub store wrapping the pure doc/view reducers.
@@ -173,9 +199,34 @@ const docHandlers = {
     );
   },
 
+  // Batched group-move (increment 5) — one dispatch for the whole gesture so app.mjs's
+  // history-aware exec() pushes exactly one undo snapshot per drag, not one per object.
+  [`${DOC_PREFIX}moveObjects`](doc, action) {
+    return withActiveTactic(doc, (tactic) =>
+      action.moves.reduce((t, move) => moveMarker(t, move.id, move.kf, { x: move.x, y: move.y }), tactic)
+    );
+  },
+
   [`${DOC_PREFIX}resizeMarker`](doc, action) {
     return withActiveTactic(doc, (tactic) =>
       withObject(tactic, action.id, (obj) => ({ ...obj, size: action.size }))
+    );
+  },
+
+  // Batched group-resize (increment 6) — same one-snapshot rationale as moveObjects. Each
+  // entry may also carry {kf, x, y} for the "scale about the selection bbox" case, so a
+  // group-resize that repositions markers stays a single undo step.
+  [`${DOC_PREFIX}resizeMarkers`](doc, action) {
+    return withActiveTactic(doc, (tactic) =>
+      action.resizes.reduce((t, resize) => {
+        const sized = withObject(t, resize.id, (obj) => ({ ...obj, size: resize.size }));
+        if (resize.kf === undefined) return sized;
+        return { ...sized, objects: sized.objects.map((obj) =>
+          obj.id === resize.id
+            ? { ...obj, positions: { ...obj.positions, [resize.kf]: { x: resize.x, y: resize.y } } }
+            : obj
+        ) };
+      }, tactic)
     );
   },
 
@@ -202,8 +253,29 @@ const docHandlers = {
     }));
   },
 
+  // Batched multi-select delete (increment 6) — one dispatch, one undo step for the whole
+  // selection instead of N.
+  [`${DOC_PREFIX}deleteObjects`](doc, action) {
+    const idsToDelete = new Set(action.ids);
+    return withActiveTactic(doc, (tactic) => ({
+      ...tactic,
+      objects: tactic.objects.filter((o) => !idsToDelete.has(o.id)),
+    }));
+  },
+
   [`${DOC_PREFIX}clearPlaced`](doc) {
     return withActiveTactic(doc, (tactic) => ({ ...tactic, objects: [] }));
+  },
+
+  // Erase panel's per-category "Clear" buttons (sidebar-v2 design 1c / CHANGES §3): removes
+  // every object of one `kind` (unit/route/sketch/zone/text) from the active tactic, leaving
+  // every other kind untouched. Undoable "for free" — app.mjs's exec() snapshots history for
+  // any doc/*-prefixed action before dispatching it, same as clearPlaced/deleteObjects above.
+  [`${DOC_PREFIX}clearByKind`](doc, action) {
+    return withActiveTactic(doc, (tactic) => ({
+      ...tactic,
+      objects: tactic.objects.filter((o) => o.kind !== action.kind),
+    }));
   },
 
   [`${DOC_PREFIX}addLayer`](doc, action) {
@@ -305,6 +377,31 @@ export function reduceView(view, action) {
   return handler ? handler(view, action) : view;
 }
 
+/**
+ * Computes the next selection array for a view/select dispatch. `ids` (new multi-select
+ * payload) takes precedence over the legacy single-id `id` payload when both are present.
+ * `mode` only applies to the `ids` payload — the legacy `id` payload is always a replace
+ * (matches its old single-scalar-assignment behavior exactly, just array-shaped now).
+ * @param {string[]} current
+ * @param {{id?:(string|null), ids?:string[], mode?:('replace'|'add'|'toggle')}} action
+ * @returns {string[]}
+ */
+function nextSelection(current, action) {
+  if (action.ids !== undefined) {
+    const mode = action.mode ?? 'replace';
+    if (mode === 'add') {
+      return [...current, ...action.ids.filter((id) => !current.includes(id))];
+    }
+    if (mode === 'toggle') {
+      const toRemove = new Set(action.ids.filter((id) => current.includes(id)));
+      const toAdd = action.ids.filter((id) => !current.includes(id));
+      return [...current.filter((id) => !toRemove.has(id)), ...toAdd];
+    }
+    return [...action.ids];
+  }
+  return action.id ? [action.id] : [];
+}
+
 const viewHandlers = {
   [`${VIEW_PREFIX}setTool`](view, action) {
     return { ...view, tool: action.tool };
@@ -316,7 +413,7 @@ const viewHandlers = {
     return { ...view, activeLayerId: action.layerId };
   },
   [`${VIEW_PREFIX}select`](view, action) {
-    return { ...view, selection: action.id };
+    return { ...view, selection: nextSelection(view.selection, action) };
   },
   [`${VIEW_PREFIX}armUnit`](view, action) {
     return { ...view, armedUnit: action.unit };
@@ -329,6 +426,15 @@ const viewHandlers = {
   },
   [`${VIEW_PREFIX}setTab`](view, action) {
     return { ...view, rosterTab: action.tab };
+  },
+  [`${VIEW_PREFIX}setSortMode`](view, action) {
+    return { ...view, sortMode: action.mode };
+  },
+  [`${VIEW_PREFIX}setMarkerSize`](view, action) {
+    return { ...view, markerSize: action.size };
+  },
+  [`${VIEW_PREFIX}setNextLabel`](view, action) {
+    return { ...view, nextLabel: { ...DEFAULT_NEXT_LABEL, ...view.nextLabel, [action.key]: action.value } };
   },
   [`${VIEW_PREFIX}setKeyframe`](view, action) {
     return { ...view, currentKeyframe: action.kf };

@@ -1,7 +1,8 @@
-// ui/toolrail.mjs — TACTICA tool rail [ui-inspector]
-// 13 tool buttons (Select..Erase), Phosphor icon + mono shortcut badge, active state.
-// Clicking a tool dispatches view/setTool. Keyboard shortcuts themselves belong to the
-// integrator (app.mjs) — this module only renders the buttons and handles clicks.
+// ui/toolrail.mjs — TACTICA dock tools cluster [ui-inspector / sidebar-v2 S1]
+// 13 tool buttons (Select..Erase) in the fixed TOOLS cluster atop the dock (design
+// sidebar-v2 §2a), Phosphor icon + mono shortcut badge, active state. Clicking a tool
+// dispatches view/setTool. Keyboard shortcuts themselves belong to the integrator
+// (app.mjs) — this module only renders the buttons and handles clicks.
 //
 // Contract §5: export function mount(el, ctx). Re-render from store.subscribe. Event
 // delegation on the panel root. No cross-panel imports, no console.log.
@@ -53,11 +54,14 @@ function renderButton(tool, activeToolId) {
 }
 
 function render(view) {
-  return TOOLS.map((tool) => renderButton(tool, view.tool)).join('');
+  return `
+    <div class="section-label toolrail-label">Tools</div>
+    <div class="toolrail-grid">${TOOLS.map((tool) => renderButton(tool, view.tool)).join('')}</div>
+  `;
 }
 
 /**
- * Mounts the tool rail panel.
+ * Mounts the dock's fixed TOOLS cluster.
  * @param {HTMLElement} el
  * @param {{store:object, history:object, roster:object, maps:object, exec:Function}} ctx
  */

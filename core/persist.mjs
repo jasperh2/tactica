@@ -65,6 +65,11 @@ const OBJECT_FIELD_KINDS = {
     cy: 'reqnumber',
     rx: 'reqnumber',
     ry: 'reqnumber',
+    // 'points' reuses the existing route/sketch points coercion kind + sanitizePoints() helper
+    // (shape:'polygon' zones only) rather than inventing a new coercion. Harmless when shape is
+    // 'ellipse': obj.points is undefined, so sanitizePoints(undefined) below just returns null
+    // and the polygon-only geometry check further down never runs for that object.
+    points: 'points',
     role: 'color',
     layerId: 'string',
     appearsAt: 'kfnumber',
@@ -105,6 +110,22 @@ const OBJECT_FIELD_KINDS = {
 // can't be defaulted meaningfully. `positions`/`points` are checked structurally, not by key
 // name, so they aren't listed here; see sanitizeObject's REQUIRES_GEOMETRY dispatch below.
 const REQUIRES_NONEMPTY_POSITIONS = new Set(['unit']);
+
+// Kinds whose 'points' field is UNCONDITIONALLY required (their only geometry) — route/sketch
+// have no other way to render, so invalid/missing points always drops the object. Zone is
+// deliberately NOT in this set: an ellipse zone (shape !== 'polygon') has no points field at
+// all (undefined -> sanitizePoints returns null harmlessly), and only a shape:'polygon' zone
+// requires points to be valid — that check lives in the zone-specific branch below instead,
+// alongside the existing cx/cy/rx/ry-vs-points shape dispatch.
+const REQUIRES_POINTS_UNCONDITIONALLY = new Set(['route', 'sketch']);
+
+// Zone's ellipse-only geometry fields — applied ONLY when shape !== 'polygon'. A polygon zone
+// must not carry these at all: obj.cx/cy/rx/ry are undefined on a polygon zone object, and
+// running them through the ordinary 'reqnumber' coercion (Number(undefined) -> NaN) would leave
+// stray cx:NaN/cy:NaN/... keys that serialize misleadingly as `null` via JSON.stringify. Kept as
+// a small local set (not a new coercion kind) since this is the one field group whose
+// APPLICABILITY, not just validity, depends on a sibling field's value (`shape`).
+const ZONE_ELLIPSE_ONLY_FIELDS = new Set(['cx', 'cy', 'rx', 'ry']);
 
 /**
  * Wraps `doc` in a versioned envelope and returns it as a JSON string.
@@ -264,17 +285,40 @@ function sanitizeObject(obj) {
     }
     if (coercion === 'points') {
       const points = sanitizePoints(obj.points);
-      if (points === null) return null; // routes/sketches need valid geometry to render at all
-      result.points = points;
+      // route/sketch have no other geometry — invalid/missing points always drops them. Zone's
+      // points requirement is shape-conditional (only shape:'polygon' needs it), checked in the
+      // zone-specific branch below instead, so an ellipse zone's naturally-absent points field
+      // (sanitizePoints(undefined) -> null) does NOT drop the object here — it instead leaves
+      // `points` as `undefined` on the result (same "absent, not null" convention as the
+      // `string-optional` coercion for `label`), so an ellipse zone's output stays byte-
+      // identical to before this change: no stray `points` key of any kind.
+      if (points === null && REQUIRES_POINTS_UNCONDITIONALLY.has(kind)) return null;
+      if (points !== null) result.points = points;
+      continue;
+    }
+    // A polygon zone has no ellipse geometry — skip cx/cy/rx/ry entirely rather than coercing
+    // Number(undefined) into a stray NaN field (see ZONE_ELLIPSE_ONLY_FIELDS doc comment).
+    if (kind === 'zone' && obj.shape === 'polygon' && ZONE_ELLIPSE_ONLY_FIELDS.has(field)) {
       continue;
     }
     result[field] = applyScalarCoercion(obj[field], coercion, field);
   }
 
-  // cx/cy/rx/ry (zone) and x/y (text) are required scalar geometry — a non-finite value there
-  // makes the object unrenderable, same failure mode as positions/points, so drop rather than
-  // silently defaulting to 0 (which would render a wrong, misleading shape instead of nothing).
-  if (kind === 'zone' && !allFinite(result, ['cx', 'cy', 'rx', 'ry'])) return null;
+  // Zone's required geometry is shape-conditional: shape:'polygon' needs a valid points array
+  // (>=3 vertices — a polygon can't be rendered/hit-tested with fewer); every other shape
+  // (including a zone with no shape field at all — backward compat with pre-shape-field zone
+  // objects, see persist-hardening.test.mjs) keeps the original ellipse cx/cy/rx/ry
+  // requirement UNCHANGED, so existing ellipse zones round-trip exactly as before this change.
+  if (kind === 'zone') {
+    if (result.shape === 'polygon') {
+      if (result.points === undefined || result.points.length < 3) return null;
+    } else if (!allFinite(result, ['cx', 'cy', 'rx', 'ry'])) {
+      return null;
+    }
+  }
+  // x/y (text) is required scalar geometry — a non-finite value there makes the object
+  // unrenderable, same failure mode as positions/points, so drop rather than silently
+  // defaulting to 0 (which would render a wrong, misleading shape instead of nothing).
   if (kind === 'text' && !allFinite(result, ['x', 'y'])) return null;
 
   return result;

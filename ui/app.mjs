@@ -63,10 +63,12 @@ const KEY_TO_TOOL = {
 boot();
 
 async function boot() {
-  const [roster, maps] = await Promise.all([
+  const [roster, maps, themeApi] = await Promise.all([
     fetchJson('./data/roster.json'),
     fetchJson('./data/maps.json'),
+    loadThemeApi(),
   ]);
+  themeApi.initTheme();
 
   const shared = readSharedDocFromHash();
   const isReadonly = shared !== null;
@@ -85,6 +87,23 @@ async function boot() {
       history.push(store.getDoc());
     }
     store.dispatch(action);
+    pruneSelectionAfterDelete(action);
+  }
+
+  // Bug-hunt fix (dangling selection): doc/deleteObject and doc/deleteObjects are fully
+  // independent of view.selection in the reducers — nothing there clears a selected id that
+  // just got removed from the doc. Every read site degrades safely today (findObject returns
+  // undefined, canvas-objects.mjs's .includes() check just renders nothing selected), but a
+  // stale id lingering in view.selection is still wrong state worth closing here rather than
+  // leaving it for a future feature to trip over.
+  function pruneSelectionAfterDelete(action) {
+    if (action?.type !== 'doc/deleteObject' && action?.type !== 'doc/deleteObjects') return;
+    const deletedIds = action.type === 'doc/deleteObject' ? [action.id] : action.ids;
+    const selection = store.getView().selection;
+    const pruned = selection.filter((id) => !deletedIds.includes(id));
+    if (pruned.length !== selection.length) {
+      store.dispatch({ type: 'view/select', ids: pruned });
+    }
   }
 
   function undo() {
@@ -112,7 +131,18 @@ async function boot() {
 
   // openExport is set once the export modal mounts (below); the playbookbar's Export button
   // calls ctx.openExport, so it has to be present on ctx before playbookbar mounts.
-  const ctx = { store, history, roster, maps, exec, undo, redo, share, openExport: () => {} };
+  const ctx = {
+    store,
+    history,
+    roster,
+    maps,
+    exec,
+    undo,
+    redo,
+    share,
+    toggleTheme: themeApi.toggleTheme,
+    openExport: () => {},
+  };
 
   mountTopbar(document.getElementById('topbar'), ctx);
   mountLayers(document.getElementById('layers'), ctx);
@@ -135,6 +165,35 @@ async function boot() {
 }
 
 // ---------------------------------------------------------------------------
+// Theme (sidebar-v2 S1) — stub-tolerant dynamic import of ui/theme.mjs
+// ---------------------------------------------------------------------------
+
+/**
+ * ui/theme.mjs is owned by the sidebar-v2 S2 builder (contract: `export function initTheme()`
+ * / `export function toggleTheme()`, wiring document.documentElement.dataset.theme +
+ * localStorage). This file is the ONLY place that imports it, and only dynamically — a plain
+ * `import { initTheme, toggleTheme } from './theme.mjs'` at module top-level would throw a
+ * fetch/parse error for the whole app.mjs bundle if theme.mjs doesn't exist yet on this branch,
+ * which would take the rest of boot() down with it. The dynamic import here is caught, so a
+ * missing theme.mjs degrades to no-op theme controls (topbar's toggle button still renders,
+ * per isDarkTheme() there defaulting to dark) rather than breaking the app.
+ * @returns {Promise<{initTheme: Function, toggleTheme: Function}>}
+ */
+async function loadThemeApi() {
+  try {
+    const mod = await import('./theme.mjs');
+    return {
+      initTheme: typeof mod.initTheme === 'function' ? mod.initTheme : noop,
+      toggleTheme: typeof mod.toggleTheme === 'function' ? mod.toggleTheme : noop,
+    };
+  } catch {
+    return { initTheme: noop, toggleTheme: noop };
+  }
+}
+
+function noop() {}
+
+// ---------------------------------------------------------------------------
 // Initial state
 // ---------------------------------------------------------------------------
 
@@ -155,7 +214,7 @@ function freshView() {
     activeLayerId: 'units',
     currentKeyframe: 1,
     playing: false,
-    selection: null,
+    selection: [],
     armedUnit: null,
     query: '',
     rosterTab: 'units',

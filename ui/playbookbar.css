@@ -247,12 +247,15 @@
   border-color: var(--accent);
 }
 
+/* is-past/is-future had no token match (bespoke shades) — reusing --chip-surface/--tile-surface
+   (a Sidebar v2 pair with the same brighter/dimmer relationship, verified by luminance) rather
+   than hardcoding a light-mode value with no design source. See styles/tokens.css. */
 .pb-kf-card.is-past {
-  background: #212633;
+  background: var(--chip-surface);
 }
 
 .pb-kf-card.is-future {
-  background: #191d25;
+  background: var(--tile-surface);
 }
 
 .pb-kf-card.is-future .pb-kf-name,
@@ -305,6 +308,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.pb-kf-rename-input {
+  width: 100%;
+  font-size: var(--text-scale-12);
+  font-weight: 700;
+  padding: 1px var(--space-2);
 }
 
 .pb-kf-meta {

@@ -25,6 +25,8 @@ export function mount(el, ctx) {
   /** @type {string|null} */
   let renamingTacticId = null;
   /** @type {number|null} */
+  let renamingFrameN = null; // keyframe n currently showing the inline rename input
+  /** @type {number|null} */
   let contextMenuN = null; // keyframe n with an open right-click menu
   /** @type {number|null} */
   let dragFromIndex = null; // 1-based position currently being dragged
@@ -77,7 +79,7 @@ export function mount(el, ctx) {
         </div>
       </div>
       <div class="pb-keyframes" role="list" aria-label="Keyframes">
-        ${tactic ? renderKeyframeCards(tactic, view, contextMenuN) : renderEmptyState()}
+        ${tactic ? renderKeyframeCards(tactic, view, contextMenuN, renamingFrameN) : renderEmptyState()}
       </div>
     `;
   }
@@ -85,6 +87,7 @@ export function mount(el, ctx) {
   // ---- event delegation ------------------------------------------------------
 
   function onClick(event) {
+    if (event.target.closest('[data-role="rename-frame-input"]')) return;
     const target = event.target.closest('[data-action]');
     if (!target) return;
     const action = target.dataset.action;
@@ -119,14 +122,23 @@ export function mount(el, ctx) {
 
   function onDblClick(event) {
     if (event.target.closest('[data-role="rename-tactic-input"]')) return;
-    if (event.target.closest('[data-action="rename-tactic-start"]')) startRenameTactic(event);
+    if (event.target.closest('[data-action="rename-tactic-start"]')) return startRenameTactic(event);
+    if (event.target.closest('[data-role="rename-frame-input"]')) return;
+    const kfName = event.target.closest('.pb-kf-name');
+    if (kfName) startRenameFrame(event, kfName);
   }
 
   function onKeydown(event) {
-    const input = event.target.closest('[data-role="rename-tactic-input"]');
-    if (input) {
-      if (event.key === 'Enter') commitRenameTactic(input.value);
+    const tacticInput = event.target.closest('[data-role="rename-tactic-input"]');
+    if (tacticInput) {
+      if (event.key === 'Enter') commitRenameTactic(tacticInput.value);
       if (event.key === 'Escape') cancelRenameTactic();
+      return;
+    }
+    const frameInput = event.target.closest('[data-role="rename-frame-input"]');
+    if (frameInput) {
+      if (event.key === 'Enter') commitRenameFrame(Number(frameInput.dataset.kfN), frameInput.value);
+      if (event.key === 'Escape') cancelRenameFrame();
       return;
     }
     const card = event.target.closest('[data-action="jump-keyframe"]');
@@ -137,13 +149,17 @@ export function mount(el, ctx) {
   }
 
   function onBlurCapture(event) {
-    const input = event.target.closest && event.target.closest('[data-role="rename-tactic-input"]');
-    if (!input) return;
+    const target = event.target;
+    if (!target || !target.closest) return;
+    const tacticInput = target.closest('[data-role="rename-tactic-input"]');
+    const frameInput = target.closest('[data-role="rename-frame-input"]');
+    if (!tacticInput && !frameInput) return;
     if (suppressNextBlur) {
       suppressNextBlur = false;
       return;
     }
-    commitRenameTactic(input.value);
+    if (tacticInput) return commitRenameTactic(tacticInput.value);
+    commitRenameFrame(Number(frameInput.dataset.kfN), frameInput.value);
   }
 
   // ---- drag-to-reorder ---------------------------------------------------
@@ -312,12 +328,46 @@ export function mount(el, ctx) {
 
   function renameFrame(n) {
     closeContextMenu();
+    setRenamingFrame(n);
+  }
+
+  function startRenameFrame(event, kfNameEl) {
+    const card = kfNameEl.closest('[data-kf-n]');
+    if (!card) return;
+    event.stopPropagation();
+    setRenamingFrame(Number(card.dataset.kfN));
+  }
+
+  function setRenamingFrame(n) {
     const tactic = getActiveTactic(ctx.store.getDoc());
     const kf = tactic && tactic.keyframes.find((k) => k.n === n);
     if (!kf) return;
-    const name = window.prompt('Rename keyframe', kf.name);
-    if (!name || name.trim() === kf.name) return;
-    ctx.exec({ type: 'doc/renameKeyframe', n, name: name.trim() });
+    renamingFrameN = n;
+    render(ctx.store.getDoc(), ctx.store.getView());
+    const input = el.querySelector('[data-role="rename-frame-input"]');
+    if (input) {
+      input.focus();
+      input.select();
+    }
+  }
+
+  function commitRenameFrame(n, rawValue) {
+    const tactic = getActiveTactic(ctx.store.getDoc());
+    const kf = tactic && tactic.keyframes.find((k) => k.n === n);
+    renamingFrameN = null;
+    suppressNextBlur = true;
+    const name = (rawValue || '').trim();
+    if (!kf || !name || name === kf.name) {
+      render(ctx.store.getDoc(), ctx.store.getView());
+      return;
+    }
+    ctx.exec({ type: 'doc/renameKeyframe', n, name });
+  }
+
+  function cancelRenameFrame() {
+    renamingFrameN = null;
+    suppressNextBlur = true;
+    render(ctx.store.getDoc(), ctx.store.getView());
   }
 
   function duplicateFrame(n) {

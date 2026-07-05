@@ -4,7 +4,10 @@
 // 400-line-per-file target for the biggest panel in the tool.
 
 export const ZOOM_MIN = 25;
-export const ZOOM_MAX = 400;
+// Raised 400 -> 800 (bug 2 diagnosis): the 16 TW-style maps are 2071x2064 native, ~2.5x
+// western-city's 822x786, so the old ceiling left them well short of native resolution on
+// ordinary screens even before the .canvas-mapbox width-cap (canvas.css) is factored in.
+export const ZOOM_MAX = 800;
 export const ZOOM_DEFAULT = 100;
 const ZOOM_WHEEL_STEP = 0.0015; // exponential factor per wheel deltaY unit
 const ZOOM_BUTTON_STEP = 25; // +/- pill step, in percent points

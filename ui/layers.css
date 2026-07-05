@@ -163,6 +163,19 @@
   font-size: var(--text-scale-13);
 }
 
+.layer-row__rename {
+  opacity: 0;
+  transition: opacity var(--duration-drop) var(--ease-tween);
+}
+
+.layer-row:hover .layer-row__rename:not(:disabled) {
+  opacity: 1;
+}
+
+.layer-row__rename:disabled {
+  cursor: not-allowed;
+}
+
 .layer-row__delete {
   color: var(--text-faint);
   opacity: 0;

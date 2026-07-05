@@ -15,25 +15,55 @@ import {
   isLineLikeTool,
   isShapeTool,
   escapeHtml,
-  normalizeEntry,
   filterRoster,
+  sortRosterEntries,
   renderRarityLegend,
   renderRosterGrid,
-  renderStatChips,
-  renderMatchupChips,
+  renderArmedCard,
+  renderSortControl,
+  renderSliderWithValue,
+  renderNextLabelBlock,
   renderRoleSwatches,
-  rarityHex,
-  rarityName,
+  renderMultiSelectPanel,
+  renderMeasurePanel,
+  renderErasePanel,
+  renderPanPanel,
+  renderFrameNotes,
+  objectKindLabel,
+  renderLabelField,
   fmtCoordPair,
 } from './inspector-helpers.mjs';
+import { installGlobalSearchFocus } from './inspector-shortcuts.mjs';
 
 const NOTE_DEBOUNCE_MS = 300;
+// MUST stay numerically equal to canvas-objects.mjs's own MIN_MARKER_SIZE/MAX_MARKER_SIZE (the
+// on-canvas resize handle's clamp range, increment 2/6) — kept as a separate local const rather
+// than a cross-panel import per this module's own "no cross-panel imports" header comment.
 const MIN_MARKER_SIZE = 16;
 const MAX_MARKER_SIZE = 54;
 const MIN_TEXT_SIZE = 8;
 const MAX_TEXT_SIZE = 40;
 const MIN_THICKNESS = 1;
 const MAX_THICKNESS = 10;
+const MIN_LABEL_SIZE = 6;
+const MAX_LABEL_SIZE = 20;
+
+// Selectable palette tabs (sidebar-v2 design 2a/CHANGES §3: Extra tab REMOVED, Jasper-approved
+// 2026-07-05 — "doesn't get used"). roster.extra still exists in data/roster.json and still
+// renders fine wherever an existing doc/object references it (e.g. already-placed 'extra'
+// markers on the canvas) — only the SELECTABLE TAB is gone, per the mission's "keep their
+// rendering support for existing docs, just no tab".
+const PALETTE_TABS = ['heroes', 'units', 'artillery'];
+const DEFAULT_PALETTE_TAB = 'units';
+
+// Defaults for the two NEW "applies at next placement" ViewState fields (markerSize,
+// nextLabel) — mirrors the mockup's own defaults (26px marker, 9px label, background on,
+// south position). Used ONLY as a defensive `??` fallback here so this panel never throws if
+// a caller's view doesn't carry these fields yet (e.g. a test double, or app.mjs's
+// freshView()/a persisted doc from before this stage — that seam is app.mjs's, not owned
+// here); real interactive state always comes from the store once a value has been set once.
+const DEFAULT_MARKER_SIZE = 26;
+const DEFAULT_NEXT_LABEL = { text: '', background: true, size: 9, position: 'S' };
 
 function header(toolId) {
   const meta = toolMeta(toolId);
@@ -56,6 +86,42 @@ function findObject(tactic, id) {
 }
 
 /**
+ * Bug-hunt fix: every Inspector-driven object edit (delete, resize, recolor, text/zone-label
+ * setObjectProps) used to dispatch its doc/* action unconditionally, regardless of the target
+ * object's own layer lock state — zero 'locked'/'blocked' references existed anywhere in this
+ * file. Mirrors canvas.mjs's own (private, non-exported per that module's convention, so
+ * duplicated here rather than cross-panel-imported) isLayerLockedForObject: resolve the
+ * object's layerId from the active tactic, then check doc.layers for that layer's lock flag.
+ * An id that doesn't resolve to a live object is treated as locked (refuse) — defensive, not
+ * normally reachable since callers only pass ids already known to be selected/present.
+ * @param {object} doc
+ * @param {string} objectId
+ * @returns {boolean}
+ */
+function isObjectLocked(doc, objectId) {
+  const tactic = activeTactic(doc);
+  const obj = findObject(tactic, objectId);
+  if (!obj) return true;
+  const layer = doc.layers.find((l) => l.id === obj.layerId);
+  return !!(layer && layer.locked);
+}
+
+/**
+ * The single selected object, IF exactly one object is selected (view.selection is now
+ * string[] — multi-select rework, bug 5/6 diagnosis). Every single-object inspector control
+ * (size slider, zone label, delete button, role recolor, text editing) should read through
+ * this instead of the old scalar `findObject(tactic, view.selection)`, so a 0- or 2+-object
+ * selection cleanly resolves to null (hide/no-op) rather than silently matching nothing via a
+ * broken `===` comparison against an array.
+ * @param {object} tactic
+ * @param {{selection:string[]}} view
+ * @returns {object|null}
+ */
+function singleSelected(tactic, view) {
+  return view.selection.length === 1 ? findObject(tactic, view.selection[0]) : null;
+}
+
+/**
  * The selected text object, IF the text tool is active and the current selection resolves to
  * a `kind:'text'` object — i.e. exactly the "editing existing note" state renderTextToolPanel
  * computes for display. Re-derived fresh from live store state in event handlers (same style
@@ -65,9 +131,9 @@ function findObject(tactic, id) {
  */
 function editingTextNote(store) {
   const view = store.getView();
-  if (view.tool !== 'text' || !view.selection) return null;
+  if (view.tool !== 'text') return null;
   const tactic = activeTactic(store.getDoc());
-  const obj = findObject(tactic, view.selection);
+  const obj = singleSelected(tactic, view);
   return obj?.kind === 'text' ? obj : null;
 }
 
@@ -79,75 +145,74 @@ function findRosterEntry(roster, tab, code) {
   return rosterEntriesForTab(roster, tab).find((e) => e.code === code) ?? null;
 }
 
-function renderArmedCard(tab, entry, rarityTable) {
-  const info = normalizeEntry(tab, entry);
-  const rarity = rarityHex(rarityTable, entry.rarity);
-  return `
-    <div class="armed-card">
-      <div class="armed-card-top">
-        <span class="armed-code-chip" style="background:${rarity}29;color:${rarity}">${escapeHtml(entry.code)}</span>
-        <div class="armed-card-titles">
-          <div class="armed-card-name">${escapeHtml(entry.name)}</div>
-          <span class="rarity-pill" style="color:${rarity};border-color:${rarity}4d">${escapeHtml(rarityName(rarityTable, entry.rarity))}</span>
-        </div>
-        <button type="button" class="btn-icon armed-disarm" data-action="disarm" title="Disarm" aria-label="Disarm">
-          <i class="ph-bold ph-x" aria-hidden="true"></i>
-        </button>
-      </div>
-      ${renderStatChips(info.statChips)}
-      ${renderMatchupChips(info.strongVs, info.weakVs)}
-      ${info.desc ? `<div class="armed-desc">${escapeHtml(info.desc)}</div>` : ''}
-    </div>
-  `;
+/**
+ * The tab actually used for rendering (heading/entries/sort applicability) — defensively falls
+ * back to DEFAULT_PALETTE_TAB for a stale `rosterTab: 'extra'` (e.g. an old persisted doc or
+ * share-link from before the Extra tab was removed) without mutating store state; the tab
+ * button row itself never offers 'extra' as a choice.
+ * @param {string} rosterTab
+ */
+function effectivePaletteTab(rosterTab) {
+  return PALETTE_TABS.includes(rosterTab) ? rosterTab : DEFAULT_PALETTE_TAB;
+}
+
+/** Live count of `kind:'unit'` objects on the active tactic (Unit options heading, item 1). */
+function placedUnitCount(doc) {
+  const tactic = activeTactic(doc);
+  return tactic?.objects.filter((o) => o.kind === 'unit').length ?? 0;
 }
 
 function renderPlacePanel(doc, view, roster) {
   const activeLayer = doc.layers.find((l) => l.id === view.activeLayerId);
-  const tab = view.rosterTab;
-  const entries = filterRoster(rosterEntriesForTab(roster, tab), view.query);
+  const tab = effectivePaletteTab(view.rosterTab);
+  const filtered = filterRoster(rosterEntriesForTab(roster, tab), view.query);
+  // Type sort only applies to the Units tab (heroes/artillery have no gameClass — mission item
+  // 6) — fall back to rarity mode's flat order for every other tab regardless of view.sortMode.
+  const effectiveSortMode = tab === 'units' ? (view.sortMode ?? 'rarity') : 'rarity';
+  const entries = sortRosterEntries(filtered, effectiveSortMode);
   const armedCode = view.armedUnit?.code ?? null;
 
-  const tabs = ['units', 'heroes', 'artillery', 'extra'].map(
+  const tabs = PALETTE_TABS.map(
     (t) => `
       <button type="button" class="roster-tab${t === tab ? ' is-active' : ''}" data-tab="${t}">
         ${escapeHtml(t[0].toUpperCase() + t.slice(1))}
       </button>`
   ).join('');
 
+  // Sort control only shown on the Units tab — heroes/artillery always sort by rarity, and a
+  // 2-state toggle with only one reachable state would be confusing chrome, not a real choice.
+  const sortControl = tab === 'units' ? renderSortControl(view.sortMode ?? 'rarity') : '';
+
   return `
     <div class="inspector-content">
+      <div class="inspector-section-heading">
+        <span class="inspector-section-title">Unit options</span>
+        <span class="inspector-section-count">(${placedUnitCount(doc)} on map)</span>
+      </div>
       <div class="place-hint-chip">New units → ${escapeHtml(activeLayer?.name ?? '—')}</div>
       <div class="roster-tabs">${tabs}</div>
       <input type="text" class="input roster-search" data-field="roster-search" placeholder="Search name or code…" value="${escapeHtml(view.query)}" />
       ${renderRarityLegend(roster.rarity)}
+      ${sortControl}
       ${renderRosterGrid(tab, entries, armedCode, roster.rarity)}
       ${view.armedUnit ? renderArmedCard(tab, view.armedUnit.entry, roster.rarity) : ''}
+      ${renderRoleSwatches(roster.roles, view.roleColor, 'place', { showCurrentName: true })}
+      ${renderSliderWithValue({ label: 'Marker size', dataKey: 'markerSize', min: MIN_MARKER_SIZE, max: MAX_MARKER_SIZE, value: view.markerSize ?? DEFAULT_MARKER_SIZE, unit: 'px' })}
+      ${renderNextLabelBlock(view.nextLabel ?? DEFAULT_NEXT_LABEL, { minSize: MIN_LABEL_SIZE, maxSize: MAX_LABEL_SIZE })}
     </div>
   `;
 }
 
 // ---- Select / Move tool -------------------------------------------------------
 
-const SKETCH_SHAPE_LABEL = {
-  arrow: 'Arrow',
-  line: 'Line',
-  free: 'Freehand',
-  rect: 'Box',
-  ellipse: 'Circle',
-};
-
-function objectKindLabel(obj) {
-  if (obj.kind === 'unit') return obj.name ?? obj.code;
-  if (obj.kind === 'route') return 'Route';
-  if (obj.kind === 'sketch') return SKETCH_SHAPE_LABEL[obj.shape] ?? 'Sketch';
-  if (obj.kind === 'zone') return 'Zone';
-  if (obj.kind === 'text') return 'Text note';
-  return obj.kind;
-}
-
 function renderSelectPanel(doc, view, roster) {
   const tactic = activeTactic(doc);
-  const obj = view.selection ? findObject(tactic, view.selection) : null;
+
+  if (view.selection.length > 1) {
+    return renderMultiSelectPanel(view.selection.length);
+  }
+
+  const obj = singleSelected(tactic, view);
 
   if (!obj) {
     return `
@@ -265,7 +330,7 @@ function renderShapeToolPanel(view, roster) {
 
 function renderTextToolPanel(doc, view, roster) {
   const tactic = activeTactic(doc);
-  const selected = view.selection ? findObject(tactic, view.selection) : null;
+  const selected = singleSelected(tactic, view);
   const editingExisting = selected?.kind === 'text' ? selected : null;
   const opts = view.toolOptions;
   const textValue = editingExisting ? editingExisting.text : '';
@@ -293,68 +358,7 @@ function renderTextToolPanel(doc, view, roster) {
   `;
 }
 
-// ---- Measure / Erase / Pan -----------------------------------------------------
-
-function renderMeasurePanel(view) {
-  return `
-    <div class="inspector-content">
-      <label class="toggle-row">
-        <input type="checkbox" data-toggle="snap" ${view.toolOptions.snap ? 'checked' : ''} />
-        <span>Snap to grid</span>
-      </label>
-      <div class="inspector-empty">Drag on the map for a live distance readout (world units + meters). Not persisted.</div>
-    </div>
-  `;
-}
-
-function renderErasePanel(doc) {
-  const tactic = activeTactic(doc);
-  const count = tactic?.objects.length ?? 0;
-  return `
-    <div class="inspector-content">
-      <div class="inspector-empty">Click an object on the map to delete it.</div>
-      <button type="button" class="btn btn-danger" data-action="clear-placed">
-        <i class="ph-bold ph-trash" aria-hidden="true"></i> Clear placed (${count})
-      </button>
-    </div>
-  `;
-}
-
-function renderPanPanel() {
-  return `
-    <div class="inspector-content">
-      <div class="inspector-empty">Drag the map to pan, or hold Space in any tool.</div>
-    </div>
-  `;
-}
-
-function renderLabelField() {
-  return `
-    <div class="inspector-section">
-      <div class="section-label">Label (optional)</div>
-      <input type="text" class="input" data-label-input data-field="create-label" placeholder="Applies to the next created object…" />
-    </div>
-  `;
-}
-
 // ---- Persistent bottom: selection mini-card + frame notes ----------------------
-
-function renderFrameNotes(doc, view) {
-  const tactic = activeTactic(doc);
-  const kf = view.currentKeyframe;
-  const kfDef = tactic?.keyframes.find((k) => k.n === kf);
-  const note = tactic?.notes?.[kf] ?? '';
-  return `
-    <div class="inspector-notes">
-      <div class="inspector-notes-head">
-        <span class="section-label">Frame notes</span>
-        <span class="chip chip-mono chip-neutral">KF${kf} · ${escapeHtml(kfDef?.name ?? '')}</span>
-      </div>
-      <textarea class="input textarea notes-textarea" data-notes-input data-field="frame-notes" rows="3" placeholder="What happens on this keyframe…">${escapeHtml(note)}</textarea>
-      <div class="inspector-notes-hint">Ships in the .zip</div>
-    </div>
-  `;
-}
 
 const TRANSFORM_TOOLS = new Set(['select', 'move']);
 
@@ -366,9 +370,20 @@ const TRANSFORM_TOOLS = new Set(['select', 'move']);
  */
 function applyRoleColor(store, ctx, hex) {
   const view = store.getView();
-  const isTransformContext = TRANSFORM_TOOLS.has(view.tool) || (view.tool === 'text' && view.selection);
+  const hasSelection = view.selection.length > 0;
+  const isTransformContext = TRANSFORM_TOOLS.has(view.tool) || (view.tool === 'text' && hasSelection);
   if (isTransformContext) {
-    if (view.selection) ctx.exec({ type: 'doc/recolorObject', id: view.selection, role: hex });
+    // Recolor every selected object in one pass (multi-select rework) — each is a separate
+    // doc/recolorObject dispatch; a batched action isn't needed here (unlike moves/resizes)
+    // since app.mjs's exec() already snapshots once per dispatch and a multi-object recolor
+    // reverting as N undo-steps is a much smaller UX cost than a multi-object DRAG doing so.
+    // Layer-lock enforcement (bug-hunt fix): skip locked-layer objects — same
+    // exclude-not-refuse precedent as the delete button, so locking one object doesn't block
+    // recoloring the rest of a multi-select.
+    const doc = store.getDoc();
+    view.selection
+      .filter((id) => !isObjectLocked(doc, id))
+      .forEach((id) => ctx.exec({ type: 'doc/recolorObject', id, role: hex }));
     return;
   }
   ctx.exec({ type: 'view/setRoleColor', color: hex });
@@ -377,7 +392,7 @@ function applyRoleColor(store, ctx, hex) {
 function renderMiniSelectionCard(doc, view) {
   if (TRANSFORM_TOOLS.has(view.tool)) return '';
   const tactic = activeTactic(doc);
-  const obj = view.selection ? findObject(tactic, view.selection) : null;
+  const obj = singleSelected(tactic, view);
   if (!obj) return '';
   // Markers store per-keyframe positions[kf], not a flat x/y (contract §3) — resolve via
   // playbook.positionAt the same way canvas.mjs / playbook.visibleObjects would, rather than
@@ -439,12 +454,51 @@ function wirePlaceEvents(el, ctx, roster) {
   });
 }
 
-function debounce(fn, ms) {
+/**
+ * A debouncer for doc/setNote specifically (bug 1 fix): unlike a plain last-call-wins
+ * debounce(), this one is keyframe-aware and exposes an explicit flush() so mount()'s
+ * store.subscribe callback can force a pending write out the instant the keyframe changes —
+ * same shared reasoning as createObjectPropsDebouncer's flush-on-id-change below, just keyed
+ * on `kf` instead of an object id. Without this, typing on KF1 (arming a 300ms timer for
+ * kf=1), switching to KF2 via any playbookbar action, and typing again calls this with kf=2,
+ * which used to silently `clearTimeout` the still-pending kf=1 write before it ever reached
+ * doc/setNote — never entering history, producing zero exec log entry for it.
+ * @param {Function} exec
+ * @param {number} ms
+ * @returns {{write:(kf:number, text:string)=>void, flush:()=>void}}
+ */
+function createNoteDebouncer(exec, ms) {
   let timer = null;
-  return (...args) => {
+  let pendingKf = null;
+  let pendingText = null;
+
+  function flush() {
     if (timer) clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), ms);
-  };
+    timer = null;
+    // Clear the pending buffer BEFORE calling exec(), not after: exec() dispatches
+    // synchronously through the store, which re-enters this module's store.subscribe
+    // listener (still inside the SAME keyframe-change tick) — if that listener's own
+    // flush-on-keyframe-change check reads a still-non-null pendingKf here, it calls flush()
+    // again and recurses without ever terminating (verified experimentally: unbounded
+    // exec()->dispatch->listener->flush()->exec() recursion). Clearing first means the
+    // re-entrant call sees an already-empty buffer and safely no-ops.
+    if (pendingKf === null) return;
+    const kf = pendingKf;
+    const text = pendingText;
+    pendingKf = null;
+    pendingText = null;
+    exec({ type: 'doc/setNote', kf, text });
+  }
+
+  function write(kf, text) {
+    if (pendingKf !== null && pendingKf !== kf) flush();
+    pendingKf = kf;
+    pendingText = text;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(flush, ms);
+  }
+
+  return { write, flush };
 }
 
 /**
@@ -489,11 +543,12 @@ function createObjectPropsDebouncer(exec, ms) {
 export function mount(el, ctx) {
   const { store, roster } = ctx;
 
-  const debouncedSetNote = debounce((kf, text) => {
-    ctx.exec({ type: 'doc/setNote', kf, text });
-  }, NOTE_DEBOUNCE_MS);
+  const noteDebouncer = createNoteDebouncer(ctx.exec, NOTE_DEBOUNCE_MS);
+  const debouncedSetNote = noteDebouncer.write;
 
   const debouncedSetObjectProps = createObjectPropsDebouncer(ctx.exec, NOTE_DEBOUNCE_MS);
+
+  installGlobalSearchFocus(el, ctx);
 
   function draw() {
     el.innerHTML = render(store.getDoc(), store.getView(), roster);
@@ -511,8 +566,19 @@ export function mount(el, ctx) {
 
     const deleteBtn = target.closest('[data-action="delete-object"]');
     if (deleteBtn) {
+      const doc = store.getDoc();
       const view = store.getView();
-      if (view.selection) ctx.exec({ type: 'doc/deleteObject', id: view.selection });
+      // Layer-lock enforcement (bug-hunt fix): exclude locked-layer objects from the delete
+      // rather than refusing the whole batch — matches canvas.mjs's deleteSelection precedent
+      // exactly (locking one object in a multi-select must not block deleting the rest).
+      const deletable = view.selection.filter((id) => !isObjectLocked(doc, id));
+      if (deletable.length === 1) {
+        ctx.exec({ type: 'doc/deleteObject', id: deletable[0] });
+      } else if (deletable.length > 1) {
+        // Batched (one history snapshot for the whole group, not one per object) — same
+        // reasoning as doc/moveObjects/doc/resizeMarkers.
+        ctx.exec({ type: 'doc/deleteObjects', ids: deletable });
+      }
       return;
     }
 
@@ -522,9 +588,42 @@ export function mount(el, ctx) {
       return;
     }
 
+    // Erase panel's per-category clear buttons (mission: "per-category clear buttons with
+    // live counts, each undoable"). Undo is free — app.mjs's exec() snapshots history for any
+    // doc/*-prefixed action, same as the clear-all button above.
+    const clearKindBtn = target.closest('[data-action="clear-kind"]');
+    if (clearKindBtn) {
+      ctx.exec({ type: 'doc/clearByKind', kind: clearKindBtn.dataset.kind });
+      return;
+    }
+
     const roleSwatch = target.closest('.role-swatch');
     if (roleSwatch) {
       applyRoleColor(store, ctx, roleSwatch.dataset.roleHex);
+      return;
+    }
+
+    // Unit options panel's sort-mode control (rarity default | type). Checked BEFORE the
+    // generic .segmented-btn handler below since it shares that visual class but carries a
+    // different data attribute (data-sort-mode, not data-value) and targets a dedicated action.
+    const sortBtn = target.closest('[data-sort-mode]');
+    if (sortBtn) {
+      ctx.exec({ type: 'view/setSortMode', mode: sortBtn.dataset.sortMode });
+      return;
+    }
+
+    // LABEL — NEXT PLACEMENT compass position grid (mission item 11).
+    const positionBtn = target.closest('[data-position]');
+    if (positionBtn) {
+      ctx.exec({ type: 'view/setNextLabel', key: 'position', value: positionBtn.dataset.position });
+      return;
+    }
+
+    // LABEL — NEXT PLACEMENT background ON/OFF toggle-button.
+    const labelBgToggle = target.closest('[data-action="toggle-label-bg"]');
+    if (labelBgToggle) {
+      const current = store.getView().nextLabel?.background ?? DEFAULT_NEXT_LABEL.background;
+      ctx.exec({ type: 'view/setNextLabel', key: 'background', value: !current });
       return;
     }
 
@@ -534,6 +633,27 @@ export function mount(el, ctx) {
       ctx.exec({ type: 'view/setToolOption', key: group.dataset.segmented, value: segBtn.dataset.value });
     }
   });
+
+  /**
+   * Dispatches a numeric view-state change coming from EITHER half of a slider+typed-value row
+   * (renderSliderWithValue) — the range input and its sibling typed <input type=text> share one
+   * data key and must produce the exact same action, so both call this instead of duplicating
+   * the key-to-action mapping. Not used for the pre-existing size/textSize/toolOptions sliders,
+   * which have their own selection/lock-aware or debounced dispatch paths above/below this.
+   * @param {string} key 'markerSize' | 'labelSize'
+   * @param {number} value
+   */
+  function dispatchNamedSliderValue(key, value) {
+    if (key === 'markerSize') {
+      ctx.exec({ type: 'view/setMarkerSize', size: value });
+      return true;
+    }
+    if (key === 'labelSize') {
+      ctx.exec({ type: 'view/setNextLabel', key: 'size', value });
+      return true;
+    }
+    return false;
+  }
 
   el.addEventListener('input', (event) => {
     const target = event.target;
@@ -547,16 +667,47 @@ export function mount(el, ctx) {
       const key = target.dataset.slider;
       const value = Number(target.value);
       const view = store.getView();
+      if (dispatchNamedSliderValue(key, value)) return;
       if (key === 'size') {
-        if (view.selection) ctx.exec({ type: 'doc/resizeMarker', id: view.selection, size: value });
+        // Layer-lock enforcement (bug-hunt fix): refuse to resize an object on a locked layer.
+        if (view.selection.length === 1 && !isObjectLocked(store.getDoc(), view.selection[0])) {
+          ctx.exec({ type: 'doc/resizeMarker', id: view.selection[0], size: value });
+        }
         return;
       }
       const editing = key === 'textSize' ? editingTextNote(store) : null;
       if (editing) {
-        debouncedSetObjectProps(editing.id, { size: value });
+        if (!isObjectLocked(store.getDoc(), editing.id)) debouncedSetObjectProps(editing.id, { size: value });
       } else {
         ctx.exec({ type: 'view/setToolOption', key, value });
       }
+      return;
+    }
+
+    // The typed-number companion input beside a slider (G5 — CHANGES-sidebar-v2.md §1: "every
+    // numeric control = slider + typed value with unit"). Only wired for the two NEW
+    // markerSize/labelSize rows this stage adds — the pre-existing size/textSize/toolOptions
+    // sliders keep their own read-only chip display, unchanged, per this mission's scope.
+    if (target.matches('[data-slider-typed]')) {
+      const key = target.dataset.sliderTyped;
+      const raw = target.value.trim();
+      // `Number('')` is 0, not NaN — an explicit empty/whitespace-only check is required
+      // (mid-edit, e.g. the user selected-all-and-deleted the field); Number.isNaN() alone
+      // would silently dispatch 0 in that state instead of waiting for a real value.
+      if (raw === '' || Number.isNaN(Number(raw))) return;
+      const parsed = Number(raw);
+      // dataset.min/max, not the target's own .min/.max IDL properties — those only reflect
+      // for <input type="number"|"range">, and this typed companion is type="text" (so free
+      // typing isn't fought by the browser's own number-input stepping/validation UX).
+      const min = Number(target.dataset.min) || 0;
+      const max = Number(target.dataset.max) || parsed;
+      const clamped = Math.min(Math.max(parsed, min), max);
+      dispatchNamedSliderValue(key, clamped);
+      return;
+    }
+
+    if (target.matches('[data-next-label-text]')) {
+      ctx.exec({ type: 'view/setNextLabel', key: 'text', value: target.value });
       return;
     }
 
@@ -564,7 +715,7 @@ export function mount(el, ctx) {
       const key = target.dataset.toggle;
       const editing = key === 'textChip' ? editingTextNote(store) : null;
       if (editing) {
-        debouncedSetObjectProps(editing.id, { chip: target.checked });
+        if (!isObjectLocked(store.getDoc(), editing.id)) debouncedSetObjectProps(editing.id, { chip: target.checked });
       } else {
         ctx.exec({ type: 'view/setToolOption', key, value: target.checked });
       }
@@ -584,24 +735,44 @@ export function mount(el, ctx) {
 
     if (target.matches('[data-text-input]')) {
       const editing = editingTextNote(store);
-      if (editing) debouncedSetObjectProps(editing.id, { text: target.value });
+      if (editing && !isObjectLocked(store.getDoc(), editing.id)) {
+        debouncedSetObjectProps(editing.id, { text: target.value });
+      }
       return;
     }
 
     if (target.matches('[data-zone-label-input]')) {
       const view = store.getView();
-      if (view.selection) debouncedSetObjectProps(view.selection, { label: target.value });
+      const doc = store.getDoc();
+      if (view.selection.length === 1 && !isObjectLocked(doc, view.selection[0])) {
+        debouncedSetObjectProps(view.selection[0], { label: target.value });
+      }
     }
   });
 
   draw();
+  let lastSeenKeyframe = store.getView().currentKeyframe;
   store.subscribe(() => {
+    // Bug 1 fix: flush any pending frame-note write the INSTANT the keyframe changes, before
+    // the redraw below can swap the textarea's underlying kf out from under it. Must run
+    // before draw() (not after) — the whole point is to commit the KF-N-1 text before
+    // anything about KF-N's state is read/rendered. See createNoteDebouncer's header for the
+    // exact race this closes (typing on KF1, switching to KF2, typing again used to silently
+    // clear KF1's still-pending timeout instead of committing it).
+    const nextKeyframe = store.getView().currentKeyframe;
+    if (nextKeyframe !== lastSeenKeyframe) {
+      noteDebouncer.flush();
+      lastSeenKeyframe = nextKeyframe;
+    }
+
     // Full rebuild (contract §5: "rebuild innerHTML from state"), but if a text field inside
     // this panel is focused, redrawing would steal focus and caret position mid-typing
     // (view/setQuery and the debounced doc/setNote both dispatch on every keystroke). Every
     // focusable text field carries a stable `data-field` id so we can find its replacement
-    // after the rebuild and restore focus + caret there.
-    const active = document.activeElement;
+    // after the rebuild and restore focus + caret there. Guarded for environments with no
+    // `document` global (e.g. node:test doubles that invoke this listener directly) — a real
+    // browser always has one, so this is a no-op there.
+    const active = typeof document !== 'undefined' ? document.activeElement : null;
     const fieldId = active && el.contains(active) ? active.dataset?.field : null;
     const selection = fieldId ? { start: active.selectionStart, end: active.selectionEnd } : null;
 

@@ -1,0 +1,79 @@
+/*
+ * TACTICA — password gate overlay (ui/gate.mjs)
+ * Full-viewport cover shown before the app is usable in the testing build. Reuses tokens.css
+ * custom properties + the .input / .btn primitives from app.css. Cosmetic access control only
+ * (see the threat-model header in ui/gate.mjs).
+ */
+
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* above #modal-root (1000) so it covers the whole app incl. canvas + modals */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(76, 141, 255, 0.08), transparent 60%),
+    var(--bg-void);
+}
+
+.gate-card {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-modal);
+}
+
+.gate-brand {
+  letter-spacing: 0.18em;
+  color: var(--accent-light-alt);
+}
+
+.gate-heading {
+  margin: 0;
+  font-size: var(--text-scale-15);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.gate-sub {
+  margin: 0;
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+}
+
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.gate-input {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-scale-13);
+}
+
+.gate-submit {
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-4) var(--space-5);
+}
+
+.gate-error {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-scale-12);
+  color: var(--danger);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-md);
+}

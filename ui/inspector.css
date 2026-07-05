@@ -1,8 +1,8 @@
 /**
- * ui/inspector.css — TACTICA contextual inspector [ui-inspector]
- * Handoff README §5 Contextual inspector (288px): header (30px accent tile + tool name +
- * hint + shortcut chip), content swaps per tool, persistent bottom (mini selection card +
- * frame notes). All colors/sizes/radii via tokens.css.
+ * ui/inspector.css — TACTICA dock's scrolling options region [ui-inspector]
+ * Sidebar-v2 S4: header (tool name+hint+key), per-tool content that swaps with the active
+ * tool, persistent bottom (mini selection card + frame notes). Fills #dock's flex:1 gap
+ * between S1's fixed TOOLS cluster and the notes band. All colors/sizes/radii via tokens.css.
  */
 
 #inspector {
@@ -91,7 +91,24 @@
   color: var(--accent-light);
 }
 
-/* ---- Place: hint chip, tabs, search, rarity legend, roster grid ---------------- */
+/* ---- Place: heading, hint chip, tabs, search, rarity legend, roster grid ------- */
+
+.inspector-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.inspector-section-title {
+  font-size: var(--text-scale-13);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.inspector-section-count {
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
 
 .place-hint-chip {
   align-self: flex-start;
@@ -125,7 +142,10 @@
 }
 
 .roster-tab.is-active {
-  background: #212633;
+  /* --accent-soft, not a raw hex: the design mockup hardcodes #212633 (dark-only prototype,
+     no light-mode render for this state) — accent-soft is the CHANGES-sidebar-v2.md §2 token
+     table's "acb" (active-background) row, the correct token-backed active-tint for both themes. */
+  background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--text-primary);
 }
@@ -158,6 +178,22 @@
   min-width: 0;
 }
 
+/* Type-sort bucket header (mission item 6: "Render bucket headers in type mode") — spans the
+   full 3-col grid width so it reads as a section divider, not a 4th tile. */
+.roster-bucket-header {
+  grid-column: 1 / -1;
+  font-size: var(--text-scale-9-5);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  padding: var(--space-2) 0 var(--space-1);
+}
+
+.roster-bucket-header:first-child {
+  padding-top: 0;
+}
+
 .roster-tile {
   display: flex;
   flex-direction: column;
@@ -185,6 +221,13 @@
   box-shadow: 0 0 0 2px var(--accent);
 }
 
+/* Coded tile — no icon art yet (mission item 7 / CHANGES-sidebar-v2.md §5: "8 coded tiles keep
+   the dashed treatment until art lands"). Border style only; border-color stays the inline
+   per-rarity value already set on .roster-tile, same as the icon-bearing case. */
+.roster-tile.is-coded {
+  border-style: dashed;
+}
+
 .roster-tile-chip {
   display: flex;
   align-items: center;
@@ -193,6 +236,14 @@
   height: 34px;
   border-radius: var(--radius-xs);
   overflow: hidden;
+}
+
+/* Coded tile's chip well (mission item 7): solid dark background instead of the icon-bearing
+   tiles' light rarity tint — CHANGES-sidebar-v2.md §2 "icon wells stay #12151b in both themes".
+   Uses --bg-icon-well (a dedicated always-dark token), NOT --bg-well: the light theme flips
+   --bg-well to #ffffff for input wells, which would otherwise wash this dark chip to white. */
+.roster-tile-chip.is-coded {
+  background: var(--bg-icon-well);
 }
 
 .roster-tile-icon {
@@ -348,6 +399,48 @@
   color: var(--text-secondary);
 }
 
+/* ---- Slider + typed value (G5: "every numeric control = slider + typed value with unit") —
+   marker size, label size. Pre-existing size/textSize/thickness/fillOpacity/border sliders
+   keep their read-only .slider-value chip above, unchanged. -------------------------------- */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.slider-row-label {
+  font-size: var(--text-scale-11);
+  color: var(--text-secondary);
+  width: 76px;
+  flex: none;
+}
+
+.slider-row .slider {
+  flex: 1;
+  min-width: 0;
+}
+
+.slider-typed-wrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: none;
+}
+
+.slider-typed-input {
+  width: 40px;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  text-align: right;
+  padding: var(--space-1) var(--space-2);
+}
+
+.slider-typed-unit {
+  font-size: var(--text-scale-10);
+  color: var(--text-muted);
+}
+
 /* ---- Toggles, segmented control -------------------------------------------------- */
 
 .toggle-row {
@@ -363,6 +456,65 @@
   accent-color: var(--accent);
   width: 14px;
   height: 14px;
+}
+
+/* <button role="switch"> toggle (LABEL block's Background ON/OFF), not a checkbox — ON text visible without relying on color alone. */
+.toggle-row-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-scale-12);
+  color: var(--text-secondary);
+}
+
+.toggle-switch {
+  border: none;
+  background: transparent;
+  padding: 2px;
+  cursor: pointer;
+  flex: none;
+}
+
+.toggle-switch-track {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  background: var(--line-control);
+  transition: background var(--duration-drop) var(--ease-tween);
+}
+
+.toggle-switch.is-on .toggle-switch-track {
+  background: var(--accent);
+}
+
+.toggle-switch-onlabel {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+/* Rest = OFF (knob left); .is-on slides it right, matching the design's filled-track ON state. */
+.toggle-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform var(--duration-drop) var(--ease-tween);
+}
+
+.toggle-switch.is-on .toggle-switch-knob {
+  transform: translateX(18px);
 }
 
 .segmented {
@@ -386,12 +538,40 @@
 }
 
 .segmented-btn.is-active {
-  background: #212633;
+  /* Same --accent-soft rationale as .roster-tab.is-active above — matching active-tint token,
+     not the raw #212633 the dark-only mockup happens to hardcode. */
+  background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--text-primary);
 }
 
 /* ---- Role color swatches ---------------------------------------------------------- */
+
+/* Wraps the "Role color" section-label with the optional current-role-name readout (mission
+   item 9 / design's ROLE COLOR row) — the label/name pair sits on one baseline, name pushed
+   right. Falls back to a plain single-child row when showCurrentName is off (existing 3
+   call sites), same visual result as the old bare .section-label. */
+.section-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.role-current-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-scale-11);
+  color: var(--text-secondary);
+}
+
+.role-current-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-dot);
+  flex: none;
+}
 
 .role-swatch-row {
   display: flex;
@@ -401,16 +581,29 @@
 }
 
 .role-swatch {
+  position: relative;
   width: 22px;
   height: 22px;
   border-radius: 50%;
   border: 1px solid var(--line-control);
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Was hardcoded #ffffff (invisible on the light theme's white row) — now the swatch-ring token. */
 .role-swatch.is-active {
-  box-shadow: 0 0 0 2px #ffffff;
+  box-shadow: 0 0 0 2px var(--swatch-ring);
+}
+
+.role-swatch-check {
+  font-size: 11px;
+  color: #ffffff;
+  /* readable on every role color (including --role-ping's near-white swatch) via a soft dark
+     drop-shadow rather than a fixed background, so it never needs its own per-swatch override */
+  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.65));
 }
 
 .role-custom-input {
@@ -433,6 +626,68 @@
   border-radius: 50%;
 }
 
+/* ---- LABEL — NEXT PLACEMENT block (mission item 11) -------------------------------- */
+
+.next-label-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  background: var(--bg-well);
+  border: 1px solid var(--line-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+}
+
+.label-position-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.label-position-caption {
+  font-size: var(--text-scale-11);
+  color: var(--text-secondary);
+  width: 76px;
+  flex: none;
+}
+
+/* 3x3 compass grid incl. center (mission item 11: "8 compass positions grid incl. center"). */
+.label-position-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 26px);
+  grid-auto-rows: 26px;
+  gap: 3px;
+  flex: none;
+}
+
+.label-position-btn {
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-xs);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.label-position-btn.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.label-position-center-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-dot);
+  border: 1px solid var(--text-muted);
+}
+
 /* ---- Danger button (erase clear-placed) ------------------------------------------- */
 
 .btn-danger {
@@ -443,6 +698,75 @@
 
 .btn-danger:hover {
   border-color: var(--danger);
+}
+
+.btn-danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---- Erase: clear-by-category rows (mission: "per-category clear buttons with live
+   counts, each undoable") ------------------------------------------------------------ */
+
+.erase-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.erase-category-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--bg-well);
+  border: 1px solid var(--line-hairline);
+  border-radius: var(--radius-md-alt);
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-secondary);
+}
+
+.erase-category-row i {
+  font-size: 14px;
+  color: var(--text-secondary-alt);
+  flex: none;
+}
+
+.erase-category-label {
+  flex: 1;
+  font-size: var(--text-scale-12);
+}
+
+.btn-clear-category {
+  padding: var(--space-2) var(--space-4);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-xs);
+  color: var(--danger-text-alt);
+  cursor: pointer;
+  font-size: var(--text-scale-11);
+  font-weight: 600;
+}
+
+.btn-clear-category:hover {
+  border-color: var(--danger);
+}
+
+.btn-clear-category:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.erase-undo-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-scale-10);
+  color: var(--text-secondary-alt);
+}
+
+.erase-undo-hint i {
+  font-size: 12px;
+  flex: none;
 }
 
 /* ---- Persistent bottom: mini selection + frame notes ------------------------------- */

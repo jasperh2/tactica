@@ -137,4 +137,91 @@
   --layout-layers-w: 230px;
   --layout-toolrail-w: 48px;
   --layout-inspector-w: 288px;
+
+  /* ---- Sidebar v2: tokens with no dark-mode equivalent above ----
+   * These have one shared value in both themes below (they're overridden per-theme, never
+   * swapped for a semantically different role) — declared here so :root always has a value,
+   * same as every other custom property in this file.
+   */
+  --btn-surface: #262d3a;    /* tool button background (distinct from --bg-elevated) */
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --btn-icon: #e3e8f0;
+  --key-hint: #9aa6ba;       /* shortcut-letter color */
+  --tile-surface: #191d25;   /* roster tile background — CHANGES-sidebar-v2.md §2 "tile" row */
+  --chip-surface: #1e232c;   /* stat/role chip background — §2 "chip" row (coincides with
+                                 --bg-elevated in dark mode only; light-mode values diverge,
+                                 so this stays its own token rather than reusing --bg-elevated) */
+  --swatch-ring: #ffffff;    /* selected role-swatch ring */
+  --bg-icon-well: #12151b;   /* unit-icon / coded-tile well — CHANGES-sidebar-v2.md §2: "Unit
+                                icon wells stay #12151b in both themes". A distinct token from
+                                --bg-well (which the light theme flips to #ffffff for INPUT
+                                wells) so the always-dark icon well isn't dragged white with it.
+                                Deliberately NOT overridden in the [data-theme='light'] block. */
+  --danger-text-alt: #f2a0a2; /* "weak matchup" text (distinct from --danger, which is a fill/border color, not body text) */
+  --canvas-dot: rgba(255, 255, 255, 0.035); /* map canvas dot-grid (was hardcoded in
+                                                ui/canvas.css — pulled into a token so it can
+                                                swap in light mode) */
+}
+
+/**
+ * Sidebar v2 light mode — token swap only (CHANGES-sidebar-v2.md §2). Same markup, same
+ * layout; every custom property below is the ONLY thing that changes when
+ * document.documentElement.dataset.theme === 'light' (ui/theme.mjs sets this).
+ *
+ * NOT overridden here (cross-theme constants, CHANGES-sidebar-v2.md §2 "Shared constants"):
+ * --accent + its soft/light variants, the 8 --role-* colors, the 4 --rarity-* tints,
+ * --bg-well (unit icon wells stay dark #12151b in both themes), and the map-overlay chip
+ * colors hardcoded in ui/canvas.css (placement-hint pill / object counter / zone-label
+ * pills — those float over map art and must stay fixed-dark with light text in both themes).
+ */
+[data-theme='light'] {
+  /* ---- Backgrounds ---- */
+  --bg-void: #dde2ea;
+  --bg-app: #f2f4f8;         /* notes band */
+  --bg-panel: #ffffff;
+  --bg-elevated: #f7f9fc;
+  --bg-well: #ffffff;        /* input wells (NOT the unit-icon well — that stays dark, see above) */
+  /* --bg-row / --bg-menu have no explicit light-mode row in CHANGES-sidebar-v2.md §2 (that
+     table only covers sidebar-v2's own surfaces) — they power real dropdown/menu/hover-row
+     backgrounds shipped today (.pb-dropdown, .pb-kf-menu, .pb-dropdown-row:hover), so leaving
+     them at their dark values would paint black surfaces into an otherwise-light theme. Reusing
+     the two nearest same-role design values (tile/chip: subtle surfaces one step off the base
+     panel) keeps every color here traceable to the design rather than an invented number. */
+  --bg-row: #f6f8fb;    /* = design "tile" value */
+  --bg-menu: #e9edf3;   /* = design "chip" value */
+
+  /* ---- Hairlines / borders ---- */
+  --line-hairline: rgba(15, 23, 42, 0.1);
+  --line-soft: rgba(15, 23, 42, 0.1);
+  --line-control: rgba(15, 23, 42, 0.18);
+  --line-menu: rgba(15, 23, 42, 0.18);
+
+  /* ---- Text ---- */
+  --text-primary: #161d2b;
+  --text-primary-alt: #161d2b;
+  --text-body: #333d4f;
+  --text-secondary: #5a6474;
+  --text-secondary-alt: #5a6474;
+  --text-label: #616b7d;
+  --text-muted: #5a6474;
+  --text-faint: #616b7d;
+
+  /* ---- Accent (soft tint changes; the accent color itself does not — cross-theme constant) ---- */
+  --accent-soft: rgba(76, 141, 255, 0.13);
+  --accent-light: #1a56c9;
+  --accent-light-alt: #1a56c9;
+
+  /* ---- Semantic ---- */
+  --success-light: #1d7a47;
+
+  /* ---- Sidebar v2 additions (declared in :root above) ---- */
+  --btn-surface: #ffffff;
+  --btn-border: rgba(15, 23, 42, 0.24);
+  --btn-icon: #28303f;
+  --key-hint: #5a6474;
+  --tile-surface: #f6f8fb;
+  --chip-surface: #e9edf3;
+  --swatch-ring: #14171d;
+  --danger-text-alt: #b3261e;
+  --canvas-dot: rgba(15, 23, 42, 0.07);
 }

@@ -1,15 +1,33 @@
 /**
- * ui/toolrail.css — TACTICA tool rail [ui-inspector]
- * Handoff README §4 Tool rail: 48px column, 38px icon buttons, radius 9, Phosphor icons,
- * mono shortcut badge bottom-right. Active: accent-soft bg + accent border + light icon.
+ * ui/toolrail.css — TACTICA dock tools cluster [ui-inspector / sidebar-v2 S1]
+ * design/handoff-tactics-tool/sidebar-v2/TACTICA Sidebar v2 Options.dc.html §2a "TOOLS":
+ * fixed header block, 5-column grid of solid bordered 40px buttons (radius 9), Phosphor icon
+ * + mono single-key hint bottom-right. Active = filled accent (bg/border/icon/key all shift).
+ * Contrast pass vs. the old ghost-icon rail (CHANGES-sidebar-v2.md §1.2): buttons are now
+ * solid + bordered + always visible, not transparent-until-hover.
+ *
+ * Base-state colors use styles/tokens.css's sidebar-v2 additions (--btn-surface/--btn-border/
+ * --btn-icon/--key-hint — theme-aware, swap under [data-theme='light']). The active (armed)
+ * state uses its own literal values straight from CHANGES-sidebar-v2.md §2's acb/acd/act/akey
+ * row rather than the app's generic --accent-soft/--accent/--accent-light tokens, which are
+ * close but not identical (e.g. .16 vs the design's .2 opacity, #4c8dff vs #6ea6ff border) —
+ * this button treatment is visually distinct enough in the source doc to warrant its own
+ * dark/light pair instead of reusing a slightly-off shared token.
  */
 
 #toolrail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) 0;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-bottom: 1px solid var(--line-hairline);
+}
+
+.toolrail-label {
+  margin-bottom: var(--space-4);
+}
+
+.toolrail-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
 }
 
 .toolrail-btn {
@@ -17,12 +35,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid transparent;
+  height: 40px;
+  border: 1px solid var(--btn-border);
   border-radius: var(--radius-md-alt);
-  background: transparent;
-  color: var(--text-secondary);
+  background: var(--btn-surface);
+  color: var(--btn-icon);
   font-size: 17px;
   cursor: pointer;
   transition: background var(--duration-drop) var(--ease-tween),
@@ -32,27 +49,43 @@
 
 .toolrail-btn:hover {
   background: var(--bg-elevated);
-  color: var(--text-primary);
+}
+
+.toolrail-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 .toolrail-btn.is-active {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent-light);
+  background: rgba(76, 141, 255, 0.2);
+  border-color: #6ea6ff;
+  border-width: 1.5px;
+  color: #d6e5ff;
+}
+
+[data-theme='light'] .toolrail-btn.is-active {
+  background: rgba(76, 141, 255, 0.13);
+  border-color: #4c8dff;
+  color: #1a56c9;
 }
 
 .toolrail-badge {
   position: absolute;
-  right: 2px;
-  bottom: 1px;
+  right: 4px;
+  bottom: 2px;
   font-family: var(--font-mono);
-  font-size: 7px;
-  font-weight: 700;
+  font-size: 7.5px;
+  font-weight: 600;
   line-height: 1;
-  color: var(--text-faint);
+  color: var(--key-hint);
   pointer-events: none;
 }
 
 .toolrail-btn.is-active .toolrail-badge {
-  color: var(--accent-light-alt);
+  color: #8fb4ff;
+  font-weight: 700;
+}
+
+[data-theme='light'] .toolrail-btn.is-active .toolrail-badge {
+  color: #1a56c9;
 }

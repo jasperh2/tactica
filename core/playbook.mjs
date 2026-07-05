@@ -227,8 +227,14 @@ function duplicate(tactic, n) {
 /**
  * Remove keyframe `n`. Never removes the last remaining keyframe. Objects appearing after `n`
  * shift appearsAt down by one; objects appearing exactly at `n` clamp to the nearest surviving
- * frame. positions[n] is dropped; keys > n shift down by one. The removed keyframe's note (if
- * any) is deleted along with it; notes on later frames shift down the same way.
+ * frame. positions[n] is dropped and keys > n shift down by one — UNLESS the removed frame held
+ * the object's ONLY position, in which case that position carries forward onto the object's new
+ * clamped appearsAt instead of vanishing (bug: dropping it left `positions:{}` behind, and
+ * positionAt() would then silently fall back to the map-center placeholder, teleporting the
+ * marker with no warning — see positionAt's POSITION_FALLBACK). This only fires when no other
+ * position data survives for the object, so an object with positions elsewhere is unaffected.
+ * The removed keyframe's note (if any) is deleted along with it; notes on later frames shift
+ * down the same way.
  * @param {Tactic} tactic @param {number} n @returns {Tactic}
  */
 function remove(tactic, n) {
@@ -246,11 +252,19 @@ function remove(tactic, n) {
     return Math.min(old - 1, maxN);
   };
   const mapPositionsKey = (old) => {
-    if (old === n) return undefined; // dropped
+    if (old === n) return undefined; // dropped (unless it's the object's sole position — see below)
     return old < n ? old : old - 1;
   };
 
-  const objects = remapObjects(tactic.objects, mapAppearsAt, mapPositionsKey);
+  const objects = remapObjects(tactic.objects, mapAppearsAt, mapPositionsKey).map((obj, idx) => {
+    const original = tactic.objects[idx];
+    const sourceKeys = Object.keys(original.positions ?? {});
+    const wasSolePositionOnRemovedFrame = sourceKeys.length === 1 && Number(sourceKeys[0]) === n;
+    if (!wasSolePositionOnRemovedFrame) return obj;
+
+    const carried = original.positions[n];
+    return { ...obj, positions: { [obj.appearsAt]: { ...carried } } };
+  });
   const notes = remapNotes(tactic.notes, mapPositionsKey);
 
   return { ...tactic, keyframes, objects, notes };

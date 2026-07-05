@@ -4,11 +4,19 @@
 // into the elements it's handed. Split out to keep canvas.mjs under the file-size target.
 
 import { activeTactic, visibleObjects } from '../core/playbook.mjs';
-import { arrowhead } from '../core/geometry.mjs';
+import { arrowhead, polygonBounds } from '../core/geometry.mjs';
 import { round2, ZOOM_DEFAULT } from './canvas-view.mjs';
 import { safeColor } from './sanitize.mjs';
 
 const MARKER_SIZE_DEFAULT = 26;
+// Clamp bounds for the on-canvas resize handle (increment 2/6) — MUST stay numerically equal
+// to inspector.mjs's own MIN_MARKER_SIZE/MAX_MARKER_SIZE (the Size slider's clamp range) so a
+// handle-drag or group-resize can never push a marker's size outside what the slider allows.
+// Kept as a same-value local const rather than a cross-panel import — this module is
+// [ui-canvas], inspector.mjs is [ui-inspector], and both panels' own header comments document
+// "no cross-panel imports" as a hard boundary.
+export const MIN_MARKER_SIZE = 16;
+export const MAX_MARKER_SIZE = 54;
 const DEFAULT_ASPECT_W = 822;
 const DEFAULT_ASPECT_H = 786;
 const MARKER_DROP_MS = 220;
@@ -48,7 +56,7 @@ function findRosterEntry(roster, code) {
  * White selection ring; unit icon <img> when the roster entry has one, else mono code text.
  * @param {object} marker resolved marker (has x,y merged in by playbook.visibleObjects)
  * @param {object} roster
- * @param {string|null} selection
+ * @param {string[]} selection
  * @returns {string}
  */
 export function renderMarker(marker, roster, selection) {
@@ -56,7 +64,7 @@ export function renderMarker(marker, roster, selection) {
   const x = Number(marker.x) || 0;
   const y = Number(marker.y) || 0;
   const role = safeColor(marker.role);
-  const isSelected = marker.id === selection;
+  const isSelected = selection.includes(marker.id);
   const entry = findRosterEntry(roster, marker.code);
   // Icon paths in roster.json are relative to site/tactics/ (where index.html — the served
   // document — lives), so they resolve directly with no prefix.
@@ -79,11 +87,11 @@ export function renderMarker(marker, roster, selection) {
 /**
  * Renders a text note as an absolutely-positioned div.
  * @param {object} note
- * @param {string|null} selection
+ * @param {string[]} selection
  * @returns {string}
  */
 export function renderTextNote(note, selection) {
-  const isSelected = note.id === selection;
+  const isSelected = selection.includes(note.id);
   const x = Number(note.x) || 0;
   const y = Number(note.y) || 0;
   const size = Number(note.size) || 14;
@@ -150,11 +158,11 @@ function pointsAttr(points) {
  * @param {function} arrowheadFn geometry.arrowhead, injected so this stays pure/testable-by-eye
  * @param {number} aspect map h/w, for arrowhead visual symmetry
  * @param {number} strokeWidthPct stroke-width in viewBox units (recomputed on resize)
- * @param {string|null} selection
+ * @param {string[]} selection
  * @returns {string}
  */
 export function renderRoute(route, arrowheadFn, aspect, strokeWidthPct, selection) {
-  const isSelected = route.id === selection;
+  const isSelected = selection.includes(route.id);
   const head = route.head || 'solid';
   const role = safeColor(route.role);
   const dash = route.dashed ? `stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}"` : '';
@@ -186,21 +194,32 @@ export function renderRoute(route, arrowheadFn, aspect, strokeWidthPct, selectio
 }
 
 /**
- * Renders a zone: dashed ellipse + mono label pill above it (SVG text on a dark rect).
- * @param {object} zone {cx,cy,rx,ry,role,label}
+ * Renders a zone, dispatching on `zone.shape`: 'ellipse' (or a missing shape field, for
+ * backward compat with zone objects that predate the shape discriminator) draws a dashed
+ * ellipse; 'polygon' draws a dashed closed polygon from `zone.points`. Both get a mono label
+ * pill above the shape (SVG text on a dark rect) when `zone.label` is set — the ellipse branch
+ * is byte-identical to before this dispatch was added (regression safety).
+ * @param {object} zone {shape?, cx,cy,rx,ry, points, role, label}
  * @param {number} strokeWidthPct
- * @param {string|null} selection
+ * @param {string[]} selection
  * @returns {string}
  */
 export function renderZone(zone, strokeWidthPct, selection) {
-  const isSelected = zone.id === selection;
+  if (zone.shape === 'polygon') {
+    return renderPolygonZone(zone, strokeWidthPct, selection);
+  }
+  return renderEllipseZone(zone, strokeWidthPct, selection);
+}
+
+function renderEllipseZone(zone, strokeWidthPct, selection) {
+  const isSelected = selection.includes(zone.id);
   const role = safeColor(zone.role);
   const fill = hexToRgba(role, 0.13);
   const cx = Number(zone.cx) || 0;
   const cy = Number(zone.cy) || 0;
   const rx = Number(zone.rx) || 0;
   const ry = Number(zone.ry) || 0;
-  const labelMarkup = zone.label ? renderZoneLabel({ ...zone, cx, cy, rx, ry }) : '';
+  const labelMarkup = zone.label ? renderZoneLabelAt(zone.label, cx, cy - ry - 3) : '';
 
   return `
     <g data-id="${escapeHtml(zone.id)}" data-kind="zone" class="canvas-svg-obj${isSelected ? ' is-selected' : ''}">
@@ -212,15 +231,44 @@ export function renderZone(zone, strokeWidthPct, selection) {
   `;
 }
 
-function renderZoneLabel(zone) {
-  const text = escapeHtml(zone.label);
+/**
+ * Renders a polygon zone: dashed closed `<polygon>` from `zone.points` + the same 13%-alpha
+ * fill treatment as an ellipse zone. Label pill anchors above the polygon's bounding-box top,
+ * horizontally centered on the bbox midpoint (geometry.polygonBounds) — the simplest correct
+ * analogue of the ellipse's "anchor above cy-ry" rule, avoiding a full centroid computation for
+ * a UI-only label placement.
+ */
+function renderPolygonZone(zone, strokeWidthPct, selection) {
+  const isSelected = selection.includes(zone.id);
+  const role = safeColor(zone.role);
+  const fill = hexToRgba(role, 0.13);
+  const points = Array.isArray(zone.points) ? zone.points : [];
+  const pts = pointsAttr(points);
+  const bounds = points.length > 0 ? polygonBounds(points) : { cx: 0, minY: 0 };
+  const labelMarkup = zone.label ? renderZoneLabelAt(zone.label, bounds.cx, bounds.minY - 3) : '';
+
+  return `
+    <g data-id="${escapeHtml(zone.id)}" data-kind="zone" class="canvas-svg-obj${isSelected ? ' is-selected' : ''}">
+      <polygon points="${pts}"
+        fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct}" stroke-dasharray="${strokeWidthPct * 2.4},${strokeWidthPct * 1.6}" />
+      ${isSelected ? `<polygon points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * 0.7}" opacity="0.6" />` : ''}
+      ${labelMarkup}
+    </g>
+  `;
+}
+
+/** Mono label pill (dark rect + centered text) with its baseline gap already applied by the
+ * caller — `anchorY` is the bottom edge of the pill, matching both zone shapes' "3 units above
+ * the shape's top" convention. */
+function renderZoneLabelAt(label, anchorX, anchorY) {
+  const text = escapeHtml(label);
   const charWidth = 1.0; // approx width per char in viewBox units at the label font size
   const w = Math.max(8, text.length * charWidth + 2);
-  const x = zone.cx - w / 2;
-  const y = zone.cy - zone.ry - 3;
+  const x = anchorX - w / 2;
+  const y = anchorY;
   return `
     <rect x="${x}" y="${y - 2}" width="${w}" height="4" rx="0.6" fill="rgba(8,10,14,.8)" />
-    <text x="${zone.cx}" y="${y + 1}" text-anchor="middle" font-family="var(--font-mono)" font-size="2.6" font-weight="700" fill="#eef1f6">${text}</text>
+    <text x="${anchorX}" y="${y + 1}" text-anchor="middle" font-family="var(--font-mono)" font-size="2.6" font-weight="700" fill="#eef1f6">${text}</text>
   `;
 }
 
@@ -232,7 +280,7 @@ function renderZoneLabel(zone) {
  * @param {function} arrowheadFn
  * @param {number} aspect
  * @param {number} strokeWidthPct
- * @param {string|null} selection
+ * @param {string[]} selection
  * @returns {string}
  */
 export function renderSketch(sketch, arrowheadFn, aspect, strokeWidthPct, selection) {
@@ -249,7 +297,7 @@ export function renderSketch(sketch, arrowheadFn, aspect, strokeWidthPct, select
 }
 
 function renderSketchShape(sketch, strokeWidthPct, selection) {
-  const isSelected = sketch.id === selection;
+  const isSelected = selection.includes(sketch.id);
   const [[rawX1, rawY1], [rawX2, rawY2]] = sketch.points;
   const x1 = Number(rawX1) || 0;
   const y1 = Number(rawY1) || 0;
@@ -382,6 +430,12 @@ function renderObjects(els, doc, view, roster, aspect) {
   const tactic = activeTactic(doc);
   const viewBoxH = round2(100 * aspect);
   els.svgEl.setAttribute('viewBox', `0 0 100 ${viewBoxH}`);
+  // In-drag ghost surface (bug 1 diagnosis): without a matching viewBox, previewEl's 0-100
+  // percent-space markup (drawtools-helpers.mjs's strokeMarkup/rectMarkup/etc.) renders as
+  // literal 1-unit-per-px shapes pinned to the SVG's own top-left corner instead of scaled
+  // across the map box — set unconditionally, same as svgEl above, so it stays correct across
+  // map switches (aspect is recomputed every render).
+  els.previewEl.setAttribute('viewBox', `0 0 100 ${viewBoxH}`);
 
   if (!tactic) {
     els.markersLayerEl.innerHTML = '';

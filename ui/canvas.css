@@ -4,7 +4,11 @@
  * Backdrop void + 22px dot grid; map box centered, aspect-ratio driven by maps.json
  * assetSize; markers/SVG overlay/HUD pills per spec. All colors/sizes via tokens.css vars —
  * no hardcoded palette values except where the spec gives a literal not covered by a token
- * (e.g. marker drop-shadow, zone label pill background — both literal rgba()s in the spec).
+ * (e.g. marker drop-shadow, zone label pill background — both literal rgba()s in the spec),
+ * OR where a color is a map-overlay chip that must float over map art with a FIXED dark
+ * surface + light text in both themes (sidebar-v2 CHANGES §2) — e.g. .canvas-zoom-btn:hover's
+ * white-tint hover on the always-dark zoom pill, and the marker/selection-highlight whites
+ * that sit on colored role backgrounds over the map, not on a themed panel.
  */
 
 .canvas-panel {
@@ -18,7 +22,7 @@
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 0) 0 0 / 22px 22px,
+    radial-gradient(circle at 1px 1px, var(--canvas-dot) 1px, transparent 0) 0 0 / 22px 22px,
     var(--bg-void);
   cursor: default;
   touch-action: none;
@@ -63,7 +67,10 @@
    the native px avoids upscaling small assets past their real resolution. */
 .canvas-mapbox {
   position: relative;
-  width: min(var(--map-native-w, 822px), 78vh, calc(100vw - 400px));
+  /* 78vh -> 92vh, 400px -> 360px sidebar reservation (bug 2 diagnosis): the old caps were
+     tuned against western-city's smaller box and under-used available screen space on the
+     larger 2071x2064 TW maps, making "100% zoom" look small even before the ZOOM_MAX bump. */
+  width: min(var(--map-native-w, 822px), 92vh, calc(100vw - 360px));
   border-radius: var(--radius-md);
   border: 1px solid var(--line-hairline);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
@@ -230,6 +237,40 @@
 }
 
 /* ---------------------------------------------------------------------- */
+/* Marquee-select rectangle + multi-select group outline/resize handle    */
+/* (bugs 5/6 diagnosis, increments 4/6). Percent-based left/top/width/     */
+/* height, same coordinate space as markers — canvas.mjs writes these      */
+/* inline per drag/selection update.                                       */
+/* ---------------------------------------------------------------------- */
+
+.canvas-marquee {
+  position: absolute;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  pointer-events: none;
+}
+
+.canvas-group-outline {
+  position: absolute;
+  border: 1px dashed var(--accent-light-alt);
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+}
+
+.canvas-resize-handle {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-xs);
+  background: var(--accent);
+  border: 1.5px solid #ffffff;
+  cursor: nwse-resize;
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------- */
 /* HUD pills — hint (top-center), object counter (bottom-left), zoom       */
 /* (bottom-right). Positioned relative to the viewport, not the map box,   */
 /* so they stay fixed on screen while zoom/pan moves the map underneath.   */
@@ -292,7 +333,10 @@
   border: none;
   border-radius: var(--radius-dot);
   background: transparent;
-  color: var(--text-primary);
+  /* Fixed light literal (= --text-primary's dark-mode value), NOT the swapping token: this
+     button sits inside the always-dark zoom pill (.pill), which stays dark in both themes per
+     CHANGES-sidebar-v2.md §2 — a themed token would render dark-on-dark in light mode. */
+  color: #eef1f6;
   font-family: var(--font-ui);
   font-size: var(--text-scale-12);
   line-height: 1;

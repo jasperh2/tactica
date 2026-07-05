@@ -28,22 +28,36 @@
 //
 // Most tools share one gesture shape (pointerdown anchors a start point, pointermove renders a
 // ghost, pointerup commits or discards a too-short drag) — createDragTool() below is that shared
-// lifecycle; only Arrow (polyline branch), Draw (continuous sampling), Text (single click), and
-// Erase (click-to-delete) need bespoke state machines.
+// lifecycle; only Arrow (polyline branch), Zone (closed-polygon branch, bug 4 fix), Draw
+// (continuous sampling), Text (single click), and Erase (click-to-delete) need bespoke state
+// machines.
+//
+// Zone authoring (bug 4 fix): the Zone tool used to be createDragTool() reused verbatim from
+// Circle (drag corner-to-corner -> ellipse) — a label slapped on Circle's code path with no
+// authoring identity of its own. It is now a click-vertex polygon tool modeled directly on
+// Arrow's click-polyline branch (createArrowTool below), adapted for a CLOSED, FILLED shape
+// (min 3 vertices, not 2) instead of an open polyline: click each corner, see a live rubber-band
+// fill preview, close by clicking near the first vertex / double-click / Enter, Esc cancels.
+// Committed zones now carry a `shape` discriminator: 'polygon' {points} (this tool's new output)
+// vs 'ellipse' {cx,cy,rx,ry} (pre-existing saved zones — rendering/hit-test/persist/export all
+// keep dispatching on `shape` so old ellipse zones round-trip byte-identical, no migration).
 import { simplify, worldDistance } from '../core/geometry.mjs';
+import { activeTactic, visibleObjects } from '../core/playbook.mjs';
 import {
   isMeaningfulDrag,
-  ellipseFromCorners,
+  isNearFirstVertex,
   strokeMarkup,
   rectMarkup,
   ellipseMarkup,
-  zoneMarkup,
+  polygonMarkup,
   measureMarkup,
+  resolveEraseTargetId,
 } from './drawtools-helpers.mjs';
 
 const FREEHAND_SIMPLIFY_EPSILON = 0.35; // core/geometry.mjs default, named here for clarity
 const DEFAULT_TEXT = 'Label';
 const DEFAULT_ZONE_LABEL = '';
+const MIN_ZONE_POLYGON_VERTICES = 3; // a polygon needs >=3 points to be a renderable shape
 
 /**
  * @typedef {{toPct:Function, mapEl:HTMLElement, svgEl:SVGElement, previewEl:SVGElement,
@@ -375,33 +389,101 @@ function createCircleTool(ctx, canvasApi) {
 }
 
 // =============================================================================
-// Zone — drag ellipse -> kind:'zone' {shape:'ellipse', cx, cy, rx, ry, label:''}.
+// Zone — click-vertex polygon (bug 4 fix): click each corner, live rubber-band fill preview,
+// close via click-near-first-vertex / double-click / Enter (min 3 vertices). Esc cancels.
+// Commits kind:'zone' {shape:'polygon', points, label:''}. Existing saved ellipse zones
+// (shape:'ellipse' {cx,cy,rx,ry}) are untouched by this tool — they still load/render/hit-test/
+// export via their own dispatch branch in geometry.mjs/canvas-objects.mjs/render.mjs/
+// exporter.mjs; this tool only ever AUTHORS the new polygon shape (no migration needed).
 // =============================================================================
 
 function createZoneTool(ctx, canvasApi) {
-  return createDragTool(
-    ctx,
-    canvasApi,
-    (dc, start, end) => zoneMarkup(start, end, { color: dc.role }),
-    (dc, start, end) => {
-      const { cx, cy, rx, ry } = ellipseFromCorners(start, end);
-      return {
-        kind: 'zone',
-        shape: 'ellipse',
-        cx,
-        cy,
-        rx,
-        ry,
-        label: DEFAULT_ZONE_LABEL,
-        role: dc.role,
-        layerId: dc.layerId,
-        appearsAt: dc.appearsAt,
-      };
-    },
+  /** @type {[number,number][]|null} */
+  let polygonPoints = null; // non-null while building a click-vertex zone polygon
+
+  function drawPolygonGhost(points, dc) {
+    canvasApi.previewEl.innerHTML = polygonMarkup(points, { color: dc.role });
+  }
+
+  function cancel() {
+    polygonPoints = null;
+    clearGhost(canvasApi);
+  }
+
+  /** Commits the in-progress polygon if it has enough vertices to be a real shape; silently
+   * cancels (no commit) otherwise — mirrors Arrow's onDblClick "too-short, just cancel" rule,
+   * but the threshold is 3 (a polygon's minimum) instead of Arrow's 2 (a line's minimum). */
+  function closeAndCommit(dc) {
+    if (!polygonPoints || polygonPoints.length < MIN_ZONE_POLYGON_VERTICES) {
+      cancel();
+      return;
+    }
+    const object = {
+      kind: 'zone',
+      shape: 'polygon',
+      points: polygonPoints,
+      label: DEFAULT_ZONE_LABEL,
+      role: dc.role,
+      layerId: dc.layerId,
+      appearsAt: dc.appearsAt,
+    };
+    polygonPoints = null;
+    clearGhost(canvasApi);
+    commit(ctx, canvasApi, dc.layerId, object);
     // README §5: "zones get an optional label" — surface it in the inspector immediately via
-    // the same selected-object card Select/Move-Resize already renders.
-    { selectAfter: true }
-  );
+    // the same selected-object card Select/Move-Resize already renders (matches the prior
+    // drag-ellipse Zone tool's selectAfter:true behavior).
+    selectLatest(ctx);
+  }
+
+  return {
+    onPointerDown(e) {
+      const dc = drawContext(ctx);
+      if (canvasApi.blocked(dc.layerId)) return;
+      const p = canvasApi.toPct(e.clientX, e.clientY);
+
+      if (!polygonPoints) {
+        // First vertex of a new polygon.
+        polygonPoints = [[p.x, p.y]];
+        drawPolygonGhost(polygonPoints, dc);
+        return;
+      }
+
+      // Continuing an in-progress polygon: a click near the first vertex closes the shape
+      // instead of adding a near-duplicate point on top of it.
+      if (isNearFirstVertex(polygonPoints, [p.x, p.y])) {
+        closeAndCommit(dc);
+        return;
+      }
+      polygonPoints.push([p.x, p.y]);
+      drawPolygonGhost(polygonPoints, dc);
+    },
+
+    onPointerMove(e) {
+      if (!polygonPoints) return;
+      const dc = drawContext(ctx);
+      const p = canvasApi.toPct(e.clientX, e.clientY);
+      // Live rubber-band preview: every committed vertex so far, plus the cursor's current
+      // position as the tentative next vertex.
+      drawPolygonGhost([...polygonPoints, [p.x, p.y]], dc);
+    },
+
+    onDblClick() {
+      closeAndCommit(drawContext(ctx));
+    },
+
+    /** Enter closes the polygon the same way double-click does (bug 4 ask: "double-click/Enter
+     * to close"). canvas.mjs's [ui-canvas] onKeyDown has no Enter path today (only Space/Escape/
+     * Delete) — this method is new surface for the integrator to wire an Enter branch to,
+     * mirroring the existing Escape branch's `drawApi[currentTool()].cancel?.()` shape:
+     * `if (event.key === 'Enter') drawApi[currentTool()].onEnter?.()`. No other tool defines
+     * onEnter, so this is purely additive (not a behavior change for any other draw tool). */
+    onEnter() {
+      closeAndCommit(drawContext(ctx));
+    },
+
+    cancel,
+  };
 }
 
 // =============================================================================
@@ -480,21 +562,47 @@ function createMeasureTool(ctx, canvasApi) {
 // =============================================================================
 
 function createEraseTool(ctx, canvasApi) {
-  /** Resolves the object id under a click via the DOM's own data-id — canvas.mjs/
-   * canvas-objects.mjs already render markers/routes/zones/sketches/text with data-id on
-   * their elements per contract §5 ("routes clicks that land on object elements"). This module
-   * has no independent visible-object list to hit-test against (geometry.hitTest needs
-   * pre-resolved {x,y} from visibleObjects(), which only canvas.mjs computes), so the DOM
-   * lookup is the documented primary path, not a fallback. */
+  /**
+   * Erase-eligible objects at the current keyframe: visible-layer objects (visibleObjects()
+   * already filters to layer.visible, so a hidden layer's objects are never erase candidates)
+   * minus anything on a LOCKED layer — mirrors canvas.mjs's selectableObjects() exactly (the
+   * Select tool's own click-candidate list), just resolved independently here since this module
+   * does not import canvas.mjs (a different panel's owned file). Excluding locked-layer objects
+   * from the candidate list itself (rather than checking lock only after a hit resolves) means a
+   * locked layer's markers are never even hit-tested — locked = no-op, same guarantee the old
+   * per-id isObjectLocked() check gave, arrived at the same way canvas.mjs's own click-select
+   * path already does it.
+   */
+  function eraseCandidates() {
+    const doc = ctx.store.getDoc();
+    const view = ctx.store.getView();
+    const tactic = activeTactic(doc);
+    if (!tactic) return [];
+    return visibleObjects(tactic, doc.layers, view.currentKeyframe).filter(
+      (obj) => !canvasApi.blocked(obj.layerId)
+    );
+  }
+
+  /**
+   * Bug-hunt fix: the erase tool never hit markers because the SVG annotation overlay sits
+   * visually above the markers layer and eats the pointer event — `event.target.closest('[data-
+   * id]')` from the overlay's own `<svg>` node never finds a marker's `[data-id]` ancestor, so
+   * clicking directly on a unit marker silently did nothing. Resolves the click geometrically
+   * instead — exactly the Select tool's forgiving hit-test path (canvas.mjs's
+   * resolvePointerHit / canvas-helpers.mjs's resolveHitId), mirrored here via this module's own
+   * resolveEraseTargetId (core/geometry.mjs's hitTest under the hood) — so a click that would
+   * select an object also erases it, independent of DOM stacking, for every object kind
+   * including markers.
+   * @param {PointerEvent|MouseEvent} e
+   * @returns {string|null}
+   */
   function resolveTargetId(e) {
-    const el = e.target.closest?.('[data-id]');
-    return el?.dataset.id ?? null;
+    const p = canvasApi.toPct(e.clientX, e.clientY);
+    return resolveEraseTargetId(eraseCandidates(), [p.x, p.y]);
   }
 
   return {
     onClick(e) {
-      const dc = drawContext(ctx);
-      if (canvasApi.blocked(dc.layerId)) return;
       const id = resolveTargetId(e);
       if (!id) return;
       ctx.exec({ type: 'doc/deleteObject', id });

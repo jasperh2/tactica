@@ -41,8 +41,32 @@ function routeEntry(route) {
   };
 }
 
-/** Build one playbook.json `zones[]` entry from a zone object. */
+/**
+ * Build one playbook.json `zones[]` entry from a zone object, dispatching on `zone.shape`.
+ *
+ * SPEC-export-package.md note (amended alongside this change — see the file's "Zone shapes"
+ * section): an 'ellipse' zone entry stays BYTE-IDENTICAL to the original SPEC schema
+ * ({cx,cy,rx,ry,color,label?}, no `shape` key at all) so the exporter.test.mjs golden-fixture
+ * test (buildPlaybook reconstructed from playbook.example.json, an ellipse-only fixture) is
+ * untouched. A 'polygon' zone entry is a NEW, additive entry shape ({shape:'polygon',
+ * points,color,label?}) — this is a schema ADDITION, not a compatible narrowing: any existing
+ * playbook.json consumer (the Claude-Design animator) that assumes every zones[] entry has
+ * cx/cy/rx/ry will need its own shape-aware handling before it can render a polygon zone. Flag
+ * this to whoever owns the animator handoff before the first real polygon-zone export.
+ * @param {object} zone
+ * @returns {object}
+ */
 function zoneEntry(zone) {
+  if (zone.shape === 'polygon') {
+    const entry = {
+      shape: 'polygon',
+      points: zone.points.map(([x, y]) => [roundCoord(x), roundCoord(y)]),
+      color: zone.role,
+    };
+    if (zone.label) entry.label = zone.label;
+    return entry;
+  }
+
   const entry = {
     cx: roundCoord(zone.cx),
     cy: roundCoord(zone.cy),

@@ -133,6 +133,30 @@
   }
 }
 
+/* ---- download error banner (map asset fetch failed; download cancelled) - */
+/* Never a silent 0-byte map PNG — fail loudly instead. Same shape as
+   gate.css's .gate-error, sized for this modal's body padding. */
+
+.xm-download-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-5);
+  font-size: var(--text-scale-12);
+  line-height: 1.5;
+  color: var(--danger);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-md);
+}
+
+.xm-download-error i {
+  flex: none;
+  font-size: 16px;
+  margin-top: 1px;
+}
+
 /* ---- manifest + preview (2-col) --------------------------------------- */
 
 .xm-cols {

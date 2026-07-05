@@ -28,7 +28,7 @@ export function mount(el, ctx) {
   /** @type {{isOpen:boolean, phase:'idle'|'gathering'|'ready'|'packaging',
    *   frameCanvases:HTMLCanvasElement[], frameDataUrls:string[], manifest:object|null,
    *   playbook:object|null, mapMeta:object|null, tactic:object|null,
-   *   copyLabel:string, downloadLabel:string}} */
+   *   copyLabel:string, downloadLabel:string, downloadError:string|null}} */
   const local = {
     isOpen: false,
     phase: 'idle',
@@ -40,6 +40,10 @@ export function mount(el, ctx) {
     tactic: null,
     copyLabel: 'Copy motion JSON',
     downloadLabel: 'Download .zip package',
+    // Set when assembleExportZip reports mapPngFailed — the download is aborted rather than
+    // silently shipping a 0-byte map/<id>.png (bug hunt finding). Cleared on open() and on a
+    // successful retry.
+    downloadError: null,
   };
 
   el.addEventListener('click', onClick);
@@ -54,6 +58,7 @@ export function mount(el, ctx) {
     local.phase = 'gathering';
     local.copyLabel = 'Copy motion JSON';
     local.downloadLabel = 'Download .zip package';
+    local.downloadError = null;
     render();
     await gather();
   }
@@ -74,7 +79,7 @@ export function mount(el, ctx) {
     local.manifest = buildIconsManifest(tactic, ctx.roster);
 
     const mapImg = mapMeta?.available ? await loadMapImage(mapMeta.asset) : null;
-    const { frames } = await renderAllFrames(doc, doc.layers, tactic, mapImg, ctx.roster);
+    const { frames } = await renderAllFrames(doc, doc.layers, tactic, mapImg, ctx.roster, mapMeta);
 
     local.frameCanvases = frames;
     local.frameDataUrls = frames.map((c) => c.toDataURL('image/png'));
@@ -100,12 +105,13 @@ export function mount(el, ctx) {
   async function downloadZipPackage() {
     local.phase = 'packaging';
     local.downloadLabel = 'Packaging…';
+    local.downloadError = null;
     render();
 
     const doc = ctx.store.getDoc();
     const mapImg = local.mapMeta?.available ? await loadMapImage(local.mapMeta.asset) : null;
-    const { overlays } = await renderAllFrames(doc, doc.layers, local.tactic, mapImg, ctx.roster);
-    const { bytes, fileName } = await assembleExportZip({
+    const { overlays } = await renderAllFrames(doc, doc.layers, local.tactic, mapImg, ctx.roster, local.mapMeta);
+    const { bytes, fileName, mapPngFailed } = await assembleExportZip({
       doc,
       layers: doc.layers,
       tactic: local.tactic,
@@ -114,6 +120,16 @@ export function mount(el, ctx) {
       frames: local.frameCanvases,
       overlays,
     });
+
+    if (mapPngFailed) {
+      // Fail loudly: never ship a silent 0-byte map/<id>.png. Abort the download entirely so
+      // the user isn't left with a broken zip and no explanation.
+      local.phase = 'ready';
+      local.downloadLabel = 'Download .zip package';
+      local.downloadError = `Couldn't fetch the map image (${local.mapMeta?.name ?? 'map'}) — download cancelled so the .zip isn't shipped with a broken map file. Check your connection and try again.`;
+      render();
+      return;
+    }
 
     triggerDownload(bytes, fileName);
 
@@ -188,6 +204,7 @@ export function mount(el, ctx) {
           </div>
 
           <div class="xm-body">
+            ${local.downloadError ? renderDownloadError() : ''}
             ${local.phase === 'gathering' ? renderGathering() : renderReady(tactic, mapMeta)}
           </div>
 
@@ -213,6 +230,17 @@ export function mount(el, ctx) {
 
   function renderGathering() {
     return `<div class="xm-loading"><i class="ph ph-circle-notch xm-spin"></i><span>Rendering keyframes…</span></div>`;
+  }
+
+  /** Visible failure banner for a cancelled download (map asset fetch failed) — never a silent
+   * 0-byte map PNG. Shown above the manifest/preview columns until the user retries or closes. */
+  function renderDownloadError() {
+    return `
+      <div class="xm-download-error" role="alert">
+        <i class="ph-fill ph-warning-circle"></i>
+        <span>${escapeHtml(local.downloadError)}</span>
+      </div>
+    `;
   }
 
   function renderReady(tactic, mapMeta) {

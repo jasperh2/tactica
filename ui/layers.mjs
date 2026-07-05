@@ -80,7 +80,7 @@ export function mount(el, ctx) {
 
     const nameHtml = isEditing
       ? `<input type="text" class="layer-row__name-input" value="${escapeHtml(layer.name)}" maxlength="40" />`
-      : `<span class="layer-row__name">${escapeHtml(layer.name)}</span>`;
+      : `<span class="layer-row__name" title="Double-click to rename">${escapeHtml(layer.name)}</span>`;
 
     return `
       <div
@@ -91,6 +91,9 @@ export function mount(el, ctx) {
         <span class="layer-row__dot" style="background:${safeColor(layer.color)}"></span>
         ${nameHtml}
         <span class="layer-row__count chip-mono">${count}</span>
+        ${isEditing ? '' : `<button type="button" class="layer-row__icon-btn layer-row__rename" data-action="rename-layer" title="Rename layer" ${isLocked ? 'disabled' : ''}>
+          <i class="ph ph-pencil-simple"></i>
+        </button>`}
         <button type="button" class="layer-row__icon-btn" data-action="toggle-lock" title="Lock">
           <i class="ph ${lockIcon}"></i>
         </button>
@@ -146,6 +149,10 @@ export function mount(el, ctx) {
     }
     if (action === 'delete-layer') {
       deleteLayer(layerId);
+      return;
+    }
+    if (action === 'rename-layer') {
+      startRename(layerId);
     }
   }
 
@@ -176,9 +183,11 @@ export function mount(el, ctx) {
     const nameEl = event.target.closest('.layer-row__name');
     if (!nameEl) return;
     const row = event.target.closest('.layer-row');
-    const layerId = row.dataset.layerId;
-    if (isLayerLocked(layerId)) return;
+    startRename(row.dataset.layerId);
+  }
 
+  function startRename(layerId) {
+    if (isLayerLocked(layerId)) return;
     editState = { layerId, mode: 'rename' };
     render();
   }
