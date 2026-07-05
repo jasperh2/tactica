@@ -26,6 +26,7 @@ import {
   renderRoleSwatches,
   renderMultiSelectPanel,
   renderErasePanel,
+  clearableObjects,
   renderPanPanel,
   renderFrameNotes,
   objectKindLabel,
@@ -42,15 +43,16 @@ const MIN_MARKER_SIZE = 16;
 const MAX_MARKER_SIZE = 54;
 const MIN_TEXT_SIZE = 8;
 const MAX_TEXT_SIZE = 40;
-// Stroke-width recalibration (Jasper v2 + stage-1 bigger-map): now that a typed thickness value
-// means genuine SCREEN PX (core/stroke.mjs converts px->viewBox at render), the old 1-10 range on
-// the much larger map made even "1" read heavy and offered no finer widths. Recalibrated so ~1px
-// sits just below the slider midpoint with real sub-1px widths BELOW it (0.25/0.5/0.75) for fine
-// linework, capped at 3px — a bold-but-not-blobby max on the big map (strokes scale with zoom, so
-// 3px @100% becomes plenty heavy zoomed in). step=0.25 exposes the fractional widths. Typed px
-// stays consistent: the number IS the on-screen px width.
+// Stroke-width recalibration (Jasper v2 + stage-1 bigger-map + arrow calibration): a typed
+// thickness value means genuine SCREEN PX (core/stroke.mjs converts px->viewBox at render). Range
+// 0.25..5 with the DEFAULT at 3 (app.mjs DEFAULT_TOOL_OPTIONS.thickness — Jasper's shared-bag
+// calibration): sub-1px widths (0.25/0.5/0.75) below for fine linework, 3px the confident default,
+// up to 5px for bold routes on the fit-to-column map (strokes scale with zoom, so 5px @100% is very
+// heavy zoomed in). step=0.25 exposes the fractional widths. Typed px stays consistent: the number
+// IS the on-screen px width. HEAD_REFERENCE_THICKNESS_PX is pinned to the 3px default so the arrow
+// head is calibrated at the default and scales proportionally across the whole range.
 const MIN_THICKNESS = 0.25;
-const MAX_THICKNESS = 3;
+const MAX_THICKNESS = 5;
 const THICKNESS_STEP = 0.25;
 // Box/Circle border: Jasper's spec is literal — "1px size should be in the middle of the
 // slider" — so the range is 0.25..1.75, putting 1.0 at the exact midpoint with sub-1px fine
@@ -615,18 +617,27 @@ export function mount(el, ctx) {
       return;
     }
 
+    // Layer-guard fix: the bulk clears used to dispatch the layer-blind doc/clearPlaced /
+    // doc/clearByKind reducers and wiped locked/hidden-layer objects. They now resolve the
+    // clearable id list (same source as the panel's counts) and reuse the already-guarded
+    // batched delete path — exclude-not-refuse, matching the delete-object button above.
+    // Undo stays free: app.mjs's exec() snapshots history for any doc/*-prefixed action.
     const clearBtn = target.closest('[data-action="clear-placed"]');
     if (clearBtn) {
-      ctx.exec({ type: 'doc/clearPlaced' });
+      const ids = clearableObjects(store.getDoc()).map((o) => o.id);
+      if (ids.length === 1) ctx.exec({ type: 'doc/deleteObject', id: ids[0] });
+      else if (ids.length > 1) ctx.exec({ type: 'doc/deleteObjects', ids });
       return;
     }
 
-    // Erase panel's per-category clear buttons (mission: "per-category clear buttons with
-    // live counts, each undoable"). Undo is free — app.mjs's exec() snapshots history for any
-    // doc/*-prefixed action, same as the clear-all button above.
     const clearKindBtn = target.closest('[data-action="clear-kind"]');
     if (clearKindBtn) {
-      ctx.exec({ type: 'doc/clearByKind', kind: clearKindBtn.dataset.kind });
+      const kind = clearKindBtn.dataset.kind;
+      const ids = clearableObjects(store.getDoc())
+        .filter((o) => o.kind === kind)
+        .map((o) => o.id);
+      if (ids.length === 1) ctx.exec({ type: 'doc/deleteObject', id: ids[0] });
+      else if (ids.length > 1) ctx.exec({ type: 'doc/deleteObjects', ids });
       return;
     }
 

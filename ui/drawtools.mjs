@@ -27,11 +27,19 @@
 //     no text-note array; only per-keyframe `note` strings, owned by the inspector/playbookbar).
 //   - Zone remains kind:'zone', which IS read by the exporter.
 //
-// Line/Box/Circle share one gesture shape (pointerdown anchors a start point, pointermove renders
-// a ghost, pointerup commits or discards a too-short drag) — createDragTool() below is that shared
-// lifecycle; Arrow (click-driven state machine), Zone (closed-polygon branch, bug 4 fix), Draw
-// (continuous sampling), Text (single click), and Erase (click-to-delete) need bespoke state
-// machines.
+// UNIFIED GESTURE (Jasper's explicit refactor directive — "one shared two-point click-move-click
+// primitive; line/box/circle/arrow inherit it; arrow adds shift-checkpoints; zone keeps its vertex
+// loop; keep drag-commit as a bonus; no duplicated gesture logic anywhere"): Line, Box, Circle AND
+// Arrow all run on ONE primitive — createTwoPointTool() below. It is a click-move-click state
+// machine (click 1 anchors + rubber-bands to the cursor, plain click 2 commits) that ALSO accepts a
+// press-drag-release as an equivalent one-shot gesture (the "bonus" — Excalidraw's dual contract,
+// knowledge/research/canvas-tool-interaction-patterns.md §2). Arrow opts into checkpoints
+// (Shift-click extends with a corner and keeps authoring) and commits kind:'route'; Line/Box/Circle
+// are the same primitive with checkpoints OFF and a fixed 2-point commit. This REPLACES the old
+// split where Line/Box/Circle shared a drag-only createDragTool() and Arrow had a separate
+// click-only createArrowTool() — the two gesture code paths are now one. Zone (closed-polygon
+// vertex loop, bug 4 fix), Draw (continuous sampling), Text (single click), and Erase
+// (click-to-delete) keep their own bespoke state machines by design.
 //
 // Zone authoring (bug 4 fix): the Zone tool used to be createDragTool() reused verbatim from
 // Circle (drag corner-to-corner -> ellipse) — a label slapped on Circle's code path with no
@@ -99,137 +107,150 @@ function selectLatest(ctx) {
 }
 
 /**
- * Shared drag lifecycle for the simple "anchor -> ghost -> commit-or-discard" tools
- * (Line, Box, Circle, Zone). `buildObject(dc, start, end)` returns the doc object to commit
- * (or a falsy value to silently discard, e.g. a click too short to count as a drag).
+ * THE shared two-point gesture primitive (Jasper's unify-the-gesture directive). ONE state machine
+ * that Line, Box, Circle AND Arrow all run on — no per-tool gesture code anywhere else. It supports
+ * BOTH authoring gestures, disambiguated by which browser event fires (Excalidraw's dual contract,
+ * research §2), leaning on the browser's own click-vs-drag synthesis rather than re-deriving it:
+ *
+ *   • CLICK-MOVE-CLICK: a `click` (press+release with no meaningful move — the browser only
+ *     synthesizes `click` in that case) with nothing anchored yet anchors the start and begins a
+ *     live rubber-band to the cursor on pointermove; the next plain `click` commits (far corner /
+ *     arrowhead lands at click 2).
+ *   • DRAG-COMMIT (the "bonus"): pointerdown, move past the threshold, pointerup — the pointerup
+ *     commits the whole shape in one gesture (anchor = pointerdown point, far point = release).
+ *
+ * The two paths never collide: a real drag suppresses the trailing `click` (the browser fires no
+ * `click` when the pointer moved far enough, and canvas.mjs additionally guards its own click), and
+ * a plain click never trips the pointerup drag branch (pointerup only commits when it moved past the
+ * threshold — a click did not). pointerdown seeds the anchor+rubber-band for BOTH paths so a
+ * press-and-hold shows a live ghost immediately.
+ *
+ * Arrow opts in with `allowCheckpoints:true`: a Shift-CLICK while authoring pushes a checkpoint
+ * corner and keeps going (the next plain click commits); Enter / double-click also finish; Esc
+ * (cancel()) drops the uncommitted gesture. Line/Box/Circle pass `allowCheckpoints:false` and are a
+ * pure 2-point commit. Every committed shape is exactly ONE ctx.exec (one undo entry).
+ *
+ * `renderGhost(dc, points)` returns the SVG ghost string for the in-progress point list (already
+ * including the rubber-band cursor point when authoring); `buildObject(dc, points)` returns the doc
+ * object to commit (or falsy to silently discard, e.g. a degenerate below-threshold shape).
+ *
  * @param {object} ctx
  * @param {CanvasApi} canvasApi
- * @param {(dc:object, start:[number,number], end:[number,number]) => string} renderGhost
- * @param {(dc:object, start:[number,number], end:[number,number]) => (object|null)} buildObject
- * @param {{selectAfter?: boolean}} [opts]
+ * @param {(dc:object, points:[number,number][]) => string} renderGhost
+ * @param {(dc:object, points:[number,number][]) => (object|null)} buildObject
+ * @param {{selectAfter?: boolean, allowCheckpoints?: boolean}} [opts]
  */
-function createDragTool(ctx, canvasApi, renderGhost, buildObject, opts = {}) {
-  /** @type {{x:number,y:number}|null} */
-  let dragStart = null;
+function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {}) {
+  const { selectAfter = false, allowCheckpoints = false } = opts;
+  /** Committed points so far while authoring; null = idle. points[0] is the anchored start; a
+   * no-checkpoint tool only ever holds the single start point here until commit. */
+  let points = null;
+  /** The current press's pointerdown point (percent space); non-null only between a pointerdown and
+   * its pointerup, so the pointerup can measure the drag distance. */
+  let pressStart = null;
 
   function cancel() {
-    dragStart = null;
+    points = null;
+    pressStart = null;
     clearGhost(canvasApi);
+  }
+
+  function drawGhost(pts) {
+    canvasApi.previewEl.innerHTML = renderGhost(drawContext(ctx), pts);
+  }
+
+  function doCommit(pts) {
+    const dc = drawContext(ctx);
+    points = null;
+    pressStart = null;
+    clearGhost(canvasApi);
+    const object = buildObject(dc, pts);
+    if (!object) return;
+    commit(ctx, canvasApi, dc.layerId, object);
+    if (selectAfter) selectLatest(ctx);
   }
 
   return {
     onPointerDown(e) {
       const dc = drawContext(ctx);
       if (canvasApi.blocked(dc.layerId)) return;
-      dragStart = canvasApi.toPct(e.clientX, e.clientY);
+      const p = canvasApi.toPct(e.clientX, e.clientY);
+      pressStart = [p.x, p.y];
+      // Seed the anchor + a live rubber-band for a fresh gesture so press-and-hold previews
+      // immediately (drag path). A press mid-authoring (click-move-click already anchored) does NOT
+      // reset the anchor — the click/pointerup decides.
+      if (!points) {
+        points = [[p.x, p.y]];
+        drawGhost([[p.x, p.y], [p.x, p.y]]);
+      }
     },
 
     onPointerMove(e) {
-      if (!dragStart) return;
-      const dc = drawContext(ctx);
+      if (!points) return; // idle — nothing to rubber-band against.
       const p = canvasApi.toPct(e.clientX, e.clientY);
-      canvasApi.previewEl.innerHTML = renderGhost(dc, [dragStart.x, dragStart.y], [p.x, p.y]);
+      drawGhost([...points, [p.x, p.y]]); // committed points + rubber-band to the cursor.
     },
 
     onPointerUp(e) {
-      if (!dragStart) return;
-      const dc = drawContext(ctx);
+      // Only the DRAG-COMMIT bonus lives here: a pointerup that moved past the threshold since its
+      // pointerdown commits anchor..release. A plain click's pointerup did NOT move far, so it falls
+      // through to `click` (the click-move-click path) — no double-handling.
+      const start = pressStart;
+      pressStart = null;
+      if (!points || !start) return;
       const p = canvasApi.toPct(e.clientX, e.clientY);
-      const start = [dragStart.x, dragStart.y];
-      const end = [p.x, p.y];
-      dragStart = null;
-      clearGhost(canvasApi);
+      if (isMeaningfulDrag(start, [p.x, p.y])) doCommit([points[0], [p.x, p.y]]);
+    },
 
-      if (!isMeaningfulDrag(start, end)) return;
-      const object = buildObject(dc, start, end);
-      if (!object) return;
-      commit(ctx, canvasApi, dc.layerId, object);
-      if (opts.selectAfter) selectLatest(ctx);
+    onClick(e) {
+      // The click-move-click path. A real drag never reaches here (the browser suppresses `click`
+      // after a far-enough move; canvas.mjs also guards it), so a click here is always a genuine
+      // click. pointerdown already anchored the start for the FIRST click of a gesture, so:
+      const dc = drawContext(ctx);
+      if (canvasApi.blocked(dc.layerId)) return;
+      const p = canvasApi.toPct(e.clientX, e.clientY);
+
+      // Defensive: if a click ever arrives with no anchor (e.g. pointerdown was swallowed), treat it
+      // as the anchoring click so the gesture still starts cleanly.
+      if (!points) {
+        points = [[p.x, p.y]];
+        return;
+      }
+
+      if (allowCheckpoints && e.shiftKey) {
+        // Shift-click — add a checkpoint corner and keep authoring; the next plain click commits.
+        points.push([p.x, p.y]);
+        drawGhost(points);
+        return;
+      }
+
+      if (points.length === 1 && samePoint(points[0], [p.x, p.y])) {
+        // This IS the anchoring click (its own pointerdown seeded points[0] at the same point). Stay
+        // pending; the rubber-band is already live from pointermove.
+        return;
+      }
+      // Committing click — the far end lands here.
+      doCommit([...points, [p.x, p.y]]);
+    },
+
+    // Enter / double-click finish an in-progress checkpointed gesture at its current points; for a
+    // gesture with only the anchor (or the trailing dblclick after a plain-click commit, when
+    // points is already null) they are a safe no-op.
+    onDblClick() {
+      if (points && points.length >= 2) doCommit(points);
+    },
+    onEnter() {
+      if (points && points.length >= 2) doCommit(points);
     },
 
     cancel,
   };
 }
 
-// =============================================================================
-// Arrow — click-driven authoring (Jasper v2 spec, verbatim from the arrow-interaction diagnosis):
-//   • click 1 anchors the start and begins a live rubber-band from the anchor to the cursor;
-//   • a plain click 2 COMMITS the arrow with the arrowhead landing at click 2;
-//   • a Shift-click adds a checkpoint corner and KEEPS authoring (the next plain click commits);
-//   • Esc cancels (canvas.mjs Escape -> cancel()); switching tools mid-arrow cancels clean
-//     (canvas.mjs store.subscribe -> cancel() on tool change);
-//   • exactly ONE undo entry per committed arrow (a single ctx.exec(doc/placeObject)).
-// The old dblclick-only commit + drag-to-draw reinterpretation are GONE — every plain click with
-// an anchor present commits, so a fast native double-click fires click(commit),click,dblclick:
-// the 2nd click commits (points -> null) and the trailing click/dblclick are guarded no-ops.
-// Commits kind:'route' (the playbook.json movement-arrow channel — see file header). This is a
-// deliberate behavior change to a shipped gesture (was: every click added a waypoint, only
-// dblclick finished — Jasper's "always holding shift, can never let go").
-// =============================================================================
-
-function createArrowTool(ctx, canvasApi) {
-  /** @type {[number,number][]|null} */
-  let points = null; // null = idle; non-null while authoring, points[0] is the committed start.
-
-  function drawGhost(pts, dc) {
-    canvasApi.previewEl.innerHTML = strokeMarkup(pts, {
-      ...strokeOpts(dc),
-      aspect: canvasApi.getAspect(),
-      ...boxOpt(canvasApi),
-    });
-  }
-
-  function cancel() {
-    points = null;
-    clearGhost(canvasApi);
-  }
-
-  return {
-    // Anchoring, checkpoints, and commit ALL happen on `click` (not pointerdown/up) so a click is
-    // never ambiguous with a drag — there is no drag gesture on this tool anymore.
-    onClick(e) {
-      const dc = drawContext(ctx);
-      if (canvasApi.blocked(dc.layerId)) return;
-      const p = canvasApi.toPct(e.clientX, e.clientY);
-
-      if (!points) {
-        // click 1 — anchor the start. No ghost yet (a single point has no segment to draw; the
-        // rubber-band appears on the first pointermove, matching the Zone tool's first-click gap).
-        points = [[p.x, p.y]];
-        return;
-      }
-
-      if (e.shiftKey) {
-        // Shift-click — add a checkpoint corner and keep authoring. The next PLAIN click commits.
-        points.push([p.x, p.y]);
-        drawGhost(points, dc);
-        return;
-      }
-
-      // Plain click with an anchor present — commit. The arrowhead lands at this click point.
-      const committed = [...points, [p.x, p.y]];
-      points = null;
-      clearGhost(canvasApi);
-      commit(ctx, canvasApi, dc.layerId, routeObject(dc, committed, dc.opts.head));
-    },
-
-    onPointerMove(e) {
-      if (!points) return; // idle — no rubber-band until the start is anchored.
-      const dc = drawContext(ctx);
-      const p = canvasApi.toPct(e.clientX, e.clientY);
-      drawGhost([...points, [p.x, p.y]], dc); // committed corners + rubber-band to the cursor.
-    },
-
-    // The browser fires click,click,dblclick on a fast second click; the 2nd click already
-    // committed (points === null), so the trailing dblclick must be a safe no-op (guard) rather
-    // than the old "dblclick commits" path (removed). Never starts or commits an arrow.
-    onDblClick() {
-      // no-op by design — see comment above. Guarded implicitly: with points===null there is
-      // nothing to do, and with points!==null a dblclick shouldn't force a commit.
-    },
-
-    cancel,
-  };
+/** True when two percent-space points coincide to within the drag threshold (a zero-move click
+ * lands its pointerup/click at the exact pointerdown point). */
+function samePoint(a, b) {
+  return !isMeaningfulDrag(a, b);
 }
 
 function strokeOpts(dc) {
@@ -263,6 +284,24 @@ function routeObject(dc, points, head) {
     layerId: dc.layerId,
     appearsAt: dc.appearsAt,
   };
+}
+
+// =============================================================================
+// Arrow — the shared two-point primitive with checkpoints ON, committing kind:'route' (the
+// playbook.json movement-arrow channel). Click-anchor -> plain-click-commit (arrowhead at click 2),
+// Shift-click adds a checkpoint corner and keeps authoring, Enter/dblclick finish, Esc cancels;
+// press-drag-release is the one-shot bonus. All of that logic lives in createTwoPointTool — Arrow is
+// just a thin wiring of that primitive to the route ghost + route builder, no bespoke state machine.
+// =============================================================================
+
+function createArrowTool(ctx, canvasApi) {
+  return createTwoPointTool(
+    ctx,
+    canvasApi,
+    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
+    (dc, points) => routeObject(dc, points, dc.opts.head),
+    { allowCheckpoints: true }
+  );
 }
 
 /**
@@ -337,21 +376,26 @@ function createFreehandTool(ctx, canvasApi) {
 }
 
 // =============================================================================
-// Line — drag = plain 2-point sketch (shape:'line'), no arrowhead.
+// Line — the shared two-point primitive (checkpoints OFF), committing a plain 2-point sketch
+// (shape:'line', no arrowhead). Click-anchor -> plain-click-commit, OR press-drag-release — both
+// via createTwoPointTool, same as Arrow minus the checkpoints. `points` always holds exactly the
+// [start, end] pair the primitive commits.
 // =============================================================================
 
 function createLineTool(ctx, canvasApi) {
-  return createDragTool(
+  return createTwoPointTool(
     ctx,
     canvasApi,
-    (dc, start, end) =>
-      strokeMarkup([start, end], { ...strokeOpts(dc), head: 'none', aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
-    (dc, start, end) => sketchStrokeObject(dc, 'line', [start, end], 'none')
+    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), head: 'none', aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
+    (dc, points) => sketchStrokeObject(dc, 'line', twoPoints(points), 'none')
   );
 }
 
 // =============================================================================
-// Box / Circle — drag-to-size sketches (rect/ellipse). NOT exported (see file header).
+// Box / Circle — the shared two-point primitive (checkpoints OFF), committing rect/ellipse
+// sketches. Click-anchor -> plain-click-commit, OR press-drag-release. NOT exported (see file
+// header). The ghost/build read the first + last point as the two drag corners (twoPoints) so a
+// stray mid-gesture rubber-band never widens the committed box.
 // =============================================================================
 
 function sketchObject(dc, shape, start, end) {
@@ -373,21 +417,28 @@ function fillOpts(dc) {
   return { color: dc.role, fillOpacity: dc.opts.fillOpacity, border: dc.opts.border, dashed: dc.opts.dashed };
 }
 
+/** The two defining corners of a two-point gesture: the anchored start and the current far point.
+ * Box/Circle are corner-to-corner shapes, so they only ever use points[0] and the last point even
+ * though the shared primitive can carry checkpoints for Arrow. */
+function twoPoints(points) {
+  return [points[0], points[points.length - 1]];
+}
+
 function createBoxTool(ctx, canvasApi) {
-  return createDragTool(
+  return createTwoPointTool(
     ctx,
     canvasApi,
-    (dc, start, end) => rectMarkup(start, end, { ...fillOpts(dc), ...boxOpt(canvasApi) }),
-    (dc, start, end) => sketchObject(dc, 'rect', start, end)
+    (dc, points) => rectMarkup(points[0], points[points.length - 1], { ...fillOpts(dc), ...boxOpt(canvasApi) }),
+    (dc, points) => sketchObject(dc, 'rect', points[0], points[points.length - 1])
   );
 }
 
 function createCircleTool(ctx, canvasApi) {
-  return createDragTool(
+  return createTwoPointTool(
     ctx,
     canvasApi,
-    (dc, start, end) => ellipseMarkup(start, end, { ...fillOpts(dc), ...boxOpt(canvasApi) }),
-    (dc, start, end) => sketchObject(dc, 'ellipse', start, end)
+    (dc, points) => ellipseMarkup(points[0], points[points.length - 1], { ...fillOpts(dc), ...boxOpt(canvasApi) }),
+    (dc, points) => sketchObject(dc, 'ellipse', points[0], points[points.length - 1])
   );
 }
 

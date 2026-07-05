@@ -34,10 +34,12 @@ const DEFAULT_LAYERS = [
 
 // Default toolOptions (contract §3 ViewState.toolOptions).
 const DEFAULT_TOOL_OPTIONS = {
-  // thickness/border are true screen px since the core/stroke.mjs recalibration; the old 3/2
-  // seeds were tuned for the pre-v3 viewBox inflation and opened new docs at slider max
-  // (B2's own DECISIONS follow-up, landed at final review).
-  thickness: 1.5,
+  // thickness/border are true screen px since the core/stroke.mjs recalibration. Default thickness
+  // = 3 and slider max = 5 (inspector.mjs MAX_THICKNESS) per Jasper's arrow calibration (shared-bag
+  // decision): 3px is a confident default stroke on the fit-to-column map, with room to 5 for bold
+  // routes and sub-1px widths below for fine linework. HEAD_REFERENCE_THICKNESS_PX (core/stroke.mjs)
+  // is pinned to this same 3 so a default arrow gets the calibrated baseline head.
+  thickness: 3,
   dashed: false,
   head: 'solid',
   fillOpacity: 14,

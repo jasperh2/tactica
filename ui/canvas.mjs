@@ -134,7 +134,10 @@ export function mount(el, ctx) {
     blocked(layerId) {
       const doc = ctx.store.getDoc();
       const layer = doc.layers.find((l) => l.id === layerId);
-      return !!(layer && layer.locked);
+      // Hidden counts as blocked too (layer-guard fix): creating onto a hidden layer used to
+      // silently succeed, leaving an invisible object. Refuse — consistent with locked; the
+      // refuse-vs-auto-unhide fork is logged in DECISIONS for Jasper.
+      return !!(layer && (layer.locked || layer.visible === false));
     },
   };
 

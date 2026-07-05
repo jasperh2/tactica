@@ -441,19 +441,30 @@ export function renderMultiSelectPanel(count) {
   `;
 }
 
-/** Live per-kind counts on the active tactic, for the Erase panel's category rows. */
+/** Objects the erase panel's bulk clears may delete: excludes anything on a locked OR hidden
+ * layer (layer-guard fix — the clear buttons used to dispatch layer-blind doc/clearByKind /
+ * doc/clearPlaced and wiped locked/hidden-layer objects). The category counts, the
+ * "Clear all (N)" label, and the dispatched ids all derive from THIS list so the label can
+ * never promise more than the button deletes. */
+export function clearableObjects(doc) {
+  const layerById = new Map(doc.layers.map((l) => [l.id, l]));
+  return (activeTactic(doc)?.objects ?? []).filter((obj) => {
+    const layer = layerById.get(obj.layerId);
+    return !(layer && (layer.locked || layer.visible === false));
+  });
+}
+
+/** Live per-kind counts of CLEARABLE objects on the active tactic, for the Erase panel rows. */
 export function objectCountsByKind(doc) {
-  const tactic = activeTactic(doc);
   const counts = {};
-  for (const obj of tactic?.objects ?? []) {
+  for (const obj of clearableObjects(doc)) {
     counts[obj.kind] = (counts[obj.kind] ?? 0) + 1;
   }
   return counts;
 }
 
 export function renderErasePanel(doc) {
-  const tactic = activeTactic(doc);
-  const count = tactic?.objects.length ?? 0;
+  const count = clearableObjects(doc).length;
   return `
     <div class="inspector-content">
       <div class="inspector-empty">Click an object on the map to delete it.</div>

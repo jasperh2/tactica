@@ -36,8 +36,19 @@ const DASH_OFF_FACTOR = 1.6; // dash "off" gap as a multiple of the stroke width
 // already a legible ~2%-of-map head. We keep size=1 as the baseline at HEAD_REFERENCE_THICKNESS_PX
 // and grow/shrink LINEARLY with thickness, clamped, so a 3px route shows a bigger head than a
 // 0.5px one on the SAME map (Jasper's ask).
-const HEAD_REFERENCE_THICKNESS_PX = 1.5; // thickness (px) that maps to the size=1 baseline head.
-const HEAD_MIN_SIZE = 0.6; // a thin stroke gets a proportionally smaller (but still visible) head.
+// The thickness (px) that maps to the size=1 baseline head. Pinned to the arrow tool's DEFAULT
+// thickness (app.mjs DEFAULT_TOOL_OPTIONS.thickness = 3, the shared-bag default per Jasper's arrow
+// calibration) so a fresh default arrow gets the calibrated ~2%-of-map baseline head, thinner
+// strokes scale proportionally DOWN and the 5px slider max scales modestly UP (5/3 ~ 1.67x). Keep
+// this equal to that default: if the default thickness moves, this moves with it.
+const HEAD_REFERENCE_THICKNESS_PX = 3;
+// A thin stroke gets a proportionally smaller head, floored so a very thin route still shows a
+// legible triangle. Lowered from 0.6 to 0.35 when the reference moved 1.5 -> 3: with the higher
+// reference a linear head/thickness map compresses the bottom of the 0.25..5 slider, so the floor
+// must sit lower or it would flatten the whole sub-2px range to one head size. At 0.35 the floor
+// only catches strokes below ~1px (0.35*3), keeping the mid-slider monotonic while a hair-thin
+// 0.25px route still gets a ~0.7%-of-map head instead of vanishing.
+const HEAD_MIN_SIZE = 0.35;
 const HEAD_MAX_SIZE = 4.0; // clamp so a very thick stroke can't produce an absurd triangle.
 const REFERENCE_BOX_WIDTH_PX = 1600; // nominal on-screen map-box width the export path scales
 // against, so a `thickness`-px on-screen stroke exports proportionally onto the fixed-width MP4/
