@@ -441,35 +441,44 @@ export function renderMultiSelectPanel(count) {
   `;
 }
 
-/** Objects the erase panel's bulk clears may delete: excludes anything on a locked OR hidden
- * layer (layer-guard fix — the clear buttons used to dispatch layer-blind doc/clearByKind /
- * doc/clearPlaced and wiped locked/hidden-layer objects). The category counts, the
- * "Clear all (N)" label, and the dispatched ids all derive from THIS list so the label can
- * never promise more than the button deletes. */
-export function clearableObjects(doc) {
+/** Objects the erase panel's bulk clears may delete (Jasper: "clear by category should clear the
+ * LAYER not everything"). Scoped to the ACTIVE layer only, and — keeping the earlier layer-guard —
+ * excludes anything on a locked OR hidden layer. So an active locked/hidden layer yields an empty
+ * list (all counts 0, buttons disabled), and a clear on the active layer never touches objects on
+ * OTHER layers. The category counts, the "Clear all (N)" label, and the dispatched ids all derive
+ * from THIS one list so the label can never promise more than the button deletes.
+ * @param {object} doc
+ * @param {string} activeLayerId the layer the clears are scoped to (view.activeLayerId)
+ */
+export function clearableObjects(doc, activeLayerId) {
   const layerById = new Map(doc.layers.map((l) => [l.id, l]));
   return (activeTactic(doc)?.objects ?? []).filter((obj) => {
+    if (obj.layerId !== activeLayerId) return false; // active-layer scope
     const layer = layerById.get(obj.layerId);
     return !(layer && (layer.locked || layer.visible === false));
   });
 }
 
-/** Live per-kind counts of CLEARABLE objects on the active tactic, for the Erase panel rows. */
-export function objectCountsByKind(doc) {
+/** Live per-kind counts of CLEARABLE (active-layer) objects, for the Erase panel rows. */
+export function objectCountsByKind(doc, activeLayerId) {
   const counts = {};
-  for (const obj of clearableObjects(doc)) {
+  for (const obj of clearableObjects(doc, activeLayerId)) {
     counts[obj.kind] = (counts[obj.kind] ?? 0) + 1;
   }
   return counts;
 }
 
-export function renderErasePanel(doc) {
-  const count = clearableObjects(doc).length;
+export function renderErasePanel(doc, view) {
+  const activeLayerId = view.activeLayerId;
+  const activeLayer = doc.layers.find((l) => l.id === activeLayerId);
+  const layerName = activeLayer?.name ?? '—';
+  const count = clearableObjects(doc, activeLayerId).length;
   return `
     <div class="inspector-content">
       <div class="inspector-empty">Click an object on the map to delete it.</div>
-      <div class="section-label">Clear by category</div>
-      <div class="erase-category-list">${renderEraseCategories(objectCountsByKind(doc))}</div>
+      <div class="section-label">Clear by category — ${escapeHtml(layerName)}</div>
+      <div class="erase-scope-note">Clears affect the active layer only.</div>
+      <div class="erase-category-list">${renderEraseCategories(objectCountsByKind(doc, activeLayerId))}</div>
       <button type="button" class="btn btn-danger" data-action="clear-placed" ${count === 0 ? 'disabled' : ''}>
         <i class="ph-bold ph-trash" aria-hidden="true"></i> Clear all (${count})
       </button>

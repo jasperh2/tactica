@@ -1,6 +1,29 @@
 // Pure geometry helpers for TACTICA's map overlay: arrowheads, freehand thinning,
-// world-unit distance conversion, and hit-testing. No DOM, no fetch, no Date/Math.random —
-// deterministic by contract (core/ modules are imported by tools/ scripts too).
+// world-unit distance conversion, hit-testing, and the SVG-viewBox Y-unit boundary. No DOM, no
+// fetch, no Date/Math.random — deterministic by contract (core/ modules are imported by tools/
+// scripts too).
+//
+// ── THE Y-UNIT CONTRACT (Bug A fix, 2026-07-06) ──────────────────────────────────────────────
+// STORED / DOCUMENT coordinates are percent-of-BOX: x in 0..100 of the map box WIDTH, y in 0..100
+// of the map box HEIGHT. This is the coordinate space of every stored object (route/sketch/zone/
+// text points, marker positions), every saved doc + share link (#pb=), the playbook export, and
+// the CSS-percent marker/text renderers (`left:${x}%; top:${y}%`) — and it is what the pointer
+// path produces (canvas-view.clientToPercent divides by rect.width and rect.height respectively).
+//
+// The on-screen SVG OVERLAY, however, uses viewBox="0 0 100 H" where H = 100*aspect = 100*(h/w).
+// That is a WIDTH-unit square-ish space: 1 viewBox unit == boxWidth/100 px on BOTH axes, so the y
+// axis runs 0..H (width units), NOT 0..100. Emitting a stored height-percent y straight into that
+// viewBox renders it at y/H of the height instead of y/100 — a factor of 100/H = 1/aspect too far
+// DOWN (Western City aspect 0.9562 → shapes sat ~4.6% low, growing with depth). Markers were fine
+// because CSS % already means percent-of-height; only the SVG shapes drifted.
+//
+// FIX: convert at the SVG emit/read boundary and ONLY there. svgEmitY(y, aspect) = y*aspect maps a
+// stored height-percent y into viewBox width-units; svgReadY(svgY, aspect) = svgY/aspect inverts
+// it. x needs no conversion (percent-of-width == viewBox width-units already). Every SVG markup
+// builder (ghost + committed) runs its y coordinates through svgEmitY; nothing else changes.
+// The canvas2d export path (ui/render.mjs) is DELIBERATELY NOT converted — it maps stored y over
+// height PX directly (toPx(py, h) = py/100 * h), which is already the correct height-percent
+// reading, so converting there would double-apply. See render.mjs's header note.
 
 const ARROWHEAD_BASE_OFFSET = 2.0; // units back along the last segment (% of map width)
 const ARROWHEAD_HALF_WIDTH = 1.25; // perpendicular half-width (% of map width)
@@ -405,6 +428,61 @@ export function polygonBounds(points) {
   const minY = Math.min(...ys);
   const maxY = Math.max(...ys);
   return { minX, maxX, minY, maxY, cx: (minX + maxX) / 2 };
+}
+
+// ── SVG viewBox Y-unit boundary (Bug A) ──────────────────────────────────────────────────────
+// See the module header for the full contract. These are the ONE shared pair every SVG markup
+// builder (ghost + committed) calls so a stored height-percent y renders at exactly that percent
+// of the map height inside the width-unit viewBox — no per-builder ad-hoc math, so parity is by
+// construction. A non-finite/zero aspect passes through unchanged (degenerate; treat viewBox as
+// square, which is the identity mapping).
+
+/**
+ * Converts a STORED y (percent-of-height, 0..100) into the SVG viewBox Y-unit the overlay's
+ * viewBox="0 0 100 (100*aspect)" needs, so it renders at y% of the map box HEIGHT. emitY = y*aspect.
+ * @param {number} y stored y (percent of height)
+ * @param {number} aspect map h/w (viewBoxH = 100*aspect)
+ * @returns {number} y in viewBox width-units
+ */
+export function svgEmitY(y, aspect) {
+  const a = Number(aspect);
+  if (!Number.isFinite(a) || a <= 0) return Number(y);
+  return Number(y) * a;
+}
+
+/**
+ * Inverts svgEmitY: converts an SVG viewBox Y-unit back into a STORED y (percent-of-height).
+ * readY = svgY / aspect. The exact inverse of svgEmitY, so svgReadY(svgEmitY(y)) === y.
+ * @param {number} svgY y in viewBox width-units
+ * @param {number} aspect map h/w
+ * @returns {number} stored y (percent of height)
+ */
+export function svgReadY(svgY, aspect) {
+  const a = Number(aspect);
+  if (!Number.isFinite(a) || a <= 0) return Number(svgY);
+  return Number(svgY) / a;
+}
+
+/**
+ * Maps a stored percent-space point [x, y] into SVG viewBox space: x unchanged, y through
+ * svgEmitY. The single helper every markup builder feeds its point list through before building an
+ * SVG `points`/`cx`/`x`/etc. attribute.
+ * @param {[number, number]} point stored [x, y]
+ * @param {number} aspect map h/w
+ * @returns {[number, number]} [x, svgEmitY(y)]
+ */
+export function svgEmitPoint([x, y], aspect) {
+  return [Number(x), svgEmitY(y, aspect)];
+}
+
+/**
+ * Maps every point of a stored percent-space polyline into SVG viewBox space (see svgEmitPoint).
+ * @param {[number, number][]} points
+ * @param {number} aspect map h/w
+ * @returns {[number, number][]}
+ */
+export function svgEmitPoints(points, aspect) {
+  return points.map((p) => svgEmitPoint(p, aspect));
 }
 
 /**

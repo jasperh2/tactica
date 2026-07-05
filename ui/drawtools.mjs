@@ -257,12 +257,16 @@ function strokeOpts(dc) {
   return { color: dc.role, thickness: dc.opts.thickness, dashed: dc.opts.dashed, head: dc.opts.head };
 }
 
-/** The one input core/stroke.mjs needs to make the ghost's stroke width px-identical to the
- * committed stroke: the live on-screen map-box width, read fresh each render. Every ghost-markup
- * call spreads this so the preview and the eventual committed object convert the same authored px
- * thickness/border through the same shared model. */
+/** The two inputs every ghost-markup call needs, read fresh each render:
+ *  - `boxWidthPx` — core/stroke.mjs's px->viewBox stroke-width conversion, so the ghost's stroke
+ *    width is px-identical to the committed stroke.
+ *  - `aspect` (map h/w) — the SVG Y-unit boundary (Bug A): the shape builders convert stored
+ *    height-percent y into the overlay's viewBox width-units via geometry.svgEmitY, so the ghost
+ *    sits at the cursor exactly like the committed object (which converts with the same aspect).
+ * Every ghost-markup call spreads this so the preview and the eventual committed object share both
+ * conversions. */
 function boxOpt(canvasApi) {
-  return { boxWidthPx: canvasApi.getBoxWidth() };
+  return { boxWidthPx: canvasApi.getBoxWidth(), aspect: canvasApi.getAspect() };
 }
 
 /**
@@ -298,7 +302,7 @@ function createArrowTool(ctx, canvasApi) {
   return createTwoPointTool(
     ctx,
     canvasApi,
-    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
+    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), ...boxOpt(canvasApi) }),
     (dc, points) => routeObject(dc, points, dc.opts.head),
     { allowCheckpoints: true }
   );
@@ -354,7 +358,6 @@ function createFreehandTool(ctx, canvasApi) {
       canvasApi.previewEl.innerHTML = strokeMarkup(samples, {
         ...strokeOpts(dc),
         head: 'none',
-        aspect: canvasApi.getAspect(),
         ...boxOpt(canvasApi),
       });
     },
@@ -386,7 +389,7 @@ function createLineTool(ctx, canvasApi) {
   return createTwoPointTool(
     ctx,
     canvasApi,
-    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), head: 'none', aspect: canvasApi.getAspect(), ...boxOpt(canvasApi) }),
+    (dc, points) => strokeMarkup(points, { ...strokeOpts(dc), head: 'none', ...boxOpt(canvasApi) }),
     (dc, points) => sketchStrokeObject(dc, 'line', twoPoints(points), 'none')
   );
 }

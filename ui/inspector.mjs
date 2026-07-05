@@ -451,7 +451,7 @@ function renderBody(doc, view, roster) {
   if (isLineLikeTool(tool)) return renderLineToolPanel(tool, view, roster);
   if (isShapeTool(tool)) return renderShapeToolPanel(view, roster);
   if (tool === 'text') return renderTextToolPanel(doc, view, roster);
-  if (tool === 'erase') return renderErasePanel(doc);
+  if (tool === 'erase') return renderErasePanel(doc, view);
   if (tool === 'pan') return renderPanPanel();
   return `<div class="inspector-content"><div class="inspector-empty">Select a tool from the rail.</div></div>`;
 }
@@ -624,7 +624,7 @@ export function mount(el, ctx) {
     // Undo stays free: app.mjs's exec() snapshots history for any doc/*-prefixed action.
     const clearBtn = target.closest('[data-action="clear-placed"]');
     if (clearBtn) {
-      const ids = clearableObjects(store.getDoc()).map((o) => o.id);
+      const ids = clearableObjects(store.getDoc(), store.getView().activeLayerId).map((o) => o.id);
       if (ids.length === 1) ctx.exec({ type: 'doc/deleteObject', id: ids[0] });
       else if (ids.length > 1) ctx.exec({ type: 'doc/deleteObjects', ids });
       return;
@@ -633,7 +633,7 @@ export function mount(el, ctx) {
     const clearKindBtn = target.closest('[data-action="clear-kind"]');
     if (clearKindBtn) {
       const kind = clearKindBtn.dataset.kind;
-      const ids = clearableObjects(store.getDoc())
+      const ids = clearableObjects(store.getDoc(), store.getView().activeLayerId)
         .filter((o) => o.kind === kind)
         .map((o) => o.id);
       if (ids.length === 1) ctx.exec({ type: 'doc/deleteObject', id: ids[0] });

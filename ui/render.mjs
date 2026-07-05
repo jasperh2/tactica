@@ -129,7 +129,15 @@ async function preloadIcons(tactic, roster) {
   return loaded;
 }
 
-/** px = percent * (dimension/100). */
+/** px = percent * (dimension/100).
+ *
+ * Y-UNIT CONTRACT (Bug A, 2026-07-06): this export path is DELIBERATELY exempt from the
+ * geometry.svgEmitY conversion the on-screen SVG overlay uses. The on-screen overlay draws into a
+ * viewBox="0 0 100 (100*aspect)" WIDTH-unit space, so a stored height-percent y must be scaled by
+ * aspect there. This canvas2d path instead maps y over the real height PX directly: toPx(py, h)
+ * with h = size*aspect gives py/100 * h = py% of the height — already the correct height-percent
+ * reading. Applying svgEmitY here too would DOUBLE-convert and reintroduce the ~4.6% drop. Stored
+ * y is percent-of-height on BOTH axes' callers; only the width-unit viewBox needed the fix. */
 function toPx(pct, dimPx) {
   return (pct / 100) * dimPx;
 }

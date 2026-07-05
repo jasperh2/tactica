@@ -4,7 +4,7 @@
 // into the elements it's handed. Split out to keep canvas.mjs under the file-size target.
 
 import { activeTactic, visibleObjects } from '../core/playbook.mjs';
-import { arrowhead, polygonBounds } from '../core/geometry.mjs';
+import { arrowhead, polygonBounds, svgEmitY, svgEmitPoints } from '../core/geometry.mjs';
 import { strokeWidthViewBox, dashArray, arrowheadSize } from '../core/stroke.mjs';
 import { round2, ZOOM_DEFAULT } from './canvas-view.mjs';
 import { safeColor } from './sanitize.mjs';
@@ -193,11 +193,15 @@ export function renderRoute(route, arrowheadFn, aspect, boxWidthPx, selection) {
     if (tri) {
       points = trimmed;
       const fill = head === 'open' ? 'none' : role;
-      headMarkup = `<polygon points="${triToPoints(tri)}" fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct * HEAD_STROKE_FACTOR}" stroke-linejoin="round" />`;
+      // tri is in STORED percent space (arrowhead uses aspect for symmetry only); emit its y into
+      // the overlay's viewBox width-units at the SVG boundary (Bug A), same as the line points.
+      headMarkup = `<polygon points="${triToPoints(svgEmitPoints(tri, aspect))}" fill="${fill}" stroke="${role}" stroke-width="${strokeWidthPct * HEAD_STROKE_FACTOR}" stroke-linejoin="round" />`;
     }
   }
 
-  const pts = pointsAttr(points);
+  // Stored points are percent-of-HEIGHT in y; emit into viewBox width-units (Bug A) so committed
+  // == ghost == cursor. x is unchanged.
+  const pts = pointsAttr(svgEmitPoints(points, aspect));
   const selRing = isSelected
     ? `<polyline points="${pts}" fill="none" stroke="#ffffff" stroke-width="${strokeWidthPct * SEL_RING_FACTOR}" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" />`
     : '';
@@ -220,24 +224,28 @@ export function renderRoute(route, arrowheadFn, aspect, boxWidthPx, selection) {
  * is byte-identical to before this dispatch was added (regression safety).
  * @param {object} zone {shape?, cx,cy,rx,ry, points, role, label}
  * @param {number} boxWidthPx on-screen map-box width for the shared px->viewBox stroke conversion
+ * @param {number} aspect map h/w — the SVG Y-unit boundary (Bug A): cy/ry/points y are
+ *   percent-of-height and get emitted into viewBox width-units (svgEmitY) here.
  * @param {string[]} selection
  * @returns {string}
  */
-export function renderZone(zone, boxWidthPx, selection) {
+export function renderZone(zone, boxWidthPx, aspect, selection) {
   if (zone.shape === 'polygon') {
-    return renderPolygonZone(zone, boxWidthPx, selection);
+    return renderPolygonZone(zone, boxWidthPx, aspect, selection);
   }
-  return renderEllipseZone(zone, boxWidthPx, selection);
+  return renderEllipseZone(zone, boxWidthPx, aspect, selection);
 }
 
-function renderEllipseZone(zone, boxWidthPx, selection) {
+function renderEllipseZone(zone, boxWidthPx, aspect, selection) {
   const isSelected = selection.includes(zone.id);
   const role = safeColor(zone.role);
   const fill = hexToRgba(role, 0.13);
   const cx = Number(zone.cx) || 0;
-  const cy = Number(zone.cy) || 0;
+  // cy/ry are percent-of-HEIGHT; emit into viewBox width-units (Bug A). ry (a height span) scales
+  // by aspect just like cy (both linear through svgEmitY's origin). cx/rx (width) are unchanged.
+  const cy = svgEmitY(Number(zone.cy) || 0, aspect);
   const rx = Number(zone.rx) || 0;
-  const ry = Number(zone.ry) || 0;
+  const ry = svgEmitY(Number(zone.ry) || 0, aspect);
   const strokeWidthPct = strokeWidthViewBox(DEFAULT_BORDER_PX, boxWidthPx);
   const [dashOn, dashOff] = dashArray(strokeWidthPct);
   const labelMarkup = zone.label ? renderZoneLabelAt(zone.label, cx, cy - ry - 3) : '';
@@ -259,11 +267,13 @@ function renderEllipseZone(zone, boxWidthPx, selection) {
  * analogue of the ellipse's "anchor above cy-ry" rule, avoiding a full centroid computation for
  * a UI-only label placement.
  */
-function renderPolygonZone(zone, boxWidthPx, selection) {
+function renderPolygonZone(zone, boxWidthPx, aspect, selection) {
   const isSelected = selection.includes(zone.id);
   const role = safeColor(zone.role);
   const fill = hexToRgba(role, 0.13);
-  const points = Array.isArray(zone.points) ? zone.points : [];
+  const rawPoints = Array.isArray(zone.points) ? zone.points : [];
+  // Emit stored height-percent y into viewBox width-units (Bug A) before building attrs / bounds.
+  const points = svgEmitPoints(rawPoints, aspect);
   const pts = pointsAttr(points);
   const strokeWidthPct = strokeWidthViewBox(DEFAULT_BORDER_PX, boxWidthPx);
   const [dashOn, dashOff] = dashArray(strokeWidthPct);
@@ -316,16 +326,18 @@ export function renderSketch(sketch, arrowheadFn, aspect, boxWidthPx, selection)
       selection
     );
   }
-  return renderSketchShape(sketch, boxWidthPx, selection);
+  return renderSketchShape(sketch, boxWidthPx, aspect, selection);
 }
 
-function renderSketchShape(sketch, boxWidthPx, selection) {
+function renderSketchShape(sketch, boxWidthPx, aspect, selection) {
   const isSelected = selection.includes(sketch.id);
   const [[rawX1, rawY1], [rawX2, rawY2]] = sketch.points;
+  // Emit stored height-percent y into viewBox width-units (Bug A); x unchanged. The rect/ellipse
+  // math below derives height/ry from these, so emitting the corners scales the height too.
   const x1 = Number(rawX1) || 0;
-  const y1 = Number(rawY1) || 0;
+  const y1 = svgEmitY(Number(rawY1) || 0, aspect);
   const x2 = Number(rawX2) || 0;
-  const y2 = Number(rawY2) || 0;
+  const y2 = svgEmitY(Number(rawY2) || 0, aspect);
   const role = safeColor(sketch.role);
   const fill = hexToRgba(role, (sketch.fillOpacity ?? 14) / 100);
   // Border authored in screen px (sketch.border / DEFAULT_BORDER_PX) -> viewBox units via the
@@ -493,7 +505,7 @@ function renderObjects(els, doc, view, roster, aspect) {
 
   els.svgEl.innerHTML =
     routes.map((r) => renderRoute(r, arrowhead, aspect, boxWidthPx, view.selection)).join('')
-    + zones.map((z) => renderZone(z, boxWidthPx, view.selection)).join('')
+    + zones.map((z) => renderZone(z, boxWidthPx, aspect, view.selection)).join('')
     + sketches.map((s) => renderSketch(s, arrowhead, aspect, boxWidthPx, view.selection)).join('');
 
   return boxWidthPx;

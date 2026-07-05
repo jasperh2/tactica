@@ -756,6 +756,12 @@
   cursor: not-allowed;
 }
 
+.erase-scope-note {
+  font-size: var(--text-scale-9-5);
+  color: var(--text-secondary-alt);
+  margin-top: calc(-1 * var(--space-2));
+}
+
 .erase-undo-hint {
   display: flex;
   align-items: center;

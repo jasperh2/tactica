@@ -2,7 +2,7 @@
 // No DOM mutation happens here; callers own writing the returned strings into previewEl.
 // Complex numeric work (arrowheads, simplification, distance) stays in core/geometry.mjs —
 // this file only shapes those results into SVG fragments and small drag-state helpers.
-import { arrowhead, hitTest } from '../core/geometry.mjs';
+import { arrowhead, hitTest, svgEmitPoints } from '../core/geometry.mjs';
 import { strokeWidthViewBox, dashArray, arrowheadSize } from '../core/stroke.mjs';
 import { safeColor } from './sanitize.mjs';
 
@@ -80,18 +80,21 @@ export function strokeMarkup(points, { color, thickness, dashed, head, aspect, b
   const strokeWidth = strokeWidthViewBox(thickness, boxWidthPx);
   const [dashOn, dashOff] = dashArray(strokeWidth);
   const dash = dashed ? ` stroke-dasharray="${dashOn},${dashOff}"` : '';
+  // arrowhead() works in STORED percent space (it uses aspect for visual symmetry); its output
+  // points, like the line points, are height-percent y — both go through svgEmitPoints at the
+  // SVG boundary (Bug A) so ghost == committed == cursor. x is unchanged by the emit.
   const { tri, trimmed } = head === 'none'
     ? { tri: null, trimmed: points }
     : arrowhead(points, { aspect, size: arrowheadSize(thickness) }); // head scales with px thickness
   const linePts = tri ? trimmed : points;
 
-  const line = `<polyline points="${pointsAttr(linePts)}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"${dash}/>`;
+  const line = `<polyline points="${pointsAttr(svgEmitPoints(linePts, aspect))}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"${dash}/>`;
 
   if (!tri || head === 'none') return line;
 
   const fill = head === 'open' ? 'none' : safe;
   const strokeAttr = head === 'open' ? ` stroke="${safe}" stroke-width="${strokeWidth * HEAD_OUTLINE_FACTOR}"` : '';
-  const triMarkup = `<polygon points="${pointsAttr(tri)}" fill="${fill}"${strokeAttr}/>`;
+  const triMarkup = `<polygon points="${pointsAttr(svgEmitPoints(tri, aspect))}" fill="${fill}"${strokeAttr}/>`;
   return line + triMarkup;
 }
 
@@ -99,8 +102,11 @@ export function strokeMarkup(points, { color, thickness, dashed, head, aspect, b
  * converted to a viewBox stroke-width via the shared core/stroke.mjs model so the ghost matches
  * the committed shape (canvas-objects.mjs renderSketchShape) by construction — pre-fix the raw px
  * border went straight into viewBox units and rendered ~8-13x too thick. */
-export function rectMarkup(a, b, { color, fillOpacity, border, dashed, boxWidthPx }) {
-  const { x, y, w, h } = rectFromCorners(a, b);
+export function rectMarkup(a, b, { color, fillOpacity, border, dashed, aspect, boxWidthPx }) {
+  // Emit the corners into viewBox space FIRST (Bug A): y and height are percent-of-HEIGHT and must
+  // become viewBox width-units, so both the y origin and the h span scale by aspect.
+  const [ea, eb] = svgEmitPoints([a, b], aspect);
+  const { x, y, w, h } = rectFromCorners(ea, eb);
   const safe = safeColor(color);
   const strokeWidth = strokeWidthViewBox(border, boxWidthPx);
   const [dashOn, dashOff] = dashArray(strokeWidth);
@@ -110,8 +116,10 @@ export function rectMarkup(a, b, { color, fillOpacity, border, dashed, boxWidthP
 
 /** SVG markup for an ellipse ghost (percent-space corner points). `border` screen px -> viewBox
  * via the shared model, matching the committed shape (see rectMarkup). */
-export function ellipseMarkup(a, b, { color, fillOpacity, border, dashed, boxWidthPx }) {
-  const { cx, cy, rx, ry } = ellipseFromCorners(a, b);
+export function ellipseMarkup(a, b, { color, fillOpacity, border, dashed, aspect, boxWidthPx }) {
+  // Emit corners into viewBox space first (Bug A): cy and ry are height-percent -> width-units.
+  const [ea, eb] = svgEmitPoints([a, b], aspect);
+  const { cx, cy, rx, ry } = ellipseFromCorners(ea, eb);
   const safe = safeColor(color);
   const strokeWidth = strokeWidthViewBox(border, boxWidthPx);
   const [dashOn, dashOff] = dashArray(strokeWidth);
@@ -125,8 +133,10 @@ const ZONE_BORDER_PX = 2; // authored screen-px zone border — converted to vie
 // shared core/stroke.mjs model at render time (matches canvas-objects.mjs's DEFAULT_BORDER_PX).
 const ZONE_DASH = '6,4'; // fixed authored dash pattern for the zone's signature dashed outline.
 
-export function zoneMarkup(a, b, { color, boxWidthPx }) {
-  const { cx, cy, rx, ry } = ellipseFromCorners(a, b);
+export function zoneMarkup(a, b, { color, aspect, boxWidthPx }) {
+  // Emit corners into viewBox space first (Bug A): cy and ry are height-percent -> width-units.
+  const [ea, eb] = svgEmitPoints([a, b], aspect);
+  const { cx, cy, rx, ry } = ellipseFromCorners(ea, eb);
   const safe = safeColor(color);
   const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
   return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${strokeWidth}" stroke-dasharray="${ZONE_DASH}"/>`;
@@ -144,11 +154,11 @@ export function zoneMarkup(a, b, { color, boxWidthPx }) {
  * @param {{color:string}} opts
  * @returns {string} empty string when fewer than 2 points (nothing meaningful to preview yet)
  */
-export function polygonMarkup(points, { color, boxWidthPx }) {
+export function polygonMarkup(points, { color, aspect, boxWidthPx }) {
   if (points.length < 2) return '';
   const safe = safeColor(color);
   const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
-  return `<polygon points="${pointsAttr(points)}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${strokeWidth}" stroke-dasharray="${ZONE_DASH}"/>`;
+  return `<polygon points="${pointsAttr(svgEmitPoints(points, aspect))}" fill="${safe}" fill-opacity="${ZONE_FILL_OPACITY_PCT / 100}" stroke="${safe}" stroke-width="${strokeWidth}" stroke-dasharray="${ZONE_DASH}"/>`;
 }
 
 /**
@@ -164,11 +174,11 @@ export function polygonMarkup(points, { color, boxWidthPx }) {
  * @param {{color:string}} opts
  * @returns {string} empty string when fewer than 2 points (a lone vertex has no segment to draw)
  */
-export function polygonGhostMarkup(points, { color, boxWidthPx }) {
+export function polygonGhostMarkup(points, { color, aspect, boxWidthPx }) {
   if (points.length < 2) return '';
   const safe = safeColor(color);
   const strokeWidth = strokeWidthViewBox(ZONE_BORDER_PX, boxWidthPx);
-  return `<polyline points="${pointsAttr(points)}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return `<polyline points="${pointsAttr(svgEmitPoints(points, aspect))}" fill="none" stroke="${safe}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>`;
 }
 
 /** Adapts a resolved unit marker {x,y,size} into geometry.hitTest's marker contract
