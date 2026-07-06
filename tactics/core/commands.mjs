@@ -52,5 +52,13 @@ export function createHistory(limit = DEFAULT_LIMIT) {
     return redoStack.length > 0;
   }
 
-  return { push, undo, redo, canUndo, canRedo };
+  // Clears both stacks. Used by app.mjs's map switch: undo must never cross a map boundary
+  // (an undo snapshot of one map's doc replayed onto another map is nonsense/corruption), so
+  // switching maps starts each map with a clean, empty history.
+  function reset() {
+    undoStack = [];
+    redoStack = [];
+  }
+
+  return { push, undo, redo, canUndo, canRedo, reset };
 }

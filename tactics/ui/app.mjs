@@ -7,6 +7,7 @@ import { createStore } from '../core/store.mjs';
 import { createHistory } from '../core/commands.mjs';
 import { newTactic } from '../core/playbook.mjs';
 import { serialize, deserialize } from '../core/persist.mjs';
+import { docKey, LEGACY_DOC_KEY, loadDocForMap, switchViewActions } from '../core/workspace.mjs';
 
 import { mount as mountTopbar } from './topbar.mjs';
 import { mount as mountLayers } from './layers.mjs';
@@ -18,7 +19,6 @@ import { mount as mountExportModal } from './exportmodal.mjs';
 import { mountLocator } from './locator.mjs';
 import { createLayout } from './panelresize.mjs';
 
-const STORAGE_KEY = 'tactica:doc';
 const PERSIST_DEBOUNCE_MS = 500;
 const DEFAULT_MAP_ID = 'western-city';
 const DEFAULT_TACTIC_NAME = 'A-Point Push';
@@ -77,9 +77,19 @@ async function boot() {
   ]);
   themeApi.initTheme();
 
+  // One-time cleanup of the pre-per-map single-doc key (Jasper 2026-07-06: wipe, do NOT migrate
+  // it into a map slot). Harmless if already absent; guarded so a blocked localStorage can't throw.
+  cleanupLegacyDoc();
+
+  // Shared deps for the per-map document router (core/workspace.mjs). Kept pure there; the real
+  // localStorage read + persist.deserialize + freshDoc(mapId) are injected from here.
+  const storageDeps = { read: safeRead, deserialize, freshDoc };
+
   const shared = readSharedDocFromHash();
   const isReadonly = shared !== null;
-  const doc = shared ?? loadPersistedDoc() ?? freshDoc();
+  // Boot always opens the default map (Jasper 2026-07-06: no last-used-map memory) — loading that
+  // map's saved slot if present, else a fresh doc. A #pb= share link still overrides into readonly.
+  const doc = shared ?? loadDocForMap(DEFAULT_MAP_ID, storageDeps);
   const view = freshView();
 
   const store = createStore(doc, view);
@@ -134,6 +144,30 @@ async function boot() {
     middle: document.getElementById('middle'),
   });
 
+  // Debounced per-map persistence. Installed BEFORE the panels mount (and before switchMap is
+  // defined) so switchMap can force-flush the outgoing map's doc at the moment of a switch. A
+  // read-only (#pb=) session never persists — its handle is a no-op flush so switchMap stays safe.
+  const persistence = isReadonly ? { flush() {} } : installPersistence(store);
+
+  // Map switch (topbar picker). Swaps the WHOLE doc rather than mutating mapId in place:
+  //   1. flush the outgoing map's doc to its slot synchronously (before we lose it)
+  //   2. load the target map's saved doc, or a fresh one if never visited
+  //   3. doc/replace into the store (the same seam boot + undo/redo use)
+  //   4. reset history — undo must not cross a map boundary
+  //   5. reset the view (selection/keyframe reference the old doc; camera + active layer
+  //      re-anchor to the incoming doc) via core/workspace.switchViewActions
+  // Not routed through exec(): a map switch is navigation, not an undoable edit. Read-only
+  // sessions get a no-op (a share link is a snapshot of one map; there are no other slots).
+  function switchMap(mapId) {
+    if (isReadonly) return;
+    if (mapId === store.getDoc().mapId) return;
+    persistence.flush();
+    const incoming = loadDocForMap(mapId, storageDeps);
+    store.dispatch({ type: 'doc/replace', doc: incoming });
+    history.reset();
+    for (const action of switchViewActions(incoming)) store.dispatch(action);
+  }
+
   // openExport is set once the export modal mounts (below); the playbookbar's Export button
   // calls ctx.openExport, so it has to be present on ctx before playbookbar mounts.
   const ctx = {
@@ -145,6 +179,7 @@ async function boot() {
     undo,
     redo,
     layout,
+    switchMap,
     toggleTheme: themeApi.toggleTheme,
     openExport: () => {},
   };
@@ -162,11 +197,17 @@ async function boot() {
   const exportModal = mountExportModal(document.getElementById('modal-root'), ctx);
   ctx.openExport = () => exportModal.open();
 
+  // Persistence is already installed above (before mounts) for non-readonly sessions; readonly
+  // just flags the body so the CSS can neutralize write affordances (incl. the map picker).
   if (isReadonly) {
     document.body.classList.add('readonly');
-  } else {
-    installPersistence(store);
   }
+
+  // Flush the active map's doc on tab hide/close so an edit made inside the 500ms debounce window
+  // isn't lost on reload/navigation. Map SWITCHING already flushes the outgoing doc; this covers
+  // the raw reload/close path. `pagehide` (over `beforeunload`) stays bfcache-friendly; readonly's
+  // persistence handle is a no-op flush, so this is safe there too.
+  window.addEventListener('pagehide', () => persistence.flush());
 
   installShortcuts(ctx, isReadonly);
   installExportTestSeam(ctx);
@@ -205,10 +246,16 @@ function noop() {}
 // Initial state
 // ---------------------------------------------------------------------------
 
-function freshDoc() {
+/**
+ * A brand-new, empty playbook for `mapId`: the standard default layers + one starter tactic.
+ * Each map's layers are INDEPENDENT (Jasper 2026-07-06) — a fresh map always gets this standard
+ * set, never a carry-over of the layers from the map you're leaving.
+ * @param {string} mapId
+ */
+function freshDoc(mapId) {
   const tactic = newTactic(DEFAULT_TACTIC_NAME, '');
   return {
-    mapId: DEFAULT_MAP_ID,
+    mapId,
     layers: DEFAULT_LAYERS.map((l) => ({ ...l })),
     tactics: [tactic],
     activeTacticId: tactic.id,
@@ -242,36 +289,65 @@ function freshView() {
 // Persistence (doc only, debounced; never view)
 // ---------------------------------------------------------------------------
 
-function loadPersistedDoc() {
-  let raw = null;
+/** localStorage.getItem that never throws (private mode / blocked storage -> null). */
+function safeRead(key) {
   try {
-    raw = localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(key);
   } catch {
-    return null; // storage disabled (private mode / blocked) — start fresh
-  }
-  if (!raw) return null;
-  try {
-    return deserialize(raw);
-  } catch {
-    return null; // corrupt / version-mismatched envelope — fall back to a fresh doc
+    return null;
   }
 }
 
+/** One-time removal of the obsolete pre-per-map single-doc key. Best-effort, never throws. */
+function cleanupLegacyDoc() {
+  try {
+    localStorage.removeItem(LEGACY_DOC_KEY);
+  } catch {
+    /* storage blocked — nothing to clean up anyway */
+  }
+}
+
+/**
+ * Debounced per-map persistence: writes the active doc to its OWN slot (tactica:doc:<mapId>),
+ * never the legacy single key. Returns a handle whose flush() writes the current doc immediately
+ * — the map switch calls it so the outgoing map's latest edits land in its slot before the store
+ * is replaced with the incoming map's doc. Only doc changes persist; view-only changes are skipped
+ * (same reference-equality gate as before).
+ * @param {{getDoc:Function, subscribe:Function}} store
+ * @returns {{flush:()=>void}}
+ */
 function installPersistence(store) {
   let timer = null;
   let lastDoc = store.getDoc();
+
+  function write(doc) {
+    try {
+      localStorage.setItem(docKey(doc.mapId), serialize(doc));
+    } catch {
+      /* storage full/blocked — persistence is best-effort, the session still works */
+    }
+  }
+
   store.subscribe((doc) => {
     if (doc === lastDoc) return; // view-only change — never persist view
     lastDoc = doc;
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
-      try {
-        localStorage.setItem(STORAGE_KEY, serialize(doc));
-      } catch {
-        /* storage full/blocked — persistence is best-effort, the session still works */
-      }
+      timer = null;
+      write(doc);
     }, PERSIST_DEBOUNCE_MS);
   });
+
+  return {
+    flush() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      // Write whatever the store currently holds — at switch time that's the OUTGOING map's doc.
+      write(store.getDoc());
+    },
+  };
 }
 
 // ---------------------------------------------------------------------------

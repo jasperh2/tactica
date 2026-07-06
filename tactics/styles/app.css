@@ -462,3 +462,15 @@ body.readonly .pb-transport .pb-export-btn,
 body.readonly .canvas-hud .canvas-pill--hint {
   display: none !important;
 }
+
+/* Per-map playbooks: a #pb= share link is a snapshot of ONE map's plan — there are no saved   */
+/* slots for other maps, so switchMap() is a no-op in readonly. Keep the map NAME visible for   */
+/* context but neutralize the picker (drop the caret, kill interaction) so a viewer never opens  */
+/* a dropdown whose selections do nothing.                                                       */
+body.readonly .tb-map-btn {
+  pointer-events: none;
+  opacity: 0.75;
+}
+body.readonly .tb-map-btn .ph-caret-down {
+  display: none;
+}

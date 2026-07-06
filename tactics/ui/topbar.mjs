@@ -142,7 +142,16 @@ export function mount(el, ctx) {
       return;
     }
     if (action === 'select-map') {
-      ctx.exec({ type: 'doc/setMap', mapId: actionEl.dataset.mapId });
+      // Per-map playbooks: switching maps swaps the WHOLE doc (save outgoing + load the target
+      // map's own saved playbook, or a fresh one). app.mjs owns that orchestration via switchMap
+      // — it can't be a plain doc/setMap dispatch, which only flips mapId and would leave the old
+      // map's drawings floating over the new terrain. Fallback to the legacy in-place flip only if
+      // an older integrator hasn't provided switchMap (defensive; every current ctx has it).
+      if (typeof ctx.switchMap === 'function') {
+        ctx.switchMap(actionEl.dataset.mapId);
+      } else {
+        ctx.exec({ type: 'doc/setMap', mapId: actionEl.dataset.mapId });
+      }
       closeDropdown();
       return;
     }
