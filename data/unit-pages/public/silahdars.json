@@ -1,0 +1,172 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "silahdars",
+  "name": "Silahdars",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 300,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/silahdars.png",
+    "metaTier": "B",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 5,
+        "raw": "5/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Hero Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Health & Resistance Doctrine",
+          "text": "+300 HP, -5% dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Health & All Defences Doctrine",
+          "text": "+440 HP, +40 all defences. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Health & Piercing Defence Doctrine",
+          "text": "+440 HP, +125 piercing defence. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: +11 points bottom, rest TOP LINE (confirmed in a 2025-05-29 follow-up screenshot: top line 3/3, 3/3, 2/2, 3/3, 2/3, 0/3; bottom line 3/3, 3/3, 0/3, 0/3, 0/2 — exact icon-to-ability mapping not labeled in thread). Hero pairing: Any. Example build: Health & Resistance Doctrine, Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Hero Damage Doctrine V, Epic Leadership Doctrine. Rotation: X-move in; press 1 (Sideways Sweep); when 1's CD shows 11s remaining, press 2 (Deathstrike); when 2's CD shows 24s remaining, press 3 (Get Over Here); press 1 again when up; repeat the 11s-remaining trigger for 3. Never cancel 1/2 before their 6s duration finishes; avoid Cover Commander when you can simply disengage and wait out cooldowns. Patch-note mechanics (8/15/2024, carried in OP): Sideways Sweep and Deathstrike reduce damage taken 40% for 3s and remove control effects instantly, and increase attack rate for their duration; their damage (incl. Deathstrike released under Get Over Here) +30%; Deathstrike minimum damage rate 0.1->0.2; Deathstrike deals extra damage to charging enemies; basic attacks hit +1 enemy. \"Don't put\" is a literal X placeholder in the OP — not fabricated here. GAP: a follow-up image (2025-05-29) shows the veterancy point allocation as in-game icons without a labeled icon-to-ability mapping — do not invent which ability each icon slot corresponds to; treat the exact allocation as unconfirmed beyond the '+11 bottom, rest top' summary line. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Silahdars is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: +11 points bottom, rest TOP LINE (confirmed in a 2025-05-29 follow-up screenshot: top line 3/3, 3/3, 2/2, 3/3, 2/3, 0/3; bottom line 3/3, 3/3, 0/3, 0/3, 0/2 — exact icon-to-ability mapping not labeled in thread). Hero pairing: Any. Example build: Health & Resistance Doctrine, Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Hero Damage Doctrine V, Epic Leadership Doctrine. Rotation: X-move in; press 1 (Sideways Sweep); when 1's CD shows 11s remaining, press 2 (Deathstrike); when 2's CD shows 24s remaining, press 3 (Get Over Here); press 1 again when up; repeat the 11s-remaining trigger for 3. Never cancel 1/2 before their 6s duration finishes; avoid Cover Commander when you can simply disengage and wait out cooldowns. Patch-note mechanics (8/15/2024, carried in OP): Sideways Sweep and Deathstrike reduce damage taken 40% for 3s and remove control effects instantly, and increase attack rate for their duration; their damage (incl. Deathstrike released under Get Over Here) +30%; Deathstrike minimum damage rate 0.1->0.2; Deathstrike deals extra damage to charging enemies; basic attacks hit +1 enemy. \"Don't put\" is a literal X placeholder in the OP — not fabricated here. GAP: a follow-up image (2025-05-29) shows the veterancy point allocation as in-game icons without a labeled icon-to-ability mapping — do not invent which ability each icon slot corresponds to; treat the exact allocation as unconfirmed beyond the '+11 bottom, rest top' summary line. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Silahdars is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Cavalry and instant-burst units like Claymores."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Reapers, 1v1s, and other burst-fight types."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "High-DR/Spartan-meta comps in blob or sustained fights."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "Spells last 6s and grant CCi plus 40% damage reduction for 3s after — rotate accordingly; stay in CC during downtime, go in/out depending on enemy burst and your front."
+        },
+        {
+          "context": "rotation",
+          "text": "X-move in; press 1 (Sideways Sweep); at 11s left on 1's CD press 2 (Deathstrike); at 24s left on 2's CD press 3 (Get Over Here); repeat 1, then repeat the 11s-trigger for 3. Never cancel 1/2 before their 6s duration."
+        },
+        {
+          "context": "blob / sustained fights",
+          "text": "Better against Spartan-meta (high DR/blob/sustained); worse against Reapers, 1v1, and other burst-oriented matchups (per Amya's 2025-05-29 follow-up)."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

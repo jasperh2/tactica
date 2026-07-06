@@ -1,0 +1,86 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "symmachean-stalwarts",
+  "name": "Symmachean Stalwarts",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 240,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/symmachean-stalwarts.png",
+    "metaTier": "AA",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Skirmish": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Duelling": {
+        "value": 10,
+        "raw": "10/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Brace damage hitbox −12%; stab damage hitbox −18%"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

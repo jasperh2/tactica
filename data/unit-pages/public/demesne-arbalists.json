@@ -1,0 +1,137 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "demesne-arbalists",
+  "name": "Demesne Arbalists",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 160,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/demesne-arbalists.png",
+    "metaTier": "B",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). \"Piercing Bolts\" target count 2→1; fire rate −16%"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Double Fire Doctrine",
+          "text": "Unit-unique: unlocks Double Fire, can't combine with Focus Fire, 45s CD, +12% rate of fire, +1 shot to spell (6->7 arrows). Mandatory per Amya. OP note: \"confirm exact name.\"",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Bolt Penetration Doctrine",
+          "text": "Huge per Amya: +1 additional target penetration on top of baseline Penetrating Shots. Mandatory per Amya. OP note: \"confirm exact name.\"",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Ammo Doctrine",
+          "text": "+35% ammo, +140 piercing AP. OP notes screenshot stat differs from ConqHub's 'New Ammo IV +120 AP'. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Accuracy Doctrine",
+          "text": "+40% shooting accuracy, +80 piercing DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Crossbow II",
+          "text": "+50 piercing DMG, +200 piercing pen; alt if no Ammo doctrine or no Unit DMG V. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Hero Damage Doctrine V",
+          "text": "Alt for Accuracy/Ammo, pen-focused. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Generic Piercing Damage Doctrine",
+          "text": "Alt for Accuracy/Ammo. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line (do NOT take the last node), rest Bot Line. Hero pairing: not specified in this thread. MEGA mandatory per OP (verbatim emphasis): either Double Fire + ROF doctrine OR basic ROF -- either way adds +1 shot to the spell (6->7 arrows). Bolt Penetration is also huge. Accuracy and Ammo are not strictly required, can be replaced by Hero DMG (pen) or any piercing DMG increase. Playstyle: huge damage drop-off -- need to be near the fights to have actual impact (press 2 can have good range); never overlap their spell with Double Shot, do one then the other. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Combined-thread note: tierlist links both 'Demesne Arbalists' and 'Black Tortoise Regiment' to this thread, but the OP text only ever names Demesne Arbalists -- Black Tortoise Regiment guidance is not present in this thread's visible content, not asserted here. Demesne Arbalists is on the 2026-06-25 Chaos patch shortlist: \"Piercing Bolts\" target count 2->1 (Nerf); fire rate -16%. This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the doctrine emphasis on multi-target penetration (\"Bolt Penetration Doctrine\" / Double Fire multi-shot value) and the Playstyle notes assume the pre-patch 2-target Piercing Bolts; role guidance (line-clearing vs single-target) may need to shift per the shortlist rationale. fightRatings stays null/dataGap (no strength block in source) -- nothing to be stale there.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Ranged infantry with high per-shot damage, slower reload",
+      "rationale": "Veterancy: Top Line (do NOT take the last node), rest Bot Line. Hero pairing: not specified in this thread. MEGA mandatory per OP (verbatim emphasis): either Double Fire + ROF doctrine OR basic ROF -- either way adds +1 shot to the spell (6->7 arrows). Bolt Penetration is also huge. Accuracy and Ammo are not strictly required, can be replaced by Hero DMG (pen) or any piercing DMG increase. Playstyle: huge damage drop-off -- need to be near the fights to have actual impact (press 2 can have good range); never overlap their spell with Double Shot, do one then the other. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Combined-thread note: tierlist links both 'Demesne Arbalists' and 'Black Tortoise Regiment' to this thread, but the OP text only ever names Demesne Arbalists -- Black Tortoise Regiment guidance is not present in this thread's visible content, not asserted here. Demesne Arbalists is on the 2026-06-25 Chaos patch shortlist: \"Piercing Bolts\" target count 2->1 (Nerf); fire rate -16%. This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the doctrine emphasis on multi-target penetration (\"Bolt Penetration Doctrine\" / Double Fire multi-shot value) and the Playstyle notes assume the pre-patch 2-target Piercing Bolts; role guidance (line-clearing vs single-target) may need to shift per the shortlist rationale. fightRatings stays null/dataGap (no strength block in source) -- nothing to be stale there.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "positioning",
+          "text": "Huge damage drop-off -- you need to be near the fights to have actual impact (their press 2 can have good range)."
+        },
+        {
+          "context": "ability sequencing",
+          "text": "Never overlap their spell with Double Shot. Do one then the other."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

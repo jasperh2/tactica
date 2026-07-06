@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Units — Immortals Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/academy.css" />
+  <link rel="stylesheet" href="./units-index.css" />
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main class="academy-main units-index" id="app-shell">
+    <div class="index-header">
+      <h1 class="index-title">Units</h1>
+      <span class="index-counts" id="units-index-counts"></span>
+    </div>
+
+    <section class="index-filters" id="units-controls" aria-label="Filter units">
+      <input
+        class="index-search"
+        id="units-search"
+        type="text"
+        placeholder="Search units"
+        aria-label="Search units by name"
+      />
+      <div class="filter-rows">
+        <span class="filter-group-label">tier</span>
+        <div class="filter-chip-group" id="units-filter-tier" role="group" aria-label="Filter by tier"></div>
+        <span class="filter-rows-gap" aria-hidden="true"></span>
+        <span class="filter-group-label">class</span>
+        <div class="filter-chip-group" id="units-filter-class" role="group" aria-label="Filter by class"></div>
+        <span class="filter-rows-gap" aria-hidden="true"></span>
+        <span class="filter-group-label">era</span>
+        <div class="filter-chip-group" id="units-filter-era" role="group" aria-label="Filter by era"></div>
+        <span class="units-result-count" id="units-result-count" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <div class="unit-tile-grid" id="units-grid" aria-label="Unit tiles" hidden></div>
+
+    <div class="empty-result" id="units-empty-result" hidden>
+      <span id="units-empty-result-text"></span>
+      <button type="button" class="clear-search" id="units-clear-search">Clear search</button>
+    </div>
+
+    <p class="index-footnote">Tier placements — see each unit page's source legend for attribution.</p>
+  </main>
+
+  <div id="gate-root"></div>
+
+  <script type="module">
+    // Cosmetic testing-build password gate (see shared/gate.mjs threat model). Mounts an overlay
+    // that covers the page until unlocked before anything else renders meaningfully.
+    import { mountGate } from '../shared/gate.mjs';
+    mountGate(document.getElementById('gate-root'), document.getElementById('app-shell'));
+  </script>
+  <script type="module">
+    import { mountNav } from '../shared/nav.mjs';
+    mountNav('units');
+  </script>
+  <script type="module">
+    import { boot } from './units-index.boot.mjs';
+    boot();
+  </script>
+</body>
+</html>

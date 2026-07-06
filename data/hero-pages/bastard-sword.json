@@ -1,0 +1,135 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "bastard-sword",
+  "className": "Bastard Sword",
+  "weaponArchetype": "Two-handed sword · melee AOE unit-hitter",
+  "tier": {
+    "tier": "God",
+    "positionInTier": 1,
+    "specialJobLabel": null,
+    "epicSchemVariants": [
+      {
+        "variantName": "Riposte Build",
+        "tier": "God",
+        "positionInTier": 1,
+        "specialJobLabel": null
+      },
+      {
+        "variantName": "Any Build",
+        "tier": "S",
+        "positionInTier": 1,
+        "specialJobLabel": null
+      }
+    ]
+  },
+  "epicSchematic": {
+    "needed": "No, but meta playstyle uses some — 3x Flameshackle heavy & 2 Epic Schem pieces.",
+    "name": null,
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Depends on the build — written next to each build below.",
+    "runes": "unknown",
+    "bestGender": "N/A",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Flameshackle",
+        "purpose": "Heavy Build (5x): Divine Thrust block break stalwart, maiden or any block & ignites exotics and triggers full-HP explosions. Strong vs turtles."
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing DMG",
+        "Slashing Pen"
+      ],
+      "bonus": [
+        "Strength",
+        "Critical Hit Chance",
+        "Critical Damage"
+      ]
+    },
+    "spells": {
+      "core": [],
+      "fillerNotes": "Riposte build: take Fluid Shadow for the ultimate; CCi only useful if TW / comp games."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Riposte Build",
+      "summary": "Full STR — 4/4 Carniflex (you can let it broke itself for more dmg) or 2x light 2x medium and epic shem weapon — double slashing weapon (bonus str/agi/crit). Keep checking you are under the armor cap for dmg boost. Take Fluid Shadow for ult, CCi only useful if TW / comp games. Can tweak the build like you want but overall playing fully around double dash into riposte is goated. Keep DMG buff up for 2x dash then just spam riposte, being close let you hit AND wave, it's just the best build until nerf. Stamina management and positioning make the difference between doing 1M dmg or 3M dmg.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "epicSchemVariantRef": "Riposte Build"
+    },
+    {
+      "name": "Heavy Build (Full HP/STR — Divine Thrust Abuse build)",
+      "summary": "5x Flameshackle: Divine Thrust block break stalwart, maiden or any block & ignites exotics and triggers full-HP explosions. Strong vs turtles. 5x Epic Schematic: Take nodes that boost your dmg and survability under 1800 total def. Full STR recommended (or full HP to start) — you survive as you benefit from % damage reduction.",
+      "strongVs": "turtles / block-heavy enemies",
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Riposte combo",
+      "steps": [
+        "Spam 2x Dash into Moulinet into Riposte",
+        "Left, left, hold right-click swing, and repeat"
+      ],
+      "rhythm": "Stamina management and positioning make the difference between doing 1M dmg or 3M dmg; there are a LOT of hidden mechs on the class about stamina and dmg boost."
+    },
+    {
+      "name": "Divine Thrust block-break (Heavy Build)",
+      "steps": [
+        "Divine Thrust into a blocking Stalwart, Maiden, or any block",
+        "Ignites exotics and triggers full-HP explosions on impact"
+      ],
+      "rhythm": null
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Depending on the build you choose, you must set clear rules for yourself. Some builds make you weak against units, others against heroes, but in return they offer strong advantages in other roles. Your goal is to fully exploit the main strength of your build instead of trying to do everything. There are many viable variants, and I'll keep updating this as more data comes in.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "This class works with any armor set, but as a melee AOE unit-hitter, full light armor is generally a bait option. Take siege breaker bonus & Arcing smith for flame shackles build.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Riposte build: full melee-aggression build, spam Dash x2 into Moulinet into Riposte; rewards tight stamina management and close positioning (both hit and wave-clear from proximity). Landing correctly is described as the difference between \"1M dmg or 3M dmg\" in a fight. Left-hold-right-click swing-and-repeat is the core input loop. Heavy build: tankier, plays around Divine Thrust to break blocks/stalwart/maiden, ignites exotics for full-HP explosions; strong vs turtle/block-heavy enemies rather than raw burst.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Wherever you are playing riposte build or heavy build, look to not overcome the recommended cap — think about a few tricks such as letting your stuff break itself for lower armor value (while keeping the actual bonus set). Phantom Feint: \"After [Moulinet Advance], you gain [Phantom Dance] for 14 seconds: during [Dash] you are invulnerable for 0.5 seconds; if your total base Defence is 1800 or lower, Stamina cost is reduced by 35%.\" With above node that you take into riposte build you can even snare/winded [and] be i-frame (30% skill – 70% is the server lagging or not).",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-04-28"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Bastard Sword' (1451609707042046074); OP 2025-12-19, edited 2026-04-28; follow-up posts 2026-03-12 (edited 2026-04-22) and 2026-03-27",
+      "sourceDate": "2026-04-28",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-04-28",
+  "patchNote": "Latest edit (2026-04-28) pre-dates the 2026-06-25 Chaos patch anchor by about two months — treat build/stat specifics as potentially stale against current-season balance."
+}

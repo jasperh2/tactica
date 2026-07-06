@@ -1,0 +1,153 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "spear-sergeants",
+  "name": "Spear Sergeants",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 215,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/spear-sergeants.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 3,
+        "raw": "3/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Spear Doctrine VI",
+          "text": "CCi / Stand Fast. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Hero Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Awareness Doctrine",
+          "text": "-500 cav charges, -20% rear attacks. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Noble Blood Doctrine",
+          "text": "100 melee dmg taken -> bleed, +15% dmg/move while bleeding. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler; alt for Noble Blood.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Tank doctrines",
+          "text": "Filler; alt build (dmg taken / full block).",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top, rest Bot. Hero pairing: Any. Playstyle: always be on Cover-Commander, activating/deactivating every 2s to reset the buff granted at its start; don't go \"hard in\" until you've debuffed what will hit you next; each hit applies a -10% penetration debuff stacking up to 5 times (-50% total). A 2025-07-20 follow-up clarifies the Cover Commander buff: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; decay rate 6s. Example build: Noble Blood Doctrine, Awareness Doctrine V, Hero Damage Doctrine V, Unit Damage Doctrine V, Epic Spear Doctrine VI. Can swap to full tank (dmg-taken build or full block + CCi to reset). \"Don't put\" is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Spear Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions). GAP: this OP has no \"Counters\" section at all (absent, not unfilled placeholders) — usage.counters is [] to reflect that absence, not a claim the unit has no losing/winning matchups.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "Veterancy: Top, rest Bot. Hero pairing: Any. Playstyle: always be on Cover-Commander, activating/deactivating every 2s to reset the buff granted at its start; don't go \"hard in\" until you've debuffed what will hit you next; each hit applies a -10% penetration debuff stacking up to 5 times (-50% total). A 2025-07-20 follow-up clarifies the Cover Commander buff: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; decay rate 6s. Example build: Noble Blood Doctrine, Awareness Doctrine V, Hero Damage Doctrine V, Unit Damage Doctrine V, Epic Spear Doctrine VI. Can swap to full tank (dmg-taken build or full block + CCi to reset). \"Don't put\" is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Spear Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions). GAP: this OP has no \"Counters\" section at all (absent, not unfilled placeholders) — usage.counters is [] to reflect that absence, not a claim the unit has no losing/winning matchups.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "Always be on Cover-Commander; keep activating/deactivating it every 2s to reset the buff granted at its start."
+        },
+        {
+          "context": "engage",
+          "text": "Don't go \"hard in\" until you've applied the -10% penetration debuff (stacking to -50% at 5 stacks, one stack per hit landed) to what will hit you next."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

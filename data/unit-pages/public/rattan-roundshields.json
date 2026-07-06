@@ -1,0 +1,135 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "rattan-roundshields",
+  "name": "Rattan Roundshields",
+  "profile": "public",
+  "header": {
+    "era": "Chivalric",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 115,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/rattan-roundshields.png",
+    "metaTier": "S",
+    "rarityTier": "T2",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Leadership 100→115; poison duration 6s→4s; poison damage per stack 250→140"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Iron Health Doctrine V",
+          "text": "Unit-unique: +300 HP, unlocks Ironsides: +175 piercing/slashing/blunt defence for 12s. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Poison Doctrine V",
+          "text": "+140 all AP, +60 poison DMG, stacks up to 2x. Mandatory per Amya. STALE: guide's own cross-check note flags this as pre-nerf poison numbers — shortlist patch changed poison duration 6s->4s and poison damage per stack 250->140.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Charge Doctrine V",
+          "text": "+250 charge DMG, +450 charge block break. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Charge Defence Doctrine",
+          "text": "-40% DMG taken while charging. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Charge CD Doctrine",
+          "text": "-24% charge CD, +1 charge target. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 6,
+          "name": "LDS Doctrine",
+          "text": "Alt for Charge DMG / Charge Block Break if needed. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "HP Doctrines",
+          "text": "Alt for Charge Defence: more fire resistance but worse trade vs Stalwart / Shieldmaiden charges. Top pick.",
+          "tag": "top-pick"
+        }
+      ],
+      "note": "Veterancy: Mixed (6 points Bot Line, rest Top). Hero pairing: not specified in this thread. Playstyle: same as Rattan Pikemen — goal is to debuff the enemy, charging in applies the debuff; disengage only if you can survive; 'insane piercing defence for their leadership / T2, great trade into pikes' is flagged by the guide itself as a pre-patch leadership figure (leadership has since risen 100->115, changing the cost-efficiency math this claim rests on). No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Rattan Roundshields is on the 2026-06-25 Chaos patch shortlist: Leadership 100->115 (Nerf), poison duration 6s->4s, poison damage per stack 250->140. This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide's own text explicitly flags this: the 'Poison Doctrine V' line ('+140 all AP, +60 poison DMG, stacks up to 2x') and the Playstyle claim 'insane piercing defence for their leadership / T2' both quote pre-nerf numbers per the guide's own in-file cross-check note. Both are reflected here as stale, not current.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": "Veterancy: Mixed (6 points Bot Line, rest Top). Hero pairing: not specified in this thread. Playstyle: same as Rattan Pikemen — goal is to debuff the enemy, charging in applies the debuff; disengage only if you can survive; 'insane piercing defence for their leadership / T2, great trade into pikes' is flagged by the guide itself as a pre-patch leadership figure (leadership has since risen 100->115, changing the cost-efficiency math this claim rests on). No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Rattan Roundshields is on the 2026-06-25 Chaos patch shortlist: Leadership 100->115 (Nerf), poison duration 6s->4s, poison damage per stack 250->140. This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide's own text explicitly flags this: the 'Poison Doctrine V' line ('+140 all AP, +60 poison DMG, stacks up to 2x') and the Playstyle claim 'insane piercing defence for their leadership / T2' both quote pre-nerf numbers per the guide's own in-file cross-check note. Both are reflected here as stale, not current.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Same as Rattan Pikemen: goal is to debuff the enemy. Charging in applies the debuff."
+        },
+        {
+          "context": "disengage",
+          "text": "Disengage only if you can survive."
+        },
+        {
+          "context": "matchup (STALE — pre-nerf leadership figure)",
+          "text": "Insane piercing defence for their leadership / T2. Great trade into pikes — guide's own note flags this claim as tied to the pre-patch leadership cost (100), which the shortlist raised to 115; treat the cost-efficiency claim as needing revalidation."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "glaive",
+  "className": "Glaive",
+  "weaponArchetype": "Polearm · mounted brawler/team buffer",
+  "tier": {
+    "tier": "A",
+    "positionInTier": 1,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "No (but nice to have if playing heavy playstyle)",
+    "name": "Royal Sentry's",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full STR (can go Full HP if not confident/learning)",
+    "runes": "unknown x2 (\"or\" between two unfilled options — OP offers a choice, neither specified)",
+    "bestGender": null,
+    "genderNote": "Male: Faster auto-attacks and sprint attacks. Female: Faster Arc of Steel animation (currently not used).",
+    "armorSets": [
+      {
+        "name": "Carniflex",
+        "purpose": "recommended best armour"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing Damage/Pen",
+        "Blunt Damage/Pen"
+      ],
+      "bonus": [
+        "STR",
+        "AGI",
+        "Crit Value",
+        "Crit Damage"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Warlord's Greeting (Double CC, Mandatory)",
+        "Heat of Battle (Defense buff, knockback, control cleanse, spell cancel tool)",
+        "Flexible Slot: God of Battles (team damage buff) or Breaker of Shields (duel burst)",
+        "Flying Reaper (Ultimate CC, AoE damage, self-cleanse)"
+      ],
+      "fillerNotes": null
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Heavy Armor/Epic Armor",
+      "summary": "Safer, better survivability. You mostly play around your horse — use Right Click into horse turn and attack to optimize damage, and you can move your camera during Right Click to extend the swing and hit more targets. Once dismounted, Shift-AA into block cancels the animation and immediately goes into another Shift-AA for quick, repeated hits. When fully committing on foot, the ideal combo is Warlord's Greeting → Flying Reaper (ult) → Shift-AA chain.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Medium Armour",
+      "summary": "High damage, relies on proper spell use for defense. Focused on full Strength and medium armor to amplify blunt damage (especially effective with event sets like Season 6's, which allow stacking blunt bonuses). Relies on immense Turn and Attack & Right Click DMG on horse, Flying Reaper for burst and control on ground, and Heat of Battle to cancel enemy spells and survive pressure. Playstyle centers around horse mobility: Right Click into a horse turn and camera drag to extend swing range and poke from safety. Once dismounted, Shift-AA into block cancels the animation, allowing chaining of multiple Shift-AAs for burst.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Turn and Attack (horseback)",
+      "steps": [
+        "Right Click into horse turn and attack",
+        "move camera during Right Click to extend the swing and hit more targets"
+      ],
+      "rhythm": "During Turn and Attack, damage taken is reduced by 30%; each enemy hit reduces the skill's own cooldown by 2 seconds, up to a maximum of 20 seconds — per the 2025-06-04 balance-notes image."
+    },
+    {
+      "name": "Shift-AA into block (animation cancel)",
+      "steps": [
+        "Shift-AA",
+        "into block to cancel the animation",
+        "immediately Shift-AA again",
+        "repeat to chain"
+      ],
+      "rhythm": "Cancels the animation for quick, repeated hits once dismounted; lets you chain multiple Shift-AAs for burst."
+    },
+    {
+      "name": "Full-commitment ground combo",
+      "steps": [
+        "Warlord's Greeting",
+        "Flying Reaper (ult)",
+        "Shift-AA chain"
+      ],
+      "rhythm": "The ideal combo when fully committing on foot."
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Glaive is a mounted-focused hero with high burst and team utility. Due to nerfs to foot-based skills, it rely less on being a burst class on foot. It excels as a mounted brawler and team buffer. You play around Turn & Attack, horse auto-attacks, and once on ground: buffs + burst, then disengage.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Learning how to space, what spell can you cancel with heat of battle, and to be pro-active while not losing horse will be key to being useful as glaive!",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2024-10-14"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Glaive Guide' (1295477645278056533); OP 2024-10-14 edited 2026-03-26; build posts 2024-10-14 edited 2025-12-28 (x2); balance-notes image post 2025-06-04; link post 2026-04-05",
+      "sourceDate": "2026-04-05",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-04-05",
+  "patchNote": "Latest edit (2026-04-05) pre-dates the 2026-06-25 Chaos patch anchor by about eleven weeks."
+}

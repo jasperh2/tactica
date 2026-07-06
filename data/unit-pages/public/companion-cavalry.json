@@ -1,0 +1,157 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "companion-cavalry",
+  "name": "Companion Cavalry",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 230,
+    "origin": null,
+    "noMastery": true,
+    "icon": null,
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Flank": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 5,
+        "raw": "5/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9 hits. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Companion Cavalry: Conquest",
+          "text": "Unit-unique: global +100 piercing/slashing/blunt DMG on press 3, +Sworn Guard buff 18s. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Companion Cavalry: Billowing Winds",
+          "text": "Unit-unique: +9% movement speed, +10% unit DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Health & Resistance Doctrine V",
+          "text": "-5% DMG taken, alt for Leadership. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "DMG reduction & tank doctrines",
+          "text": "OP's explicit \"Don't put\" -- \"not worth it.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Full Bot (Achilles' Wings: +20% movement speed, +100% Imperial Stormbolt charge dmg, renames unit). Hero pairing: Any. Playstyle kit: X-move in; press 3 for buffs (usable even while hero fighting -- +100 all dmg stats wherever you are on the map); press 1 when close but not in contact (if low armor/low HP target, let that 1 do a bit of dps, else proceed instantly); cancel it with V and instantly press 2 very shortly after contact; cancel that press 2 with V once ~70% of the unit has impaled spears and press the new 1; try to X-move out at the end of the 1 without cancelling too soon. \"This is the recommended playstyle vs units you know you can optimize DPS versus. If you need any immediate actions, prioritise the 2 (Storm Pound).\" No separate \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Companion Cavalry is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Full Bot (Achilles' Wings: +20% movement speed, +100% Imperial Stormbolt charge dmg, renames unit). Hero pairing: Any. Playstyle kit: X-move in; press 3 for buffs (usable even while hero fighting -- +100 all dmg stats wherever you are on the map); press 1 when close but not in contact (if low armor/low HP target, let that 1 do a bit of dps, else proceed instantly); cancel it with V and instantly press 2 very shortly after contact; cancel that press 2 with V once ~70% of the unit has impaled spears and press the new 1; try to X-move out at the end of the 1 without cancelling too soon. \"This is the recommended playstyle vs units you know you can optimize DPS versus. If you need any immediate actions, prioritise the 2 (Storm Pound).\" No separate \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Companion Cavalry is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "X-move in; press 3 for buffs (usable even while hero fighting, gives +100 all dmg stats wherever you are on the map)."
+        },
+        {
+          "context": "combo",
+          "text": "Press 1 when close but not in contact (let it tick briefly vs low armor/HP targets); cancel with V and instantly press 2 very shortly after contact; cancel that 2 with V once ~70% of the unit has impaled spears, then press the new 1; try to X-move out at the end of the 1 without cancelling too soon."
+        },
+        {
+          "context": "priority",
+          "text": "If immediate action is needed, prioritise the 2 (Storm Pound) over the combo."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

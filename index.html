@@ -4,34 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <title>TACTICA — Conqueror's Blade tactics playbook</title>
-  <link rel="stylesheet" href="./styles/tokens.css" />
-  <link rel="stylesheet" href="./styles/app.css" />
+  <title>Immortals Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./shared/academy.css" />
+  <link rel="stylesheet" href="./home.css" />
+  <script>
+    // Legacy TACTICA share-link compat: before 2026-07-06 the tool lived at
+    // this URL's root, so #pb= playbook links shared in Discord point here.
+    // Forward them (hash intact) to the tool's new home before anything renders.
+    if (location.hash.startsWith('#pb=')) {
+      location.replace('tactics/' + location.hash);
+    }
+  </script>
 </head>
 <body>
-  <div id="app-shell">
-    <div id="topbar" role="banner"></div>
-    <div id="middle">
-      <div id="layers" role="complementary" aria-label="Layers"></div>
-      <div id="canvas" role="main" aria-label="Map canvas"></div>
-      <div id="dock" role="complementary" aria-label="Tools and options">
-        <div id="toolrail" role="toolbar" aria-label="Tools"></div>
-        <div id="dock-options" data-dock-region="options">
-          <div id="inspector" aria-label="Inspector"></div>
-        </div>
-      </div>
+  <div id="nav-root"></div>
+
+  <!-- Ported from design/handoff-academy-pages/design_handoff_immortals_academy/templates/Home.dc.html
+       — class names preserved exactly per the handoff's template-safety contract (README.md
+       "Template → data-field map" / "Recreate the markup with class names preserved exactly").
+       The handoff's own <nav> markup is NOT duplicated here — shared/nav.mjs (mounted below,
+       #nav-root) is the single nav implementation used by every page, matching the handoff's
+       "Nav, two forms" note (content-form nav is one shared component, not per-template markup). -->
+  <main class="home-page academy-main" id="app-shell">
+    <div class="house-emblem" data-field="brand.emblem (placeholder — gold ornate emblem drops in here)" aria-hidden="true">IA</div>
+    <h1 class="home-wordmark" data-field="brand.wordmark (working name, Jasper may veto)">Immortals Academy</h1>
+    <p class="home-mission" data-field="home.missionLine">
+      House Immortals' unit guides, hero guides, and tactics tools.
+    </p>
+
+    <div class="dest-cards" aria-label="Academy sections">
+      <a class="dest-card dest-card-units" href="./units/index.html" data-field="home.destinations[0] (counts from data)">
+        <span class="dest-title">Units <span class="dest-arrow" aria-hidden="true">&rarr;</span></span>
+        <span class="dest-count" data-role="units-count">Loading&hellip;</span>
+      </a>
+      <a class="dest-card dest-card-heroes" href="./heroes/index.html" data-field="home.destinations[1]">
+        <span class="dest-title">Heroes <span class="dest-arrow" aria-hidden="true">&rarr;</span></span>
+        <span class="dest-count" data-role="heroes-count">Loading&hellip;</span>
+      </a>
+      <a class="dest-card dest-card-tactics" href="./tactics/index.html" data-field="home.destinations[2]">
+        <span class="dest-title">Tactics tool <span class="dest-arrow" aria-hidden="true">&rarr;</span></span>
+        <span class="dest-count">opens TACTICA</span>
+      </a>
     </div>
-    <div id="playbookbar" role="region" aria-label="Playbook"></div>
-  </div>
-  <div id="modal-root"></div>
+
+    <p class="content-update-stamp" data-role="last-updated" data-field="home.lastContentUpdate" hidden></p>
+  </main>
+
   <div id="gate-root"></div>
 
   <script type="module">
-    // Cosmetic testing-build password gate (see ui/gate.mjs threat model). Mounts an overlay that
-    // covers the app until unlocked; app.mjs below keeps booting normally underneath.
-    import { mountGate } from './ui/gate.mjs';
-    mountGate(document.getElementById('gate-root'));
+    // Cosmetic testing-build password gate (see shared/gate.mjs threat model). Mounts an overlay
+    // that covers the page until unlocked before anything else renders meaningfully.
+    import { mountGate } from './shared/gate.mjs';
+    mountGate(document.getElementById('gate-root'), document.getElementById('app-shell'));
   </script>
-  <script type="module" src="./ui/app.mjs"></script>
+  <script type="module">
+    import { mountNav } from './shared/nav.mjs';
+    mountNav('home');
+  </script>
+  <script type="module">
+    // Homepage counts — read from the two compiled index.json files at runtime. Both are
+    // produced by other build lanes (unit-page compiler, hero-page schema/curation); this page
+    // must render gracefully before either exists (docs/specs/academy-site-architecture.md).
+    import { fetchUnitIndex, fetchHeroIndex, countFromIndex } from './shared/data.mjs';
+
+    /** Renders a count into a data-role element, or an honest "unavailable" state when the
+     * index couldn't be read or its shape wasn't recognized (countFromIndex returns null).
+     * `pluralNoun` is passed pre-pluralized (not derived by appending "s") so irregular nouns
+     * like "hero class" -> "hero classes" render correctly; callers pass the exact string to use
+     * when count !== 1. */
+    function renderCount(role, count, singularNoun, pluralNoun = `${singularNoun}s`) {
+      const el = document.querySelector(`[data-role="${role}"]`);
+      if (!el) return;
+      if (count === null) {
+        el.textContent = 'Coming soon';
+        el.classList.add('empty-state');
+        return;
+      }
+      el.textContent = `${count} ${count === 1 ? singularNoun : pluralNoun}`;
+    }
+
+    /** Distinct weapon-class count from the hero index's `heroes[]` rows. The index's own
+     * top-level `count` field is the TIERLIST ROW count (17 — Bastard Sword and Chaindart each
+     * carry two tier entries, see cb-academy-hero-index/v1 `isDualEntry`), not the distinct-class
+     * count (15, matching heroes/index.html's own "15 weapon classes" subtitle) — a homepage
+     * summary card must show the honest class count, not the row count, so this counts distinct
+     * `slug`s instead of trusting countFromIndex's generic `count` fallback for this one noun. */
+    function distinctHeroClassCount(heroIndexData) {
+      if (!heroIndexData || !Array.isArray(heroIndexData.heroes)) return null;
+      return new Set(heroIndexData.heroes.map((h) => h.slug)).size;
+    }
+
+    /** Renders the "last updated" stamp from whichever index has a `generated` field, preferring
+     * the more recent of the two if both are present. Hidden entirely if neither has one. */
+    function renderLastUpdated(unitData, heroData) {
+      const stampEl = document.querySelector('[data-role="last-updated"]');
+      if (!stampEl) return;
+      const dates = [unitData, heroData]
+        .map((d) => (d && typeof d === 'object' ? d.generated : null))
+        .filter((d) => typeof d === 'string' && d.length > 0)
+        .sort();
+      const latest = dates[dates.length - 1];
+      if (!latest) return;
+      stampEl.textContent = `Last updated ${latest}`;
+      stampEl.hidden = false;
+    }
+
+    async function boot() {
+      const [unitResult, heroResult] = await Promise.all([fetchUnitIndex(), fetchHeroIndex()]);
+      renderCount('units-count', countFromIndex(unitResult.data), 'unit');
+      renderCount('heroes-count', distinctHeroClassCount(heroResult.data), 'hero class', 'hero classes');
+      renderLastUpdated(unitResult.data, heroResult.data);
+    }
+
+    boot();
+  </script>
 </body>
 </html>

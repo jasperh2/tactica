@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Unit — Immortals Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/academy.css" />
+  <link rel="stylesheet" href="./unit-page.css" />
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main class="academy-main unit-page-main" id="app-shell">
+    <div id="unit-main">
+      <!-- Identity-only invitation shape (93-of-149 case): header + tier + role line + one honest
+           absence note, in place of every guide region below — see unit-page.boot.mjs
+           isIdentityOnly. Hidden/shown as a pair with unit-full-guide. -->
+      <div id="unit-identity-only" hidden>
+        <header class="unit-header unit-header-identity-only" id="unit-header-identity-only" aria-label="Unit header"></header>
+        <p class="absence-note" id="unit-identity-absence-note"></p>
+      </div>
+
+      <div id="unit-full-guide">
+        <!-- U1: header (icon, name, meta line, stat chips, last-updated) + U2: verdict -->
+        <header class="unit-header" id="unit-header" aria-label="Unit header"></header>
+
+        <!-- U3 + U4: two-rail grid -->
+        <div class="panel-grid">
+          <section id="build" class="panel panel-doctrines" aria-label="Doctrines">
+            <div id="unit-doctrines"></div>
+          </section>
+
+          <div class="panel-rail">
+            <section id="veterancy" class="panel panel-veterancy" aria-label="Veterancy">
+              <div id="unit-veterancy"></div>
+            </section>
+            <section id="formation" class="panel panel-formation" aria-label="Formation">
+              <div id="unit-formation"></div>
+            </section>
+          </div>
+        </div>
+
+        <!-- U5: Battle role -->
+        <section id="role" class="panel panel-battle-role" aria-label="Battle role">
+          <div id="unit-battle-role"></div>
+        </section>
+
+        <!-- U6: Matchups -->
+        <section id="matchups" class="panel panel-matchups" aria-label="Matchups">
+          <div id="unit-matchups"></div>
+        </section>
+
+        <!-- U7: Controls -->
+        <section id="controls" class="panel panel-controls" aria-label="Controls">
+          <div id="unit-controls"></div>
+        </section>
+      </div>
+
+      <!-- U8: footer — media line, footnote legend, known gaps. Present in both identity-only and
+           full-guide shapes. -->
+      <footer class="page-footer" id="unit-footer" aria-label="Sources and notes"></footer>
+    </div>
+  </main>
+
+  <div id="gate-root"></div>
+
+  <script type="module">
+    // Cosmetic testing-build password gate (see shared/gate.mjs threat model). Mounts an overlay
+    // that covers the page until unlocked before anything else renders meaningfully.
+    import { mountGate } from '../shared/gate.mjs';
+    mountGate(document.getElementById('gate-root'), document.getElementById('app-shell'));
+  </script>
+  <script type="module">
+    import { mountNav } from '../shared/nav.mjs';
+    mountNav('units');
+  </script>
+  <script type="module">
+    import { boot } from './unit-page.boot.mjs';
+    boot();
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "orochi-samurai",
+  "name": "Orochi Samurai",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 295,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/orochi-samurai.png",
+    "metaTier": "B",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Skirmish": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Duelling": {
+        "value": 5,
+        "raw": "5/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% dmg; alt for sustain. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Polearm Doctrine",
+          "text": "+80 piercing dmg, +120 piercing AP. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Health & Resistance Doctrine",
+          "text": "+300 HP, -5% dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Piercing Damage Doctrine",
+          "text": "+90 piercing dmg. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Defence Doctrine",
+          "text": "+80 def, -5% dmg taken. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Brace Doctrines",
+          "text": "Avoid — only affect F1/F2/F3 formation brace, which Orochi never uses.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Full Bottom Line (recommended) for consistent results — 2 ability has three quick attacks, can proc parry, has some block break, high minimum damage; Full Top Line is slower/less block but snowballs better in blob fights. Hero pairing: Chaindart, any lock-ult class. Key mechanics: 1->2 combo (use 1, right before the second strike use 2 to make it CCi for the rest of 1's duration, pull out and repeat) overcomes 2's weakness of not animating if CC'd/dazed; 1 phases through enemy units letting 2 maximize DPS inside the enemy blob; avoid blob fights when 1 is on CD and enemy has stun/daze; 2 can one-shot heroes with the bottom line's short cooldown. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Orochi Samurai is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Full Bottom Line (recommended) for consistent results — 2 ability has three quick attacks, can proc parry, has some block break, high minimum damage; Full Top Line is slower/less block but snowballs better in blob fights. Hero pairing: Chaindart, any lock-ult class. Key mechanics: 1->2 combo (use 1, right before the second strike use 2 to make it CCi for the rest of 1's duration, pull out and repeat) overcomes 2's weakness of not animating if CC'd/dazed; 1 phases through enemy units letting 2 maximize DPS inside the enemy blob; avoid blob fights when 1 is on CD and enemy has stun/daze; 2 can one-shot heroes with the bottom line's short cooldown. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Orochi Samurai is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Block units, or units that can dodge damage."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "High mobility units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Any units with high damage reduction — has one of the highest minimum damage values in the game, so it counters Spartan, Reapers, etc."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Chaindart, any lock-ult class (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "1->2 combo",
+          "text": "Use the 1 ability, and right before the second strike occurs, use 2 — this makes 2 CCi for the rest of 1's duration. Pull out and repeat."
+        },
+        {
+          "context": "maximize DPS",
+          "text": "1 phases through enemy units, letting 2 maximize DPS while inside the enemy blob."
+        },
+        {
+          "context": "avoid blob fights",
+          "text": "If 1 is on cooldown and only 2 is up, engage only where the enemy lacks stun/daze; otherwise avoid blob fights."
+        },
+        {
+          "context": "hero engagements",
+          "text": "2 can one-shot heroes even with a couple of models, with a short cooldown on the bottom line — use confidently in deathmatches."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

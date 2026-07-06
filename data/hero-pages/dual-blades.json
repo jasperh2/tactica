@@ -1,0 +1,168 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "dual-blades",
+  "className": "Dual Blades",
+  "weaponArchetype": "Dual Blades · assassin/duelist",
+  "tier": {
+    "tier": "God",
+    "positionInTier": 2,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "HEAVILY recommended",
+    "name": "Skirmisher's Tunic",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full Strength",
+    "runes": "unknown",
+    "bestGender": "Female",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Warbreaker",
+        "purpose": "Best armour before Epic schem — play bomb+shuri+alch vapour+ult playstyle"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing DMG",
+        "Slashing PEN"
+      ],
+      "bonus": [
+        "STR",
+        "Crit dmg",
+        "crit value",
+        "Agi",
+        "blunt dmg"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Alchemical Vapor",
+        "Shuriken",
+        "Butterfly/Skylark",
+        "Mark of Death"
+      ],
+      "fillerNotes": null
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Shuriken/Butterfly Playstyle",
+      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Butterfly/Skylark / T: Mark of Death. Always full STR if playing butterfly; FULL HP can be played if bomb+shuri poke only (full STR better if max potential used).",
+      "strongVs": null,
+      "forWhom": "Recommended to start and learn with this build",
+      "recommended": true
+    },
+    {
+      "name": "No Ult Playstyle",
+      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Butterfly/Skylark / T: Bomb.",
+      "strongVs": null,
+      "forWhom": "Players opting for Bomb's AOE CC and utility (Ranged CC / 1 More invis / 4 Reset > 3 Reset) over the ultimate — riskier in choke-point fights, 1v1 duels, and against CCi-Divers classes like Nodachi or Poleaxe, or vs high enemy light-armor counts",
+      "recommended": false
+    },
+    {
+      "name": "No Butterfly Playstyle",
+      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Bomb / T: Skylark or Butterfly in Meta where you can kill heroes, otherwise Mark of Death.",
+      "strongVs": null,
+      "forWhom": "Strongest skillcap & impact in high lobby — start with this if confident and trusting yourself to learn the playstyle",
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Full Combo (All Spells)",
+      "steps": [
+        "Bomb/Dismount/Shuriken → Invisibility",
+        "E (Kick) → AA x2",
+        "Bomb/Shuriken → AAx1/2 then Ult",
+        "Roll behind → Butterfly or Shuriken (Roll animation cancel with block)"
+      ],
+      "rhythm": null
+    },
+    {
+      "name": "Enemy on Horse",
+      "steps": [
+        "Sprint after them with ur horse, jump once no stam (they'll also be out of stam)",
+        "Horse Q → E (Kick)",
+        "Butterfly into AA",
+        "Ult IMMEDIATELY as horse death animation starts to catch mid-air"
+      ],
+      "rhythm": null
+    },
+    {
+      "name": "No Ult Chase Combo",
+      "steps": [
+        "Sprint → Shift attack (stagger)",
+        "Butterfly",
+        "Space (back-off) and shuriken/aa-spam"
+      ],
+      "rhythm": null
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "\"Dual Blades (DB) is the ultimate high-skill weapon. To master DB is to master the entire game.\" Light armor survival requires perfect positioning, spacing, and hitbox knowledge. No unit-vs-unit tools forces you to learn unit matchups solo. Assassin role means you must know every hero matchup. Unique impact: no other class can cancel supply, flank with threat, or solo carry like DB. \"You'll have a brutal learning curve, but mastering DB means mastering the game.\" Your path to mastery: Die. Test limits. Learn matchups. Learn spacing. Learn how to bait spells. Press your map and ask, \"Where should I be to be most useful?\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Key Spell Mechanics: Ambush (cross spell in invis) + Butterfly = ALWAYS back hit. Alchemical Vapor/Shuriken/Bomb → Invisibility + CC-i window (0.4–0.7s). Horse → Free invis + 200% speed for 3s. Alchemical Vapor: keep for post-combo escape (engage with Dismount-Invis). The Q-spell from any invis should always be used at the end of the invis window (0.1–0.2s before it ends).",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Tips: Don't sprint-AA unless needed — use normal walk + roll cancel for DPS. Kick > Ambush (nearly same damage, but Kick stuns and has higher pen). Use Shuriken slow + Butterfly pressure to play slow and play around cooldowns. Test your mobility in Custom, what you can do or not do. Always engage with spells that keep escape options open. Movement & Awareness: learn enemy spell CDs — bait them, punish greed; know every map/object hitbox — use environment to survive; movement is survival — every duel is winnable with good spacing; autoattacks matter — squeezing AA will be a huge difference in DPS; stay active, always be looking to catch heroes, help dps units.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "DB FieldBattles/Conquest Win-Conditions (starred by OP): Final point cap. Point near the final point one cap. Canceling supply on B fight reset/during the fight (delaying the resetup, canceling the 2 units strats is enough for your team to get B). Cap supply and get units out of it (then either stay on it if you want to win by B, or go one of the 2 points you are pressuring). Pressure enough people for your team to have number advantages, don't feel forced to fight if it's the case. Move a unit that can kill afk units in map border, and start your plan JUST BEFORE YOUR TEAM ENGAGE ON B (worst case you bait people out of B fight and make pressure), NOT DURING (people will respawn) — this is the \"golden diagonal\": Final point / Point near final point / Supply. \"As a DB it's IMPOSSIBLE to die if you don't try to fight and just play safe. By playing around this golden diagonal, you have all the winconditions I quoted a top. If you manage to execute any of them, you basically win alone. And if you don't do any of them, by moving around this diagonal you force the enemy to have 1 afk unit on final point, 1 afk unit on C/A and 1 hero chasing you / afk on supply, which is already insane pressure, more than any other class could ever achieve and yet even with that, you can still go for a supply cancel during B fight.\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Ranked & Tournament value: the kit of the class makes you able to trade often more than 1 person, which should be the primary rule: \"Always try to have a value better than 1>\" — meaning you aim at any time to take at least the value of 1 player, and your goal is to have more. What counts towards the value counter: players trade (unit trade vs them, blocking somewhere); supply blocking (add +1 to any player you block by not swapping units; when you cancel supply always try to NOT kill the hero on it until the end of the push if you can, try to cancel it at the end of every 7s (swap timer) to take the least risk possible, use your cd smartly); cav flanking pressure (sometimes the best cav flank is simply to NOT do anything — make the enemy see you, make their vocal go crazy about potential cav flank, make the anticav afk right next to it, then flank mid-end fight); trouble you create in enemy team, going for crazy kill pick up when you know you won't even kill (but be safe) so they feel threatened, spam the vocal of \"becarefull about this and this.\" \"Often time your best value will be by going for supply cancel, but you need to know how to do [it] — useless to go supply cancel if the enemy will play around respawn, useless to pre-afk near supply, go at the same time of ppl swapping ... but you should not think 'i absolutely need to cancel supply' if you think it suck, it probably does and you should think about doing something else — but review your scrims, when you press map, analyze what u could have done better, better value, what u should change; when you die, why die, could you have dodged that death, or complet opposite wasn't it better to die early for faster respawn? all these things have no 'always right' rules, just big principle that you know and try to follow.\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "No ULT playstyle (bomb) or Ult playstyle? (separate post — OP flags this post itself as \"THIS IS A BIT OUT-DATED AS YOU SHOULD PLAY BOMB+SHURI playstyle but it's still good learning\"). Bomb is a 20% damage buff for heroes and a 30% buff for units. Opting for the bomb over the ultimate is particularly valuable in skirmishes due to its AOE CC, which boosts everyone's damage, and it provides Ranged CC / 1 More invis / 4 Reset > 3 Reset. However, sacrificing the ultimate comes with significant drawbacks, especially in choke-point fights, 1v1 duels, and against CCi-Divers classes like Nodachi or Poleaxe. The ult provides strong 1v1 pressure, enables pre-combo route activation, and secures kills more reliably. Build choice should also consider the number of enemy light armor (playing without an ult can make you vulnerable if the opponent has this armor and knows how to play around it) and the frequency of skirmishes. In Duo DB (as OP plays with GRK), having one player without an ult and the other with an ult can be more effective than both using the ultimate; situationally both might use noult, or one might swap the shuriken for the bomb while keeping both ults in low-fight-frequency games — these decisions depend on match dynamics and change a lot. Ultimately, having a bad game with a no-ult build is much riskier than an ult-focused player having an off game: a no-ult player might end up relatively ineffective and farmed by enemy lights, whereas a player with the ult still retains potential opportunities, even during pushes. TLDR: \"Bomb is More Risk, More Snowball but More Potential Rewards while being also more Flop Potential too, need to know when you should play it, always be able to adapt, swap spells depending on the game mode/dynamics of the current lobby.\" \"It also heavily depend on the current meta, a slow meta full of shield and brace units like right now will favourite a no bomb heavily due to the low amount of skirmish happening.\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Gear & Weapon Guide. Armor (Epic Schematic 4-piece) tiers: GOD TIER — Heal / Leadership; S+ — Crit Value; S — Piercing Def; A — Slashing / Blunt Def; TRASH — Crit Def. Weapon (Min Requirements): Slash DMG 70%+ Max Proc; Slash PEN 55%+ Max Proc; Min Slash PEN 1800+ for Siege, 2000–2100 for TW / Ranked / Tournaments. Weapon Stats to Aim For: Slash DMG, Slash PEN, Crit DMG Value; Bonus: Piercing DMG/PEN.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Addition from reddit commentary (quoted by OP, asking if alchemical vapor is necessary): \"It is absolutely necessary, yes. While there can be debates about which build is better (No Ult build, Shuriken build, or Bomb build), all these builds include the escape skill because it's your only cleanse of CC. In the current meta, where Poleaxe, Nodachi, and Shortsword are dominant, having your cleanse is non-negotiable. Honestly, in any meta, you'd always want it. The 0.4 seconds of CCi on Bomb or Shuriken is nice but will never replace a spell that can save your life multiple times in a single game.\" \"As for your build, I see you prefer Skylark over Butterfly, likely for its lower cooldown, as many new players do. If I could give you some advice, it would be to start practicing with Butterfly instead. While Butterfly is less forgiving if you miss, its burst and overall damage are significantly higher. This becomes especially important when you have your Epic Schematic set, allowing you to reset your spells on kills. At that point, Butterfly becomes a must-have for maximizing damage output.\"",
+      "attribution": "reddit commentary (quoted by Amya, OP)"
+    },
+    {
+      "text": "Matchups: no explicit \"Loses to / Counters\" list in unit-guide format exists for this class; matchup framing is embedded in the mechanics/combo sections instead — e.g. CCi-Divers classes (Nodachi, Poleaxe) named as a particular threat to the no-ult build, and light-armor enemies as a reason to keep the ultimate available.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-06-09"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Dual Blades Guide' (1292944227017424929); OP 2024-10-07 edited 2026-05-13; 'Core Philosophy' post 2025-07-13 edited 2026-06-09; 'No ULT playstyle' post 2025-07-13 edited 2026-03-26",
+      "sourceDate": "2026-06-09",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-06-09",
+  "patchNote": "Latest edit across the thread (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor by about two weeks (16 days) — closer to current than most other captures in this batch, but still pre-season/not yet re-verified."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "squires",
+  "name": "Squires",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 155,
+    "origin": null,
+    "noMastery": false,
+    "icon": null,
+    "metaTier": null,
+    "rarityTier": null,
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "Squires is below the B-tier+ rich-data gate (metaTier: unknown) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
+      "house": false
+    }
+  ]
+}

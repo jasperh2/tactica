@@ -1,0 +1,149 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "shortsword",
+  "className": "Shortsword",
+  "weaponArchetype": "Sword & Shield",
+  "tier": {
+    "tier": "S",
+    "positionInTier": 2,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "No (Preferable)",
+    "name": "Officier's Armour",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full HP (Recommended); Full STR (If you know what you doing for DMG)",
+    "runes": "unknown",
+    "bestGender": "Female",
+    "genderNote": "Small dash forward with shield charge; some prefer Male since the dash can cause the charge to miss.",
+    "armorSets": [
+      {
+        "name": "Stoneguard",
+        "purpose": "tankiness"
+      },
+      {
+        "name": "Flameshackle",
+        "purpose": "DPS — farms range and rattan units"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing Dmg",
+        "Slashing Pen"
+      ],
+      "bonus": [
+        "Armor",
+        "Toughness"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Shield Charge",
+        "Ironsides",
+        "Thunderstruck"
+      ],
+      "fillerNotes": "Kick is good for dps/tankiness; shield throw meh without runes; other spell too low hitbox imo."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Stoneguard (Tank/Brawler)",
+      "summary": "Most common, very tanky, strong frontline presence. Frontline control: stay in the frontline to absorb damage and constantly disrupt enemy units with Kick and Thunderstruck. Use your CC to protect your team and create space — you become a dangerous target to focus, and while enemies try to kill you, your team gets free space to engage. Sustain & pressure: you are very hard to kill, allowing you to stay longer in fights and slowly pressure enemy heroes and units over time. Tips: Shield Charge to engage, catch enemies, or escape (very important mobility tool overall); Kick to cleanse stuns and break shields against heroes and units; Ironsides when focused by multiple units to maximize survivability — try to fight inside low-damage units (e.g. Imperial Spearmen, Spear Sergeants) because after 15 hits you recover 5% of your max HP, combined with Ironsides you can quickly heal back to full HP; Thunderstruck best used during engages or on grouped enemies — jump into multiple units and try to always use it behind enemy units to knock them into your own braced units, but be careful, you can still get one-shot if you are not paying attention where you dive in. Playstyle advice: don't overextend alone (you are tanky but not unkillable); focus on disruption over damage; stay close to your team and enable them to fight safely since you do low damage — you count on your units and your team to win fights. Recommended stats: Full Armor or Armor + Toughness. Alternative skill: Barricade can replace Shield Charge — provides debuff on enemies, breaks shield and cleanse, increasing survivability; not recommended (awkward animation, hard to aim, easy to interrupt, and you lose an important mobility tool — overall less reliable than the standard setup).",
+      "strongVs": "low-damage units (e.g. Imperial Spearmen, Spear Sergeants)",
+      "forWhom": "Beginners",
+      "recommended": true
+    },
+    {
+      "name": "Flameshackle (Anti-Unit)",
+      "summary": "Strong vs units, great for clearing high-value and squishy targets (Zykalian, Sipho and rattans) since you make them explode with your spells and unbrace units like Stalwarts or other anticav. Anti-Unit Frontline control: use Kick to break shields and apply flames on units to unbrace braced units; use Thunderstruck to open the frontline for your units and your team. Dive: target enemy high-value units (exotics) — always engage with a horse jump to apply flames on impact, followed by kick or Thunderstruck; very effective against Zykalian, Siphos, Rattan units, and other squishy ranged units that take increased flame damage. Tips: Shield Charge — save it for engage or escape to buy time (applies flames on hit); Kick — use it to cleanse stuns, break shields, apply flames on units (applies flames on every hit); Ironsides — use when focused, after it ends you get -20% armor for 4s, but you can mitigate this debuff with Kick (+40% defense for 3s) and Thunderstruck (+20% defense for 4s); Thunderstruck — try to always use it behind enemy units to knock them into your own braced units, jump into multiple units to apply flames and CC on all units you hit. Playstyle advice: focus on unit damage and disruption, not dueling heroes; prioritize high-value and squishy units; don't overcommit alone (you are not as tanky as Stoneguard); create chaos, force reactions, and open space for your team; play around your cooldowns to maximize pressure on units. Recommended stats: Full Armor / Armor + Toughness — Full Strength is more damage but riskier (you become squishy + can kill exotics before they explode reducing their AoE impact). Alternative skill: Shield Bash can replace Shield Charge or Kick and deals high damage + applies flames; not recommended (no cleanse, long animation, easily interrupted, and vulnerable to chain CC) but fun to play and may work in some specific scenarios.",
+      "strongVs": "Zykalian, Sipho, rattan units",
+      "forWhom": "Anti-unit disruption",
+      "recommended": false
+    },
+    {
+      "name": "Deathmatch Epic (Hybrid)",
+      "summary": "More aggressive, no debuff after the ult and heal, most hybrid build. \"It all depends on your playstyle and preference.\" Dueler / Brawler: more aggressive playstyle focused on fighting enemy heroes and applying constant pressure. Hybrid role: balanced between survivability and damage, allowing you to both disrupt and deal meaningful damage. Supply point control: very effective at contesting and blocking supply points, preventing enemies from pulling units thanks to Ironsides debuff removal and healing. Tips: Shield Charge — use it to engage, chase, or escape, prioritize targeting heroes for maximum impact; Kick — use it frequently to stagger enemies, increase your defense, and cleanse stuns; Ironsides — use when trading or being focused, no debuff after Ironsides (Epic set bonus) allows you to stay aggressive longer, and the reduced cooldown is very valuable in fights; Thunderstruck — use to engage, apply CC, and pressure both heroes and grouped units, can also be used to escape when combined with Shield Charge. Playstyle advice: play more aggressive than other builds, but don't overcommit; focus on duels vs light/medium heroes; use your sustain to win extended fights; very strong in small fights and supply point control. Recommended stats: Full Armor / Armor + Toughness or Full Strength — Full Strength increases damage but makes you more vulnerable (recommended for experienced players). Alternative skill: Shield Bash can replace Shield Charge or Kick, deals high damage and breaks shields; not recommended (no cleanse, long animation, easily interrupted, and vulnerable to chain CC, making it overall unreliable) — can still be useful in Deathmatch and fun vs low armor targets.",
+      "strongVs": "light/medium heroes (duels)",
+      "forWhom": "Aggressive dueler/brawler players; supply point control",
+      "recommended": false
+    },
+    {
+      "name": "Full Strength Build",
+      "summary": "Alternative to the recommended Full HP attribute spread. More damage but much less tanky. Relies heavily on Ironsides and hero gameplay. Requires good armor and weapon.",
+      "strongVs": null,
+      "forWhom": "Not recommended for beginners",
+      "recommended": false
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "light/medium armor",
+      "stance": "strong-vs",
+      "why": "Easy to chase and stagger with good damage burst."
+    },
+    {
+      "vs": "heavy armor",
+      "stance": "weak-vs",
+      "why": "Focus on disrupting, not killing."
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Auto-Attack stagger",
+      "steps": [
+        "Left-click",
+        "short pause (<1s)",
+        "repeat",
+        "For timing practice: hold right-click whenever you see your shield moving up, then instantly left-click, repeat",
+        "Add Sprint + Autoattack to chain staggers and control enemies in duels"
+      ],
+      "rhythm": "Auto-attacks are used to stagger and control enemy heroes in a faster and more reliable way, so instead of spamming use a timed rhythm to keep enemies constantly interrupted and unable to react."
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Shortsword is a brawler class focused on tanking and disruption. Your role is to absorb damage, control fights, and prevent enemy heroes from playing effectively.",
+      "attribution": "SanY"
+    },
+    {
+      "text": "Focus on disruption and pressure, not damage (Flameshackle still does decent damage vs Units). Dive fights to create chaos and force reactions. Target vulnerable units behind enemy lines or to clean up squishy units.",
+      "attribution": "SanY"
+    },
+    {
+      "text": "Ironsides applies a -20% armor debuff after it ends; Kick (+40% defense for 3s) and Thunderstruck (+20% defense for 4s) both mitigate this window. Female character gets a small forward dash on Shield Charge; some players prefer Male because that dash can cause the charge to miss.",
+      "attribution": "SanY"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "OP-stat-block",
+      "date": "2024-10-07"
+    },
+    {
+      "name": "SanY",
+      "role": "guide-body",
+      "date": "2026-05-15"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Shortsword Guide' (1292958261976236074); OP 2024-10-07 edited 2026-05-01; SanY guide posts 2026-05-15 (17:42/18:24/18:52/19:32), edits through 2026-05-21",
+      "sourceDate": "2026-05-21",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-05-21",
+  "patchNote": "Latest edit (2026-05-21) pre-dates the 2026-06-25 Chaos patch anchor by about five weeks."
+}

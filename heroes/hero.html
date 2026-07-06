@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Hero — Immortals Academy</title>
+  <link rel="stylesheet" href="../shared/academy.css" />
+  <link rel="stylesheet" href="./heroes.css" />
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main class="hero-page" id="app-shell">
+    <p class="empty-state hero-not-found" id="hero-not-found" hidden></p>
+
+    <div id="hero-content" hidden>
+      <!-- H1 — Header -->
+      <header class="hero-header" id="hero-header-panel">
+        <div class="hero-header-top-row">
+          <div class="hero-icon hero-icon-placeholder" id="hero-icon" aria-hidden="true"></div>
+
+          <div class="hero-header-identity">
+            <div class="hero-name-row">
+              <h1 class="hero-name" id="hero-name"></h1>
+            </div>
+            <p class="hero-meta" id="hero-archetype" hidden></p>
+          </div>
+
+          <div class="hero-header-chips" id="hero-header-chips">
+            <div class="stat-chip stat-chip-tier" id="hero-tier-chip-wrap">
+              <div class="stat-chip-value" id="hero-tier-chip"></div>
+              <div class="stat-chip-label" id="hero-tier-chip-label">tier · position</div>
+            </div>
+            <div class="stat-chip hero-tier-chip-secondary" id="hero-tier-chip-secondary-wrap" hidden>
+              <div class="stat-chip-value" id="hero-tier-chip-secondary"></div>
+              <div class="stat-chip-label" id="hero-tier-chip-secondary-label">general pick</div>
+            </div>
+            <div class="stat-chip hero-job-label-chip" id="hero-job-label-wrap" hidden>
+              <div class="stat-chip-value" id="hero-job-label"></div>
+              <div class="stat-chip-label">special job</div>
+            </div>
+            <div class="stat-chip" id="hero-attribute-chip-wrap" hidden>
+              <div class="stat-chip-value" id="hero-attribute-chip"></div>
+              <div class="stat-chip-label">attribute</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="epic-schem-note" id="hero-epic-schem-note" hidden></p>
+        <p class="epic-schem-note hero-epic-schem-drop-note" id="hero-epic-schem-drop-note" hidden></p>
+
+        <p class="dual-entry-note" id="hero-dual-entry-note" hidden></p>
+
+        <p class="last-updated" id="hero-last-updated" hidden></p>
+
+        <div class="verdict" id="hero-verdict">
+          <p class="hero-verdict-text" id="hero-verdict-text" hidden></p>
+          <p class="verdict-absent" id="hero-verdict-absent" hidden></p>
+        </div>
+      </header>
+
+      <!-- H3 Loadout + H4 Builds: two-rail grid -->
+      <div class="panel-grid">
+        <section id="loadout" class="panel panel-loadout" aria-labelledby="hero-loadout-title">
+          <div class="panel-title">
+            <div class="panel-accent"></div>
+            <span class="panel-title-text" id="hero-loadout-title">Loadout</span>
+            <span class="panel-anchor">#loadout</span>
+          </div>
+          <div class="loadout-rows" id="hero-loadout-grid"></div>
+        </section>
+
+        <section id="builds" class="panel panel-builds" aria-labelledby="hero-builds-title">
+          <div class="panel-title">
+            <div class="panel-accent"></div>
+            <span class="panel-title-text" id="hero-builds-title">Builds</span>
+            <span class="panel-anchor">#builds</span>
+          </div>
+          <div class="build-cards" id="hero-builds-grid"></div>
+        </section>
+      </div>
+
+      <!-- H5 Matchups -->
+      <section id="matchups" class="panel panel-matchups" aria-labelledby="hero-matchups-title">
+        <div class="panel-title">
+          <div class="panel-accent"></div>
+          <span class="panel-title-text" id="hero-matchups-title">Matchups</span>
+          <span class="panel-subtitle">armor-class based</span>
+          <span class="panel-anchor">#matchups</span>
+        </div>
+        <div class="matchup-grid" id="hero-matchups-grid"></div>
+      </section>
+
+      <!-- H6 Techniques -->
+      <section id="controls" class="panel panel-techniques" aria-labelledby="hero-techniques-title">
+        <div class="panel-title">
+          <div class="panel-accent"></div>
+          <span class="panel-title-text" id="hero-techniques-title">Techniques</span>
+          <span class="panel-anchor">#techniques</span>
+        </div>
+        <div class="technique-rows" id="hero-techniques-list"></div>
+      </section>
+
+      <!-- Gameplay role prose -->
+      <section id="role" class="panel panel-role" aria-labelledby="hero-gameplay-title">
+        <div class="panel-title">
+          <div class="panel-accent"></div>
+          <span class="panel-title-text" id="hero-gameplay-title">Gameplay role</span>
+          <span class="panel-anchor">#role</span>
+        </div>
+        <div class="role-quotes" id="hero-gameplay-list"></div>
+      </section>
+
+      <!-- H7 footer: two-credit legend -->
+      <footer class="page-footer" id="hero-footer-panel">
+        <div class="source-legend source-legend-two-credit" id="hero-footer-authors"></div>
+        <p class="philosophy-line" id="hero-footer-philosophy" hidden></p>
+      </footer>
+    </div>
+  </main>
+
+  <div id="gate-root"></div>
+
+  <script type="module">
+    // Cosmetic testing-build password gate (see shared/gate.mjs threat model). Mounts an overlay
+    // that covers the page until unlocked before anything else renders meaningfully.
+    import { mountGate } from '../shared/gate.mjs';
+    mountGate(document.getElementById('gate-root'), document.getElementById('app-shell'));
+  </script>
+  <script type="module">
+    import { mountNav } from '../shared/nav.mjs';
+    mountNav('heroes');
+  </script>
+  <script type="module">
+    import { boot } from './hero-page.boot.mjs';
+    boot();
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "liaos-rangers",
+  "name": "Liaos Rangers",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 315,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/liaos-rangers.png",
+    "metaTier": "AA",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 9,
+        "raw": "9/10"
+      },
+      "Flank": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 7,
+        "raw": "7/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2025-05-14",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Block break value 1400→1100 (nerf); new tag: all attacks vs Heroes take 60% armour penetration reduction and 40% damage reduction"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "No hero pairing specified by the Amya guide (source shows \"X\" / none specified)."
+        }
+      ],
+      "footnoteMark": 2
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general engage",
+          "text": "Engage with spell 1 from mid-close range. Once engaged, press 2 for a heavy burst (mace swipe), let it run 3-4s, then press 3, then press 2 again as soon as it is off cooldown."
+        },
+        {
+          "context": "general",
+          "text": "Most damage comes from the Bludgeon (mace)."
+        },
+        {
+          "context": "skirmish cavalry role",
+          "text": "Low blob-fight potential but a good flanker and clean-up unit."
+        },
+        {
+          "context": "post-nerf note (pre-2026-06 patch source; superseded by the larger 2026-06 block-break nerf)",
+          "text": "A prior nerf added a small delay to pressing spell 2 — still best to engage with it; does not change blob/flank performance but reduces skirmish and duelling power notably."
+        },
+        {
+          "context": "movement-speed tech",
+          "text": "Movement speed leverages damage, BUT entering a blob at very low speed can be better when enemy pikes are present — their damage buff from the unit’s own speed can one-shot it before the speed-damage modifier pays off."
+        }
+      ],
+      "footnoteMark": 2
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "creator guide",
+      "date": "2025-05-14",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

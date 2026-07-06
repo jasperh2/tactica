@@ -1,0 +1,139 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "royal-longbowmen",
+  "name": "Royal Longbowmen",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 315,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/royal-longbowmen.png",
+    "metaTier": "B",
+    "rarityTier": "T5",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-28",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Artemis",
+          "text": "Apply during press 1, double shoot, exploits same low-count/high-armor angle. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Precision Doctrine V",
+          "text": "+120 piercing DMG, +80 piercing AP, +9% rate of fire. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Projectile Doctrine V",
+          "text": "+60% ammo, +50 piercing AP. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Unit-unique doctrine",
+          "text": "+15% Range and DMG. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 6,
+          "name": "Epic Archery Doctrine IV",
+          "text": "+100 piercing DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "LDS Doctrine",
+          "text": "Alt for piercing DMG if needed. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Whistling Arrow Doctrine V",
+          "text": "Alt for piercing, bleed on low-count/high-armor targets. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Bowmanship Doctrine V",
+          "text": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Tips & Tricks (verbatim): \"Usual archer build but less value on artemis and arrow rain as the longbow has spell of it's own.\" Playstyle: usual archer playstyle, press 1 is the main dps spell. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Backline ranged suppression with arcing arrow fire",
+      "rationale": "Veterancy: Top Line. Hero pairing: not specified in this thread. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Tips & Tricks (verbatim): \"Usual archer build but less value on artemis and arrow rain as the longbow has spell of it's own.\" Playstyle: usual archer playstyle, press 1 is the main dps spell. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "Usual archer playstyle — press 1 is the main DPS spell."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

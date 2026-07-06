@@ -1,0 +1,121 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "poleaxe",
+  "className": "Poleaxe",
+  "weaponArchetype": "CC/Tanky vs Glass Cannon — two named OP playstyles",
+  "tier": {
+    "tier": "A",
+    "positionInTier": 2,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Yes, highly valuable — provides CC immunity during your ultimate, adds +10% HP, boosts Weapon Dance damage reduction by 75% of the base value (\"so its 75% of 25% (not +75% flat)\"); playable without it but with reduced survivability/utility",
+    "name": "Fearless Paladin Armour",
+    "tierDropNote": "Epic-Schem — drops 1–2 tiers without the Epic Schematic armour (per hero tierlist framing: \"Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.\")"
+  },
+  "loadout": {
+    "attribute": "Full Armor/HP for CC Build (Recommended); Full STR for Glass Cannon Build (troll — OP's own word)",
+    "runes": "unknown",
+    "bestGender": "Female",
+    "genderNote": "Female model performs slightly better for animation cancels, per OP — makes certain combos feel smoother; largely personal preference.",
+    "armorSets": [
+      {
+        "name": "Guardsman",
+        "purpose": "Best Armour before Epic schem"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing Damage",
+        "Slashing Penetration"
+      ],
+      "bonus": [
+        "Strength",
+        "Armor",
+        "Toughness",
+        "Blunt DMG",
+        "Agility",
+        "Blunt Pen"
+      ]
+    },
+    "spells": {
+      "core": [],
+      "fillerNotes": "No unified 'core loadout' spell list stated outside the two named builds — OP ties skills to playstyle instead (see builds[] for per-build skill picks: Pushback/Weapon Dance/The Old Billhook for CC; Pushback/The Old Billhook/Halberdiers Thrust or Bec de Corbin for Glass Cannon)."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Tanky + Full Unit CC",
+      "summary": "Focuses on crowd control, locking down enemy heroes and units for extended periods. Key skills: Pushback, Weapon Dance, The Old Billhook. Pushback instantly removes you from CC while stunning enemies hit — a crucial survival and disruption tool. Weapon Dance debuffs enemy units by reducing their damage and movement speed, while boosting your defensive stats for 6 seconds based on how many enemies hit. Ultimate: either works — one offers full hero CC to pin down enemies, the other delivers burst damage with minor CC spread across 5 waves. OP recommends the 5-wave CC ultimate as it \"will help you win a lot of units trade.\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Full Damage (Glass Cannon)",
+      "summary": "Emphasizes maximizing damage at the cost of defense. Uses Pushback, The Old Billhook, and either Halberdiers Thrust (for heroes) or Bec de Corbin (for units). Halberdiers Thrust excels at dealing damage to enemy heroes. Bec de Corbin is designed to cleave through enemy units. Ultimate: Lochabar Strike recommended for burst damage, though both ultimates are viable depending on the situation.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Shift-auto-attack CC rotation (vs no-cleanse classes)",
+      "steps": [
+        "dismount",
+        "shift-auto-attack",
+        "push back",
+        "shift-auto-attack",
+        "billhook",
+        "shift-auto-attack",
+        "(continue with remaining spells per your set)"
+      ],
+      "rhythm": "Vs classes without cleanse (or cleanse on cooldown): rotate one shift-auto-attack between each CC — e.g. \"dismount - shift aa - push back - shift aa - billhook - shift aa - blabla or w/e\" depending on your spell set."
+    },
+    {
+      "name": "Animation cancel (block/roll)",
+      "steps": [
+        "block immediately after a spell, or after a roll",
+        "roll to cancel the end of a spell",
+        "if holding block and casting a spell in a short window after getting hit, you block and cast at the same time"
+      ],
+      "rhythm": null
+    },
+    {
+      "name": "Dismount into Weapon Dance",
+      "steps": [
+        "dismount",
+        "Weapon Dance"
+      ],
+      "rhythm": "Dismount into Weapon Dance is key to carrying a fight."
+    }
+  ],
+  "gameplay": [],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "OP-stat-block",
+      "date": "2024-10-08"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Poleaxe Guide' (1293320784059830352); OP 2024-10-08, edited 2026-03-26",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat build/stat specifics as potentially stale against current-season balance."
+}

@@ -50,8 +50,13 @@ select {
 }
 
 /* ---------------------------------------------------------------------- */
-/* App shell grid — sidebar-v2 dock. Rows 52px/1fr/118px, middle columns    */
-/* [layers]/1fr/[dock]. Both side columns are now user-resizable (item c):  */
+/* App shell grid — sidebar-v2 dock. Rows 52px (Academy nav)/52px (topbar)/  */
+/* 1fr/118px, middle columns [layers]/1fr/[dock]. The Academy nav row       */
+/* (docs/specs/academy-site-architecture.md: "tactics/ FROZEN except: nav   */
+/* strip include + gate include") was added above the topbar without        */
+/* touching the other three rows' sizing — #app-shell stays height:100vh,   */
+/* so the nav row's height comes out of the middle row's 1fr share, never   */
+/* causing overflow. Both side columns are now user-resizable (item c):     */
 /* the live widths are the --layers-w / --dock-w custom props panelresize.  */
 /* mjs writes onto #app-shell, defaulting to the tokens. When layers is     */
 /* collapsed (item d) #app-shell carries .layers-collapsed and the layers   */
@@ -66,7 +71,7 @@ select {
   --dock-w: var(--dock-w-default);
 
   display: grid;
-  grid-template-rows: var(--layout-topbar-h) 1fr var(--layout-playbookbar-h);
+  grid-template-rows: var(--layout-academynav-h) var(--layout-topbar-h) 1fr var(--layout-playbookbar-h);
   grid-template-columns: 100%;
   height: 100vh;
   min-height: 640px;
@@ -80,14 +85,29 @@ select {
   --layers-w: var(--layers-rail-w);
 }
 
-#topbar {
+/* Academy nav strip — new row 1 (see tokens.css --layout-academynav-h). shared/academy.css owns
+   .academy-nav's own visual styling (sticky/background/border); this rule only places it in the
+   grid and cancels the sticky (redundant — the row is already pinned by the grid itself, and
+   `position: sticky` inside `overflow: hidden` #app-shell would just be inert, not harmful, but
+   an explicit static here documents that this bar's fixed placement comes from the grid, not
+   from nav's own CSS). */
+#nav-root {
   grid-row: 1;
+  overflow: hidden;
+}
+
+#nav-root .academy-nav {
+  position: static;
+}
+
+#topbar {
+  grid-row: 2;
   background: var(--bg-panel);
   border-bottom: 1px solid var(--line-hairline);
 }
 
 #middle {
-  grid-row: 2;
+  grid-row: 3;
   position: relative; /* positioning context for the panel resize handles */
   display: grid;
   grid-template-columns: var(--layers-w) 1fr var(--dock-w);
@@ -194,7 +214,7 @@ select {
 }
 
 #playbookbar {
-  grid-row: 3;
+  grid-row: 4;
   background: var(--bg-panel);
   border-top: 1px solid var(--line-hairline);
 }

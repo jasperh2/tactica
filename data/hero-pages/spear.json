@@ -1,0 +1,130 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "spear",
+  "className": "Spear",
+  "weaponArchetype": "Cavalry lancer · hero-diver",
+  "tier": {
+    "tier": "A",
+    "positionInTier": 3,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "I'd say definitely no, as you don't benefit much from the passive stats it gives vs the flat dmg u get from normal Carnifex/Earthshatter set",
+    "name": "Sergeant's Camisole",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full Agility",
+    "runes": "unknown",
+    "bestGender": "N/A",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Earthshatter",
+        "purpose": "stun on ultimate"
+      },
+      {
+        "name": "Medium (full set)",
+        "purpose": "fallback if not enough Special Schematic pieces"
+      }
+    ],
+    "aimingFlags": null,
+    "weaponStats": {
+      "need": [
+        "Piercing Damage (\"like oxygen, maximize this\")",
+        "Piercing Pen"
+      ],
+      "bonus": [
+        "Agility",
+        "Strength",
+        "Crit value",
+        "Crit dmg"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Procri's Grift",
+        "Hurricane",
+        "Lugh's March",
+        "Dragon's Roar",
+        "Heaven's Fury (if Earthshatter set)"
+      ],
+      "fillerNotes": "Overhead Strike maximizes PvP damage and is usable before bursting with Drill, but per OP: \"Pretty niche scenarios and not worth currently.\""
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Playstyle 1",
+      "summary": "Procri's Grift, Hurricane, Lugh's March, Dragon's Roar or Heaven's Fury if Earthshatter set.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Playstyle 2",
+      "summary": "Procri's Grift, Hurricane/Overhead Strike, Lugh's March/Overhead Strike, Dragon's Roar or Heaven's Fury if Earthshatter set.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Dismount → Drill → Procri's finish",
+      "steps": [
+        "Poke with horse right-click to bait enemy cooldowns",
+        "Dismount",
+        "DRILLLLL, preferably on the enemy's back",
+        "Procri's Grift if enemy is still alive, for the free kill"
+      ],
+      "rhythm": "Drill is best used after a dismount, preferably on the enemy's back — otherwise \"legit z dmg\"; usable from the ground too if the enemy is stunned or you have a straight back-attack positional advantage."
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Gameplay is straight forward, look for undefended prey, poke with horse right click (try to bait some cooldowns from enemy), dismount, DRILLLL and procri's if enemy is still alive for the free kill.",
+      "attribution": "BirdOfQin"
+    },
+    {
+      "text": "Supporting units: play wisely when engaging to support your units — diving with horse into blobs or over-committing to Hurricane can get you destroyed. For starters, focus on maximizing hero-and-unit synergy (cav/exo/static units/standalone units, etc).",
+      "attribution": "BirdOfQin"
+    },
+    {
+      "text": "Hurricane is a multi-purpose stagger (hero/unit) plus a very quick passive stacker: \"you can legit dismount behind units, hurricane, and it will be very hard for anyone to reach you,\" and it staggers all units not blocking it.",
+      "attribution": "BirdOfQin"
+    },
+    {
+      "text": "Procri's Grift is \"the last hitting god.\" In stalemate setups, spam it aiming at any exo hiding behind blobs — \"Legit SPAM this skill, takes like 3 to 5? to kill hidden exos like cocos/flames.\"",
+      "attribution": "BirdOfQin"
+    },
+    {
+      "text": "Lugh's March is the only CC recovery available; use wisely, or use while aiming at the enemy hitting you to prevent unwanted damage/CC. Because you block while using it, be mindful of after-animation block usage — if your block breaks, getting hit again can lead to unwanted stun.",
+      "attribution": "BirdOfQin"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "OP-stat-block",
+      "date": "2026-01-25"
+    },
+    {
+      "name": "BirdOfQin",
+      "role": "guide-body",
+      "date": null
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Spear Guide' (1465010049524175025); OP 2026-01-25, edited 2026-06-29",
+      "sourceDate": "2026-06-29",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-06-29",
+  "patchNote": "Latest edit (2026-06-29) post-dates the 2026-06-25 Chaos patch anchor — current-season content, most recently touched guide in this capture batch."
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "shortbow",
+  "className": "Shortbow",
+  "weaponArchetype": "Bow · poison-mark ranged DPS",
+  "tier": {
+    "tier": "D",
+    "positionInTier": 1,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Yes — \"Class is useless without it\"",
+    "name": "Desert Warrior Garnement",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Agility",
+    "runes": "unknown",
+    "bestGender": "Male",
+    "genderNote": "way faster roll animation",
+    "armorSets": [
+      {
+        "name": "Warbreaker",
+        "purpose": "poison meta"
+      },
+      {
+        "name": "Rogue",
+        "purpose": "if you play for AA"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": true,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Piercing DMG",
+        "Piercing Pen"
+      ],
+      "bonus": [
+        "Agi",
+        "Str"
+      ]
+    },
+    "spells": {
+      "core": [],
+      "fillerNotes": null
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Poison Build with ult",
+      "summary": "Steel Arrow, Stunt Arrow, Roll, Poison Burst Ult (list edited 2024-10-16).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Poison Build without ult",
+      "summary": "No explicit skill list given beyond the CC note: \"Currently taking 2 CC (stunt arrow, and bola at the same time may be better, adapat to your liking).\" (edited 2026-06-09, the thread's latest edit).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "AA-spell rotation",
+      "steps": [
+        "AA",
+        "spell",
+        "AA",
+        "spell",
+        "AA",
+        "spell",
+        "rotate the best you can as spell will cancel the animations",
+        "if you run out of spell rotation, jump instantly after each AA instead"
+      ],
+      "rhythm": "\"Between every AA you will send one spell, basically doing: AA - spell - AA - spell - AA - spell and rotating the best you can as spell will cancel the animations and you will have more DPS. If you run out of spell rotation, jumping instantly after each AA will also make you gain DPS.\""
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Both builds play similarly; Shortbow is \"UNPLAYABLE\" pre-Epic Schematic (base damage too low), and only becomes viable (still \"insanely far away from good\") once the Epic Schematic unlocks a poison-stack passive.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "\"Each Ability you Hit will MARK the enemy with poison stack, these poison stack will be exploded from AA. These Marks Deal HP% DMG.\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "\"Both build rely on hitting spell, marking enemy and then making them explode with AA. With that you can Hit ANY target and will always [do] -40% to -60% of their HP. You will have a LOT of DMG but Kills are harder to get. As your DMG drop HEAVILY as the target get lower hp%.\"",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2024-10-08"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'ShortBow Guide' (1293319123509448849); OP 2024-10-08 edited 2026-03-26; follow-up post 2024-10-08 with 'Poison Build with ult' sub-edit 2024-10-16 and 'Poison Build without ult' sub-edit 2026-06-09",
+      "sourceDate": "2026-06-09",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-06-09",
+  "patchNote": "Latest edit (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor — closest-to-current edit in this batch's Shortbow content, but treat as pre-season/not yet re-verified against the current patch."
+}

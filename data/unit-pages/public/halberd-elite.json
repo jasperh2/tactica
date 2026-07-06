@@ -1,0 +1,86 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "halberd-elite",
+  "name": "Halberd Elite",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 225,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/halberd-elite.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Flank": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 2,
+        "raw": "2/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). \"Cloud Cleave\" cooldown 6s→5s; Cloud Cleave + Storm Surge armour penetration +10%"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

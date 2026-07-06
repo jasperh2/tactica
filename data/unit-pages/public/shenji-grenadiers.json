@@ -1,0 +1,152 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "shenji-grenadiers",
+  "name": "Shenji Grenadiers",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Ranged Infantry",
+    "typeClass": "cannon",
+    "leadership": 315,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/shenji-grenadiers.png",
+    "metaTier": "S",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 0,
+        "raw": "0/10"
+      },
+      "Skirmish": {
+        "value": 0,
+        "raw": "0/10"
+      },
+      "Duelling": {
+        "value": 0,
+        "raw": "0/10"
+      }
+    },
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Blunt Damage Doctrine",
+          "text": "+90 blunt DMG. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Anti-Heavy-Shield Doctrine",
+          "text": "+350 DMG vs heavy-shielded units like spearmen and Pavise Crossbowmen. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Extra Grenade Doctrine",
+          "text": "Unit-unique: +1 grenade, enough for an additional volley. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "-16% leadership cost. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Mobility doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Tank doctrines, Attack speed, piercing, blunt pen",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Full Bot. Hero pairing: Any. Playstyle: Shenji are used nearly ONLY for spell 2 (grenade) — letting them shoot is near useless; keep them safe and use the 2 in blob fights. Some maps have spots to throw grenades high up over a wall to surprise the enemy. Most of the time, wait for the fight to blob up then throw the nade in. Preferable to play 2x Shenji at the same time with an ally — stacked nade volleys can completely wipe blobs. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Shenji Grenadiers is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Gunpowder ranged infantry, strong armor penetration",
+      "rationale": "Veterancy: Full Bot. Hero pairing: Any. Playstyle: Shenji are used nearly ONLY for spell 2 (grenade) — letting them shoot is near useless; keep them safe and use the 2 in blob fights. Some maps have spots to throw grenades high up over a wall to surprise the enemy. Most of the time, wait for the fight to blob up then throw the nade in. Preferable to play 2x Shenji at the same time with an ally — stacked nade volleys can completely wipe blobs. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Shenji Grenadiers is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "blob fight",
+          "text": "Used nearly only for spell 2 (grenade); shooting with them is near useless — keep them safe and use the 2 on blob fights."
+        },
+        {
+          "context": "map tech",
+          "text": "Some maps have spots to throw grenades high over a wall to surprise the enemy."
+        },
+        {
+          "context": "timing",
+          "text": "Most of the time, wait for the fight to blob up, then throw your nade in."
+        },
+        {
+          "context": "duo play",
+          "text": "Preferable to play 2x Shenji at the same time with an ally — stacked nade volleys can completely wipe blobs."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

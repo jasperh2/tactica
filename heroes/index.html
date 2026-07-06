@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Heroes — Immortals Academy</title>
+  <link rel="stylesheet" href="../shared/academy.css" />
+  <link rel="stylesheet" href="./heroes.css" />
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main class="academy-main" id="app-shell">
+    <header class="index-header hero-index-header">
+      <h1 class="index-title page-title">Heroes</h1>
+      <span class="index-counts hero-index-counts" id="heroes-counts" aria-live="polite" hidden></span>
+    </header>
+
+    <p class="hero-index-microcopy" id="heroes-microcopy" hidden></p>
+
+    <div
+      class="tier-table hero-tier-list"
+      id="heroes-list"
+      role="table"
+      aria-label="Hero classes by tier"
+      hidden
+    ></div>
+
+    <p class="empty-state hero-index-empty-state" id="heroes-empty-state" hidden></p>
+
+    <p class="index-footnote hero-index-footnote" id="heroes-footnote" hidden></p>
+
+    <p class="footnote hero-index-missing-note" id="heroes-missing-note" hidden></p>
+  </main>
+
+  <div id="gate-root"></div>
+
+  <script type="module">
+    // Cosmetic testing-build password gate (see shared/gate.mjs threat model). Mounts an overlay
+    // that covers the page until unlocked before anything else renders meaningfully.
+    import { mountGate } from '../shared/gate.mjs';
+    mountGate(document.getElementById('gate-root'), document.getElementById('app-shell'));
+  </script>
+  <script type="module">
+    import { mountNav } from '../shared/nav.mjs';
+    mountNav('heroes');
+  </script>
+  <script type="module">
+    import { boot } from './heroes-index.boot.mjs';
+    boot();
+  </script>
+</body>
+</html>

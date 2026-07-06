@@ -1,0 +1,184 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "imperial-pike-guards",
+  "name": "Imperial Pike Guards",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 240,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/imperial-pike-guards.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Flank": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Skirmish": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-16",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Hero Damage Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Polearm Doctrine",
+          "text": "Pike Charge. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "+115 unit dmg, +70 all-type. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Imperial Pike Guards Attack Doctrine",
+          "text": "-7s Advance CD. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Rare Polearm Doctrine",
+          "text": "+100 dmg while bracing, affects Advance. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Polearm Doctrine",
+          "text": "+80 piercing dmg, +120 piercing AP. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% dmg, alt for sustain. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 8,
+          "name": null,
+          "text": "DMG reduction doctrines. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": null,
+          "text": "Anti-cav doctrines, bleed on hit, etc. — do not use.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Full Top for DPS (recommended); Full Bot for tankier. Example build per OP: Hero Damage Doctrine V, Epic Polearm Doctrine (Pike Charge), Imperial Pike Guards Attack Doctrine (-7s Advance CD), Rare Polearm Doctrine (+100 dmg bracing), Unit Damage Doctrine V. Per OP: Brace Damage on Imperial Pike affects Advance and is a flat amount, which is why it's a top pick; the unit struggles with Pen, that's why Hero Damage Doctrine is added (works well with Charge and Press 3); Brace DMG or Advance CD doctrine can be swapped for Epic Bloodthirsty Doctrine (lifesteal + 12% dmg) if more sustain is needed. Tips & Tricks: the unit does more dmg the faster the enemy is, so if the enemy charges at you, you will oneshot it; this also applies to your own speed — when you charge into advance, the first tick of advance can be 'bugged' and do insane damage. A separate follow-up post (2025-02-07, edited 2025-07-07) titled 'With / without pen' has 2 image attachments (damage comparison screenshots) not transcribed at capture. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Imperial Pike Guards is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Full Top for DPS (recommended); Full Bot for tankier. Example build per OP: Hero Damage Doctrine V, Epic Polearm Doctrine (Pike Charge), Imperial Pike Guards Attack Doctrine (-7s Advance CD), Rare Polearm Doctrine (+100 dmg bracing), Unit Damage Doctrine V. Per OP: Brace Damage on Imperial Pike affects Advance and is a flat amount, which is why it's a top pick; the unit struggles with Pen, that's why Hero Damage Doctrine is added (works well with Charge and Press 3); Brace DMG or Advance CD doctrine can be swapped for Epic Bloodthirsty Doctrine (lifesteal + 12% dmg) if more sustain is needed. Tips & Tricks: the unit does more dmg the faster the enemy is, so if the enemy charges at you, you will oneshot it; this also applies to your own speed — when you charge into advance, the first tick of advance can be 'bugged' and do insane damage. A separate follow-up post (2025-02-07, edited 2025-07-07) titled 'With / without pen' has 2 image attachments (damage comparison screenshots) not transcribed at capture. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Imperial Pike Guards is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "CCi units like Liaos, Iron Reapers, Spartans."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Any units that can bait your advance and then go in."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Cavs, units with block, units coming at high speed to you."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Charge in / X-move in."
+        },
+        {
+          "context": "combo",
+          "text": "Advance when near melee range, wait until your hits stack up and then press 3. Depending on the amount of kills you do, your advance CD will be reduced (sometimes to 0) so you can advance again."
+        },
+        {
+          "context": "disengage",
+          "text": "Don't hesitate to disengage from your initial CC/advance if you can save your unit."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-16",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

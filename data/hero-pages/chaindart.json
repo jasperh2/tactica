@@ -1,0 +1,118 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "chaindart",
+  "className": "Chaindart",
+  "weaponArchetype": "Chain weapon · mobility/utility disruptor",
+  "tier": {
+    "tier": "AA",
+    "positionInTier": 2,
+    "specialJobLabel": "Supply Kill TW/Rank",
+    "epicSchemVariants": [
+      {
+        "variantName": "Supply Kill TW/Rank",
+        "tier": "AA",
+        "positionInTier": 2,
+        "specialJobLabel": "Supply Kill TW/Rank"
+      },
+      {
+        "variantName": "General pick",
+        "tier": "B",
+        "positionInTier": 3,
+        "specialJobLabel": null
+      }
+    ]
+  },
+  "epicSchematic": {
+    "needed": "Not Needed But Nice to Have",
+    "name": "Sand Scorpion Armour",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full Strength",
+    "runes": "unknown",
+    "bestGender": "No Change",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Rogue",
+        "purpose": "Best Armour before Epic schem"
+      },
+      {
+        "name": "Warbreaker",
+        "purpose": "Best Armour before Epic schem"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing Dmg",
+        "Slashing Pen"
+      ],
+      "bonus": [
+        "Str/Agi",
+        "Piercing Dmg"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Grab",
+        "Snare",
+        "Slash spell",
+        "Shuriken"
+      ],
+      "fillerNotes": "Only one combo: Grab, Snare, Slash spell then shuriken — shurikens will reduce CD of your other spells."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Supply Kill / Utility (TW, Rank)",
+      "summary": "Grab, Snare, Slash then shuriken to reduce other cooldowns; ultimate dismounts, snare cancels anything including CCi heroes.",
+      "strongVs": "Protecting exotics; defending supply on TW",
+      "forWhom": "Players swapping in temporarily for the utility window, then swapping back (e.g. to Longbow or Dual Blades)",
+      "recommended": false,
+      "epicSchemVariantRef": "Supply Kill TW/Rank"
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Grab-Snare-Slash-Shuriken combo",
+      "steps": [
+        "Grab",
+        "Snare",
+        "Slash spell",
+        "Shuriken"
+      ],
+      "rhythm": "Only one combo: shurikens will reduce CD of your other spells."
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Your ultimate dismount enemy if they mounted, and ur snare cancel anything, even CCi heroes so you are great to protect important units such as exotics (low life, high impact units), you are great to defend supply on TW, the class isn't really played in sieges or ranked but rather used temporarily then swapping back to another class (LB or DB for example), or specially for TW.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-06-09"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'ChainDart Guide' (1292948709595680779); OP 2024-10-07, edited 2026-06-09",
+      "sourceDate": "2026-06-09",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-06-09",
+  "patchNote": "Latest edit (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor by about two weeks."
+}

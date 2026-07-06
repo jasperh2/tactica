@@ -1,0 +1,190 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "claymores",
+  "name": "Claymores",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 235,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/claymores.png",
+    "metaTier": "S",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 9,
+        "raw": "9/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Duelling": {
+        "value": 9,
+        "raw": "9/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-28",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Linebreaker Doctrine V",
+          "text": "Every 3 attacks: block-break boost vs enemy units, 2s. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Combat Doctrine",
+          "text": "Stacking: every 3rd atk +11% dmg, every 6th +15% HP, every 9th 2.5s CCi. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": null,
+          "text": "Unique Doctrine for 5% DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Hero Damage V",
+          "text": "For PEN mostly. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": null,
+          "text": "Mobility Doctrines. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Unshakable Ward Doctrine",
+          "text": "Immune to daze & knock for 7s + immune to fire/bleed dmg. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 8,
+          "name": "Health & Piercing Defence Doctrine V",
+          "text": "For the HP. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Movement Speed after hit Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 10,
+          "name": null,
+          "text": "Flat defence doctrines — do not use (you already reach minimum dmg taken often).",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Top Line. Guide is post-Chaos-patch (edit 2026-06-28). Example build per OP: Epic Leadership Doctrine (-16% leadership cost), Epic Combat Doctrine, Linebreaker Doctrine V, Unit Damage Doctrine V, Health & Piercing Defence Doctrine V / Mobility V. Playstyle: the unit was originally made to buff your team but has INSANE dmg since mastery. X-move in, press 3 (For Freedom!) to buff yourself before taking any hits, instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat if you can (preferred). After the combo, get out and wait for cooldown if possible — better than anything. Don't charge in with 1 first: it takes time to hit, the combo gets slower, and it doesn't stack the Claymore; without For Freedom! the unit is really bad, so let them fight 15s after pressing 3, then retreat, wait CD, go in again. Tips & Tricks: when pressing 2 (Claymore Strike), let them hit once, press V (makes press 2 hit once again) — train in custom game first.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Top Line. Guide is post-Chaos-patch (edit 2026-06-28). Example build per OP: Epic Leadership Doctrine (-16% leadership cost), Epic Combat Doctrine, Linebreaker Doctrine V, Unit Damage Doctrine V, Health & Piercing Defence Doctrine V / Mobility V. Playstyle: the unit was originally made to buff your team but has INSANE dmg since mastery. X-move in, press 3 (For Freedom!) to buff yourself before taking any hits, instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat if you can (preferred). After the combo, get out and wait for cooldown if possible — better than anything. Don't charge in with 1 first: it takes time to hit, the combo gets slower, and it doesn't stack the Claymore; without For Freedom! the unit is really bad, so let them fight 15s after pressing 3, then retreat, wait CD, go in again. Tips & Tricks: when pressing 2 (Claymore Strike), let them hit once, press V (makes press 2 hit once again) — train in custom game first.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Stalwart/Phalanx depending on how they play (you still win with linebreaker in most cases)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Rattan Pikes / any unit that can dodge their cooldown."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "\"Near everything\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "X-move in; press 3 (For Freedom!) to buff yourself before taking any hits."
+        },
+        {
+          "context": "combo",
+          "text": "Instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat if you can (preferred)."
+        },
+        {
+          "context": "disengage",
+          "text": "After your combo, get out and wait for cooldown if possible — it's better than anything. Don't charge in with 1 first."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

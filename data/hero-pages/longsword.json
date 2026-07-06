@@ -1,0 +1,130 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "longsword",
+  "className": "Longsword",
+  "weaponArchetype": "Longsword · support/tank disruptor",
+  "tier": {
+    "tier": "C",
+    "positionInTier": 1,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Not needed, but the class is way stronger with it due to the ultimate's CC immunity",
+    "name": "Imperial Knight's Surcoat",
+    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+  },
+  "loadout": {
+    "attribute": "Full Armor/HP",
+    "runes": "unknown",
+    "bestGender": "Male",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Guardsman",
+        "purpose": "Best Armour before Epic schem"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Blunt",
+        "Armour",
+        "Toughness"
+      ],
+      "bonus": [
+        "Slashing",
+        "Piercing"
+      ]
+    },
+    "spells": {
+      "core": [
+        "With Valour",
+        "Mercy of Heaven",
+        "filler Spell",
+        "Clash of Shields"
+      ],
+      "fillerNotes": "\"Tank - no other viable play styles.\""
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Tank",
+      "summary": "Tank - no other viable play styles.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": true
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "Xuanjia heavy cavalry",
+      "stance": "strong-vs",
+      "why": "Engage early to force them to burn their CC immunity, letting your teammates follow up with stuns to neutralize them."
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Mercy of Heaven timing",
+      "steps": [
+        "Hold Mercy of Heaven until your frontline is at a crucial moment",
+        "Apply the 10% defense buff to help them hold position and withstand enemy attacks"
+      ],
+      "rhythm": "Timing and positioning are key to maximizing the buff's effect — don't apply it just on cooldown."
+    },
+    {
+      "name": "Cavalry stun timing",
+      "steps": [
+        "Intercept a charging cavalry unit",
+        "Stun mid-charge, not after"
+      ],
+      "rhythm": "Stun cavalry mid-charge (rather than after) to prevent the charge from landing at all."
+    },
+    {
+      "name": "Xuanjia CC-immunity bait",
+      "steps": [
+        "Engage the Xuanjia heavy cavalry early",
+        "Force them to burn their CC immunity",
+        "Let teammates follow up with stuns to neutralize them"
+      ],
+      "rhythm": null
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "Primary role — support your team: provide buffs and healing, especially via the rune Mercy of Heaven, which boosts allies' defenses by 10%. Apply this buff to your frontline at crucial moments to help them hold position and withstand enemy attacks; proper timing and positioning are key to maximizing the buff's effect.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Secondary role — disrupt the enemy: against melee-heavy teams, use stuns and crowd control to break enemy formations and create openings for your team. Against cavalry-reliant enemies, intercept and disrupt their charges — stun cavalry mid-charge to prevent them wreaking havoc. Against Xuanjia heavy cavalry specifically: engage early to force them to burn their CC immunity, letting your teammates follow up with stuns to neutralize them.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "In summary, balance between buffing your team and disrupting the enemy is essential for effective Longsword play.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-03-26"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Longsword Guide' (1293302941305933896); OP 2024-10-08, edited 2026-03-26",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months."
+}

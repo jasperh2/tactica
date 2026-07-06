@@ -1,0 +1,1617 @@
+/**
+ * Immortals Academy — shared design layer, ported from the Claude Design handoff.
+ * Source: design/handoff-academy-pages/design_handoff_immortals_academy/
+ *   (README.md — build spec + template->data-field map; REVIEW_PASSES.md — folded review fixes;
+ *   tokens.css — final token set).
+ *
+ * OWNERSHIP: this file styles every SHARED primitive used across two or more pages — the
+ * top nav (both forms), the auth gate, and the reading-surface grammar every template repeats
+ * (panels, accent-bar panel titles, stat chips, tag/tier badges, the verdict voice, footnote
+ * legend, key-sequence chips, empty/absence states, the house lock glyph). Page-specific layout
+ * (destination cards, unit tiles + filter chips, the hero tier table, the unit-detail two-rail
+ * grid internals) lives in each page's own scoped stylesheet (site/home.css, site/units/*.css,
+ * site/heroes/heroes.css) per the handoff README's "extract shared CSS so per-page CSS stays
+ * minimal" instruction — those files reference the --custom-properties declared here.
+ *
+ * Class names are the handoff's own (its README calls this the "template-safety contract" —
+ * every render module keeps these names so this stylesheet is the only thing that needs to
+ * change when the design lands). Where a page's DOM layer still emits an older placeholder class
+ * alongside the handoff's, both are kept so nothing currently on disk goes unstyled.
+ */
+
+/* ============================================================================
+ * 1. TOKENS — TACTICA's live token set (site/tactics/styles/tokens.css), byte-identical to the
+ *    handoff's tokens.css §1 (that file's own header: "Source of truth: site/tactics/styles/
+ *    tokens.css — verified 2026-07-06, no drift"). Property names below are TACTICA's; the
+ *    handoff's tokens.css documents the same values under its own prose labels but ships no
+ *    different numbers — this is one vocabulary, not two. Do not hand-edit a value here without
+ *    also updating site/tactics/styles/tokens.css, or the two trees will drift (no cross-tree
+ *    @import — tactics/ stays FROZEN per the architecture spec, so this is a copy).
+ *
+ *    §1b below adds the handoff's genuinely NEW tokens that TACTICA's tokens.css does not carry
+ *    yet (house-gold structural accent, T1–T5 rarity aliases, Epic-Schem flag colors, and the
+ *    three reading-surface tokens) — additive only, nothing above is renamed or removed.
+ * ========================================================================= */
+
+:root {
+  /* ---- Backgrounds ---- */
+  --bg-void: #0d0f13;
+  --bg-app: #14171d;
+  --bg-panel: #171b22;
+  --bg-elevated: #1e232c;
+  --bg-well: #12151b;
+  --bg-row: #161a21;
+  --bg-menu: #1b2029;
+
+  /* ---- Hairlines / borders ---- */
+  --line-hairline: rgba(255, 255, 255, 0.07);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-control: rgba(255, 255, 255, 0.10);
+  --line-menu: rgba(255, 255, 255, 0.12);
+
+  /* ---- Text ---- */
+  --text-primary: #eef1f6;
+  --text-primary-alt: #e7eaf0;
+  --text-body: #c7cdd8;
+  --text-secondary: #9aa3b2;
+  --text-secondary-alt: #8b93a4;
+  --text-label: #7b8494;
+  --text-muted: #6b7280;
+  --text-faint: #5b6270;
+
+  /* ---- Accent ---- */
+  --accent: #4c8dff;
+  --accent-soft: rgba(76, 141, 255, 0.16);
+  --accent-light: #cfe0ff;
+  --accent-light-alt: #8fb4ff;
+  --accent-gradient: linear-gradient(135deg, #4c8dff, #8a7bd8);
+
+  /* ---- Roles (the 15-player briefing language) ---- */
+  --role-vanguard: #e5484d;
+  --role-flank: #f2801f;
+  --role-cavalry: #f5c518;
+  --role-support: #38b26b;
+  --role-artillery: #33b7d4;
+  --role-recon: #6ea0ff;
+  --role-reserve: #b070f0;
+  --role-ping: #ffffff;
+
+  /* ---- Rarity ---- */
+  --rarity-legendary: #e6b24c;
+  --rarity-epic: #b45ce6;
+  --rarity-rare: #4c9bef;
+  --rarity-uncommon: #46c46e;
+
+  /* ---- Semantic ---- */
+  --danger: #e5484d;
+  --danger-bg: rgba(229, 72, 77, 0.12);
+  --danger-border: rgba(229, 72, 77, 0.3);
+  --success: #38b26b;
+  --success-light: #7fe0a6;
+
+  /* ---- Type families ---- */
+  --font-ui: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* ---- Type scale (px) ---- */
+  --text-scale-8: 8px;
+  --text-scale-8-5: 8.5px;
+  --text-scale-9: 9px;
+  --text-scale-9-5: 9.5px;
+  --text-scale-10: 10px;
+  --text-scale-10-5: 10.5px;
+  --text-scale-11: 11px;
+  --text-scale-11-5: 11.5px;
+  --text-scale-12: 12px;
+  --text-scale-12-5: 12.5px;
+  --text-scale-13: 13px;
+  --text-scale-13-5: 13.5px;
+  --text-scale-14: 14px;
+  --text-scale-15: 15px;
+
+  /* ---- Radius ---- */
+  --radius-dot: 3px;
+  --radius-xs: 5px;
+  --radius-sm: 7px;
+  --radius-md: 8px;
+  --radius-md-alt: 9px;
+  --radius-lg: 10px;
+  --radius-lg-alt: 11px;
+  --radius-xl: 13px;
+  --radius-xl-alt: 14px;
+  --radius-pill: 20px;
+
+  /* ---- Spacing rhythm (px) ---- */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 14px;
+  --space-7: 16px;
+  --space-8: 20px;
+
+  /* ---- Shadows ---- */
+  --shadow-app: 0 24px 70px rgba(0, 0, 0, 0.55);
+  --shadow-modal: 0 30px 90px rgba(0, 0, 0, 0.6);
+  --shadow-menu: 0 18px 44px rgba(0, 0, 0, 0.6);
+  --shadow-marker: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-selected: 0 0 0 2px #ffffff, 0 2px 8px rgba(0, 0, 0, 0.55);
+
+  /* ---- Motion ---- */
+  --duration-drop: 200ms;
+  --duration-tween: 500ms;
+  --duration-keyframe: 1050ms;
+  --duration-pulse: 1s;
+  --ease-tween: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============================================================
+     §1b — ADDITIVE tokens from the handoff's tokens.css that TACTICA's own tokens.css does not
+     declare yet (house gold, T1–T5 rarity aliases, Epic-Schem flag, the reading-surface
+     extension). Nothing above this block is renamed; every value below is new.
+     ============================================================ */
+
+  /* House gold — structural accent: panel bars, active nav, tier chips, emblem, gate button.
+     Distinct from --rarity-legendary (same hex, different semantic role: gold is a UI accent
+     that appears even on units/heroes with no rarity at all, e.g. the nav underline). */
+  --gold: #e6b24c;
+  --gold-bg: rgba(230, 178, 76, 0.12);
+  --gold-border: rgba(230, 178, 76, 0.35);
+  --gold-border-strong: rgba(230, 178, 76, 0.45);
+  --gold-hover: #efc067;
+
+  /* Rarity T1–T5 aliases (unit icons, tier-chip rarity suffix) — same colors as --rarity-legendary
+     etc. above, named to match the handoff's "AA·T5" style tier-chip text and unit-db's T1-T5
+     rarity strings directly, so page-level code can look up a rarity by its raw "T5" value
+     without a separate word-to-tier translation table. T1 intentionally reuses --text-secondary
+     (grey), matching tokens.css's own note: "T1 grey uses --text-secondary". */
+  --rarity-legendary-t5: var(--rarity-legendary);
+  --rarity-epic-t4: var(--rarity-epic);
+  --rarity-rare-t3: var(--rarity-rare);
+  --rarity-uncommon-t2: var(--rarity-uncommon);
+  --rarity-common-t1: var(--text-secondary);
+
+  /* Epic-Schem flag (heroes) */
+  --epic-schem-text: #cf9bef;
+  --epic-schem-bg: rgba(180, 92, 230, 0.14);
+  --epic-schem-border: rgba(180, 92, 230, 0.35);
+
+  /* Warning semantic (avoid badge, hero-threat matchup relation) — tokens.css's third semantic
+     lane alongside danger/success, not carried by TACTICA's own tokens.css (a tool UI has no
+     "avoid this doctrine" concept). */
+  --warning-text: #f5c518;
+  --warning-bg: rgba(245, 197, 24, 0.12);
+  --warning-border: rgba(245, 197, 24, 0.3);
+
+  /* ============================================================
+     READING-SURFACE EXTENSION — the one sanctioned addition beyond TACTICA's dense-tool scale
+     (handoff tokens.css: "approved; sits BESIDE the 8–15px dense-tool scale, not in it").
+     Fonts (Hanken Grotesk, JetBrains Mono, Spectral) are linked per-page via Google Fonts
+     <link> tags (see units/heroes/index/hero.html <head>), not declared here.
+     ============================================================ */
+  --reading-body: 400 15.5px/1.55 var(--font-ui);
+  --reading-dense: 400 13.5px/1.5 var(--font-ui);
+  --verdict-voice: 400 18.5px/1.6 'Spectral', Georgia, serif;
+}
+
+/* Review-pass fix (REVIEW_PASSES.md §2): placeholder color cannot be set inline, only here. */
+::placeholder {
+  color: var(--text-label);
+}
+
+/* ============================================================================
+ * 2. BASE / RESET
+ * ========================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-void);
+  color: var(--text-body);
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--accent-light-alt);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Shared input/button primitives (gate.mjs markup uses .input/.btn/.btn-primary directly). */
+
+.input {
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+}
+
+.input:focus-visible {
+  border-color: var(--accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--bg-menu);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-light-alt);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+/* ============================================================================
+ * 3. SHARED TOP NAV (shared/nav.mjs) — two forms per the handoff:
+ *    (a) content-nav — full nav in every unit/hero/index/home page (brand + Units/Heroes/Tactics
+ *        tool links, active link = gold underline, mobile hamburger below ~720px).
+ *    (b) slim strip — the 36px-tall strip above the frozen TACTICA editor (reference canvas 4c);
+ *        nav.mjs renders this form when mounted with the `slim` render option so the tool's own
+ *        chrome underneath is untouched.
+ * ========================================================================= */
+
+.academy-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-1) var(--space-8);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+.academy-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--text-scale-12-5);
+}
+
+.academy-nav-brand:hover,
+.academy-nav-brand:focus-visible {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.academy-nav-emblem {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: var(--radius-xs);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 9px;
+  color: var(--gold);
+}
+
+.academy-nav-emblem::before {
+  content: 'IA';
+}
+
+.academy-nav-wordmark {
+  white-space: nowrap;
+}
+
+.academy-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.academy-nav-link {
+  display: block;
+  color: var(--text-label);
+  font-size: var(--text-scale-12-5);
+  font-weight: 500;
+  padding: var(--space-6) var(--space-4);
+  border-bottom: 2px solid transparent;
+}
+
+.academy-nav-link:hover,
+.academy-nav-link:focus-visible {
+  color: var(--text-body);
+  text-decoration: none;
+}
+
+.academy-nav-link.is-active {
+  color: var(--text-primary);
+  border-bottom-color: var(--gold);
+}
+
+.academy-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  cursor: pointer;
+  outline-offset: 2px;
+}
+
+.academy-nav-toggle-bar {
+  width: 18px;
+  height: 2px;
+  background: var(--text-body);
+  border-radius: 1px;
+}
+
+@media (max-width: 720px) {
+  .academy-nav-toggle {
+    display: flex;
+  }
+
+  .academy-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--bg-menu);
+    border-bottom: 1px solid var(--line-control);
+  }
+
+  .academy-nav-links.is-open {
+    display: flex;
+  }
+
+  .academy-nav-link {
+    font-size: var(--text-scale-14);
+    padding: var(--space-6) var(--space-8);
+    border-bottom: 1px solid var(--line-hairline);
+    min-height: 44px;
+  }
+
+  .academy-nav-link.is-active {
+    border-bottom-color: var(--line-hairline);
+  }
+}
+
+/* ---- Slim TACTICA nav-strip variant (reference canvas 4c) — the ONLY addition above the
+   frozen tool; every pixel of existing TACTICA editor chrome below it stays untouched. ---- */
+
+.academy-nav-slim {
+  position: static;
+  height: 36px;
+  padding: 0 var(--space-6);
+  gap: var(--space-3);
+}
+
+.academy-nav-slim .academy-nav-brand {
+  padding: 0;
+  gap: var(--space-3);
+}
+
+.academy-nav-slim .academy-nav-emblem {
+  width: 16px;
+  height: 16px;
+  font-size: 7.5px;
+}
+
+.academy-nav-slim .academy-nav-wordmark {
+  font-size: var(--text-scale-11-5);
+}
+
+.academy-nav-slim .academy-nav-links {
+  gap: 0;
+}
+
+.academy-nav-slim .academy-nav-link {
+  height: 36px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-scale-11-5);
+  color: var(--text-muted);
+}
+
+.academy-nav-slim .academy-nav-link.is-active {
+  height: 34px;
+  box-sizing: border-box;
+}
+
+.academy-nav-slim .academy-nav-toggle {
+  display: none !important;
+}
+
+/* ============================================================================
+ * 4. PAGE SHELL
+ * ========================================================================= */
+
+.academy-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+.page-header {
+  margin-bottom: var(--space-8);
+}
+
+.page-title,
+.index-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-scale-15);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.page-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-scale-13);
+}
+
+/* Index header row (Units index / Heroes index): title + live counts inline, per the handoff's
+   `.index-header` region — layout only; each index's own stylesheet may add page-specific rules
+   (e.g. heroes.css's philosophy-line spacing) on top of this shared baseline. */
+.index-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.index-counts {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.index-footnote {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+  margin-top: var(--space-7);
+}
+
+/* Generic tile/card grid — home destination cards and the units index reuse this base layout;
+   page-specific column-width/gap tuning lives in each page's own stylesheet. */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-7);
+  margin-top: var(--space-8);
+}
+
+/* ============================================================================
+ * 5. PANELS + ACCENT-BAR PANEL TITLES — the repeating grammar every full-guide page section
+ *    uses (Unit Page U3-U7, Hero Page loadout/builds/matchups/techniques/role).
+ * ========================================================================= */
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-7);
+}
+
+.panel + .panel {
+  margin-top: var(--space-7);
+}
+
+/* Two-rail grid (Doctrines+Veterancy/Formation on the unit page; Loadout+Builds on the hero
+   page) — both handoff templates use the identical flex-basis contract (1.45fr-ish left rail,
+   1fr-ish right rail, wrapping to one column under ~900px). */
+.panel-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.panel-grid > .panel {
+  margin-top: 0;
+}
+
+.panel-doctrines,
+.panel-loadout {
+  flex: 1.45 1 560px;
+  min-width: 0;
+}
+
+.panel-rail {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.panel-rail > .panel {
+  margin-top: 0;
+}
+
+.panel-builds,
+.panel-veterancy,
+.panel-formation {
+  flex: 1 1 340px;
+  min-width: 0;
+}
+
+/* Full-width panels below the two-rail grid (unit page U5-U7): plain block panels, one per
+   row — no flex-basis override needed beyond the base .panel, named here only so every panel
+   region in the handoff's class vocabulary has an explicit (even if empty) hook to attach
+   page-specific overrides to later without reaching for a bare element selector. */
+.panel-battle-role,
+.panel-controls {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .panel-grid {
+    flex-direction: column;
+  }
+}
+
+/* Accent-bar panel title: 3px gold bar + uppercase mono label + optional footnote sups/subtitle
+   + right-aligned #anchor deep link. Two class-naming generations coexist on purpose: the
+   handoff's own `.panel-title` (bar = `.panel-accent`, label = `.panel-label`) is what every
+   current render module emits; `.accent-bar-title` is kept as a single-element fallback for any
+   simpler caller that renders a title as one <h2> rather than the full title-row structure. */
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.panel-accent {
+  width: 3px;
+  height: 13px;
+  flex: none;
+  border-radius: var(--radius-dot);
+  background: var(--gold);
+}
+
+.panel-label,
+.panel-title-text {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-10-5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.panel-subtitle {
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+}
+
+.panel-title-spacer {
+  flex: 1;
+}
+
+.panel-anchor {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  color: var(--text-label);
+}
+
+.accent-bar-title {
+  position: relative;
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-6);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-10-5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.accent-bar-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  bottom: 1px;
+  width: 3px;
+  border-radius: var(--radius-dot);
+  background: var(--gold);
+}
+
+/* ============================================================================
+ * 6. STAT CHIPS — header rating chips (unit fight ratings, hero tier/attribute/epic-schem).
+ * ========================================================================= */
+
+.stat-chip,
+.unit-stat-chip {
+  text-align: center;
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  min-width: 56px;
+}
+
+.stat-chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.stat-chip-tier,
+.unit-stat-chip-tier {
+  border-color: var(--gold-border);
+}
+
+.stat-chip-value,
+.unit-stat-chip-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-14);
+  color: var(--text-primary);
+}
+
+.stat-chip-tier .stat-chip-value,
+.unit-stat-chip-tier .unit-stat-chip-value {
+  color: var(--gold);
+}
+
+.stat-chip-label,
+.unit-stat-chip-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-9);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-top: var(--space-1);
+}
+
+.stat-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Low-rating flank/duelling/etc chip (e.g. Sunward Phalanx's 1/10 flank) — color reinforces an
+   already-legible number, per REVIEW_PASSES.md §2; never color-only signal. */
+.stat-chip-rating-low .stat-chip-value {
+  color: var(--danger-text, #ff8a8d);
+}
+
+/* ============================================================================
+ * 7. TAG / TIER BADGES — doctrine tag pills, matchup relation labels, Epic-Schem flag, house
+ *    special-job labels. Semantics never color-only: every badge/chip carries its own text
+ *    (REVIEW_PASSES.md §2).
+ * ========================================================================= */
+
+.tag-pill,
+.tag-badge,
+.job-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 1px var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-control);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  font-weight: 500;
+}
+
+.tag-mandatory,
+.tag-badge.tag-mandatory {
+  background: var(--danger-bg);
+  color: var(--danger-text, #ff8a8d);
+  border-color: var(--danger-border);
+}
+
+.tag-top-pick,
+.tag-badge.tag-top-pick {
+  background: var(--success-bg, rgba(56, 178, 107, 0.14));
+  color: var(--success-text, var(--success-light));
+  border-color: var(--success-border, rgba(56, 178, 107, 0.3));
+}
+
+.tag-filler,
+.tag-badge.tag-filler {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--line-control);
+}
+
+.tag-avoid,
+.tag-badge.tag-avoid {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  border-color: var(--warning-border);
+}
+
+.tag-epic-schem,
+.tag-badge.tag-epic-schem {
+  background: var(--epic-schem-bg);
+  color: var(--epic-schem-text);
+  border-color: var(--epic-schem-border);
+}
+
+.job-label {
+  background: var(--gold-bg);
+  color: var(--gold);
+  border-color: var(--gold-border);
+}
+
+/* House special-job / recommended / alternative badges (veterancy + build cards). */
+
+.badge-recommended {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-9-5);
+  background: var(--gold-bg);
+  color: var(--gold);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+}
+
+.badge-alternative {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-9-5);
+  color: var(--text-label);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+}
+
+.badge-draft {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-10);
+  color: var(--accent-light-alt);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+  margin-left: var(--space-3);
+  white-space: nowrap;
+}
+
+.badge-draft-note {
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+  margin-left: var(--space-3);
+  white-space: nowrap;
+}
+
+/* House lock glyph — on any house-classified row/note/matchup/technique/footnote. Calm, never
+   alarm-styled; the text it decorates already carries the "house" meaning on its own. */
+.lock {
+  font-size: 0.85em;
+  opacity: 0.85;
+  margin-left: var(--space-1);
+}
+
+/* ============================================================================
+ * 8. VERDICT — the page's one editorial voice (unit U2 paragraph, hero role-quote).
+ * ========================================================================= */
+
+.verdict {
+  margin-top: var(--space-6);
+  max-width: 1020px;
+}
+
+.verdict:not(.verdict-absent) {
+  padding-left: var(--space-6);
+  border-left: 3px solid var(--gold);
+}
+
+.verdict-text {
+  font: var(--verdict-voice);
+  color: var(--text-primary);
+}
+
+.verdict-absent {
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+  color: var(--text-label);
+}
+
+.role-quote {
+  margin: 0;
+  font: var(--verdict-voice);
+  color: var(--text-primary-alt);
+  max-width: 900px;
+}
+
+.role-quote-attribution {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-style: normal;
+  color: var(--text-label);
+  vertical-align: middle;
+}
+
+/* ============================================================================
+ * 9. FRESHNESS METADATA — always neutral, never alarm-styled regardless of patch state
+ *    (no-change-signal / changed-by-patch / new-this-season all share this one look).
+ * ========================================================================= */
+
+.last-updated {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.epic-schem-note,
+.dual-entry-note,
+.absence-note {
+  margin: var(--space-3) 0 0;
+  max-width: 760px;
+  font-size: var(--text-scale-12-5);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ============================================================================
+ * 10. DOCTRINE ROWS (Unit Page U3) — tag badge + name + note, one row per doctrine.
+ * ========================================================================= */
+
+.doctrine-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctrine-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line-hairline);
+}
+
+.doctrine-name {
+  font-size: var(--text-scale-13);
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: none;
+  min-width: 140px;
+}
+
+.doctrine-note {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.example-build {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-hairline);
+}
+
+.example-build-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-right: var(--space-1);
+}
+
+.differ-notes {
+  border-top: 1px solid var(--line-hairline);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.differ-note {
+  font-size: var(--text-scale-12-5);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.differ-topic {
+  color: var(--text-body);
+  font-weight: 600;
+  font-style: italic;
+  margin-right: var(--space-2);
+}
+
+/* House-classified differ note — same quiet look as .differ-note, no extra visual weight beyond
+   the inline .lock glyph it renders (most-restrictive rule: lock when ANY position is house). */
+.differ-note-house {
+  position: relative;
+}
+
+.alternative-build-list {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-6);
+}
+
+/* ============================================================================
+ * 11. VETERANCY OPTIONS (Unit Page U4) — max one .vet-option-recommended (gold accent).
+ * ========================================================================= */
+
+.vet-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.vet-option {
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+
+.vet-option-recommended {
+  border-color: var(--gold-border-strong);
+  background: var(--gold-bg);
+}
+
+.vet-option-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.vet-option-name {
+  font-size: var(--text-scale-13);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.vet-option-why {
+  font-size: var(--text-scale-12-5);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+/* ---- Formation panel ---- */
+
+.formation-note {
+  font-size: var(--text-scale-13-5);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.formation-note b {
+  color: var(--text-primary);
+}
+
+/* ============================================================================
+ * 12. BATTLE ROLE COLUMNS (Unit Page U5).
+ * ========================================================================= */
+
+.role-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-5);
+}
+
+.role-col {
+  background: var(--bg-well);
+  border: 1px solid var(--line-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+
+.role-col-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-bottom: var(--space-2);
+}
+
+.role-col-body {
+  font-size: var(--text-scale-13-5);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.known-gaps {
+  margin-top: var(--space-4);
+  font-size: var(--text-scale-11-5);
+  color: var(--text-label);
+}
+
+/* ============================================================================
+ * 13. MATCHUPS (Unit Page U6 / Hero Page H5).
+ * ========================================================================= */
+
+.matchup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.matchup-card {
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--line-control);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+
+.matchup-card-house {
+  border-left-color: var(--accent);
+}
+
+.matchup-card-strong-vs,
+.matchup-relation-counters,
+.matchup-relation-you-pressure {
+  border-left-color: var(--success);
+}
+
+.matchup-card-weak-vs,
+.matchup-relation-loses-to,
+.matchup-relation-counters-you {
+  border-left-color: var(--danger);
+}
+
+.matchup-relation-hero-threat,
+.matchup-relation-struggles-vs {
+  border-left-color: var(--warning-text);
+}
+
+.matchup-relation-pairs,
+.matchup-relation-pairs-with {
+  border-left-color: var(--accent);
+}
+
+.matchup-name {
+  font-size: var(--text-scale-13);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.relation-label {
+  display: inline-block;
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-10);
+}
+
+.relation-strong-vs,
+.relation-counters,
+.relation-you-pressure {
+  color: var(--success-text, var(--success-light));
+}
+
+.relation-weak-vs,
+.relation-loses-to,
+.relation-counters-you {
+  color: var(--danger-text, #ff8a8d);
+}
+
+.relation-hero-threat,
+.relation-struggles-vs {
+  color: var(--warning-text);
+}
+
+.relation-pairs,
+.relation-pairs-with {
+  color: var(--accent-light-alt);
+}
+
+.matchup-why {
+  font-size: var(--text-scale-12);
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.pressure-line,
+.general-line {
+  font-size: var(--text-scale-12-5);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-top: var(--space-4);
+}
+
+.general-line {
+  font-size: var(--text-scale-12);
+  color: var(--text-label);
+  margin-top: var(--space-1);
+}
+
+/* ============================================================================
+ * 14. CONTROLS / TECHNIQUES — key-sequence chips + mechanics/scenario/technique rows
+ *    (Unit Page U7, Hero Page H6). Horizontal scroll on mobile; never wraps mid-sequence.
+ * ========================================================================= */
+
+.key-sequence {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.key-sequence-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-right: var(--space-1);
+  flex: none;
+  white-space: nowrap;
+}
+
+.key-sequence-explainer {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.key-chip {
+  flex: none;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-12);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-menu);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-xs);
+  padding: var(--space-1) var(--space-4);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.key-arrow,
+.key-sequence-arrow {
+  flex: none;
+  color: var(--text-faint);
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.mechanics-list,
+.scenarios-and-techniques {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-scale-13-5);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.mechanic b,
+.scenario-list b,
+.technique-name,
+.technique b {
+  color: var(--text-primary);
+}
+
+.timestamp {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-11-5);
+  color: var(--accent-light-alt);
+  border-bottom: 1px dotted var(--accent-light-alt);
+  cursor: pointer;
+}
+
+.timestamp:hover {
+  border-bottom-style: solid;
+}
+
+.technique-house {
+  position: relative;
+}
+
+.technique-rhythm {
+  color: var(--text-secondary);
+  font-size: var(--text-scale-12);
+  font-style: italic;
+}
+
+/* ============================================================================
+ * 15. FOOTER — media line, footnote legend, source legend, known gaps
+ *    (Unit Page U8, Hero Page H7).
+ * ========================================================================= */
+
+.page-footer,
+.unit-footer {
+  border-top: 1px solid var(--line-hairline);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-scale-11);
+  color: var(--text-secondary);
+}
+
+.media-line {
+  font-size: var(--text-scale-12);
+  color: var(--text-secondary);
+}
+
+/* Footnote-only attribution: superscript in body text -> named author only in this legend, per
+   the handoff's hard content rule "footnote-only attribution ... no inline author names". */
+.footnote {
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.footnote-marker {
+  font-size: 0.75em;
+  vertical-align: super;
+  color: var(--text-label);
+  line-height: 0;
+}
+
+.footnote-legend {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.source-legend {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.source-legend sup {
+  margin-right: var(--space-1);
+}
+
+/* Two-credit legend (Hero Page H7: OP-stat-block author + guide-body author, both named — the
+   one non-footnote-only exception the handoff's README calls out for hero pages specifically). */
+.source-legend-two-credit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.philosophy-line {
+  margin: 0;
+  font-size: var(--text-scale-11-5);
+  color: var(--text-label);
+}
+
+.known-gaps,
+.unit-gaps-note {
+  font-size: var(--text-scale-11-5);
+  color: var(--text-label);
+  font-style: italic;
+}
+
+/* ============================================================================
+ * 16. EMPTY / ABSENT STATES — honest, never filler ("no source yet" / "not applicable" /
+ *    "not yet written" are the only three absence labels the handoff sanctions).
+ * ========================================================================= */
+
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.units-empty-state,
+.empty-result {
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+/* ---- Identity-only unit header (93/149 units — header + tier + one honest line only) ---- */
+
+.unit-header-identity-only {
+  padding-bottom: var(--space-6);
+}
+
+.unit-role-line {
+  font-size: var(--text-scale-14);
+  color: var(--text-body);
+  margin-top: var(--space-5);
+}
+
+.unit-identity-only-invitation {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ============================================================================
+ * 17. UNIT / HERO HEADER PRIMITIVES shared between the identity-only and full-guide shapes
+ *    (icon tile, name, meta line, stat-chip row) — see unit-page.boot.mjs / hero-page.boot.mjs.
+ * ========================================================================= */
+
+.unit-header,
+.hero-header {
+  padding: var(--space-6) var(--space-7);
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--bg-panel);
+}
+
+.unit-header-row,
+.hero-header-top-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.unit-icon,
+.hero-icon,
+.unit-header-icon {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-14);
+}
+
+.unit-icon img,
+.hero-icon img,
+.unit-header-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.unit-icon-placeholder,
+.hero-icon-placeholder,
+.unit-header-icon-placeholder {
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+}
+
+.unit-identity,
+.hero-header-identity {
+  flex: 1;
+  min-width: 220px;
+}
+
+.unit-name,
+.hero-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.unit-meta,
+.hero-meta {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+}
+
+.hero-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.hero-header-chips {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.hero-job-label-chip .stat-chip-value {
+  font-size: var(--text-scale-12-5);
+  color: var(--accent-light);
+}
+
+.hero-tier-chip-secondary {
+  border-color: var(--line-control);
+}
+
+.hero-tier-chip-secondary .stat-chip-value {
+  color: var(--text-primary);
+}
+
+/* ============================================================================
+ * 18. GATE OVERLAY (shared/gate.mjs) — Academy-scoped class names, separate from TACTICA's own
+ *    gate.css so the two never collide if a page ever loaded both.
+ *    Ported from design/handoff-academy-pages/design_handoff_immortals_academy/templates/
+ *    Gate.dc.html — emblem/wordmark/microcopy/input/submit/error structure and calm (non-alarm)
+ *    error styling match the handoff 1:1.
+ * ========================================================================= */
+
+.academy-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background: var(--bg-void);
+}
+
+.academy-gate-card {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+  padding: var(--space-8);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-modal);
+}
+
+.academy-gate-emblem {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--gold-bg);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.academy-gate-wordmark {
+  margin: 0;
+  font-size: var(--text-scale-15);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.academy-gate-microcopy {
+  margin: calc(-1 * var(--space-4)) 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+.academy-gate-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.academy-gate-input {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-scale-13);
+}
+
+.academy-gate-submit {
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-4) var(--space-5);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg-void);
+}
+
+.academy-gate-submit:hover {
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+}
+
+.academy-gate-error {
+  margin: 0;
+  font-size: var(--text-scale-13);
+  /* Calm — no alarm styling (no background/border/danger tint), same body-text color as the
+     rest of the page. Per handoff hard rule: "neutral freshness metadata, never alarm-styled"
+     and Gate.dc.html's own error line (#c7cdd8, plain text, no wash). */
+  color: var(--text-body);
+}

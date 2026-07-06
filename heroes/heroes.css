@@ -1,0 +1,813 @@
+/**
+ * heroes/heroes.css — styling for the heroes index + hero detail pages, scoped to this surface
+ * only (site/heroes/**). Same token vocabulary as site/shared/academy.css (which this build does
+ * NOT edit — it's shared infrastructure outside this build's owned paths; see the final report).
+ * Every rule here traces to a --custom-property from academy.css §1, same discipline that file
+ * documents for itself.
+ *
+ * §Heroes index below is ported from design/handoff-academy-pages/design_handoff_immortals_
+ * academy/templates/Heroes Index.dc.html (see the handoff README's "Heroes index" row + its
+ * template → data-field map): class names match the handoff's markup 1:1 as its own template-
+ * safety contract requires (`.tier-table`, `.tier-group`, `.tier-cell`, `.hero-row`, `.ordinal`,
+ * `.job-label`, `.tag-badge`/`.tag-epic-schem`, `.dual-entry-hint`, `.index-header`,
+ * `.index-counts`, `.index-footnote`), each paired with a `hero-index-*`-prefixed modifier class
+ * so nothing here collides with a same-named class already used elsewhere on this page (the
+ * hero-detail-page section below this one already owns `.philosophy-line`) or on another page.
+ *
+ * var(--gold-*, <literal>) / var(--epic-schem-*, <literal>) below: academy.css §1b already
+ * declares --gold-bg/--gold-border/--epic-schem-bg/etc., so these resolve to the real token; the
+ * literal is a defensive fallback only (CSS var() fallback semantics), not a currently-taken path.
+ * Same pattern in this file's own Gate/Hero-Page sections and in home.css.
+ */
+
+/* ============================================================================
+ * Heroes index — verbatim tier table, ordinals, dual entries. Ported 1:1 from the design
+ * template's `.tier-table` grammar: a bordered card containing one `.tier-group` per tier, each a
+ * fixed `.tier-cell` (letter, +AA's "special jobs" sub-label) beside a column of `.hero-row` links.
+ * ========================================================================= */
+
+.hero-index-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+
+.hero-index-header .page-title {
+  margin: 0;
+}
+
+.hero-index-counts {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.hero-index-microcopy {
+  margin: 0 0 var(--space-7);
+  font-size: var(--text-scale-13);
+  color: var(--text-secondary);
+}
+
+.hero-tier-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-panel);
+}
+
+.hero-tier-group {
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-tier-group + .hero-tier-group {
+  border-top: 1px solid var(--line-soft);
+}
+
+.hero-tier-cell {
+  width: 88px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--bg-well);
+  border-right: 1px solid var(--line-hairline);
+  padding: var(--space-3) var(--space-2);
+}
+
+.hero-tier-cell-letter {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-15);
+  font-weight: 700;
+  color: var(--rarity-legendary, #e6b24c);
+}
+
+.hero-tier-cell-sublabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-8-5);
+  font-weight: 500;
+  color: var(--text-label);
+  text-align: center;
+}
+
+.hero-tier-rows {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 44px;
+  padding: 0 var(--space-6);
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+.hero-row + .hero-row {
+  border-top: 1px solid var(--line-hairline);
+}
+
+.hero-row:hover,
+.hero-row:focus-visible {
+  background: var(--bg-menu);
+  text-decoration: none;
+}
+
+.hero-row-ordinal {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  font-weight: 500;
+  color: var(--text-label);
+  width: 22px;
+  flex: none;
+}
+
+.hero-row-name {
+  font-size: var(--text-scale-13-5);
+  font-weight: 500;
+}
+
+.hero-row-variant {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.hero-row-job-label {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  font-weight: 500;
+  background: var(--gold-bg, rgba(230, 178, 76, 0.12));
+  color: var(--rarity-legendary, #e6b24c);
+  border: 1px solid var(--gold-border, rgba(230, 178, 76, 0.3));
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+}
+
+.hero-row-epic-schem-flag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  font-weight: 500;
+  background: var(--epic-schem-bg, rgba(180, 92, 230, 0.14));
+  color: var(--epic-schem-text, #cf9bef);
+  border: 1px solid var(--epic-schem-border, rgba(180, 92, 230, 0.35));
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+  cursor: help;
+}
+
+.hero-row-dual-entry-hint {
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+}
+
+.hero-row-spacer {
+  flex: 1;
+}
+
+.hero-row-arrow {
+  color: var(--text-faint);
+}
+
+.hero-index-footnote {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+  margin-top: var(--space-6);
+}
+
+.hero-index-footnote sup {
+  font-size: var(--text-scale-10);
+}
+
+.hero-index-missing-note {
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .hero-tier-cell {
+    width: 64px;
+  }
+
+  .hero-row {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .hero-row-spacer {
+    display: none;
+  }
+}
+
+/* ============================================================================
+ * Hero detail page (H1-H7) — ported from the design handoff
+ * (design/handoff-academy-pages/design_handoff_immortals_academy/templates/Hero Page.dc.html).
+ * Class names below are preserved from the handoff exactly (its README calls this the
+ * "template-safety contract"); values are pulled from academy.css's --custom-property vocabulary
+ * (TACTICA tokens 1:1) rather than the handoff's inline hex, per this build's token discipline —
+ * see tokens.css in the handoff dir for the source values these map from.
+ *
+ * FLAG (outside owned paths): the handoff's verdict-voice / role-quote token calls for Spectral
+ * serif (tokens.css: --verdict-voice), but no Spectral files are vendored anywhere in this repo —
+ * only Hanken Grotesk + JetBrains Mono ship in site/tactics/vendor/fonts.css (itself unlinked from
+ * every page today, including tactics/index.html). Below uses the handoff's own documented
+ * fallback stack ('Spectral', Georgia, serif) so Georgia serif renders until Spectral is vendored;
+ * noting rather than fixing since site/tactics/vendor/** is outside this build's owned paths.
+ * ========================================================================= */
+
+.hero-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-header {
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero-header-top-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.hero-icon {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-14);
+}
+
+.hero-icon-placeholder {
+  background: var(--gold-bg, rgba(230, 178, 76, 0.1));
+  border: 1px solid var(--gold-border, rgba(230, 178, 76, 0.35));
+  color: var(--gold, #e6b24c);
+}
+
+.hero-header-identity {
+  flex: 1;
+  min-width: 220px;
+}
+
+.hero-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.hero-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.hero-meta {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+}
+
+.hero-header-chips {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  text-align: center;
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+}
+
+.stat-chip-tier {
+  border-color: var(--gold-border, rgba(230, 178, 76, 0.35));
+}
+
+.stat-chip-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-15);
+  color: var(--text-primary);
+}
+
+.stat-chip-tier .stat-chip-value {
+  color: var(--gold, #e6b24c);
+}
+
+.stat-chip-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-9);
+  color: var(--text-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+}
+
+.hero-job-label-chip .stat-chip-value {
+  font-size: var(--text-scale-12-5);
+  color: var(--accent-light);
+}
+
+/* ---- Epic-Schem + dual-entry header notes ---- */
+
+.epic-schem-note {
+  margin: 0;
+  max-width: 760px;
+  font-size: var(--text-scale-12-5);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.hero-epic-schem-drop-note {
+  color: var(--text-label);
+  font-size: var(--text-scale-12);
+}
+
+.dual-entry-note {
+  margin: 0;
+  max-width: 760px;
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+}
+
+/* ---- Freshness metadata (neutral, never alarm-styled) ---- */
+
+.last-updated {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+/* ---- H2 Verdict (renders inside the header block) ---- */
+
+.verdict {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-hairline);
+}
+
+.hero-verdict-text {
+  margin: 0;
+  color: var(--text-body);
+  font: var(--verdict-voice, 400 18.5px/1.6 'Spectral', Georgia, serif);
+}
+
+.verdict-absent {
+  margin: 0;
+  color: var(--text-label);
+  font-size: var(--text-scale-13);
+}
+
+/* ---- Two-rail grid: Loadout + Builds ---- */
+
+.panel-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+  align-items: flex-start;
+}
+
+.panel-loadout {
+  flex: 1.45 1 560px;
+  min-width: 0;
+}
+
+.panel-builds {
+  flex: 1 1 340px;
+  min-width: 0;
+}
+
+.panel-matchups,
+.panel-techniques,
+.panel-role {
+  margin-top: var(--space-7);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.panel-accent {
+  width: 3px;
+  height: 13px;
+  flex: none;
+  background: var(--gold, #e6b24c);
+}
+
+.panel-title-text {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-10-5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold, #e6b24c);
+}
+
+.panel-subtitle {
+  font-size: var(--text-scale-10-5);
+  color: var(--text-label);
+}
+
+.panel-anchor {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  color: var(--text-label);
+}
+
+/* ---- H3 Loadout panel ---- */
+
+.loadout-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.loadout-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line-hairline);
+}
+
+.loadout-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  width: 120px;
+  flex: none;
+}
+
+.loadout-value {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-body);
+  flex: 1 1 220px;
+  min-width: 0;
+  line-height: 1.5;
+}
+
+.loadout-value-unknown {
+  color: var(--text-label);
+}
+
+.loadout-armor-list {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-body);
+  flex: 1 1 220px;
+  min-width: 0;
+  line-height: 1.5;
+}
+
+.loadout-armor-list b {
+  color: var(--text-primary);
+}
+
+.aiming-flags {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.flag-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-dot);
+  padding: 2px var(--space-4);
+  color: var(--text-secondary);
+}
+
+.flag-chip b {
+  margin-left: var(--space-1);
+}
+
+.flag-chip-on b {
+  color: var(--success-light);
+}
+
+.flag-chip-off b {
+  color: var(--text-label);
+}
+
+.weapon-stats {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  flex: 1 1 220px;
+  min-width: 0;
+  font-size: var(--text-scale-12-5);
+  color: var(--text-body);
+}
+
+.stat-need-bonus-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-scale-9-5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: var(--space-2);
+}
+
+.stat-need .stat-need-bonus-label {
+  color: var(--gold, #e6b24c);
+}
+
+.stat-bonus .stat-need-bonus-label {
+  color: var(--text-label);
+}
+
+.spell-core {
+  display: inline-flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-right: var(--space-3);
+}
+
+.spell-core .stat-need-bonus-label {
+  color: var(--gold, #e6b24c);
+}
+
+.spell-filler-notes {
+  color: var(--text-secondary);
+  font-size: var(--text-scale-12);
+}
+
+/* ---- H4 Builds panel ---- */
+
+.build-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.build-card {
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-6);
+}
+
+.build-card-recommended {
+  border-color: var(--gold-border-strong, rgba(230, 178, 76, 0.45));
+  background: var(--gold-bg, rgba(230, 178, 76, 0.05));
+}
+
+.build-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.build-name {
+  font-size: var(--text-scale-13);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.badge-recommended {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-9-5);
+  background: var(--gold-bg, rgba(230, 178, 76, 0.16));
+  color: var(--gold, #e6b24c);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+}
+
+.build-identity {
+  font-size: var(--text-scale-12-5);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.build-card-meta {
+  font-size: var(--text-scale-11-5);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.build-card-meta-label {
+  color: var(--text-label);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-9-5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-build-variant-ref {
+  display: inline-block;
+  margin-top: var(--space-3);
+}
+
+/* ---- H5 Matchups ---- */
+
+.matchup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.matchup-card {
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-6);
+}
+
+.matchup-card-strong-vs {
+  border-left: 3px solid var(--success);
+}
+
+.matchup-card-weak-vs {
+  border-left: 3px solid var(--danger);
+}
+
+.matchup-name {
+  font-size: var(--text-scale-13);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.relation-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-10);
+}
+
+.relation-strong-vs {
+  color: var(--success-light);
+}
+
+.relation-weak-vs {
+  color: var(--danger);
+}
+
+.matchup-why {
+  font-size: var(--text-scale-12);
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+/* ---- H6 Techniques panel ---- */
+
+.technique-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  font-size: var(--text-scale-13-5);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.technique {
+  display: block;
+}
+
+.technique-name {
+  color: var(--text-primary);
+}
+
+.key-sequence {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.key-chip {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-scale-11);
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-dot);
+  padding: 1px var(--space-4);
+  white-space: nowrap;
+}
+
+.key-sequence-arrow {
+  color: var(--text-faint);
+}
+
+.technique-rhythm {
+  color: var(--text-secondary);
+  font-size: var(--text-scale-12);
+  font-style: italic;
+}
+
+/* ---- Gameplay role prose (verdict-voice serif register) ---- */
+
+.role-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.role-quote {
+  margin: 0;
+  font: var(--verdict-voice, 400 16.5px/1.6 'Spectral', Georgia, serif);
+  color: var(--text-primary-alt);
+  max-width: 900px;
+}
+
+.role-quote-attribution {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-style: normal;
+  color: var(--text-label);
+  vertical-align: middle;
+}
+
+/* ---- H7 Footer ---- */
+
+.page-footer {
+  border-top: 1px solid var(--line-hairline);
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.source-legend {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+.hero-footer-author {
+  color: var(--text-label);
+}
+
+.philosophy-line {
+  margin: 0;
+  font-size: var(--text-scale-11-5);
+  color: var(--text-label);
+}
+
+/* ---- Absent-slug not-found state (hero.html?h=<unknown-slug>) ---- */
+
+.hero-not-found {
+  text-align: center;
+  padding: var(--space-8) 0;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .hero-header-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panel-grid {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "nodachi",
+  "className": "Nodachi",
+  "weaponArchetype": "Two-handed sword · lifesteal/sustain melee bruiser",
+  "tier": {
+    "tier": "C",
+    "positionInTier": 2,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Yes for more lifesteal etc., but OP wouldn't focus straight on the Epic set — better to focus on the weapon first and go until you have a set with Carnifex",
+    "name": "Black Sun Anchorite's Armour",
+    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+  },
+  "loadout": {
+    "attribute": "Dmg based: Agility (until 1900–1950 slashing pen), then rest into STR. Capped pen+survivability: Agility (until 1900–1950 slashing), then rest either Armor or Toughness. Survivability: Toughness/Armor — \"find which direction you want to take depending on how often you feel you're getting oneshot vs times where you're getting overwhelmed by multiple damages at once — Toughness I think it's way more viable now due to the Ultimate changes and runes\".",
+    "runes": "unknown",
+    "bestGender": null,
+    "genderNote": "OP believes no real difference beyond female's minimal hitbox changes and Bloodthirsty travel distance (male had \"a little bit more\" per OP's recollection, \"dont take it for granted\").",
+    "armorSets": [],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slashing Damage",
+        "Slashing Pen"
+      ],
+      "bonus": [
+        "Agility",
+        "Strength",
+        "Crit Value",
+        "Crit Dmg",
+        "Armor",
+        "Toughness"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Avalanche",
+        "Tiger Claw",
+        "Samurai March",
+        "Fearless & Steadfast"
+      ],
+      "fillerNotes": "Recommended loadout: lifesteal, Avalanche, Tiger Claw, and one of Samurai March/Fearless & Steadfast."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Multi-purpose PvP/PvUnits",
+      "summary": "Skillset: Fearless & Steadfast, Tiger Claw, Bloodthirsty (PvP-oriented), and Dragon's Leap (PvP/E).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Pure PvUnits",
+      "summary": "Skillset: Fearless & Steadfast, Tiger Claw, Samurai March (PvUnit-oriented), and Avalanche (PvE).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [],
+  "gameplay": [
+    {
+      "text": "Ability infos (per OP): Tiger Claw — used more or less behind units to maximize passive lifesteal and AoE damage+stagger. Fearless & Steadfast — for units/CC recovery/CC-immunity on max stacks. Samurai March — for static units and disruption; the 2nd hit's CC is \"very good vs units.\" Bloodthirsty — used for stacking or hero CCing/CC-recovery. Dragon's Leap — maximizes PvP damage to heroes, and provides massive 0-to-100 HP recovery on very stacked blobs of units — \"be careful to not send it in front of pikes or you're a goner.\" Avalanche — used in the middle/behind units on max stacks (OP's preference, \"or you're a goner\") to maximize stagger, survivability, and AoE damage.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "\"The gameplay is quite straightforward\": fight to the sides/behind units with Tiger Claw/Avalanche/Fearless, proc Lifesteal when low HP (preferably before Avalanche/Tiger Claw). Use Samurai March to disrupt static units. Maximize 5-stacks + Lifesteal + Avalanche to become \"a demon unit killer in the middle of red with insane recovery\" — make sure you're in Bloodcraze or Fearless & Steadfast CC-immune before using Avalanche for CC immunity.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "No explicit \"Loses to / Struggles vs / Counters\" list in this thread — the closest matchup warning is positional (avoid sending Dragon's Leap in front of pike units, or committing Avalanche without being stacked/CC-immune first).",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-05-19"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Nodachi guide' (1465008825701765322); OP 2026-01-25, edited 2026-05-19",
+      "sourceDate": "2026-05-19",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-05-19",
+  "patchNote": "Latest edit (2026-05-19) pre-dates the 2026-06-25 Chaos patch anchor by about five weeks."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "schutzdieners",
+  "name": "Schutzdieners",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 165,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/schutzdieners.png",
+    "metaTier": null,
+    "rarityTier": null,
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Backline ranged suppression with arcing arrow fire",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "Schutzdieners is below the B-tier+ rich-data gate (metaTier: unknown) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
+      "house": false
+    }
+  ]
+}

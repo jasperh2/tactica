@@ -1,0 +1,157 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "musket",
+  "className": "Musket",
+  "weaponArchetype": "Musket · ranged explosive/anti-exo",
+  "tier": {
+    "tier": "AA",
+    "positionInTier": 1,
+    "specialJobLabel": "Anti-exo & Range",
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "No",
+    "name": "Musketeer's Armour",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full Agility for Hero-killer (OP flags this as \"really out-dated playstyle\") / Full HP (bomb build) — OP links a \"here\" reference for this reasoning.",
+    "runes": "unknown",
+    "bestGender": "Female",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Carniflex",
+        "purpose": "unknown — OP names this as Best Armour with no stated rationale"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": true,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Piercing DMG",
+        "Piercing Pen"
+      ],
+      "bonus": [
+        "Agility",
+        "Strength",
+        "Blunt Damage"
+      ]
+    },
+    "spells": {
+      "core": [],
+      "fillerNotes": "OP's stat block gives no explicit core-spells line for Musket (unlike other guides) — spells are named per-build instead: Liquid Fire and Scatter Shot (LiquidFire/Scatter Shot build), Reload (Reload build). No single unified core loadout stated."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "LiquidFire / Scatter Shot Build (Recommended Ranked/Tournaments Build)",
+      "summary": "Emerged after Zykalian Militia gained popularity for their high AoE damage. Revolves around throwing Liquid Fire (a ranged grenade dealing low initial damage but leaving targets burning) from good positioning (high ground, flanks) at range; Scatter Shot staggers and headshots to burst.",
+      "strongVs": "Zykalian Militia, T3 archers, Rattan Marksmen (one-shot via Liquid Fire regardless of numbers); adapts against Falconetti Gunners, Shenji Grenadiers, Flamers, T4 archers by scaling bomb count to target count",
+      "forWhom": "Ranked/Tournaments (OP's own labeling)",
+      "recommended": true
+    },
+    {
+      "name": "Reload build",
+      "summary": "Focuses entirely on hero-killing abilities, with just one spell change from the LiquidFire build. The reload skill extends the bomb combo, often providing the extra damage needed to finish off heroes. Standard combo: throw bomb, position behind enemy, aim down from above the head until aim-assist shows the headshot red circle, AA for headshot, move aim to center of body, follow with scatter shot (body, not head, to avoid spread-miss), reload, finish with another AA.",
+      "strongVs": "Hero-killing 1v1s/duels; extended combo chain gives enough damage to secure kills",
+      "forWhom": "Deathmatch and tournament formats like 1v1, 2v2, and 5v5 — commonly used there, though it can also be fun in siege battles",
+      "recommended": false
+    },
+    {
+      "name": "Blue Tier-lock Build",
+      "summary": "Leverages that during blue tier lock, all units are flammable, all units have a low HP pool, and range is spammed heavily, while heroes are very low impact — musket has insane impact on units while staying safe as a range + medium class in this bracket.",
+      "strongVs": "Blue tier-lock brackets specifically (flammable, low-HP unit compositions; low hero impact)",
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "Zykalian Militia, T3 archers, Rattan Marksmen",
+      "stance": "strong-vs",
+      "why": "Fragile/low-HP, burn-vulnerable — one-shot via Liquid Fire regardless of how many there are; they also explode on burn death, adding bonus AoE damage."
+    },
+    {
+      "vs": "Falconetti Gunners, Shenji Grenadiers, Flamers, T4 archers",
+      "stance": "weak-vs",
+      "why": "Won't be one-shot by Liquid Fire — requires adapting bomb count to target count (e.g. two bombs into 8 Shenjis may kill them, but more than that spreads the damage too much)."
+    },
+    {
+      "vs": "Blue Tier-lock bracket (unit composition generally)",
+      "stance": "strong-vs",
+      "why": "All units are flammable and low-HP, and heroes are low-impact in this bracket, so Musket's unit-damage-focused kit is unusually strong here specifically."
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Insane Combo (bomb-CC into AA lock)",
+      "steps": [
+        "CC the target with the bomb ultimate",
+        "wait for the small window just before they naturally get up from the CC",
+        "land an auto-attack (AA) during that window to keep them locked in the combo instead of letting them get up"
+      ],
+      "rhythm": "If the target is staggered by any AA, they get up instantly instead of after the natural CC delay — the trick is timing the AA into the brief pre-recovery frame so they stay locked in the combo rather than escaping."
+    },
+    {
+      "name": "Reload-build hero-kill combo",
+      "steps": [
+        "Throw bomb",
+        "position behind the enemy",
+        "aim from above their head and slowly move down until aim-assist shows the red headshot circle",
+        "auto-attack (AA) for the headshot",
+        "move aim to the center of the body",
+        "follow up with scatter shot (aim at the body, not the head — head aim can miss due to shot spread)",
+        "reload",
+        "finish with another AA"
+      ],
+      "rhythm": null
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "HP gives a bit more space for risky moves such as deeper dive-ins, running near a blob to try and throw into Zykalian for example; it also makes it less likely to be randomly one-shot by cav/stalwart/etc., allows jumping out of a wall without dying, and makes it so enemy DB/CD can't kill you in one combo anymore.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Agi/str doing any difference is kinda copium for 95% of cases — we are on a meta with nearly 0 DM, no or near 0 skirmish; as musket if you can hit hero (meaning you are in main push for some reason) you are doing something wrong anyway, as you should be flanking / highground if possible to apply pressure for enemy exo/range and buy space for your team. (And even in a dreamworld where you do a lot of DM and reach 200-300k dmg on hero, it will do 0 difference in game, and that's not your job.)",
+      "attribution": "Amya"
+    },
+    {
+      "text": "The blunt pen won't allow you to kill anything more than you wouldn't already kill — you either throw the bomb on range (where you already have near-cap of pen), or you spread the dmg enough to reach minimal dmg (where more pen doesn't change anything); and if you throw into exo, you either hit low enough unit count to kill, or spread too much and pen doesn't change anything again.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Especially in this season with double bomb, your main job is Liquid Fire on Zykalian, and double bomb Viper if you can (but if you have enough space to do that, it's an enemy mistake tbh) — so damage isn't a problem; +30-50% survability is a better value than killing +1 flame/shenji on bomb every 1 out of 10 games.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-04-06"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Musket Guide' (1292867321722834985); OP 2024-10-07 edited 2026-04-06; build posts 2024-10-07 (LiquidFire, Reload), 2025-09-19 (Blue Tier-lock), 2025-11-07 (HP/Agi/str on bomb build) edited 2026-04-06",
+      "sourceDate": "2026-04-06",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    },
+    {
+      "source": "Amya's CB Library Discord (server 970521195558613002) — #Heroes-Guides-Tierlist; message authored 2025-04-28, in-message 'Last Update: 29/06/2026', edit timestamp 2026-06-29T13:14:44Z",
+      "sourceDate": "2026-06-29",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-1"
+    }
+  ],
+  "lastUpdated": "2026-04-06",
+  "patchNote": "Latest edit (2026-04-06) pre-dates the 2026-06-25 Chaos patch anchor by about 11 weeks — flagged in-source as pre-season/not yet re-verified against current balance."
+}

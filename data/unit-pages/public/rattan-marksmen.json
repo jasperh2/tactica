@@ -1,0 +1,121 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "rattan-marksmen",
+  "name": "Rattan Marksmen",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 175,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/rattan-marksmen.png",
+    "metaTier": "B",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Crossbow Doctrine V",
+          "text": "Unlocks Double Shot, fires 2 bolts per shot for 8s, can't combine with Focus Fire, 60s CD. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Poisons Doctrine V",
+          "text": "+140 all AP, +60 poison DMG, stacks up to 2x. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "New Ammo Doctrine IV",
+          "text": "+35% ammo, +120 piercing AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Crossbow Doctrine III",
+          "text": "+23% rate of fire. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Gunsight Doctrine V",
+          "text": "+40% shooting accuracy, +80 piercing DMG. OP notes \"likely same doctrine as 'Accuracy Doctrine' on Demesne Arbalists.\" Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 6,
+          "name": "Double Fire Doctrine V",
+          "text": "Alt for Epic Crossbow V -- older Double Fire variant, fires 2 bolts for 8s, 45s CD. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Poison Line. Hero pairing: not specified in this thread. OP verbatim note: \"Replace Double Fire by Double Shot (Epic Crossbow V) -- both unlock double-bolt mechanic but Double Shot has longer-CD/shorter-duration vs Double Fire's 45s CD / +12% ROF baseline. Amya's pick: Double Shot.\" 'Top Pick' bracket is entirely absent from this OP's Doctrines structure (goes straight from Mandatory to Filler) -- not a capture omission, that's how the OP is structured. Build guide video linked by OP (not transcribed, external link out of scope): 'How to use Rattan Marskmen correct | Conquerors blade Tutorial' (YouTube, channel Grk) -- doctrines shown at 0:30s, veterancy = Poison Line, per OP's own description. No dedicated Tips & Tricks text section (guidance deferred to the linked video). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Rattan Marksmen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only. Note: distinct unit from Rattan Pikemen / Rattan Roundshields / Rattan Vipers -- confirmed separate slug, separate guide thread, separate tierlist entry.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Ranged infantry with high per-shot damage, slower reload",
+      "rationale": "Veterancy: Poison Line. Hero pairing: not specified in this thread. OP verbatim note: \"Replace Double Fire by Double Shot (Epic Crossbow V) -- both unlock double-bolt mechanic but Double Shot has longer-CD/shorter-duration vs Double Fire's 45s CD / +12% ROF baseline. Amya's pick: Double Shot.\" 'Top Pick' bracket is entirely absent from this OP's Doctrines structure (goes straight from Mandatory to Filler) -- not a capture omission, that's how the OP is structured. Build guide video linked by OP (not transcribed, external link out of scope): 'How to use Rattan Marskmen correct | Conquerors blade Tutorial' (YouTube, channel Grk) -- doctrines shown at 0:30s, veterancy = Poison Line, per OP's own description. No dedicated Tips & Tricks text section (guidance deferred to the linked video). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Rattan Marksmen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only. Note: distinct unit from Rattan Pikemen / Rattan Roundshields / Rattan Vipers -- confirmed separate slug, separate guide thread, separate tierlist entry.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "build reference",
+          "text": "OP defers detailed how-to-use guidance to a linked build-guide video (\"How to use Rattan Marskmen correct | Conquerors blade Tutorial\", YouTube channel Grk) rather than in-thread text; video not transcribed (external link, out of scope for this capture)."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

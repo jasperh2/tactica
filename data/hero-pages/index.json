@@ -1,0 +1,272 @@
+{
+  "schema": "cb-academy-hero-index/v1",
+  "generated": "2026-07-06",
+  "count": 17,
+  "intro": {
+    "microcopy": {
+      "text": "Picking an high tier class won't make you auto-win, but it will increases your success odds while learning. The best hero is still the one you enjoy.",
+      "attribution": "Amya",
+      "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+    },
+    "philosophyQuotes": [
+      {
+        "text": "Tier lists start to make sense once you play ranked. Before that, you can perform well with any hero, any class at max potential is playable. This tierlist shows average strength ... in AVERAGE, a player will performe better with higher tier classes.",
+        "attribution": "Amya",
+        "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+      },
+      {
+        "text": "Picking an high tier class won't make you auto-win, but it will increases your success odds while learning. The best hero is still the one you enjoy.",
+        "attribution": "Amya",
+        "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+      },
+      {
+        "text": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.",
+        "attribution": "Amya",
+        "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+      },
+      {
+        "text": "Left to right order matters.",
+        "attribution": "Amya",
+        "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+      },
+      {
+        "text": "AA-tier class have their own special job, A-tier could be considered AA-tier or even S-tier by some but imo they are just a weaker version for the same job ... Bastard is by far the most OP weapon but does require to know 'the tech' to make it's value sky-rocket.",
+        "attribution": "Amya",
+        "source": "knowledge/vets-and-docs/amya-hero-tierlist.md"
+      }
+    ],
+    "generalGuide": {
+      "text": "This thread functions as a cross-hero reference/legend rather than a single-weapon guide: hero runes pointer, recommended Attribute allocation by weapon and armor-weight class, and Armor-stat tier lists by armor-weight class.",
+      "source": "knowledge/vets-and-docs/amya-hero-guides/general-hero-guide.md"
+    },
+    "weaponSelectionGuide": {
+      "subtitle": "Get an idea of which weapon does what.",
+      "note": "Bastard sword can be placed in recommended and is a easy to play, OP for both hero and units weapons (overall better than sns - even slightly better than poleaxe) there is 'Riposte Build' which is detailed in the guide which is currently (by far) the OP thing in the game.",
+      "source": "knowledge/vets-and-docs/amya-hero-guides/weapon-selection-guide.md"
+    }
+  },
+  "missingSlugs": [],
+  "heroes": [
+    {
+      "slug": "bastard-sword",
+      "className": "Bastard Sword",
+      "weaponArchetype": "Two-handed sword · melee AOE unit-hitter",
+      "tier": "God",
+      "positionInTier": 1,
+      "variantLabel": "Riposte Build",
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No, but meta playstyle uses some — 3x Flameshackle heavy & 2 Epic Schem pieces.",
+      "epicSchemName": null,
+      "tierDropNote": null,
+      "isDualEntry": true
+    },
+    {
+      "slug": "dual-blades",
+      "className": "Dual Blades",
+      "weaponArchetype": "Dual Blades · assassin/duelist",
+      "tier": "God",
+      "positionInTier": 2,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "HEAVILY recommended",
+      "epicSchemName": "Skirmisher's Tunic",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "bastard-sword",
+      "className": "Bastard Sword",
+      "weaponArchetype": "Two-handed sword · melee AOE unit-hitter",
+      "tier": "S",
+      "positionInTier": 1,
+      "variantLabel": "Any Build",
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No, but meta playstyle uses some — 3x Flameshackle heavy & 2 Epic Schem pieces.",
+      "epicSchemName": null,
+      "tierDropNote": null,
+      "isDualEntry": true
+    },
+    {
+      "slug": "shortsword",
+      "className": "Shortsword",
+      "weaponArchetype": "Sword & Shield",
+      "tier": "S",
+      "positionInTier": 2,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No (Preferable)",
+      "epicSchemName": "Officier's Armour",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "musket",
+      "className": "Musket",
+      "weaponArchetype": "Musket · ranged explosive/anti-exo",
+      "tier": "AA",
+      "positionInTier": 1,
+      "variantLabel": null,
+      "specialJobLabel": "Anti-exo & Range",
+      "epicSchemNeeded": "No",
+      "epicSchemName": "Musketeer's Armour",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "chaindart",
+      "className": "Chaindart",
+      "weaponArchetype": "Chain weapon · mobility/utility disruptor",
+      "tier": "AA",
+      "positionInTier": 2,
+      "variantLabel": "Supply Kill TW/Rank",
+      "specialJobLabel": "Supply Kill TW/Rank",
+      "epicSchemNeeded": "Not Needed But Nice to Have",
+      "epicSchemName": "Sand Scorpion Armour",
+      "tierDropNote": null,
+      "isDualEntry": true
+    },
+    {
+      "slug": "glaive",
+      "className": "Glaive",
+      "weaponArchetype": "Polearm · mounted brawler/team buffer",
+      "tier": "A",
+      "positionInTier": 1,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No (but nice to have if playing heavy playstyle)",
+      "epicSchemName": "Royal Sentry's",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "poleaxe",
+      "className": "Poleaxe",
+      "weaponArchetype": "CC/Tanky vs Glass Cannon — two named OP playstyles",
+      "tier": "A",
+      "positionInTier": 2,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Yes, highly valuable — provides CC immunity during your ultimate, adds +10% HP, boosts Weapon Dance damage reduction by 75% of the base value (\"so its 75% of 25% (not +75% flat)\"); playable without it but with reduced survivability/utility",
+      "epicSchemName": "Fearless Paladin Armour",
+      "tierDropNote": "Epic-Schem — drops 1–2 tiers without the Epic Schematic armour (per hero tierlist framing: \"Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.\")",
+      "isDualEntry": false
+    },
+    {
+      "slug": "spear",
+      "className": "Spear",
+      "weaponArchetype": "Cavalry lancer · hero-diver",
+      "tier": "A",
+      "positionInTier": 3,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "I'd say definitely no, as you don't benefit much from the passive stats it gives vs the flat dmg u get from normal Carnifex/Earthshatter set",
+      "epicSchemName": "Sergeant's Camisole",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "spear-and-shield",
+      "className": "Spear & Shield",
+      "weaponArchetype": "Spear & Shield · frontline disruptor/CC",
+      "tier": "B",
+      "positionInTier": 1,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Weapon Need; armor is recommended but \"completely playable without too\"",
+      "epicSchemName": "Immortal Soul Armor",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "maul",
+      "className": "Maul",
+      "weaponArchetype": "Bruiser — mobility and constant DPS/high burst depending on build",
+      "tier": "B",
+      "positionInTier": 2,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No, \"but good to have it in certain meta\"",
+      "epicSchemName": "Hammer Of The Gods",
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "chaindart",
+      "className": "Chaindart",
+      "weaponArchetype": "Chain weapon · mobility/utility disruptor",
+      "tier": "B",
+      "positionInTier": 3,
+      "variantLabel": "General pick",
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Not Needed But Nice to Have",
+      "epicSchemName": "Sand Scorpion Armour",
+      "tierDropNote": null,
+      "isDualEntry": true
+    },
+    {
+      "slug": "longsword",
+      "className": "Longsword",
+      "weaponArchetype": "Longsword · support/tank disruptor",
+      "tier": "C",
+      "positionInTier": 1,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Not needed, but the class is way stronger with it due to the ultimate's CC immunity",
+      "epicSchemName": "Imperial Knight's Surcoat",
+      "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.",
+      "isDualEntry": false
+    },
+    {
+      "slug": "nodachi",
+      "className": "Nodachi",
+      "weaponArchetype": "Two-handed sword · lifesteal/sustain melee bruiser",
+      "tier": "C",
+      "positionInTier": 2,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Yes for more lifesteal etc., but OP wouldn't focus straight on the Epic set — better to focus on the weapon first and go until you have a set with Carnifex",
+      "epicSchemName": "Black Sun Anchorite's Armour",
+      "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.",
+      "isDualEntry": false
+    },
+    {
+      "slug": "pike",
+      "className": "Pike",
+      "weaponArchetype": "Polearm",
+      "tier": "C",
+      "positionInTier": 3,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "No",
+      "epicSchemName": null,
+      "tierDropNote": null,
+      "isDualEntry": false
+    },
+    {
+      "slug": "longbow",
+      "className": "Longbow",
+      "weaponArchetype": "Bow · long-range DPS",
+      "tier": "C",
+      "positionInTier": 4,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Yes — \"nearly unplayable without it\"",
+      "epicSchemName": "Captain's Armour",
+      "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.",
+      "isDualEntry": false
+    },
+    {
+      "slug": "shortbow",
+      "className": "Shortbow",
+      "weaponArchetype": "Bow · poison-mark ranged DPS",
+      "tier": "D",
+      "positionInTier": 1,
+      "variantLabel": null,
+      "specialJobLabel": null,
+      "epicSchemNeeded": "Yes — \"Class is useless without it\"",
+      "epicSchemName": "Desert Warrior Garnement",
+      "tierDropNote": null,
+      "isDualEntry": false
+    }
+  ]
+}

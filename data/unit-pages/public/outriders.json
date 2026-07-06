@@ -1,0 +1,123 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "outriders",
+  "name": "Outriders",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 180,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/outriders.png",
+    "metaTier": "B",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Javelin Damage Doctrine",
+          "text": "+250 javelin DMG, +30 ammo. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Javelin Block Break Doctrine",
+          "text": "+300 javelin block break, +100 piercing DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Javelin Immobilize Doctrine",
+          "text": "Rare/Blue: javelins render enemies immobile for 1.5s, same doctrine as on Imperial Javelineers. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Burning Plains Doctrine",
+          "text": "Unit-unique, Rare/Blue: reduces Burning Plains cooldown by 4s (Outriders-specific signature skill). Mandatory per Amya.",
+          "tag": "mandatory"
+        }
+      ],
+      "note": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Identity note: thread tags list 'Range, T3, Cavalry' verbatim even though the OP's own Archetype line describes this unit as 'Melee Infantry (Javelin + Melee Hybrid Skirmisher)' — recorded as-is per capture, not corrected; logged as an identityProvenance-adjacent conflict below rather than silently resolved (per task instructions, the thread-tag 'Cavalry' vs OP 'Melee Infantry' archetype contradiction is recorded verbatim, not resolved). Ability infos per OP: Skill 1 is ranged poke (javelin throw) to harass from range; Skill 2 shoots javelins then rushes into melee, can be cancelled after the throw (for poking) or left to complete (for a melee engage) — no formally-named ability block beyond this Playstyle description. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Outriders is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Melee skirmisher, throws javelins before closing to melee",
+      "rationale": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Identity note: thread tags list 'Range, T3, Cavalry' verbatim even though the OP's own Archetype line describes this unit as 'Melee Infantry (Javelin + Melee Hybrid Skirmisher)' — recorded as-is per capture, not corrected; logged as an identityProvenance-adjacent conflict below rather than silently resolved (per task instructions, the thread-tag 'Cavalry' vs OP 'Melee Infantry' archetype contradiction is recorded verbatim, not resolved). Ability infos per OP: Skill 1 is ranged poke (javelin throw) to harass from range; Skill 2 shoots javelins then rushes into melee, can be cancelled after the throw (for poking) or left to complete (for a melee engage) — no formally-named ability block beyond this Playstyle description. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Outriders is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "poke",
+          "text": "Poke from far with skill 1."
+        },
+        {
+          "context": "poke",
+          "text": "Also use skill 2 (shoots javelins then rushes) to poke: let it shoot, then cancel before they rush towards the enemy."
+        },
+        {
+          "context": "engage",
+          "text": "Same combo to engage at melee: do not cancel the 2, let them complete the rush after the javelin volley."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

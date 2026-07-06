@@ -1,0 +1,166 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "tiger-and-leopard-cavalry",
+  "name": "Tiger and Leopard Cavalry",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 310,
+    "origin": null,
+    "noMastery": true,
+    "icon": null,
+    "metaTier": "To place (new/recently buffed, unlettered)",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Flank": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-28",
+      "2026-06-29"
+    ],
+    "patchState": "new-this-season",
+    "patchNote": "New this season ([Chaos: A Realm Divided] Season Announcement) — no prior doc to compare against."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lancer's Last Stand",
+          "text": "+40% DMG at <60% headcount. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Lancer Charge Doctrine V",
+          "text": "-14s charge CD, +100 piercing DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Charge Defence Doctrine",
+          "text": "-50% DMG taken while charging, -6s charge CD. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Toughness Doctrine",
+          "text": "-33% DMG taken on first hit, scaling down until 8 hits taken. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 6,
+          "name": "Sprint Doctrine",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "+225 Charge DMG Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 8,
+          "name": "Piercing DMG",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "-DMG Taken doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 10,
+          "name": "Slashing DMG or Hero DMG",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: not given in this OP (literal absence, see usage provenance). New Chaos-season unit -- OP authored 2026-06-24 (one day pre-anchor), edited 2026-06-28 (post-anchor); current-season source, not stale. Tierlist letter placement pending (\"To place\") at capture time, same pattern as White Plume Guards. Playstyle kit: press 1 is a simple charge; press 2 is similar to Liao's Rangers or Kheshig and hits units in a close area; press 3 is a Crowd Control cleanse and charge again -- most likely the unit will charge in with 1, use 2, then use 3 to get out and repeat. Respect the passive and charge from as far as possible: the longer the charge, the more speed AND the more passive damage stacked. Lancer's Last Stand TRICK: if you spawn with it, swap away and swap back; if you just lost a unit, take this one out from supply (best to have it out, swap to another unit, then swap back) -- the 40%-at-60%-headcount doctrine then applies to 100% of the unit. No separate \"Example Build\" section given beyond the doctrine list. CONFLICT LOGGED: this doctrine block and Tips & Tricks text are near-identical to Amya's Dagger-Axe Lancers guide (the guide's own text flags this) -- see provenance.conflicts, flagged for vet review, recorded as-is per source.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Charge cavalry, breaks formations with couched-lance impact",
+      "rationale": "Veterancy: Top Line. Hero pairing: not given in this OP (literal absence, see usage provenance). New Chaos-season unit -- OP authored 2026-06-24 (one day pre-anchor), edited 2026-06-28 (post-anchor); current-season source, not stale. Tierlist letter placement pending (\"To place\") at capture time, same pattern as White Plume Guards. Playstyle kit: press 1 is a simple charge; press 2 is similar to Liao's Rangers or Kheshig and hits units in a close area; press 3 is a Crowd Control cleanse and charge again -- most likely the unit will charge in with 1, use 2, then use 3 to get out and repeat. Respect the passive and charge from as far as possible: the longer the charge, the more speed AND the more passive damage stacked. Lancer's Last Stand TRICK: if you spawn with it, swap away and swap back; if you just lost a unit, take this one out from supply (best to have it out, swap to another unit, then swap back) -- the 40%-at-60%-headcount doctrine then applies to 100% of the unit. No separate \"Example Build\" section given beyond the doctrine list. CONFLICT LOGGED: this doctrine block and Tips & Tricks text are near-identical to Amya's Dagger-Axe Lancers guide (the guide's own text flags this) -- see provenance.conflicts, flagged for vet review, recorded as-is per source.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "kit overview",
+          "text": "Press 1 is a simple charge; press 2 is similar to Liao's Rangers or Kheshig and hits units in a close area; press 3 is a Crowd Control cleanse and re-charge."
+        },
+        {
+          "context": "engage loop",
+          "text": "Most likely the unit will just charge in with 1, use 2, then use 3 to get out and repeat."
+        },
+        {
+          "context": "charge value",
+          "text": "Respect the passive and charge from as far as you can -- the longer the charge, the more speed AND the more passive damage you stack."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

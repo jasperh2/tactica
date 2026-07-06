@@ -1,0 +1,114 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "pike",
+  "className": "Pike",
+  "weaponArchetype": "Polearm",
+  "tier": {
+    "tier": "C",
+    "positionInTier": 3,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "No",
+    "name": null,
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full Armour | Full Health | Full Agility | Mix Health/Armour",
+    "runes": "unknown",
+    "bestGender": "Female",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Carniflex",
+        "purpose": "the set brings only minor buffs the biggest being the ultimate cooldown reduction of 6 seconds which is not worth it. The normal reforged carnifex set is just better in terms of stat boosts and defenses."
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Piercing pen",
+        "Piercing"
+      ],
+      "bonus": [
+        "Slashing(pen)",
+        "Blunt(pen)"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Wandering Dragon",
+        "Sky Dragon",
+        "Green Dragon (ultimate)"
+      ],
+      "fillerNotes": null
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Full Agility",
+      "summary": "Hero Killer playstyle has to be used carfully since you die very fast due to high burst damage in the game if used properly it is viable.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Full Armour | Full Health | Mix Health/Armour",
+      "summary": "This build is curently the most viable since you can last a lot longer in close melee combat which allows you to open formations and play more agressiv in combination with your units. This build is mostly used.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Ultimate combo (Green Dragon opener)",
+      "steps": [
+        "Green Dragon (ultimate) — main hero-damage tool",
+        "1 auto-attack",
+        "Water Dragon or Sky Dragon (Pin) for max hero damage — or swap to Wandering Dragon instead if the goal is opening a formation rather than a hero kill"
+      ],
+      "rhythm": "One auto-attack in between the combo for extra damage."
+    },
+    {
+      "name": "Right-click on horse (mounted opener)",
+      "steps": [
+        "Right-click on horse before dismounting into an enemy unit",
+        "Opens enemy formations and staggers/dismounts cav or heroes on horseback",
+        "Adds speed on horse when dismounting because it consumes no stamina and staggers the enemy"
+      ],
+      "rhythm": null
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "When fighting hero's as a pike it is your goal to knock the enemy down and land your ultimate. While learning this class you should always try to be as mobile and flexible as possible. Use your dismount to stun hero's mix in auto attacks into your combos roll and block to cancel animations and never be stationary as pike. MOVEMENT IS KEY! Learn your combos and the little tricks as shown in the videos down bellow to outplay your enemy.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2026-03-26"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Pike Guide' (1465008141359120518); OP 2026-01-25, edited 2026-03-26",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat as pre-season/not yet re-verified against the current patch."
+}

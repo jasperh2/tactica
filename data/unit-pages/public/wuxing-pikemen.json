@@ -1,0 +1,123 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "wuxing-pikemen",
+  "name": "Wuxing Pikemen",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 155,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/wuxing-pikemen.png",
+    "metaTier": "A",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). \"Fiery Blast\" radius +20%, now activates instantly (was delayed)"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Polearm Doctrine III",
+          "text": "Allows the unit to use the Pike Assault order. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Toughness Doctrine V",
+          "text": "-33% DMG taken, weakens each hit, gone after 8 hits. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Hero Damage Doctrine V",
+          "text": "+115 hero DMG, +110 all AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% DMG in sieges. Mandatory per Amya.",
+          "tag": "mandatory"
+        }
+      ],
+      "note": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Thread title is 'Wuxing Spirit' (tierlist assigns this to 'Wuxing Pikemen'). Playstyle: mastery allows the unit to do serious DMG to high-tankiness units (Spartan Chosen, Iron Reapers, etc.); X-move close, press 2, let the animation go on, press 1. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Wuxing Pikemen is on the 2026-06-25 Chaos patch shortlist: \"Fiery Blast\" radius +20%, now activates instantly (was delayed) (Buff/Rework). This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide predates the rework entirely and never once mentions a \"Fiery Blast\" skill anywhere in its text (confirmed absent from Overview, Playstyle, Doctrines, and Ability infos). The Playstyle/Doctrines guidance is therefore incomplete for the current season, not just outdated: it cannot describe engage timing around the new instant-activation Fiery Blast because the guide's author had not yet seen the rework.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Thread title is 'Wuxing Spirit' (tierlist assigns this to 'Wuxing Pikemen'). Playstyle: mastery allows the unit to do serious DMG to high-tankiness units (Spartan Chosen, Iron Reapers, etc.); X-move close, press 2, let the animation go on, press 1. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Wuxing Pikemen is on the 2026-06-25 Chaos patch shortlist: \"Fiery Blast\" radius +20%, now activates instantly (was delayed) (Buff/Rework). This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide predates the rework entirely and never once mentions a \"Fiery Blast\" skill anywhere in its text (confirmed absent from Overview, Playstyle, Doctrines, and Ability infos). The Playstyle/Doctrines guidance is therefore incomplete for the current season, not just outdated: it cannot describe engage timing around the new instant-activation Fiery Blast because the guide's author had not yet seen the rework.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "matchup",
+          "text": "Mastery allows the unit to do serious DMG to high-tankiness units (Spartan Chosen, Iron Reapers, etc.)."
+        },
+        {
+          "context": "combo",
+          "text": "X-move close, press 2, let the animation go on, press 1."
+        },
+        {
+          "context": "gap (STALE — predates rework)",
+          "text": "Guide never mentions a \"Fiery Blast\" skill; the shortlist's radius +20% / instant-activation rework for this skill is entirely absent from this doc's engage-timing guidance."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

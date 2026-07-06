@@ -1,0 +1,132 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "yorkist-household-knights",
+  "name": "Yorkist Household Knights",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 265,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/yorkist-household-knights.png",
+    "metaTier": "S",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Skirmish": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Duelling": {
+        "value": 10,
+        "raw": "10/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2025-12-19",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Leadership 245→265; max roster 20→18"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "On cav: any pikes. On ground: Stalwart if CC’d (crowd-controlled)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Rattan Pikes."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Everything — better trade depending on ground or horse."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 2
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "on horse",
+          "text": "Multiple spells: 1 = dismount, 2 = charge, 3 = follow-commander charge. Cover Commander is the main way to play — stay near it until it dies. Dismount situations are now rare (only vs anti-cav units that can disrupt)."
+        },
+        {
+          "context": "on horse, 1v1",
+          "text": "Charge in with spell 2 into dismount — better success rate than Cover Commander alone."
+        },
+        {
+          "context": "on ground (after dismount)",
+          "text": "Absolute best-in-class on ground. Don't hesitate to dismount and press spell 2. Keep the hero frontline but not far from the unit, or the unit stops attacking and just runs — test engagement range in custom games."
+        },
+        {
+          "context": "Cover Commander tech",
+          "text": "Cover Commander can be a bit bugged at the start — don't spam it. When flanking, turn it ON beforehand and confirm it's glowing red."
+        },
+        {
+          "context": "post-dismount spell 2",
+          "text": "After dismounting and activating spell 2, enemies will run at the unit and it grants strong defense (duration 15s). Don't X-move or use spell V or the buff cancels — keep the unit close to the hero, don't run too far."
+        }
+      ],
+      "footnoteMark": 2
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "creator guide",
+      "date": "2025-12-19",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

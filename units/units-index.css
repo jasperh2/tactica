@@ -1,0 +1,279 @@
+/**
+ * Units index page styles — ported from
+ * design/handoff-academy-pages/design_handoff_immortals_academy/templates/Units Index.dc.html.
+ *
+ * Class names match the handoff exactly (template-safety contract, README.md "Recreate the
+ * markup with class names preserved exactly"): .index-filters / .filter-rows /
+ * .filter-group-label / .filter-chip* / .unit-tile-grid / .unit-tile* / .tier-chip /
+ * .richness-badge / .empty-result / .clear-search. Values are lifted from the handoff's inline
+ * styles onto the token vocabulary already declared in shared/academy.css §1 (byte-identical to
+ * tokens.css, incl. §1b's additive --gold-* / --rarity-*-t5..t1 tokens) — no new colors/spacing
+ * introduced here, only --custom-property references, same discipline academy.css documents for
+ * itself.
+ *
+ * Scope: per shared/academy.css's own header ("Page-specific layout ... lives in each page's own
+ * scoped stylesheet ... site/units/*.css"), this file owns ONLY the units-index tile grid /
+ * filter-chip / search / empty-state region (site/units/index.html's <main class="units-index">).
+ * It deliberately does NOT redeclare .index-header/.index-title/.index-counts/.index-footnote —
+ * those are the shared cross-index baseline academy.css §4 already owns ("each index's own
+ * stylesheet may add page-specific rules on top of this shared baseline" — this page adds none,
+ * the baseline alone matches the handoff for these four regions). It also does not restyle
+ * .academy-nav, .academy-gate-*, or any other shared surface — those belong to their own owners.
+ *
+ * Note on --gold-* / --rarity-*-t* var() fallbacks below: academy.css §1b already declares every one
+ * of these tokens (house-gold structural accent + the full 5-step T1-T5 rarity-alias ramp), so the
+ * literal fallback after each comma is defensive/inert today, not load-bearing — kept only so this
+ * file still renders its correct colors standalone if academy.css's §1b block is ever reordered or
+ * temporarily unavailable, same belt-and-suspenders pattern site/home.css's header comment
+ * documents for the same tokens.
+ */
+
+/* ---- Filters: search input + tier/class/era filter-chip rows ---- */
+
+.index-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.index-search {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  height: 40px;
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: 0 var(--space-6);
+  font-size: var(--text-scale-14);
+  font-family: var(--font-ui);
+  outline: none;
+}
+
+.index-search:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.filter-rows {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-group-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-9-5);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-right: 2px;
+}
+
+.filter-chip-group {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filter-rows-gap {
+  width: var(--space-4);
+}
+
+.filter-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-weight: 500;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-pill);
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  min-height: 30px;
+}
+
+.filter-chip:hover {
+  border-color: var(--gold-border, rgba(230, 178, 76, 0.35));
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Active chip: gold wash, per Units Index.dc.html tierOpts — text-first, never color-only (the
+   label text itself is the semantic signal; gold is reinforcement, not the sole cue). */
+.filter-chip.is-active {
+  background: var(--gold-bg, rgba(230, 178, 76, 0.14));
+  color: var(--rarity-legendary, #e6b24c);
+  border-color: var(--gold-border-strong, rgba(230, 178, 76, 0.45));
+}
+
+.units-result-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-label);
+}
+
+/* ---- Tile grid (index.tiles, default sort rarity desc — see units-index.mjs sortForDisplay) ---- */
+
+.unit-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.unit-tile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  text-decoration: none;
+  color: var(--text-primary);
+  min-height: 44px;
+}
+
+.unit-tile:hover,
+.unit-tile:focus-visible {
+  border-color: var(--gold-border-strong, rgba(230, 178, 76, 0.45));
+  text-decoration: none;
+}
+
+.unit-tile-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-12);
+  font-weight: 600;
+}
+
+.unit-tile-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Coded placeholder tile: rarity-tinted text + background wash + border wash, all derived from
+   ONE inline `color` set per-tile (units-index.boot.mjs buildTile — the rarity tint is per-row
+   data, not a fixed class variant) via color-mix(currentColor). Do not also set border-color
+   inline — it would override this rule's soft 35%-opacity wash with a solid color. */
+.unit-tile-icon-placeholder {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.unit-tile-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.unit-tile-name {
+  font-size: var(--text-scale-13-5);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unit-tile-chips {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tier-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10-5);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-well);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-dot);
+  padding: 1px var(--space-3);
+}
+
+/* .tier-chip-rarity's color is set inline per-tile (the rarity tint is per-row data — see
+   units-index.boot.mjs's rarityColorVar). */
+
+.richness-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+}
+
+.richness-badge-full {
+  background: var(--gold-bg, rgba(230, 178, 76, 0.12));
+  color: var(--rarity-legendary, #e6b24c);
+  border: 1px solid var(--gold-border, rgba(230, 178, 76, 0.3));
+}
+
+.richness-badge-stats-only {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--line-control);
+}
+
+/* ---- Empty search state (index.emptyState — honest, no filler) ----
+   NOTE: shared/academy.css §16 also declares a (legacy, shared with .units-empty-state)
+   .empty-result rule. This rule loads after it in units/index.html and shares its selector's
+   specificity, so every property declared HERE wins per the normal CSS cascade (later rule,
+   same specificity); academy.css's un-overridden `background: var(--bg-panel)` still falls
+   through underneath the dashed border below — that's an intentional, harmless combination (a
+   panel-toned empty-state card), not a bug to chase. This file does not edit academy.css (out of
+   this page's owned scope) — see that file's own §16 if the shared rule ever needs to change. */
+
+.empty-result {
+  border: 1px dashed var(--line-menu);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--text-scale-14);
+}
+
+.clear-search {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-12);
+  font-weight: 500;
+  background: var(--bg-elevated);
+  color: var(--text-body);
+  border: 1px solid var(--line-control);
+  border-radius: var(--radius-pill);
+  padding: var(--space-4) var(--space-7);
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.clear-search:hover,
+.clear-search:focus-visible {
+  border-color: var(--gold-border-strong, rgba(230, 178, 76, 0.45));
+}
+
+/* .index-footnote is styled by shared/academy.css §4 (shared cross-index baseline) — no
+   page-specific override needed here. */

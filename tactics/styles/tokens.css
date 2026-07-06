@@ -132,6 +132,13 @@
   --ease-tween: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ---- Layout (grid contract, §5 Screen) ---- */
+  /* Academy nav strip (docs/specs/academy-site-architecture.md: "tactics/ FROZEN except: nav
+     strip include + gate include") — new 4th grid row above the topbar, sized to match
+     shared/nav.mjs's own inner padding (academy.css .academy-nav-inner uses --space-5
+     vertical = 12px, so 12*2 + ~24px link-row content ≈ 52px, matching --layout-topbar-h so the
+     two bars read as one visual unit). #app-shell is height:100vh with #middle at 1fr, so this
+     row simply takes its slice from the canvas area — no overflow, no other row touched. */
+  --layout-academynav-h: 52px;
   --layout-topbar-h: 52px;
   --layout-playbookbar-h: 118px;
   /* Layers panel widened 230 -> 260 (sidebar-v2 v3 item b/g): at 230px the layer NAME column was

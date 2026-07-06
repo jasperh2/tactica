@@ -1,0 +1,117 @@
+/**
+ * Homepage-specific styles — ported from
+ * design/handoff-academy-pages/design_handoff_immortals_academy/templates/Home.dc.html.
+ *
+ * Class names match the handoff exactly (template-safety contract, README.md "Recreate the
+ * markup with class names preserved exactly"). Values are lifted from the handoff's inline
+ * styles onto the token vocabulary already declared in shared/academy.css §1 (byte-identical to
+ * tokens.css) — no new colors/spacing introduced here, only --custom-property references, same
+ * discipline academy.css documents for itself.
+ *
+ * Scope: this file owns ONLY the .home-* / .dest-* / .house-emblem / .content-update-stamp
+ * regions (site/index.html's <main>). It does not restyle .academy-nav, .academy-gate-*, or any
+ * other shared surface — those belong to their own owners.
+ *
+ * Note on --gold-* references: academy.css §1b now declares --gold-bg/--gold-border/
+ * --gold-border-strong/--gold-hover (house-gold structural accent — emblem, gate button, active
+ * nav, tier chips), so every var(--gold-*, <literal>) below already resolves to the real token;
+ * the literal is a defensive fallback only (CSS var() fallback semantics), not a currently-taken
+ * path. Kept rather than stripped so this file still renders correctly standalone if academy.css's
+ * §1b block is ever reordered or trimmed.
+ */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 72px 24px 56px;
+  max-width: none;
+}
+
+.house-emblem {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xl);
+  background: var(--gold-bg, rgba(230, 178, 76, 0.12));
+  border: 1px solid var(--gold-border, rgba(230, 178, 76, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--rarity-legendary, #e6b24c);
+}
+
+.home-wordmark {
+  font-size: var(--text-scale-15);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 18px 0 0;
+}
+
+.home-mission {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 8px 0 0;
+  max-width: 480px;
+}
+
+.dest-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 820px;
+  margin-top: 36px;
+}
+
+.dest-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-8);
+  text-decoration: none;
+  color: var(--text-primary);
+  text-align: left;
+  min-height: 64px;
+  transition: border-color var(--duration-drop) var(--ease-tween);
+}
+
+.dest-card:hover,
+.dest-card:focus-visible {
+  border-color: var(--gold-border-strong, rgba(230, 178, 76, 0.45));
+  text-decoration: none;
+}
+
+.dest-title {
+  font-size: var(--text-scale-14, 14px);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dest-arrow {
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.dest-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11-5, 11.5px);
+  color: var(--text-label);
+}
+
+.content-update-stamp {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11, 11px);
+  color: var(--text-label);
+  margin-top: 32px;
+}

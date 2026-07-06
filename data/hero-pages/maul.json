@@ -1,0 +1,123 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "maul",
+  "className": "Maul",
+  "weaponArchetype": "Bruiser — mobility and constant DPS/high burst depending on build",
+  "tier": {
+    "tier": "B",
+    "positionInTier": 2,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "No, \"but good to have it in certain meta\"",
+    "name": "Hammer Of The Gods",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full STR or Full Armor/HP",
+    "runes": "unknown",
+    "bestGender": "Male",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Flameshackle",
+        "purpose": "Best Armour per OP"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Blunt DMG",
+        "Blunt PEN"
+      ],
+      "bonus": [
+        "Strength/Armor",
+        "HP",
+        "Agility/Crit-DMG"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Mountain Breaker",
+        "Mighty Mjolnir",
+        "Maelstrom",
+        "Bonebreaker",
+        "Earthsplitter",
+        "Grab",
+        "Forge of War"
+      ],
+      "fillerNotes": "Maelstrom and Mountain Breaker are called mandatory; some players replace Maelstrom/Mountain Breaker/Forge of War with Bonebreaker or Earthsplitter instead, but OP does not recommend this."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Freestyle base with mandatory ones",
+      "summary": "Core technique: learn to dash-auto-attack-animation-cancel and perfect it (auto-attack, side-roll as soon as the damage pop-up appears, repeat). Maelstrom and Mountain Breaker are called mandatory. OP notes the rest of Maul's kit \"does not require a lot of skill.\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    },
+    {
+      "name": "Bonebreaker / Earthsplitter swap-in",
+      "summary": "Some players replace Maelstrom, Mountain Breaker, or Forge of War with Bonebreaker or Earthsplitter instead. OP does not recommend this.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [],
+  "techniques": [
+    {
+      "name": "Dash-auto-attack-animation-cancel",
+      "steps": [
+        "Auto-attack",
+        "side-roll the instant the damage number pops",
+        "repeat"
+      ],
+      "rhythm": "Called out as the core skill-expression tool for this class; learn to perfect it."
+    }
+  ],
+  "gameplay": [
+    {
+      "text": "\"Freestyle base with mandatory ones, explained under this!\" — core technique: learn to dash-auto-attack-animation-cancel and perfect it (auto-attack, side-roll as soon as the damage pop-up appears, repeat). OP notes the rest of Maul's kit \"does not require a lot of skill.\"",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Maul is a bruiser class offering mobility and constant DPS/high burst depending on build. Spells are either \"charged\" or combo'd off one of the two combo-starters (Mighty Mjolnir / Mountain Breaker). Both ultimates are viable (can also be played with no ult), though JUBAI personally prefers Forge of War for its high-range heavy CC and CC-recovery (no-mobility builds are also playable).",
+      "attribution": "JUBAI"
+    },
+    {
+      "text": "Core loop: dash-auto-attack-animation-cancel (auto-attack, side-roll on damage pop-up, repeat). Combo starters (Mountain Breaker / Mighty Mjolnir) feed into Maelstrom or other follow-ups. JUBAI's framing emphasizes Mighty Mjolnir/mobility builds for learning players, with Maelstrom as the standout current-meta spell for dive/flank play rather than frontline trading.",
+      "attribution": "JUBAI"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "OP-stat-block",
+      "date": "2024-10-20"
+    },
+    {
+      "name": "JUBAI",
+      "role": "guide-body",
+      "date": "2024-10-22"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Maul Guide' (1297653441233031228); OP 2024-10-20 edited 2026-03-26; JUBAI spell-breakdown replies 2024-10-22 (several edited same day)",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat as pre-season, not yet re-verified. JUBAI's contributor posts are even older (last touched 2024-10-22) and were never revisited."
+}

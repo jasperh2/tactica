@@ -1,0 +1,33 @@
+/**
+ * units/unit-page.css — page-specific layout for the unit detail page (?u=<slug>).
+ *
+ * Source: design/handoff-academy-pages/design_handoff_immortals_academy/templates/Unit Page.dc.html
+ *
+ * SCOPE: site/shared/academy.css already ports the handoff's entire shared cross-page grammar
+ * (panels, accent-bar panel titles, stat chips, tag/tier badges, doctrine rows, veterancy option
+ * cards, battle-role columns, matchup cards, key-sequence/controls chips, verdict voice, footer/
+ * footnote legend, lock glyph, identity-only header shape) — every class this page's render
+ * module (unit-page.boot.mjs) emits for those regions already has a matching rule there. This
+ * file intentionally has almost nothing left to add: it exists as the designated per-page
+ * stylesheet per the handoff README ("Per-page CSS beyond shared primitives goes in a small
+ * site/units/unit-page.css"), holding ONLY rules that are genuinely specific to this page's own
+ * layout and not shared with the hero-detail page or any index page.
+ *
+ * Do not re-declare a rule that already exists in academy.css — check there first. Adding a
+ * duplicate here just to "be safe" creates exactly the two-copies-drift academy.css's own header
+ * comment warns against.
+ */
+
+/* ============================================================================
+ * Unit-page-only section wrappers: identity-only vs full-guide shape toggle (unit.html's
+ * `#unit-identity-only` / `#unit-full-guide`, shown/hidden via the `hidden` attribute in
+ * unit-page.boot.mjs — no CSS needed for the toggle itself). The two-rail panel grid
+ * (Doctrines + Veterancy/Formation), battle-role/matchups/controls full-width panels, and the
+ * 900px stacking breakpoint are ALL already covered by academy.css's `.panel-grid` /
+ * `.panel-doctrines` / `.panel-rail` / `.panel-battle-role` / `.panel-controls` rules (§5) — this
+ * page's markup (unit.html) reuses those classes directly with no override.
+ * ========================================================================= */
+
+/* Doctrines panel needs no unit-page-specific flex-basis beyond academy.css's shared
+   `.panel-doctrines` rule — .panel-veterancy/.panel-formation likewise reuse the shared
+   `.panel-builds, .panel-veterancy, .panel-formation` rail rule as-is. Nothing to add here today. */

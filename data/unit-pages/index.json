@@ -1,0 +1,2214 @@
+{
+  "schema": "cb-academy-unit-index/v1",
+  "generated": "2026-07-06",
+  "count": 149,
+  "units": [
+    {
+      "slug": "alchemists",
+      "name": "Alchemists",
+      "tier": "D",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 60,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "archer-militia",
+      "name": "Archer Militia",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Feudal",
+      "leadership": 45,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "armiger-lancers",
+      "name": "Armiger Lancers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "aschigaru-muskets",
+      "name": "Aschigaru Muskets",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 205,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "axe-raiders",
+      "name": "Axe Raiders",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "azaps",
+      "name": "Azaps",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": "assets/unit-icons/azaps.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "bagpipers",
+      "name": "Bagpipers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 90,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "banner-guards",
+      "name": "Banner Guards",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "berserkers",
+      "name": "Berserkers",
+      "tier": "AA",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": "assets/unit-icons/berserkers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "black-dragon-archers",
+      "name": "Black Dragon Archers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Chivalric",
+      "leadership": 60,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "black-dragon-javelineers",
+      "name": "Black Dragon Javelineers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 80,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "black-dragon-pikemen",
+      "name": "Black Dragon Pikemen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 80,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "black-dragon-spearmen",
+      "name": "Black Dragon Spearmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 80,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "camel-lancers",
+      "name": "Camel Lancers",
+      "tier": "E",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/camel-lancers.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "caradocs-cavalry",
+      "name": "Caradocs Cavalry",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Silver",
+      "leadership": 145,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "cataphract-lancers",
+      "name": "Cataphract Lancers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 305,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "chevaliers",
+      "name": "Chevaliers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 340,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "claymores",
+      "name": "Claymores",
+      "tier": "S",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/claymores.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "companion-cavalry",
+      "name": "Companion Cavalry",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "condottieri-guards",
+      "name": "Condottieri Guards",
+      "tier": "A",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 160,
+      "icon": "assets/unit-icons/condottieri-guards.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "coutiliers",
+      "name": "Coutiliers",
+      "tier": "S",
+      "rarity": "T2",
+      "classBucket": "cavalry",
+      "era": "Chivalric",
+      "leadership": 115,
+      "icon": "assets/unit-icons/coutiliers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "crescent-monks",
+      "name": "Crescent Monks",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 250,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "cudgel-monks",
+      "name": "Cudgel Monks",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 145,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "dagger-axe-lancers",
+      "name": "Dagger Axe Lancers",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": "assets/unit-icons/dagger-axe-lancers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "demesne-arbalists",
+      "name": "Demesne Arbalists",
+      "tier": "B",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 160,
+      "icon": "assets/unit-icons/demesne-arbalists.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "demesne-archers",
+      "name": "Demesne Archers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Chivalric",
+      "leadership": 90,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "demesne-arquebusiers",
+      "name": "Demesne Arquebusiers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 170,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "demesne-crossbowmen",
+      "name": "Demesne Crossbowmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Chivalric",
+      "leadership": 110,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "demesne-javelineers",
+      "name": "Demesne Javelineers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 105,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "demesne-pikemen",
+      "name": "Demesne Pikemen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Feudal",
+      "leadership": 55,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "demesne-spearmen",
+      "name": "Demesne Spearmen",
+      "tier": "C",
+      "rarity": "T2",
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 105,
+      "icon": "assets/unit-icons/demesne-spearmen.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "dimachaeri",
+      "name": "Dimachaeri",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "doppelsoldner",
+      "name": "Doppelsoldner",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/doppelsoldner.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "empire-chariot",
+      "name": "Empire Chariot",
+      "tier": "E",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "falconetti-gunners",
+      "name": "Falconetti Gunners",
+      "tier": "D",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 300,
+      "icon": "assets/unit-icons/falconetti-gunners.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "feathered-crossbowmen",
+      "name": "Feathered Crossbowmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 140,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "fire-lancers",
+      "name": "Fire Lancers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 285,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "fortebraccio-pikemen",
+      "name": "Fortebraccio Pikemen",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/fortebraccio-pikemen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "greyhair-garrison",
+      "name": "Greyhair Garrison",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 200,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "halberd-elite",
+      "name": "Halberd Elite",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": "assets/unit-icons/halberd-elite.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "halberdier-sergeants",
+      "name": "Halberdier Sergeants",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": "assets/unit-icons/halberdier-sergeants.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "halberdiers",
+      "name": "Halberdiers",
+      "tier": "A",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/halberdiers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "hashashins",
+      "name": "Hashashins",
+      "tier": "D",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "helot-auxiliaries",
+      "name": "Helot Auxiliaries",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 50,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "houndsmen",
+      "name": "Houndsmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "huskarls",
+      "name": "Huskarls",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "hwarang",
+      "name": "Hwarang",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": "assets/unit-icons/hwarang.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "imperial-archers",
+      "name": "Imperial Archers",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "imperial-arquebusiers",
+      "name": "Imperial Arquebusiers",
+      "tier": "D",
+      "rarity": "T4",
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": "assets/unit-icons/imperial-arquebusiers.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "imperial-javelineers",
+      "name": "Imperial Javelineers",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 240,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "imperial-pike-guards",
+      "name": "Imperial Pike Guards",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 240,
+      "icon": "assets/unit-icons/imperial-pike-guards.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "imperial-spear-guards",
+      "name": "Imperial Spear Guards",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 240,
+      "icon": "assets/unit-icons/imperial-spear-guards.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "incendiary-archers",
+      "name": "Incendiary Archers",
+      "tier": "C",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 180,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "iron-reapers",
+      "name": "Iron Reapers",
+      "tier": "AA",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 270,
+      "icon": "assets/unit-icons/iron-reapers.png",
+      "richness": "full",
+      "presentSections": [
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "ironcap-archers",
+      "name": "Ironcap Archers",
+      "tier": "B",
+      "rarity": "T2",
+      "classBucket": "ranged",
+      "era": "Chivalric",
+      "leadership": 110,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "ironcap-arquebusiers",
+      "name": "Ironcap Arquebusiers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Chivalric",
+      "leadership": 120,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "ironcap-bowriders",
+      "name": "Ironcap Bowriders",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Chivalric",
+      "leadership": 90,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "ironcap-scout-cavalry",
+      "name": "Ironcap Scout Cavalry",
+      "tier": "B",
+      "rarity": "T2",
+      "classBucket": "cavalry",
+      "era": "Chivalric",
+      "leadership": 120,
+      "icon": "assets/unit-icons/ironcap-scout-cavalry.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "ironcap-spearmen",
+      "name": "Ironcap Spearmen",
+      "tier": "C",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 135,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "ironcap-swordsmen",
+      "name": "Ironcap Swordsmen",
+      "tier": "B",
+      "rarity": "T2",
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 100,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "jangjus",
+      "name": "Jangjus",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 170,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "janissaries",
+      "name": "Janissaries",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 180,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "javelin-militia",
+      "name": "Javelin Militia",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 105,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "javelin-sergeants",
+      "name": "Javelin Sergeants",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": "assets/unit-icons/javelin-sergeants.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "kheshigs",
+      "name": "Kheshigs",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 300,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "khevtuul-cavalry",
+      "name": "Khevtuul Cavalry",
+      "tier": "D",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "khorchins",
+      "name": "Khorchins",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Silver",
+      "leadership": 140,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "kriegsbruders",
+      "name": "Kriegsbruders",
+      "tier": "D",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": "assets/unit-icons/kriegsbruders.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "kriegsrat-fusiliers",
+      "name": "Kriegsrat Fusiliers",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "laconic-javelins",
+      "name": "Laconic Javelins",
+      "tier": "D",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 220,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "lancastrian-billmen",
+      "name": "Lancastrian Billmen",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 220,
+      "icon": "assets/unit-icons/lancastrian-billmen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "landsknechts",
+      "name": "Landsknechts",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "levy-bowmen",
+      "name": "Levy Bowmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Feudal",
+      "leadership": 50,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "liaos-rangers",
+      "name": "Liaos Rangers",
+      "tier": "AA",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 315,
+      "icon": "assets/unit-icons/liaos-rangers.png",
+      "richness": "full",
+      "presentSections": [
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "lionroar-crew",
+      "name": "Lionroar Crew",
+      "tier": "A",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 325,
+      "icon": "assets/unit-icons/lionroar-crew.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "mace-sergeants",
+      "name": "Mace Sergeants",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 150,
+      "icon": "assets/unit-icons/mace-sergeants.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "martellatori",
+      "name": "Martellatori",
+      "tier": "D",
+      "rarity": "T1",
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 30,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "men-at-arms",
+      "name": "Men-at-Arms",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": "assets/unit-icons/men-at-arms.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "modao-battalion",
+      "name": "Modao Battalion",
+      "tier": "S",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": "assets/unit-icons/modao-battalion.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "monastic-knights",
+      "name": "Monastic Knights",
+      "tier": "C",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": "assets/unit-icons/monastic-knights.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "myrmillones",
+      "name": "Myrmillones",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": "assets/unit-icons/myrmillones.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "naginata-monks",
+      "name": "Naginata Monks",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 95,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "namkhan-archers",
+      "name": "Namkhan Archers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 180,
+      "icon": "assets/unit-icons/namkhan-archers.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "onna-musha",
+      "name": "Onna-musha",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/onna-musha.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "order-of-the-dragon",
+      "name": "Order of the Dragon",
+      "tier": "A",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": "assets/unit-icons/order-of-the-dragon.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "orochi-samurai",
+      "name": "Orochi Samurai",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": "assets/unit-icons/orochi-samurai.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "outriders",
+      "name": "Outriders",
+      "tier": "B",
+      "rarity": "T3",
+      "classBucket": "cavalry",
+      "era": "Silver",
+      "leadership": 180,
+      "icon": "assets/unit-icons/outriders.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "palace-guards",
+      "name": "Palace Guards",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 230,
+      "icon": "assets/unit-icons/palace-guards.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "pavise-crossbowmen",
+      "name": "Pavise Crossbowmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 280,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "percival-guardsmen",
+      "name": "Percival Guardsmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": "assets/unit-icons/percival-guardsmen.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "pike-militia",
+      "name": "Pike Militia",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 110,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "prefecture-archers",
+      "name": "Prefecture Archers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 180,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "prefecture-guards",
+      "name": "Prefecture Guards",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 170,
+      "icon": "assets/unit-icons/prefecture-guards.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "prefecture-heavy-cavalry",
+      "name": "Prefecture Heavy Cavalry",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "prefecture-pikemen",
+      "name": "Prefecture Pikemen",
+      "tier": "B",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/prefecture-pikemen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "psiloi-slingers",
+      "name": "Psiloi Slingers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 90,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "qins-footbow",
+      "name": "Qins Footbow",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 130,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "queens-knights",
+      "name": "Queens Knights",
+      "tier": "S",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 280,
+      "icon": "assets/unit-icons/queens-knights.png",
+      "richness": "full",
+      "presentSections": [
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "rattan-marksmen",
+      "name": "Rattan Marksmen",
+      "tier": "B",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 175,
+      "icon": "assets/unit-icons/rattan-marksmen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "rattan-pikemen",
+      "name": "Rattan Pikemen",
+      "tier": "Best Filler (top pick, unlettered)",
+      "rarity": "T2",
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 95,
+      "icon": "assets/unit-icons/rattan-pikemen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "veterancy",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "rattan-rangers",
+      "name": "Rattan Rangers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "rattan-roundshields",
+      "name": "Rattan Roundshields",
+      "tier": "S",
+      "rarity": "T2",
+      "classBucket": "melee",
+      "era": "Chivalric",
+      "leadership": 115,
+      "icon": "assets/unit-icons/rattan-roundshields.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "rattan-vipers",
+      "name": "Rattan Vipers",
+      "tier": "A",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 155,
+      "icon": "assets/unit-icons/rattan-vipers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "reitar-pistoleers",
+      "name": "Reitar Pistoleers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/reitar-pistoleers.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "retiarii",
+      "name": "Retiarii",
+      "tier": "D",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 305,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "ronin",
+      "name": "Ronin",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 145,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "royal-longbowmen",
+      "name": "Royal Longbowmen",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 315,
+      "icon": "assets/unit-icons/royal-longbowmen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "schutzdieners",
+      "name": "Schutzdieners",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/schutzdieners.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "sea-stag-deathdealers",
+      "name": "Sea Stag Deathdealers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 80,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "selemchid-cavalry",
+      "name": "Selemchid Cavalry",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "cavalry",
+      "era": "Silver",
+      "leadership": 150,
+      "icon": "assets/unit-icons/selemchid-cavalry.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "serfs",
+      "name": "Serfs",
+      "tier": "D",
+      "rarity": "T1",
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 40,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "shenji-grenadiers",
+      "name": "Shenji Grenadiers",
+      "tier": "S",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 315,
+      "icon": "assets/unit-icons/shenji-grenadiers.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "shieldmaidens",
+      "name": "Shieldmaidens",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 280,
+      "icon": "assets/unit-icons/shieldmaidens.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "silahdars",
+      "name": "Silahdars",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 300,
+      "icon": "assets/unit-icons/silahdars.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "silla-guards",
+      "name": "Silla Guards",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 150,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "sipahis",
+      "name": "Sipahis",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "siphonarioi",
+      "name": "Siphonarioi",
+      "tier": "A",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 300,
+      "icon": "assets/unit-icons/siphonarioi.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "sons-of-fenrir",
+      "name": "Sons of Fenrir",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 165,
+      "icon": "assets/unit-icons/sons-of-fenrir.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "spartan-chosen",
+      "name": "Spartan Chosen",
+      "tier": "AA",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 305,
+      "icon": "assets/unit-icons/spartan-chosen.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "spear-militia",
+      "name": "Spear Militia",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 80,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "spear-sergeants",
+      "name": "Spear Sergeants",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": "assets/unit-icons/spear-sergeants.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "squires",
+      "name": "Squires",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 155,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "sunward-phalanx",
+      "name": "Sunward Phalanx",
+      "tier": "AA",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": "assets/unit-icons/sunward-phalanx.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "veterancy",
+        "formation",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "swinefeathers",
+      "name": "Swinefeathers",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 215,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "sword-militia",
+      "name": "Sword Militia",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 65,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "symmachean-paladins",
+      "name": "Symmachean Paladins",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/symmachean-paladins.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "symmachean-stalwarts",
+      "name": "Symmachean Stalwarts",
+      "tier": "AA",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 240,
+      "icon": "assets/unit-icons/symmachean-stalwarts.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "tenant-farmers",
+      "name": "Tenant Farmers",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 40,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "tercio-arquebusiers",
+      "name": "Tercio Arquebusiers",
+      "tier": "C",
+      "rarity": "T5",
+      "classBucket": "ranged",
+      "era": "Golden",
+      "leadership": 280,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "tiger-and-leopard-cavalry",
+      "name": "Tiger and Leopard Cavalry",
+      "tier": "To place (new/recently buffed, unlettered)",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "tiger-fists",
+      "name": "Tiger Fists",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 220,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "tseregs",
+      "name": "Tseregs",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "vanguard-archers",
+      "name": "Vanguard Archers",
+      "tier": "C",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 150,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "varangian-guards",
+      "name": "Varangian Guards",
+      "tier": "A",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 290,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "vassal-longbowmen",
+      "name": "Vassal Longbowmen",
+      "tier": "C",
+      "rarity": "T4",
+      "classBucket": "ranged",
+      "era": "Heroic",
+      "leadership": 245,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "village-watchmen",
+      "name": "Village Watchmen",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 30,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "white-plume-guards",
+      "name": "White Plume Guards",
+      "tier": "To place (new/recently buffed, unlettered)",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 305,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "winged-hussars",
+      "name": "Winged Hussars",
+      "tier": "C",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 305,
+      "icon": "assets/unit-icons/winged-hussars.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "woodcutters",
+      "name": "Woodcutters",
+      "tier": null,
+      "rarity": null,
+      "classBucket": "melee",
+      "era": "Rustic",
+      "leadership": 40,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "wuwei",
+      "name": "WuWei",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/wuwei.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "wuxing-pikemen",
+      "name": "Wuxing Pikemen",
+      "tier": "A",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 155,
+      "icon": "assets/unit-icons/wuxing-pikemen.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "controls"
+      ]
+    },
+    {
+      "slug": "xuanjia-heavy-cavalry",
+      "name": "Xuanjia Heavy Cavalry",
+      "tier": "C",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 295,
+      "icon": "assets/unit-icons/xuanjia-heavy-cavalry.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "yanyuedao-cavalry",
+      "name": "Yanyuedao Cavalry",
+      "tier": "A",
+      "rarity": "T5",
+      "classBucket": "cavalry",
+      "era": "Golden",
+      "leadership": 320,
+      "icon": "assets/unit-icons/yanyuedao-cavalry.png",
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "yellow-turban-chanters",
+      "name": "Yellow Turban Chanters",
+      "tier": "C",
+      "rarity": "T3",
+      "classBucket": "melee",
+      "era": "Silver",
+      "leadership": 95,
+      "icon": null,
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "yeomen",
+      "name": "Yeomen",
+      "tier": "B",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 225,
+      "icon": null,
+      "richness": "full",
+      "presentSections": [
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "yorkist-household-knights",
+      "name": "Yorkist Household Knights",
+      "tier": "S",
+      "rarity": "T4",
+      "classBucket": "cavalry",
+      "era": "Heroic",
+      "leadership": 265,
+      "icon": "assets/unit-icons/yorkist-household-knights.png",
+      "richness": "full",
+      "presentSections": [
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    },
+    {
+      "slug": "zealot",
+      "name": "Zealot",
+      "tier": "A",
+      "rarity": "T4",
+      "classBucket": "melee",
+      "era": "Heroic",
+      "leadership": 235,
+      "icon": "assets/unit-icons/zealot.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "zweihanders",
+      "name": "Zweihanders",
+      "tier": "B",
+      "rarity": "T5",
+      "classBucket": "melee",
+      "era": "Golden",
+      "leadership": 310,
+      "icon": "assets/unit-icons/zweihanders.png",
+      "richness": "stats-only",
+      "presentSections": [
+        "battleRole"
+      ]
+    },
+    {
+      "slug": "zykalian-militia",
+      "name": "Zykalian Militia",
+      "tier": "S",
+      "rarity": "T3",
+      "classBucket": "ranged",
+      "era": "Silver",
+      "leadership": 175,
+      "icon": "assets/unit-icons/zykalian-militia.png",
+      "richness": "full",
+      "presentSections": [
+        "battleRole",
+        "matchups",
+        "controls"
+      ]
+    }
+  ]
+}

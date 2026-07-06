@@ -1,0 +1,109 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "zykalian-militia",
+  "name": "Zykalian Militia",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 175,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/zykalian-militia.png",
+    "metaTier": "S",
+    "rarityTier": "T3",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 0,
+        "raw": "0/10"
+      },
+      "Skirmish": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Duelling": {
+        "value": 0,
+        "raw": "0/10"
+      }
+    },
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2025-03-25",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Throwing-skill cooldowns 10s→16s (both skills); reload time +33%; poison stack count 20→8"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 2
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general rotation (PRE-2026-06 NERF — see gap note)",
+          "text": "Press V to hit the front line, press 2 to hit the back line and apply a debuff, then reposition to keep DPS up. Try to NOT use spell 1 — use V instead (less ammo consumption, more spread)."
+        },
+        {
+          "context": "priority override",
+          "text": "If the enemy blob has flamers/Zykalian units of their own, ignore the above priority and try to snipe them with spell 2 as a hard priority."
+        },
+        {
+          "context": "general (PRE-2026-06 NERF — see gap note)",
+          "text": "Be careful about musket liquid fire, divers, and fire-rune interactions. ALWAYS cycle V and 2 — playing Zykalian from far away using only spell 2 loses 50% of the unit's potential damage. ALWAYS X-move after shooting — don't stand still."
+        }
+      ],
+      "footnoteMark": 2
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "creator guide",
+      "date": "2025-03-25",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

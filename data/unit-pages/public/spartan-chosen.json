@@ -1,0 +1,86 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "spartan-chosen",
+  "name": "Spartan Chosen",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 305,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/spartan-chosen.png",
+    "metaTier": "AA",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 2,
+        "raw": "2/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

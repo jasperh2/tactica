@@ -1,0 +1,163 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "javelin-sergeants",
+  "name": "Javelin Sergeants",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 230,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/javelin-sergeants.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Flank": {
+        "value": 1,
+        "raw": "1/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 2,
+        "raw": "2/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit dmg, +80 all-type. Mandatory per Amya (shared guidance for Imperial Javelineers + Elite Javelin Sergeants).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Javelin Doctrine (Immobilize)",
+          "text": "Javelins render enemies immobile for 1.5s. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Javelin Doctrine (Damage/Ammo)",
+          "text": "+250 javelin damage, +30 ammo. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Javelin Doctrine (Block Break)",
+          "text": "+300 javelin block break, +100 piercing dmg. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Polearm Doctrine",
+          "text": "+60 piercing dmg, +180 piercing AP. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "DMG doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Tank doctrines",
+          "text": "Avoid — OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "COMBINED THREAD: OP's own 'Units covered' line names only Imperial Javelineers + Elite Javelin Sergeants (the unit tracked here as javelin-sergeants / tierlist label 'Javelin Sergeants'); no mention of Retiarii or Laconic Javelins appears anywhere in the OP text despite an outside claim they're also covered — not asserted here, flagged as unconfirmed. Doctrines/build/playstyle are shared advice for both covered units except where the OP explicitly splits veterancy. Veterancy (unit-specific split in OP): Elite Javelin Sergeants go Top or Bot — after the unit's buff, Amya prefers the damage boost of Bot over double-shot from Top (Imperial Javelineers' own veterancy, Top Line, is a different unit and out of scope for this record). Hero pairing: literal X placeholder in the OP — not specified, not fabricated. Example build (shared): Javelin Doctrine (immobilize 1.5s), Javelin Doctrine (+250 dmg/+30 ammo), Javelin Doctrine (+300 block break/+100 piercing), Polearm Doctrine, Unit Damage Doctrine V. \"Origin\" is a literal X placeholder in the OP. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Javelin Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Melee skirmisher, throws javelins before closing to melee",
+      "rationale": "COMBINED THREAD: OP's own 'Units covered' line names only Imperial Javelineers + Elite Javelin Sergeants (the unit tracked here as javelin-sergeants / tierlist label 'Javelin Sergeants'); no mention of Retiarii or Laconic Javelins appears anywhere in the OP text despite an outside claim they're also covered — not asserted here, flagged as unconfirmed. Doctrines/build/playstyle are shared advice for both covered units except where the OP explicitly splits veterancy. Veterancy (unit-specific split in OP): Elite Javelin Sergeants go Top or Bot — after the unit's buff, Amya prefers the damage boost of Bot over double-shot from Top (Imperial Javelineers' own veterancy, Top Line, is a different unit and out of scope for this record). Hero pairing: literal X placeholder in the OP — not specified, not fabricated. Example build (shared): Javelin Doctrine (immobilize 1.5s), Javelin Doctrine (+250 dmg/+30 ammo), Javelin Doctrine (+300 block break/+100 piercing), Polearm Doctrine, Unit Damage Doctrine V. \"Origin\" is a literal X placeholder in the OP. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Javelin Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Most units (per Amya's own shared-guidance wording)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Most units (per Amya's own shared-guidance wording)."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Poke units; great on down-time."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general (shared guidance)",
+          "text": "Stay in the push and target important units; excellent at killing heroes."
+        },
+        {
+          "context": "veterancy note (unit-specific)",
+          "text": "Elite Javelin Sergeants: go Top or Bot line; after the unit's buff, Amya prefers the damage boost of Bot over the double-shot of Top."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "yellow-turban-chanters",
+  "name": "Yellow Turban Chanters",
+  "profile": "public",
+  "header": {
+    "era": "Silver",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 95,
+    "origin": null,
+    "noMastery": true,
+    "icon": null,
+    "metaTier": "C",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "new-this-season",
+    "patchNote": "New this season ([Chaos: A Realm Divided] Season Announcement) — no prior doc to compare against."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "Yellow Turban Chanters is below the B-tier+ rich-data gate (metaTier: C) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
+      "house": false
+    }
+  ]
+}

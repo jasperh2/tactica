@@ -1,0 +1,140 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "iron-reapers",
+  "name": "Iron Reapers",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 270,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/iron-reapers.png",
+    "metaTier": "AA",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 7,
+        "raw": "7/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-10-07",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Leadership 285→270; Health 8051→10451; \"Very Heavy Armour\" now reduces artillery damage"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Units that can kite it, or heavy-burst units (e.g. Queen’s Knights, Yorkist)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Debuff units (Rattan Pikes); big-range units like Phalanx or Stalwart if they kite well."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Any block units; deals insane damage to units like Spartans / Imperial Spear Guards."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 2
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "blob fight / vs brace units, can't burst (most cases)",
+          "text": "Full Sword stance (Devastation on engage if available). X-move in, use the heavy-armour passive (wait for a CC or a few hits before pressing Tiger Step)."
+        },
+        {
+          "context": "blob fight / brace units",
+          "text": "Press 2 for damage + CC immunity; also resets the damage-reduction trait (press early if CC is incoming)."
+        },
+        {
+          "context": "blob fight / brace units",
+          "text": "Wait for the enemy to hit you enough to trigger the passive, or let Tiger Step expire (12s); reset the passive again via Charge into a C-cancelled auto-attack, or X+V if the hero can stay close."
+        },
+        {
+          "context": "1v1 / vs a blocking unit — rarely used but good to know",
+          "text": "Start with flails; close and charge so the enemy can't sidestep (use Devastation before swapping weapons if available)."
+        },
+        {
+          "context": "1v1 / vs a blocking unit",
+          "text": "Switch to swords and click Tiger Step to skip the weapon-swap animation; leave the unit to fight until the target dies before resetting (can back off early). Only worth it when you can kill rapidly, or in a skirmish vs a blocking unit — otherwise the heavy-armour trait goes unused. Helps the hero break shield formations or stun high-DPS units."
+        },
+        {
+          "context": "general tech",
+          "text": "Pressing C (follow) cancels the auto-attack animation, improving trades vs Stalwart or Claymore (more DPS for allies too) — train in custom battle first."
+        },
+        {
+          "context": "vs artillery",
+          "text": "The heavy-armour trait works against artillery (trebuchet counts as artillery in-game) — press Charge to tank a trebuchet shot if the heavy trait is not currently active."
+        }
+      ],
+      "footnoteMark": 2
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "creator guide",
+      "date": "2024-10-07",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

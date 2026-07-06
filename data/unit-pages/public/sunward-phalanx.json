@@ -1,0 +1,492 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "sunward-phalanx",
+  "name": "Sunward Phalanx",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 295,
+    "origin": "Archetype: Pike Unit. Origin: Seasonal Unit (Season 19: Alexander). Tier: T5 · No mastery.",
+    "noMastery": true,
+    "icon": "assets/unit-icons/sunward-phalanx.png",
+    "metaTier": "AA",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 1,
+        "raw": "1/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 8,
+        "raw": "8/10"
+      }
+    },
+    "classBucket": "melee",
+    "footnoteMarks": [
+      1,
+      2
+    ]
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-10-15",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the 13-unit Chaos changed-units shortlist (confirmed absence, tier-0 patch truth). Core build/usage guidance is dated 2026-05-26 (Amya thread edit) and 2024-10-15 (Herlajis video) — both pre-patch; 'unchanged' means no patch signal contradicts them, NOT that they were re-verified post-patch. The meta-tier placement (2026-06-29) postdates the patch. Verdict: presumed-current, never plain 'current' while pre-anchor sources govern."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Bloodthirsty Doctrine",
+          "text": "Lifesteal. Mandatory per Amya.",
+          "tag": "mandatory",
+          "source": "primary"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory",
+          "source": "primary"
+        },
+        {
+          "order": 3,
+          "name": "+100 DMG during brace (Blue doc)",
+          "text": "Top pick.",
+          "tag": "top-pick",
+          "source": "primary"
+        },
+        {
+          "order": 4,
+          "name": "Epic Polearm Doctrine",
+          "text": "Charge doctrine; oneshots hero divers, lets you turn 180 and re-brace if flanked. Top pick.",
+          "tag": "top-pick",
+          "source": "primary"
+        },
+        {
+          "order": 5,
+          "name": "Sunward Phalanx: Overwhelm",
+          "text": "Totem doctrine. Top pick.",
+          "tag": "top-pick",
+          "source": "primary"
+        },
+        {
+          "order": 6,
+          "name": "Sunward Phalanx: Glory",
+          "text": "-20% DMG taken. Filler.",
+          "tag": "filler",
+          "source": "primary"
+        },
+        {
+          "order": 7,
+          "name": "Anti-Cavalry Doctrine",
+          "text": "-35% DMG taken. Filler.",
+          "tag": "filler",
+          "source": "primary"
+        },
+        {
+          "order": 8,
+          "name": "Piercing Damage Doctrine",
+          "text": "Filler.",
+          "tag": "filler",
+          "source": "primary"
+        },
+        {
+          "order": 9,
+          "name": "Tank Doctrines",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid",
+          "source": "primary"
+        }
+      ],
+      "note": "Example build per OP (verbatim): Sunward Phalanx: Overwhelm, Epic Leadership Doctrine, Sunward Phalanx: Glory, Anti-Cavalry Doctrine V, Unit Damage Doctrine V.",
+      "alternativeBuilds": [
+        {
+          "author": "Herlajis",
+          "doctrines": [
+            {
+              "order": 1,
+              "name": "Brace and Ability Damage + Anti-Cav",
+              "text": "Suggested build 1."
+            },
+            {
+              "order": 2,
+              "name": "Brace and Ability Damage + Overall Survivability",
+              "text": "Suggested build 2 — synergizes with a veterancy damage-reduction-while-bracing node; combined with other cav-damage-reduction nodes/traits yields a stated 20% reduction from infantry and 65% reduction from cavalry."
+            },
+            {
+              "order": 3,
+              "name": "Brace and Ability Damage + Charge Doctrine",
+              "text": "Suggested build 3."
+            }
+          ],
+          "note": "All three built on a common 'Brace and Ability Damage' foundation if going bottom veterancy. Anti-cav doctrine explicitly discouraged except for very new players — bottom-vet line alone described as 'more than enough to deal with any cav instantly,' so slotting anti-cav further is called 'a waste of a doctrine slot' ([04:58])."
+        }
+      ],
+      "disagreements": [
+        {
+          "topic": "anti-cavalry-doctrine-value",
+          "positions": [
+            {
+              "author": "Amya",
+              "stance": "Filler — worth a slot when better picks are taken ('Anti-Cavalry Doctrine (-35% DMG taken). Filler.'); also appears in Amya's own example build (Anti-Cavalry Doctrine V)."
+            },
+            {
+              "author": "Herlajis",
+              "stance": "Explicitly discouraged except for very new players — bottom-vet cav mitigation alone is 'more than enough to deal with any cav instantly'; slotting anti-cav is 'a waste of a doctrine slot' ([04:58])."
+            }
+          ],
+          "resolution": null
+        }
+      ],
+      "footnoteMarks": [
+        2,
+        3,
+        1
+      ]
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": "Amya",
+          "recommendation": "Full Bot",
+          "rationale": "\"+1 target is too much value not to be taken.\"",
+          "corroborates": [
+            "veterancy-herlajis"
+          ]
+        },
+        {
+          "author": "Herlajis",
+          "recommendation": "Bottom line",
+          "rationale": "Argued as more consistent across all scenario types vs. the top line's 'occasional burst spikes' only; both lines called viable depending on playstyle.",
+          "corroborates": [
+            "veterancy-amya"
+          ]
+        }
+      ],
+      "footnoteMarks": [
+        2,
+        3
+      ]
+    },
+    "formation": {
+      "text": "Default to F1 formation (spread), not stack/block — tight formations are easy for enemy heroes to flank and disrupt with CC; F1's spread means CC only disables part of the formation while the majority keeps functioning. Exception: in narrow terrain that prevents enemy flanking, use F2 block formation to maximize damage concentration in the center.",
+      "footnoteMark": 3
+    },
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "knownGaps": [],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Too much pressure."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Hero diving & flank."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Cavalry & any units with no block."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Medium & Heavy armors (per Amya)."
+        }
+      ],
+      "footnoteMarks": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage + brace/DPS loop",
+          "steps": [
+            "Use Sunward Phalanx: Overwhelm if you want to engage, or when you see the enemy engage (where the fight will be set)",
+            "X-move in",
+            "Press 1 (brace + queue skill 2)",
+            "Press V to cancel the brace animation",
+            "Press skill 2 (Ares' Flurry)",
+            "Press 1 to advance",
+            "Press 1 again to confirm advance",
+            "Press V to cancel the animation",
+            "Loop this brace+DPS trick"
+          ]
+        },
+        {
+          "context": "vs AoE-heavy comps (Shenji or exotic-heavy meta)",
+          "steps": [
+            "Spread with double-C follow so the unit doesn't all eat one AoE, then use the brace+DPS trick on contact."
+          ]
+        }
+      ],
+      "mechanics": [
+        {
+          "name": "First-hit immunity ('blue bar')",
+          "text": "Indicated by a blue bar above the health bar. Recharges after 30 seconds out of combat. Blocks even crowd-control effects including hero ultimate abilities."
+        },
+        {
+          "name": "Pike rotation (V)",
+          "text": "Press V to unlock pike rotation — lets all models rotate to face the nearest enemy when enemies concentrate on one side, so the whole formation can deal damage instead of only half (roughly doubling effective contact vs. a static spread)."
+        },
+        {
+          "name": "Instant brace, stability, and advance behavior",
+          "text": "Instant brace combo: press 1 to brace (normal animation), or 1 then V to skip the animation and have pikes drop instantly with brace effects (including CC) applied immediately. Stability (second stage) lets the unit move forward/backward while facing its orientation — the primary distance-control tool while braced. Brace applies crowd control; the advance order does NOT cancel brace status or its effects, but advancing adds no extra damage — ramming into enemies while braced (an Imperial Pike playstyle) is explicitly called 'the worst thing you can do while controlling this unit.' Advance marches infinitely until reactivated or stopped with V."
+        },
+        {
+          "name": "Second ability ('Area's Fury' per transcript / 'Ares' Flurry' per Amya)",
+          "text": "Damage-dealing ability: forcefully overextends the unit forward into closer melee range; cancels brace status for its duration; deals significant damage in return. Because of the forced overextension, the guide recommends advancing backwards afterward (optional but recommended) to regain safe distance."
+        }
+      ],
+      "scenarios": [
+        {
+          "label": "Engagement and reach control",
+          "text": "Follow the front line, instant-brace at safe distance (accounting for enemy long pikemen), advance forward once in range, stop with V. If the team pushes through, keep following + stopping with V once in reach; if the team is losing ground, advance backward to hold distance while still dealing damage. Explicit tip: minimize command-to-execution delay — 'the longer you take to adjust your distance the easier your enemies can adapt to your range.'",
+          "timestamps": [
+            "05:30",
+            "05:45",
+            "06:20"
+          ]
+        },
+        {
+          "label": "Full engagement and distance control",
+          "text": "Same base pattern plus a layer — follow the front line, brace at safe distance, V to skip animation, advance until in reach, stop with V, use the second ability (forces overextension), then immediately advance backward to regain safe distance and resume following the front line. Real-battle walkthrough includes a 'fake a huge retreat' bait-and-re-engage moment and a formation reform after over-spreading.",
+          "timestamps": [
+            "07:04",
+            "07:41",
+            "09:10"
+          ]
+        },
+        {
+          "label": "Defense and disengagement/regrouping",
+          "text": "Mirror pattern focused on advancing backward to prevent enemies reaching the unit, especially with a broken front line: brace → wait for impact → readjust distance if needed → V → second ability (forces forward move) → immediately advance backward → V again once far enough. Forced dispersal (enemy units or hero CC) is corrected by advancing backward while looking for regroup opportunities, then X (regroup on a chosen location) + re-brace.",
+          "timestamps": [
+            "09:10",
+            "09:43",
+            "10:01",
+            "10:39"
+          ]
+        },
+        {
+          "label": "Long-range hero engagement and regrouping",
+          "text": "Judge whether it's safe to exit formation (e.g., a hero diving to disrupt while their unit is still far away, or the player overextending) → quick X then V to melt the nearest target with basic attacks → if the hero survives, regroup ASAP and re-brace even accepting some losses or an imperfect reform.",
+          "timestamps": [
+            "11:13",
+            "11:57"
+          ]
+        }
+      ],
+      "techniques": [],
+      "quotes": [
+        {
+          "text": "Master the double C brace, you get 3-4x area coverage with minimal DPS loss.",
+          "context": "Playstyle quoted tip"
+        }
+      ],
+      "footnoteMarks": [
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Amya",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Herlajis",
+      "date": "2024-10-15",
+      "house": false
+    },
+    {
+      "mark": 4,
+      "author": "Amya",
+      "date": "2025-02-01",
+      "house": false
+    },
+    {
+      "mark": 5,
+      "author": "Amya",
+      "date": "2025-02-03",
+      "house": false
+    },
+    {
+      "mark": 6,
+      "author": "Amya",
+      "date": "2025-05-28",
+      "house": false
+    }
+  ],
+  "media": [
+    {
+      "kind": "video",
+      "videoUrl": "https://www.youtube.com/watch?v=h-8LaRHq4-A",
+      "channel": "Herlajis",
+      "publishedAt": "2024-10-15",
+      "durationSeconds": 1066,
+      "segments": [
+        {
+          "start": "00:00",
+          "label": "Formations: F1 default, F2 for narrow terrain"
+        },
+        {
+          "start": "00:44",
+          "label": "First-hit immunity ('blue bar')"
+        },
+        {
+          "start": "01:02",
+          "label": "Pike rotation (V)"
+        },
+        {
+          "start": "01:36",
+          "label": "Instant brace combo (1 then V)"
+        },
+        {
+          "start": "02:45",
+          "label": "Second ability / advance behavior"
+        },
+        {
+          "start": "03:34",
+          "label": "Veterancy recommendation"
+        },
+        {
+          "start": "04:05",
+          "label": "Three doctrine builds"
+        },
+        {
+          "start": "05:30",
+          "label": "Scenario 1: engagement & reach control"
+        },
+        {
+          "start": "07:04",
+          "label": "Scenario 2: full engagement & distance control"
+        },
+        {
+          "start": "09:10",
+          "label": "Scenario 3: defense & regrouping"
+        },
+        {
+          "start": "11:13",
+          "label": "Scenario 4: long-range hero engagement"
+        }
+      ],
+      "caption": null
+    },
+    {
+      "kind": "video",
+      "videoUrl": null,
+      "channel": null,
+      "publishedAt": "2025-02-01",
+      "durationSeconds": null,
+      "segments": [],
+      "caption": "1-1-V = New DMG pop = 1.5x-3x the dmg output (one more hit for anyone that wasn't already in anime[ation])."
+    },
+    {
+      "kind": "video",
+      "videoUrl": null,
+      "channel": null,
+      "publishedAt": "2025-02-03",
+      "durationSeconds": null,
+      "segments": [],
+      "caption": "Full Tutorial, going deeper in certain parts."
+    },
+    {
+      "kind": "video",
+      "videoUrl": null,
+      "channel": null,
+      "publishedAt": "2025-05-28",
+      "durationSeconds": null,
+      "segments": [],
+      "caption": "This tech is useful in situation where you want to keep hitting while spacing - such as modao, rattan pikes, .. holding V and then clicking it (like you would X-move far-away) make the unit have different behavior while hitting rather than pressing V 'insta'. In this situation you need to be always to brace, remember when pressing (1) it will take you like 0.1-0.3s after pressing it to then press V to cancel brace animation and insta brace."
+    },
+    {
+      "kind": "image",
+      "description": "A loaded unit portrait card: an armored pikeman/hoplite with helmet and round shield on a blue background, 'Level 30' badge overlay. No stat numbers beyond the label.",
+      "assetPath": null
+    }
+  ],
+  "gaps": [
+    {
+      "note": "'Phalanx' → sunward-phalanx is not in data/aliases.json (file has exactly one units entry: 'Yorkist Cavlary'). Three source files use the abbreviation in running text; machine resolution fails today. Validator hard-fails a served page on this until fixed.",
+      "house": false
+    },
+    {
+      "note": "Skill-2 name: 'Ares' Flurry' (Amya guide) vs 'Area's Fury' (Herlajis condensed-summary transcript) — presumed the same ability, unarbitrated. The transcript file itself recommends a vet sanity check on precise ability names before treating as doctrine copy.",
+      "house": false
+    },
+    {
+      "note": "Three Amya video tutorials (Phalanx_comparison.mp4, Phalanx_Tech.mp4, Phalanx_AI.mp4) exist as Discord attachments with verbatim captions only — no frame-by-frame or audio transcription (read-only capture, no playback).",
+      "house": false
+    },
+    {
+      "note": "Leadership 295 is ConqSite-only (no ConqHub/Fandom cross-check exists); ConqSite carries a systemic ~15-point-low suspicion (audit staleRisk #7). Not individually confirmed stale — standing yellow flag.",
+      "house": false
+    },
+    {
+      "note": "Origin 'Seasonal Unit (Season 19: Alexander)' exists only in the raw Amya guide, absent from unit-db — filed as a unit-db populate follow-up; served meanwhile as an attributed excerpt in identity.",
+      "house": false
+    },
+    {
+      "note": "All build/usage guidance predates the 2026-06-25 patch (Amya edit 2026-05-26; Herlajis 2024-10-15). Unit absent from the shortlist so nothing is flagged stale — but absence of a change signal is not re-verification; the page verdict is presumed-current, never 'current'.",
+      "house": false
+    },
+    {
+      "note": "No HP/damage/model-count/formation-size numerics exist in any captured source for this unit; all qualitative. No mastery data anywhere (unit has no mastery tree — not-applicable rather than missing).",
+      "house": false
+    },
+    {
+      "note": "site/tactics/data/roster.json (lines 614-626, re-verified directly) diverges from unit-db on weakVs ('Ranged' matches no unit-db counter — Amya's counters name 'Too much pressure' and 'Hero diving & flank', not ranged), icon path (assets/units/SUN.png, not verified same image), and an unexplained rarity: 4 field; strongVs 'Cavalry' agrees with unit-db and is not a divergence. Registered as upstream-fix WARNs; none ingested. armedCard slice ships counterSummary: null instead.",
+      "house": false
+    }
+  ]
+}

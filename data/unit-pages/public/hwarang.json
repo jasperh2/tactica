@@ -1,0 +1,135 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "hwarang",
+  "name": "Hwarang",
+  "profile": "public",
+  "header": {
+    "era": "Golden",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 295,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/hwarang.png",
+    "metaTier": "B",
+    "rarityTier": "T5",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Bowmanship Doctrine V",
+          "text": "MANDATORY per OP: Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG, allows shooting where you want with increased range, aim-bots to closest target in circle. OP verbatim: \"Arrow Rain is MANDATORY because normal V is really bad on Hwarang.\"",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Projectile Doctrine V",
+          "text": "+60% ammo, +50 piercing AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Precision Doctrine V",
+          "text": "+120 piercing DMG, +80 piercing AP, +9% rate of fire. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Artemis",
+          "text": "Unit-unique: unlocks Double Strings, fires 2 arrows per shot for 12s, 40s CD, can't combine with other actives except Overwatch. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Replaces Unit DMG V on this unit. OP verbatim: \"only unit in the game where Leadership is more value than Unit DMG.\" Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Whistling Arrow Doctrine V",
+          "text": "Alt for Artemis: every 3 hits inflict bleeding for 12% current health, can trigger in concert with other units, enables hits at weak points. OP verbatim: \"GREAT in duo-Hwarang\" -- duo-play swap: if you and an ally both run Hwarang, replace Artemis with Whistling Arrow on at least one of the two (bleed triggers compound across both). Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Unit Damage Doctrine V",
+          "text": "Fallback if not running Leadership. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Full Top (recommended, DPS) / Full Bot (Skirmish, Relentless Advancing capstone renames the unit). Hero pairing: not specified in this thread. Ability infos per OP follow-up reply (2025-06-10): Arrow Rain has 160m range, 14s duration; Spell 1 has 7s duration. Playstyle: stack first (40 unit kills or 8 hero kills, or a mix) until unlocked -- this stacks even when the unit isn't deployed, from both hero and unit kills, and unlocks advanced abilities. Then play in blob: Skill 1 ignores most shields and does insane damage, Skill 2 to reposition and dodge threats. Artemis and Arrow Rain DON'T stack. Normal combo: 1 -> Arrow Rain -> V+Artemis -> 1 (wait for each step to end before the next; can skip the Artemis step). No dedicated Tips & Tricks section beyond Playstyle/Ability-infos notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Hwarang is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Backline ranged suppression with arcing arrow fire",
+      "rationale": "Veterancy: Full Top (recommended, DPS) / Full Bot (Skirmish, Relentless Advancing capstone renames the unit). Hero pairing: not specified in this thread. Ability infos per OP follow-up reply (2025-06-10): Arrow Rain has 160m range, 14s duration; Spell 1 has 7s duration. Playstyle: stack first (40 unit kills or 8 hero kills, or a mix) until unlocked -- this stacks even when the unit isn't deployed, from both hero and unit kills, and unlocks advanced abilities. Then play in blob: Skill 1 ignores most shields and does insane damage, Skill 2 to reposition and dodge threats. Artemis and Arrow Rain DON'T stack. Normal combo: 1 -> Arrow Rain -> V+Artemis -> 1 (wait for each step to end before the next; can skip the Artemis step). No dedicated Tips & Tricks section beyond Playstyle/Ability-infos notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Hwarang is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "stacking",
+          "text": "Stack them first (40 unit kills or 8 hero kills, or a mix of both) until unlocked -- this unlocks their advanced abilities. Stacks even when the unit isn't deployed, from both hero kills and unit kills."
+        },
+        {
+          "context": "blob fight",
+          "text": "Play in blob. Skill 1 ignores most shields and does insane damage. Skill 2 to reposition and dodge potential threats."
+        },
+        {
+          "context": "ability sequencing",
+          "text": "Artemis and Arrow Rain DON'T stack. Normal combo: 1 -> Arrow Rain -> V+Artemis -> 1 (wait for each step to end before going to the next); can be played without Artemis by skipping that step."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}

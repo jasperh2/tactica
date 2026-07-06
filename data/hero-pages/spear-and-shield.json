@@ -1,0 +1,95 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "spear-and-shield",
+  "className": "Spear & Shield",
+  "weaponArchetype": "Spear & Shield · frontline disruptor/CC",
+  "tier": {
+    "tier": "B",
+    "positionInTier": 1,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Weapon Need; armor is recommended but \"completely playable without too\"",
+    "name": "Immortal Soul Armor",
+    "tierDropNote": null
+  },
+  "loadout": {
+    "attribute": "Full HP (if you feel unsafe learning the class, \"but you shouldn't need\") / Full Strength (Recommended)",
+    "runes": "unknown",
+    "bestGender": null,
+    "genderNote": "\"To test\" (OP has not determined this)",
+    "armorSets": [
+      {
+        "name": "Carniflex",
+        "purpose": "Best Armour per OP (alternative to Epic Schematic)"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": false,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Slash DMG",
+        "Slash PEN"
+      ],
+      "bonus": [
+        "Blunt DMG&Pen",
+        "STR",
+        "AGI",
+        "Crit dmg",
+        "HP/Armor"
+      ]
+    },
+    "spells": {
+      "core": [],
+      "fillerNotes": null
+    }
+  },
+  "verdict": null,
+  "builds": [],
+  "matchups": [],
+  "techniques": [],
+  "gameplay": [
+    {
+      "text": "Goal: stay Front-Lane and CC any heroes/units on cooldown, while being able to sidestep through units at any time to chase a hero or exotic units (enabled by the phantom trait).",
+      "attribution": "Amya"
+    },
+    {
+      "text": "The class stacks rage through getting hit while in defensive state (right-click) and through hitting the enemy; this charges and stacks up to 4 ultimates (5s CD).",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Spear throw and mounted spear throw do not share the same cooldown — use them independently/wisely.",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Shift-AA is used to smother combos (\"Make use of shift-aa to smother combo\").",
+      "attribution": "Amya"
+    },
+    {
+      "text": "Has a phantom trait allowing phasing through units (used to sidestep through units while chasing heroes/exotics).",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2024-12-16"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Spartan & Shield Guide' (1318255262444027975); OP 2024-12-16 edited 2026-05-02; follow-up posts 2024-12-16 (edited 2025-08-09), 2024-12-19 (edited same day), 2025-02-28, 2025-05-14",
+      "sourceDate": "2026-05-02",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-05-02",
+  "patchNote": "Latest edit (2026-05-02) pre-dates the 2026-06-25 Chaos patch anchor by about eight weeks."
+}

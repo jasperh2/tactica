@@ -1,0 +1,115 @@
+{
+  "schema": "cb-academy-hero-page/v1",
+  "slug": "longbow",
+  "className": "Longbow",
+  "weaponArchetype": "Bow · long-range DPS",
+  "tier": {
+    "tier": "C",
+    "positionInTier": 4,
+    "specialJobLabel": null,
+    "epicSchemVariants": []
+  },
+  "epicSchematic": {
+    "needed": "Yes — \"nearly unplayable without it\"",
+    "name": "Captain's Armour",
+    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+  },
+  "loadout": {
+    "attribute": "Full Agility",
+    "runes": "unknown",
+    "bestGender": "N/A",
+    "genderNote": null,
+    "armorSets": [
+      {
+        "name": "Rogue",
+        "purpose": "Best armour before Epic Schematic is equipped"
+      }
+    ],
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
+    "weaponStats": {
+      "need": [
+        "Piercing DMG",
+        "Piercing Pen"
+      ],
+      "bonus": [
+        "Agility",
+        "Strength",
+        "Critical Hit Chance",
+        "Critical Damage"
+      ]
+    },
+    "spells": {
+      "core": [
+        "Marksman",
+        "Bodkin",
+        "Lightning Bolt",
+        "Exploding Arrow",
+        "Arrow Rain"
+      ],
+      "fillerNotes": "Spell set differs by build: Lightning Bolt Build uses Marksman / Bodkin / Lightning Bolt; the older Exploding Arrow Build uses Exploding Arrow / Marksman / Arrow Rain instead — OP does not state one shared core loadout independent of build choice."
+    }
+  },
+  "verdict": null,
+  "builds": [
+    {
+      "name": "Lightning Bolt Build (Classic DPS)",
+      "summary": "Auto-attack (fully charged) / Marksman / Auto-attack / Bodkin / Lightning Bolt / Auto-attack. Flagged by OP with a warning: gated behind having insane epic schem weapon.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": true
+    },
+    {
+      "name": "Exploding Arrow Build",
+      "summary": "Focused on eliminating units. This older build utilizes Exploding Arrow To CC, Roll in the back, followed by Marksman and Arrow Rain to the back of heroes.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "Important, grouped units (Siphonarios, Shenjis, Falconetti, Zykalians)",
+      "stance": "strong-vs",
+      "why": "The longbow's extended range makes it an effective counter against important, grouped units like these."
+    },
+    {
+      "vs": "Heroes in light or medium armor",
+      "stance": "strong-vs",
+      "why": "Can deal considerable damage to heroes wearing light or medium armor."
+    },
+    {
+      "vs": "Heroes in heavy armor",
+      "stance": "weak-vs",
+      "why": "Best ignored unless your weapon stats are exceptional."
+    }
+  ],
+  "techniques": [],
+  "gameplay": [
+    {
+      "text": "The longbow's extended range makes it an effective counter against important, grouped units like Siphonarios, Shenjis, Falconetti, Zykalians. It can deal considerable damage to heroes wearing light or medium armor. However, heroes in heavy armor are best ignored unless your weapon stats are exceptional. Another key aspect is elevation—if the longbow is positioned higher than its target, it will deal bonus damage, while being lower results in a damage penalty. When casting Light-footed, you become invincible, which is great for dodging deadly ultimates like Dual Blades or Maul's heavy strikes. It's also useful for chasing down fleeing enemies or making a quick escape.",
+      "attribution": "Amya"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Amya",
+      "role": "sole-author",
+      "date": "2024-10-13"
+    }
+  ],
+  "sources": [
+    {
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'LongBow Guide' (1294795649467940864); OP 2024-10-13, edited 2026-03-26; follow-up post 2025-10-04",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-04",
+      "authority": "tier-3"
+    }
+  ],
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about thirteen weeks (roughly three months)."
+}

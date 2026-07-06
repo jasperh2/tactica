@@ -1,0 +1,168 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "imperial-spear-guards",
+  "name": "Imperial Spear Guards",
+  "profile": "public",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 240,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/imperial-spear-guards.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-25",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Spear Doctrine VI",
+          "text": "CCi / Stand Fast. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Block Doctrine",
+          "text": "+300 block, -90 flat dmg taken. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Steadfast Doctrine",
+          "text": "+130 def, -6% dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Health & Resistance Doctrine",
+          "text": "+300 HP, -5% dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Awareness Doctrine",
+          "text": "-500 cav charge dmg, -20% rear attacks. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Unit DMG V",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": null,
+          "text": "Hero DMG/Piercing DMG/Pen/.. — do not use.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Bot Line. Tips & Tricks: CCi doctrine to tank trebs when fighting on walls is key; CCi when cav charge is key. Edit timestamp (2026-06-25T02:28:04Z) falls on the Chaos patch anchor date itself (early UTC hours) — borderline; close enough to current-season that it likely reflects the patch, but the exact anchor moment within 2026-06-25 isn't documented, so treated as unconfirmed either way rather than assumed current.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "Veterancy: Bot Line. Tips & Tricks: CCi doctrine to tank trebs when fighting on walls is key; CCi when cav charge is key. Edit timestamp (2026-06-25T02:28:04Z) falls on the Chaos patch anchor date itself (early UTC hours) — borderline; close enough to current-season that it likely reflects the patch, but the exact anchor moment within 2026-06-25 isn't documented, so treated as unconfirmed either way rather than assumed current.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Heavy block break: Liaos, Iron Reapers."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Poison, exotics, debuffs units overall like Rattan, Zykalian, etc."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "\"Pikes in general — you soak dmg for the team and your team cav can enter front if you are baiting enemy pike into hitting you\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Heavy (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "role",
+          "text": "Front-line for your team, protect the DPS."
+        },
+        {
+          "context": "positioning",
+          "text": "Keep cover-commander active but think about X-moving in to be sure to take the frontline. You are fixing the front-lane — don't bait your DPS units and don't get flanked."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-25",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "house": false
+    }
+  ]
+}
