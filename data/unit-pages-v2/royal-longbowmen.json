@@ -1,0 +1,126 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "royal-longbowmen",
+  "name": "Royal Longbowmen",
+  "headerMeta": "Golden era · Ranged Infantry · special · 315 leadership · Seasonal",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "A standard backline archer whose press-1 arrow spell carries the whole kit — no unusual mechanics, no documented gimmick. No source has ever logged its fight-type ratings or a single counter, so there is no data on what actually beats it.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Artemis",
+      "note": "double shoot during press 1, exploits low-count / high-armor targets",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Precision Doctrine V",
+      "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": "+60% ammo, +50 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Their Unique Doctrine",
+      "note": "+15% range and DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Archery Doctrine IV",
+      "note": "+100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "LDS Doctrine",
+      "note": "alt for piercing DMG if needed",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Whistling Arrow Doctrine V",
+      "note": "alt for piercing, bleed on low-count / high-armor targets",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Bowmanship Doctrine V",
+      "note": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "Amya's recommended line for this unit; no further justification given in the thread.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Usual archer positioning — no unit-specific placement guidance given beyond the standard backline archer role. {1}",
+    "formation": null,
+    "tips": "Less value on Artemis and Arrow Rain than a typical archer build, since the Longbow carries its own arrow-rain-like spell. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) given by Amya or anywhere else — data was never captured for this unit.",
+    "No Counters section in the Amya guide — no 'Loses to / Struggles vs / This unit counters' block was ever filled in, so matchups are entirely unknown.",
+    "No hero pairing specified anywhere in the source thread.",
+    "'Don't put' doctrine slot is a literal unfilled 'X' placeholder in the OP — Amya never specified an avoid pick, so none is listed here.",
+    "No control/ability-loop sequence given beyond 'press 1 is the main dps spell' — too thin to construct an input loop without inventing steps."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "greyhair-garrison",
+  "name": "Greyhair Garrison",
+  "headerMeta": "Heroic era · Melee Infantry · special · 200 leadership · Rarity T4",
+  "date": "2026-07-04",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": null,
+  "doctrines": [],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": "Effective at mopping up crowd-controlled enemies behind a shield screen or ranged support unit {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Kingzin / ConstantBufferCast",
+      "date": "Feb 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No dedicated Amya unit guide exists.",
+    "No veterancy, doctrine, matchup, or control-loop content available.",
+    "No confirmed tier placement — 'Grandpa' row in amya-tierlist.md is an unresolved alias candidate (C-tier, T4), documented in docs/reviews/tierlist-join-audit.md as suggestive but not proof of identity.",
+    "No fight-type ratings recorded.",
+    "Only source of substantive content: one incidental mention in a Siphonarioi guide video (Feb 2022), describing the unit's utility as cleanup support behind shield/ranged screens."
+  ]
+}

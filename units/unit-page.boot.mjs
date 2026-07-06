@@ -28,6 +28,8 @@ import {
   findFootnote,
   footnoteLegendText,
 } from './unit-page.mjs';
+import { isV2Schema, isInsufficientV2 } from './unit-page-v2.mjs';
+import { renderUnitPageV2 } from './unit-page-v2.boot.mjs';
 
 // NOTE ON ESCAPING: every text value below is assigned via `.textContent =` or
 // `document.createTextNode(...)`, both of which insert their argument as literal text — the DOM
@@ -53,6 +55,15 @@ function houseProfilePath(slug) {
 /** Public-profile JSON path for a slug. */
 function publicProfilePath(slug) {
   return new URL(`data/unit-pages/public/${encodeURIComponent(slug)}.json`, SITE_ROOT_URL).href;
+}
+
+/** v2-schema unit-page JSON path for a slug (cb-unit-page-v2/1 — see unit-page-v2.mjs). Sibling to
+ * the v1 house/public tree above, mirroring the same site/data/unit-pages/ convention: a build
+ * lane populates this directory the same way tools/build-unit-pages/ populates the v1 one — that
+ * population step is out of this renderer's scope. A missing file here (404, pre-v2 rollout) is
+ * treated as "no v2 record", never an error — boot() falls back to the v1 house/public fetch. */
+function v2ProfilePath(slug) {
+  return new URL(`data/unit-pages-v2/${encodeURIComponent(slug)}.json`, SITE_ROOT_URL).href;
 }
 
 /** Reads `?u=<slug>` from the current page URL. Returns null if absent/empty. */
@@ -906,9 +917,48 @@ export function renderNotFound(mainEl, message) {
   mainEl.appendChild(p);
 }
 
+/** Builds the v2 section host map from unit.html's `#unit-v2-*` ids (see renderUnitPageV2's doc
+ * comment for the shape it expects). Kept as its own function so boot() reads as one dispatch
+ * decision per record, not an inline object literal buried in a branch. */
+function v2Hosts() {
+  return {
+    header: document.getElementById('unit-v2-header'),
+    pitch: document.getElementById('unit-v2-pitch'),
+    doctrines: document.getElementById('unit-v2-doctrines'),
+    veterancy: document.getElementById('unit-v2-veterancy'),
+    battleRole: document.getElementById('unit-v2-battle-role'),
+    matchups: document.getElementById('unit-v2-matchups'),
+    controls: document.getElementById('unit-v2-controls'),
+    footer: document.getElementById('unit-v2-footer'),
+  };
+}
+
+/** Shows the v2 page container and hides the v1 identity-only/full-guide containers (the three are
+ * mutually exclusive top-level shapes for a rendered unit page). */
+function showV2Layout(hostRefs) {
+  if (hostRefs.v2Page) hostRefs.v2Page.hidden = false;
+  if (hostRefs.identityOnly) hostRefs.identityOnly.hidden = true;
+  if (hostRefs.fullGuide) hostRefs.fullGuide.hidden = true;
+}
+
+/** Shows the v1 layout containers (renderUnitPage itself decides identity-only vs full-guide) and
+ * hides the v2 page container. */
+function showV1Layout(hostRefs) {
+  if (hostRefs.v2Page) hostRefs.v2Page.hidden = true;
+}
+
 /**
- * Full page boot: reads ?u=<slug>, fetches house-then-public, and renders. Matches the section ids
- * declared in units/unit.html.
+ * Full page boot: reads ?u=<slug>, fetches the v2-schema record and the v1 house/public pair in
+ * parallel, and dispatches on the v2 record's schema field per the task's dispatch rule:
+ *   - a v2 record whose schema is "cb-unit-page-v2/1" AND is not the insufficient short-circuit
+ *     shape -> renders through the v2 layout (renderUnitPageV2).
+ *   - anything else (no v2 file / 404 / insufficient:true / a future schema value) -> renders
+ *     through the existing v1 path unchanged (renderUnitPage), including v1's own identity-only
+ *     vs full-guide split for stats-only units — this is deliberate: an `insufficient: true` v2
+ *     record means "this unit has no v2 guide content", not "this unit has no v1 content", so
+ *     falling back to the v1 fetch (rather than rendering nothing) preserves whatever identity/
+ *     stats page already exists for it.
+ * Matches the section ids declared in units/unit.html (both the v1 tree and the v2 tree).
  */
 export async function boot() {
   const mainEl = document.getElementById('unit-main');
@@ -918,18 +968,14 @@ export async function boot() {
     return;
   }
 
-  const [houseResult, publicResult] = await Promise.all([
+  const [v2Result, houseResult, publicResult] = await Promise.all([
+    fetchJson(v2ProfilePath(slug)),
     fetchJson(houseProfilePath(slug)),
     fetchJson(publicProfilePath(slug)),
   ]);
-  const page = selectProfile(houseResult, publicResult);
 
-  if (!page) {
-    renderNotFound(mainEl, `No page found for "${slug}".`);
-    return;
-  }
-
-  const hosts = {
+  const hostRefs = {
+    v2Page: document.getElementById('unit-v2-page'),
     identityOnly: document.getElementById('unit-identity-only'),
     headerIdentityOnly: document.getElementById('unit-header-identity-only'),
     identityAbsenceNote: document.getElementById('unit-identity-absence-note'),
@@ -943,5 +989,21 @@ export async function boot() {
     controls: document.getElementById('unit-controls'),
     footer: document.getElementById('unit-footer'),
   };
-  renderUnitPage(page, hosts);
+
+  const v2Record = v2Result && v2Result.ok ? v2Result.data : null;
+  if (isV2Schema(v2Record) && !isInsufficientV2(v2Record)) {
+    showV2Layout(hostRefs);
+    renderUnitPageV2(v2Record, v2Hosts());
+    return;
+  }
+
+  showV1Layout(hostRefs);
+  const page = selectProfile(houseResult, publicResult);
+
+  if (!page) {
+    renderNotFound(mainEl, `No page found for "${slug}".`);
+    return;
+  }
+
+  renderUnitPage(page, hostRefs);
 }

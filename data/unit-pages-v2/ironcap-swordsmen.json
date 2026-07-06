@@ -1,0 +1,186 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "ironcap-swordsmen",
+  "name": "Ironcap Swordsmen",
+  "headerMeta": "Chivalric era · Melee Infantry (Sword & Shield) · charge-focused · 100 leadership · T2 Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T2",
+    "fightRatings": null
+  },
+  "pitch": "A cheap charge-cycling unit that trades sustained melee for devastating charge damage and burst CC potential. Best used hit-and-run against fragile targets; once engaged in open melee against quality units, it gets overwhelmed quickly.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Iron Health Doctrine V",
+      "note": "Ironsides: +175 piercing/slashing/blunt defence for 12s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Charge Doctrine V",
+      "note": "+250 charge DMG, +450 charge block break",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Charge Defence Doctrine",
+      "note": "−40% DMG taken while charging",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Charge CD Doctrine",
+      "note": "−24% charge CD, +1 charge target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing-Defense Doctrine",
+      "note": "pushes ranged defence toward 300s — critical given ~7,600 HP and ~30s base defence {2}",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Blunt-Damage Doctrines",
+      "note": "boost charge damage (unit's charge is blunt-type) {2}",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Reduced Ranged-Damage Doctrines",
+      "note": null,
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Charge-focused build — increased charge damage and decreased charge cooldown, trading away defense for higher burst; two sources align on this path {1,2}",
+      "marks": [
+        1,
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Bait or position enemies into a charge vector; charge into the back of a unit or into heroes for burst kills {2}. Unit's low base defence (~30s) means archers can tear it apart out-of-position {2}.",
+    "formation": null,
+    "tips": "Charge-cycle playstyle: charge, disengage, reset (~12-second cooldown), charge again {2}. Never stay in prolonged open melee against stronger units — this unit's value is almost entirely in the charge itself {2}. Charging down siege-tower chokepoints (funneled single-file) works well; fragile once committed to open combat, especially against Condottieri, Falconet/Gunner fire, or coordinated pushes {2}. Vulnerable to CC after a charge {2}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Cudgel Monks",
+        "rel": "counters-you",
+        "why": "significantly stronger in direct melee; unit would lose badly {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Praetorian Guards",
+        "rel": "counters-you",
+        "why": "tier-tier melee unit; unit would lose badly {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Prefecture Guards",
+        "rel": "counters-you",
+        "why": "tier-tier melee unit; unit would lose badly {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Condottieri",
+        "rel": "counters-you",
+        "why": "tougher opposition; unit fragile in open combat {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Iron Reapers",
+        "rel": "counters-you",
+        "why": "shield-break mechanic catches up; initial charge can score kills but reapers recover {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Heroes (backline/isolated)",
+        "rel": "pairs",
+        "why": "high blunt charge damage scores fast kills on contact {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Disengage",
+      "Reset"
+    ],
+    "loopMarks": [
+      2
+    ],
+    "notes": "Charge → backline hero or unit flank → disengage and pull back → ~12-second cooldown → charge again {2}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Evo Loz Gaming",
+      "date": "Jul 2020",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type strength ratings (Blob, Flank, Skirmish, Duel) — Amya guide does not provide numerical scores.",
+    "No formation guidance — no source specifies F1/F2 doctrine or spacing strategy.",
+    "No hero-pairing recommendations — Amya guide explicitly notes this absent.",
+    "No dedicated tips & tricks beyond playstyle loops — Evo transcript is 2020 vintage and may not reflect current balance.",
+    "Amya guide last edited 2026-05-27, predating the 2026-06-25 Chaos patch; unit not on changed-units shortlist but doctrine/build recency unverified."
+  ]
+}

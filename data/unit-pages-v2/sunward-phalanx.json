@@ -1,0 +1,173 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "sunward-phalanx",
+  "name": "Sunward Phalanx",
+  "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 295 leadership · Seasonal (S19: Alexander)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 8,
+      "skirm": 7,
+      "flank": 1
+    }
+  },
+  "pitch": "A premier point-holder that deletes cavalry and anything without block the moment it braces. Never flank or solo it — overlap with Modao, keep the models spread, and leave it home on far-spawn maps; its one real enemy is a Bastard Sword mount ult.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Bloodthirsty Doctrine",
+      "note": "lifesteal",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "+100 DMG during brace",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Polearm Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Sunward Phalanx: Overwhelm",
+      "note": "totem",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Sunward Phalanx: Glory",
+      "note": "−20% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Anti-Cavalry Doctrine",
+      "note": "−35% DMG taken; skippable — bottom-vet mitigation already suffices {2}",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Tank Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Consistent in every scenario; with brace + cav-reduction nodes reaches 20% infantry / 65% cavalry mitigation. Two sources agree.",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Top line",
+      "recommended": false,
+      "body": "Viable alternative — occasional burst spikes, less consistent.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Sit one pike-length behind your front line and control distance — never lead with it; set brace range accounting for enemy long pikes. {2}",
+    "formation": "Default F1 (spread): CC only disables part of the line, the rest keeps fighting. {2} F2 (block) only in narrow terrain that denies flanks, to concentrate center damage. {2}",
+    "tips": "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat — expect the second, timed CC. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Myrmillones",
+        "rel": "counters-you",
+        "why": "names Phalanx a direct counter",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Fortebraccio Pikemen",
+        "rel": "pairs",
+        "why": "heavy anti-cav behind your reach",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "You pressure: Iron Reapers, Azaps, Varangian Guards — each cites Phalanx range; Claymores conditionally (\"depending on how they play\")."
+  },
+  "controls": {
+    "loop": [
+      "Overwhelm",
+      "X",
+      "1",
+      "V",
+      "2",
+      "1",
+      "1",
+      "V"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Instant brace (1 → V) — pikes drop with CC applied immediately; ramming while braced adds zero damage. {2} Pike rotation (V) — every model faces the nearest enemy, ~doubles contact. {2} Ares' Flurry (2) — big damage, forces overextension; advance backwards after. {2} Double-C brace: 3–4× area coverage, minimal DPS loss. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Herlajis",
+      "date": "Oct 2024",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Skill-2 name unarbitrated: 'Ares' Flurry' (Amya) vs 'Area's Fury' (Herlajis transcript)."
+  ]
+}

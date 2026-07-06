@@ -1,0 +1,170 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "imperial-pike-guards",
+  "name": "Imperial Pike Guards",
+  "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 240 leadership · Honour Unit",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 8,
+      "duel": 4,
+      "skirm": 6,
+      "flank": 3
+    }
+  },
+  "pitch": "A high-DPS pike line that trades survivability for lethality, oneshots units that charge it and excels in advance-based gameplay. Its weakness is exposure to crowd control — retreat and disengage if you lose control.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Hero Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Polearm Doctrine (Pike Charge)",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+115 unit dmg, +70 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Imperial Pike Guards Attack Doctrine",
+      "note": "−7s Advance CD",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Rare Polearm Doctrine",
+      "note": "+100 dmg while bracing; affects Advance",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP)",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Bloodthirsty Doctrine",
+      "note": "lifesteal + 12% dmg; alt for sustain",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "DMG reduction doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Anti-cav doctrines, bleed on hit",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Top",
+      "recommended": true,
+      "body": "For DPS — oneshots scaling with charge speed",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Full Bot",
+      "recommended": false,
+      "body": "For tankier playstyle",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Charge in or X-move in to close to melee range. Position to force enemy engagement on your terms — the unit does more damage the faster the enemy is, so bait charges. {1}",
+    "formation": null,
+    "tips": "Advance near melee range and wait for hits to stack, then press 3 (Charge). Kill count reduces Advance CD (sometimes to zero). {1} First tick of Advance can do insane damage — the mechanic scales with your unit's speed at impact. {1} Don't hesitate to disengage from CC or Advance if you can save the unit. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Liaos Rangers",
+        "rel": "counters-you",
+        "why": "CCi unit that shuts down advance chains",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Iron Reapers",
+        "rel": "counters-you",
+        "why": "CCi unit that shuts down advance chains",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Spartans",
+        "rel": "counters-you",
+        "why": "CCi unit that shuts down advance chains",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Advance",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Charge in or X-move in. {1} Advance when near melee range; wait for hits to stack. {1} Press 3 after the stack; kill count reduces Advance CD (sometimes to zero), allowing immediate re-advance. {1} Brace Damage (Rare Polearm) is a flat amount affecting Advance — top-pick status. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Edit timestamp (2026-06-16) pre-dates Chaos patch (2026-06-25) — doctrine/build guidance may be stale; no post-patch update found.",
+    "'With / without pen' follow-up post images not transcribed — actual penetration vs. no-penetration damage numbers not captured."
+  ]
+}

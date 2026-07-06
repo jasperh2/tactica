@@ -1,0 +1,143 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "liaos-rangers",
+  "name": "Liaos Rangers",
+  "headerMeta": "Golden era · Heavy Cavalry (Mace/Bludgeon) · 315 leadership · Seasonal",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 9,
+      "duel": 7,
+      "skirm": 7,
+      "flank": 10
+    }
+  },
+  "pitch": "An exceptional flank cavalry with the highest flank rating (10/10) and heavy mace damage output. A spell 2 delay reduces skirmish and duelling power {1}.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Liao's Rangers Unique Doctrine",
+      "note": "−3s CD on press 2",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Devastation Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Blue Doctrine",
+      "note": "defensive slot",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "+20% dmg to healing units",
+      "note": "alt for Devastation",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Movement speed doctrine",
+      "note": "alt for Devastation",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Tankiness doctrine",
+      "note": "alt for Devastation; simpler 1-2-3 combo",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": "alt for Blue Doctrine",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Consistent in every scenario.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Engage with spell 1 from mid-close range {1}. Once engaged, press 2 for a heavy burst (swiping mace around), let it run 3–4s, then press 3, then press 2 again as soon as it is off cooldown {1}.",
+    "formation": null,
+    "tips": "Movement speed leverages damage, but entering a blob at very low speed can be better when enemy pikes are present — their damage buff from the unit's speed can one-shot before the speed-damage modifier pays off {1}. Recent spell-2 delay nerf still permits engagement but reduces skirmish and duelling power notably {1}."
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Spell 1",
+      "Spell 2",
+      "Spell 3",
+      "Spell 2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Spell 1 — engage. Spell 2 — heavy mace burst (3–4s). Spell 3 — queue. Spell 2 — repeat on cooldown (−3s via unique doctrine) {1}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2025",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No formation guidance in any source.",
+    "No hero pairing specified (source shows 'X' / none).",
+    "No video-transcript content found across 20 creator channels.",
+    "Skirmish cavalry type (Amya: 'low blob-fight potential') conflicts with rating entry (blob 9/10 per unit-db) — possible unit-db discrepancy."
+  ]
+}

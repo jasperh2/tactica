@@ -1,0 +1,164 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "white-plume-guards",
+  "name": "White Plume Guards",
+  "headerMeta": "Golden era · Melee infantry · Tower Shield · 305 leadership · Chaos Season",
+  "date": "2026-07-01",
+  "stats": {
+    "metaTier": "To place",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 9,
+      "duel": 3,
+      "skirm": 5,
+      "flank": 2
+    }
+  },
+  "pitch": "A tower-shield frontline anchor that soaks damage for the team, holding the wall so your own cavalry and DPS can work behind it. It folds against high-minimum-damage units that punch straight through block — Liao Rangers, Iron Reapers, and Rattan Roundshields all beat it, and anything that can simply get through you (Queen's Knights, Reapers) causes it real trouble.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Spear Doctrine VI",
+      "note": "CCi / Stand Fast",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Their 2 Unique Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Awareness Doctrine",
+      "note": "−500 cav charge dmg, −20% rear attacks",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Block Doctrine",
+      "note": "+300 block, −90 flat dmg taken — calculated at the end of all other calculations",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Steadfast Doctrine",
+      "note": "+130 def, −6% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Resistance Doctrine",
+      "note": "+300 HP, −5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Unit DMG V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Hero DMG / Piercing DMG / Pen",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bot Line",
+      "recommended": true,
+      "body": "The stated veterancy pick for this unit — no alternative line given.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Front-line for your team, protecting your DPS — you're fixing the front lane. Don't bait your own DPS units into the fight and don't let this unit get flanked. {1}",
+    "formation": null,
+    "tips": "CCi doctrine is key for tanking trebuchets while fighting on a wall, and equally key for eating cavalry charges (or just to fall back safely). {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Liao Rangers",
+        "rel": "counters-you",
+        "why": "high minimum damage punches through block",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Iron Reapers",
+        "rel": "counters-you",
+        "why": "high minimum damage punches through block",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Rattan Roundshields",
+        "rel": "counters-you",
+        "why": "high minimum damage punches through block",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Queen's Knights",
+        "rel": "counters-you",
+        "why": "can get through you",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "White Plume Defense (1) — CC immune, instantly restores 1,400 Block, +80% Defense and reduced Block consumption for 10s. Cooldown 15s. {1} Shattering Bash (2) — knockdown + massive damage in range, restores 4% Max Health, +150% Defense, reduced Block consumption on hit; boosted while in Long Live the Han. Cooldown 18s, Duration 3s. {1} Long Live the Han (3) — consumes all Resolve for a 10s Last Stand: Health can't drop below 10%, death immunity; instantly restores 20% Max Health on end. Cooldown 50s, Duration 10s. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No formation guidance (F1/F2) given by any source.",
+    "No dedicated video transcript exists — only queued/candidate mentions in two channel INDEX files, never captured.",
+    "Only one veterancy line (Bot Line) is documented — no source discusses a Top Line alternative for this unit."
+  ]
+}

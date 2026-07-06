@@ -1,0 +1,202 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "varangian-guards",
+  "name": "Varangian Guards",
+  "headerMeta": "Golden era · Melee infantry · special · 290 leadership · Seasonal (S11: Helheim)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 6,
+      "skirm": 7,
+      "flank": 7
+    }
+  },
+  "pitch": "A dual-form axe and shield bruiser that wins extended fights through ability chaining and punishes enemies in tight spaces with wide AoE swings. Weak to cavalry charges and ranged pressure if caught out of formation.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9-hit damage boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Iron Damage Doctrine V",
+      "note": "Ironsides",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Linebreaker Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Anti-Infantry Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Damage Reduction Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Movement speed after hit",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": false,
+      "body": "5 points top; capstone unlocks Axes of the North (+15% dmg to infantry, renames unit).",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Rest points mid and top-of-mid tier.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "No positioning guidance in sources — treat as flexible line/flank role. Avoid extended exposure to ranged units, especially tier-5 archers. {2}",
+    "formation": "Default F1 (dispersed): each model engages the nearest target independently, reducing AoE vulnerability. {2} Shield-wall (specialized): models plant and hold, auto-face attackers from behind (unreliable vs fast targets or long-range), generate rage while holding. {2}",
+    "tips": "Choke-point specialist: 10–20 enemies per axe swing in alleyways, tower stairwells, corner fights. {2} Activate ability with no enemies nearby for movement-speed bonus (useful for repositioning). {2} First ability is strong defensive block/bash (X-V cycling, reduced stamina); use both ability charges before engaging ranged. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Claymore",
+        "rel": "counters-you",
+        "why": "burst damage exceeds Varangian — rare units with more burst than this unit",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Yorkist",
+        "rel": "counters-you",
+        "why": "burst damage exceeds Varangian — rare units with more burst than this unit",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Phalanx",
+        "rel": "counters-you",
+        "why": "spacing and debuff units shut down engagement",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Silahdars",
+        "rel": "hero-threat",
+        "why": "their second ability can shred the unit if off cooldown — safer to engage only when confirmed on cooldown",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Cavalry",
+        "rel": "hero-threat",
+        "why": "avoid taking charges head-on without shield-wall or first-ability block active; absorb impact, then punish with second ability",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Pike-type (braced)",
+        "rel": "pairs",
+        "why": "actively step into brace + block state, then trigger second ability once brace window ends",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "X",
+      "3",
+      "2",
+      "1",
+      "V",
+      "1",
+      "V",
+      "1",
+      "V"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "1 (Raging Onslaught) switches to axes. {1} X-move in; 3 and 2 are abilities. {1} V between spell steps adds one auto-attack. {1} Second ability (axe-spin) forces overextension, switches from defensive bash/block state. {2} Passive 'Great Sweep' (area spin-attack) becomes available once second ability activates; re-trigger the ability to refresh cooldown and sweep again — keeps the unit fighting continuously without cooldown idle. {2} Ability activation with no enemies nearby grants movement bonus for repositioning. {2} Pike rotation (V in stance) auto-faces all models to the nearest enemy, nearly doubling contact points. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "BigDaddyYT",
+      "date": "Aug 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No positioning guidance provided in any source — battle-role positioning left minimal/framework-level.",
+    "Pressure matchups (units Varangian pressure in return) not covered by any source."
+  ]
+}

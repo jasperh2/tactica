@@ -1,0 +1,170 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "orochi-samurai",
+  "name": "Orochi Samurai",
+  "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 295 leadership · Seasonal unit · T5",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 5,
+      "skirm": 6,
+      "flank": 4
+    }
+  },
+  "pitch": "A high-DPS skirmisher that punches through armor with minimum damage and disarm effects, but struggles hard when both abilities are on cooldown. Master the 1→2 ability combo to bypass its animation weakness and one-shot heroes.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Bloodthirsty Doctrine",
+      "note": "lifesteal +12% dmg",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Polearm Doctrine",
+      "note": "+80 piercing dmg, +120 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Resistance Doctrine",
+      "note": "+300 HP, −5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Piercing Damage Doctrine",
+      "note": "+90 piercing dmg",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Defence Doctrine",
+      "note": "+80 def, −5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type dmg in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Brace Doctrines",
+      "note": "only affect F1/F2/F3 formation brace — Orochi never uses",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Provides consistent results with three quick attacks, high block break, and very high minimum damage; can proc parry.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Top line",
+      "recommended": false,
+      "body": "Snowballs better in blob fights, but slower with minimal block capability and less block break.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Pair with Chaindart or any lock-ult hero {1}. Avoid blob fights unless ability 1 is available — when both are on cooldown, disengage if enemy has stun/daze {1}. In engagements, position to catch isolated targets for hero one-shots {1}.",
+    "formation": null,
+    "tips": "Ability 1 (Piercing Strike) phases through enemy units regardless of type — use it before ability 2 to maximize DPS inside the enemy {1}. The 1→2 combo: use ability 1, then just before the second strike, trigger ability 2 — this applies CC for the remainder of ability 1's duration and ensures damage goes through even if knocked/dazed {1}. Ability 2 (Storm Pound) has short range; if dazed or CC'd at activation, the animation may not occur {1}. Both abilities disarm, but ability 1 does not cleanse existing CC {1}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Block units",
+        "rel": "counters-you",
+        "why": "Orochi lacks block and struggles vs high block enemies",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Dodge/immunity units",
+        "rel": "counters-you",
+        "why": "High mobility units avoid damage",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "High DR/armor units",
+        "rel": "pairs",
+        "why": "High minimum damage on both abilities makes Orochi a counter with Spartan, Reapers",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability 1 (Piercing Strike): phases through enemy units, deals high damage to charging units. {1} Ability 2 (Storm Pound): high minimum damage, blocks, procs parry, block regenerates quickly like Zweihander's ability 2. {1} Disarm effect: all abilities prevent enemy attacks for a duration; mid-animation disarm only blocks next animation. {1} 1→2 combo: overcomes ability 2's weakness by ensuring animation occurs and damage applies. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No video-transcript content; edit timestamp (2026-05-26) pre-dates 2026-06-25 Chaos patch — doctrine/build guidance flagged for revalidation.",
+    "Formation guidance absent from all sources.",
+    "Matchup pressure (units Orochi pressures) not specified."
+  ]
+}

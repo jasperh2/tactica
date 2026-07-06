@@ -1,0 +1,120 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "vassal-longbowmen",
+  "name": "Vassal Longbowmen",
+  "headerMeta": "Heroic era · Ranged infantry · special · 245 leadership · Honor Tree",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": "A standard Honor Tree archer built around Arrow Rain and raw piercing damage, sitting in a combined guide thread with three other archers and no build guidance specific to it. The current meta has no safe setup window for non-exotic ranged, so its chip damage rarely converts to won fights — Amya's advice is to learn an exotic ranged unit instead.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Bowmanship Doctrine V",
+      "note": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Precision Doctrine V",
+      "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": "+60% ammo, +50 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Archery Doctrine IV",
+      "note": "+100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "LDS Doctrine",
+      "note": "alt piercing DMG option",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Whistling Arrow Doctrine V",
+      "note": "alt piercing option, bleed on low-count / high-armor targets",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Artemis",
+      "note": "alt piercing option, double shoot, same low-count / high-armor angle",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "DMG line",
+      "recommended": true,
+      "body": "Standard archers have only one viable line — go the damage line.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No dedicated Amya guide exists for this unit — all guide-level coverage comes from a combined thread ('Archer Build (Longbow, Imperial Archer,..)') shared identically across Vassal Longbowmen, Imperial Archers, Vanguard Archer, and Ironcap Archer; only the Tier line is unit-specific, everything else (playstyle, doctrines, veterancy) is written as applying equally to all four.",
+    "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) given for this unit in any source.",
+    "No counters, hero threats, or favorable matchups documented anywhere.",
+    "No hero pairing, formation, positioning, or control-sequence guidance in any source.",
+    "'Don't put' doctrine slot is a literal 'X' placeholder in the source OP — never filled in, not an omission on this page.",
+    "The guide's tip that some archers with Arrow Rain in their veterancy can't equip the Arrow Rain doctrine (equip more piercing instead) is explicitly not confirmed to apply to Vassal Longbowmen specifically — omitted rather than stated as fact.",
+    "Amya guide last edited 2026-06-16, nine days before the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season (unit is not on the Chaos changed-units shortlist, so not force-flagged)."
+  ]
+}

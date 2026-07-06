@@ -1,0 +1,148 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "siphonarioi",
+  "name": "Siphonarioi",
+  "headerMeta": "Golden era · Ranged infantry (Exotic) · special · 300 leadership · Seasonal (Season V: Legacy of Fire)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "A unique flamethrower unit that puts out heavy sustained damage and crowd control from range, but it is genuinely fragile — even grey-tier trash kills it the moment it's exposed. Screen it behind a shield or infantry line and work it at chokepoints; caught alone in open ground with no frontline, it dies fast.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Siphonarioi Flamethrower Doctrine",
+      "note": "unit-unique — +200 blunt DMG when hellfire strikes target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Siphonarioi Hellfire Doctrine",
+      "note": "unit-unique — +2s flame duration",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type — put highest tier you have",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% DMG in sieges, flat ~+72 on base ~900",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Mobility Doctrine V",
+      "note": "Sprint",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Older Ammunition Doctrine",
+      "note": "preferred for TW",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Random HP doctrine",
+      "note": "fallback if no ammo doctrine, free slot anyway",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Flat fire-damage increase (roughly +240 per point, stacking to ~480) plus extra ammo capacity (60% + 10% ≈ 70% more) and cooldown reduction; ammo economy is the practical uptime limiter so the extra capacity is treated as close to mandatory.",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": false,
+      "body": "Modest +20% defense mitigation — barely matters given how fragile this unit already is.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Backline support, never frontline — even grey-tier enemies maul it if exposed, so it always needs a friendly screen (shields or other infantry) in front. {2} Tuck it into corners rather than right at the shield wall's immediate edge. {2}",
+    "formation": "Staggered formation or a single-file line. {2}",
+    "tips": "Never aim the direct-fire stream flat along the ground — angle it upward at a wall or raised surface near the enemy so it arcs down onto upper body/head level for more hits and kills. {2} Best worked at chokepoints (gatehouses, breaches, narrow corridors/stairwells), laying Scorched ground-fire to zone the area while it keeps pumping flame into a contained kill zone until it needs to resupply. {2} 2 → 1 combo maximizes damage but shouldn't be overused — only for defending/attacking a chokepoint like a gate, or when your 1 will hit the unit cap; even at a gate, 1 → 2 is better for longer CC uptime (noted as a pre-Spartans-release read). {1} In open space, do not use 2 → 1 — too much room to move and bigger frontlines; instead 2 → reposition → 1 diagonal/straight (situational — mixed vet can beat full Top line here), or 2 → 1 diagonal, or 2 diagonal → 1 straight. {1} 2 → 1 doesn't add much extra damage: burn duration and CC get reset by ticks from 1, so the only real gain from 2 is extra impact-damage ticks. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Axe Raiders",
+        "rel": "counters-you",
+        "why": "hard counter — can leap directly over or through friendly shield lines onto exposed Siphonarioi",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "2",
+      "1"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Direct-fire (1) is a targeted flame stream; Scorched (2) sprays hellfire across an area of terrain and is used to zone ground. {2} Ammo and health both burn fast — plan resupply trips rather than fighting to empty. {2} A shield-screened Siphonarioi grinding a chokepoint has been clocked around 76 kills in a single engagement before needing to fall back and resupply; poor cooldown timing (Scorched fired too early, direct fire off-target) lets even a cavalry push finish it off. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "KingzinHD (ConstantBufferCast)",
+      "date": "Feb 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type Strength ratings (Blob/Flank/Skirmish/Duelling) given in the Amya guide thread — fightRatings is null, not estimated.",
+    "No dedicated Counters section from Amya (no 'this unit counters / loses to / struggles vs' block) and no hero-pairing recommendation given anywhere in the thread.",
+    "Leadership conflict: data/unit-db.json (ConqHub, tier-2) records 300; the ConstantBufferCast transcript states 330 (caption-derived, tier-3) — unarbitrated, unit-db value used above.",
+    "Amya's doctrine/build guidance was last edited 2026-05-27, which pre-dates the 2026-06-25 Chaos patch anchor — flagged for revalidation, though Siphonarioi is not on the 13-unit Chaos shortlist.",
+    "'Don't put' doctrine slot is a literal placeholder ('X') in the Amya OP — never filled in, not fabricated here.",
+    "Ability names ('direct fire', 'Scorched') are inferred from the transcript narrator's informal phrasing, not confirmed in-game tooltip text; numeric veterancy bonuses (240/480/60/70) are as spoken by auto-captions, not cross-checked against the live veterancy tree."
+  ]
+}

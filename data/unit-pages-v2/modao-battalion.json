@@ -1,0 +1,208 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "modao-battalion",
+  "name": "Modao Battalion",
+  "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 310 leadership · Seasonal (S19: Alexander)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "S",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 8,
+      "duel": 3,
+      "skirm": 5,
+      "flank": 1
+    }
+  },
+  "pitch": "An anti-cavalry support pikeman that stacks massive flat damage reduction through two defense-stacking abilities and doctrine builds, enabling it to tank anything while respecting that pikeman units don't lead charges. Played correctly it beats cavalry decisively; played wrong (sent in first or alone on a flank) it dies instantly.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Bloodthirsty Doctrine",
+      "note": "lifesteal {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Toughness Doctrine V",
+      "note": "−33% dmg taken on first 8 hits {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Anti-Cavalry Doctrine V",
+      "note": "−40% dmg taken from cav while bracing, +16% dmg vs cav while bracing {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Hero DMG Doctrine V",
+      "note": "penetration makes huge difference against high-tier units {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Defence Doctrine V",
+      "note": "+80 def, −5% dmg taken {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "DMG Taken Reduction",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "2× cavalry DMG reduction doctrines stacked",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line (17 points)",
+      "recommended": true,
+      "body": "Damage-focused — strategy is to out-damage bottom-vet durability gains with top-line damage nodes paired with flat doctrine reduction {2}.",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": false,
+      "body": "Durability — skippable when flat-reduction doctrines already exceed its entire defensive value {2}.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Support the front line, not the front line itself — you don't go first, others do, so shield moves, you follow. Always watch your back for incoming cavalry. {2} Against infantry: X-move in, engage with skill 2, instantly press skill 3 right after, then skill 2 again, then brace for best burst. {1}",
+    "formation": "No formation guidance in sources.",
+    "tips": "When skill 2 comes off cooldown each time, press skill 2 and re-brace — sustains best burst in blob fights. {1} Maintain formation with X to prevent spreading and enemy cavalry punishes; second skill targets nearest enemies and causes spread in open areas. {2} Brace 1–2s before cavalry arrives — this is non-negotiable. {1} You can reset Toughness Doctrine's first-8-hits mitigation by swapping at supply and re-taking the unit. {1} Modao Defense and Modao March each increase all-defense by 100 for 3s on hit, stacking to 15 — two stacks alone exceed entire bottom vet line's defensive value (32% infantry / 45% cavalry mitigation with doctrines). {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Claymores",
+        "rel": "counters-you",
+        "why": "direct counter to this unit",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Yorkist",
+        "rel": "counters-you",
+        "why": "direct counter to this unit",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Rattan Pikes",
+        "rel": "counters-you",
+        "why": "unit struggles against them",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Hero dive + mounted ults",
+        "rel": "counters-you",
+        "why": "hero jump while fighting or mount CC knocks braced line",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Block units",
+        "rel": "counters-you",
+        "why": "unit struggles against them",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Cavalry",
+        "rel": "pairs",
+        "why": "this unit is a support/tank for blob fight",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Low damage units",
+        "rel": "pairs",
+        "why": "this unit is a support/tank for blob fight",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "No direct source on what you pressure."
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "2",
+      "3",
+      "2",
+      "Brace"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Five engagement combos depend on scenario {2}: full engagement (charge → stab → brace {2}), soft engagement for high-damage targets (charge → brace {2}), defense (brace → wait → stab → brace loop, only stab near brace cooldown end {2}), full counter-engagement (brace → wait → charge → stab → brace {2}), soft counter-engagement (brace → wait → charge → brace → stab → brace {2}). Core discipline: cycle skill 2 (stab) and skill 3 (march/defense stack-building ability) to maintain and increase your 15-stack defense bonus — only use stab once brace is nearly off cooldown, minimizing windows without flat reduction. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Herlajis",
+      "date": "Mar 2024",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Formation guidance absent — all sources focus on unit control, not F1/F2 orientation.",
+    "Skill names inconsistently referenced across sources ('Modao March', 'Modao Defense', 'skill 2', 'skill 3') — exact ability names unconfirmed from UI.",
+    "Herlajis transcript has unintelligible ASR on the alternate cavalry-focused epic doctrine name ([01:50]–[02:01]) — needs vet confirmation."
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "condottieri-guards",
+  "name": "Condottieri Guards",
+  "headerMeta": "Silver era · Melee Infantry (shields) · 160 leadership · T3 mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A cost-effective shielded melee line with charge-into-skill combo damage and surprising reach for newer players. Keep them mobile — their weakness is sustained pressure and pike formations they can't break through.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Defence Doctrine V",
+      "note": "+80 all defences, −5% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Charge CD Doctrine",
+      "note": "−24% charge CD, +1 charge target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "LDS Doctrine",
+      "note": "−16% leadership cost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% DMG in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Damage-reduction doctrine",
+      "note": "−5% DMG taken, alternative for LDS or free slot",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Blunt Damage Doctrine",
+      "note": "+90 blunt DMG",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Boosts the primary damage tool (Shock Attack/Shock Shieldbash): +5% movement, +8% critical, +30% skill damage, +3s duration, −3s cooldown — cuts effective downtime from 18s to 9s. {2}",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Exploit the unit's speed for lateral repositioning and flanking — reposition unseen, hit targets from the rear or sides for bonus flank damage. {2} Spread into loose formation vs tight shield walls (e.g. Imperial Spears) — route the charge around the line, envelop from the side, and stagger-lock with Shock Attack. {2}",
+    "formation": null,
+    "tips": "Alternative engagement order: move/flank first, press Shock Attack, then charge into melee once in position — lets you hit backline/high-value targets from behind. {2} Even without an open flank route, walking the sides of a fight instead of charging straight at the center usually nets bonus flank damage. {2} Cost-effective unit: sacrificing Condottieri Guards to secure map control or an objective trade is often a net win given the 175 leadership cost. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Fortebraccio Pikemen",
+        "rel": "counters-you",
+        "why": "braced pike formation eats unsupported charges; breaks only with CC support.",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Imperial Spears",
+        "rel": "counters-you",
+        "why": "tight shield-wall formation — head-on charge yields little; requires flank spread-and-envelop.",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Shock Attack"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Primary combo: charge launches the Shock Shieldbash after it; {1} Shock Attack (press 2) is your main DPS spell. {1} Cost-effective: with low leadership, sacrificing the unit to secure map/objective trades (175 leadership for 700 leadership's enemy value) is a clear net win. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Indigenous Poncho",
+      "date": "Jun 2020",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type strength ratings (Blob/Duel/Skirmish/Flank) present in any source.",
+    "No dedicated 'top-pick' doctrine tier — only Mandatory/Filler; Amya did not specify relative picks within each tier.",
+    "No hero pairing guidance given.",
+    "No formation recommendations in any source.",
+    "Indigenous Poncho video (2020, Season 3) — stat comparisons and patch-era mechanics should be vet-checked; newer sources may supersede."
+  ]
+}

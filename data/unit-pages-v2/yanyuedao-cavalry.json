@@ -1,0 +1,129 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "yanyuedao-cavalry",
+  "name": "Yanyuedao Cavalry",
+  "headerMeta": "Golden era · Cavalry · 320 leadership · Seasonal (S15: Eternal)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 4,
+      "skirm": 8,
+      "flank": 8
+    }
+  },
+  "pitch": "A flank-cavalry glaive unit that opens with a charged Dread Unleashed from behind or the side, strikes twice on impact, and rides the momentum into an escape rather than overcommitting. Its damage lead comes from timing the charge release and knowing when to bail, not from raw survivability — Duelling is its weakest fight rating by a wide margin.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Yanyuedao Blue Slashing Doctrine",
+      "note": "exact name unconfirmed by source",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Toughness Doctrine V",
+      "note": "−33% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Healing Punisher Doctrine",
+      "note": "+20% DMG vs healing units",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Yanyuedao Resistance Doctrine",
+      "note": "−15% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Yanyuedao CCi Doctrine",
+      "note": "unit-unique control immunity, alt for Leadership",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Overwhelming — for Spartan kill or blob charge; 65% minimum dmg, not affected by dmg reduction.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": false,
+      "body": "For skirmish, or higher dmg output on smaller unit packs.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Enter from flank or from behind the enemy pack — despite CC-immunity on the first strike, never lead a straight charge. {1} Excels on smaller maps where lancers or other specialized cavalry are hindered by terrain; very versatile there. {1}",
+    "formation": null,
+    "tips": "Charge the 1 (Dread Unleashed) from optimal distance and release at max potential; the unit strikes twice on impact and the charge can be cancelled once the second hit registers. {1} Often better to release around 70% charge if the timing is right than to wait for 100% and miss the window. {1} Learn the full timing of the 1 — releasing it at the last moment lets you re-trigger it right after the double slash. {1} Press 1 for a first slash then a second; X-move away after the first if needed, otherwise wait for the second before X-moving (repress 1 to recharge as soon as possible). {1} Press 2 (Rushing Blow) as a momentum builder on straight-line runs, or as an escape — it moves each model in the direction it's facing. {1} Entering a blob facing pikes, Stalwart, or other speed-bonus units: X-move side to side repeatedly to stop moving — the damage lost is small next to the damage dodged. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Mounting Dread",
+      "1",
+      "1",
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Dec 2024",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Counters section (Loses to / Struggles vs / This unit counters) exists in the source guide — recorded as empty, not fabricated.",
+    "The guide's edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; the unit is not on the Chaos changed-units shortlist, but build/doctrine advice may still be stale for the current season.",
+    "'Don't put' doctrines: the source left this as a literal placeholder, never filled in.",
+    "Two video channels (denetax, yeqiudespotic) have queued or candidate videos for this unit but no captured transcript exists yet."
+  ]
+}

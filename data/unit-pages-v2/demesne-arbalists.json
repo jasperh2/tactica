@@ -1,0 +1,129 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "demesne-arbalists",
+  "name": "Demesne Arbalists",
+  "headerMeta": "Silver era · Ranged Infantry · Crossbow · 160 leadership · Tier 3 / Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "High per-shot damage ranged unit that demands close positioning to deal impact—the 2026-06-25 Piercing Bolts nerf (target count 2→1, fire rate −16%) strips away its multi-target value and may force a playstyle shift. Stack Double Fire + Bolt Penetration to recover shot count and damage scaling.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Double Fire Doctrine",
+      "note": "unlocks Double Fire (unit-unique, can't combine with Focus Fire, 45s CD), +12% rate of fire, +1 shot to spell (6→7 arrows)",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Bolt Penetration Doctrine",
+      "note": "+1 additional target penetration on top of baseline Penetrating Shots",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Ammo Doctrine",
+      "note": "+35% ammo, +140 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Accuracy Doctrine",
+      "note": "+40% shooting accuracy, +80 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Crossbow II",
+      "note": "+50 piercing DMG, +200 piercing penetration; alt if no Ammo Doctrine or no Unit Damage V",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Hero Damage Doctrine V",
+      "note": "pen-focused alternative to Accuracy/Ammo",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Generic Piercing Damage Doctrine",
+      "note": "alternative to Accuracy/Ammo",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": false,
+      "body": "Do NOT take the last node.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom Line",
+      "recommended": true,
+      "body": "Take all nodes.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Huge damage drop-off — position within brawl range to deal impact; press 2 extends reach. {1}",
+    "formation": null,
+    "tips": "Never overlap Double Fire with Double Shot; execute them sequentially. {1} Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to spell (6→7 arrows); Bolt Penetration is also mandatory. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Strength ratings (Blob/Flank/Skirmish/Duel) absent from all sources; fightRatings stays null.",
+    "No Counters / Loses-to / Hero-threat section in Amya guide.",
+    "No dedicated Tips & Tricks section beyond playstyle notes (OP gap, not fabricated).",
+    "No formation guidance from any source.",
+    "No matchup cards (loses to, counters, synergy pairs).",
+    "No control loop or ability-sequencing numbers.",
+    "Build and playstyle sourced from Amya guide edited 2026-05-27, before the 2026-06-25 Chaos patch (Piercing Bolts 2→1 target, fire rate −16%). Multi-target-penetration emphasis and Playstyle notes assume pre-patch mechanics; role guidance may need post-patch revalidation.",
+    "Doctrine name caveat in OP: 'Double Fire Doctrine' and 'Bolt Penetration Doctrine' carry OP's own '[confirm exact name]' flags — not independently verified."
+  ]
+}

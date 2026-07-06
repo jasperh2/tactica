@@ -1,0 +1,173 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "queens-knights",
+  "name": "Queens Knights",
+  "headerMeta": "Golden era · Buckler Infantry (shields) · 280 leadership · T5 · S-Tier",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "S",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 5,
+      "duel": 10,
+      "skirm": 9,
+      "flank": 8
+    }
+  },
+  "pitch": "A duelist that dominates one-on-one trades with invincible dash mechanics and strong block. Strong against low-count units but struggles against high-count formations and block-heavy units; success depends entirely on dash timing.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Anti-Infantry Doctrine",
+      "note": "+200 dmg infantry, +90 block",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Iron Damage Doctrine V",
+      "note": "Ironsides",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Queen's Knight Toughness Doctrine",
+      "note": "−5s CD on Bash & Thrust",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Hero Damage V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Damage Doctrine",
+      "note": "+90 piercing",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type dmg in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Queen's Knight Battle Doctrine",
+      "note": "block invuln 2s after Run 'Em Through",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Damage Reduction Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "Amya recommends as the best option.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": "Timing on spell 1 (double-dash invincible forward) is everything — no simple rule, learned per matchup. Occasionally press 2 first into 1 to entirely change the matchup. {1} Retreat after one dash-forward with spell 1 to preserve the unit rather than pushing deeper into a bad trade. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Block units",
+        "rel": "counters-you",
+        "why": "unit loses to block-heavy compositions",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "High-count units",
+        "rel": "counters-you",
+        "why": "struggles against multi-model formations",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Low-count units",
+        "rel": "pairs",
+        "why": "this unit counters low-count squads",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Spell 1 — dashes forward twice (occasionally three times) dealing big damage; unit is completely invincible during this attack. {1} Spell 2 — small shieldbash with okay-ish damage and good block/counter effect. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Oct 2024",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Pre-2026-06 rework advice: Amya guide predates the 2026-06-25 patch's core skill rework (Base Block 750→950, Block recovery 27→47, Run 'Em Through invincibility 1s→1.6s but max stab hits 3→2). Timing rules and specific matchup play may no longer apply.",
+    "No veterancy guidance beyond Amya's 'Top Line' recommendation.",
+    "No positioning, formation, or battle-role specifics available.",
+    "No matchup-specific unit cards beyond generic counter categories.",
+    "No control loop or ability-sequence details.",
+    "Hero-pairing guidance: Amya notes 'Any', but no specifics available."
+  ]
+}

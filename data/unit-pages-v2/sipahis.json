@@ -1,0 +1,176 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "sipahis",
+  "name": "Sipahis",
+  "headerMeta": "Heroic era · Melee Cavalry (Steel Mace/Blunt) · 215 leadership · T4 · Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 5,
+      "duel": 1,
+      "skirm": 4,
+      "flank": 2
+    }
+  },
+  "pitch": "A charge-and-stomp disruptor rather than a killer: Quick Charge leaps knock down and chain into Impassioned for a second wave of knockdowns and a 50% damage-taken debuff, while Croupade grinds out 12 seconds of stomps and stacking defense. It folds instantly against high-damage low-speed anti-cav like Stalwarts and Fortebraccio if you charge into their brace, so it wins by disrupting shielded infantry and simple cavalry matchups, not by trading into anti-cav.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Paradox Doctrine",
+      "note": "3/6/9",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Devastation Doctrine",
+      "note": "disputed — Sipahis don't auto-attack between Croupade stomps, so a later source calls it near-useless now {2}",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Healing Punisher Doctrine",
+      "note": "+20% DMG vs healing units",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & Resistance Doctrine V",
+      "note": "−5% DMG taken, alt for Leadership",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": false,
+      "body": "Recommended over Bottom because Bottom's node is bugged and doesn't function.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom Line",
+      "recommended": false,
+      "body": "Used instead to stack all available damage bonuses — charge before losing Croupade adds a 15% damage bonus from this line; no bug mentioned.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Wait until the enemy has just finished dealing their brace/stomp damage, then trigger Impassioned so every model leaps again — including ones still mid-air — for roughly double leap damage in one move; follow up with Croupade to clean up if it's safe. {2} Charging in a straight line and letting the unit jump as often as possible keeps it effective; charging near a unit or barricade makes models leap in random directions instead. {2}",
+    "formation": null,
+    "tips": "Croupade stomps knock down and stack a 20% defense boost per stomp for 12 seconds. {2} Quick Charge leaps trample and knock down everything hit; Impassioned's final leap hits slightly harder and applies 50% increased damage taken to everyone hit, for 4.5 seconds. {2} You can charge or Croupade into most braced formations for disruption value even without a clean kill — the exceptions are named in Matchups. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Symmachean Stalwarts",
+        "rel": "counters-you",
+        "why": "charging them is a straight death sentence",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Fortebraccio Pikemen",
+        "rel": "counters-you",
+        "why": "doesn't need speed to deal damage — don't charge into its brace",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Falconers",
+        "rel": "counters-you",
+        "why": "high damage, low-speed anti-cav — big damage, big bad (name as spoken; no exact unit-db match)",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Orochi Samurai",
+        "rel": "counters-you",
+        "why": "high damage, low-speed anti-cav — big damage, big bad",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Imperial Pikes",
+        "rel": "counters-you",
+        "why": "high damage, low-speed anti-cav — big damage, big bad (likely Imperial Pike Guards, unconfirmed)",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": "You pressure: shield units in general (charging is safe against all but Stalwarts) and simple shielded infantry, which Croupade handles well while supporting your team."
+  },
+  "controls": {
+    "loop": [
+      "2",
+      "1",
+      "Impassioned"
+    ],
+    "loopMarks": [
+      1,
+      2
+    ],
+    "notes": "Press 2 (Croupade) first for its defense buff as a starter, then press 1 (Quick Charge), then the follow-up spell Quick Charge unlocks. {1} During a charge, Impassioned becomes available for a final leap dealing extra damage, knocking down everyone hit, and applying +50% damage taken for 4.5s. {2} Croupade stomps for 12 seconds, each stomp knocking down and stacking +20% defense. {2} Mastery: Croupade gains +5% damage per enemy hit, stacking 5× to +25%; Glory of Empire grants CC immunity while leaping in any skill plus reduced piercing damage taken (amount undisclosed); Cool Under Fire triggers unit-wide +defense and +movement speed for 10s on first damage taken, resetting on Croupade activation; a rare Assassin's trait grants +30% damage dealt for an unspecified duration after a Croupade kill on a hero. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Nick (PixLNickz)",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Veterancy line is unresolved: Amya calls Bottom Line bugged/non-functional and recommends Top Line (edited 2026-05-26); PixLNickz (2026-05-31) uses Bottom Line for damage stacking without mentioning any bug. No source reconciles this.",
+    "Two mastery-node numbers are undisclosed by developer support per the PixLNickz transcript: piercing damage reduction on Glory of Empire, and the exact duration of the Assassin's-trait damage buff.",
+    "Amya's guide has no Counters section (OP's 'Don't put' is a literal placeholder); all matchup content here comes from the PixLNickz transcript only.",
+    "No formation guidance (F1/F2 or equivalent) exists in any source.",
+    "Amya's guide was last edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch anchor; doctrine/build guidance is unconfirmed against the current patch.",
+    "\"Falconers\" and \"Imperial Pikes\" are the transcript's spoken names; unit-db has no exact-match unit for the former and two plausible Imperial pike units for the latter (Imperial Pike Guards is the only pike-classed one) — kept as-spoken rather than silently renamed."
+  ]
+}

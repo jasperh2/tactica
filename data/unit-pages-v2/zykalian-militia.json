@@ -1,0 +1,173 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "zykalian-militia",
+  "name": "Zykalian Militia",
+  "headerMeta": "Silver era · Ranged Infantry (special) · 175 leadership · T3 Seasonal (S: Legacy of Fire)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "S",
+    "rarity": "T3",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 0,
+      "skirm": 4,
+      "flank": 0
+    }
+  },
+  "pitch": "A ranged-exotic grenadier with elite blob performance but zero melee survivability. The unit demands constant repositioning and ability rotation to stay effective, especially post-nerf when cooldowns and reload times stretched.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Blunt Damage Doctrine",
+      "note": "+90 blunt DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% DMG in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Mobility Doctrine V",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s {1} / 8s — unarbitrated",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Scorching Doctrine V",
+      "note": "+50 burning DPS",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Zykalian Supply Doctrine",
+      "note": "unit-unique: +20% ammo",
+      "marks": []
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9 hits, alternative to Scorching or Siege",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Blunt Penetration / Hero DMG doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top path",
+      "recommended": false,
+      "body": "6 points, culminates in +288 fire damage",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom path",
+      "recommended": false,
+      "body": "9 points, culminates in +40% ammo",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Deploy on a protected flank behind blob formations {1}. Maintain constant X-movement after each V or ability-2 cast — never stand still {1}. Reposition to keep DPS pressure up; vulnerable to fire-spec units (musket liquid fire, enemy Zykalians, fire rune interactions) {1}.",
+    "formation": null,
+    "tips": "Press V to damage front-line blob (less ammo, more spread than spell 1). Press ability-2 to hit back line and apply debuff; hard-priority target if enemy has flamers or rival Zykalian units {1}. ALWAYS cycle V and ability-2 {1}; solitary spell-2 play loses 50% potential damage. Post-patch: throwing-skill cooldowns now 16s (↑ from 10s); reload time +33%; poison stack cap 8 (↓ from 20) {3, 4}. Avoid spell 1 to preserve ammo economy {1}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Musket Liquid Fire / Rival Fire units",
+        "rel": "counters-you",
+        "why": "Multi-part fire interaction (musket liquid fire, enemy Zykalian grenades, fire runes) stacks uncontrollably {1}.",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Melee Divers",
+        "rel": "counters-you",
+        "why": "Zero flank/duelling rating; must reposition constantly or die {1}.",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "You pressure: blob frontlines and ranged backlines via V and ability-2 rotation, applying fire DPS and poison debuff {1}."
+  },
+  "controls": {
+    "loop": [
+      "V",
+      "Ability 2",
+      "X-move",
+      "Reposition"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Core loop is **V (grenade) → ability-2 (debuff + back-line pressure) → X-move instantly**. Post-patch, ability cooldowns stretch from 10s to 16s {3, 4}, requiring tighter sequencing. Spell 1 is a trap in normal play (ammo sink); reserve it only for overstacked poison refresh if needed. Hero pairing: any {1}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Mar 2025",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Patch audit",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Changed-units shortlist",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Post-patch playbook: sources predate the 2026-06-25 nerf (cooldowns +60%, reload +33%, poison cap −60%); rotation viability and positioning urgency may shift. Doc priority flagged High.",
+    "No hero-specific pairing notes: Amya states 'Any'; no hero-exclusive synergy or counter coverage.",
+    "No counterplay notes from hostile matchup perspective (how to play against Zykalian)."
+  ]
+}

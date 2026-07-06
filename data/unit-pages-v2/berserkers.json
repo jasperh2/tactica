@@ -1,0 +1,205 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "berserkers",
+  "name": "Berserkers",
+  "headerMeta": "Heroic era · Melee infantry · special · 245 leadership · Seasonal (S7: Wolves of Ragnarok)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 3,
+      "skirm": 5,
+      "flank": 9
+    }
+  },
+  "pitch": "A mobile flanking unit with incredible damage output and sustain that can single-handedly swing fights through smart positioning and combo execution. Loses to anti-tank units and risks chaos if Frenzy activates near pikes, but top-tier in skirmish or when caught in a flank.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9-hit damage boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Linebreaker Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Berserk Unique Doctrine",
+      "note": "20% cooldown reduction",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Defence boost",
+      "note": "−5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Defence boost",
+      "note": "+All Def & +HP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Slashing Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Defence Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Movement Speed Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top-line",
+      "recommended": false,
+      "body": "More defensive — kill more, stay in fight longer. ~6,500 HP on Frenzy heal.",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Mix-line (bot until +25% rage, rest top)",
+      "recommended": false,
+      "body": "Balanced aggressive and defensive play.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Won't do well face to face — use as a flanking elite strike-force or special-ops unit. High mobility and ranged resistance let it capture uncontested points or rapidly reinforce a hero fight. Watch the map; pull Berserkers to swing a losing fight decisively. {2}",
+    "formation": null,
+    "tips": "Control Frenzy timing carefully — unit loses direct control during activation and may attack the nearest target instead of your chosen one. {2} The 3.08s cooldown on Berserker Assault (skill 2) drops to 2s with the unique doctrine's 20% reduction. {1} Hiding Berserkers before a surprise charge (behind a corner, under stairs, inside a shield wall) lets enemies hesitate to commit. {2} Check for pikes and cavalry first — those are the hard counters; if absent, charge confidently. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Pike units",
+        "rel": "counters-you",
+        "why": "infantry pikes and halberdiers counter melee charges; formation-breach tricks can let even blue-tier halberdiers kill Berserkers {3}",
+        "house": false,
+        "marks": [
+          3
+        ]
+      },
+      {
+        "name": "Cavalry",
+        "rel": "counters-you",
+        "why": "hard counter to the unit",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Imperial Javelineers",
+        "rel": "counters-you",
+        "why": "best direct counter beyond pikes — excel at taking down high-health targets",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Ranged units",
+        "rel": "hero-threat",
+        "why": "generally struggle vs Berserkers: high ranged resistance + fast charge closes distance",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Men-at-Arms",
+        "rel": "counters-you",
+        "why": "frontal push from Berserkers obliterates them — can't hold the line against T4 units",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": "You pressure: no specific units named — a great flank unit that provides lots of DPS in a fight."
+  },
+  "controls": {
+    "loop": [
+      "2",
+      "1",
+      "2",
+      "3",
+      "2",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Combo: press 2 (Battle Madness) before engaging, instantly press 1 to cancel it, press 2 when reaching target, spam press 3 (Rage) so you rage with max DMG-reduction passive, then keep pressing 2 once and 3 while fighting. {1} Fast-combo variant: 2 in void before engaging, then 2-1-2-3 to activate Frenzy at max stacks. {1} Abilities: Odin's Charge (charges in, knocks enemies down, generates rage), Berserker Assault (AoE, strong after a charge into a group or knocking a hero for quick execution), Frenzy (signature — heals ~4,500 HP on bot line / ~6,500 on top line, grants +50% damage dealt but takes +50% damage). {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Mr. Div (crazymetalord)",
+      "date": "Jun 2021",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "superkitowiec",
+      "date": "Sep 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Amya's doctrine/build guidance (May 2026) predates the Chaos patch (Jun 2026) and has no post-patch update — current season viability unconfirmed.",
+    "Numeric stats from the 2021 crazymetalord video (HP, armor, damage, Frenzy heal) are 5+ years old — recommend vet sanity check against current tooltips.",
+    "No house-specific build data (card, Q&A, playbook) was captured for Berserkers — all guidance is public-academy-source."
+  ]
+}

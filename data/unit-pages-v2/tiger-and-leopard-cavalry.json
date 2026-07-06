@@ -1,0 +1,153 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "tiger-and-leopard-cavalry",
+  "name": "Tiger and Leopard Cavalry",
+  "headerMeta": "Golden era · Cavalry · charge · 310 leadership · Chaos Season (T5)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "To place (new/recently buffed)",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 8,
+      "flank": 8,
+      "skirm": 7,
+      "duel": 4
+    }
+  },
+  "pitch": "A newly-buffed elite lancer cavalry that stacks passive damage the longer it charges. Build for maximum charge-cooldown reduction and respect the damage scaling — start charges as far as you can and watch the passive stack.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Lancer's Last Stand",
+      "note": "+40% DMG at <60% headcount; swap out then back to apply to full strength",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Lancer Charge Doctrine V",
+      "note": "−14s charge CD, +100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Charge Defence Doctrine",
+      "note": "−50% DMG taken while charging, −6s charge CD",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Toughness Doctrine",
+      "note": "−33% DMG taken on first hit, scales down through 8 hits",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Sprint Doctrine",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "+225 Charge DMG Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "−DMG Taken Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Slashing Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Hero Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Recommended by Amya for primary use.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "No explicit positioning guidance in sources.",
+    "formation": null,
+    "tips": "Respect the passive and charge from as far as you can — the longer the charge, the more speed and passive damage stack. {1} Ability rotation: press 1 (simple charge) → 2 (area impact, similar to Liaos or Kheshig) → 3 (crowd control cleanse and charge again); typical play is 1 → 2 → 3 repeat. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability 1: simple charge. {1} Ability 2: area-impact damage, similar to Liaos or Kheshig. {1} Ability 3: crowd control cleanse + charge out. {1} Charge length scales both movement speed and passive damage — longer charge = bigger payoff. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No counters section, hero pairing, or conditional matchups in any source.",
+    "No dedicated video transcript captured — Denetax noted this as a strong candidate that was passed over.",
+    "Doctrine list and Tips near-identical to Dagger-Axe Lancers guide; recorded as given, not cross-checked.",
+    "Battle role positioning and formation guidance absent entirely.",
+    "MetaTier 'To place' — awaiting Amya's standard ~1-week post-patch update."
+  ]
+}

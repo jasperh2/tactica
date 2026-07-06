@@ -1,0 +1,131 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "coutiliers",
+  "name": "Coutiliers",
+  "headerMeta": "Chivalric era · Charge cavalry · 115 leadership · T2 mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "S",
+    "rarity": "T2",
+    "fightRatings": null
+  },
+  "pitch": "A lancer cavalry unit that excels with zero-cooldown charge spam when stacking Mastery and the two T5 charge-reduction doctrines. Load the Chargers trait to maximum stacks from far away; pair with the Lancer's Last Stand swap-trick to activate full-unit damage buffs after losses.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Lancer's Last Stand",
+      "note": "+40% DMG at <60% headcount",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Lancer Charge Doctrine V",
+      "note": "−14s charge CD, +100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Charge Defence Doctrine",
+      "note": "−50% DMG taken while charging, −6s charge CD",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Mobility Doctrine V",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": "alternative to Sprint or Last Stand",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Assault Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & Resistance Doctrine V",
+      "note": "−5% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Hero Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "Recommended by Amya.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Open on charge from far enough away to fully load Chargers (DMG & speed increases stack every 1.5s, 0.5s with boots rune, max 3 stacks). {1}",
+    "formation": null,
+    "tips": "With Mastery + the four listed charge doctrines, this unit reaches 0s charge CD — spam X-move and charge to loop. {1} Apply Lancer's Last Stand swap-trick: if spawned with it active, swap to another unit then back; if just lost the unit, pull from supply and swap back to apply the 40%-damage buff to 100% of headcount, not just the damaged remainder. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X-move",
+      "Charge"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Zero cooldown on charge is the core identity — achieved by stacking the Lancer Charge Doctrine (−14s), Epic Charge Defence (−6s), and Mastery synergy. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026 (edited Jun 2026)",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type strength ratings (blob/duel/skirm/flank) present in source",
+    "No counter units identified or discussed in source",
+    "No hero-pairing recommendations given",
+    "No matchup analysis (pairs-with or pressures)",
+    "No captured video transcript — Coutiliers-specific guidance transcripts not available in the 20-channel scan"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "onna-musha",
+  "name": "Onna-musha",
+  "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 235 leadership · No mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": "A Heroic-era anti-cavalry pike line that braces against charges, sitting at C-tier — meta but very situational rather than a priority pick. Documentation is thin: the only build guidance on file is a single house veterancy screenshot from June 2023, well before the current balance state.",
+  "doctrines": [],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [],
+  "gaps": [
+    "No Amya guide exists for this unit — the tierlist row is the only Amya-sourced content (C tier, T4, no mastery).",
+    "Fight ratings (Blob/Flank/Skirmish/Duelling) not captured — Onna-musha is absent from unit-strengths.json.",
+    "The only veterancy build on file is a house screenshot from 21 June 2023 (~3 years stale) — balance patches since then may have changed the tree; treat as a rough starting point, not a current recommendation.",
+    "Confirmed NOT on the 13-unit [Chaos: A Realm Divided] (2026-06-25) balance-change list, so the stale veterancy build is at least not invalidated by that specific patch."
+  ]
+}

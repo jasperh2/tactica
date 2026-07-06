@@ -1,0 +1,56 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "xuanjia-heavy-cavalry",
+  "name": "Xuanjia Heavy Cavalry",
+  "headerMeta": "Golden era · Cavalry · 295 leadership · C-tier (T5)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "A momentum-driven cavalry with built-in CC immunity that shatters unprepared lines. Vulnerable the moment that immunity window closes — engage early to force it to burn protection, then lock it down with coordinated stuns before allies commit.",
+  "doctrines": [],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Longsword",
+        "rel": "counters-you",
+        "why": "Engage early to force CC immunity burn, follow up with ally stuns to neutralize",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Mar 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No dedicated vets-and-docs guide exists — only incidental mentions in Yeomen and Longsword hero guides.",
+    "No doctrine recommendations captured from any source.",
+    "No veterancy guidance captured from any source.",
+    "No battle-role positioning, formation, or control-loop mechanics documented.",
+    "No fight-type ratings (blob/duel/skirm/flank) — unit-db marks richDataEligible: false (C-tier gate).",
+    "No build data or usage patterns documented.",
+    "Incidental playstyle note: momentum-based (comparison to Yeomen: 'kinda like Xuanjia, but WAY less')."
+  ]
+}

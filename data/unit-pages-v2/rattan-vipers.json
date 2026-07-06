@@ -1,0 +1,117 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "rattan-vipers",
+  "name": "Rattan Vipers",
+  "headerMeta": "Silver era · Ranged infantry · special · 155 leadership · Honor Tree",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "Rattan Vipers are a poison-stacking support archer that wins by neutering enemy damage output rather than by killing directly. Keep it shooting instead of meleeing — especially against large shields — and feed it a rate-of-fire doctrine for the extra Poison Barrage volley, since ammo consumption is the main thing that shuts it down.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": "+60% ammo, +50 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Poisons Doctrine V",
+      "note": "+140 all AP, +60 poison DMG, stacks up to 2x — most of the unit's strength comes from the Poison Barrage passive, rarely worth stacking on one target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Archery Doctrine IV",
+      "note": "+100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Precision Doctrine V",
+      "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Bowmanship Doctrine V",
+      "note": "Arrow Rain +75% base piercing per hit, +150 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "Maximizes Poison Barrage (spell 2) — 3 volleys by default, 4 with Vet ROF plus a rate-of-fire doctrine, all applying the Poison Spread passive. Best overall since it massively increases impact during blob pushes. {1} An older source disagrees, rejecting Top Line's rate-of-fire/armor-pen bonuses as pushing toward raw damage — \"not this unit's job.\" {2}",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Bottom Line",
+      "recommended": false,
+      "body": "Constant DPS, hitting isolated units repeatedly to stack the poison passive on them — situational, mainly against small groups (rare). {1} The older source calls this the unambiguous pick instead, stacking movement speed, bonus-hit chance, poison-duration, and attack-slow to reinforce the debuff role. {2}",
+      "marks": [
+        1,
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Use ordinary circle targeting (ability slot 1) to keep the unit shooting instead of dropping bows for melee when enemies close — explicitly recommended against large-shield units so the archers don't waste bow-guard uptime. {2}",
+    "formation": null,
+    "tips": "Ammo consumption is the unit's known weak point; a Sprint-type doctrine has been suggested as a way to manage it. {2}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": "You pressure: large shield/spear lines and cavalry (attrition without landing meaningful damage once stacked, cavalry survivable only behind cover), Iron Reapers and Claymores (lose most damage output mid-charge once poison stacks apply), Shenji Grenadiers and Glaive-wielding heroes (\"completely useless\" against a properly stacked engagement) — per a 2022 source flagged for a current-patch sanity check."
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": "Poison Barrage (spell 2) fires 3 volleys by default; Vet ROF plus a rate-of-fire doctrine (e.g. Precision V's +9%) adds a 4th, each volley applying the Poison Spread passive. {1} Poison stacks up to 5 times, cutting a fully-stacked target's damage output by roughly 71% on average per the source's own testing. {2} No input-loop press-sequence is documented for this unit — only the circle-targeting mode setting covered under battle role."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "KnightStalker Online",
+      "date": "Apr 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Strength-by-fight-type ratings exist for this unit in the Amya guide or unit-db (fightRatings null) — recorded as a gap, not fabricated.",
+    "Amya's OP gives no Counters section and no Hero-pairing for this unit — both explicit source gaps.",
+    "A 2022 video source gives a different doctrine build (Accuracy/Arrow Rain mandatory, Breakthrough/Epic Archery filling remaining slots, a Sprint-type suggestion) than the current Amya/unit-db list and flags itself as pre-patch — left out of the doctrines list rather than merged, since the two builds aren't cleanly reconcilable.",
+    "The wall-push claim vs Namkhan Archers is a single house member's self-labeled personal opinion, not house-verified consensus, and is marked likely-stale from before the current patch cycle."
+  ]
+}

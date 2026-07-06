@@ -1,0 +1,119 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "vanguard-archers",
+  "name": "Vanguard Archers",
+  "headerMeta": "Silver era · Ranged Infantry · special · 150 leadership · T3M",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A standard archer unit rated tier-C in the current meta. As of Amya's 2026-06-16 edit (pre-patch), ranged infantry lack the early-game tempo to compete — focus damage is chip or healed, leaving frontline and cavalry to carry games.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Bowmanship Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Precision Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Archery Doctrine IV",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "LDS Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Whistling Arrow Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Artemis",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Damage line",
+      "recommended": true,
+      "body": "Standard for ranged units — DPS focus; all four units in the shared guide follow this.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Fight ratings (Blob/Flank/Skirmish/Duelling) not present in any source.",
+    "Battle role guidance absent — no positioning, formation, or timing tips in sources.",
+    "Unit-specific control loops / ability chain not documented. Playstyle comment in Amya guide is meta-viability critique, not actionable control.",
+    "Matchups / pressure relationships not covered — no sources name relevant units.",
+    "Veterancy note shared across 4 units; unit-specific recommendation would require another source.",
+    "Guide last edited 2026-06-16, 9 days before the Chaos patch (2026-06-25) — doctrine/build may be stale."
+  ]
+}

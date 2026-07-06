@@ -1,0 +1,141 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "wuxing-pikemen",
+  "name": "Wuxing Pikemen",
+  "headerMeta": "Silver era · Pike/Polearm infantry · anti-cavalry · 155 leadership · Mastery-driven",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A high-damage anti-tankiness specialist that lets its mastery do heavy work against the thickest units on the field. Its instant Fiery Blast rework (2026-06-25) accelerates engagement timing, but pre-patch guidance coverage is incomplete.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Polearm Doctrine III",
+      "note": "Pike Assault order unlock {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Toughness Doctrine V",
+      "note": "−33% DMG taken, weakens per hit, gone after 8 hits {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Hero Damage Doctrine V",
+      "note": "+115 hero DMG, +110 all AP {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% DMG in sieges {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "[Incomplete]",
+      "note": "Amya's filler options listed as X in source {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "[Incomplete]",
+      "note": "Amya's avoid options listed as X in source {1}",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Mastery-drive unit per Amya's archetype; bot-vet confirmed in source.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Engage high-tankiness targets with mastery-damage combo. X-move to close, press 2, let animation complete, press 1 {1}.",
+    "formation": null,
+    "tips": "Fiery Blast now activates instantly (was delayed pre-2026-06-25 patch) — timing for Wuxing Blast finisher tighter than prior guidance suggests {2}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Spartan Chosen",
+        "rel": "counters",
+        "why": "High-tankiness target — unit specializes in mastery DMG to these {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Iron Reapers",
+        "rel": "counters",
+        "why": "High-tankiness target — unit specializes in mastery DMG to these {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "2",
+      "1"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "X-move close, press 2 (Fiery Blast — now instant activation {2}), let animation complete, press 1 (Wuxing Blast finisher) {1}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "patch shortlist",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type ratings (blob/duel/skirmish/flank) present in any source.",
+    "Amya's guide predates 2026-06-25 Fiery Blast rework by one month (edit 2026-05-27); no post-patch guidance exists for current-meta playstyle or ability timing adjustments.",
+    "Filler and Avoid doctrine slots unfilled in Amya source (literal X placeholders).",
+    "No dedicated Counters section in Amya guide; no matchup coverage beyond mastery-damage targets.",
+    "No formation guidance or hero-pairing notes captured in any source."
+  ]
+}

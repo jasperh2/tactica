@@ -15,9 +15,49 @@
 
   <main class="academy-main unit-page-main" id="app-shell">
     <div id="unit-main">
+      <!-- V2 layout (cb-unit-page-v2/1 schema) — see unit-page-v2.boot.mjs / unit-page.boot.mjs's
+           boot() dispatch. Mutually exclusive with unit-identity-only/unit-full-guide below;
+           unit-page.boot.mjs toggles all three via `hidden`. Structure ported from the approved
+           reference site/units/unit-page-template-v2.html: corner-date header, pitch box,
+           doctrines/veterancy/battle-role/matchups/controls panels, footnote-legend footer.
+
+           DEEP-LINK ANCHOR IDS: the v1 tree below already owns the literal ids `veterancy`,
+           `role`, `matchups`, `controls` (its own #role/#matchups/#controls/#veterancy anchors) —
+           duplicating them here would be invalid HTML and would make getElementById ambiguous
+           regardless of which tree is `hidden`. Since only one tree renders at a time, this v2
+           tree uses `v2-<name>` ids that still carry the deep-link anchor name in full (v2 pages
+           are never linked to as bare #doctrines/#role/#matchups/#controls from outside this
+           file, so the small id difference is not user-visible). -->
+      <div id="unit-v2-page" class="v2-page" hidden>
+        <header class="hd" id="unit-v2-header" aria-label="Unit header"></header>
+        <div class="pitch" id="unit-v2-pitch"></div>
+
+        <section id="v2-doctrines" class="panel" aria-label="Doctrines">
+          <div id="unit-v2-doctrines"></div>
+        </section>
+
+        <section id="v2-veterancy" class="panel" aria-label="Veterancy">
+          <div id="unit-v2-veterancy"></div>
+        </section>
+
+        <section id="v2-role" class="panel" aria-label="Battle role">
+          <div id="unit-v2-battle-role"></div>
+        </section>
+
+        <section id="v2-matchups" class="panel" aria-label="Matchups">
+          <div id="unit-v2-matchups"></div>
+        </section>
+
+        <section id="v2-controls" class="panel" aria-label="Controls">
+          <div id="unit-v2-controls"></div>
+        </section>
+
+        <footer class="foot" id="unit-v2-footer" aria-label="Sources and notes"></footer>
+      </div>
+
       <!-- Identity-only invitation shape (93-of-149 case): header + tier + role line + one honest
-           absence note, in place of every guide region below — see unit-page.boot.mjs
-           isIdentityOnly. Hidden/shown as a pair with unit-full-guide. -->
+           absence note, in place of every guide region below (v1 stats-only path — see
+           unit-page.boot.mjs isIdentityOnly). Hidden/shown as a pair with unit-full-guide. -->
       <div id="unit-identity-only" hidden>
         <header class="unit-header unit-header-identity-only" id="unit-header-identity-only" aria-label="Unit header"></header>
         <p class="absence-note" id="unit-identity-absence-note"></p>

@@ -1,0 +1,211 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "imperial-spear-guards",
+  "name": "Imperial Spear Guards",
+  "headerMeta": "Heroic era · Melee Infantry · shields · 240 leadership · Honour unit (mastery available)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 4,
+      "skirm": 5,
+      "flank": 2
+    }
+  },
+  "pitch": "A frontline anchor with a shield wall that blocks ranged fire and soaks damage for your team. Its one real weakness is heavy block-break units like Iron Reapers and Liaos; against pikes and non-block-breaking threats, it trades damage to let your cavalry enter the fight.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Spear Doctrine VI",
+      "note": "CCi / Stand Fast",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Block Doctrine",
+      "note": "+300 block, −90 flat dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Steadfast Doctrine",
+      "note": "+130 def, −6% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Resistance Doctrine",
+      "note": "+300 HP, −5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Awareness Doctrine",
+      "note": "−500 cav charge dmg, −20% rear attacks",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Unit DMG V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Hero DMG/Piercing DMG/Penetration",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Most consistent — hold the line as your team's frontline anchor.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Plant on the frontline and keep Cover Commander active to tank ranged fire and enemy melee blobs. {2} Think about X-moving in to ensure you take the frontline — don't let your team get exposed. {2} Against heavy CC, you need Cover Commander's CC-immunity buff to avoid getting scattered. {2}",
+    "formation": "F2 (block) to group tightly and concentrate center damage; use this when your position denies flanking. {2} Otherwise stay mobile and reposition left/right to cover allies or intercept incoming threats like Imperial Pike advances from the side. {2}",
+    "tips": "Advance is a safe approach against brace-heavy pikes like Halberdiers — it knocks them down frontally and lets you hold the line without taking a beating. {2} After Cover Commander scatter, use Advance (once or twice quickly) to reform in tight formation, then snap back to Cover Commander within 1–1.5 seconds or you'll eat sustained damage without the defense buff. {2} CCi doctrine is mandatory when fighting on walls (trebs) or when enemy cavalry charge is incoming — the CC immunity buys you time. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Iron Reapers",
+        "rel": "counters-you",
+        "why": "heavy block-break — tight-stacked with Tiger Step they penetrate your shield wall",
+        "house": false,
+        "marks": [
+          3
+        ]
+      },
+      {
+        "name": "Liaos",
+        "rel": "counters-you",
+        "why": "block-break core threat",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Rattan Roundshields",
+        "rel": "counters-you",
+        "why": "poisoned/debuff units — your armor pool doesn't mitigate poison",
+        "house": false,
+        "marks": [
+          4
+        ]
+      },
+      {
+        "name": "Zykalian",
+        "rel": "counters-you",
+        "why": "exotic/debuff kit",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Pikes (Halberdiers, Pike units)",
+        "rel": "counters",
+        "why": "you soak damage and let your cavalry enter when the pike is baited into hitting you",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Bastard Sword",
+        "rel": "pairs",
+        "why": "heavy hero pairing recommended per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "You pressure: Silahdars (they prefer Death Strike over Decapitate into you, trading damage efficiency). Fragile shield units (Men-at-Arms) cannot hold the line the way you can."
+  },
+  "controls": {
+    "loop": [
+      "Cover",
+      "Commander",
+      "X",
+      "Cover",
+      "Commander"
+    ],
+    "loopMarks": [
+      2
+    ],
+    "notes": "Core micro: When winning the push, F2 + X forward, then snap back to Cover Commander immediately — this moves you forward while staying behind your unit (if you move without the unit, they follow from behind and you get exposed). {2} When losing the push, hold and use your hero weapon kit to stall until reinforcements arrive. {2} Vertra-Lock Shields trait (35% frontal reduction) is good only versus small groups for a few seconds; overall 35% frontal reduction helps but is inefficient versus bigger blobs. {2} Cover Commander grants more stats, CC immunity, applies CC effects to enemies while taking less damage from them. {2} Make doctrines as tanky as possible: tank trebs with CCi, tank cav charges with CCi, mitigate high-damage dealers (Reapers, Zweihanders) with stacking defenses. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Herlajis",
+      "date": "Jan 2024",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Herlajis (Iron Reapers)",
+      "date": "Oct 2023",
+      "house": false
+    },
+    {
+      "mark": 4,
+      "author": "Evolozgaming",
+      "date": "Jan 2021",
+      "house": false
+    },
+    {
+      "mark": 5,
+      "author": "Knightstalker",
+      "date": "May 2021",
+      "house": false
+    },
+    {
+      "mark": 6,
+      "author": "Superkitowiec",
+      "date": "May 2022",
+      "house": false
+    },
+    {
+      "mark": 7,
+      "author": "Amya tierlist",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Formation guidance (F1 vs F2 in what terrain) comes only from the Herlajis video; no secondary source confirms.",
+    "Ability/trait names from older video transcripts (2021–2023) may be stale; 'Vertra-Lock Shields', third ability in damage list — vet sanity check recommended post-capture."
+  ]
+}

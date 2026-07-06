@@ -1,0 +1,159 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "symmachean-stalwarts",
+  "name": "Symmachean Stalwarts",
+  "headerMeta": "Heroic era · Melee infantry · shields · 240 leadership · Seasonal (Legacy of Fire)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 10,
+      "skirm": 10,
+      "flank": 5
+    }
+  },
+  "pitch": "Stalwarts are the ultimate defensive anchor with near-unbreakable frontal hold and exceptional dueling power, dominating blob fights and skirmishes through perfect brace timing and cooldown resets. Vulnerable from behind and weak against heavy block-break units like Claymore with Linebreaker, they demand disciplined positioning and map awareness.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Spear Doctrine (CCi / Stand Fast)",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Stalwarts Brace Doctrine",
+      "note": "brace damage",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Spear Doctrine (+400 block)",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Defence Doctrine V",
+      "note": "−6% DMG taken & +80 all def stats",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Awareness Doctrine V",
+      "note": "−500 cav charge / −20% rear; situational vs divers + cav flank + reapers diving in",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Noble Blood Doctrine I",
+      "note": "only effective vs vipers / AOE comps",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Epic Spear Doctrine II (+250 block + 100% regen)",
+      "note": "block regen is near useless",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Middle",
+      "recommended": true,
+      "body": "Middle for +1 target, then rest top — optimal for most engagements.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Stalwarts are invincible from the front {2} and excel as the frontline shield-wall anchor. Position them to hold chokepoints and block ranged fire. Never advance into open space without map control — they are utterly vulnerable from behind {2}.",
+    "formation": "Use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart unit tightly for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that {1}.",
+    "tips": "X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up {1}. CCi (Stand Fast) is your reset button — pop it vs polearm ultying you, enemy Imperial Pike, cavalry charge, or any CC {1}. Never V (retreat) with Stalwart, only brace {1}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Claymore & Reapers (with Linebreaker)",
+        "rel": "counters-you",
+        "why": "heavy block-break units that overcome Stalwart defenses",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Cavalry",
+        "rel": "counters-you",
+        "why": "Any charge from behind can kill Stalwarts; front-charge also brutal {3}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "All ranged and melee units",
+        "rel": "pairs",
+        "why": "Stalwarts counter everything with good CCi doctrine timing {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "1",
+      "X"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Core loop: X-move in or advance, brace (1), repeat. {1} CCi (Stand Fast) resets both your block bar and any CC on you — pop it vs polearm ultimate, enemy Imperial Pike, or cavalry charge. {1} Master the brace-timing rhythm: brace is your everything — never use V (retreat only brace), stay braced, and re-brace every time the cooldown is up. {1} CCi is mandatory in every build (resets block AND breaks CC). {1} A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Evo Loz Gaming",
+      "date": "Jan 2021",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Video-transcript content is from 2021–2026; pre-patch (2021) ratings may not reflect current-season tuning; post-patch (Jun 2026) sources indicate hitbox-only nerfs (−12% brace, −18% stab) with no doctrine change."
+  ]
+}

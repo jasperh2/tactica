@@ -1,0 +1,149 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "myrmillones",
+  "name": "Myrmillones",
+  "headerMeta": "Heroic era · Melee infantry (Sword & Shield, Heavy Armor) · shields · 245 leadership",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 5,
+      "duel": 4,
+      "skirm": 5,
+      "flank": 2
+    }
+  },
+  "pitch": "A commitment-based shield unit built around one big shock hit — it goes all-in on the charge and has to hold its ground until the retreat window is safe. Anything that dodges or spreads against it shuts it down cold, which is why it eats CC the instant it commits.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "CCi Doctrine (Stand Fast)",
+      "note": "activates during your charge",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type DMG in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Block Doctrine",
+      "note": "+300 block, −90 flat DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Damage Reduction Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Unit-unique doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "Only recommendation given — no alternative line specified.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Commit to the charge fully, then hold formation until retreat is certain — breaking the stance early is the main way this unit dies. {1}",
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Anything that can dodge",
+        "rel": "counters-you",
+        "why": "loses to units that can dodge the charge",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Spread units",
+        "rel": "counters-you",
+        "why": "struggles against spread-out formations",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Stalwarts",
+        "rel": "pairs",
+        "why": "counters them, conditionally — \"only if they don't press CC-i at right timing\"",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Sunward Phalanx",
+        "rel": "pairs",
+        "why": "listed among the few things this unit counters",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "Hold BLOCK",
+      "Retreat"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Press 1 (Shield Sortie/charge) for a huge shock attack, then hold BLOCK formation and repeat the loop. {1} Doctrine flex beyond the mandatories: lifesteal, block, damage-taken, or unique doctrines — pick per matchup. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Nov 2024 (edited May 2026)",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Origin and 'Don't put' doctrines are literal placeholders in the source OP — never filled in by the author.",
+    "Tips & Tricks section is a single literal placeholder bullet — no content given.",
+    "No formation guidance beyond the post-charge BLOCK stance — no F1/F2 naming given.",
+    "Amya guide's doctrine/build guidance was last edited 2026-05-26, before the 2026-06-25 Chaos patch — may be stale for the current season, though Myrmillones is not on the Chaos changed-units shortlist."
+  ]
+}

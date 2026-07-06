@@ -1,0 +1,180 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "symmachean-paladins",
+  "name": "Symmachean Paladins",
+  "headerMeta": "Heroic era · Melee Infantry (Sword & Shield) · shields · 235 leadership · T4 · Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 5,
+      "skirm": 4,
+      "flank": 3
+    }
+  },
+  "pitch": "A defensive shielded unit that excels in close formation, with a unique block-drop mechanic that rewards skill through X-and-V canceling. Synergistic heal sustain keeps them in extended fights, but cav and maul-wielding heroes exploit both that weakness and their vulnerable back side.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Iron Damage Doctrine V",
+      "note": "Ironsides",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Anti-Infantry Doctrine V",
+      "note": "+200 dmg to infantry, +250 block — can swap for LS doctrine if more sustain needed",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Noble Blood Doctrine I",
+      "note": "Chivalric bleed/speed buff",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type dmg in sieges",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Range-Damage Mitigation Doctrine",
+      "note": null,
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Block-Increase Doctrine",
+      "note": "close to mandatory when paired with piercing damage doctrine slots",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Tank Doctrines",
+      "note": null,
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Average 1.68% heal per second; more offensive nodes; cooldown on bleed — for aggressive positioning into hero pairing synergy.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": false,
+      "body": "Average 1.2% heal per second; more defensive nodes; more armor; −10% rare-attack damage; +10% defense plus additional block — deliberately defensive, mitigates maul crunching.",
+      "marks": [
+        1,
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Don't charge in unless you have significant front-line support — they stack easily. Charge while in spread formation rather than tight block formation to avoid AoE hero CC lockdown; this results in the unit naturally surrounding the target after landing, a better overall trade-off. Use their healing to disengage and reposition: take aggro, activate the bleed skill, disengage, heal, repeat. {2}",
+    "formation": "Block/shield-wall formation (F2) useful for both charging in and holding while attacking; spread formation (F1) for low-threat vs high-threat CC scenarios. {2}",
+    "tips": "X-and-V cancel: press V immediately after X-move, unit drops block each time you use X — this resets the attack chain but exposes you to more damage, so only do it when free DPS available, not under threat. When facing large enemy numbers, stick to V (basic attack) only — slower kill but unit takes less damage. Cancel heal animation by instantly pressing V after pressing heal (skill 2) — the heal still resolves. {1} Weak Spot: hits on unit's back deal 20% bonus damage {2} (bottom-vet mitigates to ~10%); opponents actively exploit this."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Cavalry",
+        "rel": "hero-threat",
+        "why": "Can stun-lock the unit to death if not managed; primary live threat {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Maul-wielding heroes",
+        "rel": "hero-threat",
+        "why": "Dismount-stun into follow-up chains; second primary live threat {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "High Damage units",
+        "rel": "counters-you",
+        "why": "Direct counter per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Pikes",
+        "rel": "pairs",
+        "why": "This unit counters pikes per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "Pikes are your direct counter; pairing with hero covers the ground under threat."
+  },
+  "controls": {
+    "loop": [
+      "V",
+      "X+V-cancel",
+      "2",
+      "disengage"
+    ],
+    "loopMarks": [
+      1,
+      2
+    ],
+    "notes": "V-only (basic attack) is default into large enemy groups — no block drop, lower threat. X-and-V cancel (X-move → instant V) resets the attack chain but drops block each time — higher DPS but only safe when no dangerous heroes nearby. {1} Auto-fight on V while engaged is better than spamming the combo when facing overwhelming numbers. {1} Skill 2 (heal) can be animation-canceled by instant V-press after — the heal resolves regardless. {1} Symmachean Brotherhood trait governs slow, non-simultaneous attack timing (models don't swing at once), enabling the X-then-V pattern and extending engagements, but this also enables the block-drop mechanic. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Nov 2024 (edited May 2026)",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "HandBananaPvP",
+      "date": "Nov 2020",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Origin/era not specified in Amya's source; derived from ConqHub leadership tier + tierlist context.",
+    "HandBananaPvP transcript (2020) pre-dates patch history — exact doctrine/vet percentages are approximate and should be sanity-checked against current tooltips."
+  ]
+}

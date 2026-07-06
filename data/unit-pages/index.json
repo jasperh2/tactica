@@ -12,10 +12,8 @@
       "era": "Silver",
       "leadership": 60,
       "icon": null,
-      "richness": "stats-only",
-      "presentSections": [
-        "battleRole"
-      ]
+      "richness": "full",
+      "presentSections": []
     },
     {
       "slug": "archer-militia",
@@ -100,10 +98,8 @@
       "era": "Silver",
       "leadership": 90,
       "icon": null,
-      "richness": "stats-only",
-      "presentSections": [
-        "battleRole"
-      ]
+      "richness": "full",
+      "presentSections": []
     },
     {
       "slug": "banner-guards",
@@ -202,9 +198,9 @@
       "era": "Heroic",
       "leadership": 235,
       "icon": "assets/unit-icons/camel-lancers.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines"
       ]
     },
     {
@@ -281,7 +277,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -299,6 +294,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -361,7 +357,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -378,8 +373,7 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
-        "controls"
+        "battleRole"
       ]
     },
     {
@@ -517,9 +511,9 @@
       "era": "Golden",
       "leadership": 300,
       "icon": "assets/unit-icons/falconetti-gunners.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "matchups"
       ]
     },
     {
@@ -563,8 +557,8 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "formation",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -577,7 +571,7 @@
       "era": "Heroic",
       "leadership": 200,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
         "battleRole"
       ]
@@ -627,8 +621,8 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "formation",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -714,8 +708,10 @@
       "era": "Heroic",
       "leadership": 235,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole"
       ]
     },
@@ -742,9 +738,13 @@
       "era": "Heroic",
       "leadership": 240,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "veterancy",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -808,6 +808,8 @@
       "icon": "assets/unit-icons/iron-reapers.png",
       "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -826,7 +828,6 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
         "controls"
       ]
     },
@@ -870,9 +871,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
-        "veterancy",
-        "battleRole",
-        "controls"
+        "veterancy"
       ]
     },
     {
@@ -903,6 +902,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1062,6 +1062,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1106,8 +1107,9 @@
       "icon": "assets/unit-icons/liaos-rangers.png",
       "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -1124,8 +1126,7 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
-        "controls"
+        "battleRole"
       ]
     },
     {
@@ -1261,10 +1262,8 @@
       "era": "Heroic",
       "leadership": 235,
       "icon": "assets/unit-icons/onna-musha.png",
-      "richness": "stats-only",
-      "presentSections": [
-        "battleRole"
-      ]
+      "richness": "full",
+      "presentSections": []
     },
     {
       "slug": "order-of-the-dragon",
@@ -1280,7 +1279,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -1315,7 +1313,6 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
         "controls"
       ]
     },
@@ -1328,9 +1325,12 @@
       "era": "Heroic",
       "leadership": 230,
       "icon": "assets/unit-icons/palace-guards.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1473,6 +1473,8 @@
       "icon": "assets/unit-icons/queens-knights.png",
       "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1491,14 +1493,13 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
-        "controls"
+        "battleRole"
       ]
     },
     {
       "slug": "rattan-pikemen",
       "name": "Rattan Pikemen",
-      "tier": "Best Filler (top pick, unlettered)",
+      "tier": "Best Filler",
       "rarity": "T2",
       "classBucket": "melee",
       "era": "Chivalric",
@@ -1540,6 +1541,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1615,8 +1617,7 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "battleRole",
-        "controls"
+        "battleRole"
       ]
     },
     {
@@ -1689,6 +1690,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1774,6 +1776,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1868,7 +1871,6 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "formation",
         "battleRole",
         "matchups",
         "controls"
@@ -1933,7 +1935,6 @@
       "presentSections": [
         "doctrines",
         "veterancy",
-        "formation",
         "battleRole",
         "matchups",
         "controls"
@@ -1970,7 +1971,7 @@
     {
       "slug": "tiger-and-leopard-cavalry",
       "name": "Tiger and Leopard Cavalry",
-      "tier": "To place (new/recently buffed, unlettered)",
+      "tier": "To place (new/recently buffed)",
       "rarity": "T5",
       "classBucket": "cavalry",
       "era": "Golden",
@@ -1979,6 +1980,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -2020,9 +2022,10 @@
       "era": "Silver",
       "leadership": 150,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "veterancy"
       ]
     },
     {
@@ -2052,9 +2055,10 @@
       "era": "Heroic",
       "leadership": 245,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "veterancy"
       ]
     },
     {
@@ -2074,7 +2078,7 @@
     {
       "slug": "white-plume-guards",
       "name": "White Plume Guards",
-      "tier": "To place (new/recently buffed, unlettered)",
+      "tier": "To place",
       "rarity": "T5",
       "classBucket": "melee",
       "era": "Golden",
@@ -2083,6 +2087,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2148,6 +2153,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -2160,9 +2166,9 @@
       "era": "Golden",
       "leadership": 295,
       "icon": "assets/unit-icons/xuanjia-heavy-cavalry.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "matchups"
       ]
     },
     {
@@ -2179,7 +2185,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -2211,7 +2216,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -2226,6 +2230,8 @@
       "icon": "assets/unit-icons/yorkist-household-knights.png",
       "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2263,7 +2269,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -2278,6 +2283,8 @@
       "icon": "assets/unit-icons/zykalian-militia.png",
       "richness": "full",
       "presentSections": [
+        "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"

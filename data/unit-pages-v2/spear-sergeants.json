@@ -1,0 +1,154 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "spear-sergeants",
+  "name": "Spear Sergeants",
+  "headerMeta": "Heroic era · Melee Infantry / Shields · Early-game frontline · 215 leadership · Mastery available",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 5,
+      "duel": 3,
+      "skirm": 5,
+      "flank": 2
+    }
+  },
+  "pitch": "A reliable shield-wall anchor strong in PvE and early progression, using Cover Commander to toggle between holding ground and disrupting enemies. Vulnerable in competitive TW when opponents leverage lifesaver doctrine to target self-healing units.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Spear Doctrine VI",
+      "note": "Cover Commander / Stand Fast",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Hero Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Awareness Doctrine",
+      "note": "−500 cav charges, −20% rear attacks",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Noble Blood Doctrine",
+      "note": "100 melee dmg taken → bleed, +15% dmg/move while bleeding",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": "alternative to Noble Blood",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Tank Doctrines",
+      "note": "DMG taken / full block build {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Unspecified anti-unit doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Adds brace/stun-on-hit mechanic; generally better against cavalry {6}",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Top line",
+      "recommended": false,
+      "body": "Favors Cover Commander-heavy playstyle {6}",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "In line formation, shield wall resists ranged fire effectively even against high-tier ranged units {2}. Toggle actively between shield-wall (to screen/hold a point) and Cover Commander (to disrupt/chase or protect the player) rather than locking into one formation {2}. Stand at the edge of the unit cluster in CC mode to avoid flanking from behind {2}.",
+    "formation": "Line formation: shield wall holds formation well and resists ranged damage {2}. Block formation: behaves similarly to line {2}. Sheltron (tight circle): generally poor in PvP (vulnerable to AoE under siege templates), but benefits from it somewhat more than comparable shield units; effective in PvE {2}.",
+    "tips": "Advance ability: holds formation while approaching, stabs down enemies caught inside (in sheltron) or breaks formation on contact (in line). Use to close on ranged units or heavy frontal-damage dealers like pikemen {2}. Cover Commander: toggles between modes — switch away to force reposition mid-fight {2}. Keep activating/deactivating CC every 2s to reset the buff; timing resets at the start of each CC window {1}. In CC: damage taken initially reduced by 60%, gradually decreasing to 40% over 6 seconds; damage dealt increased by 45%, gradually decreasing to 30% over 6 seconds {1}. Per hit applies −10% pen debuff stacking up to 5 times (−50% pen total) {1}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Ranged units",
+        "rel": "pairs",
+        "why": "line formation shield wall blocks incoming fire; pull ranged targets onto the unit {6}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "CC toggle",
+      "Advance",
+      "Hold formation"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Cover Commander mode: toggle every 2s to reset buffs (60% → 40% dmg reduction and +45% → +30% dmg dealt, 6s decay) {1}. Debuff application: each hit applies −10% pen, stacking to −50% total over 5 hits — time braces before high-damage incoming {1}. Advance ability: use to close on ranged or high-damage-output units; holds formation in sheltron (stabs down enemies inside), breaks formation in line {2}. Don't go hard until debuffed what will hit you next {1}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "KnightStalker",
+      "date": "May 2021",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Hero pairing specifics: Amya notes 'Any' but no per-hero recommendations provided.",
+    "Competitive TW meta context sparse: KnightStalker source focused on PvE/new-player value; TW threat level relative to Paladins/Stalwarts only briefly mentioned.",
+    "Stun mechanic in KnightStalker (unexpected stagger without brace node) flagged as unconfirmed quirk; needs vet sanity check against patch notes.",
+    "Formations: detailed pros/cons only in KnightStalker; Amya sources do not discuss formation choice.",
+    "Controls: no ability cooldown numbers; Amya sources give buff decay (6s) and penetration math (-10%/hit, -50% cap) but no ability durations or other mechanics."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "palace-guards",
+  "name": "Palace Guards",
+  "headerMeta": "Heroic era · Melee infantry · shields · 230 leadership · T4M",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": "A shield-line brawler whose Guard the Front makes charge-type attacks — including charge cavalry — pass through for zero damage, but only once fully mastered; skip the mastery and the unit \"doesn't exist.\" It's not a blanket anti-cavalry pick and not a pike unit either — non-charge cavalry like Yendao bypasses the gimmick entirely, and holding brace instead of cycling it wastes the whole unit's damage.",
+  "doctrines": [
+    {
+      "tag": "top-pick",
+      "name": "Anti-Infantry Doctrine",
+      "note": "block matters more here than any defense stat",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Breakthrough",
+      "note": "all damage types",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Iron Sights",
+      "note": "damage + defense",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fight",
+      "note": "fallback substitute for the all-damage-type pick",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": "Cycle brace and unbrace rather than holding it — this is not a damage-soak unit, and sitting braced only lets a few reaching models fight while the rest stand idle. {2} Only hold brace continuously when defending while outnumbered or engaging too early, and only to refresh crowd-control immunity, not to brawl. {1}",
+    "formation": null,
+    "tips": "Engagement loop: charge in (hero assists), brace on impact, unbrace, brawl, repeat once the brace cooldown clears. {1} Counter-engagement: brace ahead of an incoming charge, unbrace once it lands and continue the brawl, use your hero to disrupt the charge. {1} A time-saving variant — push to fix distance then brace before the full cycle — only holds up if the unit won't take heavy incidental damage while walking unbraced. {1} Unit Mastery is treated as a hard prerequisite: without it, skip the unit entirely. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Yendao",
+        "rel": "counters-you",
+        "why": "non-charge cavalry — bypasses Guard the Front entirely, unlike other charge-type cav",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Silahdars",
+        "rel": "pairs",
+        "why": "trails Palace Guards as an escort, striking the clumped-up retaliators after it engages",
+        "house": false,
+        "marks": [
+          3
+        ]
+      }
+    ],
+    "pressure": "You pressure: Wuwei Mansion Guards — a decisively winnable matchup if played correctly (not just a costly trade), and the margin survives an early or imperfect unbrace."
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Brace",
+      "Unbrace",
+      "Brawl"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Charge-type attacks, including charge cavalry, pass through Guard the Front for **zero damage** — but this is not blanket anti-cavalry; non-charge cavalry ignores it. {1} Unbracing isn't just for brawling — it also **refreshes crowd-control immunity** for the next brace cycle. {1} Don't sit permanently braced vs Wuwei Mansion Guards: stack up, brace before their sweep ability lands, then unbrace for full-unit damage. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Herlajis",
+      "date": "Oct 2023",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Herlajis",
+      "date": "Apr 2024",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Superkitowiec",
+      "date": "May 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "The doctrine the source calls the single highest-priority pick ('turns the unit from great to amazing in 7 seconds') is never named in the transcript audio — omitted rather than guessed at.",
+    "No veterancy (top-line/bottom-line) recommendation exists in any source for this unit.",
+    "No formation (F1/F2) guidance exists in any source for this unit.",
+    "Ability and doctrine names ('Guard the Front', 'Anti-Infantry', 'Breakthrough', 'Iron Sights', 'sweep ability') are caption-derived and flagged by the source itself for a vet sanity check before being treated as verbatim current names.",
+    "Whether 'Breakthrough' (2023 video) and 'the all-damage-type doctrine' (2024 video) are the same doctrine is never stated by the source — kept as separate references rather than silently merged."
+  ]
+}

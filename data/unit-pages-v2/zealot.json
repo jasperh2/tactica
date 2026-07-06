@@ -1,0 +1,155 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "zealot",
+  "name": "Zealot",
+  "headerMeta": "Heroic era · Melee Infantry (Two-Handed Hammer) · special · 235 leadership · Seasonal (S24: Crown and Cross)",
+  "date": "2026-06-30",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 8,
+      "duel": 4,
+      "skirm": 5,
+      "flank": 7
+    }
+  },
+  "pitch": "A transformation-based shock hammer that crushes shield units and blob formations with knockdown while alive; activating Judgment Day mid-fight is its death sentence — heal and return, never transform under pressure. The unit excels against heavy-armored and fire-weak targets but collapses against high-burst claymores and Yorkists.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Paradox Doctrine",
+      "note": "unique doctrine, +300 block",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Noble Blood Doctrine (Melee)",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Devastation Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "−5% DMG Taken",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Top-line veterancy is the common recommendation.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Stay close enough to engage with Righteous Charge (press 1 from range, or dash from melee). X-move near fights and let enemies aggro rather than pressing V immediately — the passive Malice (counts artillery, hero kills, and incoming hits) builds faster if they come to you. {1}",
+    "formation": null,
+    "tips": "Never transform mid-fight. {1} Activate Judgment Day (press 3) only outside combat to heal and reposition — the transformation locks you immobile and vulnerable. {1} Righteous Charge (1) knocks down or dashes; Zeal Whirlwind (2) slams close-range. In Inquisitor form, press 1 becomes Dies irae (partial vacuum). {1} Malice passive counts kills AND damage-taken (any amount), not just kills — test in custom vs AI to see the difference. {1} Scorpio fire enrage applied before fight stays until end of game, even after unit swap or death. {1} Transformation animation cannot be cancelled once started — commit fully. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Claymores",
+        "rel": "counters-you",
+        "why": "high burst — loses direct matchup",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Yorkist",
+        "rel": "counters-you",
+        "why": "high burst — loses direct matchup",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "CC units",
+        "rel": "counters-you",
+        "why": "struggles; transformation makes vulnerability worse",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Shield units",
+        "rel": "counters",
+        "why": "CC + tanking knocks them down",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Fire-weak units",
+        "rel": "counters",
+        "why": "big blob impact when enraged",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Righteous Charge (1) — knockdown or dash depending on range; queue skill 2 while charging. {1} Zeal Whirlwind (2) — close-range slam; in Inquisitor form, dies irae becomes a partial vacuum pull. {1} Judgment Day (3) — transformation (immobilized during animation); only activate outside fights. {1} X-move + aggro-bait better than V-spam — Malice passive counts incoming damage. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No video-transcript guides cover Zealot — no timing numbers, formation guidance, or scenario-specific controls captured.",
+    "Doctrine recommendations flagged stale: Amya's guide edited 2026-05-26, predating the 2026-06-25 Chaos patch; house veterancy split (top vs bottom) documented but no updated Amya revalidation visible."
+  ]
+}

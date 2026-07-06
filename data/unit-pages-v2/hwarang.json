@@ -1,0 +1,129 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "hwarang",
+  "name": "Hwarang",
+  "headerMeta": "Golden era · Ranged infantry · special · 295 leadership · Seasonal (Silla: Hwarang's Oath)",
+  "date": "2026-05-27",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "A stacking ranged DPS unit that unlocks advanced abilities at 40 kills (unit or hero), then deletes at range with Arrow Rain and Artemis. Its weakness is the pre-stack grind and vulnerability to early pressure.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Bowmanship Doctrine V",
+      "note": "Arrow Rain deals 75% base piercing per hit, +150 piercing DMG; shoot anywhere with increased range, aim-bots closest target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": "+60% ammo, +50 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Precision Doctrine V",
+      "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Artemis",
+      "note": "unit-unique: Double Strings — fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": "only unit in the game where Leadership outvalues Unit DMG V",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Whistling Arrow Doctrine V",
+      "note": "alt for Artemis: every 3 hits inflict bleeding for 12% current health; GREAT in duo-Hwarang — replace Artemis on at least one unit to compound bleed across both",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Unit Damage Doctrine V",
+      "note": "fallback if not running Leadership",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Top",
+      "recommended": true,
+      "body": "DPS-optimized.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Full Bot",
+      "recommended": false,
+      "body": "Skirmish focus; Relentless Advancing capstone renames the unit.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Blob formation once stacked (40 unit kills or 8 hero kills, or a mix). Reposition with Skill 2 to dodge threats. {1}",
+    "formation": null,
+    "tips": "Normal combo: 1 → Arrow Rain → V+Artemis → 1 (wait for each step to end). Artemis and Arrow Rain do NOT stack. Arrow Rain: 160 meter range, 14s duration. Spell 1: 7s duration. Can play without Artemis and skip that step. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Stack",
+      "1",
+      "Arrow Rain",
+      "V",
+      "Artemis",
+      "1"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Stack first (40 unit kills or 8 hero kills, or a mix; stacks even when unit isn't deployed) to unlock advanced abilities. {1} Skill 1 ignores most shields and does insane DMG. Skill 2 repositions and dodges threats. {1} Arrow Rain is MANDATORY — normal V is really bad on Hwarang; Arrow Rain lets you shoot anywhere with increased range, aim-bots closest target in the circle. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type Strength ratings (Blob/Flank/Skirmish/Duel) provided in source.",
+    "No dedicated Counters / Loses to / Struggles vs section in source.",
+    "No Formations guidance in source (formation set to null).",
+    "No Tips & Tricks section in source beyond Playstyle/Ability-infos.",
+    "Doctrine 'Don't put' is a literal X placeholder in source — Amya did not fill this in.",
+    "Edit (2026-05-27) pre-dates 2026-06-25 Chaos patch; doctrine guidance may be stale, but Hwarang is NOT on the Chaos changed-units shortlist.",
+    "3 video channels (nobuunaga, intrix_gaming, hitokiribattosaitv) mention Hwarang in INDEX notes only; no transcript content exists on disk."
+  ]
+}

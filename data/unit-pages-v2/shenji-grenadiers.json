@@ -1,0 +1,158 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "shenji-grenadiers",
+  "name": "Shenji Grenadiers",
+  "headerMeta": "Golden era · Ranged infantry · cannon · 315 leadership · Both (Season IX & Tyranny Season)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "S",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 0,
+      "skirm": 0,
+      "flank": 0
+    }
+  },
+  "pitch": "A grenade-delivery unit rather than a shooter — its whole value is one well-timed spell-2 throw into a blobbed enemy, not its rifles. It has no listed counters or answer of its own, so its main risk is simply being caught out of position before that throw lands.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Blunt Damage Doctrine",
+      "note": "+90 blunt DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Anti-Heavy-Shield Doctrine",
+      "note": "+350 DMG vs heavy-shielded units like spearmen and Pavise Crossbowmen",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Extra Grenade Doctrine",
+      "note": "unit-unique — +1 grenade, enough for an additional volley",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": "−16% leadership cost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Mobility",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Tank Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Attack Speed",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Piercing",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Blunt Pen",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Bot",
+      "recommended": true,
+      "body": "The only veterancy the guide gives for this unit.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Keep it safe rather than shooting — firing the rifles directly is near useless, so hold it back and wait for the fight to blob up before committing the grenade. {1}",
+    "formation": null,
+    "tips": "Some maps let you throw grenades high up onto a wall to surprise the enemy on the other side. {1} Preferable to run two Shenji together — stacked nade volleys can wipe a blobbed fight outright. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Blue-tier archer (165 leadership)",
+        "rel": "counters-you",
+        "why": "shown making Shenji Grenadiers (and Iron Reapers/Glaive heroes) completely useless against it, in a clip from a different unit's guide",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "The loop is a single input: spell 2 fires the grenade. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "KnightStalker Online",
+      "date": "Apr 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No 'Counters' (Loses to / Struggles vs / This unit counters) section in the source guide.",
+    "No dedicated 'Tips & Tricks' section beyond the playstyle notes captured above.",
+    "The guide's last edit (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season.",
+    "The KnightStalker damage figures (2,000-2,200 point-blank, a few hundred from the 368 grenades, a little over 400 after the grenades) are spoken readouts of an on-screen combat log from 2022, pre-dating current-season balance — not independently verified against current numbers."
+  ]
+}

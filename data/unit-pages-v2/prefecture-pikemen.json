@@ -1,0 +1,102 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "prefecture-pikemen",
+  "name": "Prefecture Pikemen",
+  "headerMeta": "Silver era · Pike/Polearm infantry · anti-cav · 165 leadership · T3 Tier",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A cost-effective anti-cavalry line held by pike bracing and lifesteal damage. Weak in a solo fight without setup, so position behind allies and wait for raid glow before committing.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Hero Damage Doctrine V",
+      "note": "+115 hero DMG, +110 all AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Piercing Damage Doctrine",
+      "note": "+80 piercing DMG, +120 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Mobility Doctrine V",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "BloodThirsty",
+      "note": "lifesteal & damage",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Standard deployment across all scenarios.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Position one pike-length behind your front line. Wait for raid glow before charging; time the charge so the brace lands as enemies engage {1}.",
+    "formation": null,
+    "tips": "Charge, then press 2 after impact. Try to disengage and reset for another cycle; if pinned, sacrifice the unit rather than die in place. Expect slower mobility even with Sprint — avoid leading attacks into prepared defenses."
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "1",
+      "V",
+      "2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Set F3 Column formation to access hero buffs. Engage on raid-glow call; brace (1 → V) to trigger anti-cavalry mitigation, then press 2 (ability) on impact. Disengage and reset position after each cycle."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Strength by fight type (Blob/Flank/Skirmish/Duelling) absent from source.",
+    "Formation guidance (F1/F2 variants) not addressed in source.",
+    "Counters (loses-to / struggles-vs / this-unit-counters) section missing from source.",
+    "Hero pairing not specified in source.",
+    "Filler and 'don't-put' doctrine slots left as placeholders (X) in source.",
+    "Source edited 2026-05-27; no post-2026-06-25 season update captured."
+  ]
+}

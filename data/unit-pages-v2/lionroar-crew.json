@@ -1,0 +1,127 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "lionroar-crew",
+  "name": "Lionroar Crew",
+  "headerMeta": "Golden era · Ranged Infantry · cannon artillery · 325 leadership · Seasonal (S20: Lionfire)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "A slow, high-impact exotic unit that places deployable cannons to control objectives and deny enemy positioning. Demands strict teamwork and protection — without cover it crumbles, but well-positioned it unlocks map strategies unavailable to conventional infantry.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Lionroar Crew - Veteran",
+      "note": "−2s cannon deploy time",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Health & Blunt Defence Doctrine IV",
+      "note": "+440 HP, +115 blunt defence",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Blue Lioncrew Doctrine",
+      "note": "priority HP / defensive unique slot",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Health & Resistance Doctrine V",
+      "note": "+300 HP, −5% DMG taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": "−16% leadership cost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & Ammo Doctrine",
+      "note": "+300 HP, +15% ammo, alt slot 5",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Lionroar Crew - Blood of Iron",
+      "note": "+500 cannon endurance, alt for unique slot",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Damage Doctrines",
+      "note": "don't scale — don't apply to placed cannons; stack HP / Special instead",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Top",
+      "recommended": true,
+      "body": "Consistent in most situations.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Full Bottom",
+      "recommended": false,
+      "body": "Viable only if using the re-build tech, mostly competitive play.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Protect the crew — keep it behind your frontline, especially when cannons are deployed. Position cannons to control chokepoints and high-value map objectives. {1}",
+    "formation": null,
+    "tips": "Unit excels at taking out map structures (the bridge on Wall Fort, gates in other maps) even after tower-destruction nerfs, unlocking new strategies. {1} Pair with other units for protection; it alone will not survive focused fire. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Strength (fight-type) ratings present in Amya guide — Exotics archetype may not have standardized combat matchup labels.",
+    "No dedicated Counters or Loses-to section in source.",
+    "No dedicated Tips & Tricks section beyond playstyle context.",
+    "Hero pairing not specified in Amya guide.",
+    "House replay annotation (tzum-attack-replay-notes.md) references 'Lionroar Crew - Contingent' in siege context but analyst could not confirm build-menu label; flagged as inference not confirmed match.",
+    "Amya guide edited 2026-05-27, pre-dating the 2026-06-25 Chaos patch; Lionroar Crew is not on the changed-units shortlist, but build guidance may be stale — no post-Chaos update visible at capture."
+  ]
+}

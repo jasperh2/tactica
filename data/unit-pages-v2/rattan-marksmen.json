@@ -1,0 +1,102 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "rattan-marksmen",
+  "name": "Rattan Marksmen",
+  "headerMeta": "Silver era · Ranged infantry · 175 leadership · T3 · Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A high-per-shot poison crossbow line built entirely around Double Shot's double-bolt window, stacking poison and accuracy doctrines to punish anything that stands still. Its actual how-to-use is deferred to an external build video, so the in-thread guidance is doctrines and a veterancy pick only — no positioning, counters, or matchup notes exist on record.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Crossbow Doctrine V",
+      "note": "unlocks Double Shot — 2 bolts per shot for 8s, can't combine with Focus Fire, 60s CD",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Poisons Doctrine V",
+      "note": "+140 all AP, +60 poison DMG, stacks up to 2x",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "New Ammo Doctrine IV",
+      "note": "+35% ammo, +120 piercing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Crossbow Doctrine III",
+      "note": "+23% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Gunsight Doctrine V",
+      "note": "+40% shooting accuracy, +80 piercing DMG — likely the same doctrine as Demesne Arbalists' Accuracy Doctrine",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Double Fire Doctrine V",
+      "note": "older 2-bolt alt to Epic Crossbow V — 45s CD / +12% ROF baseline vs Double Shot's longer CD, shorter duration",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Poison Line",
+      "recommended": true,
+      "body": "The only veterancy option given for this unit.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": "Detailed how-to-use is deferred entirely to an external build video (\"How to use Rattan Marskmen correct | Conquerors blade Tutorial\", YouTube channel Grk) rather than in-thread text; the video itself was not transcribed. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Strength (by fight type) ratings given by the source — fightRatings is null, not fabricated.",
+    "No Counters section (Loses to / Struggles vs / This unit counters) exists for this unit in any source.",
+    "No formation guidance, no positioning guidance, and no matchup/pairing content exist in any source.",
+    "No control loop / key-input sequence is documented — the source defers all how-to-use to an external, untranscribed YouTube video.",
+    "The Amya guide's edit (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Rattan Marksmen is not on the Chaos changed-units shortlist, so doctrine guidance is not flagged stale, but it has not been revalidated post-patch either."
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "men-at-arms",
+  "name": "Men-at-Arms",
+  "headerMeta": "Heroic era · Melee infantry (Sword & Shield) · shields · 215 leadership · Honour Tree",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 4,
+      "skirm": 5,
+      "flank": 4
+    }
+  },
+  "pitch": "A self-healing shield-and-sword line-holder whose entire kit runs through Cover Commander — cycle it every ~2s to keep its hidden damage-reduction passive up, and never V. It's the mandatory stepping stone to Paladins and folds fast to high-burst pressure, unable to hold a line the way top-tier T4 infantry can.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Stamina Doctrine V",
+      "note": "−24% charge cooldown, +1 charge target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Charge Doctrine V",
+      "note": "+250 charge dmg, +450 charge block break",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Iron Damage Doctrine V",
+      "note": "Ironsides — replaceable with Epic Leadership Doctrine",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Anti-Infantry Doctrine",
+      "note": "+200 dmg vs infantry, +250 block",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Noble Blood Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": "alt for Ironsides",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type dmg in sieges",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top Line",
+      "recommended": false,
+      "body": "Amya: take if you can favorably help your unit (heavy armor, or fighting a medium-armor opponent) — rest Mid until 3/3 piercing dmg, rest non-selected line.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom Line",
+      "recommended": false,
+      "body": "Amya: take if you can't favorably help your unit (light armor, or vs medium such as musket) — rest Mid until 3/3 piercing dmg, rest non-selected line.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Top Line",
+      "recommended": true,
+      "body": "KnightStalker's preferred line — slashing penetration, increased slashing dmg, crit-value penetration, shield-bash passive, block maintained while attacking, slashing defense in shield formation; doubles as the practice build for Paladins' innate trait.",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "label": "Middle Line",
+      "recommended": false,
+      "body": "Anti-ranged shield setup — block maintained while attacking, +120 block, +6 piercing dmg, reduced bleed on pierced armor, +80 additional block; pairs well with pikes.",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "label": "Bottom Line",
+      "recommended": false,
+      "body": "+3% HP, +6% slashing defense, +10% dmg in shield formation, 20% less ranged dmg in shield formation, 10% less rear-attack dmg, self-heal (~3,750 HP over 15s, ~1/3 of unit HP); capstone stun-immunity-in-shield-formation node called weak since heroes rarely use plain left-click for CC.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Doctrines carry over on promotion to Paladins, so worth setting early even though this unit itself isn't strong. {2} Useful as a flanker, a temporary shield wall in front of pikes, or an opportunistic charger — not a line-holder. {2}",
+    "formation": "F3 (tight shield-plate) blocks ranged well: move to contact, hit V to concentrate fire, move in again, repeat — front-loads burst before spreading. {2} F2 (wider block) covers more frontage and suits charges, but is less effective than F3 funneling a chokepoint like a siege tower. {2} Open/Skirmish formation takes reduced ranged dmg — useful vs archers; press V to regroup overextended units. {2}",
+    "tips": "Cover Commander (order 2) is the best movement order before F3 unlocks — keeps formation compact, but the unit is aggressive and auto-engages, and won't disengage without explicit recall. {2} Reset Cover Commander every ~2s: the hidden dmg-reduction passive decays from 40% to 0% over 4-6s. {1}{2} Charging in tight shield formation concentrates hits on a small area — effective vs heroes, but doesn't reliably solo-kill one; more effective wiping lighter unshielded units. {2} Forgetting to press V after contact overcharges and can lose ~half the unit's strength. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Berserkers",
+        "rel": "counters-you",
+        "why": "final showcased clip: obliterated by a frontal Berserker push — MAA can't hold a line the way top-tier T4 infantry can",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Paladins",
+        "rel": "counters-you",
+        "why": "cited alongside Berserkers/Stalwarts as top-tier T4 infantry that can hold a line where MAA can't",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Stalwarts",
+        "rel": "counters-you",
+        "why": "cited alongside Berserkers/Paladins as top-tier T4 infantry that can hold a line where MAA can't; also shown countering an MAA back-charge via block-while-attacking",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": "You pressure: Low-tier units relying on hit-to-debuff, and heroes. {1} Charging into Berserkers is comparatively safe — blunt favors the charger. {2}"
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Cover Commander",
+      "Cover Commander (reset ~2s)"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Always fight in Cover Commander mode, never V — Cover Commander is the main DPS tool. {1} Charging in (no V/X-move) before Cover Commander stacks a mini-charge on the next impact; mini-charge cooldown in Cover Commander mode is 9 seconds. {1} Can charge to engage, but it's often better to simply activate Cover Commander and move in and out of combat. {1} Reset Cover Commander roughly every 2 seconds — a hidden passive gives dmg reduction that decays from 40% to 0% over 4-6s if not refreshed. {1}{2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "KnightStalker Online",
+      "date": "May 2021",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Amya's 'Don't put' doctrine slot is a literal unfilled placeholder ('X') in the source guide, not an omission on this page — no doctrine to avoid is named.",
+    "No exact charge-damage or cooldown numbers beyond the Stamina/Charge doctrine values — KnightStalker's transcript gives only qualitative claims.",
+    "Amya's guide edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch — doctrine/build guidance is flagged for revalidation against the current season."
+  ]
+}

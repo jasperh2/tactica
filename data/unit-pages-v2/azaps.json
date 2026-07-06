@@ -1,0 +1,167 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "azaps",
+  "name": "Azaps",
+  "headerMeta": "Heroic era · Melee Infantry · shields · 225 leadership · Seasonal (Blood of the Empire S3) & Honor Tree",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 4,
+      "duel": 7,
+      "skirm": 6,
+      "flank": 7
+    }
+  },
+  "pitch": "A mobile shielded melee that trades some defense for speed, excelling as a flanker and duelist against isolated targets. It struggles hard against high-defense units, block-equipped troops, and ranged pressure — never lead with it into pikes or high-armor walls.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Iron Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Anti-Infantry Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Siege Fighter Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Defence Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Defence Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Tank Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Culminates in a chance to auto-initiate Counter Strike when attacked. {2} Early nodes grant bonus health, +2% all-defenses, +3% health, −3s cooldown; further upgrades add −5% damage taken during Counter Strike, reduced counter-attack damage taken, knockdown immunity, +1s Counter Strike duration. {2}",
+      "marks": [
+        1,
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Mobile flanker — send it around to catch isolated units or soak up burst before your main line engages. {1} Pair with a tankier unit in early game to soak initial contact. {2}",
+    "formation": null,
+    "tips": "Slashing-focused: slashing penetration/damage doctrines vastly outperform blunt. {2} Squishy without veterancy — full top tree is essential for survival at T4/T5 tier. {2} Iron Reapers is a tough matchup at high investment; comfortable 1v1 against Spear Sergeants / Imperial Spears once Counter Strike upgrades are complete. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "High-defense / high-HP units",
+        "rel": "counters-you",
+        "why": "core weakness; loses decisively",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Block-equipped troops (Imperial Spears, Spear Sergeants)",
+        "rel": "counters-you",
+        "why": "CCi + armor; Azaps counters shield-walls but struggles if outnumbered or caught mid-charge",
+        "house": false,
+        "marks": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Phalanx / ranged-heavy",
+        "rel": "counters-you",
+        "why": "range and sustained pressure deny flank engagement",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Burst units, good flanking units",
+        "rel": "pairs",
+        "why": "Azaps excels at isolating and finishing weak/wounded targets",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "2",
+      "Ironside",
+      "2",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "X-move in → press 2 (damage ability) and Ironside together when the first line will take damage. {1} Let skill 2 run out (auto-executes second phase). {1} When ~5s remain on the follow-up cooldown, press 3 (likely a finisher or repositioning ability). {1} Counter Strike auto-triggers on attack if top veterancy is complete; use knockdown immunity window to reposition if surrounded. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Unfit Chaos",
+      "date": "Aug 2020",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Source dated Aug 2020 (Unfit Chaos) predates the 2025 Sipahis/Azaps rework — veterancy mechanics may have changed; treat recommendations as directional.",
+    "Amya's guide (2026-05-27 edit) predates the 2026-06-25 Chaos patch — doctrine/build guidance may be stale for current season.",
+    "Example build was excised per editorial rules (concept deleted).",
+    "Incidental mentions in pixlnickz (Sipahis guide, 'love Azaps') and EvolozGaming (Rattan Roundshields guide, live match context) contribute no unique mechanical insight."
+  ]
+}

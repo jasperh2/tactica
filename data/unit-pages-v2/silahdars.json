@@ -1,0 +1,170 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "silahdars",
+  "name": "Silahdars",
+  "headerMeta": "Golden era · Melee Infantry · special · 300 leadership · Seasonal",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 5,
+      "skirm": 5,
+      "flank": 4
+    }
+  },
+  "pitch": "A skill-dependent curve-sword bruiser that explodes through careful ability timing and team support, excelling in blob and sustained fights but utterly neutered by burst or interruption.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9-hit damage boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Hero Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Resistance Doctrine",
+      "note": "+300 HP, −5% dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & All Defences Doctrine",
+      "note": "+440 HP, +40 all defences",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & Piercing Defence Doctrine",
+      "note": "+440 HP, +125 piercing defence",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": false,
+      "body": "Maximum Decapitate damage; favors full burst playstyle. {2}",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "+11 points bottom, rest top — more versatile across sustained and mixed fights; daze immunity overlaps with CC-immunity passive, so the 20% damage boost on Death Strike and Cover Commander is the payoff. {2}",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Mixed allocation",
+      "recommended": false,
+      "body": "Sacrifice cooldown and some Decapitate damage to get 20% more on Death Strike and Cover Commander — smart if your playstyle leans heavy on Cover Commander duration. {2}",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Find heavy infantry anchors (Fortebraccio, Palace Guards, Grayhairs) and follow their engage — you are a support burst, not a primary frontline. {2} Stay in CC immunity downtime by staggering your three skills; never lead the fight yourself. {1}",
+    "formation": null,
+    "tips": "Spells last 6s with 40% damage reduction for 3s after — rotate them so you always have one active and skip downtime gaps. {1} Sideways Sweep and Deathstrike both last 6s; do not cancel them early. {1} Imperial Fervor (damage reduction) only works during the attack animation, not just on activation. {1} Against shields, Deathstrike breaks block instantly; Decapitate does not. {2} Use Deathstrike after Cover Commander for consistency — timing it raw can miss. {2} If enemy's Deathstrike is on cooldown, the matchup is much safer. {3}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Varangian Guards",
+        "rel": "counters-you",
+        "why": "Silahdars' Deathstrike shreds them if off cooldown; safer when it's timed out",
+        "house": false,
+        "marks": [
+          3
+        ]
+      },
+      {
+        "name": "Spartan meta / high-DR units",
+        "rel": "pairs",
+        "why": "Better in blob and sustained fights vs tanky/defensive comps",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "Worse against Reapers, 1v1s, and instant-burst matchups (Claymores, cavalry). {1}"
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "1",
+      "2",
+      "3",
+      "1",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "X-move close → press 1 (Sideways Sweep) → at 11s left on 1's CD press 2 (Deathstrike) → at 24s left on 2's CD press 3 (Get Over Here) → press 1 again → repeat 3 on cooldown. {1} Both 1 and 2 last 6s — never cancel them early. {1} 1 and 2 both reduce damage taken 40% for 3s and remove control effects instantly, increasing attack rate for their full duration. {1} 3 (Get Over Here / Cover Commander): when away deals more damage + knocks down; when reached, damage drops, no knockdown. {2} Never use Cover Commander if you can disengage and wait cooldowns instead. {1} Decapitate (1) is your main damage tool — against shields, Deathstrike (2) breaks block but deals less damage and risks no-damage-reduction window if you weave basic attacks. {2} Deathstrike against charging enemies deals extra damage. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "SuperKitowiec",
+      "date": "May 2022",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "BigDaddyYT",
+      "date": "Aug 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Exact veterancy point allocation by ability (top-line damage tree, bottom-line defense tree, mixed) lacks a labeled icon-to-slot mapping; allocation pattern (+11 bottom, rest top) confirmed but granular breakdown unconfirmed.",
+    "No house guide or dedicated strategy doc exists; guidance frozen at 2022–2024 video era, pre-date to current patch meta.",
+    "Skill-2 and Skill-3 names vary by source: Amya uses 'Deathstrike' and 'Get Over Here'; SuperKitowiec uses 'Death Strike' and 'Cover Commander' — latter is the ui-labeled name per unit mechanics."
+  ]
+}

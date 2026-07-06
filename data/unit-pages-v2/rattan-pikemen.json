@@ -1,0 +1,114 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "rattan-pikemen",
+  "name": "Rattan Pikemen",
+  "headerMeta": "Chivalric era · Pike/Polearm infantry · anti-cav · 95 leadership · Honour Tree (T2, Mastery)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "Best Filler",
+    "rarity": "T2",
+    "fightRatings": null
+  },
+  "pitch": "A cheap poison pike line that wins fights on stacked damage-over-time rather than the hit itself — stack 4-5 autos, back off, let the poison finish the job. Its charge doctrine hits for a flat number regardless of target, turning a filler unit into a surprise giant-killer.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Pike Assault Doctrine",
+      "note": "flat charge damage, enables the Pike Assault order",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Poison Doctrine V",
+      "note": "+140 all AP, +60 poison damage, stacks up to 2x",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Blunt Defence Doctrine IV",
+      "note": "+440 HP, +125 blunt defence",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Health & Defence Doctrine IV",
+      "note": "+440 HP, +40 all defences",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": "-16% leadership cost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Unit Damage Doctrine V",
+      "note": "\"dream setup\" replacing Leadership doctrine — rarely achievable since most warbands need Doctrine V slotted elsewhere",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "generic damage doctrine in place of Poison Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "\"For poison, obviously.\"",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Good attack range on the pike — always look to flank rather than sit static. {1}",
+    "formation": null,
+    "tips": "No need to perma-front-line during blob fights — back off a few seconds after stacking poison, then re-engage. {1} With the charge doctrine slotted, it can win matchups you wouldn't expect, including against Iron Reapers or Yanyuedao at their prime. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "V"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "X-move then V to cancel the tail of the auto-attack animation once the damage pop-up shows, keeping the poison-stacking loop tight. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Nov 2024, updated ~Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No video-transcript coverage: all 20 channels grepped, zero hits.",
+    "No fightRatings (blob/duel/skirm/flank) entry exists in unit-strengths.json for this unit.",
+    "No formation (F1/F2) or specific matchup-card guidance found in any source.",
+    "Incoming Chaos-patch nerf (2026-06-22 shortlist): poison duration 6s→4s, poison damage per stack 250→140 — not yet reflected in the Amya guide's playstyle text above."
+  ]
+}

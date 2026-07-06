@@ -1,0 +1,178 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "lancastrian-billmen",
+  "name": "Lancastrian Billmen",
+  "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 220 leadership · T4",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 4,
+      "skirm": 3,
+      "flank": 2
+    }
+  },
+  "pitch": "A bleed-and-brace pike unit that rewards active play in infantry engagements and survives cavalry if well-positioned. Two veterancy lines offer a genuine playstyle fork: the lower path maximizes bleed damage and micro intensity, while the upper path prioritizes anti-cavalry stability and demands positioning discipline.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Lancastrian Billmen Unique Doctrine 1",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Lancastrian Billmen Unique Doctrine 2",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Bloodthirsty Doctrine",
+      "note": "lifesteal + 12% dmg, infantry-focused alternative",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Anti-Cavalry Doctrine",
+      "note": "cav-focused builds",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Mobility Doctrine",
+      "note": "infantry-focused alternative",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "DMG Reduction Doctrines",
+      "note": "infantry-focused alternative",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Lower line (damage/bleed-focused)",
+      "recommended": false,
+      "body": "Active, micro-heavy path that favors bleed stacking over time in tight spaces and infantry-heavy engagements; short, well-timed engagements create sustained pressure via bleed compound in prolonged fights. {2}",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "label": "Upper line (anti-cavalry/defensive)",
+      "recommended": false,
+      "body": "Passive-stable, lower-micro option that trades damage for survivability; recommended when facing cavalry-heavy compositions; proper positioning lets the tankier build passively disrupt/slow enemy pushes. {2}",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Pike-focused positioning — maintain brace against cavalry arrivals, keeping model spacing and formation discipline to prevent flanks {1}. Never move formation while fighting or you will lose all damage {1}. Good positioning matters more on the upper (tank) line; poor positioning still loses the unit quickly regardless of the tankier stat line {2}.",
+    "formation": null,
+    "tips": "Play like any pikes; coordinate brace with your stalwart or current meta shield {1}. Short, well-timed engagements tend to feel more effective on the bleed path; when used carefully, the pressure created by bleed can slowly swing a fight {2}."
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "High burst & block units",
+        "rel": "counters-you",
+        "why": "unit loses to these counter types",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "High range & spacing units",
+        "rel": "counters-you",
+        "why": "unit struggles against these counter types",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Cavalry",
+        "rel": "hero-threat",
+        "why": "unit counters cav — must stay braced",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Low HP pool units",
+        "rel": "hero-threat",
+        "why": "unit counters these — bleed damage stacks",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "2",
+      "hold brace",
+      "rotate"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability 2 — use on cooldown for huge burst; stay braced during cast {1}. Bleed damage rewards holding contact and prolonged fights on the lower veterancy line; the upper line's value comes from control and battlefield presence rather than direct damage {2}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "HitokiriBattosai",
+      "date": "Dec 2025",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No veterancy graph image transcribed (Amya note defers to 'the graph under the post').",
+    "Doctrine build guidance pre-dates 2026-06-25 Chaos patch anchor — may be stale pending revalidation.",
+    "Formation guidance (F1 vs F2) absent from all sources."
+  ]
+}

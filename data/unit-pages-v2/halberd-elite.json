@@ -1,0 +1,131 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "halberd-elite",
+  "name": "Halberd Elite",
+  "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 225 leadership · T4",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": "A shield-line shredder that ignores block and demands the front lane, with the staying power to punish grouped enemies. Recently buffed on cooldown and armour penetration, but needs support — the 30% mitigation window from ability 2 is its only defence.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Halberd Elite Unique Epic Doctrine",
+      "note": "+300 block {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Bloodthirsty Doctrine",
+      "note": "lifesteal + 12% dmg {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Toughness Doctrine",
+      "note": "−33% dmg taken first 8 hits {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "−5% DMG Taken Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type dmg in sieges {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Another −5% DMG Taken Doctrine",
+      "note": "or LS doctrine if needed {1}",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "More consistent across all scenario types; both viable. {1}",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Front lane only — low HP solo. {1}",
+    "formation": null,
+    "tips": "X-move in, press 2 to grab the enemy, then press 1; ability 2 resets CC and grants 30% dmg reduction. {1} Cloud Cleave cooldown recently buffed to 5s with +10% armour penetration. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Wuwei",
+        "rel": "pairs",
+        "why": "upgraded Wuwei with block penetration, trades better but lacks range {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "2",
+      "1"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability 2 grabs enemy and resets CC. {1} Ability 1 follows, resetting the CC chain and applying 30% dmg reduction. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "patch shortlist",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Fightratings (blob/duel/skirm/flank) authored pre-patch (Amya guide OP 2025-06-30); unit patch-changed 2026-06-25 — rating stale.",
+    "Hero pairing details marked X (unfilled) in source; no recommendation extracted.",
+    "No counters section in source; no matchup data besides the Wuwei comparison.",
+    "No formation guidance in any source."
+  ]
+}

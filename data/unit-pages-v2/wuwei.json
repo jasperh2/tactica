@@ -1,0 +1,174 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "wuwei",
+  "name": "WuWei",
+  "headerMeta": "Heroic era · Melee infantry (Polearm) · special · 235 leadership",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 5,
+      "duel": 4,
+      "skirm": 4,
+      "flank": 6
+    }
+  },
+  "pitch": "A widely-considered-overtuned purple-tier infantry unit whose entire winning pattern is one dead-simple two-button combo — no hidden trick, no special positioning required. Its real counters are the things that stop the combo from ever landing: block, spacing, burst damage, or ranged units like Rattan Marksmen that can hit it before it closes.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Wuwei Unique Doctrine",
+      "note": "Brutal Sweep restores 10% max HP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9-hit damage boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Toughness Doctrine",
+      "note": "−33% DMG taken, gone after 8 hits",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% all-type DMG in sieges",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Flat DMG-reduction doctrines (e.g. the −5% one)",
+      "note": "you're getting one-shot anyway, so it doesn't help",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Full Top.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom line",
+      "recommended": false,
+      "body": "Community-recommended alternative for its per-level health-regen bonus, valued for survivability — secondhand advice the presenter hadn't personally validated.",
+      "marks": [
+        2
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Go in with your frontline rather than solo-committing; don't over-extend, and it's fine to X-move back before pressing 1-2 again if you push too far. {1} Basic ally frontline support (meat shields nearby) is enough to keep the loop running — it doesn't need precise formation play. {2}",
+    "formation": null,
+    "tips": "Against heavy-armor targets, let skill 1 land first to apply its armor debuff, then resume spamming 1 and 2. {1} Performs at a very high level even undermaxed — an under-leveled copy with only a moderate doctrine set still cleared 40-60+ unit kills per engagement in shown clips. {2}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Rattan Marksmen",
+        "rel": "counters-you",
+        "why": "ranged hits from outside its effective range punish it before the loop starts",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "WuWei (mirror)",
+        "rel": "counters-you",
+        "why": "the other practical threat named alongside strong hero plays",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Palace Guards",
+        "rel": "counters-you",
+        "why": "walk up, brace before impact, wait out the sweep, unbrace for full-unit damage — winnable decisively if played correctly, not just a costly trade",
+        "house": false,
+        "marks": [
+          3
+        ]
+      },
+      {
+        "name": "Rattan Pikemen",
+        "rel": "counters-you",
+        "why": "struggles against pikes",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "You pressure: nearly everything, given free DPS uptime — Amya's guide names no specific unit this counters, only \"insane dmg if free dps.\""
+  },
+  "controls": {
+    "loop": [
+      "X (advance)",
+      "1",
+      "2",
+      "1",
+      "2"
+    ],
+    "loopMarks": [
+      1,
+      2
+    ],
+    "notes": "Press 1, then quickly press 2, against any cluster — killing enemies resets both cooldowns, so the loop repeats as long as targets are in range. {1}{2} No deeper combo or timing trick is being withheld: the simplicity of the 1-then-2 loop is presented as the unit's defining (and, per one presenter, overtuned) characteristic. {2}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Asteriskism",
+      "date": "Oct 2024",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Herlajis",
+      "date": "Apr 2024",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Origin is a literal unfilled placeholder in Amya's OP ('X') — no seasonal/era-origin info given.",
+    "Amya's guide lists one 'Filler' doctrine slot with no specifics given ('X') — omitted rather than invented.",
+    "Amya's edit timestamp (2026-05-26) predates the 2026-06-25 Chaos patch anchor; doctrine/build guidance is flagged for revalidation, though WuWei is not on the Chaos changed-units shortlist.",
+    "Asteriskism's transcript describes running 'two dedicated unit-specific doctrines,' but only one unit-unique doctrine (Wuwei Unique Doctrine) appears anywhere else in the RAW — the second is unarbitrated/unnamed.",
+    "Asteriskism's video does not name the unit's two abilities beyond 'one' and 'two' — no in-game ability names captured for skill 1 or skill 2."
+  ]
+}

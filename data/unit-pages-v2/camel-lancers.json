@@ -1,0 +1,51 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "camel-lancers",
+  "name": "Camel Lancers",
+  "headerMeta": "Heroic era · Cavalry · 235 leadership · Tier E",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "E",
+    "rarity": "T4",
+    "fightRatings": null
+  },
+  "pitch": null,
+  "doctrines": [
+    {
+      "tag": "top-pick",
+      "name": "Speed Doctrine",
+      "note": null,
+      "marks": []
+    }
+  ],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No per-unit Amya guide exists — only tier placement (E: Camels, T4M).",
+    "No fight-type ratings recorded (fightRatings: null in unit-db).",
+    "No battle-role guidance, formation recommendations, or detailed control mechanics in any source.",
+    "No veterancy details from any source.",
+    "No pressure rating or additional matchup data."
+  ]
+}

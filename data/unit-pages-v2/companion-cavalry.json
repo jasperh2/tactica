@@ -1,0 +1,125 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "companion-cavalry",
+  "name": "Companion Cavalry",
+  "headerMeta": "Heroic era · Cavalry/Lance · 230 leadership · Tier 4",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 3,
+      "duel": 5,
+      "skirm": 5,
+      "flank": 4
+    }
+  },
+  "pitch": "A mid-tier seasonal cavalry with a complex stacking rotation that rewards precision positioning. No published counters exist — guides pre-date the current patch, so matchup weaknesses are unconfirmed.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9 hits",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Companion Cavalry: Conquest",
+      "note": "+100 piercing/slashing/blunt DMG on 3, +Sworn Guard 18s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Companion Cavalry: Billowing Winds",
+      "note": "+9% movement speed, +10% unit DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Health & Resistance Doctrine V",
+      "note": "−5% DMG taken, alt for Leadership",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "DMG reduction & tank doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Bot",
+      "recommended": true,
+      "body": "Achilles' Wings: +20% movement speed, +100% Imperial Stormbolt charge DMG, renames unit.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "X-move in and position for stacking rotation. Press 3 for buffs even while hero fighting — it applies global +100 DMG stats wherever you are.",
+    "formation": null,
+    "tips": "Optimal vs low-armor/low-HP targets: press 1 for chip DMG before the combo. For standard foes, go directly to the 2-stack. Cancel 1 with V, press 2 shortly after contact, then cancel 2 with V when ~70% of the unit is impaled — this unlocks the new 1. Try to X-move out before 1 fully resolves, but don't cancel too early. If you need immediate actions, prioritize 2 (Storm Pound) over optimization."
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "X",
+      "3",
+      "1",
+      "V",
+      "2",
+      "V",
+      "1",
+      "X"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability 3 applies global +100 all DMG stats and Sworn Guard buff (18s duration) — can activate mid-combat or even while hero is fighting. Ability 2 is Storm Pound. If you need immediate actions, prioritize ability 2 over full combo optimization. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Counters / matchup cards from any source — the Amya guide omits this section entirely.",
+    "Guide last edited 2026-05-26, pre-dates the 2026-06-25 Chaos patch; doctrine/build relevance unconfirmed post-patch.",
+    "No separate Tips & Tricks or formation guidance in the source.",
+    "Video transcripts for this unit are queued but not captured; no video-sourced content available."
+  ]
+}

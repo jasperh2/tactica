@@ -1,0 +1,166 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "shieldmaidens",
+  "name": "Shieldmaidens",
+  "headerMeta": "Golden era · Shield infantry · blob/anti-ranged anchor · 280 leadership · Seasonal",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 7,
+      "duel": 4,
+      "skirm": 5,
+      "flank": 6
+    }
+  },
+  "pitch": "A hyper-micro shield anchor that buffs blob and shreds heroes if played at full capacity — weapon-swap cooldown management is everything. High burst (Claymores, Yorkist) and spacing units will delete it if you lose rhythm.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "CCi Doctrine (Stand Fast)",
+      "note": "CC-immunity, 'too op' per Amya {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Spear Doctrine I",
+      "note": "+400 block {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Block Doctrine",
+      "note": "+300 block, −90 flat dmg {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Steadfast Doctrine",
+      "note": "+130 def, −6% dmg taken {1}",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Tank Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Consistent in all scenarios. Mandatory per Amya.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Plant in formation via spell 1 (circle placement, +250 defence buff once settled); then activate spell 2 cover-commander and swap to sword mode — lock inputs and hold position. {1} Reset cover-commander before engages when possible; its hidden passive damage-reduction decays 60% → 30% over 5s. {1}",
+    "formation": null,
+    "tips": "Weapon-swap (spell 3) is the core loop: both stances' swaps carry CC-immunity and reset stance. {1} Spear→sword after any hit: +500 Piercing/Slashing Armour Penetration per soldier for 10s. {1} Sword→spear: restores 2% max health/s per soldier for 10s. {1} Stack swaps indefinitely off one random hit on downtime. {1} Sword-mode shield-bash (spell 2) ends in a weaker cover-commander than spear-mode — 'don't get baited.' {1} When you have time: sword charge (spell 1, void-cast for +20% atk buff to allies) → swap to spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1} When you DON'T have time: start spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Claymores",
+        "rel": "counters-you",
+        "why": "high burst unit — kills before rhythm locks in",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Yorkist",
+        "rel": "counters-you",
+        "why": "high burst — same threat as Claymores",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Spacing units",
+        "rel": "counters-you",
+        "why": "deny the formation lock needed for full power",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Rattan Pikes",
+        "rel": "pairs",
+        "why": "flanking counter — Shieldmaidens handles them",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Heroes",
+        "rel": "pairs",
+        "why": "Shieldmaidens kills diving heroes if micro'd at full capacity; pairs with any hero {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Spell-1 Form",
+      "Spell-2 CC",
+      "Spell-3 Swap",
+      "Hold"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Formation (spell 1) places unit at circle centre and applies +250 def buff once settled {1}. Cover-commander (spell 2, spear-mode) applies hidden 60%→30%-over-5s damage-reduction passive — reset before fights {1}. Weapon-swap (spell 3) carries CC-immunity, resets stance, removes existing CC, and triggers the stance-swap buff for 10s: spear→sword = +500 AP per soldier; sword→spear = 2% max HP regen/s per soldier {1}. Stack the swaps indefinitely off one random hit on downtime {1}. Sword-mode shield-bash (spell 2) ends in weaker cover-commander — avoid unless CC-immunity needed {1}. X-move or shield-bash while in sword-mode cover-commander will cancel it; CC-immunity doctrine is safe to use {1}."
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No formation guidance provided by Amya — default formation unknown.",
+    "Amya's guide edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch; doctrine/build guidance may be stale for current season.",
+    "No video transcripts or gameplay demonstrations were captured."
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "ironcap-archers",
+  "name": "Ironcap Archers",
+  "headerMeta": "Chivalric era · Ranged Infantry · special · 110 leadership · T2 · Mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T2",
+    "fightRatings": null
+  },
+  "pitch": "A cheap filler ranged unit that lags behind meta in impact. Standard archers teach poor game habits (no micro, deceptive safety, skill-stunting for new players) and force teammates to compensate — if you want range, pick exotic units instead.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Bowmanship Doctrine V",
+      "note": "Arrow Rain +150 piercing DMG, 75% base per hit",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Precision Doctrine V",
+      "note": "+120 piercing DMG, +80 AP, +9% rate of fire",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Projectile Doctrine V",
+      "note": "+60% ammo, +50 AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Epic Archery Doctrine IV",
+      "note": "+100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "LDS Doctrine",
+      "note": "alt for piercing DMG if needed",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Whistling Arrow Doctrine V",
+      "note": "bleed on low-count/high-armor targets",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Artemis",
+      "note": "double shoot, exploits low-count/high-armor angle",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Damage line",
+      "recommended": true,
+      "body": "Standard archers fall in the DMG-boost category — go the damage line. {1}",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": "If your veterancy line includes Arrow Rain, you cannot equip Arrow Rain doctrine — swap for extra piercing instead. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type ratings (Blob/Flank/Skirmish/Duel) — Amya's guide provides none for any of the four covered units.",
+    "Counters section: Amya's guide lacks a Loses-to / Struggles-vs block.",
+    "Positioning, formation, and control loop — no source provides unit-specific guidance.",
+    "Hero pairing — not mentioned in any source.",
+    "Matchups — no matchup cards provided by sources.",
+    "Ironcap-specific nuances beyond tier rank — Amya's guide applies all playstyle and doctrine advice equally to four units (Vassal Longbowmen, Imperial Archers, Vanguard Archer, Ironcap Archer); no per-unit differentiation documented.",
+    "Doctrine build guidance predates the 2026-06-25 Chaos patch by 9 days; Ironcap Archers not on the changed-units shortlist, but build freshness uncertain post-patch."
+  ]
+}

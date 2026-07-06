@@ -1,0 +1,101 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "outriders",
+  "name": "Outriders",
+  "headerMeta": "Silver era · Cavalry · 180 leadership · Honor Tree",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T3",
+    "fightRatings": null
+  },
+  "pitch": "A javelin skirmisher that can hang back and poke or commit into melee off the same skill, making it a flexible Best-Filler pick rather than a specialist. It has no recorded matchups on either side of the fight, and its build guidance predates the current patch by about a month.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Javelin Damage Doctrine",
+      "note": "+250 javelin DMG, +30 ammo",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Javelin Block Break Doctrine",
+      "note": "+300 javelin block break, +100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Javelin Immobilize Doctrine",
+      "note": "Rare/Blue — javelins immobilize for 1.5s, same doctrine as Imperial Javelineers",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Burning Plains Doctrine",
+      "note": "Rare/Blue, unit-unique — reduces Burning Plains cooldown by 4s",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Bot Line",
+      "recommended": true,
+      "body": "Only veterancy option given.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "Skill 1",
+      "Skill 2"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Skill 1 is a ranged javelin poke. {1} Skill 2 shoots javelins then rushes — cancel after the throw to poke, or don't cancel to let the rush complete into melee. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type Strength ratings (Blob/Flank/Skirmish/Duelling) given anywhere in the source guide.",
+    "No Counters / Struggles-vs / This-unit-counters section — matchup cards and pressure line are empty, not fabricated.",
+    "No hero pairing specified.",
+    "No formation guidance given (F1/F2 etc.).",
+    "Thread tags list 'Range, T3, Cavalry' verbatim, but the OP's own Archetype line calls this unit 'Melee Infantry (Javelin + Melee Hybrid Skirmisher)' — a genuine identity contradiction in the source, recorded here rather than silently resolved.",
+    "The guide's last edit (2026-05-27) predates the 2026-06-25 Chaos patch anchor by about a month; doctrine/build guidance may be stale for the current season (Outriders is not on the Chaos changed-units shortlist, so this is a freshness flag, not a confirmed patch break).",
+    "No independent battle-role content (positioning/formation/tips) beyond the ability-usage mechanic already covered in controls — the source guide gives no spacing, pairing-geometry, or deployment-timing guidance."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "ironcap-scout-cavalry",
+  "name": "Ironcap Scout Cavalry",
+  "headerMeta": "Chivalric era · Cavalry · 120 leadership · B tier filler · T2 mastery",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "B",
+    "rarity": "T2",
+    "fightRatings": null
+  },
+  "pitch": "A cost-effective sword cavalry whose core damage engine is the X-move during Sprint, not Charge. Master the Sprint extra-attack synergy to unlock a strong flanker; without it, you're paying for generic cavalry damage.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": "+120 unit DMG, +80 all-type",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Sword Cavalry Speed Doctrine",
+      "note": "+30% movement speed, +90 slashing DMG, +60 slashing AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Victory Rush Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Hero Damage Doctrine V",
+      "note": "+115 hero DMG, +110 all AP",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Sword Cav Sprint Extra-Attack Doctrine",
+      "note": "while Sprint is active, extra attack deals double DMG; can't trigger when using active",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Generic DMG doctrines",
+      "note": "if Sprint extra-attack + Sword Cav Speed combo unavailable",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Mobility Doctrine V",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Recommended by Amya.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No fight-type ratings (Blob/Duel/Skirmish/Flank) in any source; unit-db records null.",
+    "No counter units, threat units, or synergy matchups documented.",
+    "No battle-role guidance: positioning, formation picks, or scenario tips absent from source.",
+    "Veterancy bottom line not elaborated — only Top Line recommended by Amya.",
+    "No controls loop or ability rotation documented.",
+    "Amya guide edited 2026-06-16, 9 days before the 2026-06-25 Chaos patch; unit not on shortlist but doctrine/playstyle guidance may be stale.",
+    "Intrix Gaming video ('Ironcap Scout Cavalry Unit Review — The Glass Cannon', 2020-05-10) queued for transcription but not captured; would add matchup and scenario context."
+  ]
+}

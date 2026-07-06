@@ -1,0 +1,158 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "spartan-chosen",
+  "name": "Spartan Chosen",
+  "headerMeta": "Golden era · Melee infantry · shields · 305 leadership · Seasonal (Sparta)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 2,
+      "skirm": 7,
+      "flank": 2
+    }
+  },
+  "pitch": "A heavily armored shield-wall anchor that thrives in blob and skirmish but crumbles to burst damage; its Oath of Unity trait spreads and mitigates incoming harm, making it the frontline unit that opens for your team's counterattack.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Epic Spear Doctrine VI",
+      "note": "CCi",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Awareness Doctrine V",
+      "note": "20% rear atk reduction, −500 cav dmg",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Block Doctrine V",
+      "note": "+300 block, −90 flat dmg taken",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Spartan Chosen: Mountain Crusher",
+      "note": "Spartan Vengeance +15% block-break & dmg",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "DMG Reduction Doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Block only doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Full Bot",
+      "recommended": true,
+      "body": "Nerfs guided this unit toward the Tank Line over the DPS line — consistent mitigation across all scenarios.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Frontline anchor — hold the line and block ranged fire. Never hesitate to redirect and reposition before pressing ability 2, and activate CCi + X-move back if overextended. {1}",
+    "formation": null,
+    "tips": "Ability 1 (No Mercy) redirects to your facing and stabs in front; each stab heals 5% HP. {1} Ability 2 (shield advance) requires re-pressing during the advance to stab; the 3rd press jumps forward with big damage. {1} Main trait (Oath of Unity): for 5s after using a spell, all damage taken spreads through the unit and is reduced to 70% (30% dmg reduction net). {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Iron Reapers",
+        "rel": "counters-you",
+        "why": "huge burst damage — direct counter per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Claymores",
+        "rel": "counters-you",
+        "why": "huge burst damage — direct counter per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Orochi",
+        "rel": "counters-you",
+        "why": "huge burst damage — direct counter per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "High-minimum-DMG units",
+        "rel": "counters-you",
+        "why": "any unit with consistent minimum damage — struggles regardless of mitigation",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2",
+      "2",
+      "2",
+      "X",
+      "reposition"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Master the double-C brace (ability 2 repress) for 3–4× area coverage with minimal DPS loss. {1} Play around cooldowns — Oath of Unity resets every 5s after a spell cast. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Dec 2024 (updated May 2026)",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Formation guidance absent from all sources.",
+    "Video transcripts for Spartan Chosen exist (Akers tutorial, 2025-02-09) but were not captured or transcribed."
+  ]
+}

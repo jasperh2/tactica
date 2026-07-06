@@ -1,0 +1,128 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "order-of-the-dragon",
+  "name": "Order of the Dragon",
+  "headerMeta": "Golden era · Cavalry · ranged surge + RTS control · 310 leadership · Seasonal (T5)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 3,
+      "skirm": 7,
+      "flank": 8
+    }
+  },
+  "pitch": "A versatile heavy cavalry with strong flank engagement and skirmish presence, built on three ability modes: RTS view for damage boost, sweep for area threat, and self-heal for sustain. Weak in duels and poor against direct infantry engagement, so anchor it on the flank.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9 hit damage boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Order of the Dragon Unique Doctrine",
+      "note": "+15% movement speed during Emperor's Expedition",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "+15% Piercing/Slashing Pen Doctrine",
+      "note": "active when HP above 40%",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Flatland Doctrine V",
+      "note": "+15% movement speed, special cav surge",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Epic Leadership Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Other Movement Speed Doctrine",
+      "note": "replaces piercing/slashing pen for full movement-speed build",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "-5% DMG Taken Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Primary veterancy path per Amya; tested in skirmish / flank scenarios.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Deploy on the flank where the high skirmish (7/10) and flank (8/10) ratings matter. Avoid prolonged 1v1 duels (3/10 rating) and direct front-line infantry engagement {1}.",
+    "formation": null,
+    "tips": "Press 1 for RTS view control mode: enables damage boost and charge stance {1}. Press 2 for sweep ability: area threat like Khevtuul or Kriegsbruders {1}. Press 3 to heal: sustain tool for extended engagements {1}. Exploit +15% movement speed from Emperor's Expedition to reposition quickly {1}. On high-movement builds, swap Piercing/Slashing Pen for second movement-speed doctrine {1}."
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "1",
+      "2",
+      "3"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Ability loop: (1) RTS view for damage + charge stance, (2) sweep for area control, (3) heal for sustain. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No matchups / counter units sourced — Amya's thread had no 'Counters' section; video transcripts and house guides yielded no tactical matchup analysis.",
+    "No formation guidance (F1/F2 etc) — structural absence in Amya's thread; no follow-up posts or formation-specific sources found.",
+    "Amya's guide last edited 2026-05-26, pre-dating the Chaos patch (2026-06-25) and thus potentially stale; unit is not on the 13-unit Chaos shortlist, so revalidation against current season meta deferred.",
+    "Tzum replay note covers hero-mount scouting and siege gate logistics (arty placement, road movement) — not unit battle-role guidance and thus not integrated into positioning or controls."
+  ]
+}

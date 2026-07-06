@@ -1,0 +1,199 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "iron-reapers",
+  "name": "Iron Reapers",
+  "headerMeta": "Golden era · Dual-weapon melee · Blob/flank · 270 leadership · T5",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "AA",
+    "rarity": "T5",
+    "fightRatings": {
+      "blob": 10,
+      "duel": 7,
+      "skirm": 7,
+      "flank": 8
+    }
+  },
+  "pitch": "A burst-damage blob monster with a 12-second CC-immune window and heavy-armour passive that resets via abilities, enabling sustained fights in formation. Weakness: units that kite or apply debuffs burst you before the passive cycles.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Linebreaker Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9 hits boost",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Purple Slashing Damage Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "−5% DMG taken doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Movement Speed After Hit",
+      "note": "20–30% of fight time is walking to next target",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Defence",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Slashing & Blunt Defence",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Middle-line focus",
+      "recommended": true,
+      "body": "+14 points Middle Line (until reaching the Line point that grants +1 target per strike), rest into Bottom Line for sustained duration.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Engage as a wedge in formation; X-move in and wait for heavy-armour passive to trigger (8-hit bonus per model). {1} Pair with your hero to maintain melee contact and chain ability resets. {1}",
+    "formation": "Dispersed formation when engaging multiple targets; tight formation (stacking) when penetrating tower-shield tanks like Imperial Spear Guards, paired with Tiger Step's 12-second CC immunity. {2}",
+    "tips": "Tiger Step grants crowd-control immunity and weapon-swap immunity — use it offensively to commit or defensively to extract from a cavalry charge. {2} Charge has two swings and ignores block; hold off Tiger Step activation for half a second after contact to let both hits land. {2} C-cancel (follow command) resets the heavy-armour passive and auto-attack animation — train this for better trading vs Stalwart or Claymore. {1}"
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Queen's Knights",
+        "rel": "counters-you",
+        "why": "kite-heavy burst outdamages your passive cycling",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Yorkist Household Knights",
+        "rel": "counters-you",
+        "why": "heavy burst exceeds passive mitigation window",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Rattan Pikemen",
+        "rel": "counters-you",
+        "why": "debuff applies before passive resets",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Sunward Phalanx",
+        "rel": "counters-you",
+        "why": "big-range kite unit if they space well",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Stalwart Spearmen",
+        "rel": "counters-you",
+        "why": "block-heavy unit requiring close-range commit that ties up the passive window",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Spartan Chosen",
+        "rel": "pairs",
+        "why": "insane damage to heavy block units — commit with hero to force break",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Imperial Spear Guards",
+        "rel": "pairs",
+        "why": "tight-formation stack + Tiger Step penetrates flat-DR towers",
+        "house": false,
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "pressure": "You pressure: any block unit (shield-wall archetype); heavy burst target priority in Blade meta — high-priority doctrine allocation per house guidance {3}."
+  },
+  "controls": {
+    "loop": [
+      "Charge",
+      "Weapon Swap",
+      "Tiger Step",
+      "auto-attack"
+    ],
+    "loopMarks": [
+      2
+    ],
+    "notes": "Charge (twice swings, ignores block) → Weapon Swap (swords for AoE, flails for single-target) → Tiger Step (CC immunity, 12s duration, enables weapon-swap mid-ability) → sustain with C-cancel resets of heavy-armour passive. {2} Spread dispersed to hit 8 models with swords; stack tight + Charge only (no swap) to break Imperial Spear Guard towers via CC immunity. {2} Heavy trait passive: 8-hit bonus damage reduction, reset by Charge or Tiger Step. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Oct 2024",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Herlajis",
+      "date": "Oct 2023",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "Formation guidance (F1/F2 names) not sourced — only tight/dispersed descriptors from transcripts.",
+    "Skill-2 (Tiger Step) duration stated as '12 seconds' and '12s' consistently across sources, but formal in-game tooltip not captured.",
+    "Video transcript fidelity is condensed-summary (paraphrase); exact ability cooldown/damage numbers not captured in tactical content — relying on Amya guide's mechanics descriptions instead.",
+    "Mastery tree allocation shown as 'planned' or 'strong setup' variant (source unclear whether live/tested) — no independent verification against different meta or skill-level playstyles."
+  ]
+}

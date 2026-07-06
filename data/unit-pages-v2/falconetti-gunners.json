@@ -1,0 +1,69 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "falconetti-gunners",
+  "name": "Falconetti Gunners",
+  "headerMeta": "Golden era · Ranged Infantry · special · 300 leadership",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "D",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": null,
+  "doctrines": [],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [
+      {
+        "name": "Musket",
+        "rel": "hero-threat",
+        "why": "Liquid Fire grenades won't one-shot Falconetti Gunners — the hero has to spread bomb count to target count instead {1}",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Longbow",
+        "rel": "hero-threat",
+        "why": "extended range makes it an effective counter against grouped/important units, Falconetti named alongside Siphonarios/Shenjis/Zykalians {2}",
+        "house": false,
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Amya",
+      "date": null,
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No dedicated Amya unit guide exists (richDataEligible: false in unit-db.json) — no doctrines, veterancy, battle-role, or control-loop data available anywhere on disk.",
+    "No fight-type ratings recorded (unit-strengths.json has zero entry).",
+    "A house-authored unit guide/card is confirmed to have existed in Discord (discord-guide-inventory.md, dated 2025-11-25) but its content was never captured to disk.",
+    "Only substantive sources found: two incidental mentions in Amya's hero guides (musket.md, longbow.md), citing Falconetti Gunners as a reference point for the hero's own kit — not an analysis of the unit itself.",
+    "An Evo Loz Gaming video mention (2020-07-07, about Ironcap Swordsmen) is excluded: the transcript's own Gaps section flags the 'Falconet/Gunners' identification as ASR-uncertain and possibly referring to Falconet artillery pieces, not this unit."
+  ]
+}

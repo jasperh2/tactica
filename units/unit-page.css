@@ -31,3 +31,411 @@
 /* Doctrines panel needs no unit-page-specific flex-basis beyond academy.css's shared
    `.panel-doctrines` rule — .panel-veterancy/.panel-formation likewise reuse the shared
    `.panel-builds, .panel-veterancy, .panel-formation` rail rule as-is. Nothing to add here today. */
+
+/* ============================================================================
+ * V2 LAYOUT (cb-unit-page-v2/1 schema) — Jasper-approved reference:
+ *   site/units/unit-page-template-v2.html (2026-07-06)
+ *
+ * Every class below is scoped under `.v2-page` (unit.html's `#unit-v2-page` wrapper) so it can
+ * never collide with the v1 grammar academy.css already owns (`.panel-title`, `.tag-badge`,
+ * `.vet-option`, etc — the v2 template deliberately uses its own shorter class names: `.ph`,
+ * `.tag`, `.vet-opt`, `.mu-card`, `.key`, `.loop`... which is why this whole block needs its own
+ * home rather than reusing §5-15 of academy.css unmodified). Every color/spacing/type value below
+ * is the template's own value ported onto the live academy.css token (--bg-panel, --gold,
+ * --text-body, etc — see each rule's inline note only where the token isn't an exact 1:1, e.g. a
+ * slightly different opacity) — per the task's "ported onto the academy.css token system"
+ * instruction, nothing here is a hand-picked new hex value.
+ * ========================================================================= */
+
+.v2-page {
+  max-width: 900px;
+}
+
+/* ---- Header: icon, name, meta, corner date (no sentence) ---- */
+
+.v2-page .hd {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: var(--space-7) var(--space-7) var(--space-4);
+  position: relative;
+}
+
+.v2-page .hd-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--bg-well);
+  border: 1px solid var(--line-menu);
+  flex: none;
+}
+
+.v2-page .hd-name {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.v2-page .hd-meta {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* Corner date — pinned top-right, no surrounding sentence (hard rule: date only). */
+.v2-page .hd-date {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-7);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-muted);
+}
+
+.v2-page .chips {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0 var(--space-7) var(--space-4);
+  flex-wrap: wrap;
+}
+
+.v2-page .stat {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  text-align: center;
+  min-width: 52px;
+}
+
+.v2-page .stat b {
+  display: block;
+  font-size: var(--text-scale-15);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.v2-page .stat span {
+  display: block;
+  font-size: var(--text-scale-10);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+.v2-page .stat.tier b {
+  color: var(--gold);
+}
+
+/* Flank chip styled danger-red per the approved template — a fixed per-slot styling choice, not a
+   numeric threshold (see unit-page-v2.mjs's isFlankChip doc comment). */
+.v2-page .stat.flank b {
+  color: var(--danger);
+}
+
+/* ---- Pitch box: high-contrast 2-sentence summary, top of page ---- */
+
+.v2-page .pitch {
+  margin: var(--space-6) var(--space-7) var(--space-3);
+  background: linear-gradient(180deg, var(--gold-bg), transparent);
+  border: 1px solid var(--gold-border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+}
+
+.v2-page .pitch p {
+  margin: 0;
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* ---- Panels (doctrines / veterancy / battle role / matchups / controls) ---- */
+
+.v2-page .panel {
+  margin: var(--space-6) var(--space-7) 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+}
+
+.v2-page .ph {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.v2-page .ph .bar {
+  width: 3px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: var(--radius-dot);
+  flex: none;
+}
+
+.v2-page .ph h3 {
+  margin: 0;
+  font-size: var(--text-scale-11);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  font-family: var(--font-mono);
+}
+
+.v2-page sup {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+}
+
+/* ---- Doctrines: tag pill + name + note grid, no redundant tag words ---- */
+
+.v2-page .doc {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: var(--space-1) var(--space-5);
+  align-items: baseline;
+  font-size: var(--text-scale-13-5);
+}
+
+.v2-page .doc .name {
+  color: var(--text-primary);
+}
+
+.v2-page .doc .note {
+  color: var(--text-secondary);
+  font-size: var(--text-scale-12-5);
+}
+
+.v2-page .tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-10);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+  justify-self: start;
+}
+
+.v2-page .tag.mand {
+  background: var(--danger-bg);
+  color: var(--danger-text, #ff9a9d);
+}
+
+.v2-page .tag.top {
+  background: var(--success-bg, rgba(56, 178, 107, 0.16));
+  color: var(--success-text, var(--success-light));
+}
+
+.v2-page .tag.fill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-soft);
+  color: var(--text-muted);
+}
+
+.v2-page .tag.avoid {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+/* ---- Veterancy: one option per row, single recommended badge ---- */
+
+.v2-page .vet-opt {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line-soft);
+  align-items: flex-start;
+}
+
+.v2-page .vet-opt:first-child {
+  border-top: 0;
+}
+
+.v2-page .vet-opt .lbl {
+  font-weight: 600;
+  font-size: var(--text-scale-13-5);
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+.v2-page .vet-opt .rec {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-9-5);
+  background: var(--gold-bg);
+  color: var(--gold);
+  border-radius: var(--radius-pill);
+  padding: 1px var(--space-4);
+  align-self: center;
+}
+
+.v2-page .vet-opt .body {
+  color: var(--text-secondary);
+  font-size: var(--text-scale-12-5);
+}
+
+/* ---- Battle role: real clickable tabs ---- */
+
+.v2-page .tabs {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.v2-page .tab {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+}
+
+.v2-page .tab:hover {
+  color: var(--text-body);
+}
+
+.v2-page .tab[aria-selected='true'] {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.v2-page .tabpane {
+  display: none;
+  font-size: var(--text-scale-13-5);
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.v2-page .tabpane[data-active='true'] {
+  display: block;
+}
+
+/* ---- Matchups: per-unit cards + pressure line ---- */
+
+.v2-page .mu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+
+.v2-page .mu-card {
+  background: var(--bg-well);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+}
+
+.v2-page .mu-card b {
+  font-size: var(--text-scale-12-5);
+  display: block;
+  color: var(--text-primary);
+}
+
+.v2-page .mu-rel {
+  font-size: var(--text-scale-10-5);
+  display: inline-block;
+  margin-top: var(--space-1);
+}
+
+.v2-page .mu-why {
+  font-size: var(--text-scale-11);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+
+.v2-page .rel-counters-you {
+  color: var(--danger);
+}
+
+.v2-page .rel-hero-threat {
+  color: var(--warning-text);
+}
+
+.v2-page .rel-pairs {
+  color: var(--accent);
+}
+
+.v2-page .mu-pressure {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-secondary);
+  margin-top: var(--space-5);
+}
+
+/* ---- Controls: key-chip loop + mechanic notes ---- */
+
+.v2-page .loop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  align-items: center;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-scale-12);
+}
+
+.v2-page .key {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-weight: 600;
+  background: var(--bg-well);
+  border: 1px solid var(--line-menu);
+  border-radius: var(--radius-xs);
+  padding: var(--space-1) var(--space-4);
+  color: var(--text-primary);
+}
+
+.v2-page .arrow {
+  color: var(--text-muted);
+}
+
+.v2-page .ctrl-note {
+  font-size: var(--text-scale-12-5);
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.v2-page .ctrl-note b {
+  color: var(--text-primary);
+}
+
+/* ---- Footer: footnote legend ---- */
+
+.v2-page .foot {
+  border-top: 1px solid var(--line-soft);
+  margin-top: var(--space-7);
+  padding: var(--space-5) var(--space-7);
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  font-size: var(--text-scale-11);
+  color: var(--text-muted);
+}
+
+.v2-page .foot .leg {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+/* House lock glyph reuses academy.css's shared `.lock` rule (§7) — no override needed here. */
+
+@media (max-width: 640px) {
+  .v2-page .hd-date {
+    position: static;
+    margin-top: var(--space-2);
+  }
+
+  .v2-page .doc {
+    grid-template-columns: 1fr;
+  }
+}

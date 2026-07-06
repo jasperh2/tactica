@@ -1,0 +1,133 @@
+{
+  "schema": "cb-unit-page-v2/1",
+  "slug": "dagger-axe-lancers",
+  "name": "Dagger Axe Lancers",
+  "headerMeta": "Heroic era · Cavalry · charge cav · 245 leadership · T4M",
+  "date": "2026-06-28",
+  "stats": {
+    "metaTier": "A",
+    "rarity": "T4",
+    "fightRatings": {
+      "blob": 6,
+      "duel": 2,
+      "skirm": 7,
+      "flank": 7
+    }
+  },
+  "pitch": "A cavalry charger that hits hard on flanks when spaced correctly, hampered by poor duelling and the removal of its old zero-momentum damage trait. On open maps it underperforms heavier chargers; on curved terrain like Western City it shines with intelligent pathing.",
+  "doctrines": [
+    {
+      "tag": "mandatory",
+      "name": "Lancer's Last Stand",
+      "note": "+40% DMG at <60% headcount",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Charge CD Doctrine",
+      "note": "−14s charge CD, +100 piercing DMG",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "mandatory",
+      "name": "Epic Charge Defence Doctrine",
+      "note": "−50% DMG taken while charging, −6s charge CD",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Sprint Doctrine",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "+225 Charge DMG Doctrine",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing DMG",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "−DMG Taken doctrines",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "Slashing DMG or Hero DMG",
+      "note": null,
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "veterancy": [
+    {
+      "label": "Top line",
+      "recommended": true,
+      "body": "Recommended by Amya as the main veterancy pick.",
+      "marks": [
+        1
+      ]
+    }
+  ],
+  "battleRole": {
+    "positioning": "Position on the opposite side of the enemy push from your hero — let them follow your hero as you move behind or around the formation. {1}",
+    "formation": null,
+    "tips": "Charge takes 1.5s to reach final stance for full damage; you have ~10s to push through a blob before skill 2 ends. {1} X-move or press 2 when units are 2-3s away from impact, then let them go through the blob (they follow your hero away). {1} If you cannot use the follow-charge effectively, default to a normal 1 charge and recall with skill 2 — but skill-2 priority should always be first choice. {1} Dodge pikes and take better fight angles when possible. {1} Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost the unit, pull it from supply (best to have it out, swap to another unit, then swap back) so the 40%-at-60%-headcount damage applies to 100% of the unit. {1}"
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [
+      "2",
+      "1"
+    ],
+    "loopMarks": [
+      1
+    ],
+    "notes": "Old trait removed: the short-charge (max damage at 0 momentum) mechanic was deleted. New playstyle: press 2 early and maintain the charge to wipe in one go. {1} Most engagements follow: go in / position daggeraxe opposite your hero on the enemy push, X-move or press 2 when units are 2–3s from impact, let them follow through the blob. {1} Avoid the old pattern (charge first, then press 2) — follow-charge is the priority, always use skill 2 over basic charges when possible. {1}"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No Counters section in Amya's OP — matchup weaknesses inferred from meta context (underperforms on open maps) rather than explicit source.",
+    "No formation guidance available — F1/F2 recommendations absent from all sources."
+  ]
+}
