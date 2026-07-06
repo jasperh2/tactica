@@ -218,7 +218,11 @@ export function mount(el, ctx) {
     dropdownOpen = false;
     const name = window.prompt('Playbook name', 'New Playbook');
     if (!name) return;
-    const tactic = newTactic(name.trim(), '');
+    // Pass the current doc's tactics so the new id is derived collision-free (see newTactic) —
+    // otherwise a reload's reset module counter re-minted an id already in the doc and the new
+    // playbook became unselectable. A new playbook is a full empty board: fresh keyframe, no
+    // objects, independent of every other playbook on this map.
+    const tactic = newTactic(name.trim(), '', ctx.store.getDoc().tactics);
     ctx.exec({ type: 'doc/newTactic', tactic });
   }
 

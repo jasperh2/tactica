@@ -15,9 +15,11 @@ function roundCoord(n) {
   return Math.round(n * COORD_ROUNDING_FACTOR) / COORD_ROUNDING_FACTOR;
 }
 
-/** Objects on `tactic` visible by the appearsAt<=kf model, regardless of layer UI-visible flag. */
-function cumulativeObjects(tactic, kf) {
-  return tactic.objects.filter((obj) => obj.appearsAt <= kf);
+/** Objects OWNED by frame `kf` (independent-frames model: appearsAt === kf), regardless of layer
+ * UI-visible flag. Each exported keyframe carries exactly that frame's own state; the animator
+ * diffs consecutive keyframes by unit code to find what spawns, moves, or despawns. */
+function frameObjects(tactic, kf) {
+  return tactic.objects.filter((obj) => obj.appearsAt === kf);
 }
 
 /** Build one playbook.json `units[]` entry for a marker object at keyframe `kf`. */
@@ -81,7 +83,7 @@ function zoneEntry(zone) {
 /** Build one playbook.json keyframe entry: cumulative units/routes/zones at `kf`. */
 function buildKeyframeEntry(tactic, kfMeta) {
   const kf = kfMeta.n;
-  const visible = cumulativeObjects(tactic, kf);
+  const visible = frameObjects(tactic, kf);
   return {
     keyframe: kf,
     label: kfMeta.name,
@@ -196,8 +198,8 @@ export function buildExportReadme(tactic, mapMeta) {
     '',
     `## Coordinates & timing`,
     '`x`,`y`,`cx`,`cy`,`rx`,`ry` and route points are percent of map width/height:',
-    '`px = x/100 * imageWidth`. Each keyframe carries the complete visible state (cumulative) —',
-    'diff consecutive keyframes to find what spawns or moves.',
+    '`px = x/100 * imageWidth`. Each keyframe carries that frame\'s complete state (frames are',
+    'independent) — diff consecutive keyframes by unit code to find what spawns, moves, or despawns.',
     '',
     '## Animation intent',
     '1. Open on the base map; keyframe 1 spawns its units (staggered, drop-in scale, ~200ms).',

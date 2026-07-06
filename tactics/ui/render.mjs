@@ -6,7 +6,7 @@
 // renderSketch/renderSketchShape — see drawRouteOrSketch), dashed zone ellipses + label pill,
 // text notes. Export renders ALL objects regardless of layer.visible — the core exporter
 // deliberately ignores layer visibility for playbook.json, and frames must match playbook.json
-// 1:1 (per contract §5), so this module does the same (cumulative appearsAt<=kf model only,
+// 1:1 (per contract §5), so this module does the same (independent-frames appearsAt===kf model,
 // no layer-visibility filter).
 //
 // Not pure (draws to a real <canvas> and loads <img> elements) but holds no store/DOM-panel
@@ -53,14 +53,15 @@ const DEFAULT_SKETCH_BORDER_PX = 2; // matches app.mjs DEFAULT_TOOL_OPTIONS.bord
 const iconImageCache = new Map();
 
 /**
- * Objects visible at `kf`, cumulative (appearsAt<=kf), ignoring layer.visible — matches
- * core/exporter.mjs's cumulativeObjects so renders == playbook.json (see module note above).
+ * Objects OWNED by frame `kf` (independent-frames model: appearsAt === kf), ignoring layer.visible
+ * — matches core/exporter.mjs's frameObjects so the rendered frame PNG == that keyframe's
+ * playbook.json state (see module note above).
  * @param {{objects:object[]}} tactic
  * @param {number} kf
  * @returns {object[]}
  */
-function cumulativeVisible(tactic, kf) {
-  return tactic.objects.filter((obj) => obj.appearsAt <= kf);
+function frameVisible(tactic, kf) {
+  return tactic.objects.filter((obj) => obj.appearsAt === kf);
 }
 
 /** Last positions[k] with k<=kf, falling back to positions[appearsAt] (mirrors core/playbook.mjs). */
@@ -491,7 +492,7 @@ export async function renderFrame(doc, layers, tactic, kf, mapImg, roster, size 
     ctx.drawImage(mapImg, 0, 0, w, h);
   }
 
-  const visible = cumulativeVisible(tactic, kf);
+  const visible = frameVisible(tactic, kf);
   const icons = await preloadIcons(tactic, roster);
 
   for (const zone of visible.filter((o) => o.kind === 'zone')) drawZone(ctx, zone, w, h);

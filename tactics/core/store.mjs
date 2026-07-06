@@ -4,10 +4,10 @@
 //
 // Model logic that the contract flags as "don't reimplement" (id assignment,
 // keyframe renumbering) delegates to ./playbook.mjs [core-model]. newTactic()
-// is deliberately NOT called from inside reduceDoc: it has its own internal
-// id counter, so calling it from the reducer would make reduceDoc impure
-// (same (doc, action) input could yield different output). The UI calls
-// playbook.newTactic(name, subtitle) itself and dispatches the built tactic.
+// is deliberately NOT called from inside reduceDoc: it derives the new tactic id
+// from the CURRENT doc's tactics (collision-free), which is the UI's job to supply
+// — the UI calls playbook.newTactic(name, subtitle, doc.tactics) itself and
+// dispatches the built tactic, keeping reduceDoc a pure (doc, action) -> doc.
 import { keyframeOps, addObject, moveMarker } from './playbook.mjs';
 
 // @typedef {import('./playbook.mjs').Tactic} Tactic

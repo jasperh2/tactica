@@ -11,8 +11,6 @@
  *   keyframes:Keyframe[], objects:object[], notes:Record<number,string>}} Tactic
  */
 
-let tacticCounter = 0;
-
 /**
  * @param {{tactics:Tactic[], activeTacticId:string}} doc
  * @returns {Tactic|undefined}
@@ -22,8 +20,13 @@ export function activeTactic(doc) {
 }
 
 /**
- * Objects visible at `kf`: appearsAt <= kf AND their layer is visible.
- * Marker objects get their resolved {x,y} merged in via positionAt.
+ * Objects OWNED by frame `kf` (independent-frames model, Jasper 2026-07-06): appearsAt === kf
+ * AND their layer is visible. Each frame is its own board — an object placed while viewing frame
+ * N belongs to frame N alone and never bleeds into N+1 (the pre-2026-07-06 model used
+ * appearsAt <= kf, so everything placed on frame 1 also showed on every later frame, and deleting
+ * it there deleted it everywhere — the "frames aren't unique" bug). Carry content across frames
+ * deliberately via the "Duplicate frame" gesture (keyframeOps.duplicate), which clones a frame's
+ * objects onto the next one. Marker objects get their resolved {x,y} merged in via positionAt.
  * @param {Tactic} tactic
  * @param {Layer[]} layers
  * @param {number} kf
@@ -33,7 +36,7 @@ export function visibleObjects(tactic, layers, kf) {
   const visibleLayerIds = new Set(layers.filter((layer) => layer.visible).map((layer) => layer.id));
 
   return tactic.objects
-    .filter((obj) => obj.appearsAt <= kf && visibleLayerIds.has(obj.layerId))
+    .filter((obj) => obj.appearsAt === kf && visibleLayerIds.has(obj.layerId))
     .map((obj) => resolveObject(obj, kf));
 }
 
@@ -116,27 +119,48 @@ export function positionAt(marker, kf) {
 }
 
 /**
- * Count of objects on `layerId` visible by keyframe `kf` (layer-scoped, ignores visibility flag —
- * this is the layers-panel row count, distinct from visibleObjects).
+ * Count of objects on `layerId` OWNED by keyframe `kf` (layer-scoped, ignores visibility flag —
+ * this is the layers-panel row count, distinct from visibleObjects). Independent-frames model:
+ * appearsAt === kf, so the count reflects only what lives on the frame you are viewing.
  * @param {Tactic} tactic
  * @param {string} layerId
  * @param {number} kf
  * @returns {number}
  */
 export function objectCountForLayer(tactic, layerId, kf) {
-  return tactic.objects.filter((obj) => obj.layerId === layerId && obj.appearsAt <= kf).length;
+  return tactic.objects.filter((obj) => obj.layerId === layerId && obj.appearsAt === kf).length;
 }
 
 /**
- * Fresh Tactic with one keyframe "Deploy" at "0:00".
+ * Next collision-free tactic id ("t" + (max existing numeric suffix + 1)). Derived from the
+ * CURRENT doc's tactics rather than a module counter: the old module counter reset to 0 on every
+ * page reload, so the first playbook created after reloading a saved doc re-minted `t1` and
+ * collided with the persisted starter tactic — two rows shared an id, activeTactic() always
+ * resolved the first, and the new playbook could not be selected (Jasper 2026-07-06). Pure and
+ * deterministic (no Date/Math.random).
+ * @param {Tactic[]} existingTactics
+ * @returns {string}
+ */
+function nextTacticId(existingTactics) {
+  const maxNum = existingTactics.reduce((max, t) => {
+    const match = /^t(\d+)$/.exec(t.id ?? '');
+    return match ? Math.max(max, Number(match[1])) : max;
+  }, 0);
+  return `t${maxNum + 1}`;
+}
+
+/**
+ * Fresh Tactic with one keyframe "Deploy" at "0:00". Its id is derived from `existingTactics` so
+ * it never collides with a tactic already in the doc (see nextTacticId). Callers MUST pass the
+ * current doc's tactics; the default `[]` only fits the first-tactic-in-a-fresh-doc case.
  * @param {string} name
  * @param {string} subtitle
+ * @param {Tactic[]} [existingTactics]
  * @returns {Tactic}
  */
-export function newTactic(name, subtitle) {
-  tacticCounter += 1;
+export function newTactic(name, subtitle, existingTactics = []) {
   return {
-    id: `t${tacticCounter}`,
+    id: nextTacticId(existingTactics),
     name,
     subtitle,
     nextId: 1,
@@ -238,11 +262,13 @@ function rename(tactic, n, name) {
 }
 
 /**
- * Insert a copy of keyframe `n` immediately after it. Every keyframe after `n` shifts up by
- * one. Objects appearing strictly after `n` get appearsAt+1; positions keys > n shift up by
- * one, and the duplicated frame (new number n+1) inherits the position from frame n if present.
- * The source keyframe's note (if any) is likewise COPIED onto the duplicate — the useful
- * default for a "duplicate frame" authoring gesture, since the note likely still applies.
+ * Insert a copy of keyframe `n` immediately after it. Every keyframe after `n` shifts up by one.
+ * Independent-frames model (Jasper 2026-07-06): the inserted frame (n+1) receives its OWN CLONES
+ * of frame n's objects — each a new object with a fresh id (from tactic.nextId) and its position
+ * rekeyed to n+1 — so editing or deleting on the duplicate never reaches back into the source
+ * frame. This is the deliberate "carry content to the next frame" gesture (contrast keyframeOps.add,
+ * which makes an empty frame). Objects on frames strictly after `n` shift appearsAt/positions +1 to
+ * make room. The source keyframe's note (if any) is COPIED onto the duplicate.
  * @param {Tactic} tactic @param {number} n @returns {Tactic}
  */
 function duplicate(tactic, n) {
@@ -252,32 +278,39 @@ function duplicate(tactic, n) {
   const copy = { ...source, name: source.name };
   const keyframes = renumberKeyframes([...before, copy, ...after]);
 
+  // Shift objects on frames strictly after n up by one to make room for the inserted frame.
   const mapAppearsAt = (old) => (old > n ? old + 1 : old);
   const mapPositionsKey = (old) => (old > n ? old + 1 : old);
+  const shifted = remapObjects(tactic.objects, mapAppearsAt, mapPositionsKey);
 
-  const objects = remapObjects(tactic.objects, mapAppearsAt, mapPositionsKey).map((obj) => {
-    if (!obj.positions || obj.positions[n] === undefined) return obj;
-    // duplicated frame is numbered n+1 after the shift above
-    return { ...obj, positions: { ...obj.positions, [n + 1]: { ...obj.positions[n] } } };
-  });
+  // Clone frame n's objects onto the new frame n+1 with fresh ids and rekeyed positions.
+  let nextId = tactic.nextId;
+  const clones = [];
+  for (const obj of tactic.objects) {
+    if (obj.appearsAt !== n) continue;
+    const clone = { ...obj, id: `o${nextId}`, appearsAt: n + 1 };
+    nextId += 1;
+    if (obj.positions) {
+      const pos = obj.positions[n];
+      clone.positions = pos ? { [n + 1]: { ...pos } } : {};
+    }
+    clones.push(clone);
+  }
 
+  const objects = [...shifted, ...clones];
   const notes = remapNotes(tactic.notes, mapPositionsKey);
   if (tactic.notes?.[n] !== undefined) notes[n + 1] = tactic.notes[n]; // copy onto the duplicate
 
-  return { ...tactic, keyframes, objects, notes };
+  return { ...tactic, keyframes, objects, nextId, notes };
 }
 
 /**
- * Remove keyframe `n`. Never removes the last remaining keyframe. Objects appearing after `n`
- * shift appearsAt down by one; objects appearing exactly at `n` clamp to the nearest surviving
- * frame. positions[n] is dropped and keys > n shift down by one — UNLESS the removed frame held
- * the object's ONLY position, in which case that position carries forward onto the object's new
- * clamped appearsAt instead of vanishing (bug: dropping it left `positions:{}` behind, and
- * positionAt() would then silently fall back to the map-center placeholder, teleporting the
- * marker with no warning — see positionAt's POSITION_FALLBACK). This only fires when no other
- * position data survives for the object, so an object with positions elsewhere is unaffected.
- * The removed keyframe's note (if any) is deleted along with it; notes on later frames shift
- * down the same way.
+ * Remove keyframe `n`. Never removes the last remaining keyframe. Independent-frames model
+ * (Jasper 2026-07-06): objects that lived ON the removed frame (appearsAt === n) are removed WITH
+ * it — they were that frame's own content, so clamping them onto a neighbouring frame (the old
+ * cumulative behaviour) would re-introduce the exact cross-frame bleed this model exists to
+ * prevent. Objects on later frames shift appearsAt/positions down by one. The removed keyframe's
+ * note is deleted along with it; notes on later frames shift down the same way.
  * @param {Tactic} tactic @param {number} n @returns {Tactic}
  */
 function remove(tactic, n) {
@@ -287,27 +320,13 @@ function remove(tactic, n) {
 
   const survivors = tactic.keyframes.filter((kf) => kf.n !== n);
   const keyframes = renumberKeyframes(survivors);
-  const maxN = keyframes.length;
 
-  const mapAppearsAt = (old) => {
-    if (old < n) return old;
-    if (old === n) return Math.max(1, Math.min(n, maxN));
-    return Math.min(old - 1, maxN);
-  };
-  const mapPositionsKey = (old) => {
-    if (old === n) return undefined; // dropped (unless it's the object's sole position — see below)
-    return old < n ? old : old - 1;
-  };
+  const kept = tactic.objects.filter((obj) => obj.appearsAt !== n);
 
-  const objects = remapObjects(tactic.objects, mapAppearsAt, mapPositionsKey).map((obj, idx) => {
-    const original = tactic.objects[idx];
-    const sourceKeys = Object.keys(original.positions ?? {});
-    const wasSolePositionOnRemovedFrame = sourceKeys.length === 1 && Number(sourceKeys[0]) === n;
-    if (!wasSolePositionOnRemovedFrame) return obj;
+  const mapAppearsAt = (old) => (old < n ? old : old - 1);
+  const mapPositionsKey = (old) => (old === n ? undefined : old < n ? old : old - 1);
 
-    const carried = original.positions[n];
-    return { ...obj, positions: { [obj.appearsAt]: { ...carried } } };
-  });
+  const objects = remapObjects(kept, mapAppearsAt, mapPositionsKey);
   const notes = remapNotes(tactic.notes, mapPositionsKey);
 
   return { ...tactic, keyframes, objects, notes };
