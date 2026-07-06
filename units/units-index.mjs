@@ -68,25 +68,23 @@ export function filterUnits(units, filters = {}) {
 }
 
 /**
- * Sorts units for display — DEFAULT SORT (Jasper directive, 2026-07-06): meta tier is the primary
- * key, ladder order God -> S -> AA -> A -> B -> C -> D -> E -> F -> unrated last (supersedes the
- * prior rarity-desc default — see units-index.css's tile-grid comment and DECISIONS.md's
- * 2026-07-05 unit-type-sort-buckets entry, both stale pointers to the old rule, kept only as
- * historical breadcrumbs). Within one tier group, rarity DESC (T5 -> T1, missing/unrecognized
- * rarity last) is the secondary key; name A-Z is the tertiary tie-break for units that share both
- * tier AND rarity, so the order is always fully deterministic. Unrecognized tier strings (e.g.
- * "Best Filler (top pick, unlettered)") sort after the known ladder but before unrated — they are
- * real tier signal, just not on the clean enum, so they should not be buried at the very bottom
- * next to units with no tier data at all.
+ * Sorts units for display — DEFAULT SORT (Jasper directive, 2026-07-06 rev 2): RARITY tier is the
+ * primary key, DESC so gold/legendary (T5) sits at the top and grey/common (T1) at the bottom
+ * ("t5 golden units above t4 purple units below"). Units with no rarity in our data (many
+ * stats-only units — units.json/unit-db carry no rarity field for them) sort LAST, then A-Z among
+ * themselves — an honest floor, not a fabricated rarity. Within one rarity band, META tier
+ * (God -> S -> AA -> ... -> unrated) is the secondary key so the meta-best gold unit leads the gold
+ * band; name A-Z is the tertiary tie-break, so the order is always fully deterministic. (Rev 1
+ * had meta tier primary / rarity secondary — Jasper corrected to rarity-first.)
  * @param {Array<Record<string, unknown>>} units
  * @returns {Array<Record<string, unknown>>}
  */
 export function sortForDisplay(units) {
   return [...units].sort((a, b) => {
-    const tierDiff = tierRank(a.tier) - tierRank(b.tier);
-    if (tierDiff !== 0) return tierDiff;
     const rarityDiff = rarityRank(a.rarity) - rarityRank(b.rarity);
     if (rarityDiff !== 0) return rarityDiff;
+    const tierDiff = tierRank(a.tier) - tierRank(b.tier);
+    if (tierDiff !== 0) return tierDiff;
     return String(a.name).localeCompare(String(b.name));
   });
 }
