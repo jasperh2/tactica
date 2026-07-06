@@ -89,7 +89,19 @@
       "note": "Veterancy: Top Line. Doctrine 'Don't put' and 'Tips & Tricks' sections are literal X placeholders in the OP — not fabricated here. Example build per OP: Unit Damage Doctrine V, Iron Damage Doctrine V, Anti-Infantry Doctrine V (+200 dmg to infantry), Siege Fighter Doctrine, Defence Doctrine V / Piercing Defence Doctrine V / Epic Leadership Doctrine. Playstyle kit: X-move in, press 2 and Ironside when the first line will take dmg, let the 2 run out (auto second phase), press 3 when 5s left on skill 2. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Azaps is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Mobile shielded melee, trades some defense for speed",
@@ -155,7 +167,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -101,7 +101,19 @@
       "note": "Veterancy: if you can help your unit (heavy armor, or fighting medium armor) go Top Line + rest Mid until 3/3 piercing dmg, rest non-selected line; if you can't help your unit (light armor, or medium such as musket) go Bot Line + rest Mid until 3/3 piercing dmg, rest non-selected line. Hero pairing: Any. Playstyle kit: relies heavily on Cover Commander as main DPS tool (mini-charge CD 9s, not the first ability); focus charge-related doctrines especially +1 hit on charge; always use Cover Commander mode, never V; can charge to engage but better to activate Cover Commander and move in/out of combat; triggering Charge then Cover Commander (no V/X-move) stacks a mini-charge on next impact; reset Cover Commander every ~2s for the hidden damage-reduction passive (40%->0%, decaying 4-6s). Example build: Stamina Doctrine V, Charge Doctrine V, Iron Damage Doctrine V (or Epic Leadership Doctrine), Unit Damage Doctrine V or Siege Fighter Doctrine, Anti-Infantry Doctrine or Noble Blood Doctrine. \"Don't put\" section is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Men-at-Arms is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "If you can help your unit (heavy armor, or fighting medium armor): Top Line + rest Mid until 3/3 piercing dmg, rest non-selected line. If you can't help your unit (light armor, or medium such as musket): Bot Line + rest Mid until 3/3 piercing dmg, rest non-selected line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Mobile shielded melee, trades some defense for speed",
@@ -171,7 +183,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

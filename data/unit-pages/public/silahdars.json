@@ -95,7 +95,19 @@
       "note": "Veterancy: +11 points bottom, rest TOP LINE (confirmed in a 2025-05-29 follow-up screenshot: top line 3/3, 3/3, 2/2, 3/3, 2/3, 0/3; bottom line 3/3, 3/3, 0/3, 0/3, 0/2 — exact icon-to-ability mapping not labeled in thread). Hero pairing: Any. Example build: Health & Resistance Doctrine, Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Hero Damage Doctrine V, Epic Leadership Doctrine. Rotation: X-move in; press 1 (Sideways Sweep); when 1's CD shows 11s remaining, press 2 (Deathstrike); when 2's CD shows 24s remaining, press 3 (Get Over Here); press 1 again when up; repeat the 11s-remaining trigger for 3. Never cancel 1/2 before their 6s duration finishes; avoid Cover Commander when you can simply disengage and wait out cooldowns. Patch-note mechanics (8/15/2024, carried in OP): Sideways Sweep and Deathstrike reduce damage taken 40% for 3s and remove control effects instantly, and increase attack rate for their duration; their damage (incl. Deathstrike released under Get Over Here) +30%; Deathstrike minimum damage rate 0.1->0.2; Deathstrike deals extra damage to charging enemies; basic attacks hit +1 enemy. \"Don't put\" is a literal X placeholder in the OP — not fabricated here. GAP: a follow-up image (2025-05-29) shows the veterancy point allocation as in-game icons without a labeled icon-to-ability mapping — do not invent which ability each icon slot corresponds to; treat the exact allocation as unconfirmed beyond the '+11 bottom, rest top' summary line. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Silahdars is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "+11 Points bottom rest TOP LINE",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -165,7 +177,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -159,7 +159,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

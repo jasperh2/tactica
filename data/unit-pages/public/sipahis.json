@@ -89,7 +89,19 @@
       "note": "Veterancy: Top Line -- \"Bot Line would be better if it actually worked, but it's bugged and simply doesn't work\" (per Amya). Hero pairing: Any. \"Don't put\" section is a literal X placeholder in the OP -- not fabricated here. Playstyle kit: cav has a charge on press 1 (Quick Charge) and a stomp on press 2 (Croupade); after press 1, a follow-up spell shows up for another sort of stomp; most of the time press 2 first because it gives a defence buff as starter, then press 1, then the follow-up spell. No separate \"Tips & Tricks\" or \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Sipahis is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line (\"Bot Line would be better if it actually worked, but it's bugged and simply doesn't work\")",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -140,7 +152,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

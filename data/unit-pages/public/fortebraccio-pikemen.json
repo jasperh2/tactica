@@ -90,8 +90,23 @@
       "note": "Veterancy: Top Line. GAP: no fight-type Strength ratings block, Hero pairing, or Counters — OP left literal X placeholders for all of these; not fabricated here. Example build per OP: Epic Polearm Doctrine (Pike Charge), Unit Damage Doctrine V, Anti-Cavalry Doctrine (-40% cav dmg bracing), Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP), Anti-Cavalry Doctrine (lower tier, -30%) or Epic Bloodthirsty Doctrine. Per OP: Pike Charge is pretty good to counter divers and re-brace after; replace Pike Charge with Epic Leadership Doctrine if you don't like it, or with another piercing dmg doctrine; replace piercing dmg or Pike Charge with Epic Bloodthirsty Doctrine if sustain is needed. Playstyle: always play in F1 (very rare case where F2 works if heavily covered); use long range to be behind Spartan / with phalanx and add heavy anti-cav while still adding DPS to the front line; very good field unit. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Fortebraccio Pikemen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions). 'Tips & Tricks' is also a literal X placeholder in the OP.",
       "footnoteMark": 1
     },
-    "veterancy": null,
-    "formation": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "Always play them in F1 (very rare case where you can play them in F2 if heavily covered)",
+      "footnoteMark": 1
+    },
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
       "rationale": "Veterancy: Top Line. GAP: no fight-type Strength ratings block, Hero pairing, or Counters — OP left literal X placeholders for all of these; not fabricated here. Example build per OP: Epic Polearm Doctrine (Pike Charge), Unit Damage Doctrine V, Anti-Cavalry Doctrine (-40% cav dmg bracing), Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP), Anti-Cavalry Doctrine (lower tier, -30%) or Epic Bloodthirsty Doctrine. Per OP: Pike Charge is pretty good to counter divers and re-brace after; replace Pike Charge with Epic Leadership Doctrine if you don't like it, or with another piercing dmg doctrine; replace piercing dmg or Pike Charge with Epic Bloodthirsty Doctrine if sustain is needed. Playstyle: always play in F1 (very rare case where F2 works if heavily covered); use long range to be behind Spartan / with phalanx and add heavy anti-cav while still adding DPS to the front line; very good field unit. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Fortebraccio Pikemen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions). 'Tips & Tricks' is also a literal X placeholder in the OP.",
@@ -133,10 +148,6 @@
   "gaps": [
     {
       "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
-      "house": false
-    },
-    {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
       "house": false
     }
   ]

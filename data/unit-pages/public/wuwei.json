@@ -83,7 +83,19 @@
       "note": "Veterancy: Full Top. Hero pairing: Any. \"Filler\" doctrine section is a literal X placeholder in the OP -- not fabricated here. \"Don't put\": DMG reduction like the -5% one, per Amya you're getting one-shot anyway. Playstyle kit: go with frontline; most of the time press 1 then quickly press 2; when cooldowns reset, spam 1 and 2 again (killing enemies resets cooldowns); if fighting a heavy armor unit, let skill 1 land its hit first to apply the armor debuff, then resume spamming 1 and 2; be careful about not over-extending, sometimes better to X-move back before pressing 1-2 once more. Example build per OP: Unit Damage Doctrine V, Toughness Doctrine (-33% dmg taken first 8 hits), Wuwei Unique Doctrine (Brutal Sweep +10% HP), Epic Combat Doctrine (3/6/9), Siege Fighter Doctrine. \"Origin\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- WuWei is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -157,7 +169,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

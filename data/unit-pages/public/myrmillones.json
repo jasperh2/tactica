@@ -89,7 +89,19 @@
       "note": "Veterancy: Top Line. Hero pairing: Any. Playstyle: press 1 (Shield Sortie/charge) for a huge shock attack, then stand in BLOCK formation — don't cancel until you can safely retreat; CC-Immunity (Stand Fast) is mandatory since it's activated during the charge; charge in, hold formation until you can escape, repeat. \"Origin\" and \"Don't put\" are literal X placeholders in the OP; \"Tips & Tricks\" is a single literal X bullet — none fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Myrmillones is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
@@ -155,7 +167,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

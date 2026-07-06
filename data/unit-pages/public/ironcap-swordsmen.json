@@ -66,7 +66,19 @@
       "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: stack Charge CD doctrines, complete the Honor Tree nodes, and this unit is a charge machine that will clean up anything. No dedicated Tips & Tricks section beyond the single Playstyle line (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Ironcap Swordsmen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Mobile shielded melee, trades some defense for speed",
@@ -108,7 +120,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

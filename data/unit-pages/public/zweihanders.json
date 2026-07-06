@@ -95,7 +95,19 @@
       "note": "No mastery tree (rarityTier T5, hasMastery false). Veterancy: Top Line. Hero pairing: Any. \"Don't put\" is a literal X placeholder in the OP -- Amya did not fill this in; not fabricated here. Example build per OP: Zweihanders Unique CD Doctrine (-4s Special CD), Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Zweihander Sword Doctrine, Noble Blood Doctrine. Guide edited 2026-06-27, two days after the 2026-06-25 Chaos patch anchor which reworked this unit's Prepared Stance/Knight's Defence -- per the guide's own frontmatter/gap note this edit post-dates and reflects the current season, so build guidance is NOT flagged staleAsOfPatch (contrast the pre-existing fightRatings block, whose underlying OP date predates the patch).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -146,7 +158,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -113,7 +113,19 @@
       "note": "Veterancy: Top Line. Guide is post-Chaos-patch (edit 2026-06-28). Example build per OP: Epic Leadership Doctrine (-16% leadership cost), Epic Combat Doctrine, Linebreaker Doctrine V, Unit Damage Doctrine V, Health & Piercing Defence Doctrine V / Mobility V. Playstyle: the unit was originally made to buff your team but has INSANE dmg since mastery. X-move in, press 3 (For Freedom!) to buff yourself before taking any hits, instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat if you can (preferred). After the combo, get out and wait for cooldown if possible — better than anything. Don't charge in with 1 first: it takes time to hit, the combo gets slower, and it doesn't stack the Claymore; without For Freedom! the unit is really bad, so let them fight 15s after pressing 3, then retreat, wait CD, go in again. Tips & Tricks: when pressing 2 (Claymore Strike), let them hit once, press V (makes press 2 hit once again) — train in custom game first.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -183,7 +195,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

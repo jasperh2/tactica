@@ -166,23 +166,11 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
    * AND every click after it, accepted or debounced); null when idle. Feeds isDebouncedClick() —
    * see the click-debounce doc above. */
   let lastClickAt = null;
-  /** Set true the instant ANY commit happens (drag-commit on pointerup, or click/dblclick/Enter
-   * commit); consumed by the very next `click` (which is then swallowed) and unconditionally
-   * cleared by the next `pointerdown`. This is THE duplicate-shape fix (Jasper hotfix 2026-07-06):
-   * a press-drag-release fires a trailing synthetic `click` in the real browser (the old
-   * dragRelease test helper wrongly assumed it doesn't), and that trailing click used to hit the
-   * onClick "no anchor yet -> re-anchor" branch and seed a PHANTOM anchor at the release point —
-   * the user's next click then committed a second, unwanted shape. Mirrors canvas.mjs's own
-   * `suppressNextClick` latch (its select/move drags have the identical trailing-click problem)
-   * exactly: set on the moved-gesture commit, consumed by the one trailing click, cleared at the
-   * next pointerdown so it can never linger and swallow a genuine later click. */
-  let suppressClick = false;
 
   function cancel() {
     points = null;
     pressStart = null;
     lastClickAt = null;
-    suppressClick = false;
     clearGhost(canvasApi);
   }
 
@@ -195,7 +183,6 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
     points = null;
     pressStart = null;
     lastClickAt = null;
-    suppressClick = true; // swallow the trailing synthetic click this commit's gesture may emit
     clearGhost(canvasApi);
     const object = buildObject(dc, pts);
     if (!object) return;
@@ -205,12 +192,6 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
 
   return {
     onPointerDown(e) {
-      // A fresh press moots any pending post-commit click suppression: whether this press ends up
-      // anchoring a new gesture or continuing one, the latch's job (eat exactly the ONE trailing
-      // click of the just-committed gesture) is over — clearing here bounds it to that one click
-      // even when the browser suppressed that click (drag moved far enough), so it can never
-      // linger and swallow a genuine later click. Same bound canvas.mjs applies at its pointerdown.
-      suppressClick = false;
       const dc = drawContext(ctx);
       if (canvasApi.blocked(dc.layerId)) return;
       const p = canvasApi.toPct(e.clientX, e.clientY);
@@ -254,17 +235,6 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
       // click. pointerdown already anchored the start for the FIRST click of a gesture, so:
       const dc = drawContext(ctx);
       if (canvasApi.blocked(dc.layerId)) return;
-
-      // Swallow the ONE trailing synthetic click a just-committed gesture emits (a press-drag-
-      // release fires pointerup->commit->click in the real browser; a double-click's committing
-      // click is followed by more clicks). Without this, that trailing click fell into the
-      // re-anchor branch below and seeded a phantom anchor the user's NEXT click turned into a
-      // duplicate shape (Jasper's bug). Consuming it here leaves the tool cleanly idle instead.
-      if (suppressClick) {
-        suppressClick = false;
-        return;
-      }
-
       const p = canvasApi.toPct(e.clientX, e.clientY);
 
       // Defensive: if a click ever arrives with no anchor (e.g. pointerdown was swallowed), treat it
@@ -314,15 +284,7 @@ function createTwoPointTool(ctx, canvasApi, renderGhost, buildObject, opts = {})
     // only ever fire once >=2 points are already placed — a deliberate multi-click authoring
     // session, not the anchor->first-commit transition the guard targets.
     onDblClick() {
-      if (points && points.length >= 2) {
-        doCommit(points);
-        return;
-      }
-      // A dblclick with only a lone anchor (or none) is the tail of a native double-click whose
-      // second press re-anchored a PHANTOM point after the first click already committed — clear
-      // it so it can't linger and be committed as a duplicate by the user's next click (Jasper's
-      // "double-clicking spawns a second shape" bug). Harmless no-op when already idle.
-      cancel();
+      if (points && points.length >= 2) doCommit(points);
     },
     onEnter() {
       if (points && points.length >= 2) doCommit(points);

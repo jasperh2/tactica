@@ -78,7 +78,19 @@
       "note": "Veterancy: Full Top for most situations / Full Bot if using the re-build tech (mostly only competitive). Hero pairing: not specified in this thread. 'Don't put': damage doctrines -- OP verbatim: \"don't scale because they don't apply to the cannons the unit places, stack HP / Special instead.\" Playstyle: Lionroar Crew is a slow-moving unit (especially with cannons deployed) that joins the 'Exotics' community category (units with unique abilities that significantly influence battles, similar to Zykalian Militia, Flamers, Shenji, etc.) -- demands strong teamwork and protection to be effective; if well-guarded, has tremendous potential to impact the battlefield. While its ability to destroy towers/objectives was nerfed, it still excels at some map structures: the bridge on Wall Fort, some gates in other maps, unlocking new strategies. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). OP also links an external Imgur 'Reference image' album not opened/transcribed (out of scope for this read-only capture). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Lionroar Crew is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top for most situations / Full Bot if you use the re-build tech (mostly only competitive)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -124,7 +136,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

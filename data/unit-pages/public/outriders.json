@@ -66,7 +66,19 @@
       "note": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Identity note: thread tags list 'Range, T3, Cavalry' verbatim even though the OP's own Archetype line describes this unit as 'Melee Infantry (Javelin + Melee Hybrid Skirmisher)' — recorded as-is per capture, not corrected; logged as an identityProvenance-adjacent conflict below rather than silently resolved (per task instructions, the thread-tag 'Cavalry' vs OP 'Melee Infantry' archetype contradiction is recorded verbatim, not resolved). Ability infos per OP: Skill 1 is ranged poke (javelin throw) to harass from range; Skill 2 shoots javelins then rushes into melee, can be cancelled after the throw (for poking) or left to complete (for a melee engage) — no formally-named ability block beyond this Playstyle description. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Outriders is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Melee skirmisher, throws javelins before closing to melee",
@@ -116,7 +128,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

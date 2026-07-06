@@ -101,7 +101,19 @@
       "note": "Veterancy: 5 points top, rest mid and top (of the mid) when it splits into 2 ways. Capstone unlocks \"Axes of the North\" (+15% dmg to infantry, renames the unit). Hero pairing: Medium or Heavy armors. Playstyle kit: 1 (Raging Onslaught, switch to axes) -> X-move in -> 3 -> 2 -> 1 -> V -> 1 -> V -> 1 -> V (repeat); can press V between spell steps to add one AA. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Iron Damage Doctrine V (Ironsides), Linebreaker Doctrine, Anti-Infantry Doctrine or Epic Leadership Doctrine. \"Tips & Tricks\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Varangian Guards is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "5 points top, rest mid and top (of the mid) when it splits into 2 ways. Capstone unlocks \"Axes of the North\" (+15% dmg to infantry, renames the unit).",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -167,7 +179,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -78,7 +78,19 @@
       "note": "Veterancy: Full Top (recommended, DPS) / Full Bot (Skirmish, Relentless Advancing capstone renames the unit). Hero pairing: not specified in this thread. Ability infos per OP follow-up reply (2025-06-10): Arrow Rain has 160m range, 14s duration; Spell 1 has 7s duration. Playstyle: stack first (40 unit kills or 8 hero kills, or a mix) until unlocked -- this stacks even when the unit isn't deployed, from both hero and unit kills, and unlocks advanced abilities. Then play in blob: Skill 1 ignores most shields and does insane damage, Skill 2 to reposition and dodge threats. Artemis and Arrow Rain DON'T stack. Normal combo: 1 -> Arrow Rain -> V+Artemis -> 1 (wait for each step to end before the next; can skip the Artemis step). No dedicated Tips & Tricks section beyond Playstyle/Ability-infos notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Hwarang is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top (Recommended, DPS) / Full Bot (Skirmish, Relentless Advancing capstone renames unit)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Backline ranged suppression with arcing arrow fire",
@@ -128,7 +140,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -107,7 +107,19 @@
       "note": "Veterancy: Top Line. Hero pairing: Any. Guide edit (2026-06-28) post-dates the 2026-06-25 Chaos patch anchor -- current-season source, not stale. Playstyle kit: the unit's old \"short charge\" trait (max dmg even with 0 momentum) was removed; new play is to press 2 early and maintain the charge if you can wipe in one go. Takes 1.5s to reach final stance for full charge damage; ~10s to push through a blob before 2 ends. Most fights: go in / try to go behind the push with your hero while daggeraxe stand on the opposite side of the push; X-move or press 2 when daggeraxe are 2-3s from impact, let them go through the blob (they follow your hero). Avoid charging in first and then pressing 2 like before; if you can't make good use of the follow-charge, use a normal 1 charge and bring them back with skill 2 (priority should always be to use 2). Better, if possible, to dodge pikes / enter the fight from a better angle when you can charge somewhere and then follow up with 2. Lancer's Last Stand TRICK: if you spawn with it, swap away and swap back; if you just lost a unit, take this one out from supply (best to have it out, swap to another unit, then swap back) -- the 40%-at-60%-headcount doctrine then applies to 100% of the unit. No separate \"Example Build\" section given beyond the doctrine list. CONFLICT LOGGED: this doctrine block and Tips & Tricks text are near-identical to Amya's Tiger and Leopard Cavalry guide -- see provenance.conflicts, flagged for vet review, recorded as-is per source.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Charge cavalry, breaks formations with couched-lance impact",
@@ -166,7 +178,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

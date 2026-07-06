@@ -101,7 +101,19 @@
       "note": "Veterancy: Top Line. Hero pairing: Any. Doctrine 'Don't put' is a literal X placeholder in the OP -- not fabricated here. No 'Tips & Tricks' section present in this thread (structural absence, not a capture gap); thread goes directly from Doctrines/Example Build to the SOS freshness note. Playstyle kit: press 1 for RTS view control mode (damage + charge stance), press 2 for a Khevtuul/Kriegsbruders-style sweep around the unit, press 3 to heal. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Order of the Dragon Unique Doctrine (Emperor's Expedition +15% move speed), +15% Pen Doctrine (above 40% HP), Flatland Doctrine V or Epic Leadership Doctrine or -5% DMG Taken. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Order of the Dragon is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -156,7 +168,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

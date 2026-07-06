@@ -90,7 +90,19 @@
       "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Tips & Tricks (verbatim): \"Usual archer build but less value on artemis and arrow rain as the longbow has spell of it's own.\" Playstyle: usual archer playstyle, press 1 is the main dps spell. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Backline ranged suppression with arcing arrow fire",
@@ -132,7 +144,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

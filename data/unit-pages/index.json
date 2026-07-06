@@ -85,6 +85,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -130,6 +131,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -259,6 +261,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -276,6 +279,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -293,6 +297,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -309,6 +314,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -353,6 +359,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -370,6 +377,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -554,6 +562,8 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
+        "formation",
         "battleRole",
         "controls"
       ]
@@ -584,6 +594,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -615,6 +626,8 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
+        "formation",
         "battleRole",
         "controls"
       ]
@@ -687,6 +700,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -745,6 +759,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -762,6 +777,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -809,6 +825,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -853,6 +870,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -883,6 +901,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -941,6 +960,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1103,6 +1123,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1147,6 +1168,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1164,6 +1186,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1195,6 +1218,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1254,6 +1278,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1271,6 +1296,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1288,6 +1314,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1402,6 +1429,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1462,6 +1490,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1509,6 +1538,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1525,6 +1555,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1583,6 +1614,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1655,6 +1687,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1671,6 +1704,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1688,6 +1722,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1719,6 +1754,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1736,6 +1772,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -1766,6 +1803,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1797,6 +1835,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1875,6 +1914,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -1892,6 +1932,8 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
+        "formation",
         "battleRole",
         "matchups",
         "controls"
@@ -1995,6 +2037,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2085,6 +2128,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2102,6 +2146,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "controls"
       ]
@@ -2132,6 +2177,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2163,6 +2209,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2196,6 +2243,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"
@@ -2213,6 +2261,7 @@
       "richness": "full",
       "presentSections": [
         "doctrines",
+        "veterancy",
         "battleRole",
         "matchups",
         "controls"

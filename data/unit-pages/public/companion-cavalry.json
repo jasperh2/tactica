@@ -95,7 +95,19 @@
       "note": "Veterancy: Full Bot (Achilles' Wings: +20% movement speed, +100% Imperial Stormbolt charge dmg, renames unit). Hero pairing: Any. Playstyle kit: X-move in; press 3 for buffs (usable even while hero fighting -- +100 all dmg stats wherever you are on the map); press 1 when close but not in contact (if low armor/low HP target, let that 1 do a bit of dps, else proceed instantly); cancel it with V and instantly press 2 very shortly after contact; cancel that press 2 with V once ~70% of the unit has impaled spears and press the new 1; try to X-move out at the end of the 1 without cancelling too soon. \"This is the recommended playstyle vs units you know you can optimize DPS versus. If you need any immediate actions, prioritise the 2 (Storm Pound).\" No separate \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Companion Cavalry is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bot (Achilles' Wings: +20% movement speed, +100% Imperial Stormbolt charge dmg, renames unit)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -150,7 +162,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -83,7 +83,19 @@
       "note": "Veterancy: Topline (recommended) averages 1.68% heal/s, more offensive nodes, CD on bleed; Bot line averages 1.2% heal/s, more defensive nodes, more armor. Hero pairing: Any. Playstyle: don't charge in unless you have a lot of front-lane support (it will stack them); once in the fight, hold V to unlock the counter-attack stance; after pressing heal (2), cancel the animation with a V; unique bleed skill on units that damaged you recently — focus on taking aggro and activating it, and remember you can disengage and play around your healing; good tanking loop is Ironside doctrine into disengage into heal and repeat; Paladins are considered the best unit in the game for X+V cancel (V, then as soon as the damage pop-up shows, X-move and instantly V again, repeat) to raise DPS by cancelling most of the attack animation — only do this when free to DPS, since it stops blocking/counter-attack. Example build: Anti-Infantry Doctrine V (or an LS doctrine if available), Unit Damage Doctrine V, Iron Damage Doctrine V (Ironsides), Noble Blood Doctrine I, Siege Fighter Doctrine. \"Origin\", \"Filler\", and \"Don't put\" are literal X placeholders in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Symmachean Paladins is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Topline (Recommended): Average 1.68% Heal per second / More Offensive Nodes / CD on Bleed. Bot line: Average 1.2% Heal per second / More Defensive Nodes / More Armor",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Mobile shielded melee, trades some defense for speed",
@@ -157,7 +169,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

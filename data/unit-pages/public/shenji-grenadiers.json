@@ -95,7 +95,19 @@
       "note": "Veterancy: Full Bot. Hero pairing: Any. Playstyle: Shenji are used nearly ONLY for spell 2 (grenade) — letting them shoot is near useless; keep them safe and use the 2 in blob fights. Some maps have spots to throw grenades high up over a wall to surprise the enemy. Most of the time, wait for the fight to blob up then throw the nade in. Preferable to play 2x Shenji at the same time with an ally — stacked nade volleys can completely wipe blobs. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Shenji Grenadiers is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Gunpowder ranged infantry, strong armor penetration",
@@ -145,7 +157,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

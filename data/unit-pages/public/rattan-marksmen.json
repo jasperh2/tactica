@@ -72,7 +72,19 @@
       "note": "Veterancy: Poison Line. Hero pairing: not specified in this thread. OP verbatim note: \"Replace Double Fire by Double Shot (Epic Crossbow V) -- both unlock double-bolt mechanic but Double Shot has longer-CD/shorter-duration vs Double Fire's 45s CD / +12% ROF baseline. Amya's pick: Double Shot.\" 'Top Pick' bracket is entirely absent from this OP's Doctrines structure (goes straight from Mandatory to Filler) -- not a capture omission, that's how the OP is structured. Build guide video linked by OP (not transcribed, external link out of scope): 'How to use Rattan Marskmen correct | Conquerors blade Tutorial' (YouTube, channel Grk) -- doctrines shown at 0:30s, veterancy = Poison Line, per OP's own description. No dedicated Tips & Tricks text section (guidance deferred to the linked video). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Rattan Marksmen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only. Note: distinct unit from Rattan Pikemen / Rattan Roundshields / Rattan Vipers -- confirmed separate slug, separate guide thread, separate tierlist entry.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Poison Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Ranged infantry with high per-shot damage, slower reload",
@@ -114,7 +126,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -95,7 +95,19 @@
       "note": "Veterancy: Top, rest Bot. Hero pairing: Any. Playstyle: always be on Cover-Commander, activating/deactivating every 2s to reset the buff granted at its start; don't go \"hard in\" until you've debuffed what will hit you next; each hit applies a -10% penetration debuff stacking up to 5 times (-50% total). A 2025-07-20 follow-up clarifies the Cover Commander buff: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; decay rate 6s. Example build: Noble Blood Doctrine, Awareness Doctrine V, Hero Damage Doctrine V, Unit Damage Doctrine V, Epic Spear Doctrine VI. Can swap to full tank (dmg-taken build or full block + CCi to reset). \"Don't put\" is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Spear Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions). GAP: this OP has no \"Counters\" section at all (absent, not unfilled placeholders) — usage.counters is [] to reflect that absence, not a claim the unit has no losing/winning matchups.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top rest bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
@@ -146,7 +158,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

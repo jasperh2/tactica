@@ -79,14 +79,17 @@
       "footnoteMark": 1
     },
     "veterancy": {
-      "steps": [
+      "recommendations": [
         {
-          "order": 1,
-          "line": "bottom",
-          "node": "Bottom Line ('for poison, obviously' — per Amya guide). No node-by-node allocation grid was given in this guide, only the line recommendation."
+          "author": null,
+          "recommendation": "Bottom Line (\"for poison, obviously\" — per OP)",
+          "rationale": null,
+          "corroborates": []
         }
       ],
-      "footnoteMark": 1
+      "footnoteMarks": [
+        1
+      ]
     },
     "formation": null,
     "battleRole": {
@@ -137,7 +140,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

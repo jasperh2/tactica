@@ -78,7 +78,19 @@
       "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: Charge is a close-up spell, not the main DMG tool like other cav — Charge or X-move in, then press 2. With the recommended doctrine set, the X-move while Sprint is active is insanely strong (core value of the Sprint Extra-Attack + Sword Cavalry Speed combo); without those doctrines, replace with other DMG doctrines. Follow-up post (2025-03-17) attaches a video clip 'Clap-2.mp4', not transcribed. Thread title is 'Ironcap Scouts' (tierlist assigns this to 'Ironcap Scout Cavalry'); thread tags T2/Cavalry. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' beyond what's listed are literal X placeholders in the OP. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor by 9 days; Ironcap Scout Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Melee cavalry, flanks and runs down routing infantry",
@@ -128,7 +140,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

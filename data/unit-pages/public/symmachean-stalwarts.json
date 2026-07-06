@@ -101,8 +101,23 @@
       "note": "Veterancy: Middle for +1 target, then rest top. Hero pairing: Any. Playstyle kit: X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up; CCi (Stand Fast) is the reset button — pop it vs polearm ulting you, enemy Imperial Pike, or cavalry charge; never V with Stalwart, only brace; loop is X-move in or advance, brace, repeat. \"CCi is mandatory in every build (resets block AND breaks CC). A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack.\" Formation tip: use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that. Guide edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor, so doctrine guidance reflects the current season; the shortlist's own assessment of the patch's hitbox-only nerf (Brace damage hitbox −12%, stab damage hitbox −18%) is \"no skill/mechanic change — existing doctrine likely still holds, just slightly weaker\" (docs/vet-docs/changed-units-shortlist.md), so this build is not flagged stale.",
       "footnoteMark": 1
     },
-    "veterancy": null,
-    "formation": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Middle for +1 target, then rest top.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "The biggest tip is using the F3 formation to move, into transitioning to F2 and insta bracing, this will make it so that the stalwart is very stacked and give you insane DMG, when bracing with F2 only the back row stalwart will be useless — this tech fix it.",
+      "footnoteMark": 1
+    },
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
       "rationale": "Veterancy: Middle for +1 target, then rest top. Hero pairing: Any. Playstyle kit: X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up; CCi (Stand Fast) is the reset button — pop it vs polearm ulting you, enemy Imperial Pike, or cavalry charge; never V with Stalwart, only brace; loop is X-move in or advance, brace, repeat. \"CCi is mandatory in every build (resets block AND breaks CC). A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack.\" Formation tip: use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that. Guide edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor, so doctrine guidance reflects the current season; the shortlist's own assessment of the patch's hitbox-only nerf (Brace damage hitbox −12%, stab damage hitbox −18%) is \"no skill/mechanic change — existing doctrine likely still holds, just slightly weaker\" (docs/vet-docs/changed-units-shortlist.md), so this build is not flagged stale.",
@@ -173,10 +188,5 @@
     }
   ],
   "media": [],
-  "gaps": [
-    {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
-      "house": false
-    }
-  ]
+  "gaps": []
 }

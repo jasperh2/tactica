@@ -107,7 +107,19 @@
       "note": "Veterancy: everything works, but start by Top Line. Playstyle kit: as any lancer cav, the goal is enough charge time to load the long-charge trait — get to max speed before impact. Use the rune (if still available in future seasons) that makes the lancer-cav trait change every 0.5s instead of 1.5s, loading the long-charge trait much faster. Once at max speed (similar to Xuanjia but far less pronounced), X-move to a side and the unit retains enough momentum for huge damage. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). 'Don't put' is filled with 'Hero DMG' per OP (unlike most other guides in this batch where it's a literal X placeholder). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yeomen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Everything works, but start by Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Charge cavalry, breaks formations with couched-lance impact",
@@ -162,7 +174,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

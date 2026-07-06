@@ -107,7 +107,19 @@
       "note": "Veterancy: Full Top for DPS (recommended); Full Bot for tankier. Example build per OP: Hero Damage Doctrine V, Epic Polearm Doctrine (Pike Charge), Imperial Pike Guards Attack Doctrine (-7s Advance CD), Rare Polearm Doctrine (+100 dmg bracing), Unit Damage Doctrine V. Per OP: Brace Damage on Imperial Pike affects Advance and is a flat amount, which is why it's a top pick; the unit struggles with Pen, that's why Hero Damage Doctrine is added (works well with Charge and Press 3); Brace DMG or Advance CD doctrine can be swapped for Epic Bloodthirsty Doctrine (lifesteal + 12% dmg) if more sustain is needed. Tips & Tricks: the unit does more dmg the faster the enemy is, so if the enemy charges at you, you will oneshot it; this also applies to your own speed — when you charge into advance, the first tick of advance can be 'bugged' and do insane damage. A separate follow-up post (2025-02-07, edited 2025-07-07) titled 'With / without pen' has 2 image attachments (damage comparison screenshots) not transcribed at capture. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Imperial Pike Guards is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top for DPS (Recommended); Full Bot for Tankier",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
@@ -177,7 +189,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

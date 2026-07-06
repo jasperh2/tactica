@@ -84,8 +84,23 @@
       "note": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). This is the Halberdiers unit (distinct from Halberd Elite, a separate shortlisted unit — not conflated here). Veterancy: Full Bot. Hero pairing: not specified in this thread. Playstyle: if you can manage to move from F2 to F2 in fight and let it brace, that's best (F2 requires all unit models to be at the X-move position); if too hard or the fight moves too fast, swap to F1 and insta-brace — also move them in F1 in case an insta-brace is needed. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Halberdiers is NOT on the 13-unit Chaos shortlist (Halberd Elite is the shortlisted unit, a different unit), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
-    "formation": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "If you can manage to move from F2 to F2 in fight and let it brace, that's the best (F2 requires all unit models to be at the X-move position). If it's too hard or the fight moves too fast, just swap to F1 and insta-brace. Also move them in F1 in case you need to insta-brace",
+      "footnoteMark": 1
+    },
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
       "rationale": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). This is the Halberdiers unit (distinct from Halberd Elite, a separate shortlisted unit — not conflated here). Veterancy: Full Bot. Hero pairing: not specified in this thread. Playstyle: if you can manage to move from F2 to F2 in fight and let it brace, that's best (F2 requires all unit models to be at the X-move position); if too hard or the fight moves too fast, swap to F1 and insta-brace — also move them in F1 in case an insta-brace is needed. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Halberdiers is NOT on the 13-unit Chaos shortlist (Halberd Elite is the shortlisted unit, a different unit), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
@@ -127,10 +142,6 @@
   "gaps": [
     {
       "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
-      "house": false
-    },
-    {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
       "house": false
     }
   ]

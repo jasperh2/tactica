@@ -95,7 +95,19 @@
       "note": "Veterancy: Top Line (Overwhelming) recommended for Spartan kill / blob charge (65% minimum dmg, not affected by dmg reduction), or Bot Line for skirmish / higher dmg output on smaller unit packs. Hero pairing: Any (per Amya). Example build per OP: Yanyuedao Blue Slashing Doctrine, Unit Damage Doctrine V, Toughness Doctrine V (-33% DMG taken), Healing Punisher Doctrine (+20% DMG vs healing units), Epic Leadership Doctrine. Playstyle kit: despite CCi on first strike, always enter via Mounting Dread from flank/behind; charge 1 (Dread Unleashed) from optimal distance, release at max potential (cav strikes twice on impact, can cancel charge once second hit registers); often better to release ~70% charge if timing is right rather than wait for 100%; excels on smaller maps where lancers/specialized cav are hindered by terrain. Press 1 releases a first then second slash — X-move away after the first if needed, otherwise wait for the second then X-move (repress 1 to recharge ASAP). Press 2 (Rushing Blow) as a momentum builder on straight-line actions or as an escape (moves unit in its facing direction). Tips: learn full timing of the 1 — releasing it last moment allows re-triggering right after the double slash; when entering a blob facing pikes/stalwart/speed-bonus units, X-move side to side repeatedly to stop moving (minor dmg loss vs large dodge value). 'Don't put' is a literal X placeholder in the OP — not fabricated. Thread alt-romanization note: thread title is 'Yuanyuedao Enforcers / Yuandao / YYD' (Amya renamed the post 2024-12-30 but kept this title); tierlist and this record track the unit as 'Yanyuedao Cavalry' — same unit, alternate romanization, not a rename. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yanyuedao Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line (Overwhelming) recommended for Spartan kill / blob charge (65% minimum dmg, not affected by dmg reduction), or Bot Line for skirmish / higher dmg output on smaller unit packs",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
@@ -162,7 +174,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

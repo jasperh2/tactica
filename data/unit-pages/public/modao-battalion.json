@@ -101,7 +101,19 @@
       "note": "No mastery (per Overview). Veterancy: Mix -- 17 top, rest bot. Hero pairing: Heavy. Tips & Tricks: you can reset the Toughness Doctrine (-33% dmg taken on first 8 hits) by swapping the unit at supply and re-taking it; Modao Defense and Modao March both increase piercing defense and slashing defense by 100 for 3 seconds with each hit, stacking up to 15 times. Example build per OP: Epic Bloodthirsty Doctrine (12% lifesteal for 6s after dealing damage, +12% dmg when HP > 60%), Anti-Cavalry Doctrine V (-40% dmg taken from cav while bracing, +16% dmg vs cav while bracing), Unit Damage Doctrine IV (+115 dmg to units, +70 all-type dmg), Toughness Doctrine V (-33% dmg taken on first 8 hits), Defence Doctrine V (+80 def, -5% dmg taken). Edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor per the guide's own framing -- doctrine/build guidance reflects the current season at capture time (not staleAsOfPatch; Modao Battalion is not on the 13-unit Chaos shortlist, so no forced flag either way).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Mix: 17 top, rest bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
@@ -175,7 +187,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

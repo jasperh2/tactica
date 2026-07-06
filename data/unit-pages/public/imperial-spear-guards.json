@@ -95,7 +95,19 @@
       "note": "Veterancy: Bot Line. Tips & Tricks: CCi doctrine to tank trebs when fighting on walls is key; CCi when cav charge is key. Edit timestamp (2026-06-25T02:28:04Z) falls on the Chaos patch anchor date itself (early UTC hours) — borderline; close enough to current-season that it likely reflects the patch, but the exact anchor moment within 2026-06-25 isn't documented, so treated as unconfirmed either way rather than assumed current.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
@@ -161,7 +173,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

@@ -107,7 +107,19 @@
       "note": "Veterancy: Full Bottom Line (recommended) for consistent results — 2 ability has three quick attacks, can proc parry, has some block break, high minimum damage; Full Top Line is slower/less block but snowballs better in blob fights. Hero pairing: Chaindart, any lock-ult class. Key mechanics: 1->2 combo (use 1, right before the second strike use 2 to make it CCi for the rest of 1's duration, pull out and repeat) overcomes 2's weakness of not animating if CC'd/dazed; 1 phases through enemy units letting 2 maximize DPS inside the enemy blob; avoid blob fights when 1 is on CD and enemy has stun/daze; 2 can one-shot heroes with the bottom line's short cooldown. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Orochi Samurai is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bottom Line (Recommended): Provides consistent results. The 2 ability has three quick attacks, can proc parry, has some block break, and deals very high minimum damage. Full Top Line: The 1 ability is slow, lacks block capability, and has minimal block break, but this line snowballs better and better in blob fights.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
@@ -181,7 +193,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

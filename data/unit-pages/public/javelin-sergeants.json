@@ -95,7 +95,19 @@
       "note": "COMBINED THREAD: OP's own 'Units covered' line names only Imperial Javelineers + Elite Javelin Sergeants (the unit tracked here as javelin-sergeants / tierlist label 'Javelin Sergeants'); no mention of Retiarii or Laconic Javelins appears anywhere in the OP text despite an outside claim they're also covered — not asserted here, flagged as unconfirmed. Doctrines/build/playstyle are shared advice for both covered units except where the OP explicitly splits veterancy. Veterancy (unit-specific split in OP): Elite Javelin Sergeants go Top or Bot — after the unit's buff, Amya prefers the damage boost of Bot over double-shot from Top (Imperial Javelineers' own veterancy, Top Line, is a different unit and out of scope for this record). Hero pairing: literal X placeholder in the OP — not specified, not fabricated. Example build (shared): Javelin Doctrine (immobilize 1.5s), Javelin Doctrine (+250 dmg/+30 ammo), Javelin Doctrine (+300 block break/+100 piercing), Polearm Doctrine, Unit Damage Doctrine V. \"Origin\" is a literal X placeholder in the OP. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Javelin Sergeants is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Elite Javelin Sergeants: Top or Bot. After buff, OP prefers the dmg boost of Bot rather than double shot.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Melee skirmisher, throws javelins before closing to melee",
@@ -156,7 +168,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

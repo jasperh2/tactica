@@ -66,7 +66,19 @@
       "note": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Thread title is 'Wuxing Spirit' (tierlist assigns this to 'Wuxing Pikemen'). Playstyle: mastery allows the unit to do serious DMG to high-tankiness units (Spartan Chosen, Iron Reapers, etc.); X-move close, press 2, let the animation go on, press 1. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Wuxing Pikemen is on the 2026-06-25 Chaos patch shortlist: \"Fiery Blast\" radius +20%, now activates instantly (was delayed) (Buff/Rework). This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide predates the rework entirely and never once mentions a \"Fiery Blast\" skill anywhere in its text (confirmed absent from Overview, Playstyle, Doctrines, and Ability infos). The Playstyle/Doctrines guidance is therefore incomplete for the current season, not just outdated: it cannot describe engage timing around the new instant-activation Fiery Blast because the guide's author had not yet seen the rework.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Anti-cavalry pike/polearm line, braces against charges",
@@ -116,7 +128,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

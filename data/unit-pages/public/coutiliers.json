@@ -90,7 +90,19 @@
       "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: with Mastery and the doctrines shown, the unit gets 0s CD on charge — you can spam charge and make full use of Mastery. Like any lancer cav, the goal is to start the charge far enough away to load the \"Chargers\" trait to its max (increases DMG & speed every 1.5s, 0.5s with the boots rune, up to 3 levels). This unit shines with the 2 T5 charge-CD reductions: 0 CD on charge, spam X-move and charge again to micro as much as desired. Tips & Tricks — Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost a unit, take this one from supply (best to have it out, swap to another unit, then swap back) — taking a unit from supply after it's already out applies the 40%-damage-at-60%-count doctrine to 100% of the unit. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Charge cavalry, breaks formations with couched-lance impact",
@@ -140,7 +152,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

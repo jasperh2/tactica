@@ -78,7 +78,19 @@
       "note": "Veterancy: Mixed (6 points Bot Line, rest Top). Hero pairing: not specified in this thread. Playstyle: same as Rattan Pikemen — goal is to debuff the enemy, charging in applies the debuff; disengage only if you can survive; 'insane piercing defence for their leadership / T2, great trade into pikes' is flagged by the guide itself as a pre-patch leadership figure (leadership has since risen 100->115, changing the cost-efficiency math this claim rests on). No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Rattan Roundshields is on the 2026-06-25 Chaos patch shortlist: Leadership 100->115 (Nerf), poison duration 6s->4s, poison damage per stack 250->140. This build/usage was drafted from a guide edited 2026-05-27, before the patch anchor -- the guide's own text explicitly flags this: the 'Poison Doctrine V' line ('+140 all AP, +60 poison DMG, stacks up to 2x') and the Playstyle claim 'insane piercing defence for their leadership / T2' both quote pre-nerf numbers per the guide's own in-file cross-check note. Both are reflected here as stale, not current.",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Mixed (6 points Bot Line, rest Top)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Mobile shielded melee, trades some defense for speed",
@@ -128,7 +140,7 @@
       "house": false
     },
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]

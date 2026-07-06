@@ -95,7 +95,19 @@
       "note": "Veterancy: Full Bot -- \"Nerfs guided this unit toward the Tank Line over the DPS one.\" Hero pairing: Any. \"CCi may be important after the nerf since you need to reposition WAY more often (the +40% dmg in the back should scare you). If you don't need the leadership doctrine, take more tank or dmg like Unit Damage Doctrine V or Steadfast Doctrine V.\" Example build per OP: Epic Spear Doctrine VI (CCi) / Steadfast Doctrine V (+130 def, -6% dmg taken), Awareness Doctrine V (20% rear atk reduction, -500 cav dmg), Block Doctrine V (+300 block, -90 flat dmg taken), Unit Damage Doctrine V / Spartan Chosen: Mountain Crusher (Spartan Vengeance +15% block-break & dmg), Epic Leadership Doctrine. Alt build per OP: Top line + Unit Damage Doctrine if you really know what you're doing and want more stats -- \"Not recommended. If you're confident enough to try it, you don't need a guide.\" Tutorial video follow-up post (2025-02-09) links a YouTube embed by creator Akers, not transcribed (read-only capture; embed caption/thumbnail only). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Spartan Chosen is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMark": 1
     },
-    "veterancy": null,
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bot. \"Nerfs guided this unit toward the Tank Line over the DPS one.\"",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
     "formation": null,
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
@@ -169,7 +181,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
       "house": false
     }
   ]
