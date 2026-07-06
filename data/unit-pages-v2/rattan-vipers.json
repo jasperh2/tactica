@@ -64,7 +64,7 @@
     {
       "label": "Top Line",
       "recommended": true,
-      "body": "Maximizes Poison Barrage (spell 2) — 3 volleys by default, 4 with Vet ROF plus a rate-of-fire doctrine, all applying the Poison Spread passive. Best overall since it massively increases impact during blob pushes. {1} An older source disagrees, rejecting Top Line's rate-of-fire/armor-pen bonuses as pushing toward raw damage — \"not this unit's job.\" {2}",
+      "body": "Maximizes Poison Barrage (spell 2) — 3 volleys by default, 4 with Vet ROF plus a rate-of-fire doctrine, all applying the Poison Spread passive; massively increases impact during blob pushes. {1} An older source disagrees, rejecting Top Line's rate-of-fire/armor-pen bonuses as pushing toward raw damage — \"not this unit's job.\" {2}",
       "marks": [
         1,
         2
@@ -73,7 +73,7 @@
     {
       "label": "Bottom Line",
       "recommended": false,
-      "body": "Constant DPS, hitting isolated units repeatedly to stack the poison passive on them — situational, mainly against small groups (rare). {1} The older source calls this the unambiguous pick instead, stacking movement speed, bonus-hit chance, poison-duration, and attack-slow to reinforce the debuff role. {2}",
+      "body": "Constant DPS, hitting isolated units repeatedly to stack the poison passive on them — situational, mainly against small groups (rare) per the current guide. {1} The older source calls this the unambiguous pick instead, stacking movement speed, bonus-hit chance, poison-duration, and attack-slow to reinforce the debuff role. {2}",
       "marks": [
         1,
         2
@@ -86,8 +86,18 @@
     "tips": "Ammo consumption is the unit's known weak point; a Sprint-type doctrine has been suggested as a way to manage it. {2}"
   },
   "matchups": {
-    "cards": [],
-    "pressure": "You pressure: large shield/spear lines and cavalry (attrition without landing meaningful damage once stacked, cavalry survivable only behind cover), Iron Reapers and Claymores (lose most damage output mid-charge once poison stacks apply), Shenji Grenadiers and Glaive-wielding heroes (\"completely useless\" against a properly stacked engagement) — per a 2022 source flagged for a current-patch sanity check."
+    "cards": [
+      {
+        "name": "Namkhan Archers",
+        "rel": "pairs",
+        "why": "a house member claims Vipers outperform them at wall pushes in Territory Wars for the same slot — a self-labeled personal opinion, flagged likely-stale and unverified against current patch",
+        "house": true,
+        "marks": [
+          3
+        ]
+      }
+    ],
+    "pressure": "You pressure: large shield/spear lines and cavalry (attrition without landing meaningful damage once stacked, cavalry survivable only behind cover), Iron Reapers and Claymores (lose most damage output mid-charge once poison stacks apply), Shenji Grenadiers and Glaive-wielding heroes (\"completely useless\" against a properly stacked engagement) — per a 2022 source flagged for a current-patch sanity check. {2}"
   },
   "controls": {
     "loop": [],
@@ -106,12 +116,19 @@
       "author": "KnightStalker Online",
       "date": "Apr 2022",
       "house": false
+    },
+    {
+      "mark": 3,
+      "author": "house guide (Svarthe)",
+      "date": "Nov 2023",
+      "house": true
     }
   ],
   "gaps": [
     "No Strength-by-fight-type ratings exist for this unit in the Amya guide or unit-db (fightRatings null) — recorded as a gap, not fabricated.",
     "Amya's OP gives no Counters section and no Hero-pairing for this unit — both explicit source gaps.",
     "A 2022 video source gives a different doctrine build (Accuracy/Arrow Rain mandatory, Breakthrough/Epic Archery filling remaining slots, a Sprint-type suggestion) than the current Amya/unit-db list and flags itself as pre-patch — left out of the doctrines list rather than merged, since the two builds aren't cleanly reconcilable.",
-    "The wall-push claim vs Namkhan Archers is a single house member's self-labeled personal opinion, not house-verified consensus, and is marked likely-stale from before the current patch cycle."
+    "No StarBurst house card exists for Rattan Vipers (confirmed absence across both reviewed Discord card libraries) — would outrank Amya's build if one were ever found.",
+    "A second Rattan Vipers video (superkitowiec, 2021) exists but its auto-captions were too garbled to transcribe — logged as uncaptured, not fabricated."
   ]
 }

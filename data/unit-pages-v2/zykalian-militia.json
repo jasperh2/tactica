@@ -14,7 +14,7 @@
       "flank": 0
     }
   },
-  "pitch": "A ranged-exotic grenadier with elite blob performance but zero melee survivability. The unit demands constant repositioning and ability rotation to stay effective, especially post-nerf when cooldowns and reload times stretched.",
+  "pitch": "A grenade-throwing exotic that shreds blobs from range but has zero flank or duelling presence — cycle V and ability 2 and keep moving, or die to any diver that reaches it. The 2026-06 nerf (cooldowns 10s→16s, reload +33%, poison cap 20→8) stretches that rotation out, so pre-patch pacing guidance no longer holds at face value.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -37,15 +37,17 @@
       "name": "Siege Fighter Doctrine",
       "note": "+8% DMG in sieges",
       "marks": [
-        1
+        1,
+        2
       ]
     },
     {
       "tag": "top-pick",
       "name": "Mobility Doctrine V",
-      "note": "+7% movement speed, unlocks Sprint +15% for 12s {1} / 8s — unarbitrated",
+      "note": "+7% movement speed, unlocks Sprint +15% for 12s {1} / 8s {2} — unarbitrated",
       "marks": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -60,7 +62,10 @@
       "tag": "filler",
       "name": "Zykalian Supply Doctrine",
       "note": "unit-unique: +20% ammo",
-      "marks": []
+      "marks": [
+        1,
+        2
+      ]
     },
     {
       "tag": "filler",
@@ -106,9 +111,9 @@
     }
   ],
   "battleRole": {
-    "positioning": "Deploy on a protected flank behind blob formations {1}. Maintain constant X-movement after each V or ability-2 cast — never stand still {1}. Reposition to keep DPS pressure up; vulnerable to fire-spec units (musket liquid fire, enemy Zykalians, fire rune interactions) {1}.",
+    "positioning": "Deploy on a protected flank behind blob formations {1}. Maintain constant X-movement after each V or ability-2 cast — never stand still {1}. Reposition to keep DPS pressure up {1}.",
     "formation": null,
-    "tips": "Press V to damage front-line blob (less ammo, more spread than spell 1). Press ability-2 to hit back line and apply debuff; hard-priority target if enemy has flamers or rival Zykalian units {1}. ALWAYS cycle V and ability-2 {1}; solitary spell-2 play loses 50% potential damage. Post-patch: throwing-skill cooldowns now 16s (↑ from 10s); reload time +33%; poison stack cap 8 (↓ from 20) {3, 4}. Avoid spell 1 to preserve ammo economy {1}."
+    "tips": "Press V to damage front-line blob (less ammo, more spread than spell 1). Press ability-2 to hit back line and apply debuff; hard-priority target if enemy has flamers or rival Zykalian units {1}. ALWAYS cycle V and ability-2 {1}; solitary spell-2 play loses 50% potential damage. Post-patch, that rotation now runs on a tighter timing budget {3, 4}. Avoid spell 1 to preserve ammo economy {1}."
   },
   "matchups": {
     "cards": [
@@ -129,6 +134,24 @@
         "marks": [
           1
         ]
+      },
+      {
+        "name": "Shortsword (Flameshackle build)",
+        "rel": "hero-threat",
+        "why": "flame-spell dive build names Zykalian a priority explode-and-unbrace target among squishy ranged exotics {6}.",
+        "house": false,
+        "marks": [
+          6
+        ]
+      },
+      {
+        "name": "Siphonarioi",
+        "rel": "pairs",
+        "why": "shares the Season 5 'Legacy of Fire' veterancy line — Zykalian gates its unlock {7}.",
+        "house": false,
+        "marks": [
+          7
+        ]
       }
     ],
     "pressure": "You pressure: blob frontlines and ranged backlines via V and ability-2 rotation, applying fire DPS and poison debuff {1}."
@@ -143,7 +166,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Core loop is **V (grenade) → ability-2 (debuff + back-line pressure) → X-move instantly**. Post-patch, ability cooldowns stretch from 10s to 16s {3, 4}, requiring tighter sequencing. Spell 1 is a trap in normal play (ammo sink); reserve it only for overstacked poison refresh if needed. Hero pairing: any {1}."
+    "notes": "Core loop is **V (grenade) → ability-2 (debuff + back-line pressure) → X-move instantly**. Post-patch, ability cooldowns stretch from 10s to 16s {3, 4}, requiring tighter sequencing. Spell 1 is a trap in normal play (ammo sink); reserve it only for overstacked poison refresh if needed. Hero pairing: any {1}. Leadership priority (purple-tier-lock meta): Zykalian ranks top-tier alongside Imperial Pike Guards, Stalwarts, Paladins for doctrine investment {5}."
   },
   "footnotes": [
     {
@@ -154,20 +177,47 @@
     },
     {
       "mark": 2,
+      "author": "StarBurst",
+      "date": "Sep 2024",
+      "house": true
+    },
+    {
+      "mark": 3,
       "author": "Patch audit",
       "date": "Jun 2026",
       "house": false
     },
     {
-      "mark": 3,
+      "mark": 4,
       "author": "Changed-units shortlist",
       "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 5,
+      "author": "StaRBuRsT (Leadership)",
+      "date": "Jun 2026",
+      "house": true
+    },
+    {
+      "mark": 6,
+      "author": "Amya (Shortsword hero guide)",
+      "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 7,
+      "author": "Kingzin (video)",
+      "date": "Feb 2022",
       "house": false
     }
   ],
   "gaps": [
+    "No formation guidance (house card has no formation notes; Amya guide references only F1/F2 implicit in positioning, not explicit).",
     "Post-patch playbook: sources predate the 2026-06-25 nerf (cooldowns +60%, reload +33%, poison cap −60%); rotation viability and positioning urgency may shift. Doc priority flagged High.",
-    "No hero-specific pairing notes: Amya states 'Any'; no hero-exclusive synergy or counter coverage.",
-    "No counterplay notes from hostile matchup perspective (how to play against Zykalian)."
+    "Mobility Doctrine V Sprint duration disagreement: Amya records 12s; house-card records 8s (undated source link unclear); no patch note documents a change between them — unarbitrated in RAW.",
+    "No hero-specific pairing notes for Zykalian itself: Amya states 'Any' hero pairs with it; the Shortsword hero-threat entry comes from that hero's own guide, not a Zykalian-side counter.",
+    "No counterplay notes from hostile matchup perspective (how to play against Zykalian) beyond the Shortsword cross-mention.",
+    "House caption nicknames ('cocos', 'ball boys') recur across multiple sources but their origin/meaning is never explained in-channel — included verbatim, not interpreted."
   ]
 }

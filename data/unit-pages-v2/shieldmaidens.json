@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "shieldmaidens",
   "name": "Shieldmaidens",
-  "headerMeta": "Golden era · Shield infantry · blob/anti-ranged anchor · 280 leadership · Seasonal",
+  "headerMeta": "Golden era · Melee shield infantry · blob/anti-ranged anchor · 280 leadership · Seasonal",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "B",
@@ -14,12 +14,12 @@
       "flank": 6
     }
   },
-  "pitch": "A hyper-micro shield anchor that buffs blob and shreds heroes if played at full capacity — weapon-swap cooldown management is everything. High burst (Claymores, Yorkist) and spacing units will delete it if you lose rhythm.",
+  "pitch": "A hyper-micro shield anchor that buffs the blob and shreds diving heroes when run at full capacity — the weapon-swap loop between cover-commander stances is the entire unit. Lose that rhythm and high-burst units or spacing punish it hard.",
   "doctrines": [
     {
       "tag": "mandatory",
       "name": "CCi Doctrine (Stand Fast)",
-      "note": "CC-immunity, 'too op' per Amya {1}",
+      "note": "one more button but too strong to skip",
       "marks": [
         1
       ]
@@ -35,7 +35,7 @@
     {
       "tag": "top-pick",
       "name": "Epic Spear Doctrine I",
-      "note": "+400 block {1}",
+      "note": "+400 block",
       "marks": [
         1
       ]
@@ -43,7 +43,7 @@
     {
       "tag": "top-pick",
       "name": "Block Doctrine",
-      "note": "+300 block, −90 flat dmg {1}",
+      "note": "+300 block, −90 flat dmg",
       "marks": [
         1
       ]
@@ -51,7 +51,7 @@
     {
       "tag": "filler",
       "name": "Steadfast Doctrine",
-      "note": "+130 def, −6% dmg taken {1}",
+      "note": "+130 def, −6% dmg taken",
       "marks": [
         1
       ]
@@ -77,16 +77,16 @@
     {
       "label": "Bottom line",
       "recommended": true,
-      "body": "Consistent in all scenarios. Mandatory per Amya.",
+      "body": "Consistent across scenarios; the main line for shieldmaiden players.",
       "marks": [
         1
       ]
     }
   ],
   "battleRole": {
-    "positioning": "Plant in formation via spell 1 (circle placement, +250 defence buff once settled); then activate spell 2 cover-commander and swap to sword mode — lock inputs and hold position. {1} Reset cover-commander before engages when possible; its hidden passive damage-reduction decays 60% → 30% over 5s. {1}",
+    "positioning": "Plant via spell 1 (circle placement, +250 defence buff once settled), then spell 2 cover-commander and swap to sword mode — lock inputs and hold. {1} Reset cover-commander before engages when possible; its hidden passive damage-reduction decays 60% → 30% over 5s. {1} Despite being a shield unit it carries a notably deeper HP/armor pool than lighter shield infantry, letting it anchor a line under sustained CC where those units collapse. {2}",
     "formation": null,
-    "tips": "Weapon-swap (spell 3) is the core loop: both stances' swaps carry CC-immunity and reset stance. {1} Spear→sword after any hit: +500 Piercing/Slashing Armour Penetration per soldier for 10s. {1} Sword→spear: restores 2% max health/s per soldier for 10s. {1} Stack swaps indefinitely off one random hit on downtime. {1} Sword-mode shield-bash (spell 2) ends in a weaker cover-commander than spear-mode — 'don't get baited.' {1} When you have time: sword charge (spell 1, void-cast for +20% atk buff to allies) → swap to spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1} When you DON'T have time: start spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1}"
+    "tips": "Weapon-swap (spell 3) is the core loop and carries CC-immunity, resetting stance and removing existing CC on every swap. {1} Spear→sword after any hit: +500 Piercing/Slashing Armour Penetration per soldier for 10s. {1} Sword→spear: restores 2% max health/s per soldier for 10s. {1} Stack swaps indefinitely off one random hit during downtime. {1} Sword-mode shield-bash (spell 2) ends in a weaker cover-commander than spear-mode — don't get baited into it. {1} When you have time: sword charge (spell 1, void-cast +20% atk buff to allies) → swap to spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1} When you DON'T have time: start spear → formation (spell 1) → cover-commander (spell 2) → swap to sword and freeze. {1}"
   },
   "matchups": {
     "cards": [
@@ -129,7 +129,7 @@
       {
         "name": "Heroes",
         "rel": "pairs",
-        "why": "Shieldmaidens kills diving heroes if micro'd at full capacity; pairs with any hero {1}",
+        "why": "kills diving heroes when micro'd at full capacity; pairs with any hero",
         "house": false,
         "marks": [
           1
@@ -148,7 +148,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Formation (spell 1) places unit at circle centre and applies +250 def buff once settled {1}. Cover-commander (spell 2, spear-mode) applies hidden 60%→30%-over-5s damage-reduction passive — reset before fights {1}. Weapon-swap (spell 3) carries CC-immunity, resets stance, removes existing CC, and triggers the stance-swap buff for 10s: spear→sword = +500 AP per soldier; sword→spear = 2% max HP regen/s per soldier {1}. Stack the swaps indefinitely off one random hit on downtime {1}. Sword-mode shield-bash (spell 2) ends in weaker cover-commander — avoid unless CC-immunity needed {1}. X-move or shield-bash while in sword-mode cover-commander will cancel it; CC-immunity doctrine is safe to use {1}."
+    "notes": "Formation (spell 1) places the unit at circle centre and applies +250 def once settled. {1} Cover-commander (spell 2, spear-mode) applies a hidden 60%→30%-over-5s damage-reduction passive — reset before fights. {1} Weapon-swap (spell 3) carries CC-immunity, resets stance, removes existing CC, and triggers the stance-swap buff for 10s: spear→sword = +500 AP per soldier; sword→spear = 2% max HP regen/s per soldier. {1} Stack the swaps indefinitely off one random hit during downtime. {1} Sword-mode shield-bash (spell 2) ends in a weaker cover-commander — avoid unless CC-immunity is needed. {1} X-move or shield-bash while in sword-mode cover-commander cancels it; the CC-immunity doctrine is still safe to use. {1}"
   },
   "footnotes": [
     {
@@ -156,11 +156,19 @@
       "author": "Amya",
       "date": "Jun 2026",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Knightstalker",
+      "date": "May 2021",
+      "house": false
     }
   ],
   "gaps": [
     "No formation guidance provided by Amya — default formation unknown.",
     "Amya's guide edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch; doctrine/build guidance may be stale for current season.",
-    "No video transcripts or gameplay demonstrations were captured."
+    "No dedicated video transcript or gameplay demonstration exists on disk — only passing comparison mentions in other units' transcripts.",
+    "No StarBurst house card exists for this unit.",
+    "A house meta-farm chart (Sep 2025, pre-patch, house-playbook) and a lower-confidence house meta-history inventory both list Shieldmaidens among strong/farm-worthy units, but neither adds build or matchup specifics beyond Amya's guide."
   ]
 }

@@ -92,12 +92,12 @@
     "tips": null
   },
   "matchups": {
-    "cards": [],
+    "cards": null,
     "pressure": null
   },
   "controls": {
-    "loop": [],
-    "loopMarks": [],
+    "loop": null,
+    "loopMarks": null,
     "notes": null
   },
   "footnotes": [
@@ -114,6 +114,7 @@
     "Unit-specific control loops / ability chain not documented. Playstyle comment in Amya guide is meta-viability critique, not actionable control.",
     "Matchups / pressure relationships not covered — no sources name relevant units.",
     "Veterancy note shared across 4 units; unit-specific recommendation would require another source.",
-    "Guide last edited 2026-06-16, 9 days before the Chaos patch (2026-06-25) — doctrine/build may be stale."
+    "Guide last edited 2026-06-16, 9 days before the Chaos patch (2026-06-25) — doctrine/build may be stale.",
+    "No house-playbook, video transcripts, or other builders covered this unit."
   ]
 }

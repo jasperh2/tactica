@@ -19,7 +19,7 @@
     {
       "tag": "mandatory",
       "name": "Epic Bloodthirsty Doctrine",
-      "note": "lifesteal {1}",
+      "note": "lifesteal",
       "marks": [
         1
       ]
@@ -35,7 +35,7 @@
     {
       "tag": "mandatory",
       "name": "Toughness Doctrine V",
-      "note": "−33% dmg taken on first 8 hits {1}",
+      "note": "−33% dmg taken on first 8 hits",
       "marks": [
         1
       ]
@@ -43,7 +43,7 @@
     {
       "tag": "top-pick",
       "name": "Anti-Cavalry Doctrine V",
-      "note": "−40% dmg taken from cav while bracing, +16% dmg vs cav while bracing {1}",
+      "note": "−40% dmg taken from cav while bracing, +16% dmg vs cav while bracing",
       "marks": [
         1
       ]
@@ -51,7 +51,7 @@
     {
       "tag": "top-pick",
       "name": "Hero DMG Doctrine V",
-      "note": "penetration makes huge difference against high-tier units {1}",
+      "note": "penetration makes a huge difference against high-tier units",
       "marks": [
         1
       ]
@@ -59,7 +59,7 @@
     {
       "tag": "filler",
       "name": "Defence Doctrine V",
-      "note": "+80 def, −5% dmg taken {1}",
+      "note": "+80 def, −5% dmg taken",
       "marks": [
         1
       ]
@@ -75,7 +75,7 @@
     {
       "tag": "avoid",
       "name": "2× cavalry DMG reduction doctrines stacked",
-      "note": null,
+      "note": "already good with 1x",
       "marks": [
         1
       ]
@@ -85,7 +85,7 @@
     {
       "label": "Top line (17 points)",
       "recommended": true,
-      "body": "Damage-focused — strategy is to out-damage bottom-vet durability gains with top-line damage nodes paired with flat doctrine reduction {2}.",
+      "body": "Damage-focused — flat doctrine reduction already covers the bottom line's job, so points go to top-line damage nodes instead.",
       "marks": [
         1,
         2
@@ -94,7 +94,7 @@
     {
       "label": "Bottom line",
       "recommended": false,
-      "body": "Durability — skippable when flat-reduction doctrines already exceed its entire defensive value {2}.",
+      "body": "Durability — skippable once flat-reduction doctrines exceed its entire defensive value.",
       "marks": [
         2
       ]
@@ -103,7 +103,7 @@
   "battleRole": {
     "positioning": "Support the front line, not the front line itself — you don't go first, others do, so shield moves, you follow. Always watch your back for incoming cavalry. {2} Against infantry: X-move in, engage with skill 2, instantly press skill 3 right after, then skill 2 again, then brace for best burst. {1}",
     "formation": "No formation guidance in sources.",
-    "tips": "When skill 2 comes off cooldown each time, press skill 2 and re-brace — sustains best burst in blob fights. {1} Maintain formation with X to prevent spreading and enemy cavalry punishes; second skill targets nearest enemies and causes spread in open areas. {2} Brace 1–2s before cavalry arrives — this is non-negotiable. {1} You can reset Toughness Doctrine's first-8-hits mitigation by swapping at supply and re-taking the unit. {1} Modao Defense and Modao March each increase all-defense by 100 for 3s on hit, stacking to 15 — two stacks alone exceed entire bottom vet line's defensive value (32% infantry / 45% cavalry mitigation with doctrines). {2}"
+    "tips": "When skill 2 comes off cooldown each time, press skill 2 and re-brace — sustains best burst in blob fights. {1} Maintain formation with X to prevent spreading — skill 2 targets nearest enemies and causes spread in open areas, leaving gaps cavalry punishes. {2} Brace 1–2s before cavalry arrives — non-negotiable. {1} Reset Toughness Doctrine's first-8-hits mitigation by swapping the unit at supply and re-taking it. {1} Modao Defense and Modao March each add 100 piercing/slashing defense for 3s per hit, stacking to 15 — two stacks alone exceed the entire bottom vet line's defensive value (32% infantry / 45% cavalry mitigation with doctrines). {2}"
   },
   "matchups": {
     "cards": [
@@ -135,9 +135,9 @@
         ]
       },
       {
-        "name": "Hero dive + mounted ults",
+        "name": "Hero dive",
         "rel": "counters-you",
-        "why": "hero jump while fighting or mount CC knocks braced line",
+        "why": "loses to a hero jumping you mid-fight; struggles vs dive generally",
         "house": false,
         "marks": [
           1
@@ -155,19 +155,28 @@
       {
         "name": "Cavalry",
         "rel": "pairs",
-        "why": "this unit is a support/tank for blob fight",
+        "why": "this unit is a support/tank for blob fight against cav and low-dmg units",
         "house": false,
         "marks": [
           1
         ]
       },
       {
-        "name": "Low damage units",
+        "name": "Camel Lancers",
         "rel": "pairs",
-        "why": "this unit is a support/tank for blob fight",
-        "house": false,
+        "why": "rated better than Camel Lancers for TW defence — pre-2026 house claim, likely superseded",
+        "house": true,
         "marks": [
-          1
+          4
+        ]
+      },
+      {
+        "name": "Sunward Phalanx",
+        "rel": "pairs",
+        "why": "good in overlap — spread Phalanx models and sit them on Modaos in TW",
+        "house": true,
+        "marks": [
+          3
         ]
       }
     ],
@@ -184,7 +193,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Five engagement combos depend on scenario {2}: full engagement (charge → stab → brace {2}), soft engagement for high-damage targets (charge → brace {2}), defense (brace → wait → stab → brace loop, only stab near brace cooldown end {2}), full counter-engagement (brace → wait → charge → stab → brace {2}), soft counter-engagement (brace → wait → charge → brace → stab → brace {2}). Core discipline: cycle skill 2 (stab) and skill 3 (march/defense stack-building ability) to maintain and increase your 15-stack defense bonus — only use stab once brace is nearly off cooldown, minimizing windows without flat reduction. {2}"
+    "notes": "Five engagement combos depend on scenario {2}: full engagement (charge → stab → brace), soft engagement for high-damage targets (charge → brace), defense (brace → wait → stab → brace, looping — only stab once brace is nearly off cooldown), full counter-engagement (brace → wait → charge → stab → brace), soft counter-engagement (brace → wait → charge → brace → stab → brace). Core discipline: cycle skill 2 (stab) and skill 3 to build and maintain the 15-stack defense bonus, minimizing time spent without flat reduction. {2}"
   },
   "footnotes": [
     {
@@ -198,11 +207,25 @@
       "author": "Herlajis",
       "date": "Mar 2024",
       "house": false
+    },
+    {
+      "mark": 3,
+      "author": "house guide",
+      "date": "Jun 2026",
+      "house": true
+    },
+    {
+      "mark": 4,
+      "author": "Svarthe",
+      "date": "Nov 2023",
+      "house": true
     }
   ],
   "gaps": [
+    "No house-card build data exists — Modao's house card was never captured.",
     "Formation guidance absent — all sources focus on unit control, not F1/F2 orientation.",
     "Skill names inconsistently referenced across sources ('Modao March', 'Modao Defense', 'skill 2', 'skill 3') — exact ability names unconfirmed from UI.",
-    "Herlajis transcript has unintelligible ASR on the alternate cavalry-focused epic doctrine name ([01:50]–[02:01]) — needs vet confirmation."
+    "Herlajis transcript has unintelligible ASR on the alternate cavalry-focused epic doctrine name ([01:50]-[02:01]) — needs vet confirmation.",
+    "Svarthe's Camel Lancers/Speed Doctrine claim (2023) predates the 2026 patch anchor and is likely superseded — treat as historical, not current meta."
   ]
 }

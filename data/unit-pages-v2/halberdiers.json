@@ -9,7 +9,7 @@
     "rarity": "T3",
     "fightRatings": null
   },
-  "pitch": "A cost-effective anti-cavalry pike unit that dominates fights when kept in tight phalanx formation and properly braced. Vulnerable to crowd control, shielded units, and flanks — requires a screening partner and careful micro to stay effective.",
+  "pitch": "A cost-effective anti-cavalry pike unit and top-rated warband filler that deals far more damage in phalanx than most players realize, dominating once braced. It cannot solo-hold a line and folds to shielded units or a mid-formation overwhelm, so it needs a screening partner and careful micro to stay effective.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -44,6 +44,39 @@
       ]
     },
     {
+      "tag": "mandatory",
+      "name": "Stun-on-brace doctrine",
+      "note": "Halberdier Sergeants get this from veterancy instead and can skip it",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Siege Fighter Doctrine",
+      "note": "+8% DMG in sieges",
+      "marks": [
+        1,
+        2
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Pole-Arm Breakthrough Doctrine",
+      "note": "epic-tier damage option",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "top-pick",
+      "name": "Assassination Doctrine",
+      "note": null,
+      "marks": [
+        2
+      ]
+    },
+    {
       "tag": "filler",
       "name": "LDS Doctrine",
       "note": "alt for Bleeding Brace",
@@ -61,18 +94,34 @@
     },
     {
       "tag": "filler",
-      "name": "Siege Fighter Doctrine",
-      "note": "+8% DMG in sieges",
+      "name": "Bleeding Brace Doctrine",
+      "note": "bracing inflicts bleeding on cavalry: 16% max HP + 400 DMG",
       "marks": [
         1
       ]
     },
     {
       "tag": "filler",
-      "name": "Bleeding Brace Doctrine",
-      "note": "bracing inflicts bleeding on cavalry: 16% max HP + 400 DMG",
+      "name": "Pike Defense Doctrine",
+      "note": "strong vs high-tier cavalry, less needed in silver-only matchups — reduces DMG vs Outriders specifically",
       "marks": [
-        1
+        2
+      ]
+    },
+    {
+      "tag": "filler",
+      "name": "Piercing Damage Doctrine (epic)",
+      "note": "held in the last slot until the seasonal Pike Defense slot unlocks; base Piercing Penetration itself not recommended since penetration is already high",
+      "marks": [
+        2
+      ]
+    },
+    {
+      "tag": "avoid",
+      "name": "\"Bonus damage while bracing\" doctrine",
+      "note": "doesn't currently function in phalanx formation",
+      "marks": [
+        2
       ]
     }
   ],
@@ -96,16 +145,16 @@
     }
   ],
   "battleRole": {
-    "positioning": "Pair Halberdiers with another unit that screens them from flanks — they cannot solo-hold a line. {2} In tight phalanx formation, each model can hit two enemies; overwhelmed by too many targets and they break. {2} Stay behind cover when possible.",
-    "formation": "Default F2 (phalanx/block): sustained damage and attack speed far exceed loose formation; formation issues can be largely avoided with correct positioning. {2} Requires all unit models to be at the X-move position to form properly. {2} F1 (loose) serves burst impact damage vs charging cavalry, but vulnerable to CC and weak if the initial burst doesn't kill. {2} If caught off-guard mid-formation, pressing V (defensive stance cancel) can be better than bracing in a bad position. {2}",
-    "tips": "Stun-on-brace doctrine is must-have. {2} Braced Halberdiers automatically face nearby enemies, reducing the need to worry about flanking. {2} Charge ability should only be used from F1 with immediate post-hit brace; attempting from phalanx causes the unit to re-form mid-fight and gets them killed. {2} Weak block-break makes shielded units a serious problem. {2}"
+    "positioning": "Pair Halberdiers with another unit that screens them from flanks — they cannot solo-hold a line. {2} Each model can only hit two enemies at once, so being overwhelmed by too many targets at once gets them overrun. {2} Stay behind cover when possible and avoid frontal charges from shielded units.",
+    "formation": "Default F2 (phalanx/block): sustained damage and attack speed far exceed loose formation; formation issues can be largely avoided with correct positioning. {2} Requires all unit models to be at the X-move position to form properly, and if overwhelmed mid-formation the unit stops fighting to fix positions. {2} F1 (loose) trades that for burst impact damage vs charging cavalry, but is vulnerable to CC and weak if the initial burst doesn't kill. {2} Halberdier Sergeants (a related unit, same core logic) form up in F1 more easily and are tankier, performing somewhat better solo. {2}",
+    "tips": "Braced Halberdiers automatically face nearby enemies, reducing the need to worry about flanking or hero dives on artillery/ranged allies. {2} Charge ability should only be used from F1 with immediate post-hit brace; attempting it from phalanx makes the unit try to re-form mid-fight among enemies, which gets them killed. {2} If caught off-guard mid-formation, pressing V (defensive-stance cancel) can beat bracing in a bad position. {2} Experimental: while braced in phalanx, C then Space breaches to loose formation while keeping the phalanx damage bonus — reported untested in live play. {2}"
   },
   "matchups": {
     "cards": [
       {
         "name": "Imperial Spear Guard",
         "rel": "counters-you",
-        "why": "advance order directly counters brace-type skills, safe frontal knockdown",
+        "why": "advance order is a safe frontal knockdown that directly counters brace-type skills; reserved for high-damage pikemen like Halberdiers",
         "house": false,
         "marks": [
           3
@@ -114,7 +163,26 @@
       {
         "name": "shielded units",
         "rel": "counters-you",
-        "why": "weak block-break makes these units a problem",
+        "why": "weak block-break makes these a problem, and their frontal charge should be avoided rather than traded head-on",
+        "house": false,
+        "marks": [
+          2,
+          4
+        ]
+      },
+      {
+        "name": "Rattan Roundshields",
+        "rel": "hero-threat",
+        "why": "Halberdier charge (\"bill-hooking\"), if allowed to activate, flattens Roundshields outright",
+        "house": false,
+        "marks": [
+          4
+        ]
+      },
+      {
+        "name": "Berserkers",
+        "rel": "counters-you",
+        "why": "blue-tier Halberdiers using the C+Space phalanx-to-loose breach trick were able to kill Berserkers, something other formations couldn't manage",
         "house": false,
         "marks": [
           2
@@ -133,7 +201,7 @@
       1,
       2
     ],
-    "notes": "Core formation micro: move from F2 to F2 during the fight and let it brace — requires all models at X-move position to form properly. {1} If F2-to-F2 is too hard or the fight moves too fast, swap to F1 and insta-brace. {1} Braced units auto-turn to face nearby enemies, reducing the burden on manual facing. {2} Undocumented micro trick: while braced in phalanx, pressing C then Space shifts to loose formation while retaining phalanx's damage bonus — creator found this untested in live play, treat as experimental. {2}"
+    "notes": "Core formation micro: move from F2 to F2 during the fight and let it brace — requires all models at X-move position to form properly. {1} If F2-to-F2 is too hard or the fight moves too fast, swap to F1 and insta-brace. {1} Formation \"cheese\": charge into a corner aiming upward to slide models into a dense stack, then F1 to orient and brace — press X and re-brace if a few models don't lock in; creator has never found a practical use for it. {2}"
   },
   "footnotes": [
     {
@@ -153,14 +221,21 @@
       "author": "Herlajis",
       "date": "Jan 2024",
       "house": false
+    },
+    {
+      "mark": 4,
+      "author": "EvolozGaming",
+      "date": "Jan 2021",
+      "house": false
     }
   ],
   "gaps": [
     "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) present in any source.",
     "Hero pairing recommendations not specified by Amya.",
     "Amya's guide pre-dates the 2026-06-25 Chaos patch anchor (edited 2026-05-27) — doctrine/build guidance may be stale for the current season; no post-Chaos update visible.",
+    "No house-card build data found for Halberdiers; a house-playbook meta-history capture (discord-guide-inventory.md) places Halberdiers on a 2025-08-11 'current meta / strongest units in the game' list (forwarded to KP HC 2025-09-29), but carries no build detail beyond the name.",
     "SuperKitowiec guide (2022-09-12) is 4 years old; control mechanics and ability names (charge ability varies by formation) may have changed.",
     "C+Space formation trick flagged by creator as untested in live play — experimental status.",
-    "Halberdier Sergeants (a different unit) share most logic but skip the stun doctrine and form up in F1 more easily."
+    "Halberdier Sergeants (a different, related unit) share most logic but skip the stun doctrine and form up in F1 more easily."
   ]
 }

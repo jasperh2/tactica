@@ -14,7 +14,7 @@
       "flank": 3
     }
   },
-  "pitch": "A high-DPS pike line that trades survivability for lethality, oneshots units that charge it and excels in advance-based gameplay. Its weakness is exposure to crowd control — retreat and disengage if you lose control.",
+  "pitch": "A high-DPS pike line that runs over cavalry and anything charging it, trading survivability for lethality on advance-based play. It falls apart against crowd control that baits the advance or chains it down — disengage early or lose the unit.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -51,7 +51,7 @@
     {
       "tag": "top-pick",
       "name": "Rare Polearm Doctrine",
-      "note": "+100 dmg while bracing; affects Advance",
+      "note": "+100 dmg while bracing, flat amount that also affects Advance",
       "marks": [
         1
       ]
@@ -67,7 +67,7 @@
     {
       "tag": "top-pick",
       "name": "Epic Bloodthirsty Doctrine",
-      "note": "lifesteal + 12% dmg; alt for sustain",
+      "note": "lifesteal + 12% dmg; swap in for Brace DMG or Advance CD if you need more sustain",
       "marks": [
         1
       ]
@@ -93,24 +93,26 @@
     {
       "label": "Full Top",
       "recommended": true,
-      "body": "For DPS — oneshots scaling with charge speed",
+      "body": "Damage line — extreme damage output, final perk lets the pike strike two enemy units on one hit; stun-immune while advancing. Best for annihilation play, but not recommended for XP tactics on this unit since survivability drops badly on a second engagement.",
       "marks": [
-        1
+        1,
+        3
       ]
     },
     {
       "label": "Full Bot",
       "recommended": false,
-      "body": "For tankier playstyle",
+      "body": "Defense line — flat +20% defense at the final node, stun-immune while braced; built for base/defensive tactics and absorbing head-on charges rather than XP tactics.",
       "marks": [
-        1
+        1,
+        3
       ]
     }
   ],
   "battleRole": {
-    "positioning": "Charge in or X-move in to close to melee range. Position to force enemy engagement on your terms — the unit does more damage the faster the enemy is, so bait charges. {1}",
-    "formation": null,
-    "tips": "Advance near melee range and wait for hits to stack, then press 3 (Charge). Kill count reduces Advance CD (sometimes to zero). {1} First tick of Advance can do insane damage — the mechanic scales with your unit's speed at impact. {1} Don't hesitate to disengage from CC or Advance if you can save the unit. {1}"
+    "positioning": "Charge in or X-move in to close to melee range — the unit does more damage the faster the enemy is closing, so bait charges rather than lead passively. {1} Line pikes facing outward against a wall and brace to catch cavalry charging from behind. {3}",
+    "formation": "Dispersed: wide spread, cuts incoming ranged fire, good for walking into a large group. Line: wide-front blocking or clearing, including bracing against a wall. Skirmish/Circle: tightest formation, best for locking down a small area and concentrating fire on one target. {3}",
+    "tips": "First tick of Advance can be 'bugged' and hit for insane damage. {1} Brace (Stand Firm) works in or out of formation; Advance runs over heroes and most units, and cavalry stand almost no chance against it. {3} Don't hesitate to disengage from your initial CC/advance if you can save the unit. {1}"
   },
   "matchups": {
     "cards": [
@@ -142,7 +144,7 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": "You pressure: cavalry, units with block, and anything closing at high speed — Advance and its anti-cav trait mean charging cav into a braced or advancing line is a near-guaranteed loss for the cavalry. {1}{3}"
   },
   "controls": {
     "loop": [
@@ -153,7 +155,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Charge in or X-move in. {1} Advance when near melee range; wait for hits to stack. {1} Press 3 after the stack; kill count reduces Advance CD (sometimes to zero), allowing immediate re-advance. {1} Brace Damage (Rare Polearm) is a flat amount affecting Advance — top-pick status. {1}"
+    "notes": "Charge in or X-move in. {1} Advance when near melee range; wait for hits to stack. {1} Press 3 after the stack; kill count reduces Advance CD (sometimes to zero), allowing immediate re-advance. {1} Brace Damage (Rare Polearm) is a flat amount affecting Advance — top-pick status. {1} Brace (Stand Firm) works in any formation or out of formation; stun-immunity is formation-dependent — top line while advancing, bottom line while braced. {3}"
   },
   "footnotes": [
     {
@@ -161,10 +163,24 @@
       "author": "Amya",
       "date": "Jun 2026",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "house guide (StaRBuRsT)",
+      "date": "Jun 2026",
+      "house": true
+    },
+    {
+      "mark": 3,
+      "author": "Lone Raider (BigDaddyYT)",
+      "date": "Aug 2022",
+      "house": false
     }
   ],
   "gaps": [
-    "Edit timestamp (2026-06-16) pre-dates Chaos patch (2026-06-25) — doctrine/build guidance may be stale; no post-patch update found.",
-    "'With / without pen' follow-up post images not transcribed — actual penetration vs. no-penetration damage numbers not captured."
+    "Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season; no post-Chaos update visible.",
+    "'With / without pen' follow-up post's images were not transcribed — actual penetration vs. no-penetration damage numbers are not captured.",
+    "BigDaddyYT transcript auto-captions are garbled in places (e.g. exact name of the 'Relentless'-type trait and the top-line stun-immunity ability are unconfirmed verbatim); treat as paraphrase pending a vet sanity check.",
+    "House Q&A {2} lists IPG as safe to doctrine up for purple meta (alongside Stalwart/Paladin/Zykalian) — a general investment-priority remark, not a named doctrine or detailed house tactic; no house build card exists for this unit."
   ]
 }

@@ -14,12 +14,12 @@
       "flank": 10
     }
   },
-  "pitch": "An all-around cavalry threat that excels on flank and duels equally well mounted or dismounted. Master horse-play (Cover Commander), master ground (spell 2 into hero positioning), and never let anti-cav spike disrupt the ride — dismount only against pikemen and Stalwart.",
+  "pitch": "An all-around cavalry threat that trades well on flank and in duels whether mounted or dismounted, countering almost anything it meets. Its one real check is pikes on horse or a well-timed CC chaining into Stalwart on the ground.",
   "doctrines": [
     {
       "tag": "mandatory",
       "name": "Yorkist Household Knights: Oathbound",
-      "note": "heals while 2+ on ground",
+      "note": "heals while 2+ models are on ground",
       "marks": [
         1
       ]
@@ -35,7 +35,7 @@
     {
       "tag": "mandatory",
       "name": "Epic Combat Doctrine",
-      "note": "3/6/9",
+      "note": "3/6/9-hit boost",
       "marks": [
         1
       ]
@@ -43,17 +43,19 @@
     {
       "tag": "top-pick",
       "name": "Yorkist Household Knights: Sunmirage",
-      "note": "Knight's Resolve: +20% movement speed while active",
+      "note": "Knight's Resolve — +20% movement speed while active",
       "marks": [
-        1
+        1,
+        2
       ]
     },
     {
       "tag": "top-pick",
       "name": "Epic Leadership Doctrine",
-      "note": null,
+      "note": "house card gives the raw number: −16% leadership cost {2}",
       "marks": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -66,7 +68,7 @@
     },
     {
       "tag": "filler",
-      "name": "Damage Reduction Doctrines",
+      "name": "DMG Reduction Doctrines",
       "note": null,
       "marks": [
         1
@@ -75,14 +77,15 @@
     {
       "tag": "filler",
       "name": "Healing Punisher Doctrine",
-      "note": "+20% damage to targets regenerating health",
+      "note": "+20% damage to targets currently regenerating health",
       "marks": [
-        1
+        1,
+        2
       ]
     },
     {
       "tag": "filler",
-      "name": "Movement speed doctrines (other)",
+      "name": "Other movement speed doctrines",
       "note": null,
       "marks": [
         1
@@ -101,23 +104,24 @@
     {
       "label": "Full Top",
       "recommended": true,
-      "body": "Good horse play and absolute best-in-class dismounted gameplay — strong in all scenarios.",
+      "body": "Good horse play and best-in-class dismounted gameplay; house card's mastery tree confirms full offense-line investment with the offense capstone taken.",
       "marks": [
-        1
+        1,
+        2
       ]
     }
   ],
   "battleRole": {
-    "positioning": "Cavalry — play on flanks and in duel scenarios. Cover Commander is the main playstyle: stay around the commander fully until they die. {1} When flanking, toggle Cover Commander ON beforehand and confirm the red glow; it grants strong defense for 15s but X-move, spell V, or spell 1 will cancel it. {1}",
+    "positioning": "Cover Commander is the core playstyle: stay around the commander fully until they die. {1} When flanking, toggle Cover Commander ON beforehand and confirm the red glow — it grants strong defense for 15s, but X-move, spell V, or spell 1 cancels it. {1}",
     "formation": null,
-    "tips": "On horse: spell 1 = dismount (rare now; only vs anti-cav spike), spell 2 = charge, spell 3 = follow-commander charge. In mounted 1v1, charge with spell 2 then dismount for better success. {1} On ground: absolute best-in-class — don't hesitate to dismount and press spell 2. Watch hero position closely: keep it frontline but near the unit, or the unit stops attacking and just runs. {1} Post-dismount after spell 2, enemies will rush you; don't X-move or use spell V or the 15s defense buff cancels. {1}"
+    "tips": "On horse: spell 1 = dismount (now rare, only vs anti-cav that can disrupt), spell 2 = charge, spell 3 = follow-commander charge; in a mounted 1v1, charge with spell 2 then dismount for a better success rate than Cover Commander alone. {1} On ground: don't hesitate to dismount and press spell 2 — keep the hero frontline but close to the unit, or it stops attacking and just runs; test engagement range in custom games. {1} Doctrine 5's per-attack scaling: +11% damage every 3rd attack, 15% max-health restore every 6th. {2}"
   },
   "matchups": {
     "cards": [
       {
         "name": "Pike units (generic)",
         "rel": "counters-you",
-        "why": "any pikes on cav beats mounted Yorkist",
+        "why": "any pikes beat mounted Yorkist",
         "house": false,
         "marks": [
           1
@@ -126,7 +130,7 @@
       {
         "name": "Stalwart",
         "rel": "counters-you",
-        "why": "on ground, if CC'd",
+        "why": "beats it on ground if the Yorkist is CC'd",
         "house": false,
         "marks": [
           1
@@ -134,37 +138,47 @@
       },
       {
         "name": "Rattan Pikes",
-        "rel": "hero-threat",
-        "why": "struggles vs",
+        "rel": "counters-you",
+        "why": "named as a specific struggle matchup",
         "house": false,
         "marks": [
           1
         ]
       }
     ],
-    "pressure": "You pressure: everything (Yorkist counters everything — trade depends on ground vs horse). S-tier cavalry across blur, flank, skirmish, duel."
+    "pressure": "You pressure: everything — Yorkist counters everything, the trade just depends on ground vs. horse."
   },
   "controls": {
     "loop": [
       "Cover Commander",
       "2",
-      "dismount if needed"
+      "1 (dismount if needed)"
     ],
     "loopMarks": [
       1
     ],
-    "notes": "Cover Commander toggle (red glow = active): stay with commander, 15s defense buff, cancelled by X/V/1. {1} Spell 2 (charge) forces overextension; activate after dismount for ground dominance. {1} Dismount (spell 1) only vs anti-cav that can disrupt or Stalwart; rare. {1}"
+    "notes": "Cover Commander toggle (red glow = active): stay with commander, grants a 15s defense buff, cancelled by X-move, spell V, or spell 1. {1} Spell 2 (charge) into dismount outperforms Cover Commander alone in a mounted 1v1. {1} Post-dismount spell 2 makes enemies rush you; don't cancel the buff by moving away. {1}"
   },
   "footnotes": [
     {
       "mark": 1,
       "author": "Amya",
-      "date": "Jun 2026",
+      "date": "Dec 2025",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "house card (StarBurst)",
+      "date": "Mar 2026",
+      "house": true
     }
   ],
   "gaps": [
-    "No formation guidance (formation field null) — no source specifies F1 vs F2 preference.",
-    "Skill-2 name & tooltip inconsistencies not unarbitrated in sources (no competing names given)."
+    "No formation guidance from any source (formation field null).",
+    "Video-transcript channels (all 20+) and house-playbook/immortals guides contain zero unit content for Yorkist — only Amya's guide and the house build-card were recovered.",
+    "House card's doctrine 5 final clause is cut off in the source image ('Every 9 attacks, a...') — not recoverable via lightbox zoom.",
+    "Unit-identity caveat: the house card itself is captioned 'Yorkist Cavlary,' never 'Household Knights'; the match rests on a #meta-units tier-board portrait clipped to '...orkist Household Knigh[t]' and the absence of any competing 'Yorkist'-named unit — high-confidence, not 1:1 icon-confirmed.",
+    "unit-db records hasMastery: false, but the house card shows a fully-invested offense mastery line with capstone taken — this contradiction is unresolved in any source.",
+    "Leadership rose 245→265 and max roster fell 20→18 in the 2026-06-25 patch; both the Amya guide (Dec 2025) and house card (Mar 2026) predate this change and don't account for it in build or slotting advice."
   ]
 }

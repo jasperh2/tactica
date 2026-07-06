@@ -96,7 +96,7 @@
     "pressure": null
   },
   "controls": {
-    "loop": [],
+    "loop": null,
     "loopMarks": [],
     "notes": null
   },
@@ -115,6 +115,7 @@
     "No hero pairing, formation, positioning, or control-sequence guidance in any source.",
     "'Don't put' doctrine slot is a literal 'X' placeholder in the source OP — never filled in, not an omission on this page.",
     "The guide's tip that some archers with Arrow Rain in their veterancy can't equip the Arrow Rain doctrine (equip more piercing instead) is explicitly not confirmed to apply to Vassal Longbowmen specifically — omitted rather than stated as fact.",
-    "Amya guide last edited 2026-06-16, nine days before the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season (unit is not on the Chaos changed-units shortlist, so not force-flagged)."
+    "Amya guide last edited 2026-06-16, nine days before the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season (unit is not on the Chaos changed-units shortlist, so not force-flagged).",
+    "No house-playbook, house-card, or video-transcript source mentions this unit at all (20/20 transcript channels, house-cards, and both house-guide directories checked empty)."
   ]
 }

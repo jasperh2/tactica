@@ -3,7 +3,7 @@
   "slug": "dagger-axe-lancers",
   "name": "Dagger Axe Lancers",
   "headerMeta": "Heroic era · Cavalry · charge cav · 245 leadership · T4M",
-  "date": "2026-06-28",
+  "date": "2026-06-29",
   "stats": {
     "metaTier": "A",
     "rarity": "T4",
@@ -14,12 +14,12 @@
       "flank": 7
     }
   },
-  "pitch": "A cavalry charger that hits hard on flanks when spaced correctly, hampered by poor duelling and the removal of its old zero-momentum damage trait. On open maps it underperforms heavier chargers; on curved terrain like Western City it shines with intelligent pathing.",
+  "pitch": "A charge cavalry unit built around Lancer's Last Stand — big flank damage once spaced correctly, but weak in a straight duel. Not an every-map pick: open maps favor heavier chargers, while curved terrain like Western City lets it flank-path into the fight for real value.",
   "doctrines": [
     {
       "tag": "mandatory",
       "name": "Lancer's Last Stand",
-      "note": "+40% DMG at <60% headcount",
+      "note": "unit-unique, +40% DMG at <60% headcount",
       "marks": [
         1
       ]
@@ -93,16 +93,16 @@
     {
       "label": "Top line",
       "recommended": true,
-      "body": "Recommended by Amya as the main veterancy pick.",
+      "body": "Amya's recommended veterancy pick.",
       "marks": [
         1
       ]
     }
   ],
   "battleRole": {
-    "positioning": "Position on the opposite side of the enemy push from your hero — let them follow your hero as you move behind or around the formation. {1}",
+    "positioning": "Go in / try to go behind the push with your hero, while the lancers stand on the opposite side of the push — they follow your hero, so send them \"away\" into the fight. {1} On curved-path maps like Western City, take a flanking route rather than a direct charge; on more open maps, heavier charger cavalry is more effective and Dagger Axes see less play. {2}",
     "formation": null,
-    "tips": "Charge takes 1.5s to reach final stance for full damage; you have ~10s to push through a blob before skill 2 ends. {1} X-move or press 2 when units are 2-3s away from impact, then let them go through the blob (they follow your hero away). {1} If you cannot use the follow-charge effectively, default to a normal 1 charge and recall with skill 2 — but skill-2 priority should always be first choice. {1} Dodge pikes and take better fight angles when possible. {1} Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost the unit, pull it from supply (best to have it out, swap to another unit, then swap back) so the 40%-at-60%-headcount damage applies to 100% of the unit. {1}"
+    "tips": "Charge takes 1.5s to reach final stance for full damage — you have about 10s to push through a blob before skill 2 ends. {1} X-move and/or press 2 when the lancers are 2–3s from impact so they carry through the blob. {1} Dodge pikes and enter from a better angle when you can charge in and follow up with 2. {1} Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost the unit, pull it from supply (best to have it out, swap to another unit, then swap back) so the 40%-at-<60%-headcount bonus applies to the full unit instead of a partial one. {1}"
   },
   "matchups": {
     "cards": [],
@@ -116,7 +116,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Old trait removed: the short-charge (max damage at 0 momentum) mechanic was deleted. New playstyle: press 2 early and maintain the charge to wipe in one go. {1} Most engagements follow: go in / position daggeraxe opposite your hero on the enemy push, X-move or press 2 when units are 2–3s from impact, let them follow through the blob. {1} Avoid the old pattern (charge first, then press 2) — follow-charge is the priority, always use skill 2 over basic charges when possible. {1}"
+    "notes": "Old \"short charge\" trait (max damage at zero momentum) was removed — new play is to press 2 early and maintain the charge if you can wipe in one go. {1} Prioritize the follow-charge (charge then skill 2) over charging in first and pressing 2 after; if you can't make good use of the follow-charge, fall back to a normal 1-charge and recall with skill 2 — prio should always be to use 2. {1}"
   },
   "footnotes": [
     {
@@ -124,10 +124,19 @@
       "author": "Amya",
       "date": "Jun 2026",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "house guide",
+      "date": "Jun 2026",
+      "house": true
     }
   ],
   "gaps": [
-    "No Counters section in Amya's OP — matchup weaknesses inferred from meta context (underperforms on open maps) rather than explicit source.",
-    "No formation guidance available — F1/F2 recommendations absent from all sources."
+    "No Counters section in Amya's OP (no Loses to / Struggles vs / This unit counters lines) — matchup cards omitted rather than invented.",
+    "No formation guidance (F1/F2) in any source.",
+    "unit-db flags Amya's Lancer's Last Stand doctrine block and Tips & Tricks text as near-identical to her separate Tiger and Leopard Cavalry guide — recorded as given per-unit, not merged, pending vet review of which unit it actually belongs to.",
+    "A gameplay video possibly covering this unit ('Dagger AXE Lancers - A GREAT Cavalry Unit!', evolozgaming, 2022-12-21) was found but never transcribed — commentary-style, not confirmed as a structured control guide.",
+    "No dedicated house build card (StarBurst or otherwise) has been captured for this unit."
   ]
 }

@@ -143,6 +143,7 @@
     "Leadership conflict: data/unit-db.json (ConqHub, tier-2) records 300; the ConstantBufferCast transcript states 330 (caption-derived, tier-3) — unarbitrated, unit-db value used above.",
     "Amya's doctrine/build guidance was last edited 2026-05-27, which pre-dates the 2026-06-25 Chaos patch anchor — flagged for revalidation, though Siphonarioi is not on the 13-unit Chaos shortlist.",
     "'Don't put' doctrine slot is a literal placeholder ('X') in the Amya OP — never filled in, not fabricated here.",
-    "Ability names ('direct fire', 'Scorched') are inferred from the transcript narrator's informal phrasing, not confirmed in-game tooltip text; numeric veterancy bonuses (240/480/60/70) are as spoken by auto-captions, not cross-checked against the live veterancy tree."
+    "Ability names ('direct fire', 'Scorched') are inferred from the transcript narrator's informal phrasing, not confirmed in-game tooltip text; numeric veterancy bonuses (240/480/60/70) are as spoken by auto-captions, not cross-checked against the live veterancy tree.",
+    "No house-guide, house-card, or house-playbook content exists for this unit — the one house-classified source found (guides-house/immortals/dragon-cav-how-to-use.md) is about a different unit (Dragon Cav) and only namechecks Siphonarioi in a single aside, with no doctrine/build/tactical content to use."
   ]
 }
