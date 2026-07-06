@@ -581,9 +581,12 @@
       "era": "Heroic",
       "leadership": 225,
       "icon": "assets/unit-icons/halberd-elite.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1158,9 +1161,12 @@
       "era": "Golden",
       "leadership": 310,
       "icon": "assets/unit-icons/modao-battalion.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1245,9 +1251,12 @@
       "era": "Golden",
       "leadership": 310,
       "icon": "assets/unit-icons/order-of-the-dragon.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1659,9 +1668,12 @@
       "era": "Golden",
       "leadership": 280,
       "icon": "assets/unit-icons/shieldmaidens.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1751,9 +1763,12 @@
       "era": "Golden",
       "leadership": 305,
       "icon": "assets/unit-icons/spartan-chosen.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -1874,9 +1889,12 @@
       "era": "Heroic",
       "leadership": 240,
       "icon": "assets/unit-icons/symmachean-stalwarts.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -2175,9 +2193,12 @@
       "era": "Heroic",
       "leadership": 235,
       "icon": "assets/unit-icons/zealot.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {
@@ -2189,9 +2210,12 @@
       "era": "Golden",
       "leadership": 310,
       "icon": "assets/unit-icons/zweihanders.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
-        "battleRole"
+        "doctrines",
+        "battleRole",
+        "matchups",
+        "controls"
       ]
     },
     {

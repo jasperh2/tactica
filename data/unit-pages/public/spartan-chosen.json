@@ -36,33 +36,131 @@
   "lastUpdated": {
     "newestDate": "2026-06-29",
     "sourceSpan": [
-      "2026-06-29",
+      "2026-05-26",
       "2026-06-29"
     ],
     "patchState": "no-change-signal",
-    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
   },
   "verdict": {
     "state": "absent",
     "text": null
   },
   "panels": {
-    "doctrines": null,
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Spear Doctrine VI",
+          "text": "CCi. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Awareness Doctrine V",
+          "text": "20% rear atk reduction, -500 cav dmg. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Block Doctrine V",
+          "text": "+300 block, -90 flat dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Spartan Chosen: Mountain Crusher",
+          "text": "Spartan Vengeance +15% block-break & dmg. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "DMG Reduction Doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Block only doctrines",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Full Bot -- \"Nerfs guided this unit toward the Tank Line over the DPS one.\" Hero pairing: Any. \"CCi may be important after the nerf since you need to reposition WAY more often (the +40% dmg in the back should scare you). If you don't need the leadership doctrine, take more tank or dmg like Unit Damage Doctrine V or Steadfast Doctrine V.\" Example build per OP: Epic Spear Doctrine VI (CCi) / Steadfast Doctrine V (+130 def, -6% dmg taken), Awareness Doctrine V (20% rear atk reduction, -500 cav dmg), Block Doctrine V (+300 block, -90 flat dmg taken), Unit Damage Doctrine V / Spartan Chosen: Mountain Crusher (Spartan Vengeance +15% block-break & dmg), Epic Leadership Doctrine. Alt build per OP: Top line + Unit Damage Doctrine if you really know what you're doing and want more stats -- \"Not recommended. If you're confident enough to try it, you don't need a guide.\" Tutorial video follow-up post (2025-02-09) links a YouTube embed by creator Akers, not transcribed (read-only capture; embed caption/thumbnail only). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Spartan Chosen is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
     "veterancy": null,
     "formation": null,
     "battleRole": {
       "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
-      "rationale": null,
+      "rationale": "Veterancy: Full Bot -- \"Nerfs guided this unit toward the Tank Line over the DPS one.\" Hero pairing: Any. \"CCi may be important after the nerf since you need to reposition WAY more often (the +40% dmg in the back should scare you). If you don't need the leadership doctrine, take more tank or dmg like Unit Damage Doctrine V or Steadfast Doctrine V.\" Example build per OP: Epic Spear Doctrine VI (CCi) / Steadfast Doctrine V (+130 def, -6% dmg taken), Awareness Doctrine V (20% rear atk reduction, -500 cav dmg), Block Doctrine V (+300 block, -90 flat dmg taken), Unit Damage Doctrine V / Spartan Chosen: Mountain Crusher (Spartan Vengeance +15% block-break & dmg), Epic Leadership Doctrine. Alt build per OP: Top line + Unit Damage Doctrine if you really know what you're doing and want more stats -- \"Not recommended. If you're confident enough to try it, you don't need a guide.\" Tutorial video follow-up post (2025-02-09) links a YouTube embed by creator Akers, not transcribed (read-only capture; embed caption/thumbnail only). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Spartan Chosen is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMarks": [
+        2,
         1
       ]
     },
-    "matchups": null,
-    "controls": null
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Huge burst DMG such as Iron Reapers or Claymores or Orochi."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Any units with high minimum DMG."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Big braced blob -- \"you will open for your team to push-in.\""
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "press 1 (No Mercy)",
+          "text": "Same as the grandpa one -- redirects them to where you're facing and stabs in front. Each stab heals 5% HP."
+        },
+        {
+          "context": "press 2 (advance)",
+          "text": "Similar to an Imperial Pikes Advance, but you have to re-press 2 during the advance to stab with your shield. At the 3rd press 2 (end of it), your unit jumps forward and stabs for big damage."
+        },
+        {
+          "context": "main trait (Oath of Unity)",
+          "text": "For 5s after using a spell, every damage taken is spread through the whole unit (and reduced to 70%, so 30% dmg reduction)."
+        },
+        {
+          "context": "positioning",
+          "text": "Play around your cooldowns -- never hesitate to redirect and replace yourself before pressing 2, also don't hesitate to activate CCi and X-move back if going too deep."
+        }
+      ],
+      "footnoteMark": 1
+    }
   },
   "footnotes": [
     {
       "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
       "author": "unit-db identity",
       "date": null,
       "house": false
@@ -70,14 +168,6 @@
   ],
   "media": [],
   "gaps": [
-    {
-      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
-      "house": false
-    },
-    {
-      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
-      "house": false
-    },
     {
       "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
       "house": false

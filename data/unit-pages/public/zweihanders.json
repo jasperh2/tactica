@@ -36,7 +36,7 @@
   "lastUpdated": {
     "newestDate": "2026-06-29",
     "sourceSpan": [
-      "2026-06-29",
+      "2026-06-27",
       "2026-06-29"
     ],
     "patchState": "changed-by-patch",
@@ -47,22 +47,97 @@
     "text": null
   },
   "panels": {
-    "doctrines": null,
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Zweihanders Unique CD Doctrine",
+          "text": "-4s Special CD. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Zweihander Sword Doctrine",
+          "text": "After Prepared Stance restores health to 100%, next skill +10% slashing damage. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Noble Blood Doctrine",
+          "text": "100 melee damage taken triggers bleed; +15% damage/move while bleeding. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "-5% DMG Taken Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Defence Doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "No mastery tree (rarityTier T5, hasMastery false). Veterancy: Top Line. Hero pairing: Any. \"Don't put\" is a literal X placeholder in the OP -- Amya did not fill this in; not fabricated here. Example build per OP: Zweihanders Unique CD Doctrine (-4s Special CD), Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Zweihander Sword Doctrine, Noble Blood Doctrine. Guide edited 2026-06-27, two days after the 2026-06-25 Chaos patch anchor which reworked this unit's Prepared Stance/Knight's Defence -- per the guide's own frontmatter/gap note this edit post-dates and reflects the current season, so build guidance is NOT flagged staleAsOfPatch (contrast the pre-existing fightRatings block, whose underlying OP date predates the patch).",
+      "footnoteMark": 1
+    },
     "veterancy": null,
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
-      "rationale": null,
+      "rationale": "No mastery tree (rarityTier T5, hasMastery false). Veterancy: Top Line. Hero pairing: Any. \"Don't put\" is a literal X placeholder in the OP -- Amya did not fill this in; not fabricated here. Example build per OP: Zweihanders Unique CD Doctrine (-4s Special CD), Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Zweihander Sword Doctrine, Noble Blood Doctrine. Guide edited 2026-06-27, two days after the 2026-06-25 Chaos patch anchor which reworked this unit's Prepared Stance/Knight's Defence -- per the guide's own frontmatter/gap note this edit post-dates and reflects the current season, so build guidance is NOT flagged staleAsOfPatch (contrast the pre-existing fightRatings block, whose underlying OP date predates the patch).",
       "footnoteMarks": [
+        2,
         1
       ]
     },
-    "matchups": null,
-    "controls": null
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "playstyle",
+          "text": "Stack up your passive staying on formation."
+        },
+        {
+          "context": "engage/disengage",
+          "text": "Go in & out on your CD."
+        }
+      ],
+      "footnoteMark": 1
+    }
   },
   "footnotes": [
     {
       "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-27",
+      "house": false
+    },
+    {
+      "mark": 2,
       "author": "unit-db identity",
       "date": null,
       "house": false
@@ -70,14 +145,6 @@
   ],
   "media": [],
   "gaps": [
-    {
-      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
-      "house": false
-    },
-    {
-      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
-      "house": false
-    },
     {
       "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
       "house": false

@@ -36,33 +36,118 @@
   "lastUpdated": {
     "newestDate": "2026-06-29",
     "sourceSpan": [
-      "2026-06-29",
+      "2026-05-26",
       "2026-06-29"
     ],
     "patchState": "no-change-signal",
-    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
   },
   "verdict": {
     "state": "absent",
     "text": null
   },
   "panels": {
-    "doctrines": null,
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9 hit damage boost. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Order of the Dragon Unique Doctrine",
+          "text": "+15% movement speed during Emperor's Expedition. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "+15% Piercing/Slashing Pen Doctrine",
+          "text": "Active when HP above 40%. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Flatland Doctrine V",
+          "text": "+15% movement speed, special cav surge. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Last slot alt. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Other Movement Speed Doctrine",
+          "text": "For a full movement-speed build (replaces the piercing/slashing pen doctrine per OP). Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "-5% DMG Taken Doctrine",
+          "text": "Last slot alt. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: Any. Doctrine 'Don't put' is a literal X placeholder in the OP -- not fabricated here. No 'Tips & Tricks' section present in this thread (structural absence, not a capture gap); thread goes directly from Doctrines/Example Build to the SOS freshness note. Playstyle kit: press 1 for RTS view control mode (damage + charge stance), press 2 for a Khevtuul/Kriegsbruders-style sweep around the unit, press 3 to heal. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Order of the Dragon Unique Doctrine (Emperor's Expedition +15% move speed), +15% Pen Doctrine (above 40% HP), Flatland Doctrine V or Epic Leadership Doctrine or -5% DMG Taken. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Order of the Dragon is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
     "veterancy": null,
     "formation": null,
     "battleRole": {
       "role": "Unique kit that doesn't fit the standard type/weapon pairing",
-      "rationale": null,
+      "rationale": "Veterancy: Top Line. Hero pairing: Any. Doctrine 'Don't put' is a literal X placeholder in the OP -- not fabricated here. No 'Tips & Tricks' section present in this thread (structural absence, not a capture gap); thread goes directly from Doctrines/Example Build to the SOS freshness note. Playstyle kit: press 1 for RTS view control mode (damage + charge stance), press 2 for a Khevtuul/Kriegsbruders-style sweep around the unit, press 3 to heal. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Order of the Dragon Unique Doctrine (Emperor's Expedition +15% move speed), +15% Pen Doctrine (above 40% HP), Flatland Doctrine V or Epic Leadership Doctrine or -5% DMG Taken. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Order of the Dragon is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
       "footnoteMarks": [
+        2,
         1
       ]
     },
-    "matchups": null,
-    "controls": null
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage / RTS control",
+          "text": "Press 1 for RTS view control mode for the cav, giving them damage and charge stance."
+        },
+        {
+          "context": "sweep",
+          "text": "Press 2 for a sweep around the unit, like the Khevtuul or Kriegsbruders sweep."
+        },
+        {
+          "context": "sustain",
+          "text": "Press 3 to heal."
+        }
+      ],
+      "footnoteMark": 1
+    }
   },
   "footnotes": [
     {
       "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
       "author": "unit-db identity",
       "date": null,
       "house": false
@@ -70,14 +155,6 @@
   ],
   "media": [],
   "gaps": [
-    {
-      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
-      "house": false
-    },
-    {
-      "note": "No how-to-use/matchup guide has been captured for this unit yet.",
-      "house": false
-    },
     {
       "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units with a video-transcript source).",
       "house": false
