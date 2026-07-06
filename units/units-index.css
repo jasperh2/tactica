@@ -121,7 +121,9 @@
   color: var(--text-label);
 }
 
-/* ---- Tile grid (index.tiles, default sort rarity desc — see units-index.mjs sortForDisplay) ---- */
+/* ---- Tile grid (index.tiles, default sort: meta tier ladder then rarity desc — Jasper directive
+   2026-07-06, supersedes the handoff's original rarity-desc-only default; see units-index.mjs
+   sortForDisplay) ---- */
 
 .unit-tile-grid {
   display: grid;
@@ -277,3 +279,55 @@
 
 /* .index-footnote is styled by shared/academy.css §4 (shared cross-index baseline) — no
    page-specific override needed here. */
+
+/* "Not yet documented" band (Jasper directive 2026-07-06) — stats-only units with no guide yet,
+   de-emphasized below the guided grid. Separated by a hairline, dimmer than the main grid, still
+   fully interactive/searchable. The whole section is hidden by the boot layer when empty. */
+.units-undocumented {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-soft);
+}
+
+.units-undocumented-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.units-undocumented-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.units-undocumented-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-scale-11);
+  color: var(--text-faint);
+}
+
+.units-undocumented-note {
+  margin: var(--space-3) 0 var(--space-5);
+  font-size: var(--text-scale-12);
+  color: var(--text-faint);
+}
+
+/* Muted variant of the tile grid: the whole band sits at reduced emphasis so the eye lands on the
+   guided units first. Individual tiles keep their own hover/focus affordances (a member can still
+   open a stats page), just from a dimmer resting state. */
+.unit-tile-grid-muted {
+  opacity: 0.62;
+}
+
+.unit-tile-grid-muted:hover,
+.unit-tile-grid-muted:focus-within {
+  opacity: 0.85;
+}
+
+.unit-tile-grid-muted .unit-tile {
+  transition: opacity var(--dur-fast, 150ms) ease;
+}

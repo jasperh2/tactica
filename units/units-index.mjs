@@ -68,24 +68,25 @@ export function filterUnits(units, filters = {}) {
 }
 
 /**
- * Sorts units for display: named-tier units first (alphabetical by name within tier group,
- * tier groups ordered by the ladder below), then untiered (identity-only) units alphabetically.
- * Unrecognized tier strings (e.g. "Best Filler (top pick, unlettered)") sort after the known
- * ladder but before untiered — they are real tier signal, just not on the clean enum, so they
- * should not be buried at the very bottom next to units with no tier data at all.
+ * Sorts units for display — DEFAULT SORT (Jasper directive, 2026-07-06): meta tier is the primary
+ * key, ladder order God -> S -> AA -> A -> B -> C -> D -> E -> F -> unrated last (supersedes the
+ * prior rarity-desc default — see units-index.css's tile-grid comment and DECISIONS.md's
+ * 2026-07-05 unit-type-sort-buckets entry, both stale pointers to the old rule, kept only as
+ * historical breadcrumbs). Within one tier group, rarity DESC (T5 -> T1, missing/unrecognized
+ * rarity last) is the secondary key; name A-Z is the tertiary tie-break for units that share both
+ * tier AND rarity, so the order is always fully deterministic. Unrecognized tier strings (e.g.
+ * "Best Filler (top pick, unlettered)") sort after the known ladder but before unrated — they are
+ * real tier signal, just not on the clean enum, so they should not be buried at the very bottom
+ * next to units with no tier data at all.
  * @param {Array<Record<string, unknown>>} units
  * @returns {Array<Record<string, unknown>>}
  */
 export function sortForDisplay(units) {
-  const rank = (tier) => {
-    const index = TIER_LADDER.indexOf(tier);
-    if (index >= 0) return index;
-    if (typeof tier === 'string' && tier.length > 0) return TIER_LADDER.length; // known-but-odd tier string
-    return TIER_LADDER.length + 1; // no tier at all
-  };
   return [...units].sort((a, b) => {
-    const rankDiff = rank(a.tier) - rank(b.tier);
-    if (rankDiff !== 0) return rankDiff;
+    const tierDiff = tierRank(a.tier) - tierRank(b.tier);
+    if (tierDiff !== 0) return tierDiff;
+    const rarityDiff = rarityRank(a.rarity) - rarityRank(b.rarity);
+    if (rarityDiff !== 0) return rarityDiff;
     return String(a.name).localeCompare(String(b.name));
   });
 }
@@ -95,12 +96,58 @@ export function sortForDisplay(units) {
  * ranking it above S costs nothing if unused. */
 const TIER_LADDER = ['God', 'S', 'AA', 'A', 'B', 'C', 'D', 'E', 'F'];
 
+/**
+ * Sort rank for a unit's `tier` field: index into TIER_LADDER when it's a clean ladder value,
+ * TIER_LADDER.length for a real-but-off-ladder tier string (e.g. the unlettered placeholder
+ * strings), TIER_LADDER.length + 1 ("unrated") for null/undefined/empty — i.e. no tier data at
+ * all. Lower rank sorts first (God is rank 0).
+ * @param {unknown} tier
+ * @returns {number}
+ */
+function tierRank(tier) {
+  const index = TIER_LADDER.indexOf(tier);
+  if (index >= 0) return index;
+  if (typeof tier === 'string' && tier.length > 0) return TIER_LADDER.length; // known-but-odd tier string
+  return TIER_LADDER.length + 1; // unrated — no tier at all
+}
+
+/** Display/sort order for the 5-step rarity ladder, best (T5) first. Mirrors RARITY_COLOR_VAR's
+ * key set below — same 5 steps, different purpose (order, not color). */
+const RARITY_LADDER = ['T5', 'T4', 'T3', 'T2', 'T1'];
+
+/**
+ * Sort rank for a unit's `rarity` field, DESCENDING (T5 first): index into RARITY_LADDER, or
+ * RARITY_LADDER.length for missing/unrecognized rarity (sorts after every real rarity step, same
+ * "unknown goes last" convention as tierRank). Used only as sortForDisplay's secondary key within
+ * one tier group — never a standalone filter.
+ * @param {unknown} rarity
+ * @returns {number}
+ */
+function rarityRank(rarity) {
+  const index = RARITY_LADDER.indexOf(rarity);
+  return index >= 0 ? index : RARITY_LADDER.length;
+}
+
 /** Handoff-defined display order for the tier FILTER's chip row (README template map: "meta letter
  * + rarity on one chip"; Units Index.dc.html's tierOpts). Distinct from TIER_LADDER (which ranks
  * every real tier string for tile SORT order) — this is a fixed, small set of filter buttons, and
  * "D-E-F" is one combined filter option grouping three index.json tier values, not a tier string
  * that ever appears on a row. */
 export const TIER_FILTER_CHIPS = ['All', 'God', 'S', 'AA', 'A', 'B', 'C', 'D-E-F'];
+
+/**
+ * The exactly-3 in-game unit categories (Jasper's standing ruling, DECISIONS.md 2026-07-05: "no
+ * pike is not a 4th bucket neither is special just do melee ranged cavalry" — pike/polearm
+ * infantry folds into melee upstream in tools/build-unit-pages/lib/class-bucket.mjs, so this list
+ * is never a 4th/5th option here either), in the fixed display order the handoff template hardcodes
+ * (Units Index.dc.html lines 44-46) and the game's own category grammar uses. Deliberately a fixed
+ * array, NOT `distinctSorted(units, 'classBucket')` — alphabetical ("cavalry, melee, ranged") would
+ * be an accidental order, not the intended one. Every classBucket value the compiled index has ever
+ * produced is one of these three (see tools/build-unit-pages/lib/class-bucket.mjs's closed enum,
+ * which throws on anything else) — there is no "unrated"/off-list case to also render, unlike tier.
+ * @type {ReadonlyArray<'melee'|'ranged'|'cavalry'>}
+ */
+export const CLASS_BUCKET_ORDER = ['melee', 'ranged', 'cavalry'];
 
 /**
  * True if a unit's `tier` field matches one tier-filter chip value. `FILTER_ALL`/'All' matches
@@ -179,4 +226,23 @@ export function unitHref(slug) {
  */
 export function richnessBadgeLabel(richness) {
   return richness === 'full' ? 'full guide' : 'stats only';
+}
+
+/**
+ * Splits an already-filtered+sorted unit list into the two display bands (Jasper directive,
+ * 2026-07-06): `guided` = units with a real guide (`richness === 'full'`) fill the main index;
+ * `undocumented` = the rest (`stats-only`, no guide captured yet) drop into a separate greyed
+ * "Not yet documented" section below, still searchable, clearly flagged for later expansion (the
+ * `richness` field IS that expansion marker — no separate flag needed). Preserves input order
+ * within each band, so callers sortForDisplay() once up front and both bands stay tier-sorted.
+ * @param {Array<Record<string, unknown>>} units
+ * @returns {{ guided: Array<Record<string, unknown>>, undocumented: Array<Record<string, unknown>> }}
+ */
+export function partitionByGuide(units) {
+  const guided = [];
+  const undocumented = [];
+  for (const unit of units) {
+    (unit.richness === 'full' ? guided : undocumented).push(unit);
+  }
+  return { guided, undocumented };
 }

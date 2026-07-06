@@ -47,6 +47,18 @@
       <button type="button" class="clear-search" id="units-clear-search">Clear search</button>
     </div>
 
+    <!-- Greyed "Not yet documented" band (Jasper directive 2026-07-06): stats-only units, no guide
+         captured yet — de-emphasized, still searchable, flagged for expansion. Hidden entirely when
+         the current filter/search leaves no undocumented matches. -->
+    <section class="units-undocumented" id="units-undocumented" aria-label="Units not yet documented" hidden>
+      <div class="units-undocumented-head">
+        <span class="units-undocumented-title">Not yet documented</span>
+        <span class="units-undocumented-count" id="units-undocumented-count"></span>
+      </div>
+      <p class="units-undocumented-note">Stats only — no guide captured yet. These are queued for future write-ups.</p>
+      <div class="unit-tile-grid unit-tile-grid-muted" id="units-undocumented-grid" aria-label="Undocumented unit tiles"></div>
+    </section>
+
     <p class="index-footnote">Tier placements — see each unit page's source legend for attribution.</p>
   </main>
 

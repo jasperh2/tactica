@@ -11,8 +11,8 @@
     "origin": null,
     "noMastery": false,
     "icon": null,
-    "metaTier": null,
-    "rarityTier": null,
+    "metaTier": "D",
+    "rarityTier": "T4",
     "fightRatings": null,
     "classBucket": "cavalry"
   },
@@ -54,7 +54,7 @@
   "media": [],
   "gaps": [
     {
-      "note": "Prefecture Heavy Cavalry is below the B-tier+ rich-data gate (metaTier: unknown) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
+      "note": "Prefecture Heavy Cavalry is below the B-tier+ rich-data gate (metaTier: D) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
       "house": false
     }
   ]

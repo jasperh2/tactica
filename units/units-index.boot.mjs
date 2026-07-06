@@ -20,9 +20,11 @@ import { fetchUnitIndex } from '../shared/data.mjs';
 import {
   FILTER_ALL,
   TIER_FILTER_CHIPS,
+  CLASS_BUCKET_ORDER,
   distinctSorted,
   filterUnits,
   sortForDisplay,
+  partitionByGuide,
   unitHref,
   richnessBadgeLabel,
   rarityColorVar,
@@ -172,10 +174,16 @@ export function wireUnitsIndex(refs) {
   const {
     units, gridEl, emptyResultEl, emptyResultTextEl, clearSearchBtn, searchInput,
     tierChipsEl, classChipsEl, eraChipsEl, resultCountEl,
+    undocumentedSectionEl, undocumentedGridEl, undocumentedCountEl,
   } = refs;
 
   const eraValues = distinctSorted(units, 'era');
-  const classValues = distinctSorted(units, 'classBucket');
+  // Fixed melee/ranged/cavalry display order (Jasper directive — see CLASS_BUCKET_ORDER's own
+  // doc comment), filtered down to whichever of the 3 are actually present in `units` — same
+  // "only render chips for real data" behavior the old distinctSorted(units, 'classBucket') call
+  // had, just in the deliberate order instead of an accidental alphabetical one.
+  const presentClassBuckets = new Set(units.map((u) => u.classBucket));
+  const classValues = CLASS_BUCKET_ORDER.filter((bucket) => presentClassBuckets.has(bucket));
 
   let state = { query: '', tier: 'All', era: FILTER_ALL, classBucket: FILTER_ALL };
 
@@ -218,19 +226,32 @@ export function wireUnitsIndex(refs) {
     const filtered = sortForDisplay(
       filterUnits(units, { query: state.query, era: state.era, classBucket: state.classBucket, tier: state.tier })
     );
+    // Split into the guided band (main grid) and the greyed "Not yet documented" band below.
+    // filtered is already tier-sorted, so both bands inherit that order.
+    const { guided, undocumented } = partitionByGuide(filtered);
 
     gridEl.innerHTML = '';
-    if (filtered.length === 0) {
-      gridEl.hidden = true;
-      emptyResultEl.hidden = false;
-      emptyResultTextEl.textContent = `No units match “${state.query}”.`;
-    } else {
-      gridEl.hidden = false;
-      emptyResultEl.hidden = true;
-      for (const unit of filtered) gridEl.appendChild(buildTile(unit));
+    for (const unit of guided) gridEl.appendChild(buildTile(unit));
+    gridEl.hidden = guided.length === 0;
+
+    // Undocumented section: rendered iff the current filter leaves any stats-only units; the whole
+    // section (header + note + grid) hides when empty so it never shows a bare "Not yet documented"
+    // label with nothing under it.
+    if (undocumentedSectionEl && undocumentedGridEl) {
+      undocumentedGridEl.innerHTML = '';
+      for (const unit of undocumented) undocumentedGridEl.appendChild(buildTile(unit));
+      undocumentedSectionEl.hidden = undocumented.length === 0;
+      if (undocumentedCountEl) undocumentedCountEl.textContent = String(undocumented.length);
     }
+
+    // Empty-result banner only when NOTHING matches across both bands — never when the guided grid
+    // is empty but undocumented units still match (that's a real, informative result).
+    const nothingMatches = guided.length === 0 && undocumented.length === 0;
+    emptyResultEl.hidden = !nothingMatches;
+    if (nothingMatches) emptyResultTextEl.textContent = `No units match “${state.query}”.`;
+
     if (resultCountEl) {
-      resultCountEl.textContent = `${filtered.length} of ${units.length} units`;
+      resultCountEl.textContent = `${guided.length} guided · ${undocumented.length} not yet documented`;
     }
   }
 
@@ -260,6 +281,9 @@ export async function boot() {
   const resultCountEl = document.getElementById('units-result-count');
   const controlsEl = document.getElementById('units-controls');
   const countsEl = document.getElementById('units-index-counts');
+  const undocumentedSectionEl = document.getElementById('units-undocumented');
+  const undocumentedGridEl = document.getElementById('units-undocumented-grid');
+  const undocumentedCountEl = document.getElementById('units-undocumented-count');
 
   const result = await fetchUnitIndex();
   const units = Array.isArray(result.data?.units) ? result.data.units : null;
@@ -267,6 +291,7 @@ export async function boot() {
   if (!result.ok || !units) {
     if (controlsEl) controlsEl.hidden = true;
     gridEl.hidden = true;
+    if (undocumentedSectionEl) undocumentedSectionEl.hidden = true;
     emptyResultEl.hidden = false;
     emptyResultTextEl.textContent = 'Unit index is not available yet — check back once the data build has run.';
     if (clearSearchBtn) clearSearchBtn.hidden = true;
@@ -281,5 +306,6 @@ export async function boot() {
   wireUnitsIndex({
     units, gridEl, emptyResultEl, emptyResultTextEl, clearSearchBtn, searchInput,
     tierChipsEl, classChipsEl, eraChipsEl, resultCountEl,
+    undocumentedSectionEl, undocumentedGridEl, undocumentedCountEl,
   });
 }

@@ -1370,8 +1370,8 @@
     {
       "slug": "prefecture-heavy-cavalry",
       "name": "Prefecture Heavy Cavalry",
-      "tier": null,
-      "rarity": null,
+      "tier": "D",
+      "rarity": "T4",
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 225,

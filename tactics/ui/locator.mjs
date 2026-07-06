@@ -13,9 +13,8 @@ import { safeColor } from './sanitize.mjs';
 
 export const RING_INTERVAL_MS = 90; // stationary-hold cadence: keep spawning at the cursor
 export const RING_SPACING_PX = 9; // moving cadence: spawn a ring every N px of travel
-const RING_LIFE_MS = 600; // one ring's expand-out lifetime
-const RING_MAX_RADIUS_PX = 17; // a fully-aged ring, just before it dissolves
-const RING_START_RADIUS_PX = 3; // a freshly-spawned ring at the cursor
+const RING_LIFE_MS = 600; // one ring's shrink-away lifetime
+const RING_MAX_RADIUS_PX = 17; // newest ring (at the cursor) — the comet head
 const RING_STROKE_PX = 4.5; // bold ring outline, per the reference screenshot
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -24,12 +23,9 @@ export function pruneRings(rings, now) {
   return rings.filter((r) => now - r.t0 < RING_LIFE_MS);
 }
 
-/** Ring radius for age01 in [0,1] — EXPANDS outward as it ages (ripple), per Jasper's
- * reversal: the newest ring at the cursor is small, older rings behind have grown big
- * (his reference: the largest circles sit where the path started). */
+/** Ring radius for age01 in [0,1] — starts at the max (comet head) and SHRINKS to nothing. */
 export function ringRadius(age01) {
-  const a = Math.min(1, Math.max(0, age01));
-  return RING_START_RADIUS_PX + (RING_MAX_RADIUS_PX - RING_START_RADIUS_PX) * a;
+  return RING_MAX_RADIUS_PX * Math.max(0, 1 - age01);
 }
 
 /**
@@ -101,9 +97,8 @@ export function mountLocator(viewportEl, store) {
     for (const r of session.rings) {
       const age01 = Math.min(1, (now - r.t0) / RING_LIFE_MS);
       const radius = ringRadius(age01);
-      // Fade in the final third of life so a fully-grown ring dissolves instead of popping.
-      const opacity = age01 < 0.66 ? 0.92 : 0.92 * (1 - (age01 - 0.66) / 0.34);
-      parts.push(`<circle cx="${r.x}" cy="${r.y}" r="${radius.toFixed(1)}" fill="none" stroke="${c}" stroke-width="${RING_STROKE_PX}" opacity="${opacity.toFixed(2)}"/>`);
+      if (radius < 0.5) continue;
+      parts.push(`<circle cx="${r.x}" cy="${r.y}" r="${radius.toFixed(1)}" fill="none" stroke="${c}" stroke-width="${RING_STROKE_PX}" opacity="0.92"/>`);
     }
     svg.innerHTML = parts.join('');
     if (session.done && session.rings.length === 0) {
