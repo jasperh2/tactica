@@ -27,16 +27,20 @@
 /* ============================================================================
  * V2 LAYOUT — "Modao Cheat Sheet" (cb-unit-page-v2/1). Design source:
  *   design/handoff-unit-page-v3/Modao Cheat Sheet.dc.html (imported 2026-07-07).
- * All values below are the design's own (Discord-dark panels, Immortals gold as the sole accent,
- * red for counters, green/gold for pairs). Tokens are declared on `.v2-page` so they override
- * academy.css's globals only for the cheat-sheet subtree.
+ * Discord-dark panels, Immortals gold as the sole accent, red/green/gold matchup semantics.
+ * Tokens are declared on `.v2-page` so they override academy.css's globals only for the
+ * cheat-sheet subtree.
+ *
+ * READABILITY PASS (Jasper, 2026-07-07): the greys were too dark/low-contrast and every size too
+ * small. --ink-2/-3/-4 are lightened for contrast on the dark panels, and font-sizes + spacing are
+ * bumped up throughout — a cheat sheet still, but a legible one.
  * ========================================================================= */
 
 /* The cheat sheet is a dense, wide surface — let it break out of academy.css's 1120px reading
    column (only when the v2 tree is the one being shown). :has() is supported in every browser this
    site targets. */
 .unit-page-main:has(#unit-v2-page:not([hidden])) {
-  max-width: 1440px;
+  max-width: 1500px;
 }
 
 .v2-page {
@@ -44,23 +48,25 @@
   --app-bg: #1e1f22;
   --panel: #2b2d31;
   --panel-2: #202225;
-  --line: rgba(255, 255, 255, 0.055);
-  --line-strong: rgba(255, 255, 255, 0.11);
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.12);
   --gold: #e3ad4d;
   --gold-bright: #f2c86a;
-  --gold-deep: #c68f33;
+  --gold-deep: #d3a044;
   --gold-soft: rgba(227, 173, 77, 0.13);
   --stripe: rgba(227, 173, 77, 0.05);
-  --ink: #e7e8ea;
-  --ink-2: #b6bac1;
-  --ink-3: #8b9099;
-  --ink-4: #666b73;
-  --red: #e0605f;
+  /* ink ramp — lightened for contrast (was e7e8ea / b6bac1 / 8b9099 / 666b73, the last two
+     unreadable on the dark panels). */
+  --ink: #eef0f2;
+  --ink-2: #d3d6db;
+  --ink-3: #aeb2ba;
+  --ink-4: #949aa3;
+  --red: #ec7370;
   --red-soft: rgba(224, 96, 95, 0.15);
-  --green: #5aa977;
+  --green: #6cbf8b;
   --green-soft: rgba(90, 169, 119, 0.15);
-  --neutral: #99a0a8;
-  --neutral-soft: rgba(153, 160, 168, 0.13);
+  --neutral: #aab0b8;
+  --neutral-soft: rgba(153, 160, 168, 0.14);
   --cs-radius: 4px;
   --cs-radius-sm: 3px;
   --cs-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -70,10 +76,10 @@
   color: var(--ink);
   font-family: var(--cs-sans);
   border-radius: 8px;
-  padding: 26px 28px 30px;
+  padding: 30px 34px 36px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .v2-page *,
@@ -84,15 +90,15 @@
 
 .v2-page sup {
   font-family: var(--cs-mono);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--gold-deep);
   padding-left: 1px;
 }
 
 .v2-page .lock {
-  font-size: 10px;
-  color: var(--ink-4);
+  font-size: 12px;
+  color: var(--ink-3);
   margin-left: 4px;
 }
 
@@ -116,12 +122,12 @@
 .v2-page .cs-eyebrow {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 14px;
 }
 
 .v2-page .cs-crest {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   flex: none;
   border-radius: 4px;
   overflow: hidden;
@@ -132,24 +138,24 @@
 }
 
 .v2-page .cs-crest .cs-ic {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   color: var(--gold-deep);
 }
 
 .v2-page .cs-brand {
   font-family: var(--cs-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   color: var(--gold);
 }
 
 .v2-page .cs-kicker {
   font-family: var(--cs-mono);
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  color: var(--ink-4);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--ink-3);
 }
 
 .v2-page .cs-rule {
@@ -160,8 +166,8 @@
 
 .v2-page .cs-season {
   font-family: var(--cs-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.13em;
   color: var(--ink-3);
   text-align: right;
 }
@@ -171,24 +177,24 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--cs-radius);
-  padding: 22px 24px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .v2-page .cs-head-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
 .v2-page .cs-id {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   min-width: 0;
 }
 
@@ -197,8 +203,8 @@
 }
 
 .v2-page .cs-head-icon {
-  width: 66px;
-  height: 66px;
+  width: 72px;
+  height: 72px;
   flex: none;
   border-radius: 4px;
   overflow: hidden;
@@ -222,7 +228,7 @@
 
 .v2-page .cs-name {
   margin: 0;
-  font-size: 29px;
+  font-size: 32px;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink);
@@ -230,49 +236,49 @@
 }
 
 .v2-page .cs-meta {
-  margin: 8px 0 0;
-  font-size: 13px;
+  margin: 9px 0 0;
+  font-size: 15px;
   color: var(--ink-2);
-  line-height: 1.4;
-  max-width: 560px;
+  line-height: 1.5;
+  max-width: 620px;
 }
 
 .v2-page .cs-head-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 14px;
 }
 
 .v2-page .cs-date {
   font-family: var(--cs-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   color: var(--gold-deep);
 }
 
 .v2-page .cs-chips {
   display: flex;
-  gap: 7px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .v2-page .cs-chip {
-  min-width: 56px;
-  padding: 8px 10px;
+  min-width: 62px;
+  padding: 9px 12px;
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-radius: var(--cs-radius-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .v2-page .cs-chip b {
   font-family: var(--cs-mono);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1;
   color: var(--ink);
@@ -280,8 +286,8 @@
 
 .v2-page .cs-chip span {
   font-family: var(--cs-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   color: var(--ink-4);
   text-transform: uppercase;
 }
@@ -304,12 +310,12 @@
   border: 1px solid var(--line);
   border-left: 3px solid var(--gold);
   border-radius: var(--cs-radius-sm);
-  padding: 15px 18px;
+  padding: 18px 22px;
 }
 
 .v2-page .cs-pitch p {
   margin: 0;
-  font-size: 14px;
+  font-size: 16.5px;
   line-height: 1.65;
   color: var(--ink);
 }
@@ -317,8 +323,8 @@
 /* ---- three-band grid ---- */
 .v2-page .cs-band {
   display: grid;
-  grid-template-columns: 362px minmax(0, 1fr) 400px;
-  gap: 16px;
+  grid-template-columns: 388px minmax(0, 1fr) 428px;
+  gap: 20px;
   /* stretch: every column fills the band's full height (the tallest column sets it), so a short
      column shows its own panel background all the way down instead of the page background. */
   align-items: stretch;
@@ -327,7 +333,7 @@
 .v2-page .cs-center {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   min-width: 0;
 }
 
@@ -342,61 +348,61 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--cs-radius);
-  padding: 16px 18px;
+  padding: 20px 22px;
   min-width: 0;
 }
 
 .v2-page .cs-phead {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding-bottom: 11px;
-  margin-bottom: 13px;
+  gap: 10px;
+  padding-bottom: 13px;
+  margin-bottom: 16px;
   border-bottom: 1px solid var(--line);
 }
 
 .v2-page .cs-panel-doctrines .cs-phead {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .v2-page .cs-bar {
   width: 3px;
-  height: 14px;
+  height: 16px;
   border-radius: 1px;
   background: var(--gold);
   flex: none;
 }
 
 .v2-page .cs-plabel {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: var(--gold);
   text-transform: uppercase;
 }
 
 .v2-page .cs-pmarks {
   display: flex;
-  gap: 5px;
+  gap: 6px;
 }
 
 .v2-page .cs-pmarks span {
   font-family: var(--cs-mono);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--ink-4);
 }
 
 .v2-page .cs-empty {
-  margin: 4px 0 2px;
-  font-size: 12px;
-  color: var(--ink-4);
+  margin: 5px 0 2px;
+  font-size: 14px;
+  color: var(--ink-3);
   font-style: italic;
 }
 
 .v2-page .cs-divider {
   height: 1px;
   background: var(--line);
-  margin: 15px 0;
+  margin: 18px 0;
 }
 
 /* ---- doctrines (timeline of icon tiles — real art or striped placeholder — + tag/name/note) ---- */
@@ -407,9 +413,9 @@
 .v2-page .cs-doc-list::before {
   content: '';
   position: absolute;
-  left: 21px;
-  top: 20px;
-  bottom: 20px;
+  left: 22px;
+  top: 22px;
+  bottom: 22px;
   width: 2px;
   background: linear-gradient(var(--gold-soft), transparent);
   z-index: 0;
@@ -419,20 +425,20 @@
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 13px;
+  gap: 15px;
   align-items: flex-start;
-  padding: 11px 0;
+  padding: 13px 0;
   border-top: 1px solid var(--line);
 }
 
 .v2-page .cs-doc:first-child {
   border-top: 0;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .v2-page .cs-doc-tile {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   flex: none;
   border-radius: 4px;
   overflow: hidden;
@@ -456,21 +462,21 @@
 .v2-page .cs-doc-body {
   flex: 1;
   min-width: 0;
-  padding-top: 1px;
+  padding-top: 2px;
 }
 
 .v2-page .cs-doc-name {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--ink);
-  margin: 5px 0 0;
+  margin: 6px 0 0;
 }
 
 .v2-page .cs-doc-note {
-  font-size: 11.5px;
-  line-height: 1.45;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--ink-3);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 /* ---- doctrine tag pills ---- */
@@ -478,12 +484,12 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 3px;
   font-family: var(--cs-mono);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -508,8 +514,8 @@
 }
 
 .v2-page .cs-tag-star {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
 }
 
 /* ---- veterancy ---- */
@@ -517,11 +523,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
 }
 
 .v2-page .cs-vet-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -533,7 +539,7 @@
 .v2-page .cs-vet-detail {
   font-weight: 500;
   color: var(--ink-3);
-  font-size: 11.5px;
+  font-size: 13px;
   margin-left: 3px;
 }
 
@@ -541,12 +547,12 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 8px;
+  padding: 4px 9px;
   border-radius: 3px;
   font-family: var(--cs-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -558,23 +564,23 @@
 }
 
 .v2-page .cs-vet-badge.is-alt {
-  color: var(--ink-3);
+  color: var(--ink-2);
   background: var(--neutral-soft);
 }
 
 .v2-page .cs-badge-star {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
 
 .v2-page .cs-vet-track {
   position: relative;
-  height: 16px;
+  height: 18px;
   width: 100%;
-  max-width: 280px;
+  max-width: 300px;
   display: flex;
   align-items: center;
-  margin: 12px 0 11px;
+  margin: 14px 0 13px;
 }
 
 .v2-page .cs-vet-line {
@@ -603,8 +609,8 @@
 }
 
 .v2-page .cs-vet-dot {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
 }
 
@@ -620,45 +626,45 @@
 
 .v2-page .cs-vet-body {
   margin: 0;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--ink-2);
 }
 
 .v2-page .cs-vet-opt.is-alt .cs-vet-body {
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
 
 /* ---- controls ---- */
 .v2-page .cs-loop {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin: 2px 0 4px;
+  margin: 2px 0 6px;
 }
 
 .v2-page .cs-loop-label {
-  font-size: 12px;
-  color: var(--ink-3);
+  font-size: 14px;
+  color: var(--ink-2);
 }
 
 .v2-page .cs-keys {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .v2-page .cs-key {
-  min-width: 32px;
-  height: 34px;
-  padding: 0 11px;
+  min-width: 36px;
+  height: 38px;
+  padding: 0 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--cs-mono);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--ink);
   background: var(--panel-2);
@@ -677,19 +683,19 @@
 .v2-page .cs-key-arrow {
   color: var(--gold-deep);
   font-family: var(--cs-mono);
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .v2-page .cs-key-repeat {
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   color: var(--gold);
   margin-left: 2px;
 }
 
 .v2-page .cs-notes {
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--ink-2);
 }
 
@@ -707,8 +713,8 @@
 .v2-page .cs-mu-gh {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 16px 0 10px;
+  gap: 9px;
+  margin: 18px 0 12px;
 }
 
 .v2-page .cs-panel-matchups .cs-phead + .cs-mu-gh {
@@ -716,22 +722,22 @@
 }
 
 .v2-page .cs-mu-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 1px;
   flex: none;
 }
 
 .v2-page .cs-mu-glabel {
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .v2-page .cs-mu-count {
   font-family: var(--cs-mono);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--ink-4);
 }
 
@@ -763,42 +769,42 @@
   background: var(--panel-2);
   border: 1px dashed var(--line-strong);
   border-radius: 3px;
-  padding: 10px 12px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 10.5px;
-  line-height: 1.4;
-  color: var(--ink-4);
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
 }
 
 .v2-page .cs-mu-note-ic {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
 }
 
 .v2-page .cs-mu-pressure {
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.55;
   color: var(--ink-2);
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-left: 2.5px solid var(--green);
   border-radius: 3px;
-  padding: 9px 11px;
+  padding: 11px 13px;
 }
 
 .v2-page .cs-mu-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 
 .v2-page .cs-mu-card {
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-radius: 3px;
-  padding: 9px 11px;
+  padding: 11px 13px;
 }
 
 .v2-page .cs-mu-card.is-countered {
@@ -814,27 +820,27 @@
 }
 
 .v2-page .cs-mu-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .v2-page .cs-mu-why {
-  font-size: 10.5px;
-  line-height: 1.42;
+  font-size: 13px;
+  line-height: 1.5;
   color: var(--ink-3);
 }
 
 /* ---- battle role ---- */
 .v2-page .cs-panel-role {
-  padding: 18px 20px;
+  padding: 22px 24px;
 }
 
 .v2-page .cs-role-grid {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: 14px;
+  gap: 16px;
   align-items: start;
 }
 
@@ -845,33 +851,33 @@
 .v2-page .cs-role-col {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .v2-page .cs-role-card {
   background: var(--panel-2);
   border: 1px solid var(--line);
   border-radius: var(--cs-radius-sm);
-  padding: 16px 17px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 13px;
 }
 
 .v2-page .cs-role-card.is-tips {
-  padding: 16px 18px;
-  gap: 12px;
+  padding: 18px 20px;
+  gap: 14px;
 }
 
 .v2-page .cs-role-head {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 }
 
 .v2-page .cs-role-chip {
-  width: 27px;
-  height: 27px;
+  width: 30px;
+  height: 30px;
   flex: none;
   border-radius: 3px;
   background: var(--gold-soft);
@@ -880,23 +886,23 @@
 }
 
 .v2-page .cs-role-chip .cs-ic {
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   color: var(--gold);
 }
 
 .v2-page .cs-role-label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
 .v2-page .cs-role-body {
   margin: 0;
-  font-size: 12.5px;
-  line-height: 1.6;
+  font-size: 14.5px;
+  line-height: 1.65;
   color: var(--ink-2);
 }
 
@@ -908,27 +914,27 @@
 .v2-page .cs-tips {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 13px;
 }
 
 .v2-page .cs-tip {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: flex-start;
 }
 
 .v2-page .cs-tip-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   flex: none;
-  margin-top: 6px;
+  margin-top: 8px;
   background: var(--gold);
   transform: rotate(45deg);
 }
 
 .v2-page .cs-tip-text {
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--ink-2);
 }
 
@@ -940,19 +946,19 @@
 /* ---- footer (footnote legend + honest gaps) ---- */
 .v2-page .cs-foot {
   border-top: 1px solid var(--line);
-  padding-top: 14px;
+  padding-top: 16px;
   margin-top: 2px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .v2-page .cs-legend {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
-  font-size: 11px;
-  color: var(--ink-4);
+  font-size: 13px;
+  color: var(--ink-3);
 }
 
 .v2-page .cs-legend-item sup {
@@ -963,32 +969,32 @@
 .v2-page .cs-gaps {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
 }
 
 .v2-page .cs-gap {
-  font-size: 11px;
-  line-height: 1.45;
-  color: var(--ink-4);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
 }
 
 .v2-page .cs-gap-tag {
   font-family: var(--cs-mono);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--gold-deep);
   background: var(--gold-soft);
   border-radius: 3px;
-  padding: 1px 6px;
-  margin-right: 2px;
+  padding: 2px 7px;
+  margin-right: 3px;
 }
 
 /* ---- responsive ---- */
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .unit-page-main:has(#unit-v2-page:not([hidden])) {
-    max-width: 900px;
+    max-width: 960px;
   }
 
   .v2-page .cs-band {
@@ -998,7 +1004,7 @@
 
 @media (max-width: 560px) {
   .v2-page {
-    padding: 18px 16px 22px;
+    padding: 20px 16px 24px;
   }
 
   .v2-page .cs-head-row {
@@ -1014,7 +1020,7 @@
   }
 
   .v2-page .cs-name {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .v2-page .cs-role-grid {
