@@ -68,6 +68,121 @@ export function renderLabelField() {
   `;
 }
 
+// ---------------------------------------------------------------------------
+// Selected-object editors (audit OB2/OB3): post-placement editing of a route's or sketch's
+// stroke/fill props + label. These MIRROR the creation-panel controls (renderLineToolPanel /
+// renderShapeToolPanel) 1:1 so editing a placed shape feels identical to creating one — same
+// Thickness/Dashed/Arrowhead/Fill/Border controls, same classes — but each dispatches
+// doc/setObjectProps {id, props} on the SELECTED object instead of view/setToolOption on the
+// "next object" bag. Distinct data-attributes (data-obj-slider / data-obj-toggle /
+// data-obj-head / data-obj-label) keep inspector.mjs's event delegation from confusing an
+// object edit with a next-object tool-option change (which share the .slider/.segmented CSS).
+// ---------------------------------------------------------------------------
+
+/** Slider row for a selected object's numeric prop (thickness/fillOpacity/border) — a range +
+ * read-only chip, matching the creation panel's own slider rows. */
+export function renderObjectSlider({ label, propKey, min, max, step, value, unit }) {
+  const stepAttr = step != null ? ` step="${step}"` : '';
+  return `
+    <div class="inspector-section">
+      <div class="section-label">${escapeHtml(label)}</div>
+      <input type="range" class="slider" data-obj-slider="${escapeHtml(propKey)}" min="${min}" max="${max}"${stepAttr} value="${value}" />
+      <div class="slider-value chip-mono">${escapeHtml(String(value))}${escapeHtml(unit ?? '')}</div>
+    </div>
+  `;
+}
+
+/** Dashed on/off checkbox for a selected object (mirrors the creation panels' .toggle-row). */
+export function renderObjectDashedToggle(dashed) {
+  return `
+    <label class="toggle-row">
+      <input type="checkbox" data-obj-toggle="dashed" ${dashed ? 'checked' : ''} />
+      <span>Dashed</span>
+    </label>
+  `;
+}
+
+/** Arrowhead segmented control for a selected ROUTE (solid/open/none), mirroring the Arrow
+ * creation panel's own head control. */
+export function renderObjectHeadControl(head) {
+  const buttons = ['solid', 'open', 'none']
+    .map(
+      (h) => `<button type="button" class="segmented-btn${head === h ? ' is-active' : ''}" data-obj-head="${h}">${h[0].toUpperCase()}${h.slice(1)}</button>`
+    )
+    .join('');
+  return `
+    <div class="inspector-section">
+      <div class="section-label">Arrowhead</div>
+      <div class="segmented" data-obj-head-group>${buttons}</div>
+    </div>
+  `;
+}
+
+/** "Label (optional)" editor for the SELECTED route/sketch (OB3) — unlike renderLabelField (which
+ * only preps the NEXT created object's label), this shows and edits the placed object's own label
+ * via doc/setObjectProps. Carries a data-field so focus/caret survive the panel's full redraw. */
+export function renderObjectLabelField(label) {
+  return `
+    <div class="inspector-section">
+      <div class="section-label">Label (optional)</div>
+      <input type="text" class="input" data-obj-label-input data-field="object-label" placeholder="e.g. Push through gate" value="${escapeHtml(label ?? '')}" />
+    </div>
+  `;
+}
+
+/** "Label (optional)" editor for the SELECTED unit marker (H3/OB1) — same seam as the shape
+ * label above, kept as its own function so the unit path reads intent-first. */
+export function renderUnitLabelField(label) {
+  return `
+    <div class="inspector-section">
+      <div class="section-label">Label (optional)</div>
+      <input type="text" class="input" data-obj-label-input data-field="object-label" placeholder="e.g. player name" value="${escapeHtml(label ?? '')}" />
+    </div>
+  `;
+}
+
+// A sketch whose `shape` is line-like (freehand or straight line) edits like a route stroke
+// (thickness/dashed, no fill); a rect/ellipse sketch edits like a filled box/circle
+// (fillOpacity/border/dashed). Routes (kind:'route') always edit like a line-like stroke PLUS an
+// arrowhead. Matches drawtools.mjs's own sketch shape split (free/line = strokeOpts,
+// rect/ellipse = fillOpts) exactly.
+const LINE_LIKE_SKETCH_SHAPES = new Set(['free', 'line']);
+
+/** Whether a selected sketch edits as a stroke (line-like) vs a filled shape (rect/ellipse). */
+export function isLineLikeSketch(obj) {
+  return obj.kind === 'sketch' && LINE_LIKE_SKETCH_SHAPES.has(obj.shape);
+}
+
+/**
+ * The stroke/fill editor block for a selected route or sketch (OB2), plus its label (OB3).
+ * Bounds are passed in (not read from inspector.mjs's local consts) so this module keeps no
+ * reverse dependency — same pattern as renderNextLabelBlock.
+ * @param {object} obj the selected route/sketch object
+ * @param {{thickness:{min,max,step}, border:{min,max,step}}} bounds
+ */
+export function renderShapeEditors(obj, bounds) {
+  const isRoute = obj.kind === 'route';
+  const filled = obj.kind === 'sketch' && !isLineLikeSketch(obj);
+
+  if (filled) {
+    return `
+      ${renderObjectSlider({ label: 'Fill opacity', propKey: 'fillOpacity', min: 0, max: 100, value: obj.fillOpacity ?? 0, unit: '%' })}
+      ${renderObjectSlider({ label: 'Border width', propKey: 'border', min: bounds.border.min, max: bounds.border.max, step: bounds.border.step, value: obj.border ?? bounds.border.min, unit: 'px' })}
+      ${renderObjectDashedToggle(obj.dashed)}
+      ${renderObjectLabelField(obj.label)}
+    `;
+  }
+
+  // route OR line-like sketch — a stroke. Only routes carry an editable arrowhead (line/free
+  // sketches are head:'none' by design, matching their creation panels which hide the control).
+  return `
+    ${renderObjectSlider({ label: 'Thickness', propKey: 'thickness', min: bounds.thickness.min, max: bounds.thickness.max, step: bounds.thickness.step, value: obj.thickness ?? bounds.thickness.min, unit: 'px' })}
+    ${renderObjectDashedToggle(obj.dashed)}
+    ${isRoute ? renderObjectHeadControl(obj.head ?? 'solid') : ''}
+    ${renderObjectLabelField(obj.label)}
+  `;
+}
+
 export function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (ch) => ({
     '&': '&amp;',

@@ -255,3 +255,111 @@ export function resolveEraseTargetId(objects, pt, boxWidthPx) {
   }
   return null;
 }
+
+/**
+ * Mounts a focused, real `<textarea>` on the canvas at a percent-space anchor for on-canvas text
+ * entry — used by BOTH the Text tool (click-to-place a label) and the Zone tool (name a zone at
+ * commit) so hotkeys type into the box instead of switching tools (app.mjs installShortcuts
+ * early-returns via isTypingTarget for any focused TEXTAREA — Jasper's "keybindings go into the
+ * textbox" bug is exactly this: there was no real focusable box before, editing happened in the
+ * off-canvas inspector).
+ *
+ * This is the ONE place in this module family that mutates real DOM (the file header's "no DOM"
+ * rule holds for every OTHER export — those return markup strings the caller writes to previewEl;
+ * this one owns a short-lived editor element instead). It is a thin, self-contained lifecycle:
+ * create -> position -> focus -> resolve exactly once on the FIRST of Enter / blur / Escape, then
+ * self-remove. Enter and blur COMMIT the trimmed value (empty commits nothing — the caller decides
+ * what an empty commit means); Escape CANCELS. Shift+Enter inserts a newline (multi-line labels).
+ *
+ * Feature-detected + fully injectable so drawtools tests drive it with a stub surface (no jsdom):
+ * `mount` needs only appendChild/removeChild; `documentEl` (defaults to globalThis.document) needs
+ * createElement. When no usable mount/document is present (e.g. the minimal test canvasApi whose
+ * mapEl is `{}`), it invokes `onCommit(seed)` synchronously and returns a no-op handle, so the
+ * caller's commit path is still exercised deterministically without a DOM.
+ *
+ * @param {object} spec
+ * @param {HTMLElement} spec.mount element to append the editor into (canvasApi.mapEl in prod)
+ * @param {{x:number,y:number}} spec.at percent-space anchor {x,y} (0..100) for the editor's top-left
+ * @param {string} [spec.seed] initial text value
+ * @param {(value:string) => void} spec.onCommit called once with the final value on Enter/blur
+ * @param {() => void} [spec.onCancel] called once on Escape instead of onCommit
+ * @param {Document} [spec.documentEl] injected document (defaults to globalThis.document)
+ * @param {string} [spec.className] extra class on the editor element (styling hook)
+ * @returns {{close:Function}} a handle whose close() force-commits+removes (idempotent)
+ */
+export function openInlineEditor({ mount, at, seed = '', onCommit, onCancel, documentEl, className = '' }) {
+  const doc = documentEl ?? (typeof globalThis !== 'undefined' ? globalThis.document : undefined);
+  // No usable DOM surface (minimal test stub / SSR): fall back to a synchronous commit of the seed
+  // so the caller's commit path still runs deterministically, and hand back a no-op handle.
+  if (!mount || typeof mount.appendChild !== 'function' || !doc || typeof doc.createElement !== 'function') {
+    onCommit?.(seed);
+    return { close() {} };
+  }
+
+  const editor = doc.createElement('textarea');
+  editor.value = seed;
+  editor.className = `tactica-inline-editor${className ? ` ${className}` : ''}`;
+  editor.setAttribute('rows', '1');
+  editor.style.position = 'absolute';
+  editor.style.left = `${at.x}%`;
+  editor.style.top = `${at.y}%`;
+  editor.style.zIndex = '30';
+
+  let settled = false; // resolve exactly once — the first of Enter/blur/Escape wins.
+
+  function cleanup() {
+    editor.removeEventListener('keydown', onKeyDown);
+    editor.removeEventListener('blur', onBlur);
+    if (typeof mount.removeChild === 'function' && editor.parentNode === mount) mount.removeChild(editor);
+  }
+
+  function commit() {
+    if (settled) return;
+    settled = true;
+    cleanup();
+    onCommit?.(editor.value.trim());
+  }
+
+  function cancel() {
+    if (settled) return;
+    settled = true;
+    cleanup();
+    onCancel?.();
+  }
+
+  function onKeyDown(e) {
+    // Enter commits; Shift+Enter is a literal newline (multi-line labels). Escape cancels. Both
+    // stopPropagation so the canvas/global keydown handlers never also see this keystroke while
+    // the editor owns focus (isTypingTarget already suppresses tool hotkeys, but stopping here
+    // keeps Enter/Escape from double-firing canvas gesture handlers too).
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      e.stopPropagation();
+      commit();
+      return;
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      cancel();
+      return;
+    }
+    e.stopPropagation();
+  }
+
+  function onBlur() {
+    commit(); // click-away commits cleanly (no phantom) — same resolution as Enter.
+  }
+
+  editor.addEventListener('keydown', onKeyDown);
+  editor.addEventListener('blur', onBlur);
+  mount.appendChild(editor);
+  if (typeof editor.focus === 'function') editor.focus();
+  if (typeof editor.select === 'function') editor.select();
+
+  return {
+    close() {
+      commit();
+    },
+  };
+}

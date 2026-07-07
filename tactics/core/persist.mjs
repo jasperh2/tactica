@@ -45,6 +45,7 @@ const OBJECT_FIELD_KINDS = {
     appearsAt: 'kfnumber',
     size: 'number',
     positions: 'positions',
+    label: 'string-optional',
   },
   route: {
     id: 'string',
@@ -56,6 +57,7 @@ const OBJECT_FIELD_KINDS = {
     thickness: 'number',
     dashed: 'boolean',
     head: 'passthrough',
+    label: 'string-optional',
   },
   zone: {
     id: 'string',
@@ -103,6 +105,7 @@ const OBJECT_FIELD_KINDS = {
     head: 'passthrough',
     fillOpacity: 'number',
     border: 'number',
+    label: 'string-optional',
   },
 };
 
@@ -222,16 +225,31 @@ function sanitizeTactic(tactic) {
     ? tactic.objects.filter(isPlainObject).map(sanitizeObject).filter((obj) => obj !== null)
     : [];
 
+  // Clamp nextId to at least max(existing "o<N>" id) + 1 so it can never mint an id that collides
+  // with a live object. A hand-edited imported/canonical file (the new SP2 import + H2 hydration
+  // untrusted paths) could carry a too-low nextId; the next placeObject/paste would then reuse a
+  // live id and a later deleteObject would remove BOTH objects. (fable browser-pass nit, 2026-07-07.)
+  const maxObjectId = objects.reduce((max, obj) => {
+    const match = /^o(\d+)$/.exec(obj.id ?? '');
+    return match ? Math.max(max, Number(match[1])) : max;
+  }, 0);
+  const nextId = Math.max(toFiniteNumber(tactic.nextId, 1), maxObjectId + 1);
+
   return {
     id: toStringField(tactic.id),
     name: toStringField(tactic.name),
     subtitle: toStringField(tactic.subtitle),
-    nextId: toFiniteNumber(tactic.nextId, 1),
+    nextId,
     keyframes: Array.isArray(tactic.keyframes)
       ? tactic.keyframes.filter(isPlainObject).map(sanitizeKeyframe)
       : [],
     objects,
     notes: sanitizeNotes(tactic.notes),
+    // Lock state (NEW 2026-07-06 accidental-edit guard). Kept ONLY when present so a tactic that
+    // was never locked round-trips byte-identically. passwordHash is a hash (never plaintext) and
+    // is not a render sink, so it survives as a plain whitelisted string.
+    ...(tactic.locked !== undefined ? { locked: Boolean(tactic.locked) } : {}),
+    ...(typeof tactic.passwordHash === 'string' ? { passwordHash: tactic.passwordHash } : {}),
   };
 }
 
@@ -301,7 +319,12 @@ function sanitizeObject(obj) {
     if (kind === 'zone' && obj.shape === 'polygon' && ZONE_ELLIPSE_ONLY_FIELDS.has(field)) {
       continue;
     }
-    result[field] = applyScalarCoercion(obj[field], coercion, field);
+    const coerced = applyScalarCoercion(obj[field], coercion, field);
+    // 'string-optional' fields (label) follow the "absent, not null" convention: when the source
+    // has no value the key must NOT appear on the result at all (setting `undefined` would create
+    // the key and break byte-identical round-trips of label-less objects).
+    if (coerced === undefined && coercion === 'string-optional') continue;
+    result[field] = coerced;
   }
 
   // Zone's required geometry is shape-conditional: shape:'polygon' needs a valid points array

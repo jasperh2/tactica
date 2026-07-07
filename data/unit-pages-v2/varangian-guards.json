@@ -14,7 +14,7 @@
       "flank": 7
     }
   },
-  "pitch": "A dual-form axe-and-shield bruiser that shields up to block, then switches to wide-arc axe swings that chain into a free passive sweep for continuous damage. It wins chokepoints and stacked fights but folds to burstier rares and cavalry it can't disengage from.",
+  "pitch": "A dual-form axe and shield bruiser that wins extended fights through ability chaining and punishes enemies in tight spaces with wide AoE swings. Weak to cavalry charges and ranged pressure if caught out of formation.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -83,33 +83,33 @@
   ],
   "veterancy": [
     {
-      "label": "Bottom line",
-      "recommended": true,
-      "body": "Rest of the points go mid tier and top-of-mid once it splits into two ways.",
+      "label": "Top line",
+      "recommended": false,
+      "body": "5 points top; capstone unlocks Axes of the North (+15% dmg to infantry, renames unit).",
       "marks": [
         1
       ]
     },
     {
-      "label": "Top line",
-      "recommended": false,
-      "body": "5 points top; capstone unlocks 'Axes of the North' (+15% dmg to infantry, renames the unit).",
+      "label": "Bottom line",
+      "recommended": true,
+      "body": "Rest points mid and top-of-mid tier.",
       "marks": [
         1
       ]
     }
   ],
   "battleRole": {
-    "positioning": "No dedicated positioning guidance from any source — treat as a flexible line/flank piece. Don't take cavalry charges head-on without disengaging or bracing first, and avoid lingering in ranged-unit range out of shield formation — tier-5 ranged can still punish careless positioning even while shielded. {2}",
-    "formation": "Default F1 (dispersed): each model auto-engages its nearest target independently, reducing exposure to ranged AoE. {2} Shield-wall: models plant and hold, generate rage while holding, and auto-reposition to face attackers from behind — unreliable against fast-closing heroes or long-range attacks, so those threats need active management. {2} Ability 1 can be layered onto either formation for extra defensive positioning. {2}",
-    "tips": "Ability chain for sustained fights: ability 1 block/bash, into ability 2's axe-spin, into the passive 'Great Sweep' area attack, then re-trigger ability 2 to refresh cooldown and sweep again — keeps the unit attacking instead of idling on cooldown. {2} Ability 1's block stance drains stamina faster ('reduced tensor'); consider burning its charge before engaging a ranged unit. {2} Triggering an ability with no enemies nearby gives a movement-speed bonus instead — useful for repositioning. {2} Axe-charge momentum/knockback on hit is rated stronger than a comparable Longsword charge. {2} Wide-arc axe swings hit an estimated 10-20 enemies per swing, making this a chokepoint specialist — alleyways, tower stairwells, corner fights. {2}"
+    "positioning": "No positioning guidance in sources — treat as flexible line/flank role. Avoid extended exposure to ranged units, especially tier-5 archers. {2}",
+    "formation": "Default F1 (dispersed): each model engages the nearest target independently, reducing AoE vulnerability. {2} Shield-wall (specialized): models plant and hold, auto-face attackers from behind (unreliable vs fast targets or long-range), generate rage while holding. {2}",
+    "tips": "Choke-point specialist: 10–20 enemies per axe swing in alleyways, tower stairwells, corner fights. {2} Activate ability with no enemies nearby for movement-speed bonus (useful for repositioning). {2} First ability is strong defensive block/bash (X-V cycling, reduced stamina); use both ability charges before engaging ranged. {2}"
   },
   "matchups": {
     "cards": [
       {
         "name": "Claymore",
         "rel": "counters-you",
-        "why": "rare unit with more burst than Varangian Guards",
+        "why": "burst damage exceeds Varangian — rare units with more burst than this unit",
         "house": false,
         "marks": [
           1
@@ -118,7 +118,7 @@
       {
         "name": "Yorkist",
         "rel": "counters-you",
-        "why": "rare unit with more burst than Varangian Guards",
+        "why": "burst damage exceeds Varangian — rare units with more burst than this unit",
         "house": false,
         "marks": [
           1
@@ -127,7 +127,7 @@
       {
         "name": "Phalanx",
         "rel": "counters-you",
-        "why": "a spacing/debuff unit that Varangian Guards struggles against",
+        "why": "spacing and debuff units shut down engagement",
         "house": false,
         "marks": [
           1
@@ -136,16 +136,25 @@
       {
         "name": "Silahdars",
         "rel": "hero-threat",
-        "why": "their second ability can shred the unit if it's off cooldown — much safer once that ability is confirmed on cooldown",
+        "why": "their second ability can shred the unit if off cooldown — safer to engage only when confirmed on cooldown",
         "house": false,
         "marks": [
           2
         ]
       },
       {
-        "name": "Braced-pike units (e.g. Foederati-style)",
+        "name": "Cavalry",
+        "rel": "hero-threat",
+        "why": "avoid taking charges head-on without shield-wall or first-ability block active; absorb impact, then punish with second ability",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Pike-type (braced)",
         "rel": "pairs",
-        "why": "step into their block/brace state, then trigger ability 2 once their brace window ends to punish the recovery",
+        "why": "actively step into brace + block state, then trigger second ability once brace window ends",
         "house": false,
         "marks": [
           2
@@ -170,7 +179,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "1 (Raging Onslaught) switches to axes. {1} X to move in, then 3 → 2 → 1, pressing V between spell steps to add one extra auto-attack — practice in custom battle to time the cancels right. {1} Vs. cavalry you can't disengage: absorb the charge in shield-wall (ideally with ability-1 block active), then use ability 2 to clean up survivors after it lands — the same absorb-then-punish sequence works against braced pikes. {2}"
+    "notes": "1 (Raging Onslaught) switches to axes. {1} X-move in; 3 and 2 are abilities. {1} V between spell steps adds one auto-attack. {1} Second ability (axe-spin) forces overextension, switches from defensive bash/block state. {2} Passive 'Great Sweep' (area spin-attack) becomes available once second ability activates; re-trigger the ability to refresh cooldown and sweep again — keeps the unit fighting continuously without cooldown idle. {2} Ability activation with no enemies nearby grants movement bonus for repositioning. {2} Pike rotation (V in stance) auto-faces all models to the nearest enemy, nearly doubling contact points. {2}"
   },
   "footnotes": [
     {
@@ -187,10 +196,7 @@
     }
   ],
   "gaps": [
-    "No house card or house-guide content exists for this unit — nothing to cross-check or outrank Amya's build with.",
-    "No dedicated positioning guidance in any source; battle-role positioning stays at framework level.",
-    "Pressure matchups (units Varangian Guards pressures in return) not covered by any source.",
-    "Amya's doctrine/veterancy guidance was last edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch anchor (though the unit isn't on the changed-units shortlist) — treat as due for revalidation.",
-    "BigDaddyYT's transcript is from Aug 2022; ability names ('Great Sweep', 'active block') are caption-inferred and not confirmed against current tooltip text, and unit balance may have shifted materially since."
+    "No positioning guidance provided in any source — battle-role positioning left minimal/framework-level.",
+    "Pressure matchups (units Varangian pressure in return) not covered by any source."
   ]
 }

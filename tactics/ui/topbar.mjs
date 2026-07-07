@@ -27,14 +27,15 @@
 export function mount(el, ctx) {
   el.id = 'topbar-root';
 
-  /** @type {{dropdownOpen:boolean, search:string}} */
-  const local = { dropdownOpen: false, search: '' };
+  /** @type {{dropdownOpen:boolean, search:string, importError:(string|null)}} */
+  const local = { dropdownOpen: false, search: '', importError: null };
 
   render();
   const unsubscribe = ctx.store.subscribe(render);
 
   el.addEventListener('click', onClick);
   el.addEventListener('input', onInput);
+  el.addEventListener('change', onFileChange);
   document.addEventListener('click', onOutsideClick, true);
   document.addEventListener('keydown', onKeydown, true);
 
@@ -80,6 +81,23 @@ export function mount(el, ctx) {
             <i class="ph ph-arrow-clockwise"></i>
           </button>
         </div>
+
+        <div class="tb-io">
+          <button type="button" class="btn-icon" data-action="export-json"
+                  title="Export this map's playbooks (.json)" aria-label="Export playbooks as JSON">
+            <i class="ph ph-download-simple"></i>
+          </button>
+          ${ctx.isReadonly ? '' : `
+          <button type="button" class="btn-icon" data-action="import-json"
+                  title="Import playbooks (.json)" aria-label="Import playbooks from JSON">
+            <i class="ph ph-upload-simple"></i>
+          </button>`}
+          <!-- Hidden file input drives the Import picker; the button above proxies a click to it. -->
+          <input type="file" accept="application/json,.json" data-role="import-file" class="tb-import-input" hidden />
+        </div>
+        ${local.importError ? `<div class="tb-io-error" role="alert" title="${escapeHtml(local.importError)}">
+          <i class="ph ph-warning-circle"></i><span>${escapeHtml(local.importError)}</span>
+        </div>` : ''}
 
         <button type="button" class="btn-icon" data-action="toggle-theme"
                 title="Toggle theme" aria-label="Toggle color theme">
@@ -166,6 +184,20 @@ export function mount(el, ctx) {
       if (typeof ctx.redo === 'function') ctx.redo();
       return;
     }
+    if (action === 'export-json') {
+      // Pure serialize + download lives in app.mjs (ctx.exportCurrentDoc) so this panel stays
+      // free of persist/Blob concerns. Absent handler (older integrator) -> harmless no-op.
+      if (typeof ctx.exportCurrentDoc === 'function') ctx.exportCurrentDoc();
+      return;
+    }
+    if (action === 'import-json') {
+      // Proxy the click to the hidden <input type=file>; the browser's picker then fires a
+      // 'change' event handled by onFileChange below. We never build our own file dialog.
+      local.importError = null;
+      const input = el.querySelector('[data-role="import-file"]');
+      if (input) input.click();
+      return;
+    }
     if (action === 'toggle-theme') {
       // ctx.toggleTheme is only present once app.mjs's dynamic import of ui/theme.mjs (S2)
       // resolves — absent, this is a no-op rather than a throw (stub-tolerant per mission).
@@ -180,6 +212,28 @@ export function mount(el, ctx) {
     local.search = evt.target.value;
     render();
     focusSearchIfOpen();
+  }
+
+  function onFileChange(evt) {
+    if (evt.target.dataset.role !== 'import-file') return;
+    const file = evt.target.files && evt.target.files[0];
+    // Reset the input's value so choosing the SAME file twice in a row still fires 'change'.
+    evt.target.value = '';
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result =
+        typeof ctx.importDocFromFileText === 'function'
+          ? ctx.importDocFromFileText(String(reader.result ?? ''))
+          : { ok: false, error: 'Import is not available.' };
+      local.importError = result.ok ? null : result.error;
+      render();
+    };
+    reader.onerror = () => {
+      local.importError = 'Could not read the selected file.';
+      render();
+    };
+    reader.readAsText(file);
   }
 
   function onOutsideClick(evt) {

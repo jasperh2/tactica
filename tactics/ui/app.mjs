@@ -8,6 +8,12 @@ import { createHistory } from '../core/commands.mjs';
 import { newTactic } from '../core/playbook.mjs';
 import { serialize, deserialize } from '../core/persist.mjs';
 import { docKey, LEGACY_DOC_KEY, loadDocForMap, switchViewActions } from '../core/workspace.mjs';
+import {
+  exportDocToFile,
+  importDocFromText,
+  hydrateDocFromCanonicalText,
+  isBlockedByLock,
+} from '../core/playbooks-io.mjs';
 
 import { mount as mountTopbar } from './topbar.mjs';
 import { mount as mountLayers } from './layers.mjs';
@@ -88,8 +94,9 @@ async function boot() {
   const shared = readSharedDocFromHash();
   const isReadonly = shared !== null;
   // Boot always opens the default map (Jasper 2026-07-06: no last-used-map memory) — loading that
-  // map's saved slot if present, else a fresh doc. A #pb= share link still overrides into readonly.
-  const doc = shared ?? loadDocForMap(DEFAULT_MAP_ID, storageDeps);
+  // map's saved slot if present, else the SHIPPED canonical house playbook for that map (H2 —
+  // "1 house global state"), else a fresh empty doc. A #pb= share link still overrides into readonly.
+  const doc = shared ?? (await resolveDocForMap(DEFAULT_MAP_ID, storageDeps));
   const view = freshView();
 
   const store = createStore(doc, view);
@@ -100,6 +107,13 @@ async function boot() {
   // directly with a doc/replace action so subscribers re-render and the undo/redo buttons
   // (which read history.canUndo()/canRedo()) refresh in the same tick.
   function exec(action) {
+    // Password-lock enforcement (the write-guard half of the playbook lock): when the ACTIVE
+    // tactic is locked, drop every doc/* mutation except doc/setTacticLock (the unlock action
+    // itself) — the shared, tested predicate lives in core/playbooks-io. This mirrors the
+    // read-only (#pb=) posture: writes are simply not applied. undo/redo, the map switch, and
+    // JSON import all dispatch doc/replace via store.dispatch directly (NOT through exec), so
+    // they are unaffected — only user-driven edits flow through here.
+    if (isBlockedByLock(action, store.getDoc())) return;
     if (typeof action?.type === 'string' && action.type.startsWith('doc/')) {
       history.push(store.getDoc());
     }
@@ -158,14 +172,48 @@ async function boot() {
   //      re-anchor to the incoming doc) via core/workspace.switchViewActions
   // Not routed through exec(): a map switch is navigation, not an undoable edit. Read-only
   // sessions get a no-op (a share link is a snapshot of one map; there are no other slots).
-  function switchMap(mapId) {
+  async function switchMap(mapId) {
     if (isReadonly) return;
     if (mapId === store.getDoc().mapId) return;
     persistence.flush();
-    const incoming = loadDocForMap(mapId, storageDeps);
+    // Same precedence as boot: a local save wins; otherwise hydrate the shipped canonical house
+    // playbook for the incoming map (H2) before falling back to a fresh doc. Awaiting the fetch
+    // here means the picker's active row stays put for a beat on a cold map, then swaps in — no
+    // interim flash of an empty board.
+    const incoming = await resolveDocForMap(mapId, storageDeps);
     store.dispatch({ type: 'doc/replace', doc: incoming });
     history.reset();
     for (const action of switchViewActions(incoming)) store.dispatch(action);
+  }
+
+  // JSON export/import (SP2). Export serializes the CURRENT map's doc to a downloadable .json
+  // (the same versioned envelope persist.serialize writes to localStorage, so a file round-trips
+  // back through import). Import parses a chosen file through the persist.deserialize choke point
+  // (fail-closed — a malformed/hostile file is rejected, never crashes) and doc/replaces the store.
+  // Both are no-ops in a read-only (#pb=) session: exporting a snapshot is harmless but importing
+  // would mutate a viewer-only board, so gate the write path.
+  function exportCurrentDoc() {
+    const { fileName, text } = exportDocToFile(store.getDoc());
+    triggerJsonDownload(text, fileName);
+  }
+
+  /**
+   * Loads a chosen .json file into the store. Returns a result so the caller (topbar) can show
+   * an inline error. doc/replace is dispatched directly (not via exec) — an import is navigation,
+   * not an undoable edit, and must bypass the lock gate; history resets so undo can't cross into
+   * the replaced-out doc, and the view re-anchors exactly like a map switch.
+   * @param {string} text
+   * @returns {{ok:true} | {ok:false, error:string}}
+   */
+  function importDocFromFileText(text) {
+    if (isReadonly) return { ok: false, error: 'This is a read-only shared view — import is disabled.' };
+    const result = importDocFromText(text);
+    if (!result.ok) return result;
+    store.dispatch({ type: 'doc/replace', doc: result.doc });
+    history.reset();
+    for (const action of switchViewActions(result.doc)) store.dispatch(action);
+    persistence.flush(); // land the imported doc in its map slot immediately
+    return { ok: true };
   }
 
   // openExport is set once the export modal mounts (below); the playbookbar's Export button
@@ -182,6 +230,9 @@ async function boot() {
     switchMap,
     toggleTheme: themeApi.toggleTheme,
     openExport: () => {},
+    exportCurrentDoc,
+    importDocFromFileText,
+    isReadonly,
   };
 
   mountTopbar(document.getElementById('topbar'), ctx);
@@ -283,6 +334,75 @@ function freshView() {
     pan: { x: 0, y: 0 },
     toolOptions: { ...DEFAULT_TOOL_OPTIONS },
   };
+}
+
+// ---------------------------------------------------------------------------
+// Doc resolution — local save > shipped canonical house playbook > fresh empty doc (H2)
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolves the DocState for `mapId` on boot / map-switch, in strict precedence order:
+ *   1. LOCAL SAVE (localStorage slot) — a user's own edits ALWAYS win, even over a newer
+ *      canonical file, so nobody's work is silently overwritten by a redeploy.
+ *   2. SHIPPED CANONICAL FILE (data/playbooks/<mapId>.json) — the house playbooks that ship
+ *      with the deploy so everyone loads the same starting set. Fetched + sanitized fail-closed.
+ *   3. FRESH EMPTY DOC — no local save and no (or invalid) canonical file.
+ *
+ * LIMITATION (documented per H2 brief): this is NOT true real-time multi-user sync. Once a user
+ * makes ANY local edit their localStorage slot takes precedence forever, so two people editing
+ * the same map diverge — the canonical file only seeds the FIRST visit. Real shared live state
+ * needs a backend (a server-authoritative doc + push); that is explicitly out of scope here.
+ *
+ * loadDocForMap already returns a fresh doc when the local slot is absent/corrupt, so we detect
+ * "no local save" by whether the raw slot read is empty and only then attempt the canonical fetch.
+ * @param {string} mapId
+ * @param {{read:Function, deserialize:Function, freshDoc:Function}} storageDeps
+ * @returns {Promise<object>} DocState
+ */
+async function resolveDocForMap(mapId, storageDeps) {
+  const raw = storageDeps.read(docKey(mapId));
+  const hasLocalSave = typeof raw === 'string' && raw !== '';
+  if (hasLocalSave) {
+    // A present (even if later found corrupt) local slot still routes through loadDocForMap, which
+    // deserializes it or falls back to fresh — we do NOT reach past a real user save to the canonical.
+    return loadDocForMap(mapId, storageDeps);
+  }
+  const canonical = await fetchCanonicalDoc(mapId);
+  if (canonical) return canonical;
+  return loadDocForMap(mapId, storageDeps); // no canonical — fresh empty doc
+}
+
+/**
+ * Fetches + validates the shipped canonical house playbook for `mapId`, or null when absent/
+ * invalid/unreachable. Fail-closed: any fetch error, non-ok status, or deserialize rejection
+ * returns null so boot degrades to a fresh doc rather than throwing.
+ * @param {string} mapId
+ * @returns {Promise<object|null>}
+ */
+async function fetchCanonicalDoc(mapId) {
+  try {
+    const res = await fetch(`./data/playbooks/${encodeURIComponent(mapId)}.json`);
+    if (!res.ok) return null; // 404 = this map ships no canonical playbook — normal, not an error
+    const text = await res.text();
+    const result = hydrateDocFromCanonicalText(text, mapId);
+    return result.ok ? result.doc : null;
+  } catch {
+    return null; // network/parse failure — degrade to fresh, never brick boot
+  }
+}
+
+/** Downloads a JSON string as a file via a transient object-URL anchor (mirrors exportmodal's
+ *  triggerDownload). Kept in app.mjs — playbooks-io.mjs stays DOM-free/pure/testable. */
+function triggerJsonDownload(text, fileName) {
+  const blob = new Blob([text], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ---------------------------------------------------------------------------

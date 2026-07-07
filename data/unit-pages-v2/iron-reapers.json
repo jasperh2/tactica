@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "iron-reapers",
   "name": "Iron Reapers",
-  "headerMeta": "Golden era · Special melee infantry (dual weapon) · Blob/flank · 270 leadership · Honour Unit",
+  "headerMeta": "Golden era · Dual-weapon melee · Blob/flank · 270 leadership · T5",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "AA",
@@ -14,7 +14,7 @@
       "flank": 8
     }
   },
-  "pitch": "A press-one-button burst blob that cycles a CC-immune weapon-swap window and a heavy-armour damage-reduction passive to break blocking units and shield walls. It dies to kiting, heavy burst, and debuffs that land before the passive resets — proper positioning beats it before its own cooldowns do.",
+  "pitch": "A burst-damage blob monster with a 12-second CC-immune window and heavy-armour passive that resets via abilities, enabling sustained fights in formation. Weakness: units that kite or apply debuffs burst you before the passive cycles.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -26,16 +26,16 @@
     },
     {
       "tag": "mandatory",
-      "name": "Epic Combat Doctrine",
-      "note": "3/6/9 hits boost",
+      "name": "Unit Damage Doctrine V",
+      "note": null,
       "marks": [
         1
       ]
     },
     {
       "tag": "mandatory",
-      "name": "Unit Damage Doctrine V",
-      "note": null,
+      "name": "Epic Combat Doctrine",
+      "note": "3/6/9 hits boost",
       "marks": [
         1
       ]
@@ -59,7 +59,7 @@
     {
       "tag": "filler",
       "name": "Movement Speed After Hit",
-      "note": "20–30% of fight time is spent walking to the next auto-attack target — speed indirectly raises DPS",
+      "note": "20–30% of fight time is walking to next target",
       "marks": [
         1
       ]
@@ -83,19 +83,18 @@
   ],
   "veterancy": [
     {
-      "label": "Middle Line to +1-target node, rest Bottom",
+      "label": "Middle-line focus",
       "recommended": true,
-      "body": "+14 points into Middle Line, stopping at the point that grants +1 target per strike; remaining points into Bottom Line.",
+      "body": "+14 points Middle Line (until reaching the Line point that grants +1 target per strike), rest into Bottom Line for sustained duration.",
       "marks": [
-        1,
-        2
+        1
       ]
     }
   ],
   "battleRole": {
-    "positioning": "X-move in and let the heavy-armour passive build (wait for a CC or a few hits before pressing Tiger Step). {1} Stay in melee contact with your hero to chain ability resets — X+V while the hero stays close. {1} Charge has two swings and ignores block, so give it half a second on contact before activating Tiger Step rather than popping it instantly. {2}",
-    "formation": "Dispersed formation to spread the sword hit-box across up to 8 targets when engaging a wide area. {2} Stack tight against tower-shield/high-flat-defence blockers (e.g. Imperial Spear Guard) — Tiger Step's CC immunity offsets the usual flanking risk of a tight formation, no weapon swap needed. {2} Against isolated/narrow targets, charge dispersed, delay Tiger Step until the flanking models pass the target, then swap swords so the non-contact models hit its rear for double damage. {2}",
-    "tips": "Tiger Step (skill 2) carries undocumented CC immunity and isn't cancelled by movement orders or weapon swaps for its 12s duration — usable offensively to commit or defensively to pull the unit out of a cavalry charge without being knocked down. {2} Heavy trait: 8-hit bonus damage reduction per model, reset by Charge or Tiger Step — press early if CC is incoming. {1} C-cancel (press C right after an enemy auto-attack) resets the animation and improves trades vs Stalwart or Claymore. {1} The heavy trait also mitigates artillery (treb counts as artillery) — Charge to tank a Trebuchet shot if the trait isn't currently active. {1} House Q&A flags it \"safe to doctrine up\" alongside Queen's Knights, Liao's Rangers, and Symmachean Stalwarts. {3}"
+    "positioning": "Engage as a wedge in formation; X-move in and wait for heavy-armour passive to trigger (8-hit bonus per model). {1} Pair with your hero to maintain melee contact and chain ability resets. {1}",
+    "formation": "Dispersed formation when engaging multiple targets; tight formation (stacking) when penetrating tower-shield tanks like Imperial Spear Guards, paired with Tiger Step's 12-second CC immunity. {2}",
+    "tips": "Tiger Step grants crowd-control immunity and weapon-swap immunity — use it offensively to commit or defensively to extract from a cavalry charge. {2} Charge has two swings and ignores block; hold off Tiger Step activation for half a second after contact to let both hits land. {2} C-cancel (follow command) resets the heavy-armour passive and auto-attack animation — train this for better trading vs Stalwart or Claymore. {1}"
   },
   "matchups": {
     "cards": [
@@ -111,7 +110,7 @@
       {
         "name": "Yorkist Household Knights",
         "rel": "counters-you",
-        "why": "heavy burst exceeds the passive's mitigation window",
+        "why": "heavy burst exceeds passive mitigation window",
         "house": false,
         "marks": [
           1
@@ -120,7 +119,7 @@
       {
         "name": "Rattan Pikemen",
         "rel": "counters-you",
-        "why": "debuff lands before the passive resets",
+        "why": "debuff applies before passive resets",
         "house": false,
         "marks": [
           1
@@ -129,7 +128,7 @@
       {
         "name": "Sunward Phalanx",
         "rel": "counters-you",
-        "why": "big-range kite unit if it spaces well",
+        "why": "big-range kite unit if they space well",
         "house": false,
         "marks": [
           1
@@ -138,32 +137,32 @@
       {
         "name": "Stalwart Spearmen",
         "rel": "counters-you",
-        "why": "block-heavy unit whose close-range commit ties up your passive window",
+        "why": "block-heavy unit requiring close-range commit that ties up the passive window",
         "house": false,
         "marks": [
           1
         ]
       },
       {
-        "name": "Spartan Chosen / Imperial Spear Guard",
+        "name": "Spartan Chosen",
         "rel": "pairs",
-        "why": "insane damage into heavy block units — commit with hero to force the break",
+        "why": "insane damage to heavy block units — commit with hero to force break",
         "house": false,
         "marks": [
           1
         ]
       },
       {
-        "name": "Rattan Viper Archers",
-        "rel": "counters-you",
-        "why": "poison stacking strips most of the charge's damage mid-approach, per a pre-patch (2022) demo clip — flagged for a vet sanity check against the current patch",
+        "name": "Imperial Spear Guards",
+        "rel": "pairs",
+        "why": "tight-formation stack + Tiger Step penetrates flat-DR towers",
         "house": false,
         "marks": [
-          5
+          1
         ]
       }
     ],
-    "pressure": "You pressure: any block/shield-wall unit; house guidance pairs it with Full Mastery Rattan Pikes and/or MMAs as a strong combination, and calls it near-full-bottom-line for Territory Wars wall-pushing {4}."
+    "pressure": "You pressure: any block unit (shield-wall archetype); heavy burst target priority in Blade meta — high-priority doctrine allocation per house guidance {3}."
   },
   "controls": {
     "loop": [
@@ -175,7 +174,7 @@
     "loopMarks": [
       2
     ],
-    "notes": "Charge (two swings, ignores block) → swap weapon (swords for spread, flails for single-target) → Tiger Step (12s CC immunity, uncancellable by movement/weapon-swap) → sustain with C-cancelled auto-attacks to reset the heavy-armour passive. {1}{2} Basic rotation: charge, swap to swords, activate Tiger Step, then decide to fully commit or pull out before it ends. {2} 1v1/anti-block burst line: flails in, charge to prevent sidestep, swap to swords and click Tiger Step to skip the swap animation, then leave it to fight until the target dies — only worth it versus a blocking unit or when you can kill fast. {1}"
+    "notes": "Charge (twice swings, ignores block) → Weapon Swap (swords for AoE, flails for single-target) → Tiger Step (CC immunity, 12s duration, enables weapon-swap mid-ability) → sustain with C-cancel resets of heavy-armour passive. {2} Spread dispersed to hit 8 models with swords; stack tight + Charge only (no swap) to break Imperial Spear Guard towers via CC immunity. {2} Heavy trait passive: 8-hit bonus damage reduction, reset by Charge or Tiger Step. {1}"
   },
   "footnotes": [
     {
@@ -189,33 +188,12 @@
       "author": "Herlajis",
       "date": "Oct 2023",
       "house": false
-    },
-    {
-      "mark": 3,
-      "author": "house Q&A",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "Svarthe",
-      "date": "Jul 2026",
-      "house": true
-    },
-    {
-      "mark": 5,
-      "author": "knightstalker",
-      "date": "Apr 2022",
-      "house": false
     }
   ],
   "gaps": [
-    "Formation guidance uses tight/dispersed descriptors from the transcript only — no F1/F2 naming sourced for this unit.",
-    "StarBurst house card (2024-09-16) has icon-embedded gaps in Doctrine 2's text and Doctrine 3 cuts off mid-sentence at 'Every 9' — incomplete coverage for full doctrine optimization; house build data otherwise outranks Amya per pipeline priority but neither source addresses the latest patch's Leadership/Health/artillery-resist changes.",
-    "Tiger Step's duration is stated as '12 seconds' consistently across sources but the in-game tooltip itself wasn't captured.",
-    "Video transcript fidelity is condensed-summary (paraphrase); exact cooldown/damage numbers rely on the Amya guide's descriptions instead.",
-    "Mastery tree allocation is shown as a 'planned' or 'strong setup' variant (source unclear whether live/tested), and both capstones are unallocated in the captured screenshot.",
-    "Cross-unit mentions (Silahdars, Rattan Viper Archers, Ironcap Swordsmen guides) place Iron Reapers as a comparison/threat benchmark from 2020-2022 footage predating the current patch — useful color but not vet-checked against current balance.",
-    "Linked external videos (Devastation showcase, 'CCI cancel IR's' Stalwart matchup) and the #Strategy-Talk cross-reference were not opened or transcribed."
+    "Formation guidance (F1/F2 names) not sourced — only tight/dispersed descriptors from transcripts.",
+    "Skill-2 (Tiger Step) duration stated as '12 seconds' and '12s' consistently across sources, but formal in-game tooltip not captured.",
+    "Video transcript fidelity is condensed-summary (paraphrase); exact ability cooldown/damage numbers not captured in tactical content — relying on Amya guide's mechanics descriptions instead.",
+    "Mastery tree allocation shown as 'planned' or 'strong setup' variant (source unclear whether live/tested) — no independent verification against different meta or skill-level playstyles."
   ]
 }

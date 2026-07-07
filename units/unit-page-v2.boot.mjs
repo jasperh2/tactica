@@ -36,16 +36,9 @@ function lockGlyph() {
   return lock;
 }
 
-/** Appends a lock glyph to `parent` only when `isHouse` is true.
- *
- * MERGED-GUIDE POLICY (Jasper, 2026-07-06 — see DECISIONS.md): house and public
- * are one coherent guide now ("I never wanted... a distinction between house and
- * public"), so the 🔒 house marker is NOT rendered — house-sourced facts read
- * identically to public ones. The `house:true` flags remain in the data (and the
- * `lockGlyph`/`card.house`/`fn.house` plumbing stays wired) so re-enabling the
- * marker for a future re-gate is a one-line change here. */
-function appendLockIfHouse(_parent, _isHouse) {
-  // intentionally a no-op under the merged-guide policy
+/** Appends a lock glyph to `parent` only when `isHouse` is true. */
+function appendLockIfHouse(parent, isHouse) {
+  if (isHouse === true) parent.appendChild(lockGlyph());
 }
 
 /** Builds a `<sup>` footnote-mark element (e.g. "1", "2 3" for multiple marks on one field). */

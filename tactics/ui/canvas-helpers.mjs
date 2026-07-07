@@ -182,6 +182,25 @@ export function selectGestureIntent(selection, hitId, shiftKey) {
 }
 
 /**
+ * CV2: maps an arrow key to a nudge delta (percent-of-map), or null for any non-arrow key. Shift
+ * selects the larger step. Pure so the key->delta contract is unit-tested independently of the DOM
+ * key handler in canvas.mjs. Screen convention: ArrowUp is -y (toward the top), ArrowLeft is -x.
+ * @param {string} key KeyboardEvent.key
+ * @param {boolean} shiftKey
+ * @param {number} step fine step (percent-of-map)
+ * @param {number} largeStep coarse step used when Shift is held
+ * @returns {{dx:number, dy:number}|null}
+ */
+export function arrowDelta(key, shiftKey, step, largeStep) {
+  const d = shiftKey ? largeStep : step;
+  if (key === 'ArrowUp') return { dx: 0, dy: -d };
+  if (key === 'ArrowDown') return { dx: 0, dy: d };
+  if (key === 'ArrowLeft') return { dx: -d, dy: 0 };
+  if (key === 'ArrowRight') return { dx: d, dy: 0 };
+  return null;
+}
+
+/**
  * Scales every object's position AND size outward/inward from `anchor` by `scaleFactor` —
  * the "scale about the selection bbox" group-resize math (increment 6). Distance-from-anchor
  * scales for x/y; size scales by the same factor, clamped to `opts.minSize`/`maxSize` if given

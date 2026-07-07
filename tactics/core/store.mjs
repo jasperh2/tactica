@@ -8,7 +8,7 @@
 // from the CURRENT doc's tactics (collision-free), which is the UI's job to supply
 // — the UI calls playbook.newTactic(name, subtitle, doc.tactics) itself and
 // dispatches the built tactic, keeping reduceDoc a pure (doc, action) -> doc.
-import { keyframeOps, addObject, moveMarker } from './playbook.mjs';
+import { keyframeOps, addObject, moveMarker, cloneTactic, duplicateObjectsInTactic } from './playbook.mjs';
 
 // @typedef {import('./playbook.mjs').Tactic} Tactic
 // @typedef {{ id:string, name:string, color:string, visible:boolean, locked:boolean }} Layer
@@ -149,11 +149,17 @@ function withLayer(doc, id, updater) {
   return { ...doc, layers };
 }
 
-// Per-kind editable-property whitelist for doc/setObjectProps. Kinds not listed here
-// (unit, route, sketch) have no editable-props seam yet — the action no-ops for them.
+// Per-kind editable-property whitelist for doc/setObjectProps. A kind absent here (or a props
+// object with nothing whitelisted) no-ops. Extended 2026-07-06 so placed objects are editable
+// after creation (audit OB1/OB2/OB3): unit gains a `label`; route/sketch gain their stroke/fill
+// props + a `label`; zone gains fill/border/dashed alongside its label. The matching persist.mjs
+// OBJECT_FIELD_KINDS whitelist must list any field added here or it is stripped on reload.
 const OBJECT_PROPS_WHITELIST = {
+  unit: new Set(['label']),
   text: new Set(['text', 'size', 'chip']),
-  zone: new Set(['label']),
+  zone: new Set(['label', 'fillOpacity', 'border', 'dashed']),
+  route: new Set(['thickness', 'dashed', 'head', 'label']),
+  sketch: new Set(['thickness', 'dashed', 'head', 'fillOpacity', 'border', 'label']),
 };
 
 /**
@@ -194,6 +200,14 @@ const docHandlers = {
     // Delegates id assignment to playbook.addObject (tactic.nextId counter) —
     // any id on action.object is ignored/overwritten, matching that contract.
     return withActiveTactic(doc, (tactic) => addObject(tactic, action.object));
+  },
+
+  // Copy/paste + duplicate objects: clone the given ids into keyframe `kf` with fresh ids and a
+  // small offset (playbook.duplicateObjectsInTactic). One dispatch = one undo step for the paste.
+  [`${DOC_PREFIX}duplicateObjects`](doc, action) {
+    return withActiveTactic(doc, (tactic) =>
+      duplicateObjectsInTactic(tactic, action.ids, action.kf, action.dx, action.dy)
+    );
   },
 
   [`${DOC_PREFIX}moveObject`](doc, action) {
@@ -306,16 +320,27 @@ const docHandlers = {
     return { ...doc, layers };
   },
 
+  // Delete a layer. Never removes the LAST layer (persist.mjs treats a zero-layer doc as
+  // irrecoverable and throws on reload — the UI must keep >=1; this reducer enforces the same
+  // floor so a stray dispatch can't brick a saved playbook). CASCADE: every object on the removed
+  // layer is DELETED with it (Jasper's "deletes cascade to children" rule) — NOT reassigned to a
+  // fallback layer. The old reassign-to-'units' behaviour silently relocated content and, when
+  // 'units' itself was the deleted layer, left objects pointing at a nonexistent id (they vanished
+  // unannounced). The view must re-anchor activeLayerId separately via
+  // playbook.pickActiveLayerAfterDelete — a reducer can't touch view state.
   [`${DOC_PREFIX}deleteLayer`](doc, action) {
-    const fallbackLayerId = 'units';
+    if (doc.layers.length <= 1) return doc;
     const layers = doc.layers.filter((l) => l.id !== action.id);
+    if (layers.length === doc.layers.length) return doc; // unknown id — no-op
     const tactics = doc.tactics.map((tactic) => ({
       ...tactic,
-      objects: tactic.objects.map((obj) =>
-        obj.layerId === action.id ? { ...obj, layerId: fallbackLayerId } : obj
-      ),
+      objects: tactic.objects.filter((obj) => obj.layerId !== action.id),
     }));
     return { ...doc, layers, tactics };
+  },
+
+  [`${DOC_PREFIX}setLayerColor`](doc, action) {
+    return withLayer(doc, action.id, (layer) => ({ ...layer, color: action.color }));
   },
 
   [`${DOC_PREFIX}newTactic`](doc, action) {
@@ -324,6 +349,45 @@ const docHandlers = {
       tactics: [...doc.tactics, action.tactic],
       activeTacticId: action.tactic.id,
     };
+  },
+
+  // Delete a playbook. Never removes the LAST one (a doc always keeps >=1 tactic, same invariant
+  // keyframes/layers hold). Deleting the active tactic re-anchors activeTacticId to a neighbour
+  // (prefer the previous row). Cascade is implicit: a tactic owns its frames+objects, so removing
+  // it removes them too — matching Jasper's "deletes cascade to children" rule.
+  [`${DOC_PREFIX}deleteTactic`](doc, action) {
+    if (doc.tactics.length <= 1) return doc;
+    const index = doc.tactics.findIndex((t) => t.id === action.id);
+    if (index === -1) return doc;
+    const tactics = doc.tactics.filter((t) => t.id !== action.id);
+    let activeTacticId = doc.activeTacticId;
+    if (activeTacticId === action.id) {
+      activeTacticId = (tactics[index - 1] ?? tactics[0]).id;
+    }
+    return { ...doc, tactics, activeTacticId };
+  },
+
+  // Duplicate a playbook as an independent, editable fork (collision-free id, all objects re-id'd,
+  // starts unlocked). Becomes the active tactic. See playbook.cloneTactic.
+  [`${DOC_PREFIX}duplicateTactic`](doc, action) {
+    const source = doc.tactics.find((t) => t.id === action.id);
+    if (!source) return doc;
+    const clone = cloneTactic(source, doc.tactics, action.name);
+    return { ...doc, tactics: [...doc.tactics, clone], activeTacticId: clone.id };
+  },
+
+  // Lock/unlock a playbook (NEW — accidental-edit guard for shared house playbooks). passwordHash
+  // is set when provided (locking with a password) and preserved otherwise (a plain lock toggle).
+  [`${DOC_PREFIX}setTacticLock`](doc, action) {
+    const index = doc.tactics.findIndex((t) => t.id === action.id);
+    if (index === -1) return doc;
+    const tactics = doc.tactics.slice();
+    tactics[index] = {
+      ...tactics[index],
+      locked: action.locked,
+      passwordHash: action.passwordHash !== undefined ? action.passwordHash : tactics[index].passwordHash,
+    };
+    return { ...doc, tactics };
   },
 
   [`${DOC_PREFIX}renameTactic`](doc, action) {

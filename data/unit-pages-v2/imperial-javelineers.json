@@ -140,7 +140,6 @@
   ],
   "gaps": [
     "Fight ratings (blob/duel/skirmish/flank) recorded in unit-strengths.json as 4/2/5/1 but flagged out-of-scope (below B-tier threshold) — not authoritative for this unit's current tier.",
-    "No house-card, house guide, or house-playbook mentions — house playstyle unpopulated.",
     "2026-06-25 patch added Knockback to Flying Shield; tactical crowd-control use of the new effect is not documented in any source.",
     "No glyph icon available — placeholder pending."
   ]

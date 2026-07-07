@@ -109,7 +109,7 @@
     "pressure": null
   },
   "controls": {
-    "loop": null,
+    "loop": [],
     "loopMarks": [],
     "notes": "No key-press input loop given by any source — this unit's kit is charge timing, not a skill rotation."
   },
@@ -125,7 +125,6 @@
     "No Counters section (Loses to / Struggles vs / This unit counters) from any source — matchups.cards and pressure are empty, not a claim that this unit has no matchups.",
     "No formation guidance (F1/F2) from any source.",
     "Guide last edited 2026-05-26, before the 2026-06-25 Chaos patch — doctrine/build advice may be stale for the current season (Yeomen is not on the 13-unit Chaos shortlist, so no forced revalidation, but the guide predates it).",
-    "'Epic Charge Defence Doctrine' and 'Sprint Doctrine' carry the source's own '[confirm exact name]' caveat — not resolved by any other source.",
-    "No house-guide, house-card, or video-transcript content exists for this unit anywhere on disk (checked across all house-playbook paths and all 20 video-transcript channels)."
+    "'Epic Charge Defence Doctrine' and 'Sprint Doctrine' carry the source's own '[confirm exact name]' caveat — not resolved by any other source."
   ]
 }

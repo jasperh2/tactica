@@ -92,12 +92,12 @@
     "tips": null
   },
   "matchups": {
-    "cards": null,
+    "cards": [],
     "pressure": null
   },
   "controls": {
-    "loop": null,
-    "loopMarks": null,
+    "loop": [],
+    "loopMarks": [],
     "notes": "If your veterancy line includes Arrow Rain, you cannot equip Arrow Rain doctrine — swap for extra piercing instead. {1}"
   },
   "footnotes": [

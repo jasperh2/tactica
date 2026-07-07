@@ -2,72 +2,50 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "camel-lancers",
   "name": "Camel Lancers",
-  "headerMeta": "Heroic era · Cavalry · 235 leadership · E-tier (T4M)",
+  "headerMeta": "Heroic era · Cavalry · 235 leadership · Tier E",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "E",
     "rarity": "T4",
     "fightRatings": null
   },
-  "pitch": "A niche, bottom-tier cavalry unit — house opinion ranks it below Modao Battalion for TW defence duty. Coverage is thin: the only playstyle claim on record predates the 2026-06-22 patch cutoff, so treat any doctrine or positioning advice here as unconfirmed against current balance.",
+  "pitch": null,
   "doctrines": [
     {
       "tag": "top-pick",
       "name": "Speed Doctrine",
-      "note": "pre-patch house claim, unconfirmed against current balance {2}",
-      "marks": [
-        2
-      ]
+      "note": null,
+      "marks": []
     }
   ],
-  "veterancy": null,
+  "veterancy": [],
   "battleRole": {
-    "positioning": "In Territory Wars, take the top lower line except the last point {2}.",
+    "positioning": null,
     "formation": null,
     "tips": null
   },
   "matchups": {
-    "cards": [
-      {
-        "name": "Modao Battalion",
-        "rel": "counters-you",
-        "why": "rated better for TW defence than Camel Lancers",
-        "house": true,
-        "marks": [
-          2
-        ]
-      }
-    ],
+    "cards": [],
     "pressure": null
   },
-  "controls": null,
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
   "footnotes": [
     {
       "mark": 1,
       "author": "Amya",
       "date": "Jun 2026",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "Svarthe",
-      "date": "Nov 2023",
-      "house": true
-    },
-    {
-      "mark": 3,
-      "author": "StarBurst / KP HC",
-      "date": "Oct 2024",
-      "house": true
     }
   ],
   "gaps": [
-    "No per-unit Amya guide exists — only tier placement (E: Camels, T4M) {1}.",
-    "House doctrine and TW-line claims sourced from Svarthe (Nov 2023) but flagged stale — pre-dates the 2026-06-22 patch cutoff; no current-meta cross-check available {2}.",
-    "StarBurst/KP HC Season 21 meta post (Oct 2024) places it at Tier 4 but gives no build, doctrine, or matchup detail, and the unit is absent from every later meta list in the same document {3}.",
-    "No fight-type ratings recorded anywhere (fightRatings: null in unit-db).",
-    "No formation recommendations or control-loop mechanics in any source.",
+    "No per-unit Amya guide exists — only tier placement (E: Camels, T4M).",
+    "No fight-type ratings recorded (fightRatings: null in unit-db).",
+    "No battle-role guidance, formation recommendations, or detailed control mechanics in any source.",
     "No veterancy details from any source.",
-    "No pressure rating or additional matchup data beyond the single Modao Battalion claim."
+    "No pressure rating or additional matchup data."
   ]
 }

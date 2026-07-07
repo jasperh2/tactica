@@ -95,9 +95,9 @@
   "matchups": {
     "cards": [
       {
-        "name": "Condottieri Guard / unsupported cavalry charges",
+        "name": "Cavalry charges (unsupported)",
         "rel": "counters-you",
-        "why": "One of the strongest braces in the game — an unsupported charge gets wiped almost instantly, but even minimal CC support from one melee hero flips it and pikes that lose formation fall apart fast {3}",
+        "why": "Braced pikes can instantly wipe cavalry, but only if they stay in formation and avoid disruption {3}",
         "house": false,
         "marks": [
           3
@@ -113,12 +113,21 @@
         ]
       },
       {
-        "name": "Sipahis with Croupade",
-        "rel": "pairs",
-        "why": "Croupade's burst-speed gimmick is wasted — Fortebraccio doesn't need speed to hit hard, so the tempo swing does nothing for you {4}",
+        "name": "Condottieri Guard",
+        "rel": "counters-you",
+        "why": "Unsupported Condottieri charges into braced pikes get wiped almost instantly, but even minimal crowd-control support (one melee hero) flips the outcome — pikes that lose formation to CC fall apart quickly {4}",
         "house": false,
         "marks": [
           4
+        ]
+      },
+      {
+        "name": "Sipahis with Croupade",
+        "rel": "pairs",
+        "why": "Croupade's burst-speed gimmick is wasted — Fortebraccio doesn't need speed to hit hard, so the tempo swing does nothing for you {5}",
+        "house": false,
+        "marks": [
+          5
         ]
       }
     ],
@@ -134,7 +143,7 @@
     "loopMarks": [
       2
     ],
-    "notes": "Repositioning sequence (gather formation → advance (X) → follow (F) → ready (V) → brace → hold) {2}. Deliberately avoid Stun or anti-cavalry-damage doctrines in favor of flat damage that boosts minimum output vs. both unit types {2}."
+    "notes": "Repositioning sequence (gather formation → advance (X) → follow (F) → ready (V) → brace → hold) {2}. Pike Charge ability provides a counter-diver tool and a re-brace after impact {1,2}. Deliberately avoid Stun or anti-cavalry-damage doctrines in favor of flat damage that boosts minimum output vs. both unit types {2}."
   },
   "footnotes": [
     {
@@ -157,6 +166,12 @@
     },
     {
       "mark": 4,
+      "author": "Indigenous Poncho",
+      "date": "Jun 2020",
+      "house": false
+    },
+    {
+      "mark": 5,
       "author": "PixLNickz (Nick)",
       "date": "May 2026",
       "house": false

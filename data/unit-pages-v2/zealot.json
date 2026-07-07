@@ -14,7 +14,7 @@
       "flank": 7
     }
   },
-  "pitch": "A transformation-based shock hammer that crushes shield units and blob formations with knockdown while alive; activating Judgment Day mid-fight is its death sentence — heal and return, never transform under pressure. Strong against heavy-armored and fire-weak targets, it collapses against high-burst claymores and Yorkists.",
+  "pitch": "A transformation-based shock hammer that crushes shield units and blob formations with knockdown while alive; activating Judgment Day mid-fight is its death sentence — heal and return, never transform under pressure. The unit excels against heavy-armored and fire-weak targets but collapses against high-burst claymores and Yorkists.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -71,23 +71,14 @@
       "recommended": true,
       "body": "Top-line veterancy is the common recommendation.",
       "marks": [
-        1,
-        2
-      ]
-    },
-    {
-      "label": "Bottom line",
-      "recommended": false,
-      "body": "YeetusMcFeetus dissents — plays bot and advises bot line despite the top-line majority.",
-      "marks": [
-        2
+        1
       ]
     }
   ],
   "battleRole": {
     "positioning": "Stay close enough to engage with Righteous Charge (press 1 from range, or dash from melee). X-move near fights and let enemies aggro rather than pressing V immediately — the passive Malice (counts artillery, hero kills, and incoming hits) builds faster if they come to you. {1}",
     "formation": null,
-    "tips": "Never transform mid-fight. {1} Activate Judgment Day (press 3) only outside combat to heal and reposition — the transformation locks you immobile and vulnerable, and the animation can't be cancelled once started. {1} Righteous Charge (1) knocks down or dashes; Zeal Whirlwind (2) slams close-range. In Inquisitor form, press 1 becomes Dies irae (partial vacuum). {1} Malice passive counts kills AND damage-taken (any amount), not just kills — test in custom vs AI to see the difference. {1} Scorpio fire enrage applied before a fight stays until end of game, even after unit swap or death. {1}"
+    "tips": "Never transform mid-fight. {1} Activate Judgment Day (press 3) only outside combat to heal and reposition — the transformation locks you immobile and vulnerable. {1} Righteous Charge (1) knocks down or dashes; Zeal Whirlwind (2) slams close-range. In Inquisitor form, press 1 becomes Dies irae (partial vacuum). {1} Malice passive counts kills AND damage-taken (any amount), not just kills — test in custom vs AI to see the difference. {1} Scorpio fire enrage applied before fight stays until end of game, even after unit swap or death. {1} Transformation animation cannot be cancelled once started — commit fully. {1}"
   },
   "matchups": {
     "cards": [
@@ -119,16 +110,25 @@
         ]
       },
       {
-        "name": "Symmachean Paladins",
-        "rel": "pairs",
-        "why": "house players run Zealots alongside Paladins in sieges — block-breaking support unlocked one fight from 70 to 200 unit kills",
-        "house": true,
+        "name": "Shield units",
+        "rel": "counters",
+        "why": "CC + tanking knocks them down",
+        "house": false,
         "marks": [
-          3
+          1
+        ]
+      },
+      {
+        "name": "Fire-weak units",
+        "rel": "counters",
+        "why": "big blob impact when enraged",
+        "house": false,
+        "marks": [
+          1
         ]
       }
     ],
-    "pressure": "You pressure: shield units (CC + tanking knocks them down) and fire-weak units (big blob impact when enraged). {1}"
+    "pressure": null
   },
   "controls": {
     "loop": [
@@ -146,37 +146,10 @@
       "author": "Amya",
       "date": "May 2026",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "house guide (doctrine QA)",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 3,
-      "author": "house guide (Bastard Sword build thread)",
-      "date": "Jan 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "house guide (meta-units tier board)",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 5,
-      "author": "Immortals house replay notes",
-      "date": "Feb 2026",
-      "house": true
     }
   ],
   "gaps": [
     "No video-transcript guides cover Zealot — no timing numbers, formation guidance, or scenario-specific controls captured.",
-    "Doctrine recommendations flagged stale: Amya's guide edited 2026-05-26, predating the 2026-06-25 Chaos patch; house veterancy split (top vs bottom) documented but no updated Amya revalidation visible.",
-    "No dedicated house-card file; unit appears on a house-curated 'Meta Units - ATK' tier board (30 Jun 2026) alongside Stalwarts, ISG, Claymores, Berserkers, Paladins, IPG, Zykalian Militia, Yorkist Household Knights, Dagger-axe Lancers, Fortebraccio, Lancastrian Billmen, but no card build is known. {4}",
-    "'Zealot' has no exact match in data/units.json per two independent house guides — flagged as a possible dataset gap, though a real in-game unit variant ('Zealot - Accursed') is confirmed via replay footage.",
-    "Replay analysis describes the 'Zealot - Accursed' variant as visually carrying 'polearm-style weapons,' conflicting with the Two-Handed Hammer identity from unit-db and Amya's guide — unreconciled; possibly a cosmetic skin or a visual misread. {5}"
+    "Doctrine recommendations flagged stale: Amya's guide edited 2026-05-26, predating the 2026-06-25 Chaos patch; house veterancy split (top vs bottom) documented but no updated Amya revalidation visible."
   ]
 }

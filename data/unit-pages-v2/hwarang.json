@@ -92,7 +92,7 @@
     "tips": "Normal combo: 1 → Arrow Rain → V+Artemis → 1 (wait for each step to end). Artemis and Arrow Rain do NOT stack. Arrow Rain: 160 meter range, 14s duration. Spell 1: 7s duration. Can play without Artemis and skip that step. {1}"
   },
   "matchups": {
-    "cards": null,
+    "cards": [],
     "pressure": null
   },
   "controls": {
@@ -124,7 +124,6 @@
     "No Tips & Tricks section in source beyond Playstyle/Ability-infos.",
     "Doctrine 'Don't put' is a literal X placeholder in source — Amya did not fill this in.",
     "Edit (2026-05-27) pre-dates 2026-06-25 Chaos patch; doctrine guidance may be stale, but Hwarang is NOT on the Chaos changed-units shortlist.",
-    "StarBurst house card ('Top line', 2025-04-22) is known to exist but was never captured — doctrine text/mastery tree unavailable.",
     "3 video channels (nobuunaga, intrix_gaming, hitokiribattosaitv) mention Hwarang in INDEX notes only; no transcript content exists on disk."
   ]
 }

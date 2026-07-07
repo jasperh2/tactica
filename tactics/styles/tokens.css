@@ -195,8 +195,18 @@
  * --bg-well (unit icon wells stay dark #12151b in both themes), and the map-overlay chip
  * colors hardcoded in ui/canvas.css (placement-hint pill / object counter / zone-label
  * pills — those float over map art and must stay fixed-dark with light text in both themes).
+ *
+ * SELECTOR SPECIFICITY (regression fix — 2026-07-07): this MUST be `:root[data-theme='light']`,
+ * not a bare `[data-theme='light']`. The Academy nav-strip merge added ../shared/academy.css to
+ * index.html, loaded AFTER this file, and that file re-declares the same --bg, --line, --text
+ * tokens in its own plain `:root` block (its dark token set). A bare `[data-theme='light']` and a
+ * bare `:root` have EQUAL specificity (0,1,0), so academy.css's later `:root` won the cascade by
+ * source order and dark tokens leaked back in under light mode → illegible dark-on-dark. Anchoring
+ * this block to `:root[data-theme='light']` raises it to (0,2,0) so it beats any plain `:root`
+ * regardless of import order; `data-theme` is set on <html> (the :root element, see ui/theme.mjs),
+ * so the selector still matches. Do NOT drop the `:root` prefix.
  */
-[data-theme='light'] {
+:root[data-theme='light'] {
   /* ---- Backgrounds ---- */
   --bg-void: #dde2ea;
   --bg-app: #f2f4f8;         /* notes band */

@@ -77,6 +77,21 @@ export function panForZoomAtCursor(pan, cursor, oldZoom, newZoom) {
 }
 
 /**
+ * Computes the zoom+pan that fits the whole map box centered inside the viewport (FB1
+ * double-middle-click reset-and-fit). The map box's UNZOOMED layout already `contain`-fits the
+ * viewport at 100% (canvas.css sizes it to min(100cqw, 100cqh/aspect)), so "fit the whole map"
+ * is exactly zoom=100 + pan reset to origin — the wrapper is center-anchored (top:50%/left:50% +
+ * a -50%/-50% translate), so a zero pan already centers it. Returning ZOOM_DEFAULT/{0,0} keeps
+ * this a pure, DOM-free contract the caller dispatches (view/setZoom + view/setPan) and a test
+ * can lock, rather than reading live element rects. Kept as a named helper (not an inline
+ * literal in canvas.mjs) so the "fit" definition lives in one place next to the zoom math.
+ * @returns {{zoom:number, pan:{x:number,y:number}}}
+ */
+export function fitView() {
+  return { zoom: ZOOM_DEFAULT, pan: { x: 0, y: 0 } };
+}
+
+/**
  * Converts a client-space pointer position into percent-of-map-box coordinates (0-100,
  * origin top-left), accounting for the map box's own bounding rect (which already reflects
  * the wrapper's zoom/pan transform via getBoundingClientRect). Unclamped — callers decide

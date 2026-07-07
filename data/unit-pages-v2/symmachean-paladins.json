@@ -14,7 +14,7 @@
       "flank": 3
     }
   },
-  "pitch": "A shielded sustain-tank that lives on its unique heal and rewards X+V animation-canceling for extra DPS when it's safe to drop block. Cavalry and maul-wielding heroes are its hard counter, punished further by a 20% back-hit weak spot everyone already plays around.",
+  "pitch": "A defensive shielded unit that excels in close formation, with a unique block-drop mechanic that rewards skill through X-and-V canceling. Synergistic heal sustain keeps them in extended fights, but cav and maul-wielding heroes exploit both that weakness and their vulnerable back side.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -35,7 +35,7 @@
     {
       "tag": "mandatory",
       "name": "Anti-Infantry Doctrine V",
-      "note": "+200 dmg to infantry, +250 block — swap for an LS doctrine if more sustain is needed",
+      "note": "+200 dmg to infantry, +250 block — can swap for LS doctrine if more sustain needed",
       "marks": [
         1
       ]
@@ -67,7 +67,7 @@
     {
       "tag": "filler",
       "name": "Block-Increase Doctrine",
-      "note": "close to mandatory when paired with piercing-damage doctrine slots",
+      "note": "close to mandatory when paired with piercing damage doctrine slots",
       "marks": [
         2
       ]
@@ -85,7 +85,7 @@
     {
       "label": "Top line",
       "recommended": true,
-      "body": "Average 1.68% heal per second, more offensive nodes, cooldown reduction on the bleed skill.",
+      "body": "Average 1.68% heal per second; more offensive nodes; cooldown on bleed — for aggressive positioning into hero pairing synergy.",
       "marks": [
         1
       ]
@@ -93,7 +93,7 @@
     {
       "label": "Bottom line",
       "recommended": false,
-      "body": "Average 1.2% heal per second, more defensive nodes, more armor, plus roughly 10% rare-attack damage reduction and extra block — deliberately defensive, built against maul \"crunching.\"",
+      "body": "Average 1.2% heal per second; more defensive nodes; more armor; −10% rare-attack damage; +10% defense plus additional block — deliberately defensive, mitigates maul crunching.",
       "marks": [
         1,
         2
@@ -101,69 +101,69 @@
     }
   ],
   "battleRole": {
-    "positioning": "Don't charge in unless you have significant front-line support — going alone stacks the enemy against you. Use the heal to disengage and reset: take aggro, pop the bleed skill, disengage, heal, repeat. {2}",
-    "formation": "Block/shield-wall (F2) for both charging and holding while attacking — but charging from this tight formation exposes the whole unit to hero CC chains (e.g. maul dismount-stun into a short-sword follow-up). Charging from the spread formation (F1) instead trades a little charge damage for CC safety and still naturally surrounds the target on landing. {2}",
-    "tips": "X+V cancel: press V the instant an X-move lands damage, then repeat — cancels most of the attack animation for higher DPS, but every X drops the unit's block. Only run this when free of threats; against big enemy numbers, hold V alone (auto-fight/counter-attack stance) since it never drops block. {1}{2} Cancel the heal (skill 2) with an instant V-press right after — the heal still resolves. {1} Weak Spot: back hits take 20% bonus damage and opponents actively play around it; the bottom-line veterancy cuts that to roughly 10%. {2}"
+    "positioning": "Don't charge in unless you have significant front-line support — they stack easily. Charge while in spread formation rather than tight block formation to avoid AoE hero CC lockdown; this results in the unit naturally surrounding the target after landing, a better overall trade-off. Use their healing to disengage and reposition: take aggro, activate the bleed skill, disengage, heal, repeat. {2}",
+    "formation": "Block/shield-wall formation (F2) useful for both charging in and holding while attacking; spread formation (F1) for low-threat vs high-threat CC scenarios. {2}",
+    "tips": "X-and-V cancel: press V immediately after X-move, unit drops block each time you use X — this resets the attack chain but exposes you to more damage, so only do it when free DPS available, not under threat. When facing large enemy numbers, stick to V (basic attack) only — slower kill but unit takes less damage. Cancel heal animation by instantly pressing V after pressing heal (skill 2) — the heal still resolves. {1} Weak Spot: hits on unit's back deal 20% bonus damage {2} (bottom-vet mitigates to ~10%); opponents actively exploit this."
   },
   "matchups": {
     "cards": [
       {
-        "name": "Pikes",
-        "rel": "pairs",
-        "why": "this unit counters pikes, per Amya",
-        "house": false,
-        "marks": [
-          1
-        ]
-      },
-      {
-        "name": "High-damage units",
-        "rel": "counters-you",
-        "why": "loses to high-damage units outright",
-        "house": false,
-        "marks": [
-          1
-        ]
-      },
-      {
         "name": "Cavalry",
         "rel": "hero-threat",
-        "why": "can stun-lock the unit to death if not managed; struggles vs cav per Amya too",
+        "why": "Can stun-lock the unit to death if not managed; primary live threat {2}",
         "house": false,
         "marks": [
-          1,
           2
         ]
       },
       {
         "name": "Maul-wielding heroes",
         "rel": "hero-threat",
-        "why": "dismount-stun chains lock down the whole unit, especially while charging in tight formation",
+        "why": "Dismount-stun into follow-up chains; second primary live threat {2}",
         "house": false,
         "marks": [
           2
         ]
+      },
+      {
+        "name": "High Damage units",
+        "rel": "counters-you",
+        "why": "Direct counter per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
+      },
+      {
+        "name": "Pikes",
+        "rel": "pairs",
+        "why": "This unit counters pikes per Amya",
+        "house": false,
+        "marks": [
+          1
+        ]
       }
     ],
-    "pressure": "You pressure: Pikes."
+    "pressure": "Pikes are your direct counter; pairing with hero covers the ground under threat."
   },
   "controls": {
     "loop": [
       "V",
-      "hold",
+      "X+V-cancel",
       "2",
-      "V"
+      "disengage"
     ],
     "loopMarks": [
-      1
+      1,
+      2
     ],
-    "notes": "Symmachean Brotherhood — models attack on slow, non-simultaneous timing, which is what makes the X+V cancel pattern possible but also means every X-move drops block. {2} Auto-fight on V (counter-attack stance) is the safer default vs large enemy numbers — slower kill, less damage taken. {1}{2} Heal ability is unique for also healing nearby allied units and heroes (5% max health per tick, on top of the ~250 HP/s standard regen most units get). {2}"
+    "notes": "V-only (basic attack) is default into large enemy groups — no block drop, lower threat. X-and-V cancel (X-move → instant V) resets the attack chain but drops block each time — higher DPS but only safe when no dangerous heroes nearby. {1} Auto-fight on V while engaged is better than spamming the combo when facing overwhelming numbers. {1} Skill 2 (heal) can be animation-canceled by instant V-press after — the heal resolves regardless. {1} Symmachean Brotherhood trait governs slow, non-simultaneous attack timing (models don't swing at once), enabling the X-then-V pattern and extending engagements, but this also enables the block-drop mechanic. {2}"
   },
   "footnotes": [
     {
       "mark": 1,
       "author": "Amya",
-      "date": "Nov 2024, edited May 2026",
+      "date": "Nov 2024 (edited May 2026)",
       "house": false
     },
     {
@@ -171,31 +171,10 @@
       "author": "HandBananaPvP",
       "date": "Nov 2020",
       "house": false
-    },
-    {
-      "mark": 3,
-      "author": "house guide (StaRBuRsT/Bohemiansnacksody/FinalAffliction Q&A)",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "house guide (StaRBuRsT, general-units-to-farm-for)",
-      "date": "Sep 2025",
-      "house": true
-    },
-    {
-      "mark": 5,
-      "author": "house guide (discord-guide-inventory)",
-      "date": "Jul 2026",
-      "house": true
     }
   ],
   "gaps": [
-    "House sources rate Paladins a doctrine-investment priority in both regular and purple metas {3} and place it in a farm-worthy attack-tier row {4}, but give no doctrine specifics beyond Amya/HandBananaPvP above — investment signal only, not build guidance.",
-    "A StarBurst house card for this unit is contested: data/unit-db.json states none exists, but a house Discord inventory records a dated card row (\"Paladins,\" 2024-11-23, \"YOU MUST HAVE MASTERY\") whose image was never fully re-captured {5} — unresolved; would outrank Amya for the build if recovered.",
-    "HandBananaPvP transcript (2020) pre-dates most patch history — exact doctrine/veterancy percentages are approximate and should be sanity-checked against current tooltips.",
-    "Origin/era not specified in Amya's source (literal placeholder in the OP); era/leadership taken from unit-db.",
-    "A SuperKitowiec YouTube guide is linked from Amya's thread but has no transcript captured anywhere in this repo — unviewed, not used."
+    "Origin/era not specified in Amya's source; derived from ConqHub leadership tier + tierlist context.",
+    "HandBananaPvP transcript (2020) pre-dates patch history — exact doctrine/vet percentages are approximate and should be sanity-checked against current tooltips."
   ]
 }

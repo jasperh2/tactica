@@ -97,17 +97,7 @@
     "tips": "Charge the 1 (Dread Unleashed) from optimal distance and release at max potential; the unit strikes twice on impact and the charge can be cancelled once the second hit registers. {1} Often better to release around 70% charge if the timing is right than to wait for 100% and miss the window. {1} Learn the full timing of the 1 — releasing it at the last moment lets you re-trigger it right after the double slash. {1} Press 1 for a first slash then a second; X-move away after the first if needed, otherwise wait for the second before X-moving (repress 1 to recharge as soon as possible). {1} Press 2 (Rushing Blow) as a momentum builder on straight-line runs, or as an escape — it moves each model in the direction it's facing. {1} Entering a blob facing pikes, Stalwart, or other speed-bonus units: X-move side to side repeatedly to stop moving — the damage lost is small next to the damage dodged. {1}"
   },
   "matchups": {
-    "cards": [
-      {
-        "name": "Rattan Pikemen",
-        "rel": "counters-you",
-        "why": "Charge doctrine is a flat damage number regardless of target — can beat Yanyuedao \"at their prime\" with the right charge",
-        "house": false,
-        "marks": [
-          2
-        ]
-      }
-    ],
+    "cards": [],
     "pressure": null
   },
   "controls": {
@@ -128,19 +118,12 @@
       "author": "Amya",
       "date": "Dec 2024",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "Amya",
-      "date": null,
-      "house": false
     }
   ],
   "gaps": [
-    "No Counters section (Loses to / Struggles vs / This unit counters) exists in the unit's own guide beyond the single Rattan Pikemen cross-mention — recorded as-is, not fabricated.",
+    "No Counters section (Loses to / Struggles vs / This unit counters) exists in the source guide — recorded as empty, not fabricated.",
     "The guide's edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; the unit is not on the Chaos changed-units shortlist, but build/doctrine advice may still be stale for the current season.",
     "'Don't put' doctrines: the source left this as a literal placeholder, never filled in.",
-    "The house farm-priority tier chart (StaRBuRsT, Sep 2025, likely-stale — pre-2026-06-22 patch cutoff) places this unit in an attack-meta 'units to farm for' row but gives no doctrine, matchup, or battle-role content beyond that placement.",
-    "Two video channels (denetax, yeqiudespotic) have queued or candidate videos for this unit but no captured transcript exists yet — a dedicated wiki-style unit-guide video is the top follow-up pick."
+    "Two video channels (denetax, yeqiudespotic) have queued or candidate videos for this unit but no captured transcript exists yet."
   ]
 }

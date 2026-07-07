@@ -79,6 +79,12 @@ export function renderMarker(marker, roster, selection) {
   const content = entry && entry.icon
     ? `<img src="${escapeHtml(entry.icon)}" alt="" class="canvas-marker__icon" draggable="false" />`
     : `<span class="canvas-marker__code">${escapeHtml(marker.code)}</span>`;
+  // OB1: a placed unit can carry a free-text `label` (stamped from view.nextLabel at placement).
+  // Render it as a small caption pill below the marker when present so it reads on-canvas and in
+  // export; absent/empty label => no caption node at all (no empty pill artifact).
+  const caption = marker.label
+    ? `<span class="canvas-marker__label">${escapeHtml(marker.label)}</span>`
+    : '';
 
   return `
     <div
@@ -88,7 +94,7 @@ export function renderMarker(marker, roster, selection) {
       style="left:${x}%; top:${y}%; width:${size}px; height:${size}px;
         background:${hexToRgba(role, 0.9)}; border-color:${role};"
       title="${escapeHtml(marker.name || marker.code)}"
-    >${content}</div>
+    >${content}${caption}</div>
   `;
 }
 

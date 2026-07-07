@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "claymores",
   "name": "Claymores",
-  "headerMeta": "Heroic era · Melee Infantry · special · 235 leadership · Seasonal & Honour Unit",
+  "headerMeta": "Heroic era · Melee Infantry · special · 235 leadership · T4M (Mastery)",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "S",
@@ -14,7 +14,7 @@
       "flank": 7
     }
   },
-  "pitch": "A damage dealer and team buffer wrapped in a brutally long cooldown cycle — activate For Freedom!, execute your combo, and vanish before the 10-second Crippling debuff lands, or lose the unit almost instantly. The unit is really bad without For Freedom! up, so the whole combo exists to protect that buff window.",
+  "pitch": "A damage dealer and team buffer wrapped in a brutally long cooldown cycle — activate For Freedom!, execute your combo, and vanish before the 10-second Crippling debuff lands, or lose the unit almost instantly. Solo flanking without team support is a wipe.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -101,11 +101,9 @@
     {
       "label": "Top line",
       "recommended": true,
-      "body": "Lower skill cooldowns, +10% Claymore Strike damage, larger For Freedom! damage bonus — more kills but fragile and dependent on For Freedom! uptime. House leadership independently confirms top line.",
+      "body": "Lower skill cooldowns, +10% Claymore Strike damage, larger For Freedom! damage bonus — more kills but fragile and dependent on For Freedom! uptime.",
       "marks": [
-        1,
-        2,
-        3
+        2
       ]
     },
     {
@@ -113,14 +111,14 @@
       "recommended": false,
       "body": "Heavy defensive stats, 15% damage reduction during charge (ends on swing), +9% reduction during Fearless Heart, doubles For Freedom! bonus HP — extremely tanky, low overall damage, valuable as a durable buff-provider.",
       "marks": [
-        3
+        2
       ]
     }
   ],
   "battleRole": {
-    "positioning": "Approach as a flanker anchored to your team — stick with allies to apply team buffs and survive the cooldown cycle. {3} Never solo-flank blindly; vulnerable to skill-cancel CC/daze. {3} For Freedom! increases targets hit by regular attacks/skills; time key skills when allies are nearby. {3}",
+    "positioning": "Approach as a flanker anchored to your team — stick with allies to apply team buffs and survive the cooldown cycle. {2} Never solo-flank blindly; vulnerable to skill-cancel CC/daze. {2} For Freedom! increases targets hit by regular attacks/skills; time key skills when allies are nearby. {2}",
     "formation": null,
-    "tips": "Open: X-move in, press 3 (For Freedom!) to buff yourself before taking any hits. {1} Combo: instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat (preferred). {1} Exit: get out and wait for cooldown if possible — it's better than anything. {1} Train the combo in custom game first. {1} Fearless Heart triggers on offensive skills — 10% damage reduction for 5s, restores up to 750 HP, reduces melee damage taken by the unit and nearby allies by 20%; while For Freedom! active, healing sometimes doubled and melee reduction increases to 35%. {3} On For Freedom! expiry: 10-second Crippling debuff heavily drops movement speed, attack rate, and damage while raising damage taken — pull out 2–3s early using the buff's own speed boost; if still fighting on expiry, expect to lose the unit almost instantly. {3} Skills can't be used while Crippling is active; any in-progress charge is canceled. {3}"
+    "tips": "Open: X-move in, press 3 (For Freedom!) to buff yourself before taking any hits. {1} Combo: instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat (preferred). {1} Exit: get out and wait for cooldown if possible — it's better than anything. {1} Train the combo in custom game first. {1} Fearless Heart triggers on offensive skills — 10% damage reduction for 5s, restores up to 750 HP, reduces melee damage taken by the unit and nearby allies by 20%; while For Freedom! active, healing sometimes doubled and melee reduction increases to 35%. {2} On For Freedom! expiry: 10-second Crippling debuff heavily drops movement speed, attack rate, and damage while raising damage taken — pull out 2–3s early using the buff's own speed boost; if still fighting on expiry, expect to lose the unit almost instantly. {2} Skills can't be used while Crippling is active; any in-progress charge is canceled. {2}"
   },
   "matchups": {
     "cards": [
@@ -145,14 +143,14 @@
       {
         "name": "Rattan Vipers",
         "rel": "counters-you",
-        "why": "Poison stacks turn Charge into a non-threat; shown losing most damage output mid-charge. {4}",
+        "why": "Poison stacks turn Charge into a non-threat; shown losing most damage output mid-charge. {5}",
         "house": false,
         "marks": [
-          4
+          3
         ]
       }
     ],
-    "pressure": "You pressure: nearly everything — Claymores counter \"near everything\" per Amya {1}. House leadership predicts a heavy-meta run in Purple Lock and Gold this season {2}."
+    "pressure": "You pressure: nearly everything — Claymores counter \"near everything\" per Amya {1}."
   },
   "controls": {
     "loop": [
@@ -164,7 +162,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "For Freedom! — signature 15-second buff: increases movement speed, damage, max HP, massively boosts Charge's block-break, adds snare to Claymore Strike, boosts Fearless Heart's effect, increases targets hit by attacks/skills; activation animation cancelable with a skill or V; can be activated mid-charge. {3} Highland Charge — standard infantry charge with a slow swing at the end; charging point-blank skips the charge animation for an immediate swing (~5% damage bonus over regular attacks only); triggers Fearless Heart after the swing. {3} Claymore Strike — three strikes, each dealing 20 bonus damage, short activation range (outside it the unit swings in air); also triggers Fearless Heart. {3} Passive \"battle happy\" trait grants up to 200 armor on hits — avoid engaging before stacks accumulate. {3}"
+    "notes": "For Freedom! — signature 15-second buff: increases movement speed, damage, max HP, massively boosts Charge's block-break, adds snare to Claymore Strike, boosts Fearless Heart's effect, increases targets hit by attacks/skills; activation animation cancelable with a skill or V; can be activated mid-charge. {2} Highland Charge — standard infantry charge with a slow swing at the end; charging point-blank skips the charge animation for an immediate swing (~5% damage bonus over regular attacks only); triggers Fearless Heart after the swing. {2} Claymore Strike — three strikes, each dealing 20 bonus damage, short activation range (outside it the unit swings in air); also triggers Fearless Heart. {2} Passive \"battle happy\" trait grants up to 200 armor on hits — avoid engaging before stacks accumulate. {2}"
   },
   "footnotes": [
     {
@@ -175,18 +173,12 @@
     },
     {
       "mark": 2,
-      "author": "house guide",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 3,
       "author": "SuperKitowiec",
       "date": "Jan 2022",
       "house": false
     },
     {
-      "mark": 4,
+      "mark": 3,
       "author": "KnightStalker",
       "date": "Apr 2022",
       "house": false
@@ -195,7 +187,6 @@
   "gaps": [
     "Formation guidance absent — no source specifies F1/F2 or spacing geometry.",
     "Exact For Freedom! damage bonus varies per skill/veterancy line; in-game description claims +40% but actual bonus not uniformly applicable.",
-    "Skill ability names need vet sanity check against in-game text: SuperKitowiec's transcript uses 'Feor Freedom' and 'Fearless Heart' as ASR best-guesses; primary source uses 'For Freedom!' (matching Amya). Confirmed secondary source confirms the core mechanics match.",
-    "No house-card build captured; house leadership (Bohemiansnacksody, StaRBuRsT) confirms top-vet preference and predicts a heavy-meta season but supplies no doctrine details beyond veterancy line choice."
+    "Skill ability names need vet sanity check against in-game text: SuperKitowiec's transcript uses 'Feor Freedom' and 'Fearless Heart' as ASR best-guesses; primary source uses 'For Freedom!' (matching Amya). Confirmed secondary source confirms the core mechanics match."
   ]
 }

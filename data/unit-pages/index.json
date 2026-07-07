@@ -12,7 +12,7 @@
       "era": "Silver",
       "leadership": 60,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": []
     },
     {
@@ -98,7 +98,7 @@
       "era": "Silver",
       "leadership": 90,
       "icon": null,
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": []
     },
     {
@@ -200,9 +200,7 @@
       "icon": "assets/unit-icons/camel-lancers.png",
       "richness": "full",
       "presentSections": [
-        "doctrines",
-        "battleRole",
-        "matchups"
+        "doctrines"
       ]
     },
     {
@@ -605,7 +603,7 @@
       "era": "Heroic",
       "leadership": 230,
       "icon": "assets/unit-icons/halberdier-sergeants.png",
-      "richness": "full",
+      "richness": "stats-only",
       "presentSections": [
         "battleRole"
       ]
@@ -1265,9 +1263,7 @@
       "leadership": 235,
       "icon": "assets/unit-icons/onna-musha.png",
       "richness": "full",
-      "presentSections": [
-        "veterancy"
-      ]
+      "presentSections": []
     },
     {
       "slug": "order-of-the-dragon",
@@ -1514,7 +1510,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -1564,7 +1559,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },
@@ -2191,7 +2185,6 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
         "controls"
       ]
     },

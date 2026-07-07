@@ -14,7 +14,7 @@
       "flank": 2
     }
   },
-  "pitch": "A heavily armored shield-wall anchor that thrives in blob and skirmish but crumbles to huge burst damage from units like Iron Reapers, Claymores, or Orochi. Its Oath of Unity trait spreads and mitigates incoming harm for 5s after every spell cast, making it the frontline unit that opens the enemy's block for your team to push in.",
+  "pitch": "A heavily armored shield-wall anchor that thrives in blob and skirmish but crumbles to burst damage; its Oath of Unity trait spreads and mitigates incoming harm, making it the frontline unit that opens for your team's counterattack.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -84,9 +84,9 @@
     }
   ],
   "battleRole": {
-    "positioning": "Frontline anchor — hold the line and block ranged fire. Never hesitate to redirect and reposition before pressing ability 2, and activate CCi + X-move back if overextended. {1} Pair with tanky units like Spear Sergeants in TW, playing aggressively on push or defence — its role is to go first and soak attention/damage while pushing forward. {2}",
+    "positioning": "Frontline anchor — hold the line and block ranged fire. Never hesitate to redirect and reposition before pressing ability 2, and activate CCi + X-move back if overextended. {1}",
     "formation": null,
-    "tips": "Ability 1 (No Mercy) redirects to your facing and stabs in front; each stab heals 5% HP. {1} Ability 2 (shield advance) requires re-pressing during the advance to stab; the 3rd press jumps forward with big damage. {1} Main trait (Oath of Unity): for 5s after using a spell, all damage taken spreads through the unit and is reduced to 70% (30% dmg reduction net). {1} Don't leave it idling at the gate — use downtime to farm rage, and cycle it to supply and back rather than parking it forward. {5}"
+    "tips": "Ability 1 (No Mercy) redirects to your facing and stabs in front; each stab heals 5% HP. {1} Ability 2 (shield advance) requires re-pressing during the advance to stab; the 3rd press jumps forward with big damage. {1} Main trait (Oath of Unity): for 5s after using a spell, all damage taken spreads through the unit and is reduced to 70% (30% dmg reduction net). {1}"
   },
   "matchups": {
     "cards": [
@@ -125,15 +125,6 @@
         "marks": [
           1
         ]
-      },
-      {
-        "name": "Yanyuedao Cavalry",
-        "rel": "counters-you",
-        "why": "a house build card claims it \"beats spartan's from any angle\" — unit-identity match unconfirmed",
-        "house": true,
-        "marks": [
-          4
-        ]
       }
     ],
     "pressure": null
@@ -150,7 +141,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Investment priority per house (Jun 2026 meta): Spartans rank mid-tier after Iron Reapers, Queen Knights, Liao, Stalwarts, Paladins, Daggeraxe; both new T5 units (Phalanx, Spartans) need high doctrines. {3}"
+    "notes": "Master the double-C brace (ability 2 repress) for 3–4× area coverage with minimal DPS loss. {1} Play around cooldowns — Oath of Unity resets every 5s after a spell cast. {1}"
   },
   "footnotes": [
     {
@@ -158,36 +149,10 @@
       "author": "Amya",
       "date": "Dec 2024 (updated May 2026)",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "house guide",
-      "date": "Oct 2025",
-      "house": true
-    },
-    {
-      "mark": 3,
-      "author": "house guide",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "house guide (discord-guide-inventory)",
-      "date": "Jul 2026",
-      "house": true
-    },
-    {
-      "mark": 5,
-      "author": "StarBurst",
-      "date": "video, captured Jul 2026",
-      "house": false
     }
   ],
   "gaps": [
-    "No house-card build exists for this unit — only Amya's public guide + house meta context.",
     "Formation guidance absent from all sources.",
-    "Video transcripts for Spartan Chosen exist (Akers tutorial, 2025-02-09) but were not captured or transcribed.",
-    "Yanyuedao Cavalry counter-claim rests on an unresolved unit-identity match (\"spartan's\" nickname vs. roster) — treat as directional, not confirmed."
+    "Video transcripts for Spartan Chosen exist (Akers tutorial, 2025-02-09) but were not captured or transcribed."
   ]
 }

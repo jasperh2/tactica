@@ -474,3 +474,35 @@ body.readonly .tb-map-btn {
 body.readonly .tb-map-btn .ph-caret-down {
   display: none;
 }
+
+/* On-canvas inline editor (drawtools text tool + zone label, 2026-07-06). A real <textarea>
+   mounted over the canvas at a percent anchor (JS sets position/left/top/zIndex inline); this rule
+   gives it the app's dark/light-themed seam via tokens so it isn't an unstyled browser textarea.
+   Being a real textarea is also what makes app.mjs's isTypingTarget guard suppress tool hotkeys
+   while it's focused (the reported "keybindings type into the box" fix). */
+.tactica-inline-editor {
+  position: absolute;
+  margin: 0;
+  padding: 4px 6px;
+  min-width: 92px;
+  max-width: 260px;
+  background: var(--bg-menu);
+  color: var(--text-primary);
+  border: 1px solid var(--line-menu);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-menu);
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-13);
+  line-height: 1.3;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+}
+.tactica-inline-editor:focus {
+  border-color: var(--accent);
+}
+.tactica-inline-editor--zone-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

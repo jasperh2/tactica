@@ -182,6 +182,36 @@
   user-select: none;
 }
 
+/* OB1: a placed unit's optional free-text label, rendered as a small caption centered below the
+   marker. The marker keeps overflow:hidden for its rounded icon, so :has() lifts that clip only
+   when a label child exists — the caption then escapes downward. Fixed dark chip + light text (a
+   map-overlay chip that floats over map art, same rationale as the marker code/selection whites
+   in this file's header) so it stays legible on any map in both themes. */
+.canvas-marker:has(.canvas-marker__label) {
+  overflow: visible;
+}
+
+.canvas-marker__label {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 92px;
+  padding: 1px 4px;
+  border-radius: var(--radius-xs);
+  background: rgba(8, 10, 14, 0.82);
+  color: #eef1f6;
+  font-family: var(--font-ui);
+  font-size: var(--text-scale-9);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  user-select: none;
+}
+
 .canvas-marker.is-selected {
   box-shadow: var(--shadow-selected);
 }

@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "spear-sergeants",
   "name": "Spear Sergeants",
-  "headerMeta": "Heroic era · Melee Infantry / Shields · 215 leadership · Honour Tree · Mastery available",
+  "headerMeta": "Heroic era · Melee Infantry / Shields · Early-game frontline · 215 leadership · Mastery available",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "B",
@@ -14,7 +14,7 @@
       "flank": 2
     }
   },
-  "pitch": "A low-cost shield-wall anchor that toggles Cover Commander to stack a debuff on whatever hits it next, holding lines in PvE and early progression more than it wins competitive TW. Good players now hunt it with lifesaver doctrine, and house Q&A rates it behind ISG for that reason.",
+  "pitch": "A reliable shield-wall anchor strong in PvE and early progression, using Cover Commander to toggle between holding ground and disrupting enemies. Vulnerable in competitive TW when opponents leverage lifesaver doctrine to target self-healing units.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -67,7 +67,7 @@
     {
       "tag": "filler",
       "name": "Tank Doctrines",
-      "note": "alt build: DMG taken / full block",
+      "note": "DMG taken / full block build {1}",
       "marks": [
         1
       ]
@@ -75,7 +75,7 @@
     {
       "tag": "avoid",
       "name": "Unspecified anti-unit doctrines",
-      "note": "OP left this as a literal placeholder, never filled in",
+      "note": null,
       "marks": [
         1
       ]
@@ -85,64 +85,35 @@
     {
       "label": "Bottom line",
       "recommended": true,
-      "body": "Adds an actual brace/stun-on-hit mechanic and is generally better against cavalry — though cav matchups matter less now since the unit has fallen behind as an anti-cav pick.",
+      "body": "Adds brace/stun-on-hit mechanic; generally better against cavalry {6}",
       "marks": [
         1,
-        6
+        2
       ]
     },
     {
       "label": "Top line",
       "recommended": false,
-      "body": "Favors players who lean more on Cover Commander mode.",
+      "body": "Favors Cover Commander-heavy playstyle {6}",
       "marks": [
-        1,
-        6
+        2
       ]
     }
   ],
   "battleRole": {
-    "positioning": "In Cover Commander, stand at the edge of the unit's cluster rather than the middle — models in the middle can get flanked from behind as the formation wraps around a target. {6} Don't push in hard until you've stacked the −10%-per-hit penetration debuff (up to −50% at 5 stacks) on what's about to hit you. {1}",
-    "formation": "Line and Block: shield wall highly resistant to ranged damage, even from high-tier ranged units, despite visual gaps in the line. {6} Sheltron (tight circle): generally a poor PvP choice for shield units — the tight radius fits under siege AoE templates (musket bombs, trebuchets, scorpion bolts) — though this unit benefits from it somewhat more than comparable shield units, and it's strong in PvE (AI loops around the circle while models keep stabbing, including turning inward). {6} Advance holds the current formation while moving — in sheltron the models keep the circle shape and stab inward; in line they hold on approach but break on contact (unlike Stalwarts, which keep pushing through). {6} Formation-lock note: models keep fighting whoever engaged them and won't reposition mid-fight — switching to any other formation immediately forces a break-and-reposition. {6}",
-    "tips": "Stay on Cover Commander, toggling it off and back on every 2 seconds to refresh the buff granted at activation. {1} While in Cover Commander: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; the decay rate is 6 seconds. {1} In live PvP, actively swap between shield-wall and Cover Commander rather than locking into one for a whole engagement — e.g. hold a capture point in shield wall, flick to Cover Commander to screen from cavalry threatening from behind. {6} An apparent stagger/stun proc on hit has been observed even without a brace node slotted — flagged as an undocumented quirk, not a confirmed mechanic. {6}"
+    "positioning": "In line formation, shield wall resists ranged fire effectively even against high-tier ranged units {2}. Toggle actively between shield-wall (to screen/hold a point) and Cover Commander (to disrupt/chase or protect the player) rather than locking into one formation {2}. Stand at the edge of the unit cluster in CC mode to avoid flanking from behind {2}.",
+    "formation": "Line formation: shield wall holds formation well and resists ranged damage {2}. Block formation: behaves similarly to line {2}. Sheltron (tight circle): generally poor in PvP (vulnerable to AoE under siege templates), but benefits from it somewhat more than comparable shield units; effective in PvE {2}.",
+    "tips": "Advance ability: holds formation while approaching, stabs down enemies caught inside (in sheltron) or breaks formation on contact (in line). Use to close on ranged units or heavy frontal-damage dealers like pikemen {2}. Cover Commander: toggles between modes — switch away to force reposition mid-fight {2}. Keep activating/deactivating CC every 2s to reset the buff; timing resets at the start of each CC window {1}. In CC: damage taken initially reduced by 60%, gradually decreasing to 40% over 6 seconds; damage dealt increased by 45%, gradually decreasing to 30% over 6 seconds {1}. Per hit applies −10% pen debuff stacking up to 5 times (−50% pen total) {1}."
   },
   "matchups": {
     "cards": [
       {
-        "name": "ISG",
-        "rel": "counters-you",
-        "why": "house Q&A rates ISG over Spear Sergeants right now because good players hunt self-healing units with lifesaver doctrine — disputed in-thread (\"isg also self heal\") without a walk-back",
-        "house": true,
-        "marks": [
-          3
-        ]
-      },
-      {
-        "name": "Azaps",
-        "rel": "counters-you",
-        "why": "Azaps guides name Spear Sergeants (with Imperial Spears, pike militia) as the reason to run piercing defense over blunt",
+        "name": "Ranged units",
+        "rel": "pairs",
+        "why": "line formation shield wall blocks incoming fire; pull ranged targets onto the unit {6}",
         "house": false,
         "marks": [
-          4,
-          5
-        ]
-      },
-      {
-        "name": "Cavalry (general)",
-        "rel": "pairs",
-        "why": "full-mastery Spear Sergeants are \"surprisingly effective vs cavalry charges, if used correctly\" — brace/stun + Awareness Doctrine mitigate charges, though this has faded as an anti-cav pick over time",
-        "house": true,
-        "marks": [
-          2,
-          6
-        ]
-      },
-      {
-        "name": "Ranged units / pikemen",
-        "rel": "pairs",
-        "why": "line-formation shield wall blocks incoming fire; Advance is best used to close the distance on ranged units or heavy frontal-damage dealers like pikemen",
-        "marks": [
-          6
+          2
         ]
       }
     ],
@@ -150,14 +121,14 @@
   },
   "controls": {
     "loop": [
-      "Cover Commander toggle (2s)",
+      "CC toggle",
       "Advance",
       "Hold formation"
     ],
     "loopMarks": [
       1
     ],
-    "notes": "Cover Commander: toggle off/on every 2s to refresh the buff — damage taken 60%→40% and damage dealt +45%→+30%, both decaying over 6s. {1} Per-hit penetration debuff: −10%, stacking to −50% at 5 stacks — don't commit until it's stacked on the target. {1} Advance: holds formation while moving; in sheltron the unit keeps its circle and stabs inward, in line it holds until contact then breaks. {6}"
+    "notes": "Cover Commander mode: toggle every 2s to reset buffs (60% → 40% dmg reduction and +45% → +30% dmg dealt, 6s decay) {1}. Debuff application: each hit applies −10% pen, stacking to −50% total over 5 hits — time braces before high-damage incoming {1}. Advance ability: use to close on ranged or high-damage-output units; holds formation in sheltron (stabs down enemies inside), breaks formation in line {2}. Don't go hard until debuffed what will hit you next {1}."
   },
   "footnotes": [
     {
@@ -168,40 +139,16 @@
     },
     {
       "mark": 2,
-      "author": "Svarthe",
-      "date": "Nov 2023",
-      "house": true
-    },
-    {
-      "mark": 3,
-      "author": "Bohemiansnacksody",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "unfitchaos2618",
-      "date": "Aug 2020",
-      "house": false
-    },
-    {
-      "mark": 5,
-      "author": "pixlnickz",
-      "date": "May 2026",
-      "house": false
-    },
-    {
-      "mark": 6,
       "author": "KnightStalker",
       "date": "May 2021",
       "house": false
     }
   ],
   "gaps": [
-    "The Amya OP has no Counters/Loses-to/Struggles-vs section at all — this is an absence in the source, not an unfilled placeholder; matchup coverage above leans on incidental mentions from other units' guides and one disputed house claim.",
-    "House Q&A's ISG-over-Spear-Sergeants claim was directly disputed in-thread by another house member (\"isg also self heal\") and never walked back — recorded as an open disagreement, not resolved.",
-    "StaRBuRsT's 2025-09-22 attack-meta farm list places Spear Sergeants in its era/tier row but is marked likely-stale (pre-dates the 2026-06-22 patch cutoff) and adds no build detail beyond that placement, so it isn't cited as a claim.",
-    "Amya's doctrine/build guidance was last edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch — may be stale for the current season, with no post-patch update visible.",
-    "KnightStalker's undocumented stagger/stun proc (no brace node slotted) is presented as a surprising discovery, not a confirmed mechanic — unverified against current patch notes."
+    "Hero pairing specifics: Amya notes 'Any' but no per-hero recommendations provided.",
+    "Competitive TW meta context sparse: KnightStalker source focused on PvE/new-player value; TW threat level relative to Paladins/Stalwarts only briefly mentioned.",
+    "Stun mechanic in KnightStalker (unexpected stagger without brace node) flagged as unconfirmed quirk; needs vet sanity check against patch notes.",
+    "Formations: detailed pros/cons only in KnightStalker; Amya sources do not discuss formation choice.",
+    "Controls: no ability cooldown numbers; Amya sources give buff decay (6s) and penetration math (-10%/hit, -50% cap) but no ability durations or other mechanics."
   ]
 }

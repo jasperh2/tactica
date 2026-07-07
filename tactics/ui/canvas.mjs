@@ -15,10 +15,10 @@
 // (canvas-helpers.resolveHitId). The selection shows a padded dashed bbox outline with four corner
 // resize handles that scale about the opposite corner; Delete/Backspace removes the selection.
 
-import { activeTactic, interactableObjects, positionAt } from '../core/playbook.mjs';
+import { activeTactic, interactableObjects, visibleObjects, positionAt } from '../core/playbook.mjs';
 import { createDrawHandlers } from './drawtools.mjs';
 import { renderCanvas, wrapperTransform, MIN_MARKER_SIZE, MAX_MARKER_SIZE } from './canvas-objects.mjs';
-import { wheelZoom, stepZoom, panForZoomAtCursor, clientToPercent, round2, ZOOM_DEFAULT } from './canvas-view.mjs';
+import { wheelZoom, stepZoom, panForZoomAtCursor, clientToPercent, round2, ZOOM_DEFAULT, fitView } from './canvas-view.mjs';
 import {
   resolveHitId,
   rectFromDrag,
@@ -28,6 +28,7 @@ import {
   oppositeCornerAnchor,
   selectGestureIntent,
   scaleAboutAnchor,
+  arrowDelta,
 } from './canvas-helpers.mjs';
 
 const DEFAULT_ASPECT_W = 822;
@@ -35,6 +36,15 @@ const DEFAULT_ASPECT_H = 786;
 const DRAG_THRESHOLD_PX = 3;
 const MARKER_SIZE_DEFAULT = 26;
 const BLOCKED_FLASH_MS = 260;
+// FB1: two middle-mouse presses inside this window count as a double-click -> reset & fit.
+const MIDDLE_DBLCLICK_MS = 350;
+// CV2: arrow-key nudge step (percent-of-map), plain vs Shift (larger). Small enough for fine
+// positioning; Shift is a coarse move for spanning the map faster.
+const NUDGE_STEP_PCT = 0.5;
+const NUDGE_STEP_LARGE_PCT = 3;
+// H4/CV1: paste/duplicate offset (percent-of-map) so a pasted copy lands slightly off its source
+// instead of exactly on top of it. Matches the drop offset feel of the duplicate reducer.
+const PASTE_OFFSET_PCT = 2;
 // 'locator' is owned-but-inert here: the Cursor Locator handles its own gestures in
 // ui/locator.mjs's self-contained overlay; canvas.mjs must neither forward it to drawtools
 // nor start a select gesture for it.
@@ -64,6 +74,18 @@ export function mount(el, ctx) {
    *   originals:{id:string,x:number,y:number,size:number}[], lastScaleFactor:number}|null} */
   let resizeState = null;
   let spaceHeld = false;
+  // FB1: timestamp of the last middle-mouse press, for double-middle-click detection (two presses
+  // within MIDDLE_DBLCLICK_MS -> reset zoom+pan to fit). Middle-button presses don't emit a native
+  // `dblclick` (that's primary-button only), so canvas.mjs tracks the interval itself. Seeded to
+  // -Infinity (not 0) so the FIRST press of a session can never read as a double-click: nowMs()
+  // uses performance.now() (ms since process start), which is < MIDDLE_DBLCLICK_MS early on, so a
+  // 0 seed would make the very first middle-press fit instead of pan.
+  let lastMiddleDownTs = -Infinity;
+  // H4/CV1: in-module copy/paste clipboard — the object ids captured by Ctrl/Cmd+C. Ids (not
+  // full objects): paste re-reads the live objects from the store via doc/duplicateObjects, so a
+  // copy stays valid across intervening edits and never holds a stale object snapshot. Cleared to
+  // [] on copy of an empty selection so a stale clipboard can't paste after "select none + copy".
+  let clipboardIds = [];
   // A drag/marquee/resize gesture nulls its state object on pointerup (in commit*), which happens
   // BEFORE the browser's trailing `click` fires. Without this latch, onClick's `!marqueeState?.moved`
   // guard reads `!undefined === true` and lets handleSelectClick run a fresh replace-select on
@@ -213,6 +235,17 @@ export function mount(el, ctx) {
     // Chrome's middle-click autoscroll arms there, not on pointerdown.
     if (event.button === 1) {
       event.preventDefault();
+      // FB1: double middle-click = reset zoom+pan so the whole map fits the viewport. A second
+      // middle press within MIDDLE_DBLCLICK_MS fits and does NOT start a pan (the just-started pan
+      // from the FIRST press committed as a no-op on its pointerup since it didn't move). A single
+      // middle press still pans.
+      const now = nowMs();
+      if (now - lastMiddleDownTs <= MIDDLE_DBLCLICK_MS) {
+        lastMiddleDownTs = 0;
+        resetAndFit();
+        return;
+      }
+      lastMiddleDownTs = now;
       startPan(event);
       return;
     }
@@ -320,7 +353,13 @@ export function mount(el, ctx) {
   function resolvePointerHit(event) {
     const rect = mapEl.getBoundingClientRect();
     const pt = clientToPercent(event.clientX, event.clientY, rect);
-    const objects = selectableObjects();
+    // CV8: hit resolution for CLICK-select uses the broader inspectable set (active-layer objects
+    // INCLUDING a locked layer's), so clicking a locked-layer object selects it for inspection. All
+    // mutation paths (startDrag / group-resize / deleteSelection) independently re-check
+    // isBlockedForInteraction, so a locked object can be selected+inspected but never dragged,
+    // resized, or deleted. Marquee stays on the interactable set (selectableObjects) — a sweep
+    // never pulls locked objects into a multi-select.
+    const objects = inspectableObjects();
     const geometryHit = resolveHitId(objects, [pt.x, pt.y], HIT_TOLERANCE_PCT, canvasApi.getBoxWidth());
     if (geometryHit) return geometryHit;
     const domHit = event.target.closest('[data-id]');
@@ -338,6 +377,22 @@ export function mount(el, ctx) {
     const tactic = activeTactic(doc);
     if (!tactic) return [];
     return interactableObjects(tactic, doc.layers, view.currentKeyframe, view.activeLayerId);
+  }
+
+  /** CV8: objects eligible for CLICK-select-to-inspect — the active layer's visible objects on the
+   * current frame, INCLUDING a locked active layer's (unlike selectableObjects/interactableObjects,
+   * which exclude a locked layer entirely). visibleObjects already filters to visible layers +
+   * current-frame appearance and resolves marker positions; the extra active-layer scope keeps a
+   * click from ever resolving onto a non-active layer (same view-only rule as everywhere else).
+   * A hidden active layer still yields nothing (visibleObjects dropped it). Selection is broadened;
+   * every mutation path re-checks isBlockedForInteraction, so locked stays inspect-only. */
+  function inspectableObjects() {
+    const doc = ctx.store.getDoc();
+    const view = ctx.store.getView();
+    const tactic = activeTactic(doc);
+    if (!tactic) return [];
+    return visibleObjects(tactic, doc.layers, view.currentKeyframe)
+      .filter((obj) => obj.layerId === view.activeLayerId);
   }
 
   /**
@@ -414,6 +469,12 @@ export function mount(el, ctx) {
       size: MARKER_SIZE_DEFAULT,
       positions: { [view.currentKeyframe]: { x: round2(x), y: round2(y) } },
     };
+    // OB1: stamp the "applies at next placement" label (Unit options panel -> view.nextLabel.text)
+    // onto the placed object so the inspector/export/canvas caption can use it. Only attach a
+    // non-empty trimmed string — an empty/whitespace label leaves the object label-free (no empty
+    // caption pill, and setObjectProps stays the single edit path for changing it afterward).
+    const label = view.nextLabel && typeof view.nextLabel.text === 'string' ? view.nextLabel.text.trim() : '';
+    if (label) object.label = label;
     ctx.exec({ type: 'doc/placeObject', object });
   }
 
@@ -723,6 +784,15 @@ export function mount(el, ctx) {
     if (pending) ctx.exec({ type: 'view/setPan', pan: pending });
   }
 
+  /** FB1: reset zoom+pan to the whole-map fit (canvas-view.fitView). Clears any in-flight pan so
+   * the first middle-press's pan gesture doesn't commit a stray pan after the fit. */
+  function resetAndFit() {
+    panState = null;
+    const { zoom, pan } = fitView();
+    ctx.exec({ type: 'view/setZoom', zoom });
+    ctx.exec({ type: 'view/setPan', pan });
+  }
+
   // ---- zoom (wheel + pills) -------------------------------------------------------------
 
   function onWheel(event) {
@@ -796,9 +866,111 @@ export function mount(el, ctx) {
       }
       return;
     }
+    // H4/CV1: copy / paste / duplicate. Ctrl (or Cmd on macOS) + C/V/D. Kept in canvas.mjs's own
+    // handler per lane contract (app.mjs owns no clipboard). isInputFocused() already guarded above,
+    // so these never fire while typing a label/name in an inspector field.
+    if (event.ctrlKey || event.metaKey) {
+      const key = event.key.toLowerCase();
+      if (key === 'c') {
+        event.preventDefault();
+        copySelection();
+        return;
+      }
+      if (key === 'v') {
+        event.preventDefault();
+        pasteClipboard();
+        return;
+      }
+      if (key === 'd') {
+        event.preventDefault();
+        duplicateSelection();
+        return;
+      }
+      return; // any other Ctrl/Cmd combo (undo/redo/save) is not ours — don't nudge on it below
+    }
+
+    // CV2: arrow-key nudge of the current selection. Plain = fine step, Shift = coarse. Reuses
+    // doc/moveObject (single) / doc/moveObjects (batch = one undo step). Blocked objects are
+    // excluded (same isBlockedForInteraction guard as drag/delete), so a locked/non-active
+    // selection can't be nudged.
+    const nudge = arrowDelta(event.key, event.shiftKey, NUDGE_STEP_PCT, NUDGE_STEP_LARGE_PCT);
+    if (nudge) {
+      event.preventDefault();
+      nudgeSelection(nudge.dx, nudge.dy);
+      return;
+    }
+
     if (event.key === 'Delete' || event.key === 'Backspace') {
       deleteSelection();
     }
+  }
+
+  /** CV2: nudge every non-blocked selected unit by (dx,dy) percent-of-map, batched into one undo
+   * step. Reads each unit's current resolved position and writes position+dx/+dy. Text/route/etc.
+   * kinds are skipped here (same unit-only scope as drag/group-resize — moveMarker is marker-only). */
+  function nudgeSelection(dx, dy) {
+    const view = ctx.store.getView();
+    if (view.selection.length === 0) return;
+    const doc = ctx.store.getDoc();
+    const tactic = activeTactic(doc);
+    if (!tactic) return;
+    const kf = view.currentKeyframe;
+    const moves = [];
+    view.selection.forEach((id) => {
+      if (isBlockedForInteraction(id)) return;
+      const obj = tactic.objects.find((o) => o.id === id);
+      if (!obj || obj.kind !== 'unit') return;
+      const pos = positionAt(obj, kf);
+      moves.push({ id, kf, x: round2(pos.x + dx), y: round2(pos.y + dy) });
+    });
+    if (moves.length === 0) return;
+    if (moves.length === 1) {
+      ctx.exec({ type: 'doc/moveObject', ...moves[0] });
+      return;
+    }
+    ctx.exec({ type: 'doc/moveObjects', moves });
+  }
+
+  /** H4/CV1: capture the current selection ids into the in-module clipboard (empty selection
+   * clears it). No store dispatch — the clipboard is view-local canvas state. */
+  function copySelection() {
+    clipboardIds = [...ctx.store.getView().selection];
+  }
+
+  /** H4/CV1: paste the clipboard into the current frame at a small offset, then select the clones.
+   * doc/duplicateObjects clones by id from the live store, so a copied id that was since deleted is
+   * simply skipped by the reducer. Selecting the new ids requires knowing which ids the reducer
+   * minted — derived by diffing the active tactic's object ids before/after the dispatch. */
+  function pasteClipboard() {
+    if (clipboardIds.length === 0) return;
+    duplicateInto(clipboardIds);
+  }
+
+  /** H4/CV1: Ctrl/Cmd+D — duplicate the current selection in place (no clipboard round-trip),
+   * same offset+reselect behavior as paste. No-op on an empty selection. */
+  function duplicateSelection() {
+    const selection = ctx.store.getView().selection;
+    if (selection.length === 0) return;
+    duplicateInto([...selection]);
+  }
+
+  /** Shared paste/duplicate core: dispatch doc/duplicateObjects for `ids` into the current frame at
+   * the paste offset, diff the active tactic's object-id set before/after to find the freshly-minted
+   * clone ids, and select exactly those. The before/after diff is how the UI learns the reducer's
+   * generated ids without the reducer returning them (it returns a new doc, not the id list). */
+  function duplicateInto(ids) {
+    const kf = ctx.store.getView().currentKeyframe;
+    const before = new Set(activeTacticObjectIds());
+    ctx.exec({ type: 'doc/duplicateObjects', ids, kf, dx: PASTE_OFFSET_PCT, dy: PASTE_OFFSET_PCT });
+    const newIds = activeTacticObjectIds().filter((id) => !before.has(id));
+    if (newIds.length > 0) ctx.exec({ type: 'view/select', ids: newIds, mode: 'replace' });
+  }
+
+  /** Current object ids of the active tactic (order-preserving). Used to diff before/after a
+   * duplicate dispatch so the UI can select the newly-created clones. */
+  function activeTacticObjectIds() {
+    const tactic = activeTactic(ctx.store.getDoc());
+    return tactic ? tactic.objects.map((o) => o.id) : [];
   }
 
   function deleteSelection() {
@@ -841,4 +1013,13 @@ export function mount(el, ctx) {
  */
 function cssEscape(id) {
   return window.CSS && window.CSS.escape ? window.CSS.escape(id) : id.replace(/["\\]/g, '\\$&');
+}
+
+/** Monotonic-ish wall clock for the middle-double-click interval (FB1). Uses performance.now when
+ * available (immune to system-clock jumps), falling back to Date.now. Factored out so the double-
+ * click branch reads cleanly; the value is only ever diffed against itself. */
+function nowMs() {
+  return typeof performance !== 'undefined' && typeof performance.now === 'function'
+    ? performance.now()
+    : Date.now();
 }

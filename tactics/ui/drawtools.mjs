@@ -50,7 +50,7 @@
 // Committed zones now carry a `shape` discriminator: 'polygon' {points} (this tool's new output)
 // vs 'ellipse' {cx,cy,rx,ry} (pre-existing saved zones — rendering/hit-test/persist/export all
 // keep dispatching on `shape` so old ellipse zones round-trip byte-identical, no migration).
-import { simplify } from '../core/geometry.mjs';
+import { simplify, polygonBounds } from '../core/geometry.mjs';
 import { activeTactic, interactableObjects } from '../core/playbook.mjs';
 import {
   isMeaningfulDrag,
@@ -61,6 +61,7 @@ import {
   ellipseMarkup,
   polygonGhostMarkup,
   resolveEraseTargetId,
+  openInlineEditor,
 } from './drawtools-helpers.mjs';
 
 const FREEHAND_SIMPLIFY_EPSILON = 0.35; // core/geometry.mjs default, named here for clarity
@@ -100,11 +101,18 @@ function commit(ctx, canvasApi, layerId, object) {
  * state that commit() just wrote via ctx.exec, then dispatches a view (non-undoable) action.
  */
 function selectLatest(ctx) {
+  const id = latestObjectId(ctx);
+  if (id) ctx.exec({ type: 'view/select', id });
+}
+
+/** Id of the most-recently-added object on the active tactic (the one commit() just wrote), or
+ * null if none — used by selectLatest and by the Zone tool's on-canvas label entry to target the
+ * just-committed zone with a doc/setObjectProps label update. */
+function latestObjectId(ctx) {
   const doc = ctx.store.getDoc();
   const tactic = doc.tactics.find((t) => t.id === doc.activeTacticId);
-  if (!tactic || tactic.objects.length === 0) return;
-  const latest = tactic.objects[tactic.objects.length - 1];
-  ctx.exec({ type: 'view/select', id: latest.id });
+  if (!tactic || tactic.objects.length === 0) return null;
+  return tactic.objects[tactic.objects.length - 1].id;
 }
 
 /**
@@ -565,24 +573,38 @@ function createZoneTool(ctx, canvasApi, now = Date.now) {
     canvasApi.previewEl.innerHTML = polygonGhostMarkup(points, { color: dc.role, ...boxOpt(canvasApi) });
   }
 
+  /** Handle for the on-canvas label editor opened right after a zone commits; null when idle. */
+  let labelEditor = null;
+
   function cancel() {
     polygonPoints = null;
     lastVertexAt = null;
+    // A tool switch / Escape while the post-commit label box is open commits it cleanly (its
+    // onCommit no-ops on an empty value, so the zone just keeps its default '' label) — no
+    // phantom, no dangling editor element. close() is idempotent.
+    if (labelEditor) {
+      labelEditor.close();
+      labelEditor = null;
+    }
     clearGhost(canvasApi);
   }
 
   /** Commits the in-progress polygon if it has enough vertices to be a real shape; silently
    * cancels (no commit) otherwise — mirrors Arrow's onDblClick "too-short, just cancel" rule,
-   * but the threshold is 3 (a polygon's minimum) instead of Arrow's 2 (a line's minimum). */
+   * but the threshold is 3 (a polygon's minimum) instead of Arrow's 2 (a line's minimum). On a
+   * real commit it opens an on-canvas label box at the polygon's top-center (CV7) so the zone can
+   * be NAMED without leaving the canvas — no window.prompt (dark-theme seam). The inspector path
+   * still works as a fallback because the new zone is also selected. */
   function closeAndCommit(dc) {
     if (!polygonPoints || polygonPoints.length < MIN_ZONE_POLYGON_VERTICES) {
       cancel();
       return;
     }
+    const committedPoints = polygonPoints;
     const object = {
       kind: 'zone',
       shape: 'polygon',
-      points: polygonPoints,
+      points: committedPoints,
       label: DEFAULT_ZONE_LABEL,
       role: dc.role,
       layerId: dc.layerId,
@@ -592,10 +614,31 @@ function createZoneTool(ctx, canvasApi, now = Date.now) {
     lastVertexAt = null;
     clearGhost(canvasApi);
     commit(ctx, canvasApi, dc.layerId, object);
-    // README §5: "zones get an optional label" — surface it in the inspector immediately via
-    // the same selected-object card Select/Move-Resize already renders (matches the prior
-    // drag-ellipse Zone tool's selectAfter:true behavior).
+    // README §5: "zones get an optional label" — also surface it in the inspector immediately via
+    // the same selected-object card Select/Move-Resize already renders (fallback edit path).
     selectLatest(ctx);
+
+    // CV7 on-canvas label entry: name the zone right where it sits. Anchor the box at the
+    // polygon's top-center (polygonBounds → {cx, minY}), matching where the committed label pill
+    // renders (canvas-objects.mjs). An empty box leaves the zone's default '' label untouched; a
+    // non-empty box writes it via doc/setObjectProps {label} — the same seam the inspector drives.
+    const zoneId = latestObjectId(ctx);
+    if (!zoneId) return;
+    const bounds = polygonBounds(committedPoints);
+    labelEditor = openInlineEditor({
+      mount: canvasApi.mapEl,
+      documentEl: canvasApi.documentEl,
+      at: { x: bounds.cx, y: bounds.minY },
+      seed: '',
+      className: 'tactica-inline-editor--zone-label',
+      onCommit(value) {
+        labelEditor = null;
+        if (value) ctx.exec({ type: 'doc/setObjectProps', id: zoneId, props: { label: value } });
+      },
+      onCancel() {
+        labelEditor = null;
+      },
+    });
   }
 
   return {
@@ -665,44 +708,77 @@ function createZoneTool(ctx, canvasApi, now = Date.now) {
 }
 
 // =============================================================================
-// Text — click -> kind:'text' {x,y,text,size,chip}, then select it.
-// The placed string comes from the Text options dock's prefill input (view.toolOptions
-// .textPrefill, set via view/setToolOption — Jasper v2 fix: type the label once, then click to
-// drop it, instead of every placement dropping a hardcoded 'Label' you must re-edit). An empty
-// prefill places an empty text object and selects it, so the inspector's text panel opens for an
-// immediate inline edit (the existing "edit selected note via the panel textarea" seam — there
-// is no on-canvas contenteditable in this tool, and adding one is out of this lane's scope).
-// The `chip` (background pill) reads dc.opts.textChip, which DEFAULT_TOOL_OPTIONS seeds ON, so
-// placed labels get the background pill by default per Jasper's ask.
+// Text — an explicit left-CLICK on the canvas opens a focused on-canvas textarea at the click
+// point (openInlineEditor); typing there types into a REAL textarea, so app.mjs's installShortcuts
+// (which early-returns via isTypingTarget for any focused TEXTAREA) NO LONGER routes tool hotkeys
+// (M/A/P/…) into the box — Jasper's "keybindings go into the textbox" bug. The box is created
+// ONLY on that click; selecting the Text tool never auto-spawns or auto-focuses a box. Enter or
+// click-away commits kind:'text' {x,y,text,size,chip}; an empty (whitespace-only) box commits
+// NOTHING and leaves no phantom object; Escape cancels with no commit. `text` is seeded from the
+// dock's textPrefill so a pre-typed label drops immediately (the user can still edit it in the
+// box before committing). `chip` reads dc.opts.textChip (DEFAULT_TOOL_OPTIONS seeds it ON). After
+// a real commit the new object is selected so the inspector's Text panel stays available as a
+// fallback edit path.
 // =============================================================================
 
 function createTextTool(ctx, canvasApi) {
+  /** The live inline-editor handle while one is open; null when idle. Guards against a second
+   * click opening a second overlapping box (the first commits first). */
+  let editor = null;
+
+  function placeText(dc, p, value) {
+    // Empty/whitespace-only text commits nothing — no phantom object (Jasper's ask). A trimmed
+    // value is what openInlineEditor already hands back, but re-guarding here keeps the DOM-less
+    // test fallback (which passes the seed straight through) honest too.
+    if (!value) return;
+    commit(ctx, canvasApi, dc.layerId, {
+      kind: 'text',
+      x: p.x,
+      y: p.y,
+      text: value,
+      size: dc.opts.textSize,
+      chip: dc.opts.textChip,
+      role: dc.role,
+      layerId: dc.layerId,
+      appearsAt: dc.appearsAt,
+    });
+    // Select the just-placed note so the inspector Text panel targets it (fallback edit path).
+    selectLatest(ctx);
+  }
+
   return {
     onClick(e) {
       const dc = drawContext(ctx);
       if (canvasApi.blocked(dc.layerId)) return;
+      if (editor) {
+        // A pending box commits first (click-away semantics), then this click starts a fresh one.
+        editor.close();
+        editor = null;
+      }
       const p = canvasApi.toPct(e.clientX, e.clientY);
-
-      commit(ctx, canvasApi, dc.layerId, {
-        kind: 'text',
-        x: p.x,
-        y: p.y,
-        text: dc.opts.textPrefill ?? '',
-        size: dc.opts.textSize,
-        chip: dc.opts.textChip,
-        role: dc.role,
-        layerId: dc.layerId,
-        appearsAt: dc.appearsAt,
+      editor = openInlineEditor({
+        mount: canvasApi.mapEl,
+        documentEl: canvasApi.documentEl,
+        at: p,
+        seed: dc.opts.textPrefill ?? '',
+        className: 'tactica-inline-editor--text',
+        onCommit(value) {
+          editor = null;
+          placeText(dc, p, value);
+        },
+        onCancel() {
+          editor = null;
+        },
       });
-      // selectLatest is both the "prefilled label placed, now selected" affordance AND the
-      // empty-prefill inline-edit fallback: the inspector's Text panel renders an editable
-      // textarea for the selected text object (editingTextNote), so an empty placement lands the
-      // user straight in that textarea. Text edits commit via doc/setObjectProps (store.mjs
-      // whitelists text/size/chip) — the seam the inspector already drives.
-      selectLatest(ctx);
     },
 
     cancel() {
+      // Tool switch / Escape while a box is open commits it cleanly (no phantom), then clears any
+      // ghost. close() is idempotent, so a double cancel is safe.
+      if (editor) {
+        editor.close();
+        editor = null;
+      }
       clearGhost(canvasApi);
     },
   };
@@ -750,42 +826,87 @@ function createEraseTool(ctx, canvasApi) {
     return resolveEraseTargetId(eraseCandidates(), [p.x, p.y], canvasApi.getBoxWidth());
   }
 
-  // Hold-and-drag sweep (Jasper hot fix 2026-07-06): press, drag over everything you want
-  // gone, release. Each object deletes the moment the cursor touches it (immediate feedback);
-  // deletions go through the same guarded resolveTargetId path as click-erase, so layer rules
-  // hold identically. `sweeping` is plain gesture state — a pointerup/cancel anywhere ends it.
+  // Hold-and-drag sweep (Jasper hot fix 2026-07-06): press, drag over everything you want gone,
+  // release. ONE-UNDO batching (CV4): the WHOLE gesture is a single history entry — a 10-object
+  // sweep undoes in ONE Ctrl+Z, not ten. This mirrors how commitDrag/commitGroupResize snapshot
+  // once per gesture: instead of exec'ing doc/deleteObject per touched object mid-drag, the sweep
+  // ACCUMULATES the touched ids in `swept` and flushes them as a single doc/deleteObjects on
+  // pointerup (app.mjs snapshots history once for that one dispatch). `swept` also doubles as the
+  // "already gone" set so an id the cursor re-crosses within the same drag is never re-collected,
+  // and — because resolveTargetId still hit-tests the LIVE doc (objects aren't deleted until
+  // pointerup) — it is what keeps an already-swept object from resolving again as the topmost hit.
+  // `sweeping` is plain gesture state; a pointerup/cancel anywhere ends it.
   let sweeping = false;
+  /** @type {Set<string>} ids touched during the current sweep, flushed as one batch on pointerup. */
+  const swept = new Set();
+  /** Set true when a pointerup flush just ran; consumed by the ONE trailing synthetic click the
+   * browser emits after a press+release (so that click doesn't re-erase / double-delete), and
+   * cleared by the next pointerdown. Mirrors the two-point tools' suppressClick latch. */
+  let suppressClick = false;
 
-  function deleteAt(e) {
+  /** Resolves the erase target under the pointer, skipping anything already swept this gesture so
+   * a re-crossed object doesn't resolve again (it's still in the live doc until the pointerup
+   * flush). Returns null when nothing new is under the cursor. */
+  function resolveNewTargetId(e) {
     const id = resolveTargetId(e);
-    if (!id) return;
-    ctx.exec({ type: 'doc/deleteObject', id });
+    if (!id || swept.has(id)) return null;
+    return id;
+  }
+
+  function collectAt(e) {
+    const id = resolveNewTargetId(e);
+    if (id) swept.add(id);
+  }
+
+  function flush() {
+    if (swept.size === 0) return;
+    const ids = [...swept];
+    swept.clear();
+    // One id vs many: keep the singular action for a single-object erase (matches the inspector's
+    // delete-button convention and the erase tests' click assertions) and use the batched action
+    // for a multi-object sweep — either way it is exactly ONE dispatch = ONE undo entry.
+    if (ids.length === 1) ctx.exec({ type: 'doc/deleteObject', id: ids[0] });
+    else ctx.exec({ type: 'doc/deleteObjects', ids });
   }
 
   return {
     onPointerDown(e) {
       if (e.button !== 0) return;
+      suppressClick = false; // a fresh press moots any pending trailing-click suppression.
       sweeping = true;
-      deleteAt(e);
+      swept.clear();
+      collectAt(e);
     },
 
     onPointerMove(e) {
-      if (sweeping) deleteAt(e);
+      if (sweeping) collectAt(e);
     },
 
     onPointerUp() {
+      if (!sweeping) return;
       sweeping = false;
+      suppressClick = true; // swallow the ONE trailing synthetic click this gesture emits.
+      flush(); // whole gesture -> ONE history entry.
     },
 
     onClick(e) {
-      // The pointerdown already deleted at this spot when the press started here; the trailing
-      // click re-resolves (usually a no-op because the object is gone) to keep pure-click
-      // behavior identical for callers/tests that only dispatch click.
-      deleteAt(e);
+      // Swallow the single trailing synthetic click a just-flushed press+release emits, so it
+      // can't re-erase (the sweep already dispatched the delete for this spot).
+      if (suppressClick) {
+        suppressClick = false;
+        return;
+      }
+      // A pure click with no preceding sweep (e.g. a caller/test dispatching only `click`) erases
+      // the single object under it in one dispatch.
+      const id = resolveTargetId(e);
+      if (!id) return;
+      ctx.exec({ type: 'doc/deleteObject', id });
     },
 
     cancel() {
       sweeping = false;
+      suppressClick = false;
+      swept.clear();
       clearGhost(canvasApi);
     },
   };

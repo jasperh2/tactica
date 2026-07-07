@@ -6,7 +6,14 @@
 // ownership) to keep this file under the 200-400 line target.
 import { newTactic, activeTactic as getActiveTactic } from '../core/playbook.mjs';
 import { fmtClock } from '../core/geometry.mjs';
-import { renderTacticControl, renderKeyframeCards, renderEmptyState, parseClock } from './playbookbar-helpers.mjs';
+import {
+  renderTacticControl,
+  renderKeyframeCards,
+  renderEmptyState,
+  parseClock,
+  hashPassword,
+  uniqueTacticName,
+} from './playbookbar-helpers.mjs';
 
 const PLAY_INTERVAL_MS = 1050;
 const DEFAULT_FRAME_GAP_SECONDS = 30;
@@ -24,6 +31,12 @@ export function mount(el, ctx) {
   let dropdownOpen = false;
   /** @type {string|null} */
   let renamingTacticId = null;
+  /** @type {string|null} */
+  let lockPromptId = null; // tactic id currently showing an inline lock/unlock password field
+  /** @type {'lock'|'unlock'|null} */
+  let lockPromptMode = null;
+  /** @type {string|null} */
+  let lockPromptError = null; // set to a message when an unlock password did not match
   /** @type {number|null} */
   let renamingFrameN = null; // keyframe n currently showing the inline rename input
   /** @type {number|null} */
@@ -67,7 +80,7 @@ export function mount(el, ctx) {
           <span class="pb-label">PLAYBOOK</span>
           <span class="chip chip-mono pb-linear-chip">LINEAR</span>
         </div>
-        ${renderTacticControl(doc, tactic, { dropdownOpen, renamingTacticId })}
+        ${renderTacticControl(doc, tactic, { dropdownOpen, renamingTacticId, lockPromptId, lockPromptMode, lockPromptError })}
         <div class="pb-transport">
           <button type="button" class="btn-icon pb-play-btn" data-action="toggle-play" ${tactic ? '' : 'disabled'}
             aria-label="${view.playing ? 'Pause' : 'Play'}" title="${view.playing ? 'Pause' : 'Play'}">
@@ -96,6 +109,10 @@ export function mount(el, ctx) {
     if (action === 'select-tactic') return selectTactic(target.dataset.tacticId);
     if (action === 'new-tactic') return createNewTactic();
     if (action === 'rename-tactic-start') return startRenameTactic(event);
+    if (action === 'delete-tactic') return deleteTactic(target.dataset.tacticId);
+    if (action === 'duplicate-tactic') return duplicateTactic(target.dataset.tacticId);
+    if (action === 'toggle-lock') return toggleLock(event, target.dataset.tacticId);
+    if (action === 'lock-confirm') return confirmLock(target.dataset.tacticId);
     if (action === 'toggle-play') return togglePlay();
     if (action === 'export') return triggerExport();
     if (action === 'jump-keyframe') return jumpToKeyframe(target);
@@ -122,6 +139,7 @@ export function mount(el, ctx) {
 
   function onDblClick(event) {
     if (event.target.closest('[data-role="rename-tactic-input"]')) return;
+    if (event.target.closest('[data-role="rename-tactic-subtitle"]')) return;
     if (event.target.closest('[data-action="rename-tactic-start"]')) return startRenameTactic(event);
     if (event.target.closest('[data-role="rename-frame-input"]')) return;
     const kfName = event.target.closest('.pb-kf-name');
@@ -129,9 +147,16 @@ export function mount(el, ctx) {
   }
 
   function onKeydown(event) {
+    const lockInput = event.target.closest('[data-role="lock-input"]');
+    if (lockInput) {
+      if (event.key === 'Enter') confirmLock(lockInput.dataset.tacticId);
+      if (event.key === 'Escape') closeLockPrompt();
+      return;
+    }
     const tacticInput = event.target.closest('[data-role="rename-tactic-input"]');
-    if (tacticInput) {
-      if (event.key === 'Enter') commitRenameTactic(tacticInput.value);
+    const subtitleInput = event.target.closest('[data-role="rename-tactic-subtitle"]');
+    if (tacticInput || subtitleInput) {
+      if (event.key === 'Enter') commitRenameTactic(readRenameInputs());
       if (event.key === 'Escape') cancelRenameTactic();
       return;
     }
@@ -152,14 +177,30 @@ export function mount(el, ctx) {
     const target = event.target;
     if (!target || !target.closest) return;
     const tacticInput = target.closest('[data-role="rename-tactic-input"]');
+    const subtitleInput = target.closest('[data-role="rename-tactic-subtitle"]');
     const frameInput = target.closest('[data-role="rename-frame-input"]');
-    if (!tacticInput && !frameInput) return;
+    if (!tacticInput && !subtitleInput && !frameInput) return;
     if (suppressNextBlur) {
       suppressNextBlur = false;
       return;
     }
-    if (tacticInput) return commitRenameTactic(tacticInput.value);
+    // The tactic rename group has TWO fields (name + subtitle) — tabbing from one to the other must
+    // NOT commit. Only commit when focus is leaving the whole rename group (relatedTarget outside it).
+    if (tacticInput || subtitleInput) {
+      const next = event.relatedTarget;
+      if (next && next.closest && (next.closest('[data-role="rename-tactic-input"]') || next.closest('[data-role="rename-tactic-subtitle"]'))) {
+        return;
+      }
+      return commitRenameTactic(readRenameInputs());
+    }
     commitRenameFrame(Number(frameInput.dataset.kfN), frameInput.value);
+  }
+
+  /** Reads the current name+subtitle from the live rename inputs (falls back to '' if gone). */
+  function readRenameInputs() {
+    const nameEl = el.querySelector('[data-role="rename-tactic-input"]');
+    const subtitleEl = el.querySelector('[data-role="rename-tactic-subtitle"]');
+    return { name: nameEl ? nameEl.value : '', subtitle: subtitleEl ? subtitleEl.value : '' };
   }
 
   // ---- drag-to-reorder ---------------------------------------------------
@@ -200,13 +241,22 @@ export function mount(el, ctx) {
 
   function toggleDropdown() {
     dropdownOpen = !dropdownOpen;
+    if (!dropdownOpen) resetLockPromptState();
     render(ctx.store.getDoc(), ctx.store.getView());
   }
 
   function closeDropdown() {
     if (!dropdownOpen) return;
     dropdownOpen = false;
+    resetLockPromptState();
     render(ctx.store.getDoc(), ctx.store.getView());
+  }
+
+  /** Clears lock-prompt fields WITHOUT its own render (callers render). */
+  function resetLockPromptState() {
+    lockPromptId = null;
+    lockPromptMode = null;
+    lockPromptError = null;
   }
 
   function selectTactic(tacticId) {
@@ -216,14 +266,29 @@ export function mount(el, ctx) {
 
   function createNewTactic() {
     dropdownOpen = false;
-    const name = window.prompt('Playbook name', 'New Playbook');
-    if (!name) return;
+    // No window.prompt for naming (dark-theme seam): create with a deduped default name, then drop
+    // straight into the inline rename flow so the user names it in-theme. uniqueTacticName (PB5)
+    // keeps two rows from ever sharing a name — "New Playbook", "New Playbook (2)", …
+    const tactics = ctx.store.getDoc().tactics;
+    const name = uniqueTacticName('New Playbook', tactics);
     // Pass the current doc's tactics so the new id is derived collision-free (see newTactic) —
     // otherwise a reload's reset module counter re-minted an id already in the doc and the new
     // playbook became unselectable. A new playbook is a full empty board: fresh keyframe, no
     // objects, independent of every other playbook on this map.
-    const tactic = newTactic(name.trim(), '', ctx.store.getDoc().tactics);
+    const tactic = newTactic(name, '', tactics);
     ctx.exec({ type: 'doc/newTactic', tactic });
+    // newTactic dispatch makes it active; open the inline rename on the freshly-active tactic.
+    renamingTacticId = tactic.id;
+    render(ctx.store.getDoc(), ctx.store.getView());
+    focusRenameInput();
+  }
+
+  function focusRenameInput() {
+    const input = el.querySelector('[data-role="rename-tactic-input"]');
+    if (input) {
+      input.focus();
+      input.select();
+    }
   }
 
   function startRenameTactic(event) {
@@ -233,29 +298,104 @@ export function mount(el, ctx) {
     dropdownOpen = false;
     renamingTacticId = tactic.id;
     render(ctx.store.getDoc(), ctx.store.getView());
-    const input = el.querySelector('[data-role="rename-tactic-input"]');
-    if (input) {
-      input.focus();
-      input.select();
-    }
+    focusRenameInput();
   }
 
   function commitRenameTactic(rawValue) {
     const tactic = getActiveTactic(ctx.store.getDoc());
+    const renamedId = renamingTacticId;
     renamingTacticId = null;
     suppressNextBlur = true;
-    const name = (rawValue || '').trim();
-    if (!tactic || !name || name === tactic.name) {
+    // rawValue is { name, subtitle } from readRenameInputs. Guard against an empty name (revert).
+    const rawName = ((rawValue && rawValue.name) || '').trim();
+    const subtitle = ((rawValue && rawValue.subtitle) || '').trim();
+    if (!tactic || tactic.id !== renamedId || !rawName) {
       render(ctx.store.getDoc(), ctx.store.getView());
       return;
     }
-    ctx.exec({ type: 'doc/renameTactic', id: tactic.id, name, subtitle: tactic.subtitle });
+    // PB5: dedupe the name against the OTHER tactics on this map (case-insensitive, auto-suffix).
+    const name = uniqueTacticName(rawName, ctx.store.getDoc().tactics, tactic.id);
+    if (name === tactic.name && subtitle === (tactic.subtitle || '')) {
+      render(ctx.store.getDoc(), ctx.store.getView());
+      return;
+    }
+    ctx.exec({ type: 'doc/renameTactic', id: tactic.id, name, subtitle });
   }
 
   function cancelRenameTactic() {
     renamingTacticId = null;
     suppressNextBlur = true;
     render(ctx.store.getDoc(), ctx.store.getView());
+  }
+
+  // ---- delete / duplicate playbook (PB1 / PB2) ----------------------------
+
+  function deleteTactic(tacticId) {
+    const doc = ctx.store.getDoc();
+    if (doc.tactics.length <= 1) return; // never delete the last playbook (reducer also no-ops)
+    const tactic = doc.tactics.find((t) => t.id === tacticId);
+    if (!tactic) return;
+    // A destructive delete is the one place a window.confirm is sanctioned (not a naming prompt).
+    const ok = window.confirm(`Delete playbook '${tactic.name}'? This removes its frames and objects.`);
+    if (!ok) return;
+    closeLockPrompt();
+    ctx.exec({ type: 'doc/deleteTactic', id: tacticId });
+  }
+
+  function duplicateTactic(tacticId) {
+    closeLockPrompt();
+    ctx.exec({ type: 'doc/duplicateTactic', id: tacticId });
+  }
+
+  // ---- password lock / unlock (accidental-edit guard) ---------------------
+
+  function toggleLock(event, tacticId) {
+    event.stopPropagation();
+    const tactic = ctx.store.getDoc().tactics.find((t) => t.id === tacticId);
+    if (!tactic) return;
+    // Toggling the SAME row's prompt closed acts as a cancel.
+    if (lockPromptId === tacticId) return closeLockPrompt();
+    lockPromptId = tacticId;
+    lockPromptMode = tactic.locked ? 'unlock' : 'lock';
+    lockPromptError = null;
+    render(ctx.store.getDoc(), ctx.store.getView());
+    const input = el.querySelector('[data-role="lock-input"]');
+    if (input) input.focus();
+  }
+
+  function confirmLock(tacticId) {
+    const input = el.querySelector(`[data-role="lock-input"][data-tactic-id="${cssEscape(tacticId)}"]`);
+    const value = input ? input.value : '';
+    const tactic = ctx.store.getDoc().tactics.find((t) => t.id === tacticId);
+    if (!tactic) return closeLockPrompt();
+    if (lockPromptMode === 'lock') {
+      if (!value) return; // require a non-empty password to lock; leave the prompt open
+      ctx.exec({ type: 'doc/setTacticLock', id: tacticId, locked: true, passwordHash: hashPassword(value) });
+      closeLockPrompt();
+      return;
+    }
+    // unlock: compare the entered password's hash against the stored one.
+    if (tactic.passwordHash && hashPassword(value) !== tactic.passwordHash) {
+      lockPromptError = 'Incorrect password';
+      render(ctx.store.getDoc(), ctx.store.getView());
+      const retry = el.querySelector('[data-role="lock-input"]');
+      if (retry) retry.focus();
+      return;
+    }
+    ctx.exec({ type: 'doc/setTacticLock', id: tacticId, locked: false });
+    closeLockPrompt();
+  }
+
+  function closeLockPrompt() {
+    if (lockPromptId === null) return;
+    resetLockPromptState();
+    render(ctx.store.getDoc(), ctx.store.getView());
+  }
+
+  /** Minimal CSS.escape shim for attribute selectors (tactic ids are "t\\d+", so this suffices). */
+  function cssEscape(value) {
+    if (typeof CSS !== 'undefined' && typeof CSS.escape === 'function') return CSS.escape(value);
+    return String(value).replace(/["\\]/g, '\\$&');
   }
 
   // ---- play engine ---------------------------------------------------------

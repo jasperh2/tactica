@@ -32,6 +32,9 @@ import {
   objectKindLabel,
   renderLabelField,
   fmtCoordPair,
+  renderShapeEditors,
+  renderUnitLabelField,
+  isLineLikeSketch,
 } from './inspector-helpers.mjs';
 import { installGlobalSearchFocus } from './inspector-shortcuts.mjs';
 
@@ -257,6 +260,20 @@ function renderSelectPanel(doc, view, roster) {
     `
     : '';
 
+  // UNIT label editor (H3/OB1): a selected marker gets its own "Label" field, dispatching
+  // doc/setObjectProps {props:{label}} — the counterpart to the Place panel's "next label" UI.
+  const unitLabelRow = isUnit ? renderUnitLabelField(obj.label) : '';
+
+  // ROUTE / SKETCH stroke+fill editors (OB2) + label (OB3): mirror the creation panels so editing
+  // a placed shape feels identical to drawing one. Bounds are threaded in so inspector-helpers
+  // keeps no reverse dependency on this module's local consts.
+  const shapeEditors = obj.kind === 'route' || obj.kind === 'sketch'
+    ? renderShapeEditors(obj, {
+        thickness: { min: MIN_THICKNESS, max: MAX_THICKNESS, step: THICKNESS_STEP },
+        border: { min: MIN_BORDER, max: MAX_BORDER, step: BORDER_STEP },
+      })
+    : '';
+
   // Zones get an optional label (contract §5, buildPlaybook's zoneEntry exports it when
   // present) — edits go through doc/setObjectProps, same seam as text-note editing.
   const zoneLabelRow = obj.kind === 'zone'
@@ -279,6 +296,8 @@ function renderSelectPanel(doc, view, roster) {
         </div>
       </div>
       ${sizeRow}
+      ${unitLabelRow}
+      ${shapeEditors}
       ${zoneLabelRow}
       ${renderRoleSwatches(roster.roles, obj.role, 'select')}
     </div>
@@ -592,6 +611,28 @@ export function mount(el, ctx) {
 
   const debouncedSetObjectProps = createObjectPropsDebouncer(ctx.exec, NOTE_DEBOUNCE_MS);
 
+  /**
+   * Dispatches doc/setObjectProps for the single selected object, guarded by the same lock +
+   * active-layer rule every other Inspector edit uses (isObjectLocked). No-ops on a 0- or
+   * 2+-object selection or a locked/non-active target. Used by the selected route/sketch
+   * editors (thickness/dashed/fillOpacity/border/head/label — OB2/OB3). `immediate` skips the
+   * debounce for discrete edits (arrowhead click, dashed toggle) that never rapid-fire; the
+   * sliders and the label field debounce like the text-note editors.
+   * @param {object} props whitelisted props for the object's kind (core/store.mjs enforces)
+   * @param {{immediate?:boolean}} [opts]
+   */
+  function setSelectedObjectProps(props, { immediate = false } = {}) {
+    const view = store.getView();
+    if (view.selection.length !== 1) return;
+    const id = view.selection[0];
+    if (isObjectLocked(store.getDoc(), view, id)) return;
+    if (immediate) {
+      ctx.exec({ type: 'doc/setObjectProps', id, props });
+    } else {
+      debouncedSetObjectProps(id, props);
+    }
+  }
+
   installGlobalSearchFocus(el, ctx);
 
   function draw() {
@@ -681,6 +722,15 @@ export function mount(el, ctx) {
       return;
     }
 
+    // Selected ROUTE's arrowhead control (OB2) — dispatches doc/setObjectProps on the object,
+    // not view/setToolOption. Checked before the generic .segmented-btn handler since it shares
+    // that visual class but carries data-obj-head (not data-value) and targets the selection.
+    const objHeadBtn = target.closest('[data-obj-head]');
+    if (objHeadBtn) {
+      setSelectedObjectProps({ head: objHeadBtn.dataset.objHead }, { immediate: true });
+      return;
+    }
+
     const segBtn = target.closest('.segmented-btn');
     if (segBtn) {
       const group = segBtn.closest('[data-segmented]');
@@ -714,6 +764,28 @@ export function mount(el, ctx) {
 
     if (target.matches('.roster-search')) {
       ctx.exec({ type: 'view/setQuery', query: target.value });
+      return;
+    }
+
+    // Selected route/sketch numeric editors (OB2): thickness / fillOpacity / border. Debounced
+    // (dragging fires per-frame), lock/active-layer guarded via setSelectedObjectProps.
+    if (target.matches('[data-obj-slider]')) {
+      const propKey = target.dataset.objSlider;
+      setSelectedObjectProps({ [propKey]: Number(target.value) });
+      return;
+    }
+
+    // Selected route/sketch Dashed toggle (OB2). Immediate — a single discrete click.
+    if (target.matches('[data-obj-toggle]')) {
+      const propKey = target.dataset.objToggle;
+      setSelectedObjectProps({ [propKey]: target.checked }, { immediate: true });
+      return;
+    }
+
+    // Selected unit/route/sketch Label editor (OB1/OB3). Debounced like the text-note/zone-label
+    // fields; the store's per-kind whitelist accepts `label` for unit/route/sketch/zone.
+    if (target.matches('[data-obj-label-input]')) {
+      setSelectedObjectProps({ label: target.value });
       return;
     }
 

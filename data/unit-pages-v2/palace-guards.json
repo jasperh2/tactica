@@ -9,7 +9,7 @@
     "rarity": "T4",
     "fightRatings": null
   },
-  "pitch": "A shield-line brawler built around Guard the Front, a charge-counter gimmick that only pays off once fully mastered — skip the mastery and the unit \"doesn't exist.\" It's not a pike unit either: holding brace instead of cycling it wastes the whole unit's damage.",
+  "pitch": "A shield-line brawler whose Guard the Front makes charge-type attacks — including charge cavalry — pass through for zero damage, but only once fully mastered; skip the mastery and the unit \"doesn't exist.\" It's not a blanket anti-cavalry pick and not a pike unit either — non-charge cavalry like Yendao bypasses the gimmick entirely, and holding brace instead of cycling it wastes the whole unit's damage.",
   "doctrines": [
     {
       "tag": "top-pick",
@@ -55,7 +55,7 @@
       {
         "name": "Yendao",
         "rel": "counters-you",
-        "why": "bypasses Guard the Front — still wrecks your unit",
+        "why": "non-charge cavalry — bypasses Guard the Front entirely, unlike other charge-type cav",
         "house": false,
         "marks": [
           1
@@ -103,21 +103,13 @@
       "author": "Superkitowiec",
       "date": "May 2022",
       "house": false
-    },
-    {
-      "mark": 4,
-      "author": "house guide",
-      "date": "Oct 2024",
-      "house": true
     }
   ],
   "gaps": [
-    "No amya-guide or house-card content exists for this unit — every prose source is a Herlajis or Superkitowiec video transcript plus the Amya tierlist row; unit-db has fightRatings/build/usage all null (richDataEligible: false).",
     "The doctrine the source calls the single highest-priority pick ('turns the unit from great to amazing in 7 seconds') is never named in the transcript audio — omitted rather than guessed at.",
     "No veterancy (top-line/bottom-line) recommendation exists in any source for this unit.",
     "No formation (F1/F2) guidance exists in any source for this unit.",
     "Ability and doctrine names ('Guard the Front', 'Anti-Infantry', 'Breakthrough', 'Iron Sights', 'sweep ability') are caption-derived and flagged by the source itself for a vet sanity check before being treated as verbatim current names.",
-    "Whether 'Breakthrough' (2023 video) and 'the all-damage-type doctrine' (2024 video) are the same doctrine is never stated by the source — kept as separate references rather than silently merged.",
-    "A house Season 21 (2024-10-24) tier snapshot {4} independently places Palace Guards in Tier 4, corroborating the Amya C/T4M rating but adding no new build or matchup detail."
+    "Whether 'Breakthrough' (2023 video) and 'the all-damage-type doctrine' (2024 video) are the same doctrine is never stated by the source — kept as separate references rather than silently merged."
   ]
 }

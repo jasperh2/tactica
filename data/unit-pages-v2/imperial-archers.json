@@ -92,12 +92,12 @@
     "tips": "Some archers with Arrow Rain in veterancy cannot equip Arrow Rain doctrine — if that applies here, equip more piercing instead. {1}"
   },
   "matchups": {
-    "cards": null,
+    "cards": [],
     "pressure": null
   },
   "controls": {
-    "loop": null,
-    "loopMarks": null,
+    "loop": [],
+    "loopMarks": [],
     "notes": null
   },
   "footnotes": [

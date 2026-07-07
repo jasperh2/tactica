@@ -103,7 +103,11 @@
     "cards": [],
     "pressure": null
   },
-  "controls": null,
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
   "footnotes": [
     {
       "mark": 1,

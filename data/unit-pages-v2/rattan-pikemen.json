@@ -9,7 +9,7 @@
     "rarity": "T2",
     "fightRatings": null
   },
-  "pitch": "A cheap poison pike line that wins fights on stacked damage-over-time rather than the hit itself — stack 4-5 autos, back off, let the poison finish the job. Its charge doctrine hits for a flat number regardless of target, turning a filler unit into a surprise giant-killer against Iron Reapers or even Yanyuedao.",
+  "pitch": "A cheap poison pike line that wins fights on stacked damage-over-time rather than the hit itself — stack 4-5 autos, back off, let the poison finish the job. Its charge doctrine hits for a flat number regardless of target, turning a filler unit into a surprise giant-killer.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -84,26 +84,7 @@
     "tips": "No need to perma-front-line during blob fights — back off a few seconds after stacking poison, then re-engage. {1} With the charge doctrine slotted, it can win matchups you wouldn't expect, including against Iron Reapers or Yanyuedao at their prime. {1}"
   },
   "matchups": {
-    "cards": [
-      {
-        "name": "Iron Reapers",
-        "rel": "pairs",
-        "why": "house claim: Full Mastery pairs well with Iron Reapers (and/or MMAs) — 2023, likely stale under the current doctrine system",
-        "house": true,
-        "marks": [
-          2
-        ]
-      },
-      {
-        "name": "Fire Archers",
-        "rel": "pairs",
-        "why": "TW pick for anti-cav duty; swap into Fire Archers when the enemy swaps",
-        "house": true,
-        "marks": [
-          3
-        ]
-      }
-    ],
+    "cards": [],
     "pressure": null
   },
   "controls": {
@@ -122,26 +103,12 @@
       "author": "Amya",
       "date": "Nov 2024, updated ~Jun 2026",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "Svarthe",
-      "date": "Nov 2023",
-      "house": true
-    },
-    {
-      "mark": 3,
-      "author": "Elowi",
-      "date": "Jul 2025",
-      "house": true
     }
   ],
   "gaps": [
-    "No doctrines+mastery house card exists for this unit in either reviewed Discord server (StarBurst's card library or Immortals #units) — confirmed genuine gap, not a capture miss.",
-    "Svarthe's 2023 house claim ('Full Mastery Rattan Pikes with MMAs and/or Iron Reapers') predates the current doctrine system and 'Rattan Pikes' as a name for this unit was never independently confirmed — flagged as likely-stale above.",
-    "No video-transcript coverage: all 20+ channels grepped; only sibling Rattan-family units (Roundshields, Vipers, Marksmen) found, zero hits on Rattan Pikemen itself.",
+    "No video-transcript coverage: all 20 channels grepped, zero hits.",
     "No fightRatings (blob/duel/skirm/flank) entry exists in unit-strengths.json for this unit.",
-    "No formation (F1/F2) guidance found in any source.",
-    "Incoming Chaos-patch nerf (2026-06-22 shortlist): poison duration 6s→4s, poison damage per stack 250→140 — not yet reflected in the Amya guide's playstyle text or Poison Doctrine V numbers above; both predate the nerf."
+    "No formation (F1/F2) or specific matchup-card guidance found in any source.",
+    "Incoming Chaos-patch nerf (2026-06-22 shortlist): poison duration 6s→4s, poison damage per stack 250→140 — not yet reflected in the Amya guide's playstyle text above."
   ]
 }

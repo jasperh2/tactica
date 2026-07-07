@@ -7,6 +7,8 @@ const COORD_DECIMALS = 2;
 const SHIPPED_FRAME_WIDTH_PX = 900;
 const SPEC_MAP_WIDTH_WISH_PX = 1600;
 const RARITY_NAMES = { 1: 'Uncommon', 2: 'Rare', 3: 'Epic', 4: 'Legendary' };
+const DEFAULT_ROUTE_THICKNESS = 3; // matches app.mjs DEFAULT_TOOL_OPTIONS.thickness + render.mjs
+const DEFAULT_ROUTE_HEAD = 'solid'; // matches render.mjs drawPolylineStroke default
 
 const COORD_ROUNDING_FACTOR = 10 ** COORD_DECIMALS;
 
@@ -22,10 +24,14 @@ function frameObjects(tactic, kf) {
   return tactic.objects.filter((obj) => obj.appearsAt === kf);
 }
 
-/** Build one playbook.json `units[]` entry for a marker object at keyframe `kf`. */
+/** Build one playbook.json `units[]` entry for a marker object at keyframe `kf`.
+ * Includes the object's stable `id` (H8/EX2 — lets the animator diff/track the same object across
+ * frames unambiguously, now that duplicate-by-code is the primary held-unit mechanism) and, when
+ * authored, its `label` (OB1). */
 function unitEntry(marker, kf) {
   const { x, y } = positionAt(marker, kf);
-  return {
+  const entry = {
+    id: marker.id,
     code: marker.code,
     name: marker.name,
     x: roundCoord(x),
@@ -33,34 +39,43 @@ function unitEntry(marker, kf) {
     role: marker.role,
     layer: marker.layerId,
   };
+  if (marker.label) entry.label = marker.label;
+  return entry;
 }
 
-/** Build one playbook.json `routes[]` entry from a route object. */
+/** Build one playbook.json `routes[]` entry from a route object. Carries the stable `id`
+ * (H8/EX2) plus authored styling — thickness/dashed/head (EX3) — so the machine-readable spec
+ * matches the rendered PNGs, and the optional `label` (OB1) when set. */
 function routeEntry(route) {
-  return {
+  const entry = {
+    id: route.id,
     points: route.points.map(([x, y]) => [roundCoord(x), roundCoord(y)]),
     color: route.role,
+    thickness: route.thickness ?? DEFAULT_ROUTE_THICKNESS,
+    dashed: route.dashed ?? false,
+    head: route.head ?? DEFAULT_ROUTE_HEAD,
   };
+  if (route.label) entry.label = route.label;
+  return entry;
 }
 
 /**
  * Build one playbook.json `zones[]` entry from a zone object, dispatching on `zone.shape`.
  *
- * SPEC-export-package.md note (amended alongside this change — see the file's "Zone shapes"
- * section): an 'ellipse' zone entry stays BYTE-IDENTICAL to the original SPEC schema
- * ({cx,cy,rx,ry,color,label?}, no `shape` key at all) so the exporter.test.mjs golden-fixture
- * test (buildPlaybook reconstructed from playbook.example.json, an ellipse-only fixture) is
- * untouched. A 'polygon' zone entry is a NEW, additive entry shape ({shape:'polygon',
- * points,color,label?}) — this is a schema ADDITION, not a compatible narrowing: any existing
- * playbook.json consumer (the Claude-Design animator) that assumes every zones[] entry has
- * cx/cy/rx/ry will need its own shape-aware handling before it can render a polygon zone. Flag
- * this to whoever owns the animator handoff before the first real polygon-zone export.
+ * SPEC-export-package.md note (see the file's "Zone shapes" section): an 'ellipse' zone entry
+ * keeps NO `shape` key ({id,cx,cy,rx,ry,color,label?}) — a consumer branches on the presence of
+ * `shape:'polygon'`. A 'polygon' zone entry is the additive entry shape ({id,shape:'polygon',
+ * points,color,label?}): any existing playbook.json consumer (the Claude-Design animator) that
+ * assumes every zones[] entry has cx/cy/rx/ry will need its own shape-aware handling before it
+ * can render a polygon zone. Both shapes now carry the object's stable `id` (H8/EX2) so the
+ * animator can track a zone across frames by id rather than positional index.
  * @param {object} zone
  * @returns {object}
  */
 function zoneEntry(zone) {
   if (zone.shape === 'polygon') {
     const entry = {
+      id: zone.id,
       shape: 'polygon',
       points: zone.points.map(([x, y]) => [roundCoord(x), roundCoord(y)]),
       color: zone.role,
@@ -70,6 +85,7 @@ function zoneEntry(zone) {
   }
 
   const entry = {
+    id: zone.id,
     cx: roundCoord(zone.cx),
     cy: roundCoord(zone.cy),
     rx: roundCoord(zone.rx),
@@ -80,7 +96,9 @@ function zoneEntry(zone) {
   return entry;
 }
 
-/** Build one playbook.json keyframe entry: cumulative units/routes/zones at `kf`. */
+/** Build one playbook.json keyframe entry: this frame's OWN units/routes/zones (independent-frames
+ * model — appearsAt===kf, NOT cumulative). The animator diffs consecutive keyframes by object id/
+ * code to find what spawns, moves, or despawns. */
 function buildKeyframeEntry(tactic, kfMeta) {
   const kf = kfMeta.n;
   const visible = frameObjects(tactic, kf);
@@ -138,9 +156,13 @@ function classFieldFor(entry, sectionKey) {
 
 /**
  * Build icons/manifest.json: unique unit codes used in the tactic, resolved against the roster.
+ * Each entry carries a `placeholder` flag (EX5): true when no real roster art shipped for that
+ * code (the zip's icons/<CODE>.png is a generated coded tile the animator must replace), false
+ * when the roster entry has an `icon` path (real art shipped in the zip). This makes the
+ * animator's to-do list accurate instead of labelling every tile "placeholder".
  * @param {{objects:object[]}} tactic
  * @param {object} roster {units,heroes,artillery,extra}
- * @returns {{note:string, icons:{code:string,name:string,class:string,rarity:string}[]}}
+ * @returns {{note:string, icons:{code:string,name:string,class:string,rarity:string,placeholder:boolean}[]}}
  */
 export function buildIconsManifest(tactic, roster) {
   const seen = new Set();
@@ -157,11 +179,12 @@ export function buildIconsManifest(tactic, roster) {
       name,
       class: found ? classFieldFor(found.entry, found.sectionKey) : '',
       rarity: RARITY_NAMES[rarityTier] ?? 'Uncommon',
+      placeholder: !found?.entry.icon,
     });
   }
 
   return {
-    note: 'Placeholder tiles. Replace CODE.png with final art; keep filenames.',
+    note: 'Each entry has a `placeholder` flag: true = generated coded tile, replace icons/CODE.png with final art (keep the filename); false = real art already shipped in this zip.',
     icons,
   };
 }
@@ -187,14 +210,16 @@ export function buildExportReadme(tactic, mapMeta) {
     'renders are references, and icons/ lists the unit art still to be generated.',
     '',
     '## Contents',
-    '- `playbook.json` — the motion spec: keyframes, cumulative unit/route/zone state, notes.',
-    '  Coordinates are percent (0-100) of the map, origin top-left.',
+    '- `playbook.json` — the motion spec: keyframes, each frame\'s own unit/route/zone state, notes.',
+    '  Coordinates are percent (0-100) of the map, origin top-left. Every object carries a stable',
+    '  `id` — diff consecutive keyframes by `id` (and `code` for icon lookup) to tween/spawn.',
     `- \`map/\` — base map render (${mapMeta.name}).`,
     '- `frames/` — composite renders: map + all annotations at each keyframe (900px wide).',
     '- `overlays/` — the same renders WITHOUT the map, transparent background, pixel-aligned 1:1',
     '  with frames/ and map/.',
-    '- `icons/manifest.json` — unit icons this animation needs; `icons/<CODE>.png` are placeholder',
-    '  tiles. Replace with final art, keep filenames.',
+    '- `icons/manifest.json` — unit icons this animation needs. Each entry\'s `placeholder` flag',
+    '  says whether `icons/<CODE>.png` is a generated tile to replace (true) or real shipped art',
+    '  (false). Replace the placeholders with final art; keep filenames.',
     '',
     `## Coordinates & timing`,
     '`x`,`y`,`cx`,`cy`,`rx`,`ry` and route points are percent of map width/height:',

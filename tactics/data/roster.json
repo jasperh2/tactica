@@ -118,7 +118,8 @@
       "tier": 4,
       "rarity": 3,
       "strongVs": "Ranged/Flanks",
-      "weakVs": "Anti-cav"
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/CC.png"
     },
     {
       "code": "CG",
@@ -273,7 +274,8 @@
       "tier": 2,
       "rarity": 1,
       "strongVs": "Infantry",
-      "weakVs": "Cavalry"
+      "weakVs": "Cavalry",
+      "icon": "assets/units/IA.png"
     },
     {
       "code": "ISC",
@@ -298,7 +300,8 @@
       "tier": 2,
       "rarity": 1,
       "strongVs": "Ranged",
-      "weakVs": "Anti-cav"
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/IS.png"
     },
     {
       "code": "JS",
@@ -570,7 +573,8 @@
       "tier": 4,
       "rarity": 3,
       "strongVs": "Ranged/Flanks",
-      "weakVs": "Anti-cav"
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/SIP.png"
     },
     {
       "code": "SIPH",
@@ -672,7 +676,8 @@
       "tier": 5,
       "rarity": 4,
       "strongVs": "Clusters",
-      "weakVs": "Focus fire"
+      "weakVs": "Focus fire",
+      "icon": "assets/units/VG.png"
     },
     {
       "code": "WPG",
@@ -735,7 +740,8 @@
       "tier": 4,
       "rarity": 3,
       "strongVs": "Ranged/Flanks",
-      "weakVs": "Anti-cav"
+      "weakVs": "Anti-cav",
+      "icon": "assets/units/YEO.png"
     },
     {
       "code": "YHK",
@@ -798,7 +804,8 @@
       "style": "Guardian",
       "rarity": 4,
       "strongVs": "Duelists",
-      "weakVs": "Kiting"
+      "weakVs": "Kiting",
+      "icon": "assets/heroes/LS.png"
     },
     {
       "code": "PA",
@@ -807,7 +814,8 @@
       "style": "Breaker",
       "rarity": 3,
       "strongVs": "Clusters",
-      "weakVs": "Ranged"
+      "weakVs": "Ranged",
+      "icon": "assets/heroes/PA.png"
     },
     {
       "code": "ND",
@@ -816,7 +824,8 @@
       "style": "Duelist",
       "rarity": 4,
       "strongVs": "Single",
-      "weakVs": "Crowds"
+      "weakVs": "Crowds",
+      "icon": "assets/heroes/ND.png"
     },
     {
       "code": "GL",
@@ -825,7 +834,8 @@
       "style": "Skirmisher",
       "rarity": 3,
       "strongVs": "Infantry",
-      "weakVs": "Focus"
+      "weakVs": "Focus",
+      "icon": "assets/heroes/GL.png"
     },
     {
       "code": "SP",
@@ -834,7 +844,8 @@
       "style": "Lancer",
       "rarity": 2,
       "strongVs": "Cavalry",
-      "weakVs": "Bursts"
+      "weakVs": "Bursts",
+      "icon": "assets/heroes/SP.png"
     },
     {
       "code": "MU",
@@ -843,7 +854,8 @@
       "style": "Marksman",
       "rarity": 4,
       "strongVs": "Backline",
-      "weakVs": "Melee"
+      "weakVs": "Melee",
+      "icon": "assets/heroes/MU.png"
     },
     {
       "code": "LB",
@@ -852,7 +864,8 @@
       "style": "Ranger",
       "rarity": 3,
       "strongVs": "Clusters",
-      "weakVs": "Melee"
+      "weakVs": "Melee",
+      "icon": "assets/heroes/LB.png"
     },
     {
       "code": "SB",
@@ -861,7 +874,8 @@
       "style": "Trapper",
       "rarity": 2,
       "strongVs": "Chasers",
-      "weakVs": "Armor"
+      "weakVs": "Armor",
+      "icon": "assets/heroes/SB.png"
     },
     {
       "code": "DB",
@@ -870,7 +884,8 @@
       "style": "Assassin",
       "rarity": 4,
       "strongVs": "Squishies",
-      "weakVs": "Tanks"
+      "weakVs": "Tanks",
+      "icon": "assets/heroes/DB.png"
     },
     {
       "code": "ML",
@@ -879,7 +894,8 @@
       "style": "Crusher",
       "rarity": 2,
       "strongVs": "Shields",
-      "weakVs": "Ranged"
+      "weakVs": "Ranged",
+      "icon": "assets/heroes/ML.png"
     },
     {
       "code": "PK",
@@ -888,7 +904,8 @@
       "style": "Pikemaster",
       "rarity": 3,
       "strongVs": "Cavalry",
-      "weakVs": "Ranged"
+      "weakVs": "Ranged",
+      "icon": "assets/heroes/PK.png"
     }
   ],
   "artillery": [
@@ -897,70 +914,80 @@
       "name": "Field Cannon",
       "type": "Direct",
       "range": "Med",
-      "rarity": 2
+      "rarity": 2,
+      "icon": "assets/artillery/CAN.png"
     },
     {
       "code": "HCN",
       "name": "Heavy Cannon",
       "type": "Siege",
       "range": "Long",
-      "rarity": 4
+      "rarity": 4,
+      "icon": "assets/artillery/HCN.png"
     },
     {
       "code": "CAT",
       "name": "Fire Catapult",
       "type": "AoE Fire",
       "range": "Med",
-      "rarity": 3
+      "rarity": 3,
+      "icon": "assets/artillery/CAT.png"
     },
     {
       "code": "BAL",
       "name": "Ballista",
       "type": "Anti-Armor",
       "range": "Long",
-      "rarity": 3
+      "rarity": 3,
+      "icon": "assets/artillery/BAL.png"
     },
     {
       "code": "FBL",
       "name": "Fire Ballista",
       "type": "AoE Fire",
       "range": "Med",
-      "rarity": 3
+      "rarity": 3,
+      "icon": "assets/artillery/FBL.png"
     },
     {
       "code": "NOB",
       "name": "Nest of Bees",
       "type": "Rocket AoE",
       "range": "Med",
-      "rarity": 4
+      "rarity": 4,
+      "icon": "assets/artillery/NOB.png"
     },
     {
       "code": "TRB",
       "name": "Trebuchet",
       "type": "Siege",
       "range": "V.Long",
-      "rarity": 4
+      "rarity": 4,
+      "icon": "assets/artillery/TRB.png"
     },
     {
       "code": "MOR",
       "name": "Mortar",
       "type": "Arc AoE",
       "range": "Long",
-      "rarity": 3
+      "rarity": 3,
+      "icon": "assets/artillery/MOR.png"
     },
     {
       "code": "RBL",
       "name": "Repeating Ballista",
       "type": "Suppress",
       "range": "Med",
-      "rarity": 2
+      "rarity": 2,
+      "icon": "assets/artillery/RBL.png"
     },
     {
       "code": "RAM",
       "name": "Battering Ram",
       "type": "Breach",
       "range": "Melee",
-      "rarity": 2
+      "rarity": 2,
+      "icon": "assets/artillery/RAM.png"
     }
   ],
   "extra": [

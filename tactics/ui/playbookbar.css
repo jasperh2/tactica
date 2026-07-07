@@ -99,6 +99,23 @@
   width: 100%;
 }
 
+.pb-tactic-rename {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pb-tactic-subtitle-input {
+  width: 100%;
+  font-size: var(--text-scale-11);
+}
+
+.pb-tactic-lockicon {
+  color: var(--text-muted);
+  font-size: var(--text-scale-11);
+  flex-shrink: 0;
+}
+
 .pb-dropdown {
   position: absolute;
   left: 0;
@@ -136,16 +153,15 @@
 }
 
 .pb-dropdown-row {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
+  align-items: center;
+  gap: var(--space-2);
   width: 100%;
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  padding: var(--space-3);
-  cursor: pointer;
+  padding: 2px var(--space-2);
   text-align: left;
 }
 
@@ -158,15 +174,115 @@
   border-color: var(--accent);
 }
 
+.pb-dropdown-row-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  flex: 1 1 auto;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  padding: var(--space-2);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
 .pb-dropdown-row-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--text-scale-12);
   font-weight: 600;
   color: var(--text-primary);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pb-dropdown-row-lockicon {
+  color: var(--text-muted);
+  font-size: var(--text-scale-10);
+  flex-shrink: 0;
 }
 
 .pb-dropdown-row-subtitle {
   font-size: var(--text-scale-9-5);
   color: var(--text-secondary);
+}
+
+.pb-dropdown-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.pb-dropdown-row:hover .pb-dropdown-row-actions,
+.pb-dropdown-row.is-active .pb-dropdown-row-actions {
+  opacity: 1;
+}
+
+.pb-row-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--text-scale-11-5);
+  cursor: pointer;
+}
+
+.pb-row-action:hover:not(:disabled) {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.pb-row-action:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pb-row-action-danger:hover:not(:disabled) {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* ---- inline lock/unlock password prompt (no window.prompt) -------------- */
+
+.pb-lock-prompt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  flex-basis: 100%;
+  padding: var(--space-2) var(--space-2) var(--space-3);
+}
+
+.pb-lock-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--text-scale-11);
+}
+
+.pb-lock-confirm {
+  flex-shrink: 0;
+  font-size: var(--text-scale-11);
+  padding: var(--space-2) var(--space-3);
+}
+
+.pb-lock-error {
+  flex-basis: 100%;
+  font-size: var(--text-scale-9-5);
+  color: var(--danger);
 }
 
 .pb-dropdown-new {

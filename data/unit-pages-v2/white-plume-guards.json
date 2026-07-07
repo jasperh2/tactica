@@ -154,19 +154,11 @@
       "author": "Amya",
       "date": "Jun 2026",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "house guide",
-      "date": "Jul 2026",
-      "house": true
     }
   ],
   "gaps": [
     "No formation guidance (F1/F2) given by any source.",
     "No dedicated video transcript exists — only queued/candidate mentions in two channel INDEX files, never captured.",
-    "No StarBurst house card exists for this unit (confirmed absent, not just uncaptured).",
-    "Only one veterancy line (Bot Line) is documented — no source discusses a Top Line alternative for this unit.",
-    "A house meta post (Jul 2026) lists this unit alongside Iron Reapers, Tiger/Leopard Cav, Queen's Knights, and Liao Rangers as a current T5 grind target — a tier co-mention, not a battlefield matchup, so it's not represented as a matchup card."
+    "Only one veterancy line (Bot Line) is documented — no source discusses a Top Line alternative for this unit."
   ]
 }

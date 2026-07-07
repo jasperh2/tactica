@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "queens-knights",
   "name": "Queens Knights",
-  "headerMeta": "Golden era · Buckler infantry · shields · 280 leadership · S-Tier · T5 · Seasonal (Lancelot Knights / Queen's Knights)",
+  "headerMeta": "Golden era · Buckler Infantry (shields) · 280 leadership · T5 · S-Tier",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "S",
@@ -14,7 +14,7 @@
       "flank": 8
     }
   },
-  "pitch": "An invincible-dash duelist that wins one-on-one trades and shreds low-count squads through pure timing. The engage kit was reworked in the 2026-06-25 patch (block, block-recovery, and Run 'Em Through invincibility windows all changed), so the timing advice below predates that change and should be treated as unverified until a post-patch source confirms it still holds.",
+  "pitch": "A duelist that dominates one-on-one trades with invincible dash mechanics and strong block. Strong against low-count units but struggles against high-count formations and block-heavy units; success depends entirely on dash timing.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -101,7 +101,7 @@
     {
       "label": "Top Line",
       "recommended": true,
-      "body": "Amya's only recommendation; no second veterancy source exists to compare against.",
+      "body": "Amya recommends as the best option.",
       "marks": [
         1
       ]
@@ -110,14 +110,14 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": "Timing on spell 1 (double-dash, invincible) is everything — no simple rule, learned per matchup; occasionally pressing 2 before 1 can flip the trade entirely. {1} Huge block and defense make it tanky enough to retreat after one dash-forward rather than push deeper into a bad trade. {1} All of this predates the 2026-06-25 rework of Base Block, Block recovery, and Run 'Em Through invincibility/stab-hit count — treat as unverified. {1}"
+    "tips": "Timing on spell 1 (double-dash invincible forward) is everything — no simple rule, learned per matchup. Occasionally press 2 first into 1 to entirely change the matchup. {1} Retreat after one dash-forward with spell 1 to preserve the unit rather than pushing deeper into a bad trade. {1}"
   },
   "matchups": {
     "cards": [
       {
         "name": "Block units",
         "rel": "counters-you",
-        "why": "loses to block-heavy compositions",
+        "why": "unit loses to block-heavy compositions",
         "house": false,
         "marks": [
           1
@@ -126,7 +126,7 @@
       {
         "name": "High-count units",
         "rel": "counters-you",
-        "why": "struggles vs multi-model formations",
+        "why": "struggles against multi-model formations",
         "house": false,
         "marks": [
           1
@@ -140,18 +140,9 @@
         "marks": [
           1
         ]
-      },
-      {
-        "name": "Madao Battalion",
-        "rel": "hero-threat",
-        "why": "hits hard enough that Madao control calls for a soft-engagement combo (charge-brace-stab-brace) instead of a full charge-in",
-        "house": false,
-        "marks": [
-          2
-        ]
       }
     ],
-    "pressure": "House investment-priority list ranks it \"safe to doctrine up\" alongside Iron Reapers, Liaos Rangers, Symmachean Stalwarts, Symmachean Paladins, Spartans, Modao — a signal it's worth committing resources to, not a matchup claim. {3}"
+    "pressure": null
   },
   "controls": {
     "loop": [
@@ -161,7 +152,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Spell 1 — dashes forward twice (occasionally three times) dealing big damage; unit is completely invincible during this attack. {1} Spell 2 — small shieldbash, okay-ish damage, good block/counter. {1}"
+    "notes": "Spell 1 — dashes forward twice (occasionally three times) dealing big damage; unit is completely invincible during this attack. {1} Spell 2 — small shieldbash with okay-ish damage and good block/counter effect. {1}"
   },
   "footnotes": [
     {
@@ -169,26 +160,14 @@
       "author": "Amya",
       "date": "Oct 2024",
       "house": false
-    },
-    {
-      "mark": 2,
-      "author": "Herlajis",
-      "date": "Mar 2024",
-      "house": false
-    },
-    {
-      "mark": 3,
-      "author": "house guide",
-      "date": "Jun 2026",
-      "house": true
     }
   ],
   "gaps": [
-    "No house-card doctrines+mastery build exists — confirmed genuine gap after a full #vet-and-docs scroll-through + server-wide Discord search. A card for 'Queen's Paladins' does exist but is very likely a different unit (StarBurst's own grind-target list names them separately); it is deliberately not used here.",
-    "Pre-2026-06 rework advice: the only how-to-use source (Amya) predates the 2026-06-25 patch's core skill rework (Base Block 750→950, Block recovery 27→47, Run 'Em Through invincibility 1s→1.6s but max stab hits 3→2, blocking units no longer trigger weapon-bounce Dazed). Because this is a mechanic rework and not a numeric tweak, the timing advice above may be actively wrong, not merely outdated.",
-    "No veterancy guidance beyond Amya's single 'Top Line' recommendation — no second source to compare against.",
-    "No positioning or formation guidance from any source.",
-    "The Amya guide's fight ratings and hero-pairing note come from a thread shared with Lancelot Knights, not unit-specific to Queens Knights alone.",
-    "No control loop beyond the two base abilities — no advanced sequencing or cooldown numbers available."
+    "Pre-2026-06 rework advice: Amya guide predates the 2026-06-25 patch's core skill rework (Base Block 750→950, Block recovery 27→47, Run 'Em Through invincibility 1s→1.6s but max stab hits 3→2). Timing rules and specific matchup play may no longer apply.",
+    "No veterancy guidance beyond Amya's 'Top Line' recommendation.",
+    "No positioning, formation, or battle-role specifics available.",
+    "No matchup-specific unit cards beyond generic counter categories.",
+    "No control loop or ability-sequence details.",
+    "Hero-pairing guidance: Amya notes 'Any', but no specifics available."
   ]
 }

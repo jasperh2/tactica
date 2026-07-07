@@ -40,6 +40,9 @@ const ZONE_LABEL_FONT_PX = 8.5;
 const ZONE_LABEL_PAD_X = 6;
 const ZONE_LABEL_PAD_Y = 4;
 const ZONE_LABEL_GAP_PX = 6;
+const MARKER_LABEL_GAP_PX = 3; // gap between marker bottom edge and its label pill (OB1)
+const MARKER_LABEL_BOX_H = ZONE_LABEL_FONT_PX + ZONE_LABEL_PAD_Y * 2; // pill height (same pill metrics)
+const ROUTE_LABEL_GAP_PX = 6; // gap above a route's last point for its label pill (OB1)
 const TEXT_DEFAULT_SIZE_PX = 14;
 const TEXT_CHIP_PAD_X = 6;
 const TEXT_CHIP_PAD_Y = 4;
@@ -161,7 +164,10 @@ function roundRectPath(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-/** Draws one unit marker: rounded square, role fill, icon image or mono code fallback. */
+/** Draws one unit marker: rounded square, role fill, icon image or mono code fallback. When the
+ * marker carries a `label` (OB1 — now exported into playbook.json units[]), a mono pill is drawn
+ * beneath it so the frame PNG stays faithful to the machine-readable spec (module header: frames
+ * match playbook.json 1:1). */
 function drawMarker(ctx, obj, kf, w, h, icons) {
   const pos = resolvedPosition(obj, kf);
   const cx = toPx(pos.x, w);
@@ -193,6 +199,13 @@ function drawMarker(ctx, obj, kf, w, h, icons) {
     ctx.fillText(obj.code, cx, cy + 0.5);
   }
   ctx.restore();
+
+  if (obj.label) {
+    // Pill hangs BELOW the marker; drawLabelPill grows upward from its baselineY, so offset by the
+    // pill height to sit clear of the marker bottom edge.
+    const belowY = cy + size / 2 + MARKER_LABEL_GAP_PX + MARKER_LABEL_BOX_H;
+    drawLabelPill(ctx, obj.label, cx, belowY);
+  }
 }
 
 /**
@@ -276,6 +289,13 @@ export function drawPolylineStroke(ctx, obj, w, h) {
     }
   }
   ctx.restore();
+
+  // Route label (OB1 — now exported into playbook.json routes[]): mono pill above the last point,
+  // so the frame PNG carries the same authored label as the machine-readable spec.
+  if (obj.label) {
+    const [lastX, lastY] = obj.points[obj.points.length - 1];
+    drawLabelPill(ctx, obj.label, toPx(lastX, w), toPx(lastY, h) - ROUTE_LABEL_GAP_PX);
+  }
 }
 
 /**

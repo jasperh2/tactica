@@ -2,7 +2,7 @@
   "schema": "cb-unit-page-v2/1",
   "slug": "symmachean-stalwarts",
   "name": "Symmachean Stalwarts",
-  "headerMeta": "Heroic era · Melee infantry · shields · 240 leadership · Seasonal & Honor (Legacy of Fire)",
+  "headerMeta": "Heroic era · Melee infantry · shields · 240 leadership · Seasonal (Legacy of Fire)",
   "date": "2026-06-29",
   "stats": {
     "metaTier": "AA",
@@ -14,7 +14,7 @@
       "flank": 5
     }
   },
-  "pitch": "A near-unbreakable frontal wall that wins blobs, skirmishes, and duels through disciplined brace timing — invincible from the front, but a charge into its back is a near-guaranteed kill. It sits high on house doctrine-investment priority lists, and its one real check is heavy block-break (Claymore/Reapers with Linebreaker, or a block-break hero build).",
+  "pitch": "Stalwarts are the ultimate defensive anchor with near-unbreakable frontal hold and exceptional dueling power, dominating blob fights and skirmishes through perfect brace timing and cooldown resets. Vulnerable from behind and weak against heavy block-break units like Claymore with Linebreaker, they demand disciplined positioning and map awareness.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -67,7 +67,7 @@
     {
       "tag": "filler",
       "name": "Noble Blood Doctrine I",
-      "note": "only effective vs vipers / AOE comps, otherwise your blocking dmg won't apply",
+      "note": "only effective vs vipers / AOE comps",
       "marks": [
         1
       ]
@@ -92,51 +92,41 @@
     }
   ],
   "battleRole": {
-    "positioning": "Hold chokepoints and block ranged fire as the frontline shield-wall anchor — invincible from the front, but never advance into open space without map control; anything that gets behind it turns the fight. {2}",
-    "formation": "Use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart tightly for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that. {1}",
-    "tips": "X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up. {1} CCi (Stand Fast) is your reset button — pop it vs polearm ulting you, enemy Imperial Pike, cavalry charge, or any CC; it resets both block bar and CC on you. {1} Never V (retreat) with Stalwart, only brace. {1}"
+    "positioning": "Stalwarts are invincible from the front {2} and excel as the frontline shield-wall anchor. Position them to hold chokepoints and block ranged fire. Never advance into open space without map control — they are utterly vulnerable from behind {2}.",
+    "formation": "Use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart unit tightly for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that {1}.",
+    "tips": "X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up {1}. CCi (Stand Fast) is your reset button — pop it vs polearm ultying you, enemy Imperial Pike, cavalry charge, or any CC {1}. Never V (retreat) with Stalwart, only brace {1}."
   },
   "matchups": {
     "cards": [
       {
         "name": "Claymore & Reapers (with Linebreaker)",
         "rel": "counters-you",
-        "why": "heavy block-break overcomes Stalwart defenses",
+        "why": "heavy block-break units that overcome Stalwart defenses",
         "house": false,
         "marks": [
           1
         ]
       },
       {
-        "name": "Cavalry (rear charge)",
+        "name": "Cavalry",
         "rel": "counters-you",
-        "why": "invincible from the front — a front charge is close to suicide — but a charge into the back is a near-guaranteed kill",
+        "why": "Any charge from behind can kill Stalwarts; front-charge also brutal {3}",
         "house": false,
         "marks": [
-          2,
-          4
-        ]
-      },
-      {
-        "name": "Poleaxe/billhook block-break hero build",
-        "rel": "hero-threat",
-        "why": "flameshackle-armor poleaxe pushback and billhook block-break anything they touch; house thread credits repeated block-breaks on Stalwarts for turning a 70-kill fight into 200",
-        "house": true,
-        "marks": [
-          5
+          2
         ]
       },
       {
         "name": "All ranged and melee units",
         "rel": "pairs",
-        "why": "counters everything with a good CCi doctrine timing",
+        "why": "Stalwarts counter everything with good CCi doctrine timing {1}",
         "house": false,
         "marks": [
           1
         ]
       }
     ],
-    "pressure": "House doctrine-investment priority (StaRBuRsT): ranked directly below Iron Reapers/Queen Knights/Liao for general spend, and inside the top four for the purple meta. {3}"
+    "pressure": null
   },
   "controls": {
     "loop": [
@@ -147,7 +137,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Core loop: X-move in or advance, brace (1), repeat. {1} CCi (Stand Fast) resets both your block bar and any CC on you — pop it vs polearm ultimate, enemy Imperial Pike, or cavalry charge. {1} Master the brace-timing rhythm: brace is your everything — never use V (retreat only, no brace-cancel value), stay braced, and re-brace every time the cooldown is up. {1} CCi is mandatory in every build (resets block AND breaks CC). {1} A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack. {1}"
+    "notes": "Core loop: X-move in or advance, brace (1), repeat. {1} CCi (Stand Fast) resets both your block bar and any CC on you — pop it vs polearm ultimate, enemy Imperial Pike, or cavalry charge. {1} Master the brace-timing rhythm: brace is your everything — never use V (retreat only brace), stay braced, and re-brace every time the cooldown is up. {1} CCi is mandatory in every build (resets block AND breaks CC). {1} A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack. {1}"
   },
   "footnotes": [
     {
@@ -161,30 +151,9 @@
       "author": "Evo Loz Gaming",
       "date": "Jan 2021",
       "house": false
-    },
-    {
-      "mark": 3,
-      "author": "house guide (StaRBuRsT)",
-      "date": "Jun 2026",
-      "house": true
-    },
-    {
-      "mark": 4,
-      "author": "PixLNickz",
-      "date": "May 2026",
-      "house": false
-    },
-    {
-      "mark": 5,
-      "author": "house guide",
-      "date": "Jan–Feb 2026",
-      "house": true
     }
   ],
   "gaps": [
-    "No StarBurst house card exists for this unit — confirmed independently by both the amya-guide's own note and the OneMoreTime card-library table (18 cards listed, none for Stalwarts); Sunward Phalanx by contrast has a known 'Titanic' card.",
-    "Patch (2026-06-25): Brace damage hitbox −12%, stab damage hitbox −18% — hitbox-only tuning; shortlist assessment says no skill/mechanic change, doctrine likely still holds just slightly weaker. Pre-patch fight ratings not re-verified post-nerf.",
-    "Rear-charge/front-invincibility framing is corroborated across three unrelated video sources (2021 and 2026) but none give exact numbers — qualitative only.",
-    "Two 2021 KnightStalker transcripts (Spear Sergeants, Men-at-Arms) mention Stalwarts only as a power-comparison benchmark, not as guide subjects — no additional Stalwarts-specific mechanics beyond what's already sourced from Amya."
+    "Video-transcript content is from 2021–2026; pre-patch (2021) ratings may not reflect current-season tuning; post-patch (Jun 2026) sources indicate hitbox-only nerfs (−12% brace, −18% stab) with no doctrine change."
   ]
 }

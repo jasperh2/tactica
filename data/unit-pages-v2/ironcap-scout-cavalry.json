@@ -78,9 +78,20 @@
       ]
     }
   ],
-  "battleRole": null,
-  "matchups": null,
-  "controls": null,
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": null
+  },
+  "controls": {
+    "loop": [],
+    "loopMarks": [],
+    "notes": null
+  },
   "footnotes": [
     {
       "mark": 1,

@@ -202,6 +202,92 @@ export function moveMarker(tactic, id, kf, xy) {
   };
 }
 
+/**
+ * Deep-clones a MapObject under a new id (positions/points get fresh nested copies so the clone
+ * shares no reference with the source — editing one never mutates the other).
+ * @param {object} obj @param {string} newId @returns {object}
+ */
+function deepCloneObject(obj, newId) {
+  const clone = { ...obj, id: newId };
+  if (obj.positions) {
+    clone.positions = Object.fromEntries(
+      Object.entries(obj.positions).map(([k, v]) => [k, { ...v }])
+    );
+  }
+  if (obj.points) clone.points = obj.points.map((p) => [...p]);
+  return clone;
+}
+
+/** Shifts whatever geometry an object carries by (dx,dy) IN PLACE on an already-cloned object. */
+function offsetObjectGeometry(clone, kf, dx, dy) {
+  if (clone.positions) {
+    const at = positionAt(clone, kf);
+    clone.positions = { [kf]: { x: at.x + dx, y: at.y + dy } };
+  }
+  if (clone.points) clone.points = clone.points.map(([x, y]) => [x + dx, y + dy]);
+  if (typeof clone.x === 'number') clone.x += dx;
+  if (typeof clone.y === 'number') clone.y += dy;
+  if (typeof clone.cx === 'number') clone.cx += dx;
+  if (typeof clone.cy === 'number') clone.cy += dy;
+}
+
+/**
+ * Clones a whole tactic (playbook) as an independent copy: a collision-free id derived from
+ * `existingTactics`, every object re-id'd from a fresh o1.. counter, and keyframes/notes deep-
+ * copied. The clone starts UNLOCKED (a fork is meant to be edited) regardless of the source's
+ * lock state. Pure — the source is never mutated.
+ * @param {Tactic} source @param {Tactic[]} existingTactics @param {string} [name]
+ * @returns {Tactic}
+ */
+export function cloneTactic(source, existingTactics, name) {
+  let counter = 1;
+  const objects = (source.objects ?? []).map((obj) => deepCloneObject(obj, `o${counter++}`));
+  return {
+    id: nextTacticId(existingTactics),
+    name: name && name.trim() ? name.trim() : `${source.name} copy`,
+    subtitle: source.subtitle ?? '',
+    nextId: counter,
+    keyframes: (source.keyframes ?? []).map((kf) => ({ ...kf })),
+    objects,
+    notes: { ...(source.notes ?? {}) },
+  };
+}
+
+/**
+ * Clones the objects with ids in `ids` into frame `kf` as independent copies (fresh ids from the
+ * tactic's nextId counter, geometry offset by (dx,dy) so a paste doesn't perfectly overlap the
+ * source). Used by copy/paste/duplicate. Returns a new tactic; unknown ids are skipped.
+ * @param {Tactic} tactic @param {string[]} ids @param {number} kf @param {number} dx @param {number} dy
+ * @returns {Tactic}
+ */
+export function duplicateObjectsInTactic(tactic, ids, kf, dx = 3, dy = 3) {
+  const idSet = new Set(ids);
+  const sources = tactic.objects.filter((o) => idSet.has(o.id));
+  if (sources.length === 0) return tactic;
+  let nextId = tactic.nextId;
+  const clones = sources.map((obj) => {
+    const clone = deepCloneObject(obj, `o${nextId++}`);
+    clone.appearsAt = kf;
+    offsetObjectGeometry(clone, kf, dx, dy);
+    return clone;
+  });
+  return { ...tactic, nextId, objects: [...tactic.objects, ...clones] };
+}
+
+/**
+ * Picks the layer id the view should re-anchor to after `deletedId` is removed (fixes the
+ * dangling-active-layer bug: a deleted active layer would otherwise leave the draw tools stamping
+ * a dead layerId). Returns the current active id when it survives, else the layer that took the
+ * deleted one's slot (or the first remaining layer). `layers` is the list AFTER deletion.
+ * @param {Layer[]} layers @param {string} deletedId @param {string} currentActiveId @returns {string}
+ */
+export function pickActiveLayerAfterDelete(layers, deletedId, currentActiveId) {
+  if (currentActiveId !== deletedId && layers.some((l) => l.id === currentActiveId)) {
+    return currentActiveId;
+  }
+  return layers[0]?.id ?? 'units';
+}
+
 // ---- keyframeOps ------------------------------------------------------------
 // Keyframes are 1-based contiguous. Every op below remaps object appearsAt/positions keys
 // so they stay consistent with the renumbered keyframe list — this is the classic corruption
