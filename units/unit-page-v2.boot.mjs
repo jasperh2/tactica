@@ -1,604 +1,493 @@
-// units/unit-page-v2.boot.mjs — DOM rendering for the v2 unit page, "Modao Cheat Sheet" layout.
-// Design source: design/handoff-unit-page-v3/Modao Cheat Sheet.dc.html (imported from Claude Design
-// 2026-07-07). Data contract is UNCHANGED — still one cb-unit-page-v2/1 record per
-// data/unit-pages-v2/<slug>.json (.claude/skills/unit-template-fill/SKILL.md). This redesign only
-// re-arranges/re-groups the same fields into a Discord-dark, gold-accented single-page cheat sheet:
-//   eyebrow → header widget (icon/name/meta/date/stat-chips + pitch) → three-band grid
-//   (doctrines timeline · veterancy+controls · matchups grouped Counters/Countered/Synergies) →
-//   full-width battle-role cards → footnote/gaps footer.
+// units/unit-page-v2.boot.mjs — DOM rendering for the v2 unit-page layout (cb-unit-page-v2/1
+// schema). Reference markup/classes: site/units/unit-page-template-v2.html (Jasper-approved
+// 2026-07-06). Contract: .claude/skills/unit-template-fill/SKILL.md.
 //
-// The whole tree is built into ONE root element (unit.html's `#unit-v2-page`) so the layout is
-// fully owned here, not split across HTML host stubs. unit-page.boot.mjs's boot() shows that root
-// (hides the v1 identity-only / full-guide trees) and calls renderUnitPageV2(record, root).
+// Renders into the v2-specific host elements declared in unit.html (`#unit-v2-*`), kept entirely
+// separate from the v1 host tree (`#unit-header`, `#unit-doctrines`, etc.) so the two layouts never
+// share a DOM subtree — unit-page.boot.mjs's boot() decides which tree to show/hide based on the
+// fetched record's schema field (see that file's dispatch comment).
 //
-// ESCAPING: every record-derived value is written via `.textContent` / `document.createTextNode`,
-// never `.innerHTML` — same rationale as unit-page.boot.mjs's header comment (the DOM never
-// re-parses those as markup, so there is no injection surface and pre-escaping would corrupt real
-// content like "Ares' Flurry"). The ONE `.innerHTML` use is `icon()` below, and it only ever
-// assigns a compile-time-constant SVG string from SVG_ICONS — never a record value — which is
-// exactly the static-markup case that rule explicitly permits. parseInlineMarks likewise builds
-// `<sup>` nodes structurally, so a literal `{`/`}` in prose stays plain text.
+// ESCAPING: every text value below is assigned via `.textContent =` or `document.createTextNode`,
+// never `.innerHTML` — matching unit-page.boot.mjs's own no-escaping-needed rationale (see that
+// file's header comment). The one exception that LOOKS like markup injection, parseInlineMarks,
+// is not one: it splits a string on `{n}` tokens and builds `<sup>` elements via
+// document.createElement + textContent, so a unit name or note containing a literal `{` or `}`
+// character (not a footnote mark) still renders as plain text, never re-parsed as HTML.
 
 import {
   footnoteLegendTextV2,
   parseInlineMarks,
   doctrineTagLabelV2,
   doctrineTagClassV2,
+  matchupRelationLabelV2,
+  cssSafeSuffixV2,
   formatCornerDate,
   FIGHT_RATING_CHIPS_V2,
   isFlankChip,
-  isNoSourceText,
-  groupMatchups,
-  splitIntoBullets,
-  seasonLabelV2,
 } from './unit-page-v2.mjs';
-import { doctrineIconPath } from './doctrine-icon.mjs';
 
-/** site/units/ -> site/ (import.meta.url-relative, never root-relative — same PATH RESOLUTION
- * convention as unit-page.boot.mjs, so icon URLs stay correct under a subpath deploy). */
-const SITE_ROOT_URL = new URL('../', import.meta.url);
-
-/** Unit header icon lives at site/assets/unit-icons/<slug>.png (keyed by slug). Not every unit has
- * one (53 of 68 v2 units today); a missing file 404s and the img's error handler swaps in the
- * placeholder tile, so this always returns the candidate path and lets the DOM decide. */
-function unitIconPath(slug) {
-  return slug ? `assets/unit-icons/${encodeURIComponent(slug)}.png` : null;
+/** Builds a house lock glyph span (🔒) — same contract as unit-page.boot.mjs's lockGlyph (calm,
+ * never alarm-styled; the text it decorates already carries the "house" meaning on its own). */
+function lockGlyph() {
+  const lock = document.createElement('span');
+  lock.className = 'lock';
+  lock.setAttribute('aria-label', 'house source');
+  lock.textContent = '🔒';
+  return lock;
 }
 
-// ---- Inline SVG icon set (static constants — see file-header ESCAPING note) ----------------------
-//
-// Small Phosphor-style 24×24 glyphs, `currentColor`-driven so CSS controls their color. Kept inline
-// (rather than an icon webfont / CDN) to keep the page self-contained and offline-capable. Every
-// value here is a compile-time constant; none is ever built from a record field.
-
-const SVG_ICONS = {
-  star: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.85 6.1 6.65.62-5 4.45 1.46 6.53L12 16.9l-5.96 3.3 1.46-6.53-5-4.45 6.65-.62z"/></svg>',
-  shield: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.6-8 11-4.6-2.4-8-6-8-11V5z"/></svg>',
-  repeat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 3v5h-5"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16"/><path d="M4 21v-5h5"/></svg>',
-  info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><line x1="12" y1="11" x2="12" y2="16.2"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg>',
-  crosshair: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="6.8"/><line x1="12" y1="1.6" x2="12" y2="5.2"/><line x1="12" y1="18.8" x2="12" y2="22.4"/><line x1="1.6" y1="12" x2="5.2" y2="12"/><line x1="18.8" y1="12" x2="22.4" y2="12"/></svg>',
-  grid: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="7.6" height="7.6" rx="1.2"/><rect x="13.4" y="3" width="7.6" height="7.6" rx="1.2"/><rect x="3" y="13.4" width="7.6" height="7.6" rx="1.2"/><rect x="13.4" y="13.4" width="7.6" height="7.6" rx="1.2"/></svg>',
-  bulb: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 20.5h6v1H9zM12 2a7 7 0 0 0-4.2 12.6c.5.4.7.9.7 1.5v.4h7v-.4c0-.6.2-1.1.7-1.5A7 7 0 0 0 12 2z"/></svg>',
-};
-
-/**
- * Builds a decorative `<span>` carrying one inline SVG glyph (aria-hidden — icons are decorative in
- * this layout; every glyph is accompanied by a text label). `name` selects a constant from
- * SVG_ICONS; an unknown name falls back to the neutral dot so a slot always renders something.
- * @param {string} name
- * @param {string} [className]
- * @returns {HTMLSpanElement}
- */
-function icon(name, className) {
-  const span = document.createElement('span');
-  span.className = className ? `cs-ic ${className}` : 'cs-ic';
-  span.setAttribute('aria-hidden', 'true');
-  span.innerHTML = SVG_ICONS[name] || ''; // static constant only — never record data
-  return span;
+/** Appends a lock glyph to `parent` only when `isHouse` is true. */
+function appendLockIfHouse(parent, isHouse) {
+  if (isHouse === true) parent.appendChild(lockGlyph());
 }
 
-/**
- * Builds a square icon tile that shows a real image when `iconPath` resolves and a striped
- * placeholder ("holds a place" until real art exists) otherwise. A resolvable path that then 404s
- * swaps itself for the placeholder via the img's error handler, so a stale map entry / missing file
- * never leaves a broken image. Sizing comes from `className` (`cs-head-icon` / `cs-doc-tile`).
- * @param {string} className
- * @param {string|null} iconPath  site-relative path (e.g. "assets/doctrine-icons/<slug>.png") or null
- * @returns {HTMLSpanElement}
- */
-function iconTile(className, iconPath) {
-  const tile = el('span', className);
-  tile.setAttribute('aria-hidden', 'true');
-  if (iconPath) {
-    const img = document.createElement('img');
-    img.src = new URL(iconPath, SITE_ROOT_URL).href;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.addEventListener('error', () => {
-      tile.classList.add('is-ph');
-      img.remove();
-    });
-    tile.appendChild(img);
-  } else {
-    tile.classList.add('is-ph');
-  }
-  return tile;
-}
-
-// ---- Small DOM builders ------------------------------------------------------------------------
-
-/** Creates an element with an optional class and optional textContent (text set via .textContent,
- * so it is inserted literally — never parsed as markup). */
-function el(tag, className, text) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text !== undefined && text !== null) node.textContent = String(text);
-  return node;
-}
-
-/** A `<sup>` carrying one or more footnote marks (e.g. "1", or "1 2" when a field cites two
- * sources), matching the design's small mono superscripts. */
+/** Builds a `<sup>` footnote-mark element (e.g. "1", "2 3" for multiple marks on one field). */
 function footnoteSup(marks) {
   const sup = document.createElement('sup');
   sup.textContent = Array.isArray(marks) && marks.length > 0 ? marks.join(' ') : '';
   return sup;
 }
 
-/** House lock glyph (🔒) — calm, never alarm-styled; the content it marks already carries the
- * "house source" meaning on its own. */
-function lockGlyph() {
-  const lock = el('span', 'lock', '🔒');
-  lock.setAttribute('aria-label', 'house source');
-  return lock;
-}
-
-/** Appends a lock glyph to `parent` only when `isHouse === true`. */
-function appendLockIfHouse(parent, isHouse) {
-  if (isHouse === true) parent.appendChild(lockGlyph());
-}
-
-/** Appends `text` to `parent`, converting inline `{n}` footnote placeholders into `<sup>` nodes as
- * it goes (contract: SKILL.md "Inline marks in prose as `{n}`"). Degrades a malformed `{...}` token
- * to visible literal text via parseInlineMarks rather than dropping or throwing. */
+/**
+ * Appends `text` to `parent`, converting inline `{n}` footnote-mark placeholders into `<sup>`
+ * elements as it goes (contract: SKILL.md "Inline marks in prose as `{n}` (renderer converts)").
+ * Uses parseInlineMarks so a malformed `{...}` token degrades to visible literal text rather than
+ * vanishing or throwing.
+ * @param {HTMLElement} parent
+ * @param {string|null|undefined} text
+ */
 function appendProseWithMarks(parent, text) {
   for (const segment of parseInlineMarks(text)) {
-    if (segment.type === 'text') parent.appendChild(document.createTextNode(segment.value));
-    else parent.appendChild(footnoteSup([segment.value]));
+    if (segment.type === 'text') {
+      parent.appendChild(document.createTextNode(segment.value));
+    } else {
+      parent.appendChild(footnoteSup([segment.value]));
+    }
   }
 }
 
-/** Collects the union of every `marks` array across a list of contract entries, first-seen order,
- * de-duplicated — used to build a panel head's combined footnote superscript. */
-function collectAllMarks(entries) {
-  const seen = [];
-  for (const entry of Array.isArray(entries) ? entries : []) {
-    if (!Array.isArray(entry.marks)) continue;
-    for (const mark of entry.marks) if (!seen.includes(mark)) seen.push(mark);
+// ---- Header (icon, name, meta, corner date, stat chips) ------------------------
+
+/** Renders the v2 header: icon tile, name, meta line, corner date (no sentence — SKILL.md/template
+ * hard rule), and the tier/rarity/fightRatings stat-chip row. */
+function renderHeaderV2(page, hostEl) {
+  hostEl.innerHTML = '';
+
+  const row = document.createElement('div');
+  row.className = 'hd';
+
+  const iconEl = document.createElement('div');
+  iconEl.className = 'hd-icon';
+  iconEl.setAttribute('aria-hidden', 'true');
+  row.appendChild(iconEl);
+
+  const identity = document.createElement('div');
+  const nameEl = document.createElement('div');
+  nameEl.className = 'hd-name';
+  nameEl.textContent = page.name;
+  identity.appendChild(nameEl);
+  if (page.headerMeta) {
+    const metaEl = document.createElement('div');
+    metaEl.className = 'hd-meta';
+    metaEl.textContent = page.headerMeta;
+    identity.appendChild(metaEl);
   }
-  return seen;
-}
+  row.appendChild(identity);
 
-/** One panel head: gold accent bar + uppercase mono label + the panel's combined footnote marks
- * (each mark a separate small mono chip, matching the design's `<span>1</span><span>4</span>...`). */
-function panelHead(label, marks) {
-  const head = el('div', 'cs-phead');
-  head.appendChild(el('span', 'cs-bar'));
-  head.appendChild(el('span', 'cs-plabel', label));
-  const list = Array.isArray(marks) ? marks : [];
-  if (list.length > 0) {
-    const marksEl = el('span', 'cs-pmarks');
-    for (const mark of list) marksEl.appendChild(el('span', null, String(mark)));
-    head.appendChild(marksEl);
-  }
-  return head;
-}
-
-/** A muted empty-state note (used when a whole panel has no captured content). */
-function absentNote(text) {
-  return el('p', 'cs-empty', text);
-}
-
-// ---- Eyebrow -----------------------------------------------------------------------------------
-
-/** The top strip: crest tile + IMMORTALS · UNIT GUIDE + rule + optional SEASON label (derived from
- * headerMeta; omitted entirely for non-seasonal units). */
-function renderEyebrow(page) {
-  const bar = el('div', 'cs-eyebrow');
-  const crest = el('span', 'cs-crest');
-  crest.appendChild(icon('shield'));
-  bar.appendChild(crest);
-  bar.appendChild(el('span', 'cs-brand', 'IMMORTALS'));
-  bar.appendChild(el('span', 'cs-kicker', 'UNIT GUIDE'));
-  bar.appendChild(el('span', 'cs-rule'));
-  const season = seasonLabelV2(page.headerMeta);
-  if (season) bar.appendChild(el('span', 'cs-season', season));
-  return bar;
-}
-
-// ---- Header widget (identity, date, stat chips, pitch) -----------------------------------------
-
-function statChip(value, label, modifier) {
-  const chip = el('div', modifier ? `cs-chip ${modifier}` : 'cs-chip');
-  chip.appendChild(el('b', null, value));
-  chip.appendChild(el('span', null, label));
-  return chip;
-}
-
-function renderHeader(page) {
-  const section = el('section', 'cs-header');
-
-  const row = el('div', 'cs-head-row');
-
-  const id = el('div', 'cs-id');
-  id.appendChild(iconTile('cs-head-icon', unitIconPath(page.slug)));
-  const idText = el('div', 'cs-id-text');
-  idText.appendChild(el('h1', 'cs-name', page.name));
-  if (page.headerMeta) idText.appendChild(el('p', 'cs-meta', page.headerMeta));
-  id.appendChild(idText);
-  row.appendChild(id);
-
-  const right = el('div', 'cs-head-right');
   const cornerDate = formatCornerDate(page.date);
-  if (cornerDate) right.appendChild(el('span', 'cs-date', cornerDate));
+  if (cornerDate) {
+    const dateEl = document.createElement('div');
+    dateEl.className = 'hd-date';
+    dateEl.textContent = cornerDate;
+    row.appendChild(dateEl);
+  }
 
-  const chips = el('div', 'cs-chips');
+  hostEl.appendChild(row);
+
+  const chipsRow = document.createElement('div');
+  chipsRow.className = 'chips';
   const stats = page.stats || {};
-  if (stats.metaTier) chips.appendChild(statChip(stats.metaTier, 'tier', 'is-tier'));
-  if (stats.rarity) chips.appendChild(statChip(stats.rarity, 'rarity'));
+
+  if (stats.metaTier) {
+    const chip = document.createElement('div');
+    chip.className = 'stat tier';
+    const b = document.createElement('b');
+    b.textContent = stats.metaTier;
+    const span = document.createElement('span');
+    span.textContent = 'tier';
+    chip.append(b, span);
+    chipsRow.appendChild(chip);
+  }
+  if (stats.rarity) {
+    const chip = document.createElement('div');
+    chip.className = 'stat';
+    const b = document.createElement('b');
+    b.textContent = stats.rarity;
+    const span = document.createElement('span');
+    span.textContent = 'rarity';
+    chip.append(b, span);
+    chipsRow.appendChild(chip);
+  }
   if (stats.fightRatings) {
     for (const [label, key] of FIGHT_RATING_CHIPS_V2) {
       const value = stats.fightRatings[key];
       if (value === null || value === undefined) continue;
-      chips.appendChild(statChip(String(value), label, isFlankChip(label) ? 'is-flank' : null));
+      const chip = document.createElement('div');
+      chip.className = isFlankChip(label) ? 'stat flank' : 'stat';
+      const b = document.createElement('b');
+      b.textContent = String(value);
+      const span = document.createElement('span');
+      span.textContent = label;
+      chip.append(b, span);
+      chipsRow.appendChild(chip);
     }
   }
-  right.appendChild(chips);
-  row.appendChild(right);
-  section.appendChild(row);
-
-  if (page.pitch) {
-    const pitch = el('div', 'cs-pitch');
-    pitch.appendChild(el('p', null, page.pitch));
-    section.appendChild(pitch);
-  }
-  return section;
+  hostEl.appendChild(chipsRow);
 }
 
-// ---- Doctrines (timeline of tiles) -------------------------------------------------------------
+// ---- Pitch box ------------------------------------------------------------------
 
-function renderDoctrines(page, doctrineIconMap) {
-  const panel = el('section', 'cs-panel cs-panel-doctrines');
+/** Renders the high-contrast 2-sentence pitch box. Verbatim text, no mark parsing — the pitch is
+ * the ONE synthesized text on the page per SKILL.md rule 5 ("everything else traces to a source
+ * excerpt"), so it carries no footnote marks by contract. */
+function renderPitchV2(page, hostEl) {
+  hostEl.innerHTML = '';
+  if (!page.pitch) return;
+  const p = document.createElement('p');
+  p.textContent = page.pitch;
+  hostEl.appendChild(p);
+}
+
+// ---- Panel title helper ---------------------------------------------------------
+
+/** Builds one v2 panel title: gold accent bar + uppercase mono label + optional footnote sup,
+ * matching the template's `.ph` block (`<span class="bar">` + `<h3>` + `<sup>`). */
+function panelTitleV2(text, marks) {
+  const ph = document.createElement('div');
+  ph.className = 'ph';
+  const bar = document.createElement('span');
+  bar.className = 'bar';
+  const h3 = document.createElement('h3');
+  h3.textContent = text;
+  ph.append(bar, h3);
+  if (Array.isArray(marks) && marks.length > 0) ph.appendChild(footnoteSup(marks));
+  return ph;
+}
+
+function absentNoteV2(text) {
+  const p = document.createElement('p');
+  p.className = 'empty-state';
+  p.textContent = text;
+  return p;
+}
+
+// ---- Doctrines --------------------------------------------------------------------
+
+/** Renders the doctrines grid: tag pill + name + note per row, no redundant tag words in the note
+ * (SKILL.md rule 3 — the compiler already stripped those; the renderer just displays what's given). */
+function renderDoctrinesV2(page, hostEl) {
+  hostEl.innerHTML = '';
   const entries = Array.isArray(page.doctrines) ? page.doctrines : [];
-  panel.appendChild(panelHead('Doctrines', collectAllMarks(entries)));
+  hostEl.appendChild(panelTitleV2('Doctrines', collectAllMarks(entries)));
 
   if (entries.length === 0) {
-    panel.appendChild(absentNote('No doctrine guide has been captured for this unit yet.'));
-    return panel;
+    hostEl.appendChild(absentNoteV2('No doctrine guide has been captured for this unit yet.'));
+    return;
   }
 
-  const list = el('div', 'cs-doc-list');
+  const grid = document.createElement('div');
+  grid.className = 'doc';
   for (const entry of entries) {
-    const rowEl = el('div', 'cs-doc');
-
-    // Real doctrine art keyed by (canonical) name via the exact-match name->slug map; an
-    // unresolved/absent name renders the striped placeholder tile ("holds a place" until the name
-    // is canonicalized or the art lands), never a wrong icon.
-    rowEl.appendChild(iconTile('cs-doc-tile', doctrineIconPath(entry.name, doctrineIconMap)));
-
-    const body = el('div', 'cs-doc-body');
     if (entry.tag) {
-      const tag = el('span', `cs-tag is-${doctrineTagClassV2(entry.tag)}`);
-      if (entry.tag === 'top-pick') tag.appendChild(icon('star', 'cs-tag-star'));
-      tag.appendChild(document.createTextNode(doctrineTagLabelV2(entry.tag)));
-      body.appendChild(tag);
+      const tag = document.createElement('span');
+      tag.className = `tag ${doctrineTagClassV2(entry.tag)}`;
+      tag.textContent = doctrineTagLabelV2(entry.tag);
+      grid.appendChild(tag);
+    } else {
+      grid.appendChild(document.createElement('span'));
     }
-    body.appendChild(el('div', 'cs-doc-name', entry.name || ''));
+
+    const nameWrap = document.createElement('span');
+    nameWrap.className = 'name';
+    nameWrap.appendChild(document.createTextNode(entry.name || ''));
     if (entry.note) {
-      const note = el('div', 'cs-doc-note');
-      appendProseWithMarks(note, entry.note);
-      body.appendChild(note);
+      const noteEl = document.createElement('span');
+      noteEl.className = 'note';
+      noteEl.appendChild(document.createTextNode(' — '));
+      appendProseWithMarks(noteEl, entry.note);
+      nameWrap.appendChild(noteEl);
     }
-    rowEl.appendChild(body);
-    list.appendChild(rowEl);
+    grid.appendChild(nameWrap);
   }
-  panel.appendChild(list);
-  return panel;
+  hostEl.appendChild(grid);
 }
 
-// ---- Veterancy ---------------------------------------------------------------------------------
-
-/** A decorative 8-node track: filled gold + gold rail when the line is recommended ("take it"),
- * hollow + muted rail when it's an alternative ("skippable"). Schematic — a visual metaphor for a
- * veterancy line, not a literal node count (the record carries no per-node data). */
-function vetTrack(recommended) {
-  const track = el('div', `cs-vet-track ${recommended ? 'is-rec' : 'is-skip'}`);
-  track.appendChild(el('span', 'cs-vet-line'));
-  const dots = el('div', 'cs-vet-dots');
-  for (let i = 0; i < 8; i += 1) dots.appendChild(el('span', 'cs-vet-dot'));
-  track.appendChild(dots);
-  return track;
+/** Collects the union of every `marks` array across a list of contract entries, in first-seen
+ * order with duplicates removed — used to build a panel title's combined footnote superscript
+ * (e.g. Doctrines panel sup shows every source mark used anywhere in the grid, matching the
+ * template's `<sup>1</sup>` single combined marker). */
+function collectAllMarks(entries) {
+  const seen = [];
+  for (const entry of entries) {
+    if (!Array.isArray(entry.marks)) continue;
+    for (const mark of entry.marks) {
+      if (!seen.includes(mark)) seen.push(mark);
+    }
+  }
+  return seen;
 }
 
-function renderVeterancy(page) {
-  const panel = el('section', 'cs-panel cs-panel-veterancy');
+// ---- Veterancy ----------------------------------------------------------------------
+
+/** Renders veterancy: one option per row (SKILL.md rule 4 — never '/'-joined), max one
+ * `recommended: true` badge. */
+function renderVeterancyV2(page, hostEl) {
+  hostEl.innerHTML = '';
   const options = Array.isArray(page.veterancy) ? page.veterancy : [];
-  panel.appendChild(panelHead('Veterancy', collectAllMarks(options)));
+  hostEl.appendChild(panelTitleV2('Veterancy', collectAllMarks(options)));
 
   if (options.length === 0) {
-    panel.appendChild(absentNote('No veterancy recommendation has been captured for this unit yet.'));
-    return panel;
+    hostEl.appendChild(absentNoteV2('No veterancy recommendation has been captured for this unit yet.'));
+    return;
   }
 
-  options.forEach((opt, index) => {
-    if (index > 0) panel.appendChild(el('div', 'cs-divider'));
-    const recommended = opt.recommended === true;
-    const optEl = el('div', `cs-vet-opt ${recommended ? 'is-rec' : 'is-alt'}`);
+  for (const opt of options) {
+    const row = document.createElement('div');
+    row.className = 'vet-opt';
 
-    const head = el('div', 'cs-vet-head');
-    const label = el('span', 'cs-vet-label');
-    // A "(17 points)"-style parenthetical in the label renders as a muted "· 17 points" detail (the
-    // detail is real data — it lives inside the label string — not fabricated).
-    const match = typeof opt.label === 'string' ? opt.label.match(/^(.*?)\s*\(([^)]+)\)\s*$/) : null;
-    label.appendChild(document.createTextNode(match ? match[1] : opt.label || ''));
-    if (match) label.appendChild(el('span', 'cs-vet-detail', `· ${match[2]}`));
-    head.appendChild(label);
+    const lbl = document.createElement('span');
+    lbl.className = 'lbl';
+    lbl.textContent = opt.label || '';
+    row.appendChild(lbl);
 
-    const badge = el('span', recommended ? 'cs-vet-badge is-rec' : 'cs-vet-badge is-alt');
-    if (recommended) badge.appendChild(icon('star', 'cs-badge-star'));
-    badge.appendChild(document.createTextNode(recommended ? 'recommended' : 'alternative'));
-    head.appendChild(badge);
-    optEl.appendChild(head);
+    if (opt.recommended === true) {
+      const rec = document.createElement('span');
+      rec.className = 'rec';
+      rec.textContent = 'recommended';
+      row.appendChild(rec);
+    }
 
-    optEl.appendChild(vetTrack(recommended));
-
-    const body = el('div', 'cs-vet-body');
+    const body = document.createElement('span');
+    body.className = 'body';
     appendProseWithMarks(body, opt.body);
-    optEl.appendChild(body);
+    row.appendChild(body);
 
-    panel.appendChild(optEl);
+    hostEl.appendChild(row);
+  }
+}
+
+// ---- Battle role (real tabs) ----------------------------------------------------------
+
+/** The three battle-role tab keys in template order, paired with their contract field name and
+ * display label. A tab whose field is null is hidden entirely (task requirement: "hide a tab whose
+ * field is null"), never rendered as an empty pane. */
+const BATTLE_ROLE_TABS_V2 = [
+  ['positioning', 'pos', 'Positioning'],
+  ['formation', 'form', 'Formation'],
+  ['tips', 'tips', 'Tips & tricks'],
+];
+
+/** Renders the Battle role panel: real clickable tabs (role="tablist"/"tab"), one pane visible at
+ * a time via `aria-selected` / `data-active`, wired with click handlers (matching the template's
+ * inline `<script>` behavior, ported to addEventListener here). */
+function renderBattleRoleV2(page, hostEl) {
+  hostEl.innerHTML = '';
+  const role = page.battleRole || {};
+  const availableTabs = BATTLE_ROLE_TABS_V2.filter(([field]) => role[field] !== null && role[field] !== undefined && role[field] !== '');
+
+  hostEl.appendChild(panelTitleV2('Battle role'));
+
+  if (availableTabs.length === 0) {
+    hostEl.appendChild(absentNoteV2('No battle-role guidance has been captured for this unit yet.'));
+    return;
+  }
+
+  const tabsEl = document.createElement('div');
+  tabsEl.className = 'tabs';
+  tabsEl.setAttribute('role', 'tablist');
+
+  const panes = [];
+  availableTabs.forEach(([field, key, label], index) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab';
+    btn.type = 'button';
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', String(index === 0));
+    btn.dataset.t = key;
+    btn.textContent = label;
+    tabsEl.appendChild(btn);
+
+    const pane = document.createElement('div');
+    pane.className = 'tabpane';
+    pane.dataset.pane = key;
+    pane.dataset.active = String(index === 0);
+    appendProseWithMarks(pane, role[field]);
+    panes.push(pane);
+
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+      panes.forEach((p) => { p.dataset.active = String(p.dataset.pane === key); });
+    });
   });
-  return panel;
+
+  hostEl.appendChild(tabsEl);
+  for (const pane of panes) hostEl.appendChild(pane);
 }
 
-// ---- Controls ----------------------------------------------------------------------------------
+// ---- Matchups -------------------------------------------------------------------------
 
-/** True for a "word" key (a named skill like Brace/Overwhelm) vs a single game key (X, 1, V) — used
- * to give the loop's named-action keycaps the gold emphasis the design shows on "Brace". */
-function isWordKey(key) {
-  return typeof key === 'string' && key.trim().length > 1;
+/** Renders the matchups panel: per-unit cards + a "you pressure" line. House-flagged cards get the
+ * lock glyph on the unit name. */
+function renderMatchupsV2(page, hostEl) {
+  hostEl.innerHTML = '';
+  const matchups = page.matchups || {};
+  const cards = Array.isArray(matchups.cards) ? matchups.cards : [];
+  hostEl.appendChild(panelTitleV2('Matchups', collectAllMarks(cards)));
+
+  if (cards.length === 0 && !matchups.pressure) {
+    hostEl.appendChild(absentNoteV2('No matchup data has been mined for this unit yet.'));
+    return;
+  }
+
+  if (cards.length > 0) {
+    const grid = document.createElement('div');
+    grid.className = 'mu';
+    for (const card of cards) {
+      const cardEl = document.createElement('div');
+      cardEl.className = 'mu-card';
+
+      const nameEl = document.createElement('b');
+      nameEl.appendChild(document.createTextNode(card.name || ''));
+      appendLockIfHouse(nameEl, card.house);
+      cardEl.appendChild(nameEl);
+
+      const relEl = document.createElement('span');
+      relEl.className = `mu-rel rel-${cssSafeSuffixV2(card.rel)}`;
+      relEl.textContent = matchupRelationLabelV2(card.rel);
+      cardEl.appendChild(relEl);
+
+      const whyEl = document.createElement('div');
+      whyEl.className = 'mu-why';
+      whyEl.textContent = card.why || '';
+      cardEl.appendChild(whyEl);
+
+      grid.appendChild(cardEl);
+    }
+    hostEl.appendChild(grid);
+  }
+
+  if (matchups.pressure) {
+    const pressureEl = document.createElement('div');
+    pressureEl.className = 'mu-pressure';
+    pressureEl.textContent = matchups.pressure;
+    hostEl.appendChild(pressureEl);
+  }
 }
 
-function renderControls(page) {
-  const panel = el('section', 'cs-panel cs-panel-controls');
+// ---- Controls -----------------------------------------------------------------------------
+
+/** Renders the controls panel: key-chip loop (with arrows between, `↺` at the end matching the
+ * template's looped-sequence convention) + mechanics notes prose. */
+function renderControlsV2(page, hostEl) {
+  hostEl.innerHTML = '';
   const controls = page.controls || {};
   const loop = Array.isArray(controls.loop) ? controls.loop : [];
-  panel.appendChild(panelHead('Controls', []));
+  hostEl.appendChild(panelTitleV2('Controls'));
 
   if (loop.length === 0 && !controls.notes) {
-    panel.appendChild(absentNote('No control / how-to-use guide has been captured for this unit yet.'));
-    return panel;
+    hostEl.appendChild(absentNoteV2('No control/how-to-use guide has been captured for this unit yet.'));
+    return;
   }
 
   if (loop.length > 0) {
-    const loopEl = el('div', 'cs-loop');
-    const label = el('span', 'cs-loop-label');
-    label.appendChild(document.createTextNode('The loop'));
-    if (Array.isArray(controls.loopMarks) && controls.loopMarks.length > 0) {
-      label.appendChild(footnoteSup(controls.loopMarks));
-    }
-    loopEl.appendChild(label);
+    const loopEl = document.createElement('div');
+    loopEl.className = 'loop';
 
-    const keys = el('div', 'cs-keys');
-    loop.forEach((step, i) => {
-      keys.appendChild(el('span', isWordKey(step) ? 'cs-key is-word' : 'cs-key', step));
-      if (i < loop.length - 1) keys.appendChild(el('span', 'cs-key-arrow', '→'));
+    const labelEl = document.createElement('span');
+    labelEl.style.color = 'var(--text-muted)';
+    labelEl.appendChild(document.createTextNode('The loop'));
+    if (Array.isArray(controls.loopMarks) && controls.loopMarks.length > 0) {
+      labelEl.appendChild(footnoteSup(controls.loopMarks));
+    }
+    loopEl.appendChild(labelEl);
+
+    loop.forEach((step, index) => {
+      const chip = document.createElement('span');
+      chip.className = 'key';
+      chip.textContent = step;
+      loopEl.appendChild(chip);
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.textContent = index < loop.length - 1 ? '→' : '↺';
+      loopEl.appendChild(arrow);
     });
-    keys.appendChild(icon('repeat', 'cs-key-repeat'));
-    loopEl.appendChild(keys);
-    panel.appendChild(loopEl);
+
+    hostEl.appendChild(loopEl);
   }
 
   if (controls.notes) {
-    if (loop.length > 0) panel.appendChild(el('div', 'cs-divider'));
-    const notes = el('div', 'cs-notes');
-    appendProseWithMarks(notes, controls.notes);
-    panel.appendChild(notes);
+    const notesEl = document.createElement('div');
+    notesEl.className = 'ctrl-note';
+    appendProseWithMarks(notesEl, controls.notes);
+    hostEl.appendChild(notesEl);
   }
-  return panel;
 }
 
-// ---- Matchups (Counters / Countered / Synergies) -----------------------------------------------
+// ---- Footer (footnote legend) ---------------------------------------------------------------
 
-/** A group heading row: colored square + uppercase label + optional count chip. */
-function matchupGroupHead(label, kind, count) {
-  const head = el('div', `cs-mu-gh is-${kind}`);
-  head.appendChild(el('span', 'cs-mu-dot'));
-  head.appendChild(el('span', 'cs-mu-glabel', label));
-  if (typeof count === 'number') head.appendChild(el('span', 'cs-mu-count', String(count)));
-  return head;
-}
-
-/** One matchup card: name (+ house lock) + why-line, colored left border set by `kind`. */
-function matchupCard(card, kind) {
-  const cardEl = el('div', `cs-mu-card is-${kind}`);
-  const name = el('div', 'cs-mu-name');
-  name.appendChild(document.createTextNode(card.name || ''));
-  appendLockIfHouse(name, card.house);
-  cardEl.appendChild(name);
-  if (card.why) cardEl.appendChild(el('div', 'cs-mu-why', card.why));
-  return cardEl;
-}
-
-function matchupGrid(cards, kind) {
-  const grid = el('div', 'cs-mu-grid');
-  for (const card of cards) grid.appendChild(matchupCard(card, kind));
-  return grid;
-}
-
-function renderMatchups(page) {
-  const panel = el('section', 'cs-panel cs-panel-matchups');
-  const matchups = page.matchups || {};
-  const allCards = Array.isArray(matchups.cards) ? matchups.cards : [];
-  panel.appendChild(panelHead('Matchups', collectAllMarks(allCards)));
-
-  const { counterCards, countered, synergies, pressure, pressureIsNote } = groupMatchups(matchups);
-
-  if (allCards.length === 0 && pressure === null) {
-    panel.appendChild(absentNote('No matchup data has been mined for this unit yet.'));
-    return panel;
-  }
-
-  // COUNTERS (green) — cards this unit beats (rare in the current schema) or the free-text pressure
-  // line; an honest "no source" pressure renders as a muted dashed note.
-  panel.appendChild(matchupGroupHead('Counters', 'counter', counterCards.length > 0 ? counterCards.length : null));
-  if (counterCards.length > 0) {
-    panel.appendChild(matchupGrid(counterCards, 'counter'));
-  } else if (pressure && !pressureIsNote) {
-    panel.appendChild(el('div', 'cs-mu-pressure', pressure));
-  } else {
-    const note = el('div', 'cs-mu-note');
-    note.appendChild(icon('info', 'cs-mu-note-ic'));
-    note.appendChild(document.createTextNode(pressure || 'No direct source on what this unit pressures.'));
-    panel.appendChild(note);
-  }
-
-  // COUNTERED (red) — what beats this unit.
-  if (countered.length > 0) {
-    panel.appendChild(matchupGroupHead('Countered', 'countered', countered.length));
-    panel.appendChild(matchupGrid(countered, 'countered'));
-  }
-
-  // SYNERGIES (gold) — what this unit pairs with.
-  if (synergies.length > 0) {
-    panel.appendChild(matchupGroupHead('Synergies', 'synergy', synergies.length));
-    panel.appendChild(matchupGrid(synergies, 'synergy'));
-  }
-  return panel;
-}
-
-// ---- Battle role (Positioning / Formation cards + Tips list) -----------------------------------
-
-/** The three battle-role fields, in template order, each with its display label + header icon. */
-const BATTLE_ROLE_FIELDS = [
-  ['positioning', 'Positioning', 'crosshair'],
-  ['formation', 'Formation', 'grid'],
-  ['tips', 'Tips & tricks', 'bulb'],
-];
-
-/** A battle-role card head: gold icon chip + uppercase label. */
-function roleCardHead(label, iconName) {
-  const head = el('div', 'cs-role-head');
-  const chip = el('span', 'cs-role-chip');
-  chip.appendChild(icon(iconName));
-  head.appendChild(chip);
-  head.appendChild(el('span', 'cs-role-label', label));
-  return head;
-}
-
-/** A prose battle-role card (Positioning / Formation): head + one paragraph with inline marks. */
-function roleProseCard(field, label, iconName) {
-  const card = el('div', 'cs-role-card');
-  card.appendChild(roleCardHead(label, iconName));
-  const p = el('p', 'cs-role-body');
-  appendProseWithMarks(p, field);
-  card.appendChild(p);
-  return card;
-}
-
-/** The Tips card: head + a diamond-bulleted list, one bullet per attributed excerpt (splitIntoBullets
- * cuts the tips prose at footnote-mark boundaries). */
-function roleTipsCard(field, label, iconName) {
-  const card = el('div', 'cs-role-card is-tips');
-  card.appendChild(roleCardHead(label, iconName));
-  const list = el('div', 'cs-tips');
-  for (const bullet of splitIntoBullets(field)) {
-    const row = el('div', 'cs-tip');
-    row.appendChild(el('span', 'cs-tip-dot'));
-    const text = el('span', 'cs-tip-text');
-    appendProseWithMarks(text, bullet);
-    row.appendChild(text);
-    list.appendChild(row);
-  }
-  card.appendChild(list);
-  return card;
-}
-
-function renderBattleRole(page) {
-  const section = el('section', 'cs-panel cs-panel-role');
-  section.appendChild(panelHead('Battle role', []));
-
-  const role = page.battleRole || {};
-  // A field renders only when it carries real content — a null field or an honest "no source"
-  // sentence (e.g. Modao's "No formation guidance in sources.") is omitted here; the absence is
-  // still surfaced honestly in the gaps footer, so it is never silently swallowed.
-  const present = BATTLE_ROLE_FIELDS.filter(([key]) => !isNoSourceText(role[key]));
-  if (present.length === 0) {
-    section.appendChild(absentNote('No battle-role guidance has been captured for this unit yet.'));
-    return section;
-  }
-
-  const leftCards = present.filter(([key]) => key !== 'tips');
-  const tips = present.find(([key]) => key === 'tips');
-
-  const grid = el('div', tips && leftCards.length > 0 ? 'cs-role-grid' : 'cs-role-grid is-single');
-  if (leftCards.length > 0) {
-    const left = el('div', 'cs-role-col');
-    for (const [key, label, iconName] of leftCards) left.appendChild(roleProseCard(role[key], label, iconName));
-    grid.appendChild(left);
-  }
-  if (tips) grid.appendChild(roleTipsCard(role.tips, tips[1], tips[2]));
-  section.appendChild(grid);
-  return section;
-}
-
-// ---- Footer (footnote legend + honest gaps) ----------------------------------------------------
-
-function renderFooter(page) {
+/** Renders the footnote legend footer: one entry per footnotes[] record, superscript + author +
+ * date, house-locked entries get the glyph. */
+function renderFooterV2(page, hostEl) {
+  hostEl.innerHTML = '';
   const footnotes = Array.isArray(page.footnotes) ? page.footnotes : [];
-  const gaps = Array.isArray(page.gaps) ? page.gaps : [];
-  if (footnotes.length === 0 && gaps.length === 0) return null;
+  if (footnotes.length === 0) return;
 
-  const foot = el('footer', 'cs-foot');
-  foot.setAttribute('aria-label', 'Sources and notes');
-
-  if (footnotes.length > 0) {
-    const legend = el('div', 'cs-legend');
-    for (const fn of footnotes) {
-      const entry = el('span', 'cs-legend-item');
-      const sup = document.createElement('sup');
-      sup.textContent = String(fn.mark);
-      entry.appendChild(sup);
-      entry.appendChild(document.createTextNode(` ${footnoteLegendTextV2(fn)}`));
-      appendLockIfHouse(entry, fn.house);
-      legend.appendChild(entry);
-    }
-    foot.appendChild(legend);
+  const leg = document.createElement('span');
+  leg.className = 'leg';
+  for (const fn of footnotes) {
+    const entry = document.createElement('span');
+    const sup = document.createElement('sup');
+    sup.textContent = String(fn.mark);
+    entry.appendChild(sup);
+    entry.appendChild(document.createTextNode(` ${footnoteLegendTextV2(fn)}`));
+    appendLockIfHouse(entry, fn.house);
+    leg.appendChild(entry);
   }
-
-  if (gaps.length > 0) {
-    const gapsEl = el('div', 'cs-gaps');
-    for (const gap of gaps) {
-      const row = el('div', 'cs-gap');
-      row.appendChild(el('span', 'cs-gap-tag', 'gap'));
-      row.appendChild(document.createTextNode(` ${gap}`));
-      gapsEl.appendChild(row);
-    }
-    foot.appendChild(gapsEl);
-  }
-  return foot;
+  hostEl.appendChild(leg);
 }
 
-// ---- Full v2 page render -----------------------------------------------------------------------
+/** Renders the honest gaps list, when present (contract: page.gaps[] — "honest one-liners about
+ * what no source covers"). Rendered quietly below the footnote legend, never alarm-styled. */
+function renderGapsV2(page, hostEl) {
+  const gaps = Array.isArray(page.gaps) ? page.gaps : [];
+  if (gaps.length === 0) return;
+  for (const gap of gaps) {
+    const gapEl = document.createElement('div');
+    gapEl.className = 'known-gaps';
+    gapEl.textContent = gap;
+    hostEl.appendChild(gapEl);
+  }
+}
+
+// ---- Full v2 page render ----------------------------------------------------------------------
 
 /**
- * Renders the full "Modao Cheat Sheet" v2 page from a resolved cb-unit-page-v2/1 record into a
- * single root element (unit.html's `#unit-v2-page`). Clears the root first, so re-rendering is
- * idempotent.
+ * Renders the full v2 page from a resolved cb-unit-page-v2/1 record into the v2 section hosts
+ * declared in units/unit.html (by id). Deep-link anchors (#doctrines, #role, #matchups, #controls)
+ * live on the host `<section>` elements in unit.html itself, not rendered here.
  * @param {object} page  a cb-unit-page-v2/1 record (not the insufficient short-circuit shape)
- * @param {HTMLElement} root  the single container element to build the whole cheat sheet into
- * @param {Record<string,string>} [doctrineIconMap]  normalized-doctrine-name -> icon-slug map (from
- *   site/data/doctrine-icons.json's nameToSlug); an empty map (the default) simply renders every
- *   doctrine tile as a placeholder.
+ * @param {Record<string, HTMLElement>} hosts  map of section id -> host element
  */
-export function renderUnitPageV2(page, root, doctrineIconMap = {}) {
+export function renderUnitPageV2(page, hosts) {
   document.title = `${page.name} — Immortals Academy`;
-  root.innerHTML = '';
 
-  root.appendChild(renderEyebrow(page));
-  root.appendChild(renderHeader(page));
-
-  // Three-band grid: doctrines | (veterancy + controls) | matchups.
-  const band = el('div', 'cs-band');
-  band.appendChild(renderDoctrines(page, doctrineIconMap));
-  const center = el('div', 'cs-center');
-  center.appendChild(renderVeterancy(page));
-  center.appendChild(renderControls(page));
-  band.appendChild(center);
-  band.appendChild(renderMatchups(page));
-  root.appendChild(band);
-
-  root.appendChild(renderBattleRole(page));
-
-  const foot = renderFooter(page);
-  if (foot) root.appendChild(foot);
+  renderHeaderV2(page, hosts.header);
+  renderPitchV2(page, hosts.pitch);
+  renderDoctrinesV2(page, hosts.doctrines);
+  renderVeterancyV2(page, hosts.veterancy);
+  renderBattleRoleV2(page, hosts.battleRole);
+  renderMatchupsV2(page, hosts.matchups);
+  renderControlsV2(page, hosts.controls);
+  renderFooterV2(page, hosts.footer);
+  renderGapsV2(page, hosts.footer);
 }

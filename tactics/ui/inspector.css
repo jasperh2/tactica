@@ -176,15 +176,12 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
   min-width: 0;
-  /* The full God-through-B roster (56 units) is long. Without its own scroll the grid sits at the
-     bottom of the shared .inspector-content scroll, below the place-panel options — so only a few
-     rows show and the rest read as "missing units". A bounded scroll region makes the whole list a
-     self-contained, obviously-scrollable unit list (every unit reachable). overscroll-contain stops
-     the nested scroll from chaining to the panel when the list ends. */
-  max-height: 46vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding-right: var(--space-1);
+  /* NOTE (2026-07-07): do NOT add `overflow-y:auto` + `max-height` here to give the grid its own
+     scroll. As a flex child of .inspector-content (a flex column), setting overflow gives the grid
+     min-height:0, so on a short viewport it flex-shrinks to height:0 and clips ALL 56 tiles — the
+     grid renders but is invisible ("can't see any units" regression). The full roster stays scrollable
+     via the shared .inspector-content scroll instead. Any future own-scroll must set flex-shrink:0
+     (or a real min-height) and be tested at short viewport heights. */
 }
 
 /* Type-sort bucket header (mission item 6: "Render bucket headers in type mode") — spans the

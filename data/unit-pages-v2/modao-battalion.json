@@ -154,8 +154,8 @@
       },
       {
         "name": "Cavalry",
-        "rel": "counters",
-        "why": "anti-cav — braces and beats cavalry decisively",
+        "rel": "pairs",
+        "why": "this unit is a support/tank for blob fight",
         "house": false,
         "marks": [
           1
@@ -163,24 +163,15 @@
       },
       {
         "name": "Low damage units",
-        "rel": "counters",
-        "why": "too tanky for low-damage units to break in a blob fight",
+        "rel": "pairs",
+        "why": "this unit is a support/tank for blob fight",
         "house": false,
         "marks": [
           1
         ]
-      },
-      {
-        "name": "Shields",
-        "rel": "pairs",
-        "why": "supports the front line — the shield moves, you follow; never leads",
-        "house": false,
-        "marks": [
-          2
-        ]
       }
     ],
-    "pressure": null
+    "pressure": "No direct source on what you pressure."
   },
   "controls": {
     "loop": [
