@@ -319,7 +319,9 @@
   display: grid;
   grid-template-columns: 362px minmax(0, 1fr) 400px;
   gap: 16px;
-  align-items: start;
+  /* stretch: every column fills the band's full height (the tallest column sets it), so a short
+     column shows its own panel background all the way down instead of the page background. */
+  align-items: stretch;
 }
 
 .v2-page .cs-center {
@@ -327,6 +329,12 @@
   flex-direction: column;
   gap: 16px;
   min-width: 0;
+}
+
+/* The two center panels divide the column height, each growing from its own content size — so the
+   one that needs more room (usually Controls) keeps more, and neither leaves page background below. */
+.v2-page .cs-center > .cs-panel {
+  flex: 1 1 auto;
 }
 
 /* ---- panel base + head ---- */
