@@ -155,6 +155,10 @@
 .pb-dropdown-row {
   position: relative;
   display: flex;
+  flex-wrap: wrap; /* so the inline lock/unlock password prompt (flex-basis:100%) drops to its OWN
+                      full-width line below the name+actions instead of overflowing the dropdown's
+                      right edge (the "password text outside its bounds" bug, 2026-07-07). Rows
+                      without a prompt still fit on one line, so this is inert for them. */
   align-items: center;
   gap: var(--space-2);
   width: 100%;

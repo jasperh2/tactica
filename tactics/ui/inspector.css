@@ -176,6 +176,15 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
   min-width: 0;
+  /* The full God-through-B roster (56 units) is long. Without its own scroll the grid sits at the
+     bottom of the shared .inspector-content scroll, below the place-panel options — so only a few
+     rows show and the rest read as "missing units". A bounded scroll region makes the whole list a
+     self-contained, obviously-scrollable unit list (every unit reachable). overscroll-contain stops
+     the nested scroll from chaining to the panel when the list ends. */
+  max-height: 46vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: var(--space-1);
 }
 
 /* Type-sort bucket header (mission item 6: "Render bucket headers in type mode") — spans the

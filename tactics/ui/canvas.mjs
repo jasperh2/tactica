@@ -516,15 +516,18 @@ export function mount(el, ctx) {
     const { x, y } = clientToPercent(event.clientX, event.clientY, rect);
     const doc = ctx.store.getDoc();
     const tactic = activeTactic(doc);
+    // Drag EVERY non-blocked object in the set, not just units — the move tool now moves routes,
+    // sketches, zones and text too (via doc/translateObjects on commit). Marker anchors power the
+    // smooth left/top live-preview; non-marker kinds have no single anchor so they preview via the
+    // committed re-render instead (they still move correctly).
+    const draggable = ids.filter((objId) => !isBlockedForInteraction(objId));
+    if (draggable.length === 0) return;
     const anchors = {};
-    ids.forEach((objId) => {
-      if (isBlockedForInteraction(objId)) return;
+    draggable.forEach((objId) => {
       const obj = tactic?.objects.find((o) => o.id === objId);
       if (obj && obj.kind === 'unit') anchors[objId] = positionAt(obj, view.currentKeyframe);
     });
-    if (Object.keys(anchors).length === 0) return;
-
-    dragState = { ids: Object.keys(anchors), startX: x, startY: y, moved: false, lastDx: 0, lastDy: 0, anchors };
+    dragState = { ids: draggable, startX: x, startY: y, moved: false, lastDx: 0, lastDy: 0, anchors };
   }
 
   function updateDrag(event) {
@@ -545,7 +548,8 @@ export function mount(el, ctx) {
     dragState.lastDy = y - dragState.startY;
     dragState.ids.forEach((id) => {
       const anchor = dragState.anchors[id];
-      livePreviewMarker(id, round2(anchor.x + dragState.lastDx), round2(anchor.y + dragState.lastDy));
+      // markers preview live via left/top; non-marker kinds (no anchor) move on commit
+      if (anchor) livePreviewMarker(id, round2(anchor.x + dragState.lastDx), round2(anchor.y + dragState.lastDy));
     });
   }
 
@@ -565,24 +569,15 @@ export function mount(el, ctx) {
 
   function commitDrag() {
     if (!dragState) return;
-    const { ids, moved, lastDx, lastDy, anchors } = dragState;
+    const { ids, moved, lastDx, lastDy } = dragState;
     dragState = null;
     if (!moved) return;
     suppressNextClick = true; // this drag moved — don't let the trailing click re-select
     const kf = ctx.store.getView().currentKeyframe;
-
-    if (ids.length === 1) {
-      const anchor = anchors[ids[0]];
-      ctx.exec({ type: 'doc/moveObject', id: ids[0], kf, x: round2(anchor.x + lastDx), y: round2(anchor.y + lastDy) });
-      return;
-    }
-    // Batched (one history snapshot for the whole group drag, not one per object) — see
-    // store.mjs's doc/moveObjects.
-    const moves = ids.map((id) => {
-      const anchor = anchors[id];
-      return { id, kf, x: round2(anchor.x + lastDx), y: round2(anchor.y + lastDy) };
-    });
-    ctx.exec({ type: 'doc/moveObjects', moves });
+    // One delta-translate for the whole drag = one undo step, and it moves EVERY kind (units via
+    // positions, routes/sketches/zones via points/cx-cy, text via x/y) — see doc/translateObjects.
+    // The store re-render replaces the transient marker live-preview with the committed geometry.
+    ctx.exec({ type: 'doc/translateObjects', ids, dx: round2(lastDx), dy: round2(lastDy), kf });
   }
 
   function flashBlocked() {
@@ -911,24 +906,11 @@ export function mount(el, ctx) {
   function nudgeSelection(dx, dy) {
     const view = ctx.store.getView();
     if (view.selection.length === 0) return;
-    const doc = ctx.store.getDoc();
-    const tactic = activeTactic(doc);
-    if (!tactic) return;
-    const kf = view.currentKeyframe;
-    const moves = [];
-    view.selection.forEach((id) => {
-      if (isBlockedForInteraction(id)) return;
-      const obj = tactic.objects.find((o) => o.id === id);
-      if (!obj || obj.kind !== 'unit') return;
-      const pos = positionAt(obj, kf);
-      moves.push({ id, kf, x: round2(pos.x + dx), y: round2(pos.y + dy) });
-    });
-    if (moves.length === 0) return;
-    if (moves.length === 1) {
-      ctx.exec({ type: 'doc/moveObject', ...moves[0] });
-      return;
-    }
-    ctx.exec({ type: 'doc/moveObjects', moves });
+    // Nudge EVERY non-blocked selected object (units, routes, sketches, zones, text) by (dx,dy) —
+    // one delta-translate = one undo step (doc/translateObjects). Was unit-only before.
+    const ids = view.selection.filter((id) => !isBlockedForInteraction(id));
+    if (ids.length === 0) return;
+    ctx.exec({ type: 'doc/translateObjects', ids, dx, dy, kf: view.currentKeyframe });
   }
 
   /** H4/CV1: capture the current selection ids into the in-module clipboard (empty selection

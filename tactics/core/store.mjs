@@ -8,7 +8,7 @@
 // from the CURRENT doc's tactics (collision-free), which is the UI's job to supply
 // — the UI calls playbook.newTactic(name, subtitle, doc.tactics) itself and
 // dispatches the built tactic, keeping reduceDoc a pure (doc, action) -> doc.
-import { keyframeOps, addObject, moveMarker, cloneTactic, duplicateObjectsInTactic } from './playbook.mjs';
+import { keyframeOps, addObject, moveMarker, cloneTactic, duplicateObjectsInTactic, translateObjectsInTactic } from './playbook.mjs';
 
 // @typedef {import('./playbook.mjs').Tactic} Tactic
 // @typedef {{ id:string, name:string, color:string, visible:boolean, locked:boolean }} Layer
@@ -213,6 +213,15 @@ const docHandlers = {
   [`${DOC_PREFIX}moveObject`](doc, action) {
     return withActiveTactic(doc, (tactic) =>
       moveMarker(tactic, action.id, action.kf, { x: action.x, y: action.y })
+    );
+  },
+
+  // Translate a set of objects by (dx,dy) percent at keyframe `kf` — the move-drag + arrow-nudge
+  // path for EVERY object kind (units via positions, routes/sketches/zones via points/cx-cy, text
+  // via x/y). One dispatch = one undo step. Replaces the old unit-only moveMarker move path.
+  [`${DOC_PREFIX}translateObjects`](doc, action) {
+    return withActiveTactic(doc, (tactic) =>
+      translateObjectsInTactic(tactic, action.ids, action.dx, action.dy, action.kf)
     );
   },
 

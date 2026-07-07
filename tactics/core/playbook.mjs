@@ -275,6 +275,42 @@ export function duplicateObjectsInTactic(tactic, ids, kf, dx = 3, dy = 3) {
 }
 
 /**
+ * Returns a copy of `obj` with its geometry translated by (dx,dy) percent-of-map at keyframe `kf`.
+ * Works for EVERY object kind — the move/nudge tools previously moved unit markers only (they wrote
+ * positions[kf] via moveMarker, which no other kind has), so routes/sketches/zones/text couldn't be
+ * dragged. Here a marker shifts positions[kf]; a route/free-sketch/polygon-zone shifts every point;
+ * a text note shifts x/y; an ellipse zone shifts cx/cy. Pure — the input is never mutated.
+ * @param {object} obj @param {number} dx @param {number} dy @param {number} kf @returns {object}
+ */
+export function translateObject(obj, dx, dy, kf) {
+  const out = { ...obj };
+  if (obj.positions) {
+    const at = positionAt(obj, kf);
+    out.positions = { ...obj.positions, [kf]: { x: at.x + dx, y: at.y + dy } };
+  }
+  if (obj.points) out.points = obj.points.map(([x, y]) => [x + dx, y + dy]);
+  if (typeof obj.x === 'number') out.x = obj.x + dx;
+  if (typeof obj.y === 'number') out.y = obj.y + dy;
+  if (typeof obj.cx === 'number') out.cx = obj.cx + dx;
+  if (typeof obj.cy === 'number') out.cy = obj.cy + dy;
+  return out;
+}
+
+/**
+ * Translate the objects whose ids are in `ids` by (dx,dy) at keyframe `kf`; every other object is
+ * returned unchanged (same reference). Drives the move-drag and arrow-nudge for all object kinds.
+ * @param {Tactic} tactic @param {string[]} ids @param {number} dx @param {number} dy @param {number} kf
+ * @returns {Tactic}
+ */
+export function translateObjectsInTactic(tactic, ids, dx, dy, kf) {
+  const idSet = new Set(ids);
+  return {
+    ...tactic,
+    objects: tactic.objects.map((o) => (idSet.has(o.id) ? translateObject(o, dx, dy, kf) : o)),
+  };
+}
+
+/**
  * Picks the layer id the view should re-anchor to after `deletedId` is removed (fixes the
  * dangling-active-layer bug: a deleted active layer would otherwise leave the draw tools stamping
  * a dead layerId). Returns the current active id when it survives, else the layer that took the
