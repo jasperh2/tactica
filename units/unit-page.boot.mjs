@@ -66,6 +66,14 @@ function v2ProfilePath(slug) {
   return new URL(`data/unit-pages-v2/${encodeURIComponent(slug)}.json`, SITE_ROOT_URL).href;
 }
 
+/** Path to the shared doctrine name->slug icon map (site/data/doctrine-icons.json). Fetched once
+ * per page load alongside the unit record and handed to the v2 renderer so doctrine tiles resolve
+ * real art; a fetch failure just means every doctrine tile renders as a placeholder (the renderer
+ * defaults to an empty map). Only the v2 cheat-sheet path uses it — the v1 render ignores it. */
+function doctrineIconsPath() {
+  return new URL('data/doctrine-icons.json', SITE_ROOT_URL).href;
+}
+
 /** Reads `?u=<slug>` from the current page URL. Returns null if absent/empty. */
 export function slugFromLocation(locationHref) {
   const url = new URL(locationHref);
@@ -917,22 +925,6 @@ export function renderNotFound(mainEl, message) {
   mainEl.appendChild(p);
 }
 
-/** Builds the v2 section host map from unit.html's `#unit-v2-*` ids (see renderUnitPageV2's doc
- * comment for the shape it expects). Kept as its own function so boot() reads as one dispatch
- * decision per record, not an inline object literal buried in a branch. */
-function v2Hosts() {
-  return {
-    header: document.getElementById('unit-v2-header'),
-    pitch: document.getElementById('unit-v2-pitch'),
-    doctrines: document.getElementById('unit-v2-doctrines'),
-    veterancy: document.getElementById('unit-v2-veterancy'),
-    battleRole: document.getElementById('unit-v2-battle-role'),
-    matchups: document.getElementById('unit-v2-matchups'),
-    controls: document.getElementById('unit-v2-controls'),
-    footer: document.getElementById('unit-v2-footer'),
-  };
-}
-
 /** Shows the v2 page container and hides the v1 identity-only/full-guide containers (the three are
  * mutually exclusive top-level shapes for a rendered unit page). */
 function showV2Layout(hostRefs) {
@@ -968,11 +960,19 @@ export async function boot() {
     return;
   }
 
-  const [v2Result, houseResult, publicResult] = await Promise.all([
+  const [v2Result, houseResult, publicResult, doctrineIconsResult] = await Promise.all([
     fetchJson(v2ProfilePath(slug)),
     fetchJson(houseProfilePath(slug)),
     fetchJson(publicProfilePath(slug)),
+    fetchJson(doctrineIconsPath()),
   ]);
+
+  // Doctrine name->slug icon map for the v2 renderer (empty on any fetch failure — the renderer
+  // then just shows placeholder tiles).
+  const doctrineIconMap =
+    doctrineIconsResult && doctrineIconsResult.ok && doctrineIconsResult.data
+      ? doctrineIconsResult.data.nameToSlug || {}
+      : {};
 
   const hostRefs = {
     v2Page: document.getElementById('unit-v2-page'),
@@ -993,7 +993,11 @@ export async function boot() {
   const v2Record = v2Result && v2Result.ok ? v2Result.data : null;
   if (isV2Schema(v2Record) && !isInsufficientV2(v2Record)) {
     showV2Layout(hostRefs);
-    renderUnitPageV2(v2Record, v2Hosts());
+    // The cheat-sheet renderer owns the whole v2 tree — it builds every section into this one root
+    // (see unit-page-v2.boot.mjs's renderUnitPageV2 doc comment), so it takes the root element, not
+    // the per-section host map the previous v2 layout used. The doctrine icon map lets its doctrine
+    // tiles resolve real art by name.
+    renderUnitPageV2(v2Record, hostRefs.v2Page, doctrineIconMap);
     return;
   }
 

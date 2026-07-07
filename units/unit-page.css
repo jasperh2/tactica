@@ -1,441 +1,1019 @@
 /**
  * units/unit-page.css — page-specific layout for the unit detail page (?u=<slug>).
  *
- * Source: design/handoff-academy-pages/design_handoff_immortals_academy/templates/Unit Page.dc.html
+ * Two layouts live here, both scoped so they never collide:
+ *  - V1 (cb-academy-unit-page/v1): identity-only + full-guide shapes. Almost all of its grammar is
+ *    already in site/shared/academy.css (panels, stat chips, doctrine rows, matchup cards, etc.);
+ *    this file adds nothing for v1 today (see the note block below).
+ *  - V2 "Modao Cheat Sheet" (cb-unit-page-v2/1): the whole block from the V2 marker down, scoped
+ *    under `.v2-page` (unit.html's `#unit-v2-page`). It carries its OWN Discord-dark token set on
+ *    `.v2-page` (design source: design/handoff-unit-page-v3/Modao Cheat Sheet.dc.html) rather than
+ *    reusing academy.css's darker void palette, because the redesign's identity IS that palette.
+ *    Scoping to `.v2-page` keeps those tokens/classes from touching the academy nav or the v1 trees.
  *
- * SCOPE: site/shared/academy.css already ports the handoff's entire shared cross-page grammar
- * (panels, accent-bar panel titles, stat chips, tag/tier badges, doctrine rows, veterancy option
- * cards, battle-role columns, matchup cards, key-sequence/controls chips, verdict voice, footer/
- * footnote legend, lock glyph, identity-only header shape) — every class this page's render
- * module (unit-page.boot.mjs) emits for those regions already has a matching rule there. This
- * file intentionally has almost nothing left to add: it exists as the designated per-page
- * stylesheet per the handoff README ("Per-page CSS beyond shared primitives goes in a small
- * site/units/unit-page.css"), holding ONLY rules that are genuinely specific to this page's own
- * layout and not shared with the hero-detail page or any index page.
- *
- * Do not re-declare a rule that already exists in academy.css — check there first. Adding a
- * duplicate here just to "be safe" creates exactly the two-copies-drift academy.css's own header
- * comment warns against.
+ * Do not re-declare an academy.css rule here for v1. For v2, everything is intentionally
+ * self-contained under `.v2-page`.
  */
 
 /* ============================================================================
- * Unit-page-only section wrappers: identity-only vs full-guide shape toggle (unit.html's
- * `#unit-identity-only` / `#unit-full-guide`, shown/hidden via the `hidden` attribute in
- * unit-page.boot.mjs — no CSS needed for the toggle itself). The two-rail panel grid
- * (Doctrines + Veterancy/Formation), battle-role/matchups/controls full-width panels, and the
- * 900px stacking breakpoint are ALL already covered by academy.css's `.panel-grid` /
- * `.panel-doctrines` / `.panel-rail` / `.panel-battle-role` / `.panel-controls` rules (§5) — this
- * page's markup (unit.html) reuses those classes directly with no override.
+ * V1 unit-page section wrappers (identity-only vs full-guide) are toggled via the `hidden`
+ * attribute in unit-page.boot.mjs — no CSS needed for the toggle. The two-rail panel grid,
+ * battle-role/matchups/controls panels, and the stacking breakpoint are ALL already covered by
+ * academy.css's `.panel-grid` / `.panel-doctrines` / `.panel-rail` / `.panel-battle-role` /
+ * `.panel-controls` rules (§5) — this page's v1 markup reuses those classes directly. Nothing to
+ * add here for v1 today.
  * ========================================================================= */
-
-/* Doctrines panel needs no unit-page-specific flex-basis beyond academy.css's shared
-   `.panel-doctrines` rule — .panel-veterancy/.panel-formation likewise reuse the shared
-   `.panel-builds, .panel-veterancy, .panel-formation` rail rule as-is. Nothing to add here today. */
 
 /* ============================================================================
- * V2 LAYOUT (cb-unit-page-v2/1 schema) — Jasper-approved reference:
- *   site/units/unit-page-template-v2.html (2026-07-06)
- *
- * Every class below is scoped under `.v2-page` (unit.html's `#unit-v2-page` wrapper) so it can
- * never collide with the v1 grammar academy.css already owns (`.panel-title`, `.tag-badge`,
- * `.vet-option`, etc — the v2 template deliberately uses its own shorter class names: `.ph`,
- * `.tag`, `.vet-opt`, `.mu-card`, `.key`, `.loop`... which is why this whole block needs its own
- * home rather than reusing §5-15 of academy.css unmodified). Every color/spacing/type value below
- * is the template's own value ported onto the live academy.css token (--bg-panel, --gold,
- * --text-body, etc — see each rule's inline note only where the token isn't an exact 1:1, e.g. a
- * slightly different opacity) — per the task's "ported onto the academy.css token system"
- * instruction, nothing here is a hand-picked new hex value.
+ * V2 LAYOUT — "Modao Cheat Sheet" (cb-unit-page-v2/1). Design source:
+ *   design/handoff-unit-page-v3/Modao Cheat Sheet.dc.html (imported 2026-07-07).
+ * All values below are the design's own (Discord-dark panels, Immortals gold as the sole accent,
+ * red for counters, green/gold for pairs). Tokens are declared on `.v2-page` so they override
+ * academy.css's globals only for the cheat-sheet subtree.
  * ========================================================================= */
 
+/* The cheat sheet is a dense, wide surface — let it break out of academy.css's 1120px reading
+   column (only when the v2 tree is the one being shown). :has() is supported in every browser this
+   site targets. */
+.unit-page-main:has(#unit-v2-page:not([hidden])) {
+  max-width: 1440px;
+}
+
 .v2-page {
-  max-width: 900px;
-}
+  /* ---- design tokens (scoped) ---- */
+  --app-bg: #1e1f22;
+  --panel: #2b2d31;
+  --panel-2: #202225;
+  --line: rgba(255, 255, 255, 0.055);
+  --line-strong: rgba(255, 255, 255, 0.11);
+  --gold: #e3ad4d;
+  --gold-bright: #f2c86a;
+  --gold-deep: #c68f33;
+  --gold-soft: rgba(227, 173, 77, 0.13);
+  --stripe: rgba(227, 173, 77, 0.05);
+  --ink: #e7e8ea;
+  --ink-2: #b6bac1;
+  --ink-3: #8b9099;
+  --ink-4: #666b73;
+  --red: #e0605f;
+  --red-soft: rgba(224, 96, 95, 0.15);
+  --green: #5aa977;
+  --green-soft: rgba(90, 169, 119, 0.15);
+  --neutral: #99a0a8;
+  --neutral-soft: rgba(153, 160, 168, 0.13);
+  --cs-radius: 4px;
+  --cs-radius-sm: 3px;
+  --cs-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --cs-sans: 'Hanken Grotesk', system-ui, sans-serif;
 
-/* ---- Header: icon, name, meta, corner date (no sentence) ---- */
-
-.v2-page .hd {
+  background: var(--app-bg);
+  color: var(--ink);
+  font-family: var(--cs-sans);
+  border-radius: 8px;
+  padding: 26px 28px 30px;
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-6);
-  padding: var(--space-7) var(--space-7) var(--space-4);
-  position: relative;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.v2-page .hd-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  background: var(--bg-well);
-  border: 1px solid var(--line-menu);
-  flex: none;
-}
-
-.v2-page .hd-name {
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.v2-page .hd-meta {
-  font-size: var(--text-scale-12-5);
-  color: var(--text-secondary);
-  margin-top: var(--space-1);
-}
-
-/* Corner date — pinned top-right, no surrounding sentence (hard rule: date only). */
-.v2-page .hd-date {
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-7);
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-11);
-  color: var(--text-muted);
-}
-
-.v2-page .chips {
-  display: flex;
-  gap: var(--space-2);
-  margin: 0 var(--space-7) var(--space-4);
-  flex-wrap: wrap;
-}
-
-.v2-page .stat {
-  background: var(--bg-elevated);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-sm);
-  padding: var(--space-2) var(--space-4);
-  text-align: center;
-  min-width: 52px;
-}
-
-.v2-page .stat b {
-  display: block;
-  font-size: var(--text-scale-15);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.v2-page .stat span {
-  display: block;
-  font-size: var(--text-scale-10);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-family: var(--font-mono);
-}
-
-.v2-page .stat.tier b {
-  color: var(--gold);
-}
-
-/* Flank chip styled danger-red per the approved template — a fixed per-slot styling choice, not a
-   numeric threshold (see unit-page-v2.mjs's isFlankChip doc comment). */
-.v2-page .stat.flank b {
-  color: var(--danger);
-}
-
-/* ---- Pitch box: high-contrast 2-sentence summary, top of page ---- */
-
-.v2-page .pitch {
-  margin: var(--space-6) var(--space-7) var(--space-3);
-  background: linear-gradient(180deg, var(--gold-bg), transparent);
-  border: 1px solid var(--gold-border);
-  border-left: 3px solid var(--gold);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5) var(--space-6);
-}
-
-.v2-page .pitch p {
-  margin: 0;
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 16.5px;
-  line-height: 1.5;
-  color: #ffffff;
-}
-
-/* ---- Panels (doctrines / veterancy / battle role / matchups / controls) ---- */
-
-.v2-page .panel {
-  margin: var(--space-6) var(--space-7) 0;
-  background: var(--bg-panel);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5) var(--space-6);
-}
-
-.v2-page .ph {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.v2-page .ph .bar {
-  width: 3px;
-  height: 14px;
-  background: var(--gold);
-  border-radius: var(--radius-dot);
-  flex: none;
-}
-
-.v2-page .ph h3 {
-  margin: 0;
-  font-size: var(--text-scale-11);
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--text-label);
-  font-family: var(--font-mono);
+.v2-page *,
+.v2-page *::before,
+.v2-page *::after {
+  box-sizing: border-box;
 }
 
 .v2-page sup {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-10);
+  font-family: var(--cs-mono);
+  font-size: 8px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  padding-left: 1px;
 }
 
-/* ---- Doctrines: tag pill + name + note grid, no redundant tag words ---- */
-
-.v2-page .doc {
-  display: grid;
-  grid-template-columns: 82px 1fr;
-  gap: var(--space-1) var(--space-5);
-  align-items: baseline;
-  font-size: var(--text-scale-13-5);
+.v2-page .lock {
+  font-size: 10px;
+  color: var(--ink-4);
+  margin-left: 4px;
 }
 
-.v2-page .doc .name {
-  color: var(--text-primary);
+/* ---- inline SVG icon base ---- */
+.v2-page .cs-ic {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  flex: none;
 }
 
-.v2-page .doc .note {
-  color: var(--text-secondary);
-  font-size: var(--text-scale-12-5);
+.v2-page .cs-ic svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.v2-page .tag {
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-10);
-  border-radius: var(--radius-pill);
-  padding: 1px var(--space-4);
-  justify-self: start;
-}
-
-.v2-page .tag.mand {
-  background: var(--danger-bg);
-  color: var(--danger-text, #ff9a9d);
-}
-
-.v2-page .tag.top {
-  background: var(--success-bg, rgba(56, 178, 107, 0.16));
-  color: var(--success-text, var(--success-light));
-}
-
-.v2-page .tag.fill {
-  background: var(--bg-elevated);
-  border: 1px solid var(--line-soft);
-  color: var(--text-muted);
-}
-
-.v2-page .tag.avoid {
-  background: var(--warning-bg);
-  color: var(--warning-text);
-}
-
-/* ---- Veterancy: one option per row, single recommended badge ---- */
-
-.v2-page .vet-opt {
+/* ---- eyebrow ---- */
+.v2-page .cs-eyebrow {
   display: flex;
-  gap: var(--space-4);
-  padding: var(--space-4) 0;
-  border-top: 1px solid var(--line-soft);
+  align-items: center;
+  gap: 13px;
+}
+
+.v2-page .cs-crest {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #0c0a07;
+  display: grid;
+  place-items: center;
+}
+
+.v2-page .cs-crest .cs-ic {
+  width: 18px;
+  height: 18px;
+  color: var(--gold-deep);
+}
+
+.v2-page .cs-brand {
+  font-family: var(--cs-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
+.v2-page .cs-kicker {
+  font-family: var(--cs-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.v2-page .cs-season {
+  font-family: var(--cs-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* ---- header widget ---- */
+.v2-page .cs-header {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.v2-page .cs-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.v2-page .cs-id {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.v2-page .cs-id-text {
+  min-width: 0;
+}
+
+.v2-page .cs-head-icon {
+  width: 66px;
+  height: 66px;
+  flex: none;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+}
+
+.v2-page .cs-head-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* placeholder — striped tile "holds a place" until a real unit icon exists (15 of 68 v2 units) */
+.v2-page .cs-head-icon.is-ph {
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 7px, transparent 7px 14px);
+}
+
+.v2-page .cs-name {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.05;
+}
+
+.v2-page .cs-meta {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.4;
+  max-width: 560px;
+}
+
+.v2-page .cs-head-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.v2-page .cs-date {
+  font-family: var(--cs-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+}
+
+.v2-page .cs-chips {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.v2-page .cs-chip {
+  min-width: 56px;
+  padding: 8px 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.v2-page .cs-chip b {
+  font-family: var(--cs-mono);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.v2-page .cs-chip span {
+  font-family: var(--cs-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-4);
+  text-transform: uppercase;
+}
+
+.v2-page .cs-chip.is-tier b {
+  color: var(--gold);
+}
+
+.v2-page .cs-chip.is-flank {
+  border-color: var(--red-soft);
+}
+
+.v2-page .cs-chip.is-flank b {
+  color: var(--red);
+}
+
+/* ---- pitch ---- */
+.v2-page .cs-pitch {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--cs-radius-sm);
+  padding: 15px 18px;
+}
+
+.v2-page .cs-pitch p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* ---- three-band grid ---- */
+.v2-page .cs-band {
+  display: grid;
+  grid-template-columns: 362px minmax(0, 1fr) 400px;
+  gap: 16px;
+  align-items: start;
+}
+
+.v2-page .cs-center {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ---- panel base + head ---- */
+.v2-page .cs-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius);
+  padding: 16px 18px;
+  min-width: 0;
+}
+
+.v2-page .cs-phead {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 11px;
+  margin-bottom: 13px;
+  border-bottom: 1px solid var(--line);
+}
+
+.v2-page .cs-panel-doctrines .cs-phead {
+  margin-bottom: 5px;
+}
+
+.v2-page .cs-bar {
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
+  background: var(--gold);
+  flex: none;
+}
+
+.v2-page .cs-plabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.v2-page .cs-pmarks {
+  display: flex;
+  gap: 5px;
+}
+
+.v2-page .cs-pmarks span {
+  font-family: var(--cs-mono);
+  font-size: 9px;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-empty {
+  margin: 4px 0 2px;
+  font-size: 12px;
+  color: var(--ink-4);
+  font-style: italic;
+}
+
+.v2-page .cs-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 15px 0;
+}
+
+/* ---- doctrines (timeline of icon tiles — real art or striped placeholder — + tag/name/note) ---- */
+.v2-page .cs-doc-list {
+  position: relative;
+}
+
+.v2-page .cs-doc-list::before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(var(--gold-soft), transparent);
+  z-index: 0;
+}
+
+.v2-page .cs-doc {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+
+.v2-page .cs-doc:first-child {
+  border-top: 0;
+  padding-top: 12px;
+}
+
+.v2-page .cs-doc-tile {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+}
+
+.v2-page .cs-doc-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.v2-page .cs-doc-tile.is-ph {
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 6px, transparent 6px 12px);
+}
+
+.v2-page .cs-doc-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.v2-page .cs-doc-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 5px 0 0;
+}
+
+.v2-page .cs-doc-note {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+/* ---- doctrine tag pills ---- */
+.v2-page .cs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-family: var(--cs-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.v2-page .cs-tag.is-mand {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.v2-page .cs-tag.is-top {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.v2-page .cs-tag.is-fill {
+  color: var(--neutral);
+  background: var(--neutral-soft);
+}
+
+.v2-page .cs-tag.is-avoid {
+  color: var(--gold);
+  background: var(--gold-soft);
+}
+
+.v2-page .cs-tag-star {
+  width: 9px;
+  height: 9px;
+}
+
+/* ---- veterancy ---- */
+.v2-page .cs-vet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.v2-page .cs-vet-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.v2-page .cs-vet-opt.is-alt .cs-vet-label {
+  color: var(--ink-2);
+}
+
+.v2-page .cs-vet-detail {
+  font-weight: 500;
+  color: var(--ink-3);
+  font-size: 11.5px;
+  margin-left: 3px;
+}
+
+.v2-page .cs-vet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: var(--cs-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.v2-page .cs-vet-badge.is-rec {
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border: 1px solid rgba(227, 173, 77, 0.3);
+}
+
+.v2-page .cs-vet-badge.is-alt {
+  color: var(--ink-3);
+  background: var(--neutral-soft);
+}
+
+.v2-page .cs-badge-star {
+  width: 10px;
+  height: 10px;
+}
+
+.v2-page .cs-vet-track {
+  position: relative;
+  height: 16px;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  align-items: center;
+  margin: 12px 0 11px;
+}
+
+.v2-page .cs-vet-line {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.v2-page .cs-vet-track.is-rec .cs-vet-line {
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+}
+
+.v2-page .cs-vet-track.is-skip .cs-vet-line {
+  background: var(--line-strong);
+}
+
+.v2-page .cs-vet-dots {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.v2-page .cs-vet-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.v2-page .cs-vet-track.is-rec .cs-vet-dot {
+  background: var(--gold);
+  border: 2px solid var(--panel);
+}
+
+.v2-page .cs-vet-track.is-skip .cs-vet-dot {
+  background: var(--panel-2);
+  border: 1.5px solid var(--ink-4);
+}
+
+.v2-page .cs-vet-body {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.v2-page .cs-vet-opt.is-alt .cs-vet-body {
+  color: var(--ink-3);
+}
+
+/* ---- controls ---- */
+.v2-page .cs-loop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 2px 0 4px;
+}
+
+.v2-page .cs-loop-label {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.v2-page .cs-keys {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.v2-page .cs-key {
+  min-width: 32px;
+  height: 34px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cs-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.v2-page .cs-key.is-word {
+  font-weight: 700;
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border-color: rgba(227, 173, 77, 0.4);
+}
+
+.v2-page .cs-key-arrow {
+  color: var(--gold-deep);
+  font-family: var(--cs-mono);
+  font-size: 13px;
+}
+
+.v2-page .cs-key-repeat {
+  width: 17px;
+  height: 17px;
+  color: var(--gold);
+  margin-left: 2px;
+}
+
+.v2-page .cs-notes {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.v2-page .cs-notes b {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---- matchups (Counters / Countered / Synergies) ---- */
+.v2-page .cs-panel-matchups {
+  display: flex;
+  flex-direction: column;
+}
+
+.v2-page .cs-mu-gh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 10px;
+}
+
+.v2-page .cs-panel-matchups .cs-phead + .cs-mu-gh {
+  margin-top: 0;
+}
+
+.v2-page .cs-mu-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  flex: none;
+}
+
+.v2-page .cs-mu-glabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.v2-page .cs-mu-count {
+  font-family: var(--cs-mono);
+  font-size: 9px;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-mu-gh.is-counter .cs-mu-dot {
+  background: var(--green);
+}
+
+.v2-page .cs-mu-gh.is-counter .cs-mu-glabel {
+  color: var(--green);
+}
+
+.v2-page .cs-mu-gh.is-countered .cs-mu-dot {
+  background: var(--red);
+}
+
+.v2-page .cs-mu-gh.is-countered .cs-mu-glabel {
+  color: var(--red);
+}
+
+.v2-page .cs-mu-gh.is-synergy .cs-mu-dot {
+  background: var(--gold);
+}
+
+.v2-page .cs-mu-gh.is-synergy .cs-mu-glabel {
+  color: var(--gold);
+}
+
+.v2-page .cs-mu-note {
+  background: var(--panel-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: 3px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-mu-note-ic {
+  width: 13px;
+  height: 13px;
+}
+
+.v2-page .cs-mu-pressure {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2.5px solid var(--green);
+  border-radius: 3px;
+  padding: 9px 11px;
+}
+
+.v2-page .cs-mu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.v2-page .cs-mu-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 9px 11px;
+}
+
+.v2-page .cs-mu-card.is-countered {
+  border-left: 2.5px solid var(--red);
+}
+
+.v2-page .cs-mu-card.is-synergy {
+  border-left: 2.5px solid var(--gold);
+}
+
+.v2-page .cs-mu-card.is-counter {
+  border-left: 2.5px solid var(--green);
+}
+
+.v2-page .cs-mu-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.v2-page .cs-mu-why {
+  font-size: 10.5px;
+  line-height: 1.42;
+  color: var(--ink-3);
+}
+
+/* ---- battle role ---- */
+.v2-page .cs-panel-role {
+  padding: 18px 20px;
+}
+
+.v2-page .cs-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.v2-page .cs-role-grid.is-single {
+  grid-template-columns: 1fr;
+}
+
+.v2-page .cs-role-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.v2-page .cs-role-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+  padding: 16px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.v2-page .cs-role-card.is-tips {
+  padding: 16px 18px;
+  gap: 12px;
+}
+
+.v2-page .cs-role-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.v2-page .cs-role-chip {
+  width: 27px;
+  height: 27px;
+  flex: none;
+  border-radius: 3px;
+  background: var(--gold-soft);
+  display: grid;
+  place-items: center;
+}
+
+.v2-page .cs-role-chip .cs-ic {
+  width: 15px;
+  height: 15px;
+  color: var(--gold);
+}
+
+.v2-page .cs-role-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.v2-page .cs-role-body {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.v2-page .cs-role-body b {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.v2-page .cs-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.v2-page .cs-tip {
+  display: flex;
+  gap: 10px;
   align-items: flex-start;
 }
 
-.v2-page .vet-opt:first-child {
-  border-top: 0;
+.v2-page .cs-tip-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  margin-top: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
-.v2-page .vet-opt .lbl {
-  font-weight: 600;
-  font-size: var(--text-scale-13-5);
-  white-space: nowrap;
-  color: var(--text-primary);
+.v2-page .cs-tip-text {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--ink-2);
 }
 
-.v2-page .vet-opt .rec {
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-9-5);
-  background: var(--gold-bg);
-  color: var(--gold);
-  border-radius: var(--radius-pill);
-  padding: 1px var(--space-4);
-  align-self: center;
+.v2-page .cs-tip-text b {
+  color: var(--ink);
+  font-weight: 700;
 }
 
-.v2-page .vet-opt .body {
-  color: var(--text-secondary);
-  font-size: var(--text-scale-12-5);
-}
-
-/* ---- Battle role: real clickable tabs ---- */
-
-.v2-page .tabs {
+/* ---- footer (footnote legend + honest gaps) ---- */
+.v2-page .cs-foot {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 2px;
   display: flex;
-  gap: var(--space-1);
-  margin-bottom: var(--space-4);
-  border-bottom: 1px solid var(--line-soft);
+  flex-direction: column;
+  gap: 10px;
 }
 
-.v2-page .tab {
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-11);
-  letter-spacing: 0.04em;
+.v2-page .cs-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-legend-item sup {
+  color: var(--gold-deep);
+  margin-right: 2px;
+}
+
+.v2-page .cs-gaps {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.v2-page .cs-gap {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-gap-tag {
+  font-family: var(--cs-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  background: none;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  padding: var(--space-3) var(--space-4);
-  cursor: pointer;
+  color: var(--gold-deep);
+  background: var(--gold-soft);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-right: 2px;
 }
 
-.v2-page .tab:hover {
-  color: var(--text-body);
-}
-
-.v2-page .tab[aria-selected='true'] {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
-}
-
-.v2-page .tabpane {
-  display: none;
-  font-size: var(--text-scale-13-5);
-  color: var(--text-body);
-  line-height: 1.65;
-}
-
-.v2-page .tabpane[data-active='true'] {
-  display: block;
-}
-
-/* ---- Matchups: per-unit cards + pressure line ---- */
-
-.v2-page .mu {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: var(--space-3);
-}
-
-.v2-page .mu-card {
-  background: var(--bg-well);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-sm);
-  padding: var(--space-3) var(--space-4);
-}
-
-.v2-page .mu-card b {
-  font-size: var(--text-scale-12-5);
-  display: block;
-  color: var(--text-primary);
-}
-
-.v2-page .mu-rel {
-  font-size: var(--text-scale-10-5);
-  display: inline-block;
-  margin-top: var(--space-1);
-}
-
-.v2-page .mu-why {
-  font-size: var(--text-scale-11);
-  color: var(--text-muted);
-  margin-top: var(--space-1);
-}
-
-.v2-page .rel-counters-you {
-  color: var(--danger);
-}
-
-.v2-page .rel-hero-threat {
-  color: var(--warning-text);
-}
-
-.v2-page .rel-pairs {
-  color: var(--accent);
-}
-
-.v2-page .mu-pressure {
-  font-size: var(--text-scale-12-5);
-  color: var(--text-secondary);
-  margin-top: var(--space-5);
-}
-
-/* ---- Controls: key-chip loop + mechanic notes ---- */
-
-.v2-page .loop {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  align-items: center;
-  margin-bottom: var(--space-4);
-  font-size: var(--text-scale-12);
-}
-
-.v2-page .key {
-  font-family: var(--font-mono);
-  font-size: var(--text-scale-11);
-  font-weight: 600;
-  background: var(--bg-well);
-  border: 1px solid var(--line-menu);
-  border-radius: var(--radius-xs);
-  padding: var(--space-1) var(--space-4);
-  color: var(--text-primary);
-}
-
-.v2-page .arrow {
-  color: var(--text-muted);
-}
-
-.v2-page .ctrl-note {
-  font-size: var(--text-scale-12-5);
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.v2-page .ctrl-note b {
-  color: var(--text-primary);
-}
-
-/* ---- Footer: footnote legend ---- */
-
-.v2-page .foot {
-  border-top: 1px solid var(--line-soft);
-  margin-top: var(--space-7);
-  padding: var(--space-5) var(--space-7);
-  display: flex;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-  font-size: var(--text-scale-11);
-  color: var(--text-muted);
-}
-
-.v2-page .foot .leg {
-  display: flex;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-
-/* House lock glyph reuses academy.css's shared `.lock` rule (§7) — no override needed here. */
-
-@media (max-width: 640px) {
-  .v2-page .hd-date {
-    position: static;
-    margin-top: var(--space-2);
+/* ---- responsive ---- */
+@media (max-width: 1024px) {
+  .unit-page-main:has(#unit-v2-page:not([hidden])) {
+    max-width: 900px;
   }
 
-  .v2-page .doc {
+  .v2-page .cs-band {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .v2-page {
+    padding: 18px 16px 22px;
+  }
+
+  .v2-page .cs-head-row {
+    flex-direction: column;
+  }
+
+  .v2-page .cs-head-right {
+    align-items: flex-start;
+  }
+
+  .v2-page .cs-chips {
+    justify-content: flex-start;
+  }
+
+  .v2-page .cs-name {
+    font-size: 24px;
+  }
+
+  .v2-page .cs-role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .v2-page .cs-mu-grid {
     grid-template-columns: 1fr;
   }
 }

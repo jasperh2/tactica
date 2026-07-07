@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Unit — Immortals Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../shared/academy.css" />
   <link rel="stylesheet" href="./unit-page.css" />
 </head>
@@ -15,45 +15,15 @@
 
   <main class="academy-main unit-page-main" id="app-shell">
     <div id="unit-main">
-      <!-- V2 layout (cb-unit-page-v2/1 schema) — see unit-page-v2.boot.mjs / unit-page.boot.mjs's
-           boot() dispatch. Mutually exclusive with unit-identity-only/unit-full-guide below;
-           unit-page.boot.mjs toggles all three via `hidden`. Structure ported from the approved
-           reference site/units/unit-page-template-v2.html: corner-date header, pitch box,
-           doctrines/veterancy/battle-role/matchups/controls panels, footnote-legend footer.
-
-           DEEP-LINK ANCHOR IDS: the v1 tree below already owns the literal ids `veterancy`,
-           `role`, `matchups`, `controls` (its own #role/#matchups/#controls/#veterancy anchors) —
-           duplicating them here would be invalid HTML and would make getElementById ambiguous
-           regardless of which tree is `hidden`. Since only one tree renders at a time, this v2
-           tree uses `v2-<name>` ids that still carry the deep-link anchor name in full (v2 pages
-           are never linked to as bare #doctrines/#role/#matchups/#controls from outside this
-           file, so the small id difference is not user-visible). -->
-      <div id="unit-v2-page" class="v2-page" hidden>
-        <header class="hd" id="unit-v2-header" aria-label="Unit header"></header>
-        <div class="pitch" id="unit-v2-pitch"></div>
-
-        <section id="v2-doctrines" class="panel" aria-label="Doctrines">
-          <div id="unit-v2-doctrines"></div>
-        </section>
-
-        <section id="v2-veterancy" class="panel" aria-label="Veterancy">
-          <div id="unit-v2-veterancy"></div>
-        </section>
-
-        <section id="v2-role" class="panel" aria-label="Battle role">
-          <div id="unit-v2-battle-role"></div>
-        </section>
-
-        <section id="v2-matchups" class="panel" aria-label="Matchups">
-          <div id="unit-v2-matchups"></div>
-        </section>
-
-        <section id="v2-controls" class="panel" aria-label="Controls">
-          <div id="unit-v2-controls"></div>
-        </section>
-
-        <footer class="foot" id="unit-v2-footer" aria-label="Sources and notes"></footer>
-      </div>
+      <!-- V2 layout (cb-unit-page-v2/1 schema) — the "Modao Cheat Sheet" redesign
+           (design/handoff-unit-page-v3/Modao Cheat Sheet.dc.html, imported 2026-07-07). Mutually
+           exclusive with unit-identity-only/unit-full-guide below; unit-page.boot.mjs toggles all
+           three via `hidden`. renderUnitPageV2 (unit-page-v2.boot.mjs) builds the ENTIRE cheat-sheet
+           tree into this single root — eyebrow, header widget + pitch, the three-band grid
+           (doctrines / veterancy+controls / grouped matchups), battle-role cards, and the
+           footnote/gaps footer. No inner ids are declared here, so nothing can collide with the v1
+           tree's #role/#matchups/#controls/#veterancy ids while both trees coexist (one hidden). -->
+      <div id="unit-v2-page" class="v2-page" hidden></div>
 
       <!-- Identity-only invitation shape (93-of-149 case): header + tier + role line + one honest
            absence note, in place of every guide region below (v1 stats-only path — see
