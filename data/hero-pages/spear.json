@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "spear",
   "className": "Spear",
-  "weaponArchetype": "Cavalry lancer · hero-diver",
+  "weaponArchetype": "Polearm",
   "tier": {
     "tier": "A",
     "positionInTier": 3,
@@ -10,29 +10,39 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "I'd say definitely no, as you don't benefit much from the passive stats it gives vs the flat dmg u get from normal Carnifex/Earthshatter set",
+    "needed": "no, skip it",
     "name": "Sergeant's Camisole",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full Agility",
-    "runes": "unknown",
+    "attribute": "Full Agility (single value, no alternative offered). Confirmed independently by the general hero guide's Medium-armor table: \"Spear: Full Agility.\" - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "N/A",
-    "genderNote": null,
+    "genderNote": "No gender-based animation difference is documented for Spear. OP explicitly marks \"Best Gender (Animation Change depending of it): N/A\".",
     "armorSets": [
       {
         "name": "Earthshatter",
-        "purpose": "stun on ultimate"
+        "purpose": "play Earthshatter set for stun on ultimate"
       },
       {
-        "name": "Medium (full set)",
-        "purpose": "fallback if not enough Special Schematic pieces"
+        "name": "Carnifex's Armour",
+        "purpose": "or full Medium if not enough Special Schematic pieces"
+      },
+      {
+        "name": "Sergeant's Camisole",
+        "purpose": "I'd say definitely no, as you don't benefit much from the passive stats it gives vs the flat dmg u get from normal Carnifex/Earthshatter set.",
+        "epic": true
       }
     ],
-    "aimingFlags": null,
+    "aimingFlags": {
+      "assistedAimHero": true,
+      "lockedOnHero": false,
+      "assistedAimUnits": false,
+      "lockedOnUnits": false
+    },
     "weaponStats": {
       "need": [
-        "Piercing Damage (\"like oxygen, maximize this\")",
+        "Piercing Damage",
         "Piercing Pen"
       ],
       "bonus": [
@@ -44,65 +54,104 @@
     },
     "spells": {
       "core": [
-        "Procri's Grift",
-        "Hurricane",
+        "Procris's Gift",
+        "Hurricane's Edge",
         "Lugh's March",
         "Dragon's Roar",
-        "Heaven's Fury (if Earthshatter set)"
+        "Heaven's Fury"
       ],
-      "fillerNotes": "Overhead Strike maximizes PvP damage and is usable before bursting with Drill, but per OP: \"Pretty niche scenarios and not worth currently.\""
+      "fillerNotes": "Paragon slot: Dragon's Roar or Heaven's Fury if Earthshatter set. Variant: Hurricane's Edge and/or Lugh's March swapped for Overhead Strike - overall both builds are viable, overhead strike just provides more 1v1 or overall more hero killing potential, but it's diminished considering the less 'easy prey' scenarios the current meta has to offer. - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "Playstyle 1",
-      "summary": "Procri's Grift, Hurricane, Lugh's March, Dragon's Roar or Heaven's Fury if Earthshatter set.",
+      "name": "Core loadout",
+      "summary": "Procris's Gift, Hurricane's Edge, Lugh's March, Dragon's Roar or Heaven's Fury (paragon slot). Standard pick per OP. Earthshatter set grants the paragon-skill concussion proc.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Earthshatter",
+      "altSkill": "Overhead Strike variant swaps in Hurricane's Edge and/or Lugh's March - see the Overhead Strike variant build."
     },
     {
-      "name": "Playstyle 2",
-      "summary": "Procri's Grift, Hurricane/Overhead Strike, Lugh's March/Overhead Strike, Dragon's Roar or Heaven's Fury if Earthshatter set.",
+      "name": "Overhead Strike variant",
+      "summary": "Same core with Hurricane's Edge and/or Lugh's March replaced by Overhead Strike. \"Overall both builds are viable, overhead strike just provides more 1v1 or overall more hero killing potential, but it's diminished considering the less 'easy prey' scenarios the current meta has to offer.\"",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "1V1/Hero-Kill",
+      "altSkill": null
+    },
+    {
+      "name": "Full Medium",
+      "summary": "Full Medium/Carnifex's Armour if not enough Special Schematic pieces for Earthshatter - a resource-availability choice, not a power tier.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Carnifex's Armour",
+      "altSkill": null
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Longsword (LS)",
+      "stance": "strong-vs",
+      "why": "named the only hero class house leadership treats as a real threat to LS - drives a full-armor (not full-health) LS build decision. - house playbook"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "weak-vs",
+      "why": "[GAP: no explicit Loses-to/weak-vs list for Spear - Amya's own guide does not cover it; only the block-aware-opponents proxy signal in Tips gestures at counters]"
+    },
+    {
+      "vs": "Javelin Sergeants",
+      "stance": "synergy",
+      "why": "their AoE-into-targeted-throw combo softens grouped/backline targets that a Spear hero's ultimate (Dragon's Roar or Heaven's Fury) then finishes."
+    }
+  ],
   "techniques": [
     {
-      "name": "Dismount → Drill → Procri's finish",
+      "name": "Animation canceling",
       "steps": [
-        "Poke with horse right-click to bait enemy cooldowns",
-        "Dismount",
-        "DRILLLLL, preferably on the enemy's back",
-        "Procri's Grift if enemy is still alive, for the free kill"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Drill is best used after a dismount, preferably on the enemy's back — otherwise \"legit z dmg\"; usable from the ground too if the enemy is stunned or you have a straight back-attack positional advantage."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk. Demonstrated specifically ON Spear (BirdOfQin, 2024-10-09): \"I'm using a medium armor class (Spear) and my block value isn't even fazed by the fortes.\""
     }
   ],
   "gameplay": [
     {
-      "text": "Gameplay is straight forward, look for undefended prey, poke with horse right click (try to bait some cooldowns from enemy), dismount, DRILLLL and procri's if enemy is still alive for the free kill.",
-      "attribution": "BirdOfQin"
-    },
-    {
-      "text": "Supporting units: play wisely when engaging to support your units — diving with horse into blobs or over-committing to Hurricane can get you destroyed. For starters, focus on maximizing hero-and-unit synergy (cav/exo/static units/standalone units, etc).",
-      "attribution": "BirdOfQin"
-    },
-    {
-      "text": "Hurricane is a multi-purpose stagger (hero/unit) plus a very quick passive stacker: \"you can legit dismount behind units, hurricane, and it will be very hard for anyone to reach you,\" and it staggers all units not blocking it.",
-      "attribution": "BirdOfQin"
-    },
-    {
-      "text": "Procri's Grift is \"the last hitting god.\" In stalemate setups, spam it aiming at any exo hiding behind blobs — \"Legit SPAM this skill, takes like 3 to 5? to kill hidden exos like cocos/flames.\"",
-      "attribution": "BirdOfQin"
-    },
-    {
-      "text": "Lugh's March is the only CC recovery available; use wisely, or use while aiming at the enemy hitting you to prevent unwanted damage/CC. Because you block while using it, be mindful of after-animation block usage — if your block breaks, getting hit again can lead to unwanted stun.",
-      "attribution": "BirdOfQin"
+      "text": "The spear is a polearm ubiquitous to warfare throughout the ages. In Conqueror's Blade, spear users have excellent mounted attack capabilities and the ability to deal great burst damage to enemy heroes. However, they have little ability to inflict control effects and are severely weakened without access to mounts.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -119,12 +168,260 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Spear Guide' (1465010049524175025); OP 2026-01-25, edited 2026-06-29",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Spear Guide\"",
       "sourceDate": "2026-06-29",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-06-29",
-  "patchNote": "Latest edit (2026-06-29) post-dates the 2026-06-25 Chaos patch anchor — current-season content, most recently touched guide in this capture batch."
+  "patchNote": "Amya's Spear guide OP posted 25/01/2026, edited 29/06/2026 - this post-dates the 25/06/2026 Chaos patch by 4 days, the freshest primary hero-guide source in this consolidation batch. No replies in the thread since.",
+  "roleLabel": "Spear users have excellent mounted attack capabilities and the ability to deal great burst damage to enemy heroes.",
+  "armorClass": "Medium",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Look for undefended prey; poke from horseback to bait cooldowns before committing to a dismount engage."
+      },
+      {
+        "lead": null,
+        "text": "Support your own units when engaging - diving into blobs on horseback or over-committing to Hurricane's Edge can get you destroyed. Focus on maximizing hero-and-unit synergy (cav / exo / static units / standalone units, etc.) rather than freelancing."
+      },
+      {
+        "lead": null,
+        "text": "Brace-tank niche: can walk into braced units (Forte, Halberds, Phalanx) at minimal range with block value effectively unfazed - flagged by its own source as a niche/outnumbered-enemy scenario, not a general frontline tactic."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Piercing Damage is the top-priority weapon stat - \"like oxygen, maximize this\"."
+      },
+      {
+        "lead": null,
+        "text": "Assisted Aiming on Hero is a deliberate tradeoff, not a strict upgrade."
+      },
+      {
+        "lead": "Lugh's March's block-during-cast carries a hidden risk:",
+        "text": "if your block breaks mid-animation and you're hit again, you can get stunned unexpectedly."
+      },
+      {
+        "lead": null,
+        "text": "Procris's Gift is the go-to tool for finishing exos hiding behind blobs in stalemate fights (roughly 3-5 hits per Amya's estimate)."
+      },
+      {
+        "lead": "[Mounted Right Click] poke-and-bait:",
+        "text": "use the horseback right-click attack to provoke enemy cooldowns before committing to a dismount."
+      },
+      {
+        "lead": null,
+        "text": "Walking (not sprinting) into a braced unit's minimal range takes markedly less brace damage, because brace damage scales with the attacker's speed relative to the braced unit - verified on Spear specifically by BirdOfQin's clip."
+      },
+      {
+        "lead": "Know your own tool's reputation:",
+        "text": "experienced players on OTHER classes actively hold their block specifically to play around Spear's Procris's Gift - treat this as a proxy signal that landing it clean against aware opponents is competitive, not free damage."
+      }
+    ]
+  },
+  "statSpreads": [],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: \"DRILLLLL\" -> official ability name unconfirmed - Gungnir's Gift is the better-reasoned candidate over Return of Jangar, but this is inference, not confirmation] [GAP: Assisted Aiming on Units / Locked on Units - fields present but left blank by the OP]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Core engage loop",
+      "steps": [
+        "poke with horse right click (bait cooldowns)",
+        "dismount",
+        "DRILLLL",
+        "Procris's Gift if enemy still alive for the free kill"
+      ],
+      "note": "Gameplay is straight forward, look for undefended prey."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Spear counts as a medium armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP"
+      },
+      {
+        "grade": "A",
+        "label": "Crit Value / Piercing def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Bridge Defender",
+        "effect": "Each stack of [Hard-Hitting] grants an additional 2% increase to all types of damage. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Engraved in Stone",
+        "effect": "Stamina cost for [Mounted Right-Click] is reduced by 20%. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Western Divine Might",
+        "effect": "When you hit an enemy with a mounted [Basic Attack], reduces the cooldown of [Full Tilt Charge] (Mounted E Skill) by 3 seconds. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "aimingNotes": {
+    "assistedAimHero": "Yes: won't miss a dismount when close enough to the target; may dismount on a wall and fall off if an enemy is below; can't turn around for a back-attack dismount without deliberately looking for the target's back first. No: can rotate the camera during the dismount to chase the target's back with more precision (requires skill); won't get mis-placed on landing; takes time to master but more rewarding in the long run.",
+    "lockedOnHero": "it's a close fighter, just with the assist you're more than good to play, this restricts it too much and can put you in danger more than desired.",
+    "assistedAimUnits": "[GAP: not filled in by the source]",
+    "lockedOnUnits": "[GAP: not filled in by the source]"
+  }
 }

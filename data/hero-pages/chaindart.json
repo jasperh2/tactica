@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "chaindart",
   "className": "Chaindart",
-  "weaponArchetype": "Chain weapon · mobility/utility disruptor",
+  "weaponArchetype": "Chain Dart & Scimitar",
   "tier": {
     "tier": "AA",
     "positionInTier": 2,
@@ -23,23 +23,28 @@
     ]
   },
   "epicSchematic": {
-    "needed": "Not Needed But Nice to Have",
+    "needed": "optional but worth having",
     "name": "Sand Scorpion Armour",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full Strength",
-    "runes": "unknown",
-    "bestGender": "No Change",
-    "genderNote": null,
+    "attribute": "Full Strength - three-way agreement between Amya's chaindart OP, the General Hero Guide's cross-class table (\"Chaindart: Full Strength\"), and the wiki's own Tips. House note: the weapon can't reach 2k penetration on full Strength - putting some Agility in can reach the soft cap of pene if your weapon rolls aren't great, at the cost of Leadership. - Amya, house: Kazepos",
+    "runes": "known - Chaos season set below",
+    "bestGender": "N/A",
+    "genderNote": "No Change (Amya) - no animation-variant note for this class, unlike Shortsword's dash-distance difference. Confirmed absence, not a gap.",
     "armorSets": [
       {
-        "name": "Rogue",
-        "purpose": "Best Armour before Epic schem"
+        "name": "Rogue's Armour",
+        "purpose": "Best Armour before Epic schem, tied with Warbreaker - no stated preference. Standard light rare set: 2pc +250 all-type armour penetration, 4pc +96 crit value."
       },
       {
         "name": "Warbreaker",
-        "purpose": "Best Armour before Epic schem"
+        "purpose": "Best Armour before Epic schem, tied with Rogue's - no stated preference. 3pc crit window after enhancement skills, 5pc self-Bleed proc on hit."
+      },
+      {
+        "name": "Sand Scorpion Armour",
+        "purpose": "Epic Schematic - Not Needed But Nice to Have. Heavy cooldown reduction across the whole kit, the pick for playing chaindart longterm.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -60,41 +65,145 @@
     },
     "spells": {
       "core": [
-        "Grab",
-        "Snare",
-        "Slash spell",
-        "Shuriken"
+        "Leap and Slash",
+        "Sandstorm",
+        "Scorpion's Snare",
+        "Trap Prey"
       ],
-      "fillerNotes": "Only one combo: Grab, Snare, Slash spell then shuriken — shurikens will reduce CD of your other spells."
+      "fillerNotes": "Not a choice - there is only 1 possible skill setup for chain dart & scimitar users, all 4 skills are always equipped. - wiki, Skill Selection"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "Supply Kill / Utility (TW, Rank)",
-      "summary": "Grab, Snare, Slash then shuriken to reduce other cooldowns; ultimate dismounts, snare cancels anything including CCi heroes.",
-      "strongVs": "Protecting exotics; defending supply on TW",
-      "forWhom": "Players swapping in temporarily for the utility window, then swapping back (e.g. to Longbow or Dual Blades)",
+      "name": "Rogue's / Warbreaker",
+      "summary": "Default before you have the epic schematic - no stated preference between the two. Rogue's gives flat penetration (2pc) and crit value (4pc); Warbreaker gives a post-enhancement-skill crit window (3pc) and a self-Bleed proc (5pc).",
+      "strongVs": null,
+      "forWhom": null,
       "recommended": false,
-      "epicSchemVariantRef": "Supply Kill TW/Rank"
+      "typeLabel": "Pre-Epic",
+      "altSkill": null
+    },
+    {
+      "name": "Sand Scorpion Armour",
+      "summary": "For those wishing to play chain dart & scimitar longterm - heavy cooldown reduction across the whole kit, turning the CD-refund loop into an even faster one. The build implied by the AA-tier Supply Kill TW/Rank special job: sustained pressure on a point rather than one cooldown-perfect burst.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Epic/Longterm",
+      "altSkill": null
+    },
+    {
+      "name": "Partial Agility",
+      "summary": "Full Strength is the baseline every curated guide gives, but the weapon can struggle to reach 2k penetration on Strength alone. Moving some points to Agility can close the gap to the penetration soft cap if your weapon rolls aren't great - at the cost of Leadership.",
+      "strongVs": null,
+      "forWhom": "Min-max adjustment, not a beginner starting point.",
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Lone heroes who stray too far from their allies",
+      "stance": "strong-vs",
+      "why": "excellent at killing lone heroes (wiki) - the dash/blink skills are built exactly for jumping onto a straying target."
+    },
+    {
+      "vs": "Mounted enemy heroes",
+      "stance": "strong-vs",
+      "why": "Trap Prey dismounts them if they're mounted (Amya's note)."
+    },
+    {
+      "vs": "CC-immune heroes",
+      "stance": "strong-vs",
+      "why": "Scorpion's Snare's Winded effect can cancel anything, even CCi heroes."
+    },
+    {
+      "vs": "Exotics and other low-life, high-impact units",
+      "stance": "strong-vs",
+      "why": "what you're deployed to protect on defense - or, read the other way, exactly what an enemy Chaindart player will be hunting on your side."
+    },
+    {
+      "vs": "Groups / multiple heroes at once",
+      "stance": "weak-vs",
+      "why": "commits hard to one target - other heroes intervening in the fight face little threat from a Chaindart mid-combo on someone else. Retreat into allied troops/heroes to ward it off."
+    },
+    {
+      "vs": "Heavy/medium mobility classes after Sandstorm is down",
+      "stance": "weak-vs",
+      "why": "Sandstorm is the only control-effect removal tool and has a fairly sizeable cooldown - step in too close right after disengaging and a heavy or medium class with some mobility of its own can push forward and kill you."
+    },
+    {
+      "vs": "Masses of enemy troops / units generally",
+      "stance": "weak-vs",
+      "why": "nearly no applicability against enemy units, no large AoE - poses no threat to formation-CC-dependent units like Onna-musha or Men-at-Arms."
+    },
+    {
+      "vs": "Orochi Samurai",
+      "stance": "synergy",
+      "why": "Amya's Orochi Samurai unit guide names Chaindart explicitly as its hero pairing (\"any lock-ult class\") - a Special Melee Infantry (Polearm) unit whose kit disarms targets and phases through enemy units for high minimum damage."
+    },
+    {
+      "vs": "own warband pairings",
+      "stance": "synergy",
+      "why": "No explicit list of which units to bring alongside a Chaindart player was found from Amya or house sources. [GAP: explicit own-warband unit pairings for Chaindart players - vets/house question]"
+    }
+  ],
   "techniques": [
     {
-      "name": "Grab-Snare-Slash-Shuriken combo",
+      "name": "Animation canceling",
       "steps": [
-        "Grab",
-        "Snare",
-        "Slash spell",
-        "Shuriken"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Only one combo: shurikens will reduce CD of your other spells."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - Largely moot for this class - Chaindart has nearly no applicability against enemy units and isn't built to fight into braced lines."
+    },
+    {
+      "name": "CD-refund cycling",
+      "steps": [
+        "Leap and Slash for the Stinging Strike CDR",
+        "Scorpion's Snare's dual trigger off Leap and Slash/Sandstorm/Trap Prey casts",
+        "Stinging Strike between skills to shave more"
+      ],
+      "rhythm": "the kit is built to loop, not to be held for one perfect opener - Every skill in the kit shaves time off another - Leap and Slash's Stinging Strike trigger (-1s), Scorpion's Snare's dual trigger (-2s per Leap and Slash/Sandstorm/Trap Prey cast, -1s per Stinging Strike hit), plus the flat base-CD purchases (Butchery -2s on Scorpion's Snare, Fatal Sting -3s on Trap Prey)."
     }
   ],
   "gameplay": [
     {
-      "text": "Your ultimate dismount enemy if they mounted, and ur snare cancel anything, even CCi heroes so you are great to protect important units such as exotics (low life, high impact units), you are great to defend supply on TW, the class isn't really played in sieges or ranked but rather used temporarily then swapping back to another class (LB or DB for example), or specially for TW.",
+      "text": "Chain dart & scimitar users have excellent mobility and can easily jump on and kill enemy heroes, but in turn have nearly no applicability against enemy units and are vulnerable to intervention by multiple enemies.",
+      "attribution": "wiki"
+    },
+    {
+      "text": "You are great to protect important units such as exotics (low life, high impact units), you are great to defend supply on TW.",
       "attribution": "Amya"
     }
   ],
@@ -107,12 +216,276 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'ChainDart Guide' (1292948709595680779); OP 2024-10-07, edited 2026-06-09",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"ChainDart Guide\"",
       "sourceDate": "2026-06-09",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-06-09",
-  "patchNote": "Latest edit (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor by about two weeks."
+  "patchNote": "Amya OP dated 07/10/2024, edited 09/06/2026 - about two weeks before the 25/06/2026 Chaos patch. Tierlist updated 29/06/2026, after the patch, so the AA/B placement is current even though the guide body under it isn't re-verified yet.",
+  "roleLabel": "The chain dart & scimitar places an intense focus on hero dueling.",
+  "armorClass": "Light",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": "Utility deployment, not a frontline or blob pick:",
+        "text": "great to protect important units such as exotics (low life, high impact units) and to defend supply on TW."
+      },
+      {
+        "lead": null,
+        "text": "Serve an area denial role - protect vulnerable allied ranged troops from enemy heroes diving past the frontline to strike at them."
+      },
+      {
+        "lead": null,
+        "text": "Camp on or near a contested supply point in TW, ready to burst down whichever enemy hero is trying to pull it."
+      },
+      {
+        "lead": "Bodyguard positioning:",
+        "text": "stand near your own high-value, low-HP units (exotics), ready to Trap Prey or Scorpion's Snare any enemy hero that dives past your line to reach them."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Scorpion's Snare cancels anything, -",
+        "text": "even CCi (crowd-control-immune) heroes - a standout utility callout."
+      },
+      {
+        "lead": "Trap Prey dismounts mounted enemies -",
+        "text": "that's Amya's own note, the wiki's own Trap Prey tooltip text doesn't spell out a dismount clause."
+      },
+      {
+        "lead": "The whole kit is unblockable and undodgeable -",
+        "text": "and hits faster than most other weapons' abilities - but you're wide open while casting. Get caught with Sandstorm on cooldown, or hit by Winded/Thrown effects, and you can be beaten down fast."
+      },
+      {
+        "lead": "Target discipline:",
+        "text": "jump on enemy heroes who stray too far from their allies - your dash/blink skills are built for exactly that."
+      },
+      {
+        "lead": "Swap-class workflow:",
+        "text": "this class isn't really played in sieges or ranked, it's used temporarily then swapped back to another class (LB or DB for example), or specially for TW."
+      },
+      {
+        "lead": null,
+        "text": "Basically zero unit-fighting AoE, so it's a poor pick whenever the fight turns into units-vs-units instead of hero-vs-hero - the flip side of the AA-tier supply-kill specialty."
+      },
+      {
+        "lead": "Aim-assist:",
+        "text": "all four toggles off, the only class in this series where that's true. Amya's OP doesn't say why, but it tracks with free-aiming your dive kit onto one specific, likely-moving hero rather than relying on lock-on."
+      }
+    ]
+  },
+  "statSpreads": [],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "wiki, Amya",
+  "gapNotes": {
+    "controls": "[GAP: Stinging Strike's own damage numbers - the wiki never gives it an infobox, only referencing it as a proc trigger inside other skills' extra effects] [GAP: Reaper upgrade node's control-effect type - concuss per Leap and Slash's tooltip vs stun per the node's own tooltip]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Core engage chain",
+      "steps": [
+        "Trap Prey",
+        "Scorpion's Snare",
+        "Leap and Slash",
+        "Sandstorm to disengage if needed",
+        "Stinging Strike as CDR filler"
+      ],
+      "note": "The usual skill combo (wiki) - unblockable, undodgeable openers strung together before the target can react."
+    },
+    {
+      "name": "Amya's shorthand",
+      "steps": [
+        "Grab",
+        "Snare",
+        "Slash",
+        "shuriken"
+      ],
+      "note": "Grab = Trap Prey's pull, Snare = Scorpion's Snare, Slash = Leap and Slash, shuriken = Amya's own term for the Stinging Strike dart-throw basic attack. Shurikens reduce CD of your other spells."
+    },
+    {
+      "name": "Disengage",
+      "steps": [
+        "Sandstorm out - your only control-effect removal tool"
+      ],
+      "note": "Enemies are advised to wait it out; once it's down you're very killable, especially to heavy/medium classes with some mobility of their own."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Chaindart counts as a light armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP / Crit Value"
+      },
+      {
+        "grade": "A",
+        "label": "Piercing Def / Slash/Piercing dmg depending of your weapon"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Architect of Chaos",
+        "effect": "Hitting an enemy Hero with an attack applies 1 stack of a mark lasting 4 seconds. At 5 stacks, it inflicts 20% of their current Health as bleeding damage. The same target can only suffer this damage once every 15 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Perfect Trust",
+        "effect": "Each [Stinging Strike] that hits an enemy further reduces the cooldown of [Scorpion's Snare] by 1 second. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Severing the Lifeline",
+        "effect": "Damage against Heroes and Units undergoing healing is increased by 15%. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": "DMG dealer can replace martyr's Glory for both str/agi nodes if not DB full hp, or things like that",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "For lights that hit both units and heroes take both + str / if you don't hit heroes or units, prefere ultimate all dmg increase / Don't take defence reducing, it's useless",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

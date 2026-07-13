@@ -1,5 +1,5 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "shortsword",
   "className": "Shortsword",
   "weaponArchetype": "Sword & Shield",
@@ -10,23 +10,28 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "No (Preferable)",
-    "name": "Officier's Armour",
+    "needed": "optional but worth having",
+    "name": "Officer's Armour",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full HP (Recommended); Full STR (If you know what you doing for DMG)",
-    "runes": "unknown",
+    "attribute": "Full HP (Recommended), Full STR (If you know what you doing for DMG). General-hero-guide heavy table confirms Shortsword = Full HP/Armor. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Female",
-    "genderNote": "Small dash forward with shield charge; some prefer Male since the dash can cause the charge to miss.",
+    "genderNote": "Small dash forward with shield charge. Some prefer Male as this little Dash make them miss the charge.",
     "armorSets": [
       {
         "name": "Stoneguard",
-        "purpose": "tankiness"
+        "purpose": "Stoneguard for more tankiness"
       },
       {
         "name": "Flameshackle",
-        "purpose": "DPS — farms range and rattan units"
+        "purpose": "flameshackle for dps (most ppl play that as it farm range and rattans units)"
+      },
+      {
+        "name": "Officer's Armour",
+        "purpose": "Epic hybrid / dueler set - no debuff after the ult and heal; reduced cooldown. Unlocks the Deathmatch/hybrid build.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -47,81 +52,147 @@
     },
     "spells": {
       "core": [
-        "Shield Charge",
+        "Shielded Charge",
         "Ironsides",
         "Thunderstruck"
       ],
-      "fillerNotes": "Kick is good for dps/tankiness; shield throw meh without runes; other spell too low hitbox imo."
+      "fillerNotes": "Kick is really good for dps and tankiness, shield throw is pretty meh without runes, other spell is too low hitbox imo. (\"other spell\" likely Barricade or Centurion's Battle Drill - OP doesn't name it.) (Wiki's alternative \"usual selection\": Ironsides, Shielded Charge, Throw Shield, Thunderstruck) - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "Stoneguard (Tank/Brawler)",
-      "summary": "Most common, very tanky, strong frontline presence. Frontline control: stay in the frontline to absorb damage and constantly disrupt enemy units with Kick and Thunderstruck. Use your CC to protect your team and create space — you become a dangerous target to focus, and while enemies try to kill you, your team gets free space to engage. Sustain & pressure: you are very hard to kill, allowing you to stay longer in fights and slowly pressure enemy heroes and units over time. Tips: Shield Charge to engage, catch enemies, or escape (very important mobility tool overall); Kick to cleanse stuns and break shields against heroes and units; Ironsides when focused by multiple units to maximize survivability — try to fight inside low-damage units (e.g. Imperial Spearmen, Spear Sergeants) because after 15 hits you recover 5% of your max HP, combined with Ironsides you can quickly heal back to full HP; Thunderstruck best used during engages or on grouped enemies — jump into multiple units and try to always use it behind enemy units to knock them into your own braced units, but be careful, you can still get one-shot if you are not paying attention where you dive in. Playstyle advice: don't overextend alone (you are tanky but not unkillable); focus on disruption over damage; stay close to your team and enable them to fight safely since you do low damage — you count on your units and your team to win fights. Recommended stats: Full Armor or Armor + Toughness. Alternative skill: Barricade can replace Shield Charge — provides debuff on enemies, breaks shield and cleanse, increasing survivability; not recommended (awkward animation, hard to aim, easy to interrupt, and you lose an important mobility tool — overall less reliable than the standard setup).",
-      "strongVs": "low-damage units (e.g. Imperial Spearmen, Spear Sergeants)",
-      "forWhom": "Beginners",
-      "recommended": true
-    },
-    {
-      "name": "Flameshackle (Anti-Unit)",
-      "summary": "Strong vs units, great for clearing high-value and squishy targets (Zykalian, Sipho and rattans) since you make them explode with your spells and unbrace units like Stalwarts or other anticav. Anti-Unit Frontline control: use Kick to break shields and apply flames on units to unbrace braced units; use Thunderstruck to open the frontline for your units and your team. Dive: target enemy high-value units (exotics) — always engage with a horse jump to apply flames on impact, followed by kick or Thunderstruck; very effective against Zykalian, Siphos, Rattan units, and other squishy ranged units that take increased flame damage. Tips: Shield Charge — save it for engage or escape to buy time (applies flames on hit); Kick — use it to cleanse stuns, break shields, apply flames on units (applies flames on every hit); Ironsides — use when focused, after it ends you get -20% armor for 4s, but you can mitigate this debuff with Kick (+40% defense for 3s) and Thunderstruck (+20% defense for 4s); Thunderstruck — try to always use it behind enemy units to knock them into your own braced units, jump into multiple units to apply flames and CC on all units you hit. Playstyle advice: focus on unit damage and disruption, not dueling heroes; prioritize high-value and squishy units; don't overcommit alone (you are not as tanky as Stoneguard); create chaos, force reactions, and open space for your team; play around your cooldowns to maximize pressure on units. Recommended stats: Full Armor / Armor + Toughness — Full Strength is more damage but riskier (you become squishy + can kill exotics before they explode reducing their AoE impact). Alternative skill: Shield Bash can replace Shield Charge or Kick and deals high damage + applies flames; not recommended (no cleanse, long animation, easily interrupted, and vulnerable to chain CC) but fun to play and may work in some specific scenarios.",
-      "strongVs": "Zykalian, Sipho, rattan units",
-      "forWhom": "Anti-unit disruption",
-      "recommended": false
-    },
-    {
-      "name": "Deathmatch Epic (Hybrid)",
-      "summary": "More aggressive, no debuff after the ult and heal, most hybrid build. \"It all depends on your playstyle and preference.\" Dueler / Brawler: more aggressive playstyle focused on fighting enemy heroes and applying constant pressure. Hybrid role: balanced between survivability and damage, allowing you to both disrupt and deal meaningful damage. Supply point control: very effective at contesting and blocking supply points, preventing enemies from pulling units thanks to Ironsides debuff removal and healing. Tips: Shield Charge — use it to engage, chase, or escape, prioritize targeting heroes for maximum impact; Kick — use it frequently to stagger enemies, increase your defense, and cleanse stuns; Ironsides — use when trading or being focused, no debuff after Ironsides (Epic set bonus) allows you to stay aggressive longer, and the reduced cooldown is very valuable in fights; Thunderstruck — use to engage, apply CC, and pressure both heroes and grouped units, can also be used to escape when combined with Shield Charge. Playstyle advice: play more aggressive than other builds, but don't overcommit; focus on duels vs light/medium heroes; use your sustain to win extended fights; very strong in small fights and supply point control. Recommended stats: Full Armor / Armor + Toughness or Full Strength — Full Strength increases damage but makes you more vulnerable (recommended for experienced players). Alternative skill: Shield Bash can replace Shield Charge or Kick, deals high damage and breaks shields; not recommended (no cleanse, long animation, easily interrupted, and vulnerable to chain CC, making it overall unreliable) — can still be useful in Deathmatch and fun vs low armor targets.",
-      "strongVs": "light/medium heroes (duels)",
-      "forWhom": "Aggressive dueler/brawler players; supply point control",
-      "recommended": false
-    },
-    {
-      "name": "Full Strength Build",
-      "summary": "Alternative to the recommended Full HP attribute spread. More damage but much less tanky. Relies heavily on Ironsides and hero gameplay. Requires good armor and weapon.",
+      "name": "Stoneguard",
+      "summary": "Very tanky, strong frontline presence, most common. Strongest inside low-damage units.",
       "strongVs": null,
-      "forWhom": "Not recommended for beginners",
-      "recommended": false
+      "forWhom": "Best for beginners.",
+      "recommended": true,
+      "typeLabel": "Tank/Brawler",
+      "altSkill": "Barricade can replace Shielded Charge (debuff + shield-break + cleanse) - not recommended: awkward animation, hard to aim, easy to interrupt, loses the mobility tool."
+    },
+    {
+      "name": "Flameshackle",
+      "summary": "Most played. Farms ranged/rattan units, pops exotics, unbraces anticav (Stalwarts).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Anti-Unit",
+      "altSkill": "Shield Bash can replace Shield Charge or Kick (high damage + flames) - not recommended: no cleanse, long animation, easily interrupted, chain-CC bait; but fun and may work in some specific scenarios."
+    },
+    {
+      "name": "Deathmatch Epic",
+      "summary": "Officer's Armour: no post-Ironsides debuff + it heals; duels light/medium heroes, wins long fights on sustain, very strong in small fights and on supply points. \"It all depends on your playstyle and preference.\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Hybrid/Dueler",
+      "altSkill": "Shield Bash can replace Shield Charge or Kick (high damage + breaks shields) - not recommended: no cleanse, long animation, easily interrupted, chain-CC vulnerable; can still be useful in Deathmatch and fun vs low armor targets."
+    },
+    {
+      "name": "Full Strength",
+      "summary": "More damage, way less tanky, leans on Ironsides and hero gameplay, needs good armor + weapon.",
+      "strongVs": null,
+      "forWhom": "Not for beginners.",
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
   "matchups": [
     {
-      "vs": "light/medium armor",
+      "vs": "Light/medium armor heroes",
       "stance": "strong-vs",
-      "why": "Easy to chase and stagger with good damage burst."
+      "why": "easy to chase and stagger with good damage burst."
     },
     {
-      "vs": "heavy armor",
+      "vs": "Zykalian, Sipho, rattans, other squishy ranged",
+      "stance": "strong-vs",
+      "why": "increased flame damage - Flameshackle makes them explode.",
+      "build": "FLAMESHACKLE"
+    },
+    {
+      "vs": "Low-damage melee units (Imperial Spearmen, Spear Sergeants)",
+      "stance": "strong-vs",
+      "why": "Stoneguard thrives here - their hits feed the 15-hit heal.",
+      "build": "STONEGUARD"
+    },
+    {
+      "vs": "DB on a supply block",
+      "stance": "strong-vs",
+      "why": "SnS+Ironsides is the house's named answer - don't contest a DB-held supply point unless you are a Shortsword with Ironsides on. - house playbook"
+    },
+    {
+      "vs": "Heavy armor heroes",
       "stance": "weak-vs",
-      "why": "Focus on disrupting, not killing."
+      "why": "disrupt them, don't try to kill them - they wait out Ironsides before committing long cooldowns; bleed/poison/fire bypasses your defences."
+    },
+    {
+      "vs": "A tank SnS anchoring a Longsword (or PA)",
+      "stance": "synergy",
+      "why": "SnS is the TANK anchor other classes pair with - LS pulls focus especially combined with a tank SnS or PA. - house playbook"
+    },
+    {
+      "vs": "Damage-dealing units the hero enables while tanking",
+      "stance": "synergy",
+      "why": "you count on your units and your team to win fights (low personal damage). [GAP: explicit own-warband unit pairings for SnS players - vets/house question]"
     }
   ],
   "techniques": [
     {
-      "name": "Auto-Attack stagger",
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Auto-attack stagger",
       "steps": [
         "Left-click",
         "short pause (<1s)",
         "repeat",
-        "For timing practice: hold right-click whenever you see your shield moving up, then instantly left-click, repeat",
-        "Add Sprint + Autoattack to chain staggers and control enemies in duels"
+        "Hold right-click whenever you see your shield moving up → instantly left-click → repeat."
       ],
-      "rhythm": "Auto-attacks are used to stagger and control enemy heroes in a faster and more reliable way, so instead of spamming use a timed rhythm to keep enemies constantly interrupted and unable to react."
+      "rhythm": "SanY: Important - Timed rhythm keeps enemy heroes interrupted and unable to react. Practice: hold right-click, left-click the moment the shield moves up, repeat. In duels add Sprint + auto-attack to chain staggers."
     }
   ],
   "gameplay": [
     {
-      "text": "Shortsword is a brawler class focused on tanking and disruption. Your role is to absorb damage, control fights, and prevent enemy heroes from playing effectively.",
+      "text": "Your role is to absorb damage, control fights, and prevent enemy heroes from playing effectively.",
       "attribution": "SanY"
     },
     {
-      "text": "Focus on disruption and pressure, not damage (Flameshackle still does decent damage vs Units). Dive fights to create chaos and force reactions. Target vulnerable units behind enemy lines or to clean up squishy units.",
-      "attribution": "SanY"
-    },
-    {
-      "text": "Ironsides applies a -20% armor debuff after it ends; Kick (+40% defense for 3s) and Thunderstruck (+20% defense for 4s) both mitigate this window. Female character gets a small forward dash on Shield Charge; some players prefer Male because that dash can cause the charge to miss.",
-      "attribution": "SanY"
+      "text": "Take the lead in both attack and defense. Good mobility and protection.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -138,12 +209,311 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Shortsword Guide' (1292958261976236074); OP 2024-10-07 edited 2026-05-01; SanY guide posts 2026-05-15 (17:42/18:24/18:52/19:32), edits through 2026-05-21",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Shortsword Guide\"",
       "sourceDate": "2026-05-21",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-05-21",
-  "patchNote": "Latest edit (2026-05-21) pre-dates the 2026-06-25 Chaos patch anchor by about five weeks."
+  "patchNote": "Amya OP edited 01/05/2026; SanY guide body edited through 21/05/2026 - both pre-date the 25/06/2026 Chaos patch by about five weeks. Forum thread had no activity after 21/05/2026 as of 13/07/2026, so this is still the newest guidance.",
+  "roleLabel": "Shortsword is a brawler class focused on tanking and disruption.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Frontline, inside the fight - absorb damage, disrupt, make them waste effort killing you."
+      },
+      {
+        "lead": null,
+        "text": "Inside low-damage enemy units on Stoneguard (Imperial Spearmen, Spear Sergeants) - the 15-hit set proc + Ironsides out-heals them."
+      },
+      {
+        "lead": null,
+        "text": "Behind their line, in front of yours: Thunderstruck behind enemy units to knock them INTO your braced units."
+      },
+      {
+        "lead": null,
+        "text": "Dive lanes on Flameshackle: high-value squishies behind enemy lines (exotics, Zykalian, Sipho, rattans); engage off the horse so the jump lands flames."
+      },
+      {
+        "lead": null,
+        "text": "Supply points on the Epic build: sit on the point, refuse to die - Ironsides cleanse + heal makes you nearly impossible to shove off, and blocking the point stops unit pulls."
+      },
+      {
+        "lead": null,
+        "text": "Stay near your team; on dives you can still get one-shot if careless."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Disruption and pressure over damage; create chaos, let units take the kills."
+      },
+      {
+        "lead": "Shielded Charge is the mobility tool -",
+        "text": "engage, catch, or escape; don't burn it without a plan."
+      },
+      {
+        "lead": "Kick is the Swiss army knife:",
+        "text": "cleanses stuns, breaks shields/block, raises defense (tier value), and on Flameshackle applies flames every hit."
+      },
+      {
+        "lead": "Ironsides is reactive, not proactive -",
+        "text": "pop it when focused or when trading on the Epic build."
+      },
+      {
+        "lead": null,
+        "text": "On Flameshackle resist Full Strength: too much damage kills exotics before they explode and you lose the AoE payoff."
+      },
+      {
+        "lead": null,
+        "text": "Play around cooldowns - a Shortsword with everything on cooldown is just a shield."
+      },
+      {
+        "lead": "Wiki counter-play (know what enemies try):",
+        "text": "they wait out Ironsides before committing long cooldowns; bleed/poison/fire damage bypasses the defences."
+      },
+      {
+        "lead": "Off-role note:",
+        "text": "even lighter-armored heroes can emergency-swap to a shortsword at supply to hold a flag a few seconds longer (wiki); a units-empty SnS still helps by blocking enemy supply points."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Stoneguard",
+      "spread": "Full Armor or Armor + Toughness",
+      "note": null
+    },
+    {
+      "build": "Flameshackle",
+      "spread": "Full Armor / Armor + Toughness",
+      "note": "Full Strength = more damage but risky (squishier, can kill exotics before they explode)"
+    },
+    {
+      "build": "Deathmatch Epic",
+      "spread": "Full Armor / Armor + Toughness",
+      "note": "Full Strength for experienced players"
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "SanY",
+  "gapNotes": {
+    "controls": "[GAP: no fighting-game-notation input strings beyond the auto-attack rhythm]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Flameshackle dive",
+      "steps": [
+        "horse jump onto target",
+        "Kick or Thunderstruck"
+      ],
+      "note": "The jump applies flames on impact; use on exotics/squishy ranged (they take increased flame damage)."
+    },
+    {
+      "name": "Ironsides debuff bridge",
+      "steps": [
+        "Ironsides ends",
+        "-20% armor for 4s",
+        "Kick right after (+40% defense 3s) or Thunderstruck (+20% defense 4s) to cover the window"
+      ],
+      "note": "Covers the weakened-defences window after Ironsides. On the Officer's epic there is no window at all. (Wiki I lists -15%; guide value -20%)"
+    },
+    {
+      "name": "Escape",
+      "steps": [
+        "Thunderstruck",
+        "Shielded Charge out"
+      ],
+      "note": null
+    },
+    {
+      "name": "Stoneguard sustain loop",
+      "steps": [
+        "stand inside low-damage enemy units (Imperial Spearmen, Spear Sergeants)",
+        "15-hit counter",
+        "5% heal + cleanse per proc",
+        "pop Ironsides while focused to heal back to full"
+      ],
+      "note": "Their hits feed the 15-hit counter; Ironsides out-heals them."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Shortsword counts as a heavy armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Peerless Warrior",
+        "effect": "Gain immunity to all control effects except [Winded] when using [Centurion's Battle Drill] and [Thunderstruck]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Terror of Xiaoyao",
+        "effect": "Increases your Units' defense values by 30% when using [Ironsides]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Eight Gates Formation",
+        "effect": "When attacked by Units, all defense values increase by 20 points for 7 seconds. Stacks up to 8 times. Upon reaching max stacks, restores 2% maximum Health per second for 5 seconds (triggers once). Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": true
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "spear-and-shield",
   "className": "Spear & Shield",
-  "weaponArchetype": "Spear & Shield · frontline disruptor/CC",
+  "weaponArchetype": "Shield & Spear",
   "tier": {
     "tier": "B",
     "positionInTier": 1,
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Weapon Need; armor is recommended but \"completely playable without too\"",
+    "needed": "optional but worth having",
     "name": "Immortal Soul Armor",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full HP (if you feel unsafe learning the class, \"but you shouldn't need\") / Full Strength (Recommended)",
-    "runes": "unknown",
+    "attribute": "Full HP (if you feel unsafe learning the class, \"but you shouldn't need\") / Full Strength (Recommended). The general-hero-guide's medium-armor stat table doesn't list this class specifically. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": null,
-    "genderNote": "\"To test\" (OP has not determined this)",
+    "genderNote": "\"To test\" - Amya hasn't determined a best-gender/animation difference for this class yet. No wiki page exists to corroborate or contest this.",
     "armorSets": [
       {
-        "name": "Carniflex",
-        "purpose": "Best Armour per OP (alternative to Epic Schematic)"
+        "name": "Carnifex",
+        "purpose": "Best Armour: Carniflex or Epic schem"
+      },
+      {
+        "name": "Immortal Soul Armor",
+        "purpose": "Epic Schematic Name: Immortal Soul Armor - armor is recommended but completely playable without too.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -45,33 +50,108 @@
       ]
     },
     "spells": {
-      "core": [],
-      "fillerNotes": null
+      "core": [
+        "Aegis Retribution",
+        "Ares' Cleave",
+        "Heracles' Throw",
+        "Heracles' Mounted Throw",
+        "Spartan Kick"
+      ],
+      "fillerNotes": "The kit is fixed at five skills (plus the passive Normal Attack combo) - no source found a named CORE/filler split or swappable alternates for this class, unlike other hero weapons."
     }
   },
   "verdict": null,
-  "builds": [],
-  "matchups": [],
-  "techniques": [],
+  "builds": [
+    {
+      "name": "Carnifex / Immortal Soul Armor",
+      "summary": "Carnifex (or the Immortal Soul Armor epic schematic) - Full Strength recommended, Full HP if you feel unsafe learning the class. Weapon stats NEED Slash DMG/Slash PEN, bonus Blunt DMG&Pen/STR/AGI/Crit dmg/HP-Armor.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Standard",
+      "altSkill": null
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "None sourced",
+      "stance": "strong-vs",
+      "why": "[GAP: no strong-vs matchup data for Spear & Shield in any swept source]"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "weak-vs",
+      "why": "[GAP: no weak-vs matchup data for Spear & Shield in any swept source - the one counter-play note (guard blocks everything frontal except the enemy ultimate) lives in Tips]"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "synergy",
+      "why": "[GAP: no unit-pairing or own-warband guidance for Spear & Shield players in any swept source]"
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Sidestep-cancel finisher",
+      "steps": [
+        "Sidestep (defensive state)",
+        "immediate left-click",
+        "instant Normal Attack stage 4"
+      ],
+      "rhythm": "Amya: used to smother combos - Releases the fourth segment of the Normal Attack directly after a Sidestep, skipping the wind-up of stages 1-3."
+    },
+    {
+      "name": "Phase-chase",
+      "steps": [
+        "Sidestep left, right, or back through units",
+        "collision is ignored",
+        "close the distance on a fleeing hero or exotic"
+      ],
+      "rhythm": "cuts through a blob instead of pathing around it - Requires the Frenzy of Rage node. Amya's own phrase: a phantom trait for chasing heroes/exotics through unit blobs."
+    }
+  ],
   "gameplay": [
     {
-      "text": "Goal: stay Front-Lane and CC any heroes/units on cooldown, while being able to sidestep through units at any time to chase a hero or exotic units (enabled by the phantom trait).",
-      "attribution": "Amya"
+      "text": "Use your shield to absorb incoming attacks and create openings for powerful spear thrusts, shattering enemy formations with the strength of Sparta!",
+      "attribution": "official"
     },
     {
-      "text": "The class stacks rage through getting hit while in defensive state (right-click) and through hitting the enemy; this charges and stacks up to 4 ultimates (5s CD).",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Spear throw and mounted spear throw do not share the same cooldown — use them independently/wisely.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Shift-AA is used to smother combos (\"Make use of shift-aa to smother combo\").",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Has a phantom trait allowing phasing through units (used to sidestep through units while chasing heroes/exotics).",
+      "text": "stay Front-Lane and CC any heroes/units on cooldown, while being able to sidestep through units at any time to chase a hero or exotic units.",
       "attribution": "Amya"
     }
   ],
@@ -84,12 +164,271 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Spartan & Shield Guide' (1318255262444027975); OP 2024-12-16 edited 2026-05-02; follow-up posts 2024-12-16 (edited 2025-08-09), 2024-12-19 (edited same day), 2025-02-28, 2025-05-14",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Spartan & Shield Guide\"",
       "sourceDate": "2026-05-02",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-05-02",
-  "patchNote": "Latest edit (2026-05-02) pre-dates the 2026-06-25 Chaos patch anchor by about eight weeks."
+  "patchNote": "Amya OP authored 16/12/2024, edited 02/05/2026 - pre-dates the 25/06/2026 Chaos patch. namu.wiki (last modified 19/06/2026) is the freshest single source in this file, six days before the Chaos patch; nothing here post-dates it, so ability numbers and build advice are not yet re-verified against the current patch.",
+  "roleLabel": "The Shield & Spear excels at both defensive maneuvers and aggressive counter-offensives.",
+  "armorClass": "Medium",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Front-lane, CC heroes and units on cooldown - use sidesteps to cut through units any time you need to chase a hero or exotic unit."
+      },
+      {
+        "lead": null,
+        "text": "Sidestep to adjust positioning, raise your shield, and always face the enemy head-on."
+      },
+      {
+        "lead": null,
+        "text": "Gauge the distance to the enemy and time your sidestep attack - it protects you while you strike."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Weapon-stat priority:",
+        "text": "Blunt DMG&Pen leads the bonus list ahead of raw STR/AGI - denetax.fr flips this to Blunt as the MAIN stat instead"
+      },
+      {
+        "lead": "Crit Value is a weak stat here:",
+        "text": "you already sit at 100% crit rate on your main dps spell (not named by Amya)."
+      },
+      {
+        "lead": "Heracles' Throw and Heracles' Mounted Throw don't share a cooldown:",
+        "text": "don't hold one back thinking it does - use them independently."
+      },
+      {
+        "lead": "Frenzy of Rage is a chase tool, not just a dodge:",
+        "text": "it lets you sidestep straight through unit blobs instead of pathing around them."
+      },
+      {
+        "lead": "Blocking is offense here too:",
+        "text": "every successful block feeds the Rage/Fury economy that powers Spartan Kick."
+      },
+      {
+        "lead": "Wiki counter-play note:",
+        "text": "your guard blocks almost everything frontal - the one gap is the enemy's ultimate skill."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Carnifex / Immortal Soul Armor",
+      "spread": "Full Strength (Recommended) / Full HP if you feel unsafe learning the class",
+      "note": "Full HP shouldn't be needed once you're comfortable on the class."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: no fighting-game-notation input strings captured for this class] [GAP: no explicit CORE/filler skill-loadout split found - kit may be fixed]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Rage into Spartan Kick",
+      "steps": [
+        "block hits (+40 rage) / shielded-state unit hits (+15 rage) / landed ability hits (+30 rage)",
+        "Fury threshold (2 stacks, 3 with Wrath of the God)",
+        "Spartan Kick"
+      ],
+      "note": "The whole kit feeds one resource pool - block and poke units to charge the AoE knockback ultimate."
+    },
+    {
+      "name": "Kick into a wall",
+      "steps": [
+        "Spartan Kick knockback",
+        "target collides with a wall or obstacle"
+      ],
+      "note": "Wall-impact adds +1500 bonus damage on top of the knockback chain-damage to anyone else in the path."
+    },
+    {
+      "name": "Vow of the Hunt debuff window",
+      "steps": [
+        "Aegis Retribution 2nd stage (Vow of the Hunt node)",
+        "+20% damage taken for 4s"
+      ],
+      "note": "Opens a damage-taken window for a harder follow-up hit. [GAP: no source names which skill or class this window is meant to combo into.]"
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Spear & Shield counts as a medium armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP"
+      },
+      {
+        "grade": "A",
+        "label": "Crit Value / Piercing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Flying Halberds",
+        "effect": "Headshot damage for [Heracles Throw] and [Heracles Throw (Mounted)] is increased by 10%. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Bull Dragger",
+        "effect": "Damage taken during [Spartan Kick] is reduced by 30%. Gain immunity to all control effects except [Winded] during [Spartan Kick]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Ancient Behemoth",
+        "effect": "Critical damage dealt during the [Ares' Cleave] skill is increased by 10%. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

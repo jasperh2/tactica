@@ -17,7 +17,7 @@
 // static-markup carve-out as unit-page-v2.boot.mjs).
 
 import { fetchJson, withCacheBust } from '../shared/data.mjs';
-import { slugFromSearch, buildHeroPageV2Model, isGapText } from './hero-page-v2.mjs';
+import { slugFromSearch, buildHeroPageV2Model, isGapText, tileInitials } from './hero-page-v2.mjs';
 
 /** site/heroes/ -> site/ (import.meta.url-relative, never root-relative — shared PATH RESOLUTION
  * convention, keeps asset URLs correct under a subpath deploy). */
@@ -220,6 +220,7 @@ function renderHeader(header) {
     line.appendChild(el('span', 'hv2-header-line-dim', 'Tier: '));
     line.appendChild(el('b', 'hv2-header-line-strong', header.tierLine));
     line.appendChild(document.createTextNode(" on Amya's tierlist"));
+    if (header.tierlistUpdated) line.appendChild(document.createTextNode(`, updated ${header.tierlistUpdated}`));
     lines.appendChild(line);
   }
   if (header.epicSchemLine) {
@@ -390,6 +391,12 @@ function renderStatPriorityColumn(armorStats) {
       appendAttributed(quote, `"${priority.quote.text}"`, priority.quote.attribution);
       col.appendChild(quote);
     }
+    if (priority.craftNote) {
+      const note = el('p', 'hv2-note hv2-craft-note');
+      if (priority.craftNote.lead) note.appendChild(el('b', 'hv2-strong', `${priority.craftNote.lead} - `));
+      appendAttributed(note, priority.craftNote.text, priority.craftNote.attribution);
+      col.appendChild(note);
+    }
   }
 
   col.appendChild(divider());
@@ -437,11 +444,30 @@ function renderRunesColumn(armorStats) {
   panel.appendChild(weaponHead);
 
   const runes = armorStats.runes;
-  const value = typeof runes.value === 'string' && runes.value.trim() !== '' ? runes.value : 'unknown';
-  const valueLine = el('p', 'hv2-runes-value');
-  valueLine.appendChild(el('span', value.toLowerCase() === 'unknown' ? 'hv2-unknown' : 'hv2-strong', value));
-  if (runes.note) valueLine.appendChild(document.createTextNode(` - ${runes.note}`));
-  panel.appendChild(valueLine);
+  const weaponRunes = armorStats.weaponRunes;
+  if (weaponRunes) {
+    // v2 detail: the seasonal class trio, name + verbatim effect per rune (data-provenance
+    // season stamp on top — rune sets rotate every season, an undated list is not ground truth).
+    if (weaponRunes.seasonLine) panel.appendChild(el('p', 'hv2-runes-season', weaponRunes.seasonLine));
+    if (runes.note) panel.appendChild(el('p', 'hv2-note', runes.note));
+    const list = el('div', 'hv2-rune-list');
+    for (const item of weaponRunes.items) {
+      const row = el('div', 'hv2-rune-row');
+      row.appendChild(initialsTile(tileInitials(item.name), 'hv2-tile-sm', true));
+      const body = el('div');
+      body.appendChild(el('div', 'hv2-set-name', item.name));
+      if (item.effect) body.appendChild(el('div', 'hv2-set-desc', item.effect));
+      row.appendChild(body);
+      list.appendChild(row);
+    }
+    panel.appendChild(list);
+  } else {
+    const value = typeof runes.value === 'string' && runes.value.trim() !== '' ? runes.value : 'unknown';
+    const valueLine = el('p', 'hv2-runes-value');
+    valueLine.appendChild(el('span', value.toLowerCase() === 'unknown' ? 'hv2-unknown' : 'hv2-strong', value));
+    if (runes.note) valueLine.appendChild(document.createTextNode(` - ${runes.note}`));
+    panel.appendChild(valueLine);
+  }
   if (runes.gapNote) panel.appendChild(gapLine(runes.gapNote));
 
   panel.appendChild(divider());
@@ -466,17 +492,32 @@ function renderRunesColumn(armorStats) {
   const list = el('div', 'hv2-rune-list');
   for (const item of armorRunes.items) {
     const row = el('div', 'hv2-rune-row');
-    row.appendChild(initialsTile('IMG', 'hv2-tile-sm'));
+    row.appendChild(initialsTile(tileInitials(item.slot), 'hv2-tile-sm'));
     const body = el('div');
     const nameRow = el('div', 'hv2-set-name-row');
     nameRow.appendChild(el('span', 'hv2-set-name', item.slot));
     if (item.updated) nameRow.appendChild(el('span', 'hv2-badge hv2-badge-dim', `UPD ${item.updated}`));
     body.appendChild(nameRow);
     if (item.note) body.appendChild(isGapText(item.note) ? gapLine(item.note) : el('div', 'hv2-set-desc', item.note));
+    if (Array.isArray(item.runes) && item.runes.length > 0) {
+      // v2 detail: the named picks for this slot — mandatory ones carry the gold badge.
+      const subList = el('div', 'hv2-rune-sublist');
+      for (const rune of item.runes) {
+        const subRow = el('div', 'hv2-rune-sub');
+        const subName = el('div', 'hv2-set-name-row');
+        subName.appendChild(el('span', 'hv2-rune-sub-name', rune.name));
+        if (rune.mandatory) subName.appendChild(el('span', 'hv2-badge hv2-badge-gold', 'mandatory'));
+        subRow.appendChild(subName);
+        if (rune.effect) subRow.appendChild(el('div', 'hv2-set-desc', rune.effect));
+        subList.appendChild(subRow);
+      }
+      body.appendChild(subList);
+    }
     row.appendChild(body);
     list.appendChild(row);
   }
   panel.appendChild(list);
+  if (armorRunes.seasonNote) panel.appendChild(el('p', 'hv2-note hv2-runes-season-note', armorRunes.seasonNote));
   return panel;
 }
 
@@ -612,6 +653,12 @@ function renderControlsRight(controls) {
     col.appendChild(list);
   }
 
+  if (controls.combosSignoff) {
+    const signoff = el('div', 'hv2-combo-signoff');
+    signoff.appendChild(authorSuffix(controls.combosSignoff));
+    col.appendChild(signoff);
+  }
+
   if (controls.gapNote) col.appendChild(gapLine(controls.gapNote));
   return col;
 }
@@ -725,6 +772,34 @@ function renderMatchups(matchups) {
   return panel;
 }
 
+// ---- Block 8b · Learn more --------------------------------------------------------------------------------------
+
+/** External study links (v2 extension) — omitted entirely when the record carries none (an
+ * add-on block outside the designed nine; no empty state needed). */
+function renderLearnMore(learnMore) {
+  if (!learnMore || learnMore.links.length === 0) return null;
+  const panel = el('section', 'hv2-panel');
+  panel.id = 'learn-more';
+  panel.appendChild(sectionTitle('LEARN MORE', { anchor: '#learn-more' }));
+  if (learnMore.intro) panel.appendChild(el('p', 'hv2-block-intro', learnMore.intro));
+  const list = el('div', 'hv2-learn-list');
+  for (const link of learnMore.links) {
+    const row = el('div', 'hv2-learn-row');
+    const a = document.createElement('a');
+    a.className = 'hv2-clip';
+    a.href = link.href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.appendChild(icon('link'));
+    a.appendChild(document.createTextNode(link.label));
+    row.appendChild(a);
+    if (link.desc) row.appendChild(el('span', 'hv2-set-desc hv2-learn-desc', link.desc));
+    list.appendChild(row);
+  }
+  panel.appendChild(list);
+  return panel;
+}
+
 // ---- Block 9 · Footer -----------------------------------------------------------------------------------------
 
 function renderFooter(footer) {
@@ -758,6 +833,8 @@ export function renderHeroPageV2(model, root) {
   root.appendChild(renderControls(model.controls));
   root.appendChild(renderBuilds(model.builds));
   root.appendChild(renderMatchups(model.matchups));
+  const learnMore = renderLearnMore(model.learnMore);
+  if (learnMore) root.appendChild(learnMore);
   root.appendChild(renderFooter(model.footer));
 }
 

@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "longbow",
   "className": "Longbow",
-  "weaponArchetype": "Bow · long-range DPS",
+  "weaponArchetype": "Bow",
   "tier": {
     "tier": "C",
     "positionInTier": 4,
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Yes — \"nearly unplayable without it\"",
+    "needed": "yes, the build needs it",
     "name": "Captain's Armour",
-    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+    "tierDropNote": "Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
   },
   "loadout": {
-    "attribute": "Full Agility",
-    "runes": "unknown",
+    "attribute": "Full Agility - four independent sources agree (official 2021 guide, general-hero-guide.md's Light Armors table, Amya's longbow.md OP, and the tierlist's implicit framing). Official guide reasoning: the weapon deals Piercing Damage, maximised by Agility; not worth investing in Armour/Toughness since Bow is capped to light armour anyway. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "N/A",
-    "genderNote": null,
+    "genderNote": "Best Gender (Animation Change depending of it): N/A - no gender-based animation variant recorded for Longbow (contrast Shortsword's gender-dependent Shielded Charge dash).",
     "armorSets": [
       {
-        "name": "Rogue",
-        "purpose": "Best armour before Epic Schematic is equipped"
+        "name": "Rogue's Armour",
+        "purpose": "Best Armour before epic schem: Rogue"
+      },
+      {
+        "name": "Captain's Armour",
+        "purpose": "Epic Schematic Needed: Yes \"nearly unplayable without it\". Epic Schematic Name: Captain's Armour",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -33,7 +38,7 @@
     },
     "weaponStats": {
       "need": [
-        "Piercing DMG",
+        "Piercing Dmg",
         "Piercing Pen"
       ],
       "bonus": [
@@ -46,53 +51,161 @@
     "spells": {
       "core": [
         "Marksman",
-        "Bodkin",
-        "Lightning Bolt",
-        "Exploding Arrow",
-        "Arrow Rain"
+        "Bodkin-Tipped",
+        "Lightning Bolt"
       ],
-      "fillerNotes": "Spell set differs by build: Lightning Bolt Build uses Marksman / Bodkin / Lightning Bolt; the older Exploding Arrow Build uses Exploding Arrow / Marksman / Arrow Rain instead — OP does not state one shared core loadout independent of build choice."
+      "fillerNotes": "Amya's rotation names 3 skills (Lightning Bolt Build: Auto-attack (fully charged) / Marksman / Auto-attack / Bodkin / Lightning Bolt / Auto-attack); Light-Footed fills the 4th slot as the class's escape/utility pick (per General Use) even though it isn't named inside the rotation string itself. Exploding Arrow Build swaps in Exploding Arrow + Arrow Rain for a unit-focused loadout instead (see Builds). - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "Lightning Bolt Build (Classic DPS)",
-      "summary": "Auto-attack (fully charged) / Marksman / Auto-attack / Bodkin / Lightning Bolt / Auto-attack. Flagged by OP with a warning: gated behind having insane epic schem weapon.",
+      "name": "Lightning Bolt",
+      "summary": "Amya's recommended build - the class's full damage rotation, gated behind having an epic schem weapon. \"gated behind having insane epic schem weapon\"",
       "strongVs": null,
-      "forWhom": null,
-      "recommended": true
+      "forWhom": "Not viable without the epic schem weapon (Captain's Armour + Shenxing).",
+      "recommended": false,
+      "typeLabel": "Classic DPS",
+      "altSkill": null
     },
     {
-      "name": "Exploding Arrow Build",
-      "summary": "Focused on eliminating units. This older build utilizes Exploding Arrow To CC, Roll in the back, followed by Marksman and Arrow Rain to the back of heroes.",
+      "name": "Exploding Arrow",
+      "summary": "Older, unit-focused build. Exploding Arrow to CC, roll to the back, Marksman and Arrow Rain to the back of heroes.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Unit-Focused",
+      "altSkill": null
+    },
+    {
+      "name": "Killing Key Units (denetax, community)",
+      "summary": "Bodkin Arrow (opener) → Marksman (burst) → Light-Footed (reposition) → Lightning Bolt (finisher) on high-value/exotic targets. Community build, unverified against Amya.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
+    },
+    {
+      "name": "Mid-Range Archer (denetax, community)",
+      "summary": "Explosive Arrow + Rain of Arrows + an escape skill + a fourth \"defensive arrow\" skill that doesn't match any of the 8 known skill names.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Mid-Range",
+      "altSkill": null
     }
   ],
   "matchups": [
     {
-      "vs": "Important, grouped units (Siphonarios, Shenjis, Falconetti, Zykalians)",
+      "vs": "Grouped/important units - Siphonarios, Shenjis, Falconetti Gunners, Zykalians",
       "stance": "strong-vs",
-      "why": "The longbow's extended range makes it an effective counter against important, grouped units like these."
+      "why": "extended range is an effective counter against important, grouped units - independently corroborated by the Falconetti Gunners unit file quoting the same Amya passage."
     },
     {
-      "vs": "Heroes in light or medium armor",
+      "vs": "Light/medium-armor heroes",
       "stance": "strong-vs",
-      "why": "Can deal considerable damage to heroes wearing light or medium armor."
+      "why": "can deal considerable damage; heavy-armor heroes should be ignored unless weapon stats are exceptional."
     },
     {
-      "vs": "Heroes in heavy armor",
+      "vs": "Ranged/backline units specifically",
+      "stance": "strong-vs",
+      "why": "namu.wiki: they can't move while firing, making them easy targets - not unit types in general (weak vs clustered, mobile, heavy-plate melee infantry)."
+    },
+    {
+      "vs": "A hero mid-duel with an ally",
+      "stance": "strong-vs",
+      "why": "namu.wiki: a full-charge shot lands a stagger/stun on ANY hero hit within 60m, enemy heroes included - useful for interrupting a duel or covering a teammate's 1v1."
+    },
+    {
+      "vs": "Heavy-armor heroes",
       "stance": "weak-vs",
-      "why": "Best ignored unless your weapon stats are exceptional."
+      "why": "best ignored unless your weapon stats are exceptional."
+    },
+    {
+      "vs": "Shield-heavy compositions and high-mobility classes (Dual Blades named)",
+      "stance": "weak-vs",
+      "why": "close distance before a Longbow player lands a charged shot - current-meta weakness per note.com (2026-05-12, pre-Chaos-patch)."
+    },
+    {
+      "vs": "Clustered, mobile, heavy-plate melee infantry",
+      "stance": "weak-vs",
+      "why": "true AoE is weak outside the ultimate; specifically poor here (namu.wiki)."
+    },
+    {
+      "vs": "Low-micromanagement anchor units - Halberdiers, Camels, Modao, Forte",
+      "stance": "synergy",
+      "why": "don't need babysitting, freeing hero attention for aiming; melee infantry with simple utility skills (Fauchefers, Queen's Knights) is acceptable; avoid cavalry and exotic units, which compete for the hero's own attention (denetax, community, unverified against Amya/house material)."
+    },
+    {
+      "vs": "Royal Longbowmen (unit)",
+      "stance": "synergy",
+      "why": "lower priority when running a Longbow hero - the hero's own Rain of Arrow already covers that role, so there's less value on Artemis/Arrow Rain from the unit itself (Amya, Royal Longbowmen unit guide) - a caution against redundant pairing, not a recommendation."
     }
   ],
-  "techniques": [],
+  "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you - lower day-to-day relevance for a kiting light-armor class than a frontline class, but still the universal hero mechanic, and matters the moment a Longbow player gets caught in melee."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - relevant if a Longbow player is ever forced into melee range of a braced formation."
+    },
+    {
+      "name": "Marksman timing",
+      "steps": [
+        "Cast a skill",
+        "one basic attack under the buff",
+        "cast the next skill"
+      ],
+      "rhythm": "efficient sequence, not spam - Marksman's max-charge buff only applies to ONE basic attack even though it lasts 2 seconds - spamming basic attacks under the buff wastes the window (namu.wiki)."
+    },
+    {
+      "name": "Rain of Arrow cooldown refund",
+      "steps": [
+        "Land arrows from Rain of Arrow",
+        "each landed arrow refunds 0.3-0.6s of its own cooldown"
+      ],
+      "rhythm": "genuine skill-expression lever - Aim well, get the skill back faster - not just flavor (namu.wiki)."
+    }
+  ],
   "gameplay": [
     {
-      "text": "The longbow's extended range makes it an effective counter against important, grouped units like Siphonarios, Shenjis, Falconetti, Zykalians. It can deal considerable damage to heroes wearing light or medium armor. However, heroes in heavy armor are best ignored unless your weapon stats are exceptional. Another key aspect is elevation—if the longbow is positioned higher than its target, it will deal bonus damage, while being lower results in a damage penalty. When casting Light-footed, you become invincible, which is great for dodging deadly ultimates like Dual Blades or Maul's heavy strikes. It's also useful for chasing down fleeing enemies or making a quick escape.",
-      "attribution": "Amya"
+      "text": "It's tempting to think of the lightly-armoured bow-wielding hero as the game's resident sniper. However, while the weapon does offer range and can deliver impressive amounts of headshot damage (if aimed correctly), it is not a class that is well-suited to clandestine behind-the-lines solo runs.",
+      "attribution": "official guide"
+    },
+    {
+      "text": "actively find a position the enemy can't easily threaten, then pick off and cut down whoever is threatening your own team",
+      "attribution": "namu.wiki (translated)"
     }
   ],
   "authors": [
@@ -104,12 +217,309 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'LongBow Guide' (1294795649467940864); OP 2024-10-13, edited 2026-03-26; follow-up post 2025-10-04",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"LongBow Guide\"",
       "sourceDate": "2026-03-26",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-03-26",
-  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about thirteen weeks (roughly three months)."
+  "patchNote": "Amya OP posted 13/10/2024, edited 26/03/2026, no thread replies after that as of the 04/07/2026 capture - pre-dates the 25/06/2026 Chaos patch by about three months. No source found anywhere in this entire sweep post-dates the Chaos patch, so every mechanical claim here is unverified against the current season.",
+  "roleLabel": "What the Bow is well suited to be is supporting an attack from just behind the front line, using a combination of terrain and defensive units to maintain a position that allows it to deliver high damage without being overrun.",
+  "armorClass": "Light",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Elevation matters: fire from higher ground than the target for bonus damage - firing from lower ground costs damage."
+      },
+      {
+        "lead": "Support from just behind the front line:",
+        "text": "use terrain and defensive/anchor units to hold a firing position without being overrun; not a solo backline sniper - it lacks the survivability to freelance behind enemy lines."
+      },
+      {
+        "lead": "Ignore heavy-armor heroes unless exceptional:",
+        "text": "spend arrows on light/medium heroes and grouped priority units instead."
+      },
+      {
+        "lead": null,
+        "text": "Target enemy mounts to strip mobility from cavalry/hero threats before they close the distance."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Light-Footed's brief invincibility is explicitly good for dodging Dual Blades or Maul ultimates, or for disengage/chasing a fleeing target."
+      },
+      {
+        "lead": "Charge every shot when the situation allows:",
+        "text": "a fully-charged shot both hits harder and flies straighter (drops/curves less) than an uncharged one; only skip the wind-up when you can't afford the time."
+      },
+      {
+        "lead": null,
+        "text": "Headshots carry a real damage bonus; against shielded targets, go for the exposed upper body first."
+      },
+      {
+        "lead": "Prefer Light-Footed over Sharp Exit as the escape-skill pick:",
+        "text": "both grant the same 1-second invincibility, but Light-Footed travels farther, works in either direction (Sharp Exit is backward-only), and cleanses one more CC type (Concussed, in addition to Daze)."
+      },
+      {
+        "lead": null,
+        "text": "Tunnel vision is a real, named risk: lining up a shot on distant backline archers narrows your field of view so much that minimap checks lapse and nearby threats go unnoticed until they're right in your face."
+      },
+      {
+        "lead": null,
+        "text": "True AoE is weak outside the ultimate: aside from Exploding Arrow, Longbow can only hit multiple targets by piercing through a line or firing multiple projectiles - specifically poor against clustered, mobile, heavy-plate melee infantry."
+      },
+      {
+        "lead": "Reforged Skirmisher's Boots (epic-rarity light boots, 5 rune power):",
+        "text": "hero damage taken -50% below 25% HP + the Numbing Remedy bandage effect - a same-class NATIVE pick for Longbow (unlike Shortsword, where this same item is just a cross-class curiosity)."
+      },
+      {
+        "lead": "Stay mounted when possible (denetax, unverified):",
+        "text": "some enemy ultimates specifically can't be used against a mounted target, and staying mounted preserves the option of mounted shooting."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Lightning Bolt - Classic DPS",
+      "spread": "Full Agility",
+      "note": "class-wide default (Amya OP) - no separate per-build stat breakdown found in source"
+    },
+    {
+      "build": "Killing Key Units (denetax, community)",
+      "spread": "40 Strength / 32 Agility",
+      "note": "community, unverified against Amya - contradicts the Full-Agility consensus"
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: no named upgrade-tier titles (contrast Shortsword's \"Dreadnought/Resolute\") found for any Longbow skill]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Lightning Bolt Build (Classic DPS)",
+      "steps": [
+        "Auto-attack (fully charged)",
+        "Marksman",
+        "Auto-attack",
+        "Bodkin",
+        "Lightning Bolt",
+        "Auto-attack"
+      ],
+      "note": "Amya's recommended rotation - gated behind having an epic schem weapon."
+    },
+    {
+      "name": "Exploding Arrow Build (older, unit-focused)",
+      "steps": [
+        "Exploding Arrow to CC",
+        "roll to the back",
+        "Marksman",
+        "Arrow Rain to the back of heroes"
+      ],
+      "note": "Focused on eliminating units - Amya's older, alternate build."
+    },
+    {
+      "name": "Lightning Bolt amplification stack",
+      "steps": [
+        "Bodkin-Tipped's defence-reduction debuff",
+        "land 2 of {back-attack, headshot, crit}",
+        "Lightning Bolt"
+      ],
+      "note": "Combined multiplier caps at 2.5x since a Season 3 patch - 2 conditions is enough to hit the cap, near-guarantees a unit kill and hits hard into plate-armor heroes. Don't waste time lining up all 3 (namu.wiki)."
+    },
+    {
+      "name": "Killing Key Units (denetax, community, unverified)",
+      "steps": [
+        "Bodkin Arrow (opener)",
+        "Marksman (burst window)",
+        "Light-Footed (reposition)",
+        "Lightning Bolt (finisher)"
+      ],
+      "note": "targets high-value/exotic units - community loadout, unverified against Amya."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "Lightning build example",
+        "href": "https://youtu.be/elrnffRUr6s?feature=shared",
+        "desc": "Amya's follow-up post link, posted 04/10/2025 - not watched/transcribed by this sweep."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Longbow counts as a light armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP / Crit Value"
+      },
+      {
+        "grade": "A",
+        "label": "Piercing Def / Slash/Piercing dmg depending of your weapon"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Master Archer",
+        "effect": "Your fully-charged and over-charged [Basic Attacks] will pierce through 2 additional Unit enemies upon hit, dealing 60% damage. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Unrelenting Advance",
+        "effect": "For every enemy unit hit by [Lightning Bolt], its cooldown is reduced by 3 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Halberd Shot",
+        "effect": "Damage against ranged Units is increased by 15%. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": "DMG dealer can replace martyr's Glory for both str/agi nodes if not DB full hp, or things like that",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "For lights that hit both units and heroes take both + str / if you don't hit heroes or units, prefere ultimate all dmg increase / Don't take defence reducing, it's useless",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  }
 }

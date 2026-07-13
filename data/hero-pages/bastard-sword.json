@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "bastard-sword",
   "className": "Bastard Sword",
-  "weaponArchetype": "Two-handed sword · melee AOE unit-hitter",
+  "weaponArchetype": "Two-Handed Sword",
   "tier": {
     "tier": "God",
     "positionInTier": 1,
@@ -23,19 +23,32 @@
     ]
   },
   "epicSchematic": {
-    "needed": "No, but meta playstyle uses some — 3x Flameshackle heavy & 2 Epic Schem pieces.",
+    "needed": "optional",
     "name": null,
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Depends on the build — written next to each build below.",
-    "runes": "unknown",
+    "attribute": "Attribute: Depends on the build - written next to each build below. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "N/A",
-    "genderNote": null,
+    "genderNote": "Best Gender (Animation Change depending of it): N/A",
     "armorSets": [
       {
         "name": "Flameshackle",
-        "purpose": "Heavy Build (5x): Divine Thrust block break stalwart, maiden or any block & ignites exotics and triggers full-HP explosions. Strong vs turtles."
+        "purpose": "5x Flameshackle: Divine Thrust block break stalwart, maiden or any block & ignites exotics and triggers full-HP explosions. Strong vs turtles."
+      },
+      {
+        "name": "Stoneguard",
+        "purpose": "its stoneguard not flameshackle, so its just tankiness and cc cleanse + heal (YeetusMcFeetus's read of \"The Unkillable Bastard\" build - unresolved in-thread whether the named build itself specifies Flameshackle, Stoneguard, or a mix)."
+      },
+      {
+        "name": "Carnifex's",
+        "purpose": "4/4 Carniflex [sic] (you can let it broke itself for more dmg) or 2x light 2x medium and epic shem weapon - double slashing weapon (bonus str/agi/crit)."
+      },
+      {
+        "name": "Epic Schematic (name unvalidated)",
+        "purpose": "5x Epic Schematic: Take nodes that boost your dmg and survability under 1800 total def. Amya's OP leaves the actual set name as a literal placeholder \"X\" - no external source names one either.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -56,63 +69,166 @@
       ]
     },
     "spells": {
-      "core": [],
-      "fillerNotes": "Riposte build: take Fluid Shadow for the ultimate; CCi only useful if TW / comp games."
+      "core": [
+        "Hew",
+        "Riposte",
+        "Leaping Hew",
+        "Moulinet Advance",
+        "Driving Thrust",
+        "Cross Execution"
+      ],
+      "fillerNotes": "Skill loadout is build-defined, not a fixed core/filler split like the older classes - all six base skills are always present; nodes change which of them carry the build's payoff. See Builds (Block 7) for per-build node picks."
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Riposte Build",
-      "summary": "Full STR — 4/4 Carniflex (you can let it broke itself for more dmg) or 2x light 2x medium and epic shem weapon — double slashing weapon (bonus str/agi/crit). Keep checking you are under the armor cap for dmg boost. Take Fluid Shadow for ult, CCi only useful if TW / comp games. Can tweak the build like you want but overall playing fully around double dash into riposte is goated. Keep DMG buff up for 2x dash then just spam riposte, being close let you hit AND wave, it's just the best build until nerf. Stamina management and positioning make the difference between doing 1M dmg or 3M dmg.",
+      "summary": "Core loop: Dash x2 into Moulinet Advance into Riposte, repeated. \"Playing fully around double dash into riposte is goated\" (Amya) - \"it's just the best build until nerf.\" \"\"Keep DMG buff up for 2x dash then just spam riposte, being close let you hit AND wave, it's just the best build until nerf.\"\"",
       "strongVs": null,
       "forWhom": null,
       "recommended": false,
+      "typeLabel": "Riposte",
+      "altSkill": null,
       "epicSchemVariantRef": "Riposte Build"
     },
     {
-      "name": "Heavy Build (Full HP/STR — Divine Thrust Abuse build)",
-      "summary": "5x Flameshackle: Divine Thrust block break stalwart, maiden or any block & ignites exotics and triggers full-HP explosions. Strong vs turtles. 5x Epic Schematic: Take nodes that boost your dmg and survability under 1800 total def. Full STR recommended (or full HP to start) — you survive as you benefit from % damage reduction.",
-      "strongVs": "turtles / block-heavy enemies",
+      "name": "Heavy Build",
+      "summary": "5x Flameshackle: Driving Thrust block-breaks Stalwarts/Maidens/any guard, ignites exotics, triggers full-HP explosions. Strong vs turtles. Alternative: 5x Epic Schematic, nodes for damage/survivability under 1800 total Defence.",
+      "strongVs": null,
       "forWhom": null,
-      "recommended": false
-    }
-  ],
-  "matchups": [],
-  "techniques": [
-    {
-      "name": "Riposte combo",
-      "steps": [
-        "Spam 2x Dash into Moulinet into Riposte",
-        "Left, left, hold right-click swing, and repeat"
-      ],
-      "rhythm": "Stamina management and positioning make the difference between doing 1M dmg or 3M dmg; there are a LOT of hidden mechs on the class about stamina and dmg boost."
+      "recommended": false,
+      "typeLabel": "Divine Thrust Abuse",
+      "altSkill": null
     },
     {
-      "name": "Divine Thrust block-break (Heavy Build)",
+      "name": "The Unkillable Bastard",
+      "summary": "Heavy HP, heavy armor, explicitly not Strength. \"This build is all about getting Flat damage reduction + AOE CC... Your goal is to constantly debuff as many enemy troop[s]...\" - house playbook \"\"Damage was never an issue with the class... just build sustain, no need to deal damage for 150% of the hp bar.\"\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Unkillable Bastard",
+      "altSkill": null
+    },
+    {
+      "name": "Wave Build",
+      "summary": "[denetax.fr] Full Strength, \"2 medium, 2 Light\" for damage or \"full medium\" for survivability. Key nodes: Phantom Feint, Myriad to Silence, Eclipse Twin-Slash.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Wave",
+      "altSkill": null
+    },
+    {
+      "name": "Balance / Balance Bis Build",
+      "summary": "[denetax.fr] Full Strength or Full Toughness, constrained to under 2100 total armor. Key nodes: Impregnable Wall, Bulwark Stance, Eclipse Twin-Slash.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Balance",
+      "altSkill": null
+    },
+    {
+      "name": "Duelist Build",
+      "summary": "[denetax.fr] Full Strength, constrained to under 1800 total armor - built for 1v1. Key nodes: Impregnable Wall, Phantom Feint, Eclipse Twin-Slash.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Duelist",
+      "altSkill": null
+    }
+  ],
+  "matchups": [
+    {
+      "vs": "Block-heavy/turtling enemies",
+      "stance": "strong-vs",
+      "why": "Driving Thrust's guard-break instantly breaks Stalwarts, Maidens, or any block - \"Strong vs turtles\" (Amya).",
+      "build": "HEAVY BUILD"
+    },
+    {
+      "vs": "Exotics (Flameshackle)",
+      "stance": "strong-vs",
+      "why": "Flameshackle ignites/exploits exotics specifically - \"triggers full-HP explosions\" (same flame-damage-vulnerability mechanic Shortsword's Flameshackle build exploits on Zykalian/Sipho/rattans).",
+      "build": "HEAVY BUILD"
+    },
+    {
+      "vs": "Braced pike/phalanx-type units (Sunward Phalanx, Modao Battalion)",
+      "stance": "strong-vs",
+      "why": "\"a BS will come in and mount ult them and then run you over with cav when you are knocked and not braced\" (Bohemiansnacksody). Exact ability behind \"mount ult\" not confirmed - likely a horse-charge knockdown plus Cross Execution's knock-up. - house playbook"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "weak-vs",
+      "why": "[GAP: no weak-vs matchup documented for Bastard Sword in any swept source - consistent with the God/S-tier framing, but recorded as an absence, not as confirmation it has none]"
+    },
+    {
+      "vs": "Your own unit blob",
+      "stance": "synergy",
+      "why": "Unkillable Bastard doctrine: \"You always fight within your unit in the middle of the blob\" - dive artillery/specials and disengage rather than die. [GAP: no explicit own-warband unit-TYPE pairing for BS players - vets/house question, same gap shape as shortsword.md]",
+      "build": "UNKILLABLE BASTARD"
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Animation canceling",
       "steps": [
-        "Divine Thrust into a blocking Stalwart, Maiden, or any block",
-        "Ignites exotics and triggers full-HP explosions on impact"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": null
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Riposte dash rhythm",
+      "steps": [
+        "Dash",
+        "Dash",
+        "hold Right-click (Riposte)",
+        "release",
+        "repeat"
+      ],
+      "rhythm": "\"it's just the best build until nerf\" (Amya) - \"Left left hold right click swing and repeat\" - two Hew/Dash inputs, then hold Right-click (Riposte, charging past 0.5s for Riposte II), release, repeat."
     }
   ],
   "gameplay": [
+    {
+      "text": "This class works with any armor set, but as a melee AOE unit-hitter, full light armor is generally a bait option.",
+      "attribution": "Amya"
+    },
     {
       "text": "Depending on the build you choose, you must set clear rules for yourself. Some builds make you weak against units, others against heroes, but in return they offer strong advantages in other roles. Your goal is to fully exploit the main strength of your build instead of trying to do everything. There are many viable variants, and I'll keep updating this as more data comes in.",
       "attribution": "Amya"
     },
     {
-      "text": "This class works with any armor set, but as a melee AOE unit-hitter, full light armor is generally a bait option. Take siege breaker bonus & Arcing smith for flame shackles build.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Riposte build: full melee-aggression build, spam Dash x2 into Moulinet into Riposte; rewards tight stamina management and close positioning (both hit and wave-clear from proximity). Landing correctly is described as the difference between \"1M dmg or 3M dmg\" in a fight. Left-hold-right-click swing-and-repeat is the core input loop. Heavy build: tankier, plays around Divine Thrust to break blocks/stalwart/maiden, ignites exotics for full-HP explosions; strong vs turtle/block-heavy enemies rather than raw burst.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Wherever you are playing riposte build or heavy build, look to not overcome the recommended cap — think about a few tricks such as letting your stuff break itself for lower armor value (while keeping the actual bonus set). Phantom Feint: \"After [Moulinet Advance], you gain [Phantom Dance] for 14 seconds: during [Dash] you are invulnerable for 0.5 seconds; if your total base Defence is 1800 or lower, Stamina cost is reduced by 35%.\" With above node that you take into riposte build you can even snare/winded [and] be i-frame (30% skill – 70% is the server lagging or not).",
-      "attribution": "Amya"
+      "text": "A demon king leads his troops. You always fight within your unit in the middle of the blob. This is a heavy HP heavy armour build, don't go for strength. Your goal is to constantly debuff as many enemy troop[s as possible]. Damage was never an issue with the class and you still do a lot of damage, just not 60k with 1 ult. In league if you already have enough damage to one shot someone just build sustain no need to deal damage for 150% of the hp bar right?",
+      "attribution": "FinalAffliction"
     }
   ],
   "authors": [
@@ -124,12 +240,316 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Bastard Sword' (1451609707042046074); OP 2025-12-19, edited 2026-04-28; follow-up posts 2026-03-12 (edited 2026-04-22) and 2026-03-27",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Bastard Sword\"",
       "sourceDate": "2026-04-28",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-04-28",
-  "patchNote": "Latest edit (2026-04-28) pre-dates the 2026-06-25 Chaos patch anchor by about two months — treat build/stat specifics as potentially stale against current-season balance."
+  "patchNote": "Primary guide OP 19/12/2025, edited through 28/04/2026 - pre-dates the 25/06/2026 Chaos patch by about two months. Tierlist entry (29/06/2026) and this file's external validation (13/07/2026) both post-date Chaos, and the tierlist still places Bastard Sword at God/S - not knocked out of top tier by that patch.",
+  "roleLabel": "A build-defined heavy hitter: Riposte dueling, Divine-Thrust block-breaking, or unkillable in-blob AoE CC - pick one job and fully exploit it.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be:",
+    "bullets": [
+      {
+        "lead": "Riposte build:",
+        "text": "stay close - \"being close let you hit AND wave\" (Amya); the build's payoff requires proximity for both single-target hits and the wave-clear cleave."
+      },
+      {
+        "lead": "Heavy Build:",
+        "text": "dive block-heavy formations (Stalwarts, Maidens) to break guard and ignite exotics; \"Strong vs turtles.\""
+      },
+      {
+        "lead": "\"Unkillable Bastard\":",
+        "text": "embedded in your own unit's blob, not on its edge - \"You always fight within your unit in the middle of the blob\" (linked Google Doc's preview text, FinalAffliction). Used to dive artillery and specials and disengage rather than die."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Take the Siege Breaker node/bonus and Arcing Smite -",
+        "text": "for a Flameshackle build (Amya, corrected spelling of her \"Arcing smith\"/\"siege breaker bonus\" OP tips)."
+      },
+      {
+        "lead": "Stamina management and positioning -",
+        "text": "are what separate \"1M dmg or 3M dmg\" in a fight on the Riposte build (Amya)."
+      },
+      {
+        "lead": "Check your runes against your total Defence before committing to a Flameshackle heavy build:",
+        "text": "house chat traced a real example - started at 2097 total def (over-cap), reforged toward 1792 all-def / 772 leadership to land under the 1800 threshold: \"nvm got a 17lds piece - 772 lds, 3 flameshackle piece + 2 light armor piece, 1792 all def build. There is so much math involved into this.\""
+      },
+      {
+        "lead": null,
+        "text": "Flameshackle's 3-piece guard-break procs off Moulinet Advance's parry/block, Riposte's right-click counter, and Driving Thrust with the Siege Breaker node - not off Hew or Leaping Hew (house chat working this out, Dec 2025)."
+      },
+      {
+        "lead": "Community/Steam sentiment (forum banter, not developer-confirmed, but corroborates the tierlist's \"by far the most OP weapon\" framing):",
+        "text": "players report 50-60k damage in a single combo, describe the Riposte hold-to-counter window as enabling near-infinite stun-lock, and note the class needing multiple players to bring down one Bastard Sword hero in some fights."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Riposte Build",
+      "spread": "Full Strength",
+      "note": "4/4 Carnifex's (you can let it broke itself for more dmg) or 2x light 2x medium + Epic Schematic weapon"
+    },
+    {
+      "build": "Heavy Build - Divine Thrust Abuse",
+      "spread": "Full HP/STR",
+      "note": "Full STR recommended (or Full HP to start) - you survive as you benefit from % damage reduction"
+    },
+    {
+      "build": "The Unkillable Bastard",
+      "spread": "Heavy HP, heavy armor",
+      "note": "explicitly NOT Strength - \"This is a heavy HP heavy armour build, don't go for strength.\""
+    },
+    {
+      "build": "Wave Build",
+      "spread": "Full Strength",
+      "note": "\"2 medium, 2 Light\" for damage or \"full medium\" for survivability [denetax.fr]"
+    },
+    {
+      "build": "Balance / Balance Bis Build",
+      "spread": "Full Strength or Full Toughness",
+      "note": "constrained to under 2100 total armor [denetax.fr]"
+    },
+    {
+      "build": "Duelist Build",
+      "spread": "Full Strength",
+      "note": "constrained to under 1800 total armor, 1v1 build [denetax.fr]"
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya, FinalAffliction",
+  "gapNotes": {
+    "controls": "[GAP: no fighting-game-notation input strings beyond the Riposte dash-rhythm and cancel/escape sequences] [GAP: full node roster incomplete - only ~18 named Core/Optional nodes surfaced via targeted research]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Riposte core loop",
+      "steps": [
+        "Dash",
+        "Dash",
+        "Moulinet Advance",
+        "Riposte, repeated"
+      ],
+      "note": "\"Spam 2x Dash into moulinet into riposte - there are a LOT of hidden mechs on the class about stamina and dmg boost.\" Fluid Shadow stacks a Dash-triggered damage buff twice while under 1800 total Defence, and Myriad to Silence redirects nearly all of the kit's damage budget into Riposte specifically (+60% Riposte damage, -90% on the other three skills)."
+    },
+    {
+      "name": "Driving Thrust block-break",
+      "steps": [
+        "Driving Thrust into a blocking Stalwart, Maiden, or any guard"
+      ],
+      "note": "instantly breaks it, ignites exotics, and can trigger \"full-HP explosions\" on them (Amya). House chat: \"if you use divine thrust into stalwards you instantly block break them\" (FinalAffliction). Strong vs turtle/block-heavy enemies rather than raw burst."
+    },
+    {
+      "name": "\"Unkillable Bastard\" engage loop",
+      "steps": [
+        "E (Moulinet Advance)",
+        "Q or R (Leaping Hew or Driving Thrust) into a unit",
+        "T (Cross Execution) if the unit isn't already dead",
+        "auto-attack (Hew) the rest of the blob"
+      ],
+      "note": "FinalAffliction, verbatim: \"So for example I E to start healing and damage resist, Q or R into a unit, then I ult if the unit is not already dead, I can auto attack the rest of the blob dealing aoe cc and 2/3k damage per auto (more to the ones closer cause of dubbel hit). Allows me to dive arti or specials and never die.\""
+    },
+    {
+      "name": "Cancel/escape",
+      "steps": [
+        "Leaping Hew",
+        "Driving Thrust"
+      ],
+      "note": "\"cancel and escape with q -> r\" (FinalAffliction, house clip caption)."
+    },
+    {
+      "name": "Armor-cap minimax trick",
+      "steps": [
+        "reforge/break gear pieces to stay under the 1800/2100 Defence breakpoints while keeping the target armor SET's piece-count intact"
+      ],
+      "note": "\"look to not overcome the recommended cap - think about a few tricks such as letting your stuff break itself for lower armor value (while keeping the actual bonus set)\" (Amya)."
+    },
+    {
+      "name": "Phantom Feint partial i-frame usage",
+      "steps": [
+        "time Phantom Dance's 0.5s Dash-invulnerability window against incoming CC"
+      ],
+      "note": "\"With above node that you take into riposte build you can even snare/winded [and] be i-frame\" (Amya); Amya's own caveat: \"(30% skill – 70% is the server lagging or not).\""
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Bastard Sword counts as a heavy armor class here (community consensus; officially unrestricted):",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Sovereign's Sword",
+        "effect": "When [Hew] hits an enemy, damage they take from [Riposte] is increased by 20% for 2 seconds. When [Riposte] hits an enemy, damage they take from [Hew] is increased by 20% for 2 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Unbending Will",
+        "effect": "When defense time exceeds 1 second, the next [Heavy Attack] will Knockdown the enemy. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Righteous Force",
+        "effect": "Can Knockback enemy Units during [Moulinet Advance]. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo. Cross Execution knocks up \"targets\" (plural per official text) - treated as an AOE-ultimate here to match that pattern; not confirmed by Amya's own rune guide, which doesn't name Bastard Sword at all.",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": true
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "dual-blades",
   "className": "Dual Blades",
-  "weaponArchetype": "Dual Blades · assassin/duelist",
+  "weaponArchetype": "Daggers",
   "tier": {
     "tier": "God",
     "positionInTier": 2,
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "HEAVILY recommended",
+    "needed": "yes, the build needs it",
     "name": "Skirmisher's Tunic",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full Strength",
-    "runes": "unknown",
+    "attribute": "Full Strength. Always full STR if playing butterfly, FULL HP can be played if bomb+shuri poke only (full str better if max potential used). General-hero-guide light-armor table confirms Dual Blade = Full Strength. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Female",
-    "genderNote": null,
+    "genderNote": "Best Gender (Animation Change depending of it): Female. [GAP: reason for the Dual Blades gender pick unexplained - no counterpoint given, unlike Shortsword's documented dash mechanic]",
     "armorSets": [
       {
         "name": "Warbreaker",
-        "purpose": "Best armour before Epic schem — play bomb+shuri+alch vapour+ult playstyle"
+        "purpose": "Best Armour before Epic schem: Warbreaker (and play bomb+shuri+alch vapour+ult playstyle)"
+      },
+      {
+        "name": "Skirmisher's Tunic",
+        "purpose": "Epic Schematic Needed: HEAVILY recommended. Epic Schematic Name: Skirmisher's Tunic.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -46,106 +51,158 @@
     },
     "spells": {
       "core": [
-        "Alchemical Vapor",
-        "Shuriken",
-        "Butterfly/Skylark",
-        "Mark of Death"
+        "Alchemical Vapours",
+        "Bo-Shurikens"
       ],
-      "fillerNotes": null
+      "fillerNotes": "Alchemical Vapours and Bo-Shurikens are constants across all three named loadouts (Shuriken/Butterfly, No Ult, No Butterfly); the R and T slots rotate between Butterfly, Skylark, Great Thunderbolt (Bomb), and Marked for Death (Mark of Death) - see Builds. - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Shuriken/Butterfly Playstyle",
-      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Butterfly/Skylark / T: Mark of Death. Always full STR if playing butterfly; FULL HP can be played if bomb+shuri poke only (full STR better if max potential used).",
+      "summary": "Q: Alchemical Vapor, E: Shuriken, R: Butterfly/Skylark, T: Mark of Death. Recommended to start and learn with this build.",
       "strongVs": null,
-      "forWhom": "Recommended to start and learn with this build",
-      "recommended": true
+      "forWhom": "Recommended to start and learn with this build.",
+      "recommended": true,
+      "typeLabel": "Starter/Butterfly",
+      "altSkill": null
     },
     {
       "name": "No Ult Playstyle",
-      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Butterfly/Skylark / T: Bomb.",
+      "summary": "Q: Alchemical Vapor, E: Shuriken, R: Butterfly/Skylark, T: Bomb (Great Thunderbolt). Trades the ultimate's 1v1 pressure and reliable kill securing for AoE CC that buffs the whole team's damage (20% vs heroes, 30% vs units), one extra invisibility charge, and a 4-reset-vs-3-reset cooldown-economy edge. The source itself calls this post \"a bit out-dated\" relative to the newer Bomb+Shuri recommendation - the RECOMMENDATION direction (bomb over ult) is current, but framing it as a distinct alternative build is slightly stale. \"\"Bomb is More Risk, More Snowball but More Potential Rewards while being also more Flop Potential too.\"\"",
       "strongVs": null,
-      "forWhom": "Players opting for Bomb's AOE CC and utility (Ranged CC / 1 More invis / 4 Reset > 3 Reset) over the ultimate — riskier in choke-point fights, 1v1 duels, and against CCi-Divers classes like Nodachi or Poleaxe, or vs high enemy light-armor counts",
-      "recommended": false
+      "forWhom": "Weaker into choke-point fights, 1v1 duels, and CCi-diver classes (Nodachi, Poleaxe).",
+      "recommended": false,
+      "typeLabel": "No-Ult/Aoe-Cc",
+      "altSkill": null
     },
     {
       "name": "No Butterfly Playstyle",
-      "summary": "Q: Alchemical Vapor / E: Shuriken / R: Bomb / T: Skylark or Butterfly in Meta where you can kill heroes, otherwise Mark of Death.",
+      "summary": "\"Strongest skillcap & impact high lobby.\" Q: Alchemical Vapor, E: Shuriken, R: Bomb (Great Thunderbolt), T: Skylark or Butterfly in a hero-kill-favorable meta, otherwise Mark of Death.",
       "strongVs": null,
-      "forWhom": "Strongest skillcap & impact in high lobby — start with this if confident and trusting yourself to learn the playstyle",
-      "recommended": false
+      "forWhom": "Recommended only if confident - start with this if trusting yourself to learn the playstyle.",
+      "recommended": false,
+      "typeLabel": "High-Skillcap",
+      "altSkill": null
+    },
+    {
+      "name": "Duo DB",
+      "summary": "Team-comp note, not a solo build: when playing two Dual Blades together (Amya cites her own GRK duo), having one player run no-ult and the other run the ultimate can outperform both running the ultimate; the split can also flex mid-match (swapping shuriken for bomb on one player, or both going no-ult in low-skirmish games).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Team-Comp",
+      "altSkill": null
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Musket and similar squishy ranged heroes without dedicated HP investment",
+      "stance": "strong-vs",
+      "why": "musket.md (cross-class): players invest HP to \"avoid dying to a single DB/CD combo\" and \"make it so enemy DB/CD can't kill u in 1 combo anymore.\" [unverified: named from the Musket side, not corroborated by a DB-side matchup list]"
+    },
+    {
+      "vs": "Classes without a dedicated dodge for the ultimate",
+      "stance": "strong-vs",
+      "why": "the ultimate is respected enough that other classes plan around it - longbow.md (cross-class): Longbow's Light-footed cast grants invincibility, \"great for dodging deadly ultimates like Dual Blades or Maul's heavy strikes,\" used \"specifically against Dual Blades and Maul ultimates.\" Which of the two DB ultimates (Marked for Death vs The Dance of Death) is unspecified. [unverified: ultimate not specified]"
+    },
+    {
+      "vs": "Units in general / coordinated groups of enemies",
+      "stance": "weak-vs",
+      "why": "core class identity weakness (wiki Overview) - no unit-vs-unit tools (Amya)."
+    },
+    {
+      "vs": "CCi-diver classes on a no-ult build - Nodachi, Poleaxe named explicitly",
+      "stance": "weak-vs",
+      "why": "\"against CCi-Divers classes like Nodachi or Poleaxe\" the ultimate's pressure/reliability is missed most.",
+      "build": "NO-ULT"
+    },
+    {
+      "vs": "Current meta's dominant threats: Poleaxe, Nodachi, Shortsword",
+      "stance": "weak-vs",
+      "why": "reason the Alchemical Vapours cleanse is \"non-negotiable\" regardless of build (reddit-commentary addendum)."
+    },
+    {
+      "vs": "Enemy light-armor heroes on a no-ult build",
+      "stance": "weak-vs",
+      "why": "a no-ult build \"can make you vulnerable if the opponent has this armor and knows how to play around it.\"",
+      "build": "NO-ULT"
+    },
+    {
+      "vs": "Rattan Vipers (poison-ranged) contesting a point",
+      "stance": "weak-vs",
+      "why": "single narrated clip (knightstalker VOD, 2022): stopping \"this Dual Blades unit from blocking the point\" - suggests a stationary DB hero on a point is vulnerable to sustained poison/ranged fire. [unverified: single incidental data point, not a stated doctrine]"
+    },
+    {
+      "vs": "[GAP: no explicit own-warband unit pairings found for Dual Blades]",
+      "stance": "synergy",
+      "why": "Consistent with the class's own stated identity (\"No unit-vs-unit tools - Forces you to learn unit matchups solo\") but recorded as an honest absence, not confirmation no such doctrine exists."
+    }
+  ],
   "techniques": [
     {
-      "name": "Full Combo (All Spells)",
+      "name": "Animation canceling",
       "steps": [
-        "Bomb/Dismount/Shuriken → Invisibility",
-        "E (Kick) → AA x2",
-        "Bomb/Shuriken → AAx1/2 then Ult",
-        "Roll behind → Butterfly or Shuriken (Roll animation cancel with block)"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": null
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
     },
     {
-      "name": "Enemy on Horse",
+      "name": "Active blocking",
       "steps": [
-        "Sprint after them with ur horse, jump once no stam (they'll also be out of stam)",
-        "Horse Q → E (Kick)",
-        "Butterfly into AA",
-        "Ult IMMEDIATELY as horse death animation starts to catch mid-air"
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
       ],
-      "rhythm": null
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
     },
     {
-      "name": "No Ult Chase Combo",
+      "name": "Horse-whistle CC immunity",
       "steps": [
-        "Sprint → Shift attack (stagger)",
-        "Butterfly",
-        "Space (back-off) and shuriken/aa-spam"
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
       ],
-      "rhythm": null
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Q-spell invis-window timing",
+      "steps": [
+        "cast the Q-spell (Alchemical Vapours) from any invisibility window",
+        "always at the very end of that window",
+        "0.1-0.2s before it naturally expires"
+      ],
+      "rhythm": "maximizes invisibility uptime"
+    },
+    {
+      "name": "Horse-mount free invisibility",
+      "steps": [
+        "Mount a horse",
+        "grants a free invisibility window plus 200% move speed for 3 seconds"
+      ],
+      "rhythm": "distinct mobility/escape tool from Alchemical Vapours - Separate from, and stackable with, the universal horse-whistle CC-immune summon-animation trick."
     }
   ],
   "gameplay": [
     {
-      "text": "\"Dual Blades (DB) is the ultimate high-skill weapon. To master DB is to master the entire game.\" Light armor survival requires perfect positioning, spacing, and hitbox knowledge. No unit-vs-unit tools forces you to learn unit matchups solo. Assassin role means you must know every hero matchup. Unique impact: no other class can cancel supply, flank with threat, or solo carry like DB. \"You'll have a brutal learning curve, but mastering DB means mastering the game.\" Your path to mastery: Die. Test limits. Learn matchups. Learn spacing. Learn how to bait spells. Press your map and ask, \"Where should I be to be most useful?\"",
+      "text": "To master DB is to master the entire game. You'll have a brutal learning curve, but mastering DB means mastering the game.",
       "attribution": "Amya"
     },
     {
-      "text": "Key Spell Mechanics: Ambush (cross spell in invis) + Butterfly = ALWAYS back hit. Alchemical Vapor/Shuriken/Bomb → Invisibility + CC-i window (0.4–0.7s). Horse → Free invis + 200% speed for 3s. Alchemical Vapor: keep for post-combo escape (engage with Dismount-Invis). The Q-spell from any invis should always be used at the end of the invis window (0.1–0.2s before it ends).",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Tips: Don't sprint-AA unless needed — use normal walk + roll cancel for DPS. Kick > Ambush (nearly same damage, but Kick stuns and has higher pen). Use Shuriken slow + Butterfly pressure to play slow and play around cooldowns. Test your mobility in Custom, what you can do or not do. Always engage with spells that keep escape options open. Movement & Awareness: learn enemy spell CDs — bait them, punish greed; know every map/object hitbox — use environment to survive; movement is survival — every duel is winnable with good spacing; autoattacks matter — squeezing AA will be a huge difference in DPS; stay active, always be looking to catch heroes, help dps units.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "DB FieldBattles/Conquest Win-Conditions (starred by OP): Final point cap. Point near the final point one cap. Canceling supply on B fight reset/during the fight (delaying the resetup, canceling the 2 units strats is enough for your team to get B). Cap supply and get units out of it (then either stay on it if you want to win by B, or go one of the 2 points you are pressuring). Pressure enough people for your team to have number advantages, don't feel forced to fight if it's the case. Move a unit that can kill afk units in map border, and start your plan JUST BEFORE YOUR TEAM ENGAGE ON B (worst case you bait people out of B fight and make pressure), NOT DURING (people will respawn) — this is the \"golden diagonal\": Final point / Point near final point / Supply. \"As a DB it's IMPOSSIBLE to die if you don't try to fight and just play safe. By playing around this golden diagonal, you have all the winconditions I quoted a top. If you manage to execute any of them, you basically win alone. And if you don't do any of them, by moving around this diagonal you force the enemy to have 1 afk unit on final point, 1 afk unit on C/A and 1 hero chasing you / afk on supply, which is already insane pressure, more than any other class could ever achieve and yet even with that, you can still go for a supply cancel during B fight.\"",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Ranked & Tournament value: the kit of the class makes you able to trade often more than 1 person, which should be the primary rule: \"Always try to have a value better than 1>\" — meaning you aim at any time to take at least the value of 1 player, and your goal is to have more. What counts towards the value counter: players trade (unit trade vs them, blocking somewhere); supply blocking (add +1 to any player you block by not swapping units; when you cancel supply always try to NOT kill the hero on it until the end of the push if you can, try to cancel it at the end of every 7s (swap timer) to take the least risk possible, use your cd smartly); cav flanking pressure (sometimes the best cav flank is simply to NOT do anything — make the enemy see you, make their vocal go crazy about potential cav flank, make the anticav afk right next to it, then flank mid-end fight); trouble you create in enemy team, going for crazy kill pick up when you know you won't even kill (but be safe) so they feel threatened, spam the vocal of \"becarefull about this and this.\" \"Often time your best value will be by going for supply cancel, but you need to know how to do [it] — useless to go supply cancel if the enemy will play around respawn, useless to pre-afk near supply, go at the same time of ppl swapping ... but you should not think 'i absolutely need to cancel supply' if you think it suck, it probably does and you should think about doing something else — but review your scrims, when you press map, analyze what u could have done better, better value, what u should change; when you die, why die, could you have dodged that death, or complet opposite wasn't it better to die early for faster respawn? all these things have no 'always right' rules, just big principle that you know and try to follow.\"",
-      "attribution": "Amya"
-    },
-    {
-      "text": "No ULT playstyle (bomb) or Ult playstyle? (separate post — OP flags this post itself as \"THIS IS A BIT OUT-DATED AS YOU SHOULD PLAY BOMB+SHURI playstyle but it's still good learning\"). Bomb is a 20% damage buff for heroes and a 30% buff for units. Opting for the bomb over the ultimate is particularly valuable in skirmishes due to its AOE CC, which boosts everyone's damage, and it provides Ranged CC / 1 More invis / 4 Reset > 3 Reset. However, sacrificing the ultimate comes with significant drawbacks, especially in choke-point fights, 1v1 duels, and against CCi-Divers classes like Nodachi or Poleaxe. The ult provides strong 1v1 pressure, enables pre-combo route activation, and secures kills more reliably. Build choice should also consider the number of enemy light armor (playing without an ult can make you vulnerable if the opponent has this armor and knows how to play around it) and the frequency of skirmishes. In Duo DB (as OP plays with GRK), having one player without an ult and the other with an ult can be more effective than both using the ultimate; situationally both might use noult, or one might swap the shuriken for the bomb while keeping both ults in low-fight-frequency games — these decisions depend on match dynamics and change a lot. Ultimately, having a bad game with a no-ult build is much riskier than an ult-focused player having an off game: a no-ult player might end up relatively ineffective and farmed by enemy lights, whereas a player with the ult still retains potential opportunities, even during pushes. TLDR: \"Bomb is More Risk, More Snowball but More Potential Rewards while being also more Flop Potential too, need to know when you should play it, always be able to adapt, swap spells depending on the game mode/dynamics of the current lobby.\" \"It also heavily depend on the current meta, a slow meta full of shield and brace units like right now will favourite a no bomb heavily due to the low amount of skirmish happening.\"",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Gear & Weapon Guide. Armor (Epic Schematic 4-piece) tiers: GOD TIER — Heal / Leadership; S+ — Crit Value; S — Piercing Def; A — Slashing / Blunt Def; TRASH — Crit Def. Weapon (Min Requirements): Slash DMG 70%+ Max Proc; Slash PEN 55%+ Max Proc; Min Slash PEN 1800+ for Siege, 2000–2100 for TW / Ranked / Tournaments. Weapon Stats to Aim For: Slash DMG, Slash PEN, Crit DMG Value; Bonus: Piercing DMG/PEN.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Addition from reddit commentary (quoted by OP, asking if alchemical vapor is necessary): \"It is absolutely necessary, yes. While there can be debates about which build is better (No Ult build, Shuriken build, or Bomb build), all these builds include the escape skill because it's your only cleanse of CC. In the current meta, where Poleaxe, Nodachi, and Shortsword are dominant, having your cleanse is non-negotiable. Honestly, in any meta, you'd always want it. The 0.4 seconds of CCi on Bomb or Shuriken is nice but will never replace a spell that can save your life multiple times in a single game.\" \"As for your build, I see you prefer Skylark over Butterfly, likely for its lower cooldown, as many new players do. If I could give you some advice, it would be to start practicing with Butterfly instead. While Butterfly is less forgiving if you miss, its burst and overall damage are significantly higher. This becomes especially important when you have your Epic Schematic set, allowing you to reset your spells on kills. At that point, Butterfly becomes a must-have for maximizing damage output.\"",
-      "attribution": "reddit commentary (quoted by Amya, OP)"
-    },
-    {
-      "text": "Matchups: no explicit \"Loses to / Counters\" list in unit-guide format exists for this class; matchup framing is embedded in the mechanics/combo sections instead — e.g. CCi-Divers classes (Nodachi, Poleaxe) named as a particular threat to the no-ult build, and light-armor enemies as a reason to keep the ultimate available.",
-      "attribution": "Amya"
+      "text": "The dual blades are a pair of daggers suitable for assassination missions. Appropriately, dual blades users have excellent mobility, invisibility, and single-target damage, and excel at hunting down and killing enemy heroes. They are, however, very lackluster against units and fare poorly against coordinated groups of enemies.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -157,12 +214,365 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Dual Blades Guide' (1292944227017424929); OP 2024-10-07 edited 2026-05-13; 'Core Philosophy' post 2025-07-13 edited 2026-06-09; 'No ULT playstyle' post 2025-07-13 edited 2026-03-26",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Dual Blades Guide\"",
       "sourceDate": "2026-06-09",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-06-09",
-  "patchNote": "Latest edit across the thread (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor by about two weeks (16 days) — closer to current than most other captures in this batch, but still pre-season/not yet re-verified."
+  "patchNote": "Amya OP edited 13/05/2026; \"Core Philosophy\" post edited through 09/06/2026 (latest edit across the whole thread); \"No ULT playstyle\" post edited 26/03/2026. The 09/06/2026 edit pre-dates the 25/06/2026 Chaos patch anchor by about two weeks - closer to current than most other captures in this batch, per the capture file's own framing.",
+  "roleLabel": "Dual Blades (DB) is the ultimate high-skill weapon.",
+  "armorClass": "Light",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight (\"golden diagonal\" win-condition doctrine):",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Final point cap."
+      },
+      {
+        "lead": null,
+        "text": "Point near the final point - one cap."
+      },
+      {
+        "lead": "Canceling supply on B fight reset/during the fight:",
+        "text": "delaying the resetup, canceling the 2 units strats is enough for your team to get B."
+      },
+      {
+        "lead": "Cap supply and get units out of it -",
+        "text": "then either stay on it if you want to win by B, or go one of the 2 points you are pressuring."
+      },
+      {
+        "lead": null,
+        "text": "Pressure enough people for your team to have number advantages, dont feel forced to fight if it's the case."
+      },
+      {
+        "lead": null,
+        "text": "Move a unit that can kill afk units in map border (there is a lot), and start your plan JUST BEFORE YOUR TEAM ENGAGE ON B (then worst case you will bait people out of B fight and make pressure), NOT DURING AS PEOPLE WILL RESPAWN."
+      },
+      {
+        "lead": "The \"golden diagonal\" is 3 pressure points:",
+        "text": "Final point / Point near final point / Supply."
+      },
+      {
+        "lead": null,
+        "text": "\"As a DB it's IMPOSSIBLE to die if you don't try to fight and just play safe. By playing around this golden diagonal, you have all the winconditions I quoted a top.\""
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Don't sprint-AA unless needed. Use normal walk + roll cancel for DPS."
+      },
+      {
+        "lead": "\"Kick\" vs \"Ambush\":",
+        "text": "\"Kick > Ambush (nearly same damage, but Kick stuns and have highen pen)\" - preference note between the two combo terms that don't map to a confirmed wiki skill name."
+      },
+      {
+        "lead": "Use Shuriken slow + Butterfly pressure -",
+        "text": "to play slow and play around cooldowns."
+      },
+      {
+        "lead": null,
+        "text": "Test your mobility in Custom, what you can do or not do."
+      },
+      {
+        "lead": null,
+        "text": "Always engage with spells that keep escape options open."
+      },
+      {
+        "lead": null,
+        "text": "Learn enemy spell cooldowns - bait them, punish greed."
+      },
+      {
+        "lead": null,
+        "text": "Know every map/object hitbox - use the environment to survive."
+      },
+      {
+        "lead": null,
+        "text": "Movement is survival - every duel is winnable with good spacing."
+      },
+      {
+        "lead": null,
+        "text": "Autoattacks matter - squeezing AA will be a huge difference in DPS."
+      },
+      {
+        "lead": null,
+        "text": "Stay active. You should ALWAYS be looking to catch heroes, help dps units."
+      },
+      {
+        "lead": "Alchemical Vapours is non-negotiable:",
+        "text": "treated as non-negotiable across every build variant - it is the only cleanse of crowd control the class has."
+      },
+      {
+        "lead": "Butterfly over Skylark once the epic schematic is equipped:",
+        "text": "Butterfly's burst/overall damage is higher and it benefits more from on-kill spell resets, even though Skylark's lower cooldown makes it the easier starting pick for new players."
+      },
+      {
+        "lead": "Ranked/tournament value framework:",
+        "text": "a Dual Blades player's job is to consistently trade for \"more than 1 person\" of value - via player trades, supply-blocking (added value for every player it distracts without a hero kill needed), cavalry-flank feint pressure (sometimes the threat alone, without committing, is the highest-value play), and generally forcing the enemy team to divert attention/resources."
+      },
+      {
+        "lead": "Cross-class note (a \"home slot\" class):",
+        "text": "Chaindart's OP describes a common rotation where a player swaps INTO Chaindart temporarily for its supply-defense utility window, \"then swapping back to another class (LB or DB for example).\" This frames Dual Blades as a class players return to, not one they routinely swap away from mid-fight."
+      },
+      {
+        "lead": "House note on Strength vs Agility (top authority):",
+        "text": "\"Yes, the problem is the weapon can't reach 2k pene, maybe if you put some agility and have really good rolls in weapon, putting some agility will make you go to the soft cap of pene if not full str.\" Full Strength stays the default pick (matches Amya), but the class's slashing-penetration ceiling is hard to reach on Strength alone without excellent gear rolls, which is why some players mix in Agility to hit the soft cap instead. ([IM] Kazepos, Immortals #heroes, 28/01/2026 - marked status: likely-stale in the source capture, predates the 22/06/2026 patch anchor)"
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Shuriken/Butterfly Playstyle",
+      "spread": "Full Strength",
+      "note": "Always full STR if playing butterfly, FULL HP can be played if bomb+shuri poke only (full str better if max potential used)."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: \"Kick\" and \"Ambush\" as used in the Dual Blades combo guide do not map to a confirmed wiki skill name]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Backstab setup",
+      "steps": [
+        "Ambush (cross-hit spell from invisibility)",
+        "Butterfly"
+      ],
+      "note": "Ambush followed immediately by Butterfly ALWAYS lands as a back hit."
+    },
+    {
+      "name": "Full combo (all spells)",
+      "steps": [
+        "Bomb/Dismount/Shuriken",
+        "Invisibility",
+        "\"Kick\" (E)",
+        "auto-attack x2",
+        "Bomb/Shuriken",
+        "auto-attack x1-2",
+        "then Ultimate",
+        "roll behind",
+        "Butterfly or Shuriken"
+      ],
+      "note": "The roll's animation can itself be cancelled with block."
+    },
+    {
+      "name": "Enemy-on-horse chase",
+      "steps": [
+        "sprint after them on your own horse",
+        "jump once both are out of stamina",
+        "Horse Q (the free mount-invis)",
+        "\"Kick\" (E)",
+        "Butterfly into auto-attack",
+        "cast the Ultimate immediately as the horse's death animation starts"
+      ],
+      "note": "Catches the target mid-air."
+    },
+    {
+      "name": "No-Ult chase combo",
+      "steps": [
+        "Sprint",
+        "shift-attack (a stagger)",
+        "Butterfly",
+        "space out (back off) and Shuriken / auto-attack spam"
+      ],
+      "note": null
+    },
+    {
+      "name": "Escape",
+      "steps": [
+        "engage with Dismount-Invis",
+        "keep Alchemical Vapours in reserve as the post-combo escape tool"
+      ],
+      "note": "So the escape cooldown is still available at the end of the trade."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "amya-db (Tournament DB POVs)",
+        "href": "https://www.youtube.com/amya-db",
+        "desc": "Amya's own tournament DB POV channel - general hero guide's learn-from list."
+      },
+      {
+        "label": "Grkx3 (DB)",
+        "href": "https://www.youtube.com/@Grkx3",
+        "desc": "Tournament DB POVs - Amya's learn-from list; also Amya's cited Duo DB partner (see Builds)."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Dual Blades counts as a light armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP / Crit Value"
+      },
+      {
+        "grade": "A",
+        "label": "Piercing Def / Slash/Piercing dmg depending of your weapon"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Hidden Crossing",
+        "effect": "Hitting a target with a skill while in stealth causes them to lose 4% of their current Health per second for 5 seconds, and reduces their healing received by 60%. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Night Raid",
+        "effect": "After entering [Sneak], Critical Value greatly increases every 3 seconds. The higher your base Critical Value, the higher the multiplier. This effect decays gradually upon leaving [Sneak]. It can also be triggered by [Bo-Shurikens] and [Great Thunderbolt]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Ambush Volley",
+        "effect": "Restores 8% Health for every Hero killed. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": "DMG dealer can replace martyr's Glory for both str/agi nodes if not DB full hp, or things like that",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference. Boots update 14/05/2026: Reforged Skirmisher's Boots (epic light boots) with 5 rune power - hero damage taken -50% below 25% HP + the Numbing Remedy bandage effect.",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "For lights that hit both units and heroes take both + str / if you don't hit heroes or units, prefere ultimate all dmg increase / Don't take defence reducing, it's useless",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

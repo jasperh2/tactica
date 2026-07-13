@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "longsword",
   "className": "Longsword",
-  "weaponArchetype": "Longsword · support/tank disruptor",
+  "weaponArchetype": "Sword & Shield",
   "tier": {
     "tier": "C",
     "positionInTier": 1,
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Not needed, but the class is way stronger with it due to the ultimate's CC immunity",
-    "name": "Imperial Knight's Surcoat",
-    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+    "needed": "optional but worth having",
+    "name": "Imperial Knight's Armour",
+    "tierDropNote": "Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
   },
   "loadout": {
-    "attribute": "Full Armor/HP",
-    "runes": "unknown",
+    "attribute": "Full Armor - units, not enemy heroes, are the main threat to Longsword. The only hero class worth real caution is Spear. - house playbook - StaRBuRsT",
+    "runes": "known - Chaos season set below",
     "bestGender": "Male",
-    "genderNote": null,
+    "genderNote": "no reason given. [GAP: reason unstated]",
     "armorSets": [
       {
-        "name": "Guardsman",
-        "purpose": "Best Armour before Epic schem"
+        "name": "Guardsman's Armour",
+        "purpose": "Best Armour before Epic schem: Guardsman."
+      },
+      {
+        "name": "Imperial Knight's Armour",
+        "purpose": "Epic Schematic Needed: Not needed, but the class is way stronger with it due to the ultimate's CC immunity.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -46,68 +51,113 @@
       "core": [
         "With Valour",
         "Mercy of Heaven",
-        "filler Spell",
         "Clash of Shields"
       ],
-      "fillerNotes": "\"Tank - no other viable play styles.\""
+      "fillerNotes": "Filler Spell not named by Amya's OP - could be Paladin, Shield Bash, Martial Prowess, or Knightly Vows. Foghladha's external loadout names the filler slot explicitly: Shield Bash (for Quick Recovery). - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Tank",
-      "summary": "Tank - no other viable play styles.",
+      "summary": "Tank - no other viable play styles. Frontline sustain and disruption via Mercy of Heaven and CC; pull enemy and unit focus while your team follows close behind. \"Tank - no other viable play styles.\"",
       "strongVs": null,
       "forWhom": null,
-      "recommended": true
+      "recommended": true,
+      "typeLabel": "Tank",
+      "altSkill": null
+    },
+    {
+      "name": "Foghladha's Recommendation",
+      "summary": "External hub build - spreads points across Strength 45 / Agility 35 / Armour 30 / Toughness 30 instead of Full Armor/HP.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
   "matchups": [
     {
       "vs": "Xuanjia heavy cavalry",
       "stance": "strong-vs",
-      "why": "Engage early to force them to burn their CC immunity, letting your teammates follow up with stuns to neutralize them."
+      "why": "engage early to bait their CC immunity before your team commits stuns."
+    },
+    {
+      "vs": "DoT-applying enemies (poison/bleed/fire)",
+      "stance": "weak-vs",
+      "why": "negates Mercy of Heaven's heal - burn them down quickly rather than trading slow."
+    },
+    {
+      "vs": "Knockdown-focused burst",
+      "stance": "weak-vs",
+      "why": "knocking a Longsword down is the fastest way to end the fight - you've only got Shield Bash and Sally Forth to break CC."
+    },
+    {
+      "vs": "Spear Sergeants, Spartans, ISG",
+      "stance": "synergy",
+      "why": "tanky units to go very aggressive in a push or defence with. - house playbook"
+    },
+    {
+      "vs": "A tank Shortsword (SnS) or Poleaxe (PA) anchor",
+      "stance": "synergy",
+      "why": "Longsword pulls focus especially combined with a tank SnS or PA - your DPS need to follow very close behind. - house playbook"
     }
   ],
   "techniques": [
     {
-      "name": "Mercy of Heaven timing",
+      "name": "Animation canceling",
       "steps": [
-        "Hold Mercy of Heaven until your frontline is at a crucial moment",
-        "Apply the 10% defense buff to help them hold position and withstand enemy attacks"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Timing and positioning are key to maximizing the buff's effect — don't apply it just on cooldown."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
     },
     {
-      "name": "Cavalry stun timing",
+      "name": "Active blocking",
       "steps": [
-        "Intercept a charging cavalry unit",
-        "Stun mid-charge, not after"
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
       ],
-      "rhythm": "Stun cavalry mid-charge (rather than after) to prevent the charge from landing at all."
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you - relevant against Nodachi/Glaive/Poleaxe CC kits especially, given Longsword's own frontline role."
     },
     {
-      "name": "Xuanjia CC-immunity bait",
+      "name": "Horse-whistle CC immunity",
       "steps": [
-        "Engage the Xuanjia heavy cavalry early",
-        "Force them to burn their CC immunity",
-        "Let teammates follow up with stuns to neutralize them"
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
       ],
-      "rhythm": null
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
     }
   ],
   "gameplay": [
     {
-      "text": "Primary role — support your team: provide buffs and healing, especially via the rune Mercy of Heaven, which boosts allies' defenses by 10%. Apply this buff to your frontline at crucial moments to help them hold position and withstand enemy attacks; proper timing and positioning are key to maximizing the buff's effect.",
+      "text": "Its role to go first in and try to pull/soak up enemies attention/damage as much as possible while pushing forward 24/7. Trust in how much damage it can absorb/pull focus (especially combined with a tank SnS or PA) with correct unit(s) - but we need DPS to follow very close behind. - house playbook",
+      "attribution": "StaRBuRsT"
+    },
+    {
+      "text": "Primary role - support your team: provide buffs and healing, especially via the rune Mercy of Heaven, which boosts allies' defenses by 10%. Apply this buff to your frontline at crucial moments to help them hold position and withstand enemy attacks; proper timing and positioning are key to maximizing the buff's effect.",
       "attribution": "Amya"
     },
     {
-      "text": "Secondary role — disrupt the enemy: against melee-heavy teams, use stuns and crowd control to break enemy formations and create openings for your team. Against cavalry-reliant enemies, intercept and disrupt their charges — stun cavalry mid-charge to prevent them wreaking havoc. Against Xuanjia heavy cavalry specifically: engage early to force them to burn their CC immunity, letting your teammates follow up with stuns to neutralize them.",
+      "text": "Secondary role - disrupt the enemy: against melee-heavy teams, use stuns and crowd control to break enemy formations and create openings for your team. Against cavalry-reliant enemies, intercept and disrupt their charges - stun cavalry mid-charge to prevent them wreaking havoc. Against Xuanjia heavy cavalry specifically: engage early to force them to burn their CC immunity, letting your teammates follow up with stuns to neutralize them.",
       "attribution": "Amya"
     },
     {
-      "text": "In summary, balance between buffing your team and disrupting the enemy is essential for effective Longsword play.",
-      "attribution": "Amya"
+      "text": "Dominate melee battles with a brutal combination that balances offensive and defensive capabilities.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -119,12 +169,299 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Longsword Guide' (1293302941305933896); OP 2024-10-08, edited 2026-03-26",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Longsword Guide\"",
       "sourceDate": "2026-03-26",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-03-26",
-  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months."
+  "patchNote": "Amya OP posted 08/10/2024, edited 26/03/2026 - pre-dates the 25/06/2026 Chaos patch by about three months; thread never received a reply, so this remains the newest guidance as of 13/07/2026.",
+  "roleLabel": "Tank - no other viable play styles.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Go first in, frontline, in any push or defence - it's Longsword's role to pull enemy and unit attention while pushing forward 24/7. - house playbook"
+      },
+      {
+        "lead": "Bring tanky units:",
+        "text": "Spear Sergeants, Spartans, ISG - go very aggressive in a push or defence. - house playbook"
+      },
+      {
+        "lead": null,
+        "text": "Pair with a tank Shortsword or Poleaxe anchor - you both absorb and pull focus, but your DPS need to follow very close behind. - house playbook"
+      },
+      {
+        "lead": null,
+        "text": "You move 20% faster for 10s after using a skill (24% with a rune), even while blocking - get up into the enemy's face, it makes it harder for their arty to hit you. - house playbook"
+      },
+      {
+        "lead": null,
+        "text": "Units, not enemy heroes, are the real threat here - the only hero class worth real caution is Spear. - house playbook"
+      },
+      {
+        "lead": null,
+        "text": "Stay near your team - Longsword is made for walking the thin line of almost being out of position, not for going it alone. - house playbook"
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "You're faster than you look:",
+        "text": "you move at ordinary speed even while blocking with right click, and 20% faster for 10s after using a skill (24% with a rune) - use it to get up into the enemy's face before their arty can track you. - house playbook"
+      },
+      {
+        "lead": "Mercy of Heaven is your sustain tool:",
+        "text": "time the heal to land on your frontline at crucial moments, not on cooldown."
+      },
+      {
+        "lead": "Vs Xuanjia heavy cavalry:",
+        "text": "engage early to force them to burn their CC immunity, so your teammates can follow up with stuns."
+      },
+      {
+        "lead": null,
+        "text": "Stun cavalry mid-charge, not after - that's what stops the charge from landing at all."
+      },
+      {
+        "lead": null,
+        "text": "Vs melee-heavy teams, use your stuns and CC to break their formation and open space for your team."
+      },
+      {
+        "lead": "In summary:",
+        "text": "balance between buffing your team and disrupting the enemy is essential for effective Longsword play."
+      },
+      {
+        "lead": "DoTs cancel your heal:",
+        "text": "fire, bleed, or poison on you voids Mercy of Heaven - don't lean on it while trading into DoT-heavy enemies."
+      },
+      {
+        "lead": "Only one cleanse each tier:",
+        "text": "Shield Bash removes Dazed, Sally Forth removes Daze - don't burn either before you actually need it."
+      },
+      {
+        "lead": null,
+        "text": "Shield blocks most attacks, and With Valour III, Sally Forth, and Clash of Shields all knock down - lean on the shield, save the knockdowns."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Tank",
+      "spread": "Full Armor/HP",
+      "note": "House refines this to full Armor specifically - StaRBuRsT: units are the main threat to Longsword, not heroes (Spear excepted)."
+    },
+    {
+      "build": "Foghladha's Recommendation",
+      "spread": "Strength 45 / Agility 35 / Armour 30 / Toughness 30",
+      "note": "External hub build - spreads across all four attributes rather than Full Armor/HP; recorded as an alternative, not merged with Amya's guidance."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: which specific Longsword skill(s) provide the cavalry-stun and Xuanjia-engage techniques] [GAP: per-tier (II/III) upgrade names for each of the 8 skills unvalidated]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Xuanjia CC-immunity bait",
+      "steps": [
+        "engage Xuanjia early",
+        "they burn CC immunity",
+        "teammates follow up with stuns"
+      ],
+      "note": "Forces their CC immunity before your team commits."
+    },
+    {
+      "name": "Cavalry intercept",
+      "steps": [
+        "stun the charge mid-charge, not after"
+      ],
+      "note": "Stops the charge from landing at all. With Valour (Knockdown III) and Shield Bash (Stun) are the kit's only hard-CC Core skills, though the guide doesn't name which one lands this."
+    },
+    {
+      "name": "Formation break",
+      "steps": [
+        "stuns and CC into the enemy's melee-heavy formation",
+        "openings for your team"
+      ],
+      "note": null
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Longsword counts as a heavy armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Aristocratic Lineage",
+        "effect": "Restores 0.5% maximum Health per second for 10 seconds after using an Ultimate. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Might of the North",
+        "effect": "The block-breaking value of [Shield Bash] is increased by 600 points. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Abundant Provisions",
+        "effect": "When Health is above 70%, all damage dealt is increased by 100 points. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  }
 }

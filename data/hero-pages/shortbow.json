@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "shortbow",
   "className": "Shortbow",
-  "weaponArchetype": "Bow · poison-mark ranged DPS",
+  "weaponArchetype": "Bow",
   "tier": {
     "tier": "D",
     "positionInTier": 1,
@@ -10,23 +10,28 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Yes — \"Class is useless without it\"",
-    "name": "Desert Warrior Garnement",
+    "needed": "yes, the build needs it",
+    "name": "Desert Warrior",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Agility",
-    "runes": "unknown",
+    "attribute": "Agility. Corroborated by the general hero guide's Light Armors table: \"Shortbow: Full Agility.\" - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Male",
-    "genderNote": "way faster roll animation",
+    "genderNote": "way faster roll animation - Amya's guide frames the class as unisex with a Male-vs-Female choice. Community threads (Steam Community search synthesis, low confidence) separately describe Short Bow as gender-locked to female characters only - not reconciled",
     "armorSets": [
       {
         "name": "Warbreaker",
-        "purpose": "poison meta"
+        "purpose": "if poison meta"
       },
       {
-        "name": "Rogue",
+        "name": "Rogue's Armour",
         "purpose": "if you play for AA"
+      },
+      {
+        "name": "Desert Warrior",
+        "purpose": "Class is useless without it. 2 pieces: Duration of Poison and Bleed inflicted by skills is increased by 1 second. 3 pieces: Increases Armour Penetration by 150 points. 4 pieces: The damage interval of Poison and Bleed inflicted by skills is reduced by 0.2 seconds. Four pieces: Desert Warrior Hat/Garment/Bracers/Boots, level 10 unlock.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -37,38 +42,113 @@
     },
     "weaponStats": {
       "need": [
-        "Piercing DMG",
+        "Piercing Dmg",
         "Piercing Pen"
       ],
       "bonus": [
-        "Agi",
-        "Str"
+        "Agility",
+        "Strength"
       ]
     },
     "spells": {
-      "core": [],
-      "fillerNotes": null
+      "core": [
+        "Steel Arrow",
+        "Stunt Arrow",
+        "Roll",
+        "Poison Burst Ult"
+      ],
+      "fillerNotes": "\"Poison Build with ult\" list edited 2024-10-16. \"Poison Build without ult\" (the thread's freshest edit) gives no explicit skill list, just a CC note: currently taking 2 CC (stunt arrow, and bola at the same time may be better, adapt to your liking). Both builds play similarly. (\"Poison Burst Ult\" is not a fully confirmed ability name - the official Chaos rune [Righteous Archery] names [Wrath of Artemis] alongside [Angry Hornets] as the class's mark-appliers, making Wrath of Artemis the stronger ult candidate and the weapon_runes block.) - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Poison Build with ult",
-      "summary": "Steel Arrow, Stunt Arrow, Roll, Poison Burst Ult (list edited 2024-10-16).",
+      "summary": "Steel Arrow, Stunt Arrow, Roll, Poison Burst Ult. Both builds play similarly; Shortbow is \"UNPLAYABLE\" pre-Epic Schematic (base damage too low), and only becomes viable - still \"insanely far away from good\" - once the Desert Warrior epic's poison-stack passive unlocks.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Poison/Burst",
+      "altSkill": null
     },
     {
       "name": "Poison Build without ult",
-      "summary": "No explicit skill list given beyond the CC note: \"Currently taking 2 CC (stunt arrow, and bola at the same time may be better, adapat to your liking).\" (edited 2026-06-09, the thread's latest edit).",
+      "summary": "No explicit skill list beyond a CC note: currently taking 2 CC (stunt arrow, and bola at the same time may be better, adapt to your liking). Plays similarly to the with-ult build.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Poison/Cc",
+      "altSkill": null
+    },
+    {
+      "name": "Versatile Agility/Strength split",
+      "summary": "A reaction to a balance pass that raised enemy armor values broadly - split Agility/Strength instead of pure Agility.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Low-armor heroes (Musket, Longbow, Dual Blades)",
+      "stance": "strong-vs",
+      "why": "prime targets per the guide's own target-priority framing."
+    },
+    {
+      "vs": "Wounded heroes",
+      "stance": "strong-vs",
+      "why": "finish off already-wounded heroes."
+    },
+    {
+      "vs": "Anything that closes distance and pins it down / melee range",
+      "stance": "weak-vs",
+      "why": "fragile - cannot survive direct focus or melee range; short effective range means you fight closer to danger than other ranged classes."
+    },
+    {
+      "vs": "None sourced",
+      "stance": "synergy",
+      "why": "no explicit house or Amya list captured for Short Bow's own warband - the same gap pattern documented for Shortsword. [GAP: explicit unit pairings for the Short Bow player's own warband - vets/house question]"
+    }
+  ],
   "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you. Short Bow carries no shield of its own (\"You don't have a shield\", b12 PDF), so this is a fallback tool rather than a kit centerpiece here."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - of limited relevance to Short Bow, a kiting ranged class that generally avoids walking into braced units at all."
+    },
     {
       "name": "AA-spell rotation",
       "steps": [
@@ -78,24 +158,29 @@
         "spell",
         "AA",
         "spell",
-        "rotate the best you can as spell will cancel the animations",
-        "if you run out of spell rotation, jump instantly after each AA instead"
+        "If you run out of spell rotation, jump immediately after each AA instead for the same DPS-preserving effect."
       ],
-      "rhythm": "\"Between every AA you will send one spell, basically doing: AA - spell - AA - spell - AA - spell and rotating the best you can as spell will cancel the animations and you will have more DPS. If you run out of spell rotation, jumping instantly after each AA will also make you gain DPS.\""
+      "rhythm": "spells cancel animations = more DPS - Between every AA you send one spell, rotating the best you can as spell will cancel the animations and you will have more DPS. Both builds rely on hitting a spell, marking the enemy with a poison stack, then making it explode with AA."
+    },
+    {
+      "name": "Kite and reposition",
+      "steps": [
+        "Shoot",
+        "move",
+        "shoot",
+        "move"
+      ],
+      "rhythm": "core to Shortbow's hit-and-run identity - Exceptional agility and multiple dodge/movement skills let it kite heavier enemies easily."
     }
   ],
   "gameplay": [
     {
-      "text": "Both builds play similarly; Shortbow is \"UNPLAYABLE\" pre-Epic Schematic (base damage too low), and only becomes viable (still \"insanely far away from good\") once the Epic Schematic unlocks a poison-stack passive.",
-      "attribution": "Amya"
+      "text": "It trades the Longbow's raw power for higher attack speed, mobility, and damage over time. Shortbow heroes excel at killing enemy heroes.",
+      "attribution": "b12 PDF"
     },
     {
-      "text": "\"Each Ability you Hit will MARK the enemy with poison stack, these poison stack will be exploded from AA. These Marks Deal HP% DMG.\"",
-      "attribution": "Amya"
-    },
-    {
-      "text": "\"Both build rely on hitting spell, marking enemy and then making them explode with AA. With that you can Hit ANY target and will always [do] -40% to -60% of their HP. You will have a LOT of DMG but Kills are harder to get. As your DMG drop HEAVILY as the target get lower hp%.\"",
-      "attribution": "Amya"
+      "text": "In comparison to the bow, the short bow is less cumbersome and tiring, suited to scouts and other light infantry.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -107,12 +192,270 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'ShortBow Guide' (1293319123509448849); OP 2024-10-08 edited 2026-03-26; follow-up post 2024-10-08 with 'Poison Build with ult' sub-edit 2024-10-16 and 'Poison Build without ult' sub-edit 2026-06-09",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"ShortBow Guide\"",
       "sourceDate": "2026-06-09",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-06-09",
-  "patchNote": "Latest edit (2026-06-09) pre-dates the 2026-06-25 Chaos patch anchor — closest-to-current edit in this batch's Shortbow content, but treat as pre-season/not yet re-verified against the current patch."
+  "patchNote": "Amya's OP last edited 26/03/2026; the follow-up build post's latest edit is 09/06/2026 - both pre-date the 25/06/2026 Chaos patch by about thirteen and two weeks respectively. No thread activity after 09/06/2026 as of this 13/07/2026 capture, so this is still the newest guidance; the fandom wiki page itself has had exactly one revision since 11/05/2020.",
+  "roleLabel": "The Shortbow in Conqueror's Blade is a nimble ranged Hero class which shines in close-to-mid range combat.",
+  "armorClass": "Light",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": "Optimal range:",
+        "text": "fight around a ~5-10 meter sweet spot - inside ~5m you risk getting melee'd, beyond ~10-15m your damage/accuracy fall off."
+      },
+      {
+        "lead": "Use cover:",
+        "text": "no shield, so lean on the environment instead - peek out from behind walls, siege engines, or rocks to fire, then duck back into cover if enenmy is focusing you. Pop out, take a few shots, then move."
+      },
+      {
+        "lead": null,
+        "text": "Fragile - cannot survive direct focus or melee range. Short effective range means you fight closer to danger than other ranged classes."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Damage profile:",
+        "text": "poison-mark-then-AA-detonate can hit any target for -40% to -60% of their HP, but kills get harder to close out as the target's HP% drops - damage falls off heavily at low HP."
+      },
+      {
+        "lead": null,
+        "text": "Angry Hornets has a wide splash - don't fire it at a target that hasn't closed distance yet, or the spread is wasted."
+      },
+      {
+        "lead": "Aim for headshots:",
+        "text": "practice landing critical headshot damage, especially on stationary or unaware targets."
+      },
+      {
+        "lead": "CC is a team asset:",
+        "text": "don't only think of yourself as DPS - remember your utility."
+      },
+      {
+        "lead": null,
+        "text": "No lengthy cooldown gates the whole kit - most skills recharge quickly, so the poke-burst-reposition loop is meant to repeat continuously rather than being a single burst window."
+      },
+      {
+        "lead": null,
+        "text": "CC loadout is still being tuned - stunt arrow + bola simultaneously \"may be better,\" adapt to your liking rather than a settled answer."
+      },
+      {
+        "lead": null,
+        "text": "Male gender pick is contingent on Short Bow currently allowing a gender choice at all, which is not confirmed - see the gender field below."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Versatile Agility/Strength split",
+      "spread": "split between Agility and Strength",
+      "note": "a reaction to a balance pass that raised enemy armor values broadly; conflicts with the class default of pure Agility"
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "b12 PDF",
+  "gapNotes": {
+    "controls": "[GAP: per-skill cooldowns and numeric effect/damage values unvalidated for all 8 named Short Bow skills] [GAP: no single reconciled 4-skill core loadout across Amya's two build posts and the b12 PDF's rotation]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Burst combo",
+      "steps": [
+        "Autohits",
+        "Poison Arrow",
+        "Bola / Stunshot",
+        "Angry Hornet"
+      ],
+      "note": "used once the enemy has closed distance; if the enemy is not close up to you, dont use angry hornet as it has a wide split area."
+    },
+    {
+      "name": "Poke-burst-reposition cycle",
+      "steps": [
+        "Poison Arrow or a few normal shots to poke",
+        "burst combo once they close",
+        "reposition/disengage regardless of kill",
+        "repeat"
+      ],
+      "note": "the poke baits a reaction (dodge/block/rush); most skills recharge quickly so nothing gates the loop for long."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Shortbow counts as a light armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP / Crit Value"
+      },
+      {
+        "grade": "A",
+        "label": "Piercing Def / Slash/Piercing dmg depending of your weapon"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Fleet Steed",
+        "effect": "For 4 seconds after a dodge roll, your Basic Attacks will fire three arrows simultaneously. They deal 60% damage and apply a 10% movement speed reduction to the enemy for 5 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Righteous Archery",
+        "effect": "[Wrath of Artemis] and [Angry Hornets] will mark enemies. The mark can be detonated by a [Basic Attack]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Zhuge's Crossbow",
+        "effect": "Each stack of [Enhanced Attack] grants an additional 4.5% Piercing Damage and 4.5% movement speed. The maximum stack limit is reduced to 5, and the duration is increased by 2 seconds. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": "DMG dealer can replace martyr's Glory for both str/agi nodes if not DB full hp, or things like that",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "For lights that hit both units and heroes take both + str / if you don't hit heroes or units, prefere ultimate all dmg increase / Don't take defence reducing, it's useless",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

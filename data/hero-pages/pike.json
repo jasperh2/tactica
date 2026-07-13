@@ -1,5 +1,5 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "pike",
   "className": "Pike",
   "weaponArchetype": "Polearm",
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "No",
-    "name": null,
+    "needed": "no, skip it",
+    "name": "Frostcloud",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full Armour | Full Health | Full Agility | Mix Health/Armour",
-    "runes": "unknown",
+    "attribute": "Full Armour | Full Health | Full Agility | Mix Health/Armour. Full Agility: Hero Killer playstyle has to be used carfully since you die very fast due to high burst damage in the game if used properly it is viable. Full Armour | Full Health | Mix Health/Armour: This build is curently the most viable since you can last a lot longer in close melee combat which allows you to open formations and play more agressiv in combination with your units. This build is mostly used. Wiki frames the defensive path as putting points into toughness. House: full agility played live hits 16k dmg with ulti on regular medium gear. - Amya, house datapoint StaRBuRsT",
+    "runes": "known - Chaos season set below",
     "bestGender": "Female",
-    "genderNote": null,
+    "genderNote": "Animation Change depending of it - no reason or counterpoint given, unlike Shortsword's explicit shield-charge-dash explanation. [GAP: reason for the Female recommendation unstated]",
     "armorSets": [
       {
-        "name": "Carniflex",
-        "purpose": "the set brings only minor buffs the biggest being the ultimate cooldown reduction of 6 seconds which is not worth it. The normal reforged carnifex set is just better in terms of stat boosts and defenses."
+        "name": "Carnifex's Armour",
+        "purpose": "Best Armour: Carniflex"
+      },
+      {
+        "name": "Frostcloud",
+        "purpose": "the set brings only minor buffs the biggest being the ultimate cooldown reduction of 6 seconds which is not worth it. The normal reforged carnifex set is just better in terms of stat boosts and defenses.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -33,64 +38,125 @@
     },
     "weaponStats": {
       "need": [
-        "Piercing pen",
+        "Piercing Pen",
         "Piercing"
       ],
       "bonus": [
-        "Slashing(pen)",
-        "Blunt(pen)"
+        "Slashing Pen",
+        "Blunt Pen"
       ]
     },
     "spells": {
       "core": [
-        "Wandering Dragon",
         "Sky Dragon",
-        "Green Dragon (ultimate)"
+        "Wandering Dragon",
+        "Water Dragon",
+        "Green Dragon"
       ],
-      "fillerNotes": null
+      "fillerNotes": "As the pike offers fewer weapon skills than most other weapons, the only choice in skill selection is between the paragon skills Cold Dragon and Green Dragon. Of these skills, Green Dragon is by far the stronger skill, as it ignores collision with enemies, offers a dash, and deals massive burst damage against units and heroes alike. In contrast, Cold Dragon forces users to run forward for its duration, deals a weaker control effect against heroes, and has somewhat mediocre damage. - wiki"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Full Agility",
-      "summary": "Hero Killer playstyle has to be used carfully since you die very fast due to high burst damage in the game if used properly it is viable.",
+      "summary": "High burst damage; has to be used carefully since you die very fast. Viable if played properly. House datapoint: about 16k damage on the ultimate, regular medium gear.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Hero Killer",
+      "altSkill": null
     },
     {
-      "name": "Full Armour | Full Health | Mix Health/Armour",
-      "summary": "This build is curently the most viable since you can last a lot longer in close melee combat which allows you to open formations and play more agressiv in combination with your units. This build is mostly used.",
+      "name": "Full Armour / Full Health / Mix Health-Armour",
+      "summary": "Currently the most viable path - lets you last a lot longer in close melee combat, which lets you open formations and play more aggressive in combination with your units. This build is mostly used.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Sustain",
+      "altSkill": null
     }
   ],
-  "matchups": [],
-  "techniques": [
+  "matchups": [
     {
-      "name": "Ultimate combo (Green Dragon opener)",
-      "steps": [
-        "Green Dragon (ultimate) — main hero-damage tool",
-        "1 auto-attack",
-        "Water Dragon or Sky Dragon (Pin) for max hero damage — or swap to Wandering Dragon instead if the goal is opening a formation rather than a hero kill"
-      ],
-      "rhythm": "One auto-attack in between the combo for extra damage."
+      "vs": "None sourced",
+      "stance": "strong-vs",
+      "why": "[GAP: no strong-vs matchup information documented for Pike in any swept source]"
     },
     {
-      "name": "Right-click on horse (mounted opener)",
+      "vs": "None sourced",
+      "stance": "weak-vs",
+      "why": "[GAP: no weak-vs matchup information documented for Pike in any swept source - the wiki's own \"Playing Against Pike\" heading is an empty stub with no body text under it]"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "synergy",
+      "why": "[GAP: no unit-pairing or own-warband guidance for Pike players found anywhere in the swept corpus - same gap class Shortsword had]"
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Animation canceling",
       "steps": [
-        "Right-click on horse before dismounting into an enemy unit",
-        "Opens enemy formations and staggers/dismounts cav or heroes on horseback",
-        "Adds speed on horse when dismounting because it consumes no stamina and staggers the enemy"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": null
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Right-click horse-charge",
+      "steps": [
+        "Right-click while mounted",
+        "charge into the formation, staggering on contact",
+        "dismount into the opened gap"
+      ],
+      "rhythm": "opens enemy formations before you dive - Costs no stamina and adds speed on the dismount while staggering the enemy; can stagger cav or dismount heroes off their horse. Amya calls this out specifically for Pike."
+    },
+    {
+      "name": "Pike Kebab (pin-and-displace)",
+      "steps": [
+        "Land the 2nd-stage ultimate pin (Green Dragon charged 0.5-1s, the knockdown tier)",
+        "follow up with a post-Ultimate \"press again\" stage on Sky/Wandering/Water Dragon",
+        "shove the downed hero into position (your unit block, off a wall) before they recover"
+      ],
+      "rhythm": "displace a downed hero into your unit block or off a ledge before they recover - BirdOfQin, Amya's CB Library #Tips-Tricks-Forum, 2024-10-09: \"Trick to displace people after using your pin 2nd-stage ultimate on Pike. This is very good to bring people inside your unit/team/down from wall after they are cc'd or you have your 2nd stage ultimate ready and a hero is passing by unaware of what could happen to him.\""
     }
   ],
   "gameplay": [
     {
-      "text": "When fighting hero's as a pike it is your goal to knock the enemy down and land your ultimate. While learning this class you should always try to be as mobile and flexible as possible. Use your dismount to stun hero's mix in auto attacks into your combos roll and block to cancel animations and never be stationary as pike. MOVEMENT IS KEY! Learn your combos and the little tricks as shown in the videos down bellow to outplay your enemy.",
+      "text": "The pike is a long polearm which grants its users excellent mobility. However, the pike is a fairly complicated weapon to use and is less effective against enemy units than many other weapon classes.",
+      "attribution": "wiki"
+    },
+    {
+      "text": "When fighting hero's as a pike it is your goal to knock the enemy down and land your ultimate. While learning this class you should always try to be as mobile and flexible as possible.",
       "attribution": "Amya"
     }
   ],
@@ -103,12 +169,296 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Pike Guide' (1465008141359120518); OP 2026-01-25, edited 2026-03-26",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Pike Guide\"",
       "sourceDate": "2026-03-26",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-03-26",
-  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat as pre-season/not yet re-verified against the current patch."
+  "patchNote": "Amya OP posted 25/01/2026, edited 26/03/2026 - about three months before the 25/06/2026 Chaos patch, a wider staleness gap than Shortsword's five weeks. House gear Q&A (StaRBuRsT/Wazneeplus) dated 05/04/2026 is also pre-Chaos. Only the tierlist placement (29/06/2026) is confirmed post-patch.",
+  "roleLabel": "Pike users are extremely maneuverable and chain low cooldown skills to outfight the enemy.",
+  "armorClass": "Medium",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Hero-duel and pick class first, anti-unit second - less effective against enemy units than most other weapon classes, so don't try to anchor a line or hold a blob."
+      },
+      {
+        "lead": null,
+        "text": "Operate at the edges of a fight: chase, dismount, and finish enemy heroes rather than sit in the middle. Never stationary - MOVEMENT IS KEY."
+      },
+      {
+        "lead": "Right-click on horse to open formations:",
+        "text": "stagger cav or dismount heroes before diving in - the charge costs no stamina and adds speed on the dismount."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Passive:",
+        "text": "using skills can stack buffs and change the effects of other skills - normal attacks add a Strong as a Storm effect, increasing damage by 4%, stacking up to 3 times."
+      },
+      {
+        "lead": null,
+        "text": "Use your dismount to stun hero's mix in auto attacks into your combos roll and block to cancel animations and never be stationary as pike. MOVEMENT IS KEY!"
+      },
+      {
+        "lead": null,
+        "text": "Learn your combos and the little tricks as shown in the videos down bellow to outplay your enemy."
+      },
+      {
+        "lead": "Hero-vs-hero win condition:",
+        "text": "knock the enemy down, then land your ultimate."
+      },
+      {
+        "lead": "Green Dragon beats Cold Dragon as the paragon pick:",
+        "text": "ignores collision, has a dash, bigger burst vs both units and heroes."
+      },
+      {
+        "lead": null,
+        "text": "Sky Dragon's stage-3 spin can break soft gates quickly."
+      },
+      {
+        "lead": "Wandering Dragon phases through units on every stage:",
+        "text": "useful for repositioning behind an enemy unit or gaining separation mid hero-fight."
+      },
+      {
+        "lead": "Weapon stats - three sources agree:",
+        "text": "Amya (NEED Piercing pen/Piercing), wiki (aim for piercing damage and piercing armour penetration first), and house (Wazneeplus: \"Piercing dmg/pen\") all land on the same priority."
+      },
+      {
+        "lead": "Gear datapoint (house):",
+        "text": "full-agility Pike on regular medium gear hits about 16k damage on the ultimate - \"There isn't really anythging that works well for pike on the new armors\", read as neither Windrider nor Earthshatter pulling its weight, consistent with Amya's guide only recommending a well-reforged Carnifex over either special set."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Full Agility - Hero Killer",
+      "spread": "Full Agility",
+      "note": "House: StaRBuRsT plays full agility, ~16k dmg with ulti, regular medium gear. - house playbook"
+    },
+    {
+      "build": "Full Armour / Full Health / Mix Health-Armour",
+      "spread": "Full Armour, Full Health, or a mix of the two",
+      "note": "Most used/viable per Amya - lets you last longer in close melee combat to open formations and play aggressive with your units. Wiki frames the same defensive path as allocating into toughness."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": null,
+    "runes": null
+  },
+  "clips": [
+    {
+      "label": "Pike Tricks (Synetic)",
+      "href": "https://www.youtube.com/watch?v=qDid7fcJJms"
+    }
+  ],
+  "combos": [
+    {
+      "name": "Ultimate finisher",
+      "steps": [
+        "Green Dragon",
+        "1 auto-attack",
+        "Water Dragon or Sky Dragon (Pin)"
+      ],
+      "note": "Recommended follow-up for maximum hero damage. Swap the follow-up to Wandering Dragon instead if the goal is breaking a formation rather than finishing a hero."
+    },
+    {
+      "name": "Hero Killer lead-in",
+      "steps": [
+        "Water Dragon (press 3, stab chain, final hit sends flying)",
+        "Green Dragon charged 0.5-1s (knockdown tier)",
+        "Sky Dragon or Water Dragon's post-Ultimate \"press again\" finisher"
+      ],
+      "note": "Closes distance and knocks the target off-balance, then finishes on the recovering target. Aggregated WebSearch synthesis of a named \"Hero Killer\" build guide - every step maps onto validated wiki ability text, so recorded as a plausible technique, not invented."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "EGfisekk09 (Pike)",
+        "href": "https://www.youtube.com/@EGfisekk09",
+        "desc": "Pike tournament-VOD channel - Amya's learn-from list."
+      },
+      {
+        "label": "MadShin (Pike)",
+        "href": "https://www.youtube.com/@MadShin",
+        "desc": "Pike tournament-VOD channel - Amya's learn-from list."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Pike counts as a medium armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP"
+      },
+      {
+        "grade": "A",
+        "label": "Crit Value / Piercing def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Absolute Courage",
+        "effect": "Using [Wandering Dragon] grants 1 stack of [Dragon's Courage], reducing damage taken by 5% for 4 seconds, stacking up to 3 times. At max stacks, [Water Dragon], [Cold Dragon], and [Green Dragon] will ignore 50% of the target's defense values for 7 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Splendid Spear",
+        "effect": "[Green Dragon] does not need to be fully charged to achieve the damage and Knockup effects of a 1-second charge. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Seven Charges",
+        "effect": "Each time the third stage of [Wandering Dragon], [Water Dragon], or [Sky Dragon] is used, the cooldown of your [Ultimate] is reduced by 2 seconds. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo (Pike's ultimate, Green Dragon, is a single-target dash, not AOE - the medium capture's own mandatory marks point to Hero Hunter + Phalanx Breaker for Pike)",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

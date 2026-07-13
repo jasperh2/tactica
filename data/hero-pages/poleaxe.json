@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "poleaxe",
   "className": "Poleaxe",
-  "weaponArchetype": "CC/Tanky vs Glass Cannon — two named OP playstyles",
+  "weaponArchetype": "Two-Handed Polearm",
   "tier": {
     "tier": "A",
     "positionInTier": 2,
@@ -10,19 +10,28 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Yes, highly valuable — provides CC immunity during your ultimate, adds +10% HP, boosts Weapon Dance damage reduction by 75% of the base value (\"so its 75% of 25% (not +75% flat)\"); playable without it but with reduced survivability/utility",
+    "needed": "yes, the build needs it",
     "name": "Fearless Paladin Armour",
-    "tierDropNote": "Epic-Schem — drops 1–2 tiers without the Epic Schematic armour (per hero tierlist framing: \"Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped.\")"
+    "tierDropNote": "Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
   },
   "loadout": {
-    "attribute": "Full Armor/HP for CC Build (Recommended); Full STR for Glass Cannon Build (troll — OP's own word)",
-    "runes": "unknown",
+    "attribute": "Full Armor/HP for the CC Build (Recommended), Full STR for the Glass Cannon Build (troll - OP's own word). General-hero-guide heavy table confirms Poleaxe = Full HP/Armor. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Female",
-    "genderNote": "Female model performs slightly better for animation cancels, per OP — makes certain combos feel smoother; largely personal preference.",
+    "genderNote": "model performs slightly better for animation cancels, per OP - makes certain combos feel smoother. Largely personal preference, no wiki corroboration found.",
     "armorSets": [
       {
-        "name": "Guardsman",
-        "purpose": "Best Armour before Epic schem"
+        "name": "Guardsman's Armour",
+        "purpose": "the standard armour choice for poleaxe users, being the heavy armour set that is built out of the Rare Armour Schematic (wiki). Amya's OP field: \"Best Armour before Epic schem: Guardsman.\""
+      },
+      {
+        "name": "Flameshackle",
+        "purpose": "on poleaxe pushback and the old billhook work with flameshackle armor and block break anything you touch with those abilities. - house playbook"
+      },
+      {
+        "name": "Fearless Paladin Armour",
+        "purpose": "provides CC immunity during your ultimate, adds +10% HP, boosts Weapon Dance damage reduction by 75% of the base value (\"so its 75% of 25% (not +75% flat)\").",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -46,61 +55,162 @@
       ]
     },
     "spells": {
-      "core": [],
-      "fillerNotes": "No unified 'core loadout' spell list stated outside the two named builds — OP ties skills to playstyle instead (see builds[] for per-build skill picks: Pushback/Weapon Dance/The Old Billhook for CC; Pushback/The Old Billhook/Halberdiers Thrust or Bec de Corbin for Glass Cannon)."
+      "core": [
+        "Push Back",
+        "Weapon Dance",
+        "Lochaber Strike"
+      ],
+      "fillerNotes": "4th slot is flexible: The Old Billhook is popular for its knockdown on a low cooldown. Bec de Corbin is good AoE, strong vs units. Grim Harvest removes control effects and damages block heavily, but has slow attack speed and poor AoE. Halberdier's Thrust is unpopular due to its poor AoE and lack of control effects (wiki). Glass Cannon build swaps in Halberdier's Thrust (vs heroes) or Bec de Corbin (vs units)."
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Tanky + Full Unit CC",
-      "summary": "Focuses on crowd control, locking down enemy heroes and units for extended periods. Key skills: Pushback, Weapon Dance, The Old Billhook. Pushback instantly removes you from CC while stunning enemies hit — a crucial survival and disruption tool. Weapon Dance debuffs enemy units by reducing their damage and movement speed, while boosting your defensive stats for 6 seconds based on how many enemies hit. Ultimate: either works — one offers full hero CC to pin down enemies, the other delivers burst damage with minor CC spread across 5 waves. OP recommends the 5-wave CC ultimate as it \"will help you win a lot of units trade.\"",
+      "summary": "Focuses on crowd control, locking down enemy heroes and units for extended periods. Key skills: Push Back, Weapon Dance, The Old Billhook, plus the Lochaber Strike ultimate. \"will help you win a lot of units trade\"",
       "strongVs": null,
-      "forWhom": null,
-      "recommended": false
+      "forWhom": "Recommended (Amya).",
+      "recommended": false,
+      "typeLabel": "Tank/Cc",
+      "altSkill": "Rough Justice can replace Lochaber Strike as the ultimate for lone dangerous heroes - it inflicts Winded, which can't be blocked, and grants a burst of mobility the class otherwise lacks; little use in other situations though (wiki)."
     },
     {
-      "name": "Full Damage (Glass Cannon)",
-      "summary": "Emphasizes maximizing damage at the cost of defense. Uses Pushback, The Old Billhook, and either Halberdiers Thrust (for heroes) or Bec de Corbin (for units). Halberdiers Thrust excels at dealing damage to enemy heroes. Bec de Corbin is designed to cleave through enemy units. Ultimate: Lochabar Strike recommended for burst damage, though both ultimates are viable depending on the situation.",
+      "name": "Full Damage",
+      "summary": "Emphasizes maximizing damage at the cost of defense. Uses Push Back, The Old Billhook, and either Halberdier's Thrust (vs heroes) or Bec de Corbin (vs units).",
       "strongVs": null,
-      "forWhom": null,
-      "recommended": false
+      "forWhom": "Amya's own label for this build: \"troll.\"",
+      "recommended": false,
+      "typeLabel": "Glass Cannon",
+      "altSkill": "Ultimate: Lochaber Strike recommended for burst, though both ultimates are viable depending on the situation."
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Nodachi (duels)",
+      "stance": "strong-vs",
+      "why": "wiki: many weapon classes have a great advantage against nodachi in duels - Chain Dart & Scimitar, Dual Blades, Poleaxe, and Pike all named."
+    },
+    {
+      "vs": "Units in general",
+      "stance": "strong-vs",
+      "why": "wiki (Musket page): Musket users cannot deal large amounts of damage or control effects against units consistently compared to other melee classes such as the nodachi and the poleaxe - Poleaxe is one of the stronger anti-unit melee classes."
+    },
+    {
+      "vs": "Dual Blades divers without cleanse",
+      "stance": "strong-vs",
+      "why": "Amya's DB guide: \"In the current meta, where Poleaxe, Nodachi, and Shortsword are dominant, having your cleanse is non-negotiable\" - Poleaxe named among the CCi-Divers classes that punish a no-cleanse DB build."
+    },
+    {
+      "vs": "Musket (duels)",
+      "stance": "weak-vs",
+      "why": "wiki: heavy armoured, low-mobility classes like Maul and Poleaxe are at a disadvantage dueling Musket users - unless Rough Justice is active (its burst of mobility offsets the gap)."
+    },
+    {
+      "vs": "Fast-hitting classes vs your ultimate",
+      "stance": "weak-vs",
+      "why": "wiki: Lochaber Strike's control effects land across multiple hits, so some weapon classes can escape the skill or stun you out of it, particularly before the final hit which has a longer delay than the others."
+    },
+    {
+      "vs": "Symmachean Stalwarts (CCi)",
+      "stance": "weak-vs",
+      "why": "Amya's Stalwarts guide: CCi (Stand Fast) is their reset button vs a \"polearm\" ulting them - resets both their block bar and any CC on them. \"Polearm\" is ambiguous house shorthand, read here as Poleaxe per the alias sweep but not confirmed as this class specifically."
+    },
+    {
+      "vs": "A tank Poleaxe anchoring a Longsword",
+      "stance": "synergy",
+      "why": "PA is one of the house's named tank anchors a Longsword player pairs with to absorb/pull focus. - house playbook"
+    },
+    {
+      "vs": "Zealots / Symmachean Paladins in sieges",
+      "stance": "synergy",
+      "why": "jc008titanSQ: play alongside your zealots/paladins in sieges and block break every stalwart with Push Back + The Old Billhook - helped turn 70 unit kills into 200 in a single fight. - house playbook",
+      "build": "FLAMESHACKLE"
+    },
+    {
+      "vs": "Damage-dealing units the hero enables while controlling the fight",
+      "stance": "synergy",
+      "why": "No explicit \"which units does a Poleaxe player bring in their own warband\" list was found anywhere in this sweep. [GAP: Poleaxe's own-warband unit pairings - vets/house question]"
+    }
+  ],
   "techniques": [
     {
-      "name": "Shift-auto-attack CC rotation (vs no-cleanse classes)",
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Shift-auto-attack stagger chain",
       "steps": [
         "dismount",
         "shift-auto-attack",
-        "push back",
+        "Push Back",
         "shift-auto-attack",
-        "billhook",
+        "The Old Billhook",
         "shift-auto-attack",
-        "(continue with remaining spells per your set)"
+        "..."
       ],
-      "rhythm": "Vs classes without cleanse (or cleanse on cooldown): rotate one shift-auto-attack between each CC — e.g. \"dismount - shift aa - push back - shift aa - billhook - shift aa - blabla or w/e\" depending on your spell set."
+      "rhythm": "Amya: for classes without cleanse (or cleanse on cooldown) - Rotate one shift-auto-attack between each CC application to keep the chain going; exact rotation depends on your spell set. Amya's own example, verbatim: \"dismount - shift aa - push back - shift aa - billhook - shift aa - blabla or w/e.\""
     },
     {
-      "name": "Animation cancel (block/roll)",
+      "name": "Old Billhook roll-cancel",
       "steps": [
-        "block immediately after a spell, or after a roll",
-        "roll to cancel the end of a spell",
-        "if holding block and casting a spell in a short window after getting hit, you block and cast at the same time"
+        "Land The Old Billhook",
+        "roll immediately after the hit connects",
+        "follow up with another skill or a sprinting attack"
       ],
-      "rhythm": null
+      "rhythm": "wiki: animations are slow, so animation-canceling matters more than ever for Poleaxe - a poleaxe user can use The Old Billhook and then cancel the animation directly after dealing damage by rolling, allowing the user to follow up immediately with another skill or a sprinting attack (wiki, verbatim)."
     },
     {
-      "name": "Dismount into Weapon Dance",
+      "name": "Lochaber Strike camera-steering",
       "steps": [
-        "dismount",
-        "Weapon Dance"
+        "Cast Lochaber Strike",
+        "steer with the camera, not the character",
+        "catch enemies coming from different directions"
       ],
-      "rhythm": "Dismount into Weapon Dance is key to carrying a fight."
+      "rhythm": "lets you redirect the hit toward enemies approaching from other angles - A poleaxe user can change the direction of Lochaber Strike simply by moving the camera (wiki, verbatim)."
     }
   ],
-  "gameplay": [],
+  "gameplay": [
+    {
+      "text": "Poleaxe users can easily and effectively stun units in a large AoE and also duel well against most other hero weapon classes, but have low mobility and slow attack animations.",
+      "attribution": "wiki"
+    },
+    {
+      "text": "the poleaxe is considered to be one of the strongest weapon classes due to its very high capability to deal out control effects and the ability to equip heavy armour while still boasting respectable damage.",
+      "attribution": "wiki"
+    }
+  ],
   "authors": [
     {
       "name": "Amya",
@@ -110,12 +220,274 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Poleaxe Guide' (1293320784059830352); OP 2024-10-08, edited 2026-03-26",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Poleaxe Guide\"",
       "sourceDate": "2026-03-26",
       "capturedAt": "2026-07-04",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-03-26",
-  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat build/stat specifics as potentially stale against current-season balance."
+  "patchNote": "Amya OP posted 08/10/2024, last edited 26/03/2026 - about three months before the 25/06/2026 Chaos patch. Single OP post, no thread replies, so no post-patch update exists in this source.",
+  "roleLabel": "The poleaxe is a two-handed polearm focused around dealing large amounts of control effects against both units and heroes.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": "Tank anchor for Longsword:",
+        "text": "Poleaxe is one of the two named tank anchor classes a Longsword player pairs with to absorb and pull focus."
+      },
+      {
+        "lead": "Chokepoints and cavalry lanes:",
+        "text": "Weapon Dance and Lochaber Strike are great skills to stop charging cavalry and disrupt units in general."
+      },
+      {
+        "lead": "Sieges alongside CC/tank units:",
+        "text": "if you have the resources, give it a try in sieges. Play alongside your zealots/paladins and see how much more you can do, even supporting other people does a LOT - helped 70 unit kills to 200 in a single fight, just by being there and block breaking every stal."
+      },
+      {
+        "lead": "Supply-point defense:",
+        "text": "\"When I play cannons I swap to poleaxe on supply\" - a habit of switching into Poleaxe specifically to hold/defend a supply point while operating artillery."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "Pushback:",
+        "text": "instantly removes you from CC while stunning enemies hit - a crucial survival and disruption tool."
+      },
+      {
+        "lead": "Block stops almost everything:",
+        "text": "Poleaxe's entire kit of CC skills --except pin--, per BirdOfQin's active-blocking rundown. \"Pin\" isn't a canonical ability name - the wiki confirms Rough Justice's first hit \"cannot be blocked,\" the one CC effect that gets through."
+      },
+      {
+        "lead": "Cooldowns are the core weakness:",
+        "text": "once you've used Push Back, Weapon Dance, etc., you have a window where you're weaker. If all your CC abilities are on cooldown, a crafty enemy can exploit that moment."
+      },
+      {
+        "lead": "Ultimate timing:",
+        "text": "Keep your ultimate to CC non-CCi units, or CCi units during their down time."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Tanky + Full Unit CC",
+      "spread": "Full Armor/HP attribute points; wiki: put character skill points into Toughness to further boost defenses.",
+      "note": null
+    },
+    {
+      "build": "Full Damage - Glass Cannon",
+      "spread": "Full STR attribute points; wiki: putting points into Strength to further boost damage is \"another viable option.\"",
+      "note": "Amya's own label for this build: \"troll.\""
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": null,
+  "gapNotes": {
+    "controls": "[GAP: Lochaber Strike III cooldown value - blank in the wiki source text itself]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Lockdown chain",
+      "steps": [
+        "The Old Billhook",
+        "Push Back",
+        "Lochaber Strike"
+      ],
+      "note": "pull in, instant knockdown that also self-cleanses any CC on you, then repeated knockdowns while they're down - can take a dangerous enemy hero out of the fight for several seconds."
+    },
+    {
+      "name": "Dismount into Weapon Dance",
+      "steps": [
+        "dismount",
+        "Weapon Dance"
+      ],
+      "note": "key to carrying a fight (Amya, verbatim). Weapon Dance cancels/covers the dismount animation - the same interaction Amya's animation-canceling thread names from the cancel-tech angle: \"you can (or could) cancel Poleaxe dismount with Weapon Dance.\""
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "barbar9722 (Poleaxe)",
+        "href": "https://youtube.com/@barbar9722",
+        "desc": "Tournament Poleaxe POVs - Amya's learn-from list."
+      },
+      {
+        "label": "adapazarli2169 (Poleaxe)",
+        "href": "https://youtube.com/@adapazarli2169",
+        "desc": "Tournament Poleaxe POVs - Amya's learn-from list."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Poleaxe counts as a heavy armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Preemptive Intercept",
+        "effect": "Upon entering combat, gradually increases maximum Health over 300 seconds, up to a maximum of 3,000 points. Resets upon death. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Unstoppable Drive",
+        "effect": "For every unit hit by [Weapon Dance], reduces the cooldown of your [Ultimate] by 0.5 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Iron Discipline",
+        "effect": "Damage taken during the [Ultimate] is reduced by 10%. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Reduce Unit damage taken by 20%; when Health is below 50%, damage taken from Units is additionally reduced by 10%. Cost 3 Rune Power.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Reduce Unit damage taken by 20%; after being attacked by Units, damage taken from Units is additionally reduced by 15% for 5s, triggers once every 15s. Cost 3 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% max Health per second while at an allied Supply Point. Cost 2 Rune Power.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. Cost 3 Rune Power. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken -10%; while Knockback/Knockdown/Knockup/Concussed, additional -5% (buffed to -25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to -5%). Cost 3 Rune Power.",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defence values +3.5%; below 50% Health, additional +2.5% for 5s, triggers once every 30s. Cost 2 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Max Health +5%; upon death, nearby allies instantly recover 10% max Health. Cost 2 Rune Power.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed +6%; upon death, nearby allies gain +8% movement speed for 10s. Cost 3 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. Cost 3 Rune Power. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, movement-speed slowdown reduced from 50% to 30%. Cost 2 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Bandage duration -40%, total heal amount unchanged. Cost 2 Rune Power.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "When your Ultimate hits, reduces enemies' defence values (all types) by 5% for 5s. Cost 3 Rune Power.",
+            "mandatory": true
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon casting an Ultimate, all your damage types +10% for 5s. Cost 3 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage to Heroes +6%. Cost 2 Rune Power.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage to Units +6%. Cost 2 Rune Power.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  }
 }

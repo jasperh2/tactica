@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "nodachi",
   "className": "Nodachi",
-  "weaponArchetype": "Two-handed sword · lifesteal/sustain melee bruiser",
+  "weaponArchetype": "Nodachi",
   "tier": {
     "tier": "C",
     "positionInTier": 2,
@@ -10,16 +10,26 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "Yes for more lifesteal etc., but OP wouldn't focus straight on the Epic set — better to focus on the weapon first and go until you have a set with Carnifex",
+    "needed": "yes, the build needs it",
     "name": "Black Sun Anchorite's Armour",
-    "tierDropNote": "Epic Schematic armors unlock unique passives. Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
+    "tierDropNote": "Classes rated 'Epic-Schem' drop 1–2 tiers if unequipped."
   },
   "loadout": {
-    "attribute": "Dmg based: Agility (until 1900–1950 slashing pen), then rest into STR. Capped pen+survivability: Agility (until 1900–1950 slashing), then rest either Armor or Toughness. Survivability: Toughness/Armor — \"find which direction you want to take depending on how often you feel you're getting oneshot vs times where you're getting overwhelmed by multiple damages at once — Toughness I think it's way more viable now due to the Ultimate changes and runes\".",
-    "runes": "unknown",
-    "bestGender": null,
-    "genderNote": "OP believes no real difference beyond female's minimal hitbox changes and Bloodthirsty travel distance (male had \"a little bit more\" per OP's recollection, \"dont take it for granted\").",
-    "armorSets": [],
+    "attribute": "AFTER WEAPON CRAFTING: Dmg based - Agility (until 1900-1950 slashing pen), then rest into STR. Capped pen+survivability - Agility (until 1900-1950 slashing), then rest either Armor or Toughness. Survivability - Toughness/Armor: \"find which direction you want to take depending on how often you feel you're getting oneshot vs times where you're getting overwhelmed by multiple damages at once - Toughness I think it's way more viable now due to the Ultimate changes and runes.\" (General Hero Guide's cross-class blanket table instead says Full HP/Armor for Nodachi; denetax.fr corroborates this branching shape instead: \"Agility + Strength (DPS) or Agility + Armor (Mix) or Full Armor\") - BirdOfQin",
+    "runes": "known - Chaos season set below",
+    "bestGender": "N/A",
+    "genderNote": "OP believes no real difference beyond female's minimal hitbox changes and Bloodthirsty travel distance (male had \"a little bit more\" per OP's recollection, \"dont take it for granted\"). Not corroborated elsewhere - wiki doesn't mention gender for this class at all.",
+    "armorSets": [
+      {
+        "name": "Carnifex's Armour",
+        "purpose": "The standard choice of armour for nodachi users, being the medium armour set that uses the Rare Armour Schematic."
+      },
+      {
+        "name": "Black Sun Anchorite's Armour",
+        "purpose": "for more lifesteal etc.",
+        "epic": true
+      }
+    ],
     "aimingFlags": {
       "assistedAimHero": false,
       "lockedOnHero": false,
@@ -35,52 +45,154 @@
         "Agility",
         "Strength",
         "Crit Value",
-        "Crit Dmg",
-        "Armor",
-        "Toughness"
+        "Crit Dmg"
       ]
     },
     "spells": {
       "core": [
+        "Monstrous Blade",
         "Avalanche",
-        "Tiger Claw",
-        "Samurai March",
-        "Fearless & Steadfast"
+        "Tiger's Claw"
       ],
-      "fillerNotes": "Recommended loadout: lifesteal, Avalanche, Tiger Claw, and one of Samurai March/Fearless & Steadfast."
+      "fillerNotes": "4th slot is one of Samurai's March/Fearless & Steadfast (per OP's own \"Recommended loadout\" line). OP's separate \"Different Playstyles\" framing instead runs Fearless & Steadfast, Tiger's Claw, Bloodthirsty (PvP-oriented) or Samurai's March (PvUnits-oriented), plus Dragon's Leap (PvP/E) or Avalanche (PvE) - not fully reconciled with the Recommended loadout line. Wiki calls Bloodthirsty \"the near mandatory skill for nodachi users,\" and denetax.fr's two build variants both run Fearless & Steadfast + Tiger's Claw + Bloodthirsty + Dragon's Leap/Avalanche, converging with the wiki rather than Amya's separate Recommended-loadout line. - BirdOfQin"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Multi-purpose PvP/PvUnits",
-      "summary": "Skillset: Fearless & Steadfast, Tiger Claw, Bloodthirsty (PvP-oriented), and Dragon's Leap (PvP/E).",
+      "summary": "Fearless & Steadfast, Tiger's Claw, Bloodthirsty (or Samurai's March for a PvUnits lean), Dragon's Leap (or Avalanche for a PvE lean).",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Pvp/Pvunits",
+      "altSkill": null
     },
     {
       "name": "Pure PvUnits",
-      "summary": "Skillset: Fearless & Steadfast, Tiger Claw, Samurai March (PvUnit-oriented), and Avalanche (PvE).",
+      "summary": "Same core skills, Samurai's March and Avalanche fixed in rather than optional.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Pvunits",
+      "altSkill": null
+    },
+    {
+      "name": "Lifesteal",
+      "summary": "Monstrous Blade + Avalanche + Tiger's Claw + one of Samurai's March/Fearless & Steadfast - the build the OP frames as the class's own pick when not optimizing for a specific PvP-vs-PvUnits split.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Recommended Loadout",
+      "altSkill": null
+    },
+    {
+      "name": "No-paragon",
+      "summary": "Run 4 basic skills, skip both Avalanche and Dragon's Leap entirely. \"It's also perfectly viable to not use either paragon skill at all and instead use 4 basic skills\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "No-Paragon",
+      "altSkill": null
     }
   ],
-  "matchups": [],
-  "techniques": [],
+  "matchups": [
+    {
+      "vs": "Unshielded / lightly protected units",
+      "stance": "strong-vs",
+      "why": "the class's own core identity (wiki)."
+    },
+    {
+      "vs": "Burst damage, concuss, sent-flying, winded",
+      "stance": "weak-vs",
+      "why": "nodachi skills cannot cleanse Winded at all (wiki)."
+    },
+    {
+      "vs": "Shielded units",
+      "stance": "weak-vs",
+      "why": "performs badly unless leaning on Dragon's Leap, the one nodachi skill that's unblockable."
+    },
+    {
+      "vs": "Active blockers",
+      "stance": "weak-vs",
+      "why": "all nodachi skills except Dragon's Leap can be blocked outright (wiki); a good blocker specifically denies Bloodthirsty's CC."
+    },
+    {
+      "vs": "Mobile classes in a losing duel",
+      "stance": "weak-vs",
+      "why": "low mobility outside of Bloodthirsty lets mobile classes outmaneuver or disengage (wiki)."
+    },
+    {
+      "vs": "Chain Dart & Scimitar, Dual Blades, Poleaxe, Pike",
+      "stance": "weak-vs",
+      "why": "wiki's named hard counters in hero duels - \"have a great advantage against nodachi in duels.\""
+    },
+    {
+      "vs": "None sourced",
+      "stance": "synergy",
+      "why": "[GAP: no unit-pairing or own-warband guidance for Nodachi players found in any swept source]"
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Anti-cavalry normal-attack interrupt",
+      "steps": [
+        "Walk near or into the path of charging cavalry",
+        "time the 4-hit normal-attack combo",
+        "3rd/4th hits land on the charging unit"
+      ],
+      "rhythm": "no skill needed"
+    },
+    {
+      "name": "Delayed-combo timing",
+      "steps": [
+        "Normal attacks",
+        "can be delayed slightly",
+        "without dropping the combo"
+      ],
+      "rhythm": "Most valuable on Black Sun Anchorite's Armour, whose 4pc grants CC immunity for the duration of Combo Strikes."
+    }
+  ],
   "gameplay": [
     {
-      "text": "Ability infos (per OP): Tiger Claw — used more or less behind units to maximize passive lifesteal and AoE damage+stagger. Fearless & Steadfast — for units/CC recovery/CC-immunity on max stacks. Samurai March — for static units and disruption; the 2nd hit's CC is \"very good vs units.\" Bloodthirsty — used for stacking or hero CCing/CC-recovery. Dragon's Leap — maximizes PvP damage to heroes, and provides massive 0-to-100 HP recovery on very stacked blobs of units — \"be careful to not send it in front of pikes or you're a goner.\" Avalanche — used in the middle/behind units on max stacks (OP's preference, \"or you're a goner\") to maximize stagger, survivability, and AoE damage.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "\"The gameplay is quite straightforward\": fight to the sides/behind units with Tiger Claw/Avalanche/Fearless, proc Lifesteal when low HP (preferably before Avalanche/Tiger Claw). Use Samurai March to disrupt static units. Maximize 5-stacks + Lifesteal + Avalanche to become \"a demon unit killer in the middle of red with insane recovery\" — make sure you're in Bloodcraze or Fearless & Steadfast CC-immune before using Avalanche for CC immunity.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "No explicit \"Loses to / Struggles vs / Counters\" list in this thread — the closest matchup warning is positional (avoid sending Dragon's Leap in front of pike units, or committing Avalanche without being stacked/CC-immune first).",
-      "attribution": "Amya"
+      "text": "Nodachi users have plenty of tools to stay in a fight, including several control effect removal skills and their unique lifesteal capabilities, but do not have strong mobility and are vulnerable to being locked down by other weapon classes capable of inflicting heavy amounts of control effects.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -92,12 +204,326 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Nodachi guide' (1465008825701765322); OP 2026-01-25, edited 2026-05-19",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Nodachi guide\"",
       "sourceDate": "2026-05-19",
       "capturedAt": "2026-07-04",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-05-19",
-  "patchNote": "Latest edit (2026-05-19) pre-dates the 2026-06-25 Chaos patch anchor by about five weeks."
+  "patchNote": "Amya/BirdOfQin guide OP posted 25/01/2026, edited 19/05/2026 - pre-dates the 25/06/2026 Chaos patch by about five weeks. The fandom wiki class page (all ability numbers) and both named armor-set pages were last substantively edited 03/11/2024 per a live MediaWiki revision-API check run 13/07/2026 - over 20 months stale and never re-verified against any patch since, including Chaos.",
+  "roleLabel": "The nodachi is a large two-handed sword that excels at cutting down lightly protected units.",
+  "armorClass": "Medium",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Fight to the sides or behind your own units, using Tiger's Claw/Avalanche/Fearless & Steadfast from that position rather than out in the open."
+      },
+      {
+        "lead": "Target selection:",
+        "text": "position against light infantry and ranged blobs, not shielded formations - Dragon's Leap is your only unblockable answer if you do end up vs shields."
+      },
+      {
+        "lead": null,
+        "text": "Samurai's March singles out tightly packed unit blobs - Onna-musha, Shieldmaidens (wiki)."
+      },
+      {
+        "lead": "Dragon's Leap positioning warning:",
+        "text": "don't dive it in front of pike units (Amya); consistent with the wiki's broader duel hard-counter list also naming Pike."
+      },
+      {
+        "lead": null,
+        "text": "Only commit Avalanche once already in Bloodbath or Fearless & Steadfast's CC-immune window - diving unstacked against a hero or shielded/high-burst units is a liability (\"or you're a goner\")."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Bloodthirsty is \"the near mandatory skill for nodachi users\" - mobility, a control effect, and a control-effect removal in one low-cooldown package (wiki)."
+      },
+      {
+        "lead": "Skill picks beyond Bloodthirsty (wiki):",
+        "text": "Tiger's Claw is the highest-damaging non-paragon skill and has a wide pushback, \"an extremely popular choice.\" Fearless & Steadfast is prized for its low-cooldown CC removal/immunity, \"a great option for additional safety.\" Samurai's March chains control on heroes and hits tightly packed units hard. Monstrous Blade's extreme lifesteal makes it \"an excellent buff skill,\" complicated only by its long cooldown."
+      },
+      {
+        "lead": "Paragon choice is genuinely optional:",
+        "text": "\"It's also perfectly viable to not use either paragon skill at all and instead use 4 basic skills\" (wiki). Avalanche is specifically called out as \"fairly unpopular amongst nodachi users\" because it's easy for heroes to roll out of and it \"suffers heavily against shielded or high burst damage units.\""
+      },
+      {
+        "lead": null,
+        "text": "Normal attacks hit unusually hard on this class: \"it's encouraged to use the normal attack combo when fighting, especially the 3rd and 4th attack hits\" (wiki)."
+      },
+      {
+        "lead": null,
+        "text": "The dismount attack is high-damage with a knockdown, but has a long wind-up before the swing; it can be aimed right up until the moment it fires."
+      },
+      {
+        "lead": "Reforge priority:",
+        "text": "slashing damage and slashing armour penetration \"first and foremost\" (wiki), matching the weapon_stats NEED line."
+      },
+      {
+        "lead": "Off-role note (wiki):",
+        "text": "even lighter-armoured heroes can emergency-swap to a nodachi at supply to help hold a point a few seconds longer; a units-empty Nodachi still blocks enemy supply by simply standing on it."
+      },
+      {
+        "lead": null,
+        "text": "Active blocking specifically denies Nodachi's own Bloodthirsty CC when playing against one; the same logic applies in reverse when you're the Nodachi player reading an opponent's block stance."
+      },
+      {
+        "lead": "Epic Schematic isn't a rush target:",
+        "text": "\"wouldn't focus straight on the Epic set - better to focus on the weapon first and go until you have a set with Carnifex.\""
+      },
+      {
+        "lead": "Gear progression:",
+        "text": "weapon reforge (slashing dmg/pen) first, then Carnifex's Armour (rare, standard, attainable via crafting or Matched Battles) as the mid-point, then Black Sun Anchorite's Armour (epic) for players committing to the class long term."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Multi-purpose PvP/PvUnits",
+      "spread": "Damage-based (Agility until 1900-1950 slashing pen, then Strength) or capped-pen/survivability (Agility until 1900-1950 slashing pen, then Armor or Toughness)",
+      "note": null
+    },
+    {
+      "build": "Pure PvUnits",
+      "spread": "Survivability branch (Toughness/Armor) once the Agility pen target (1900-1950 slashing pen) is hit",
+      "note": null
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "BirdOfQin",
+  "gapNotes": {
+    "controls": null,
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Blood Oath reset",
+      "steps": [
+        "Blood Oath",
+        "clears cooldown on Tiger's Claw, Fearless & Steadfast, Samurai's March, Bloodthirsty + 9s dmg buff"
+      ],
+      "note": "\"can be strong in the right situations, such as for chaining control effects on heroes.\""
+    },
+    {
+      "name": "Bloodthirsty-into-Tiger's-Claw opener",
+      "steps": [
+        "Bloodthirsty (closes distance, knockdown, clears Dazed/Knocked Down, +1 Bloodlust)",
+        "Tiger's Claw (+2 Bloodlust, 600-900 HP healing per swing)"
+      ],
+      "note": "a fast stack-toward-Bloodbath opener."
+    },
+    {
+      "name": "Avalanche stacking dive",
+      "steps": [
+        "already in Bloodbath or Fearless & Steadfast's CC-immune window",
+        "dive Avalanche into a blob of units"
+      ],
+      "note": "nets up to 6 Bloodlust stacks and 3% HP healing per hit in one cast; mistimed against a hero or shielded/high-burst units it's a liability (\"or you're a goner\")."
+    },
+    {
+      "name": "Dragon's Leap as disruption/escape",
+      "steps": [
+        "charge 2+ seconds",
+        "knockdown/send-flying, unblockable, -50% damage taken while charging"
+      ],
+      "note": "wiki: \"excellent for disrupting enemy formations and can also be used as an escape tool\"; Amya: don't send it in front of pike units."
+    },
+    {
+      "name": "Samurai's March CC-chain / anti-blob",
+      "steps": [
+        "press twice",
+        "2nd hit sends soldiers flying, knocks back heroes"
+      ],
+      "note": "the OP calls the 2nd hit's CC \"very good vs units\"; the wiki adds it's effective against tightly packed units specifically, naming Onna-musha and Shieldmaidens."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "KhaalDrogoTV (Nodachi)",
+        "href": "https://www.youtube.com/@KhaalDrogoTV",
+        "desc": "Tournament Nodachi POVs - Amya's learn-from list."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Nodachi counts as a medium armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP"
+      },
+      {
+        "grade": "A",
+        "label": "Crit Value / Piercing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Stolen Harvest",
+        "effect": "When life-stealing, 30% of the healing effect is converted into damage dealt to enemies. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Martial Valor",
+        "effect": "[Dragon's Leap] does not require charging to gain the damage and Knockup effects of a 2-second charge, and it resets the cooldown of all skills except the Ultimate. Hitting an enemy with a skill grants [Heroic Blessing]; each stack increases damage by 2% and life-steal by 1.5%. Stacks up to 15 times for 6 seconds. When the duration ends, stacks are reduced by 3. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Zhao Yun's Wrath",
+        "effect": "Gain a 4,000-point shield while in the [Bloodbath] state. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 14/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo - this note is Amya's Heavy-thread text reused verbatim on the Medium thread; it names two Heavy classes, not Nodachi.",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "aimingNotes": {
+    "assistedAimHero": "punishes your dismount, avoid using it",
+    "lockedOnHero": "never - \"you will bloodthirsty into death more than often.\"",
+    "assistedAimUnits": "\"you choose what you fight and how.\"",
+    "lockedOnUnits": "same reasoning - \"you choose what you fight and how.\""
+  }
 }

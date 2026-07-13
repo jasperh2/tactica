@@ -1140,6 +1140,65 @@
   color: var(--ink-3);
 }
 
+/* ---- v2 extensions (2026-07-14): weapon-rune detail, per-slot rune picks, craft note,
+   combos sign-off, learn-more panel ------------------------------------------------------- */
+
+.hv2-runes-season {
+  margin-bottom: 8px;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+
+.hv2-rune-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 7px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line-strong);
+}
+
+.hv2-rune-sub-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-runes-season-note {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.hv2-craft-note {
+  margin-top: 8px;
+}
+
+.hv2-combo-signoff {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.hv2-learn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hv2-learn-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv2-learn-desc {
+  margin-top: 0;
+}
+
 /* ---- responsive collapse (the academy site is verified down to 390px) ---- */
 
 @media (max-width: 1080px) {

@@ -65,6 +65,7 @@ export function epicSchemChipText(needed) {
   const text = needed.trim().toLowerCase();
   const hasSoftener = /\b(preferable|recommended|nice|good|worth|valuable|stronger|but)\b/.test(text);
   if (/^yes\b/.test(text)) return 'NEEDED';
+  if (/^optional\b/.test(text)) return 'OPTIONAL'; // v2 converter grammar ("optional but worth having")
   if (/^(not needed|no need)\b/.test(text)) return hasSoftener ? 'OPTIONAL' : 'NO';
   if (/^no\b/.test(text) || /\bdefinitely no\b/.test(text)) return hasSoftener ? 'OPTIONAL' : 'NO';
   if (/\brecommended\b/.test(text)) return 'RECOMMENDED';
@@ -132,6 +133,7 @@ export function buildHeaderV2Model(record) {
     armorClassChip: typeof record.armorClass === 'string' ? record.armorClass.toUpperCase() : null,
     epicChip: epicSchemChipText(epic.needed),
     tierLine: tierLine || null,
+    tierlistUpdated: typeof record.tierlistUpdated === 'string' ? record.tierlistUpdated : null,
     epicSchemLine:
       typeof epic.needed === 'string'
         ? { needed: epic.needed, name: epic.name ?? null }
@@ -186,8 +188,8 @@ export function buildArmorStatsV2Model(record) {
     name: s.name,
     initials: tileInitials(s.name),
     desc: s.purpose ?? null,
-    isEpic: false,
-    epicNote: null,
+    isEpic: Boolean(s.epic), // v2 extension — the epic set travels IN armorSets with its real purpose text
+    epicNote: s.epic ? 'epic schem' : null,
   }));
   if (typeof epic.name === 'string' && epic.name.trim() !== '') {
     const already = sets.some((s) => String(s.name).toLowerCase() === epic.name.toLowerCase());
@@ -215,6 +217,14 @@ export function buildArmorStatsV2Model(record) {
             intro: priority.intro ?? null,
             tiers: priority.tiers.map((t) => ({ grade: t.grade, label: t.label })),
             quote: priority.quote ?? null,
+            craftNote:
+              priority.craftNote && typeof priority.craftNote.text === 'string'
+                ? {
+                    lead: priority.craftNote.lead ?? null,
+                    text: priority.craftNote.text,
+                    attribution: priority.craftNote.attribution ?? null,
+                  }
+                : null,
           }
         : null,
     weaponStatsNeed: loadout.weaponStats?.need ?? [],
@@ -225,16 +235,27 @@ export function buildArmorStatsV2Model(record) {
       note: typeof record.runesNote === 'string' ? record.runesNote : null,
       gapNote: record.gapNotes?.runes ?? null,
     },
+    weaponRunes:
+      record.weaponRunes && Array.isArray(record.weaponRunes.items) && record.weaponRunes.items.length > 0
+        ? {
+            seasonLine: record.weaponRunes.seasonLine ?? null,
+            items: record.weaponRunes.items.map((i) => ({ name: i.name, effect: i.effect ?? null })),
+          }
+        : null,
     armorRunes:
       record.armorRunes && Array.isArray(record.armorRunes.items)
         ? {
             badge: record.armorRunes.badge ?? null,
             intro: record.armorRunes.intro ?? null,
             mandatoryNote: record.armorRunes.mandatoryNote ?? null,
+            seasonNote: record.armorRunes.seasonNote ?? null,
             items: record.armorRunes.items.map((i) => ({
               slot: i.slot,
               note: i.note ?? null,
               updated: i.updated ?? null,
+              runes: Array.isArray(i.runes)
+                ? i.runes.map((r) => ({ name: r.name, effect: r.effect ?? null, mandatory: Boolean(r.mandatory) }))
+                : [],
             })),
           }
         : null,
@@ -283,6 +304,7 @@ export function buildControlsV2Model(record) {
       steps: Array.isArray(c.steps) ? c.steps : [],
       note: c.note ?? null,
     })),
+    combosSignoff: typeof record.combosSignoff === 'string' && record.combosSignoff !== '' ? record.combosSignoff : null,
     gapNote: record.gapNotes?.controls ?? null,
   };
 }
@@ -334,6 +356,21 @@ export function groupHeroMatchups(matchups) {
   return { strong, weak, synergy };
 }
 
+// ---- Block 8b · Learn more ----------------------------------------------------------------------
+
+/** Learn-more model (v2 extension): intro prose + external link rows. Empty links -> the boot
+ * layer omits the panel entirely (an add-on block, not part of the designed nine — no empty
+ * state to keep honest). */
+export function buildLearnMoreModel(learnMore) {
+  if (!learnMore || !Array.isArray(learnMore.links)) return { intro: null, links: [] };
+  return {
+    intro: typeof learnMore.intro === 'string' ? learnMore.intro : null,
+    links: learnMore.links
+      .filter((l) => l && typeof l.label === 'string' && typeof l.href === 'string')
+      .map((l) => ({ label: l.label, href: l.href, desc: l.desc ?? null })),
+  };
+}
+
 // ---- Block 9 · Footer ---------------------------------------------------------------------------
 
 /** Footer model: the two-author credit parts, source dates, and the verbatim philosophy quote
@@ -369,6 +406,7 @@ export function buildHeroPageV2Model(record, philosophyQuote = null) {
     controls: buildControlsV2Model(record),
     builds: buildBuildsV2Model(record),
     matchups: groupHeroMatchups(record.matchups),
+    learnMore: buildLearnMoreModel(record.learnMore),
     footer: buildFooterV2Model(record, philosophyQuote),
   };
 }

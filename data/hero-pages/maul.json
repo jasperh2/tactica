@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "maul",
   "className": "Maul",
-  "weaponArchetype": "Bruiser — mobility and constant DPS/high burst depending on build",
+  "weaponArchetype": "Maul",
   "tier": {
     "tier": "B",
     "positionInTier": 2,
@@ -10,19 +10,28 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "No, \"but good to have it in certain meta\"",
-    "name": "Hammer Of The Gods",
+    "needed": "optional but worth having",
+    "name": "Hammer of the Gods",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full STR or Full Armor/HP",
-    "runes": "unknown",
+    "attribute": "Full STR or Full Armor/HP (Amya OP). General Hero Guide's heavy table confirms: \"Maul: Full HP/Armor or Full STR\". Official 2021 guide: most Maulers invest the bulk of their Attribute points into Armour and Toughness, simply to maximise hit points and be able to soak up all that incoming damage - it's unnecessary to invest fully in increased Strength, but those that do might find the investment really pays off. - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Male",
-    "genderNote": null,
+    "genderNote": "Best Gender (Animation Change depending of it): Male. No reason given in the OP (unlike Shortsword's dash explanation) and no wiki corroboration found for this claim.",
     "armorSets": [
       {
         "name": "Flameshackle",
-        "purpose": "Best Armour per OP"
+        "purpose": "Best Armour: Flameshackle"
+      },
+      {
+        "name": "Hammer of the Gods",
+        "purpose": "with two items equipped reduces Mighty Mjolnir cooldown and with four reduces the Stamina cost of charging skills.",
+        "epic": true
+      },
+      {
+        "name": "Guardsman's Armour",
+        "purpose": "offers a health boost with two items equipped and gives an all-round defence boost with four items equipped."
       }
     ],
     "aimingFlags": {
@@ -45,56 +54,128 @@
     "spells": {
       "core": [
         "Mountain Breaker",
-        "Mighty Mjolnir",
         "Maelstrom",
-        "Bonebreaker",
-        "Earthsplitter",
-        "Grab",
         "Forge of War"
       ],
-      "fillerNotes": "Maelstrom and Mountain Breaker are called mandatory; some players replace Maelstrom/Mountain Breaker/Forge of War with Bonebreaker or Earthsplitter instead, but OP does not recommend this."
+      "fillerNotes": "No single explicit \"CORE + Filler\" line in this thread (unlike Shortsword's). Best-supported reconstruction: Maelstrom and Mountain Breaker are called mandatory; some players replace Maelstrom/Mountain Breaker/Forge of War with Bonebreaker or Earthsplitter instead, but OP does not recommend this. Mighty Mjölnir is the likely fourth slot - JUBAI frames it as the learner-recommended mobility/engage tool - but this is an inference from the source text, not a verbatim \"core loadout\" line. - Amya / JUBAI (inferred)"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "Freestyle base with mandatory ones",
-      "summary": "Core technique: learn to dash-auto-attack-animation-cancel and perfect it (auto-attack, side-roll as soon as the damage pop-up appears, repeat). Maelstrom and Mountain Breaker are called mandatory. OP notes the rest of Maul's kit \"does not require a lot of skill.\"",
+      "name": "Flameshackle",
+      "summary": "Amya OP's only named \"Best Armour\" for Maul (no Stoneguard alternative offered in this source, unlike Shortsword's dual framing). Read as the dps/farm pick given Flameshackle's unit-damage-oriented 3pc/5pc text and the house block-break interaction.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "DPS/Farm",
+      "altSkill": null
     },
     {
-      "name": "Bonebreaker / Earthsplitter swap-in",
-      "summary": "Some players replace Maelstrom, Mountain Breaker, or Forge of War with Bonebreaker or Earthsplitter instead. OP does not recommend this.",
+      "name": "Hammer of the Gods",
+      "summary": "\"Not required... but good to have it in certain meta\" (Amya OP). Benefits Mighty Mjölnir's cooldown (2pc) and charging-skill stamina cost (4pc) per the dated 2021 guide text.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Epic",
+      "altSkill": null
+    },
+    {
+      "name": "Mobility-lean",
+      "summary": "JUBAI's framing: prioritize Mighty Mjölnir, recommended especially for players learning the class; escape-capable via the charge.",
+      "strongVs": null,
+      "forWhom": "Recommended for players learning the class.",
+      "recommended": true,
+      "typeLabel": "Mobility",
+      "altSkill": null
+    },
+    {
+      "name": "Full Strength",
+      "summary": "Official 2021 guide: unnecessary given Blunt damage's general effectiveness, but \"really pays off\" for players who invest anyway. Amya OP lists it as a co-equal option with Full Armor/HP rather than a beginner-discouraged pick (contrast with the Shortsword file's \"Not for beginners\" framing of its own Full Strength variant - Maul's OP doesn't carry that same caution).",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
-  "matchups": [],
+  "matchups": [
+    {
+      "vs": "Symmachean Paladins (clustered/tight block formation)",
+      "stance": "strong-vs",
+      "why": "Paladins get \"crunched\" by maul-type weapons; a dismount-stun chain can lock down the whole unit, especially in the tight block/shield formation rather than spread. Ranked as one of the unit's two biggest practical threats (alongside cavalry). [external video, HandBananaPvP]"
+    },
+    {
+      "vs": "Solo Berserker players (no pikes/cavalry escort)",
+      "stance": "strong-vs",
+      "why": "\"the easiest way to deal with a Berserker player is to kill the controller directly\" - the creator specifically calls out Maul players doing this. [external video, crazymetalord]"
+    },
+    {
+      "vs": "Longbow (via ultimates)",
+      "stance": "strong-vs",
+      "why": "Amya's Longbow guide coaches using Light-footed's brief invincibility specifically to dodge \"deadly ultimates like Dual Blades or Maul's heavy strikes\" - one of only two hero threats a Longbow player is taught to evade this way. Source doesn't say which Maul ultimate."
+    },
+    {
+      "vs": "Musket (heavy, low-mobility duel)",
+      "stance": "weak-vs",
+      "why": "\"heavy armoured heroes with low-mobility weapon classes such as the maul and the poleaxe (without Rough Justice) are at a disadvantage when dueling with musket users.\" [wiki, Musket \"Playing Against Musket\"]"
+    },
+    {
+      "vs": "None sourced",
+      "stance": "synergy",
+      "why": "No explicit Amya/JUBAI list of which units a Maul player should bring in their own warband. [GAP: vets/house question, same honest-gap pattern as the shortsword file's equivalent section]"
+    }
+  ],
   "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
     {
       "name": "Dash-auto-attack-animation-cancel",
       "steps": [
         "Auto-attack",
-        "side-roll the instant the damage number pops",
+        "side-roll the instant the damage pop-up appears",
         "repeat"
       ],
-      "rhythm": "Called out as the core skill-expression tool for this class; learn to perfect it."
+      "rhythm": "OP: the class's core skill expression; rest of the kit \"does not require a lot of skill\" by comparison - OP: learn to dash-auto-attack-animation-cancel and perfect it."
     }
   ],
   "gameplay": [
     {
-      "text": "\"Freestyle base with mandatory ones, explained under this!\" — core technique: learn to dash-auto-attack-animation-cancel and perfect it (auto-attack, side-roll as soon as the damage pop-up appears, repeat). OP notes the rest of Maul's kit \"does not require a lot of skill.\"",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Maul is a bruiser class offering mobility and constant DPS/high burst depending on build. Spells are either \"charged\" or combo'd off one of the two combo-starters (Mighty Mjolnir / Mountain Breaker). Both ultimates are viable (can also be played with no ult), though JUBAI personally prefers Forge of War for its high-range heavy CC and CC-recovery (no-mobility builds are also playable).",
-      "attribution": "JUBAI"
-    },
-    {
-      "text": "Core loop: dash-auto-attack-animation-cancel (auto-attack, side-roll on damage pop-up, repeat). Combo starters (Mountain Breaker / Mighty Mjolnir) feed into Maelstrom or other follow-ups. JUBAI's framing emphasizes Mighty Mjolnir/mobility builds for learning players, with Maelstrom as the standout current-meta spell for dive/flank play rather than frontline trading.",
+      "text": "Spells are either \"charged\" or combo'd off one of the two combo-starters (Mighty Mjolnir / Mountain Breaker). Both ultimates are viable (can also be played with no ult), though JUBAI personally prefers Forge of War for its high-range heavy CC and CC-recovery (no-mobility builds are also playable).",
       "attribution": "JUBAI"
     }
   ],
@@ -112,12 +193,324 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Maul Guide' (1297653441233031228); OP 2024-10-20 edited 2026-03-26; JUBAI spell-breakdown replies 2024-10-22 (several edited same day)",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Maul Guide\"",
       "sourceDate": "2026-03-26",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
   "lastUpdated": "2026-03-26",
-  "patchNote": "Latest edit (2026-03-26) pre-dates the 2026-06-25 Chaos patch anchor by about three months — treat as pre-season, not yet re-verified. JUBAI's contributor posts are even older (last touched 2024-10-22) and were never revisited."
+  "patchNote": "Amya OP dated 20/10/2024, edited 26/03/2026; JUBAI's contributor spell-breakdown posted 22/10/2024 and never revisited - both pre-date the 25/06/2026 Chaos patch anchor. The capture notes a \"Jump to Present\" Discord banner during scroll but confirms the thread's last message is also where scrolling bottoms out (full capture, not truncated); it does not state whether the thread had any post-edit recently-active check the way the shortsword capture did - that check simply wasn't performed for this thread, recorded as an honest gap rather than assumed.",
+  "roleLabel": "Maul is a bruiser class offering mobility and constant DPS/high burst depending on build.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Maelstrom and the dive combo point at flanking/backline dives (arty, exotics, isolated pike), not static frontline holding."
+      },
+      {
+        "lead": null,
+        "text": "Forge of War is explicitly good \"in frontline-to-frontline, flanking, and 1v1s\"."
+      },
+      {
+        "lead": "Avoid open frontline trading:",
+        "text": "Bonebreaker (\"farm frontlines\") is called out-of-meta specifically because standing in the frontline to use it leaves the player exposed."
+      },
+      {
+        "lead": null,
+        "text": "Overall the class reads as a mobile bruiser/hero-hunter via the dash-auto-attack-cancel loop, not a static tank."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Core skill expression is the dash-auto-attack-animation-cancel loop (auto-attack, side-roll the instant the damage number pops, repeat) - the class's primary skill ceiling per the OP."
+      },
+      {
+        "lead": null,
+        "text": "Mountain Breaker and Mighty Mjölnir both grant a 26% buff to whatever's combo'd after them - plan the rotation around this."
+      },
+      {
+        "lead": null,
+        "text": "Titanic Shockwave upgrades Earthsplitter from \"decent\" to \"truly meta,\" turning its knockback into a big-area CC tool."
+      },
+      {
+        "lead": null,
+        "text": "Forge of War's Concussed phase can stop a mounted target, but they can cancel it by self-dismounting - don't assume the CC is guaranteed to land through a horse escape."
+      },
+      {
+        "lead": null,
+        "text": "Maelstrom's on-cast CC immunity plus its stamina-scalable damage make it the class's premier dive tool against squishy backline targets (arty/exotics/pike) rather than a frontline trading tool."
+      },
+      {
+        "lead": null,
+        "text": "Grab/Strike and Grapple's real value in the current (out-of-meta-as-a-main-pick) state is situational: trap-and-drop wall climbers on offense, or CC-then-grab them on defense."
+      },
+      {
+        "lead": "Enemy-side counter-play read (external matchup evidence, not Amya/JUBAI):",
+        "text": "Maul is specifically feared for dismount-stun lockdown on clustered/braced melee units and for hunting down exposed unit controllers - the class's own playstyle advice is implicitly \"look for exactly those openings\" rather than trading in the open frontline."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Full Strength",
+      "spread": "Full STR",
+      "note": "Official 2021 guide: unnecessary given Blunt damage's general effectiveness, but \"really pays off\" for players who invest anyway - not a beginner-discouraged pick per Amya (unlike Shortsword's own Full Strength variant)."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "JUBAI",
+  "gapNotes": {
+    "controls": "[GAP: JUBAI's community guide never individually covers Up from Hel, despite it being confirmed by both the official 2021 guide and the current wiki stub - reason unstated.]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Combo starter chain",
+      "steps": [
+        "Mountain Breaker or Mighty Mjölnir",
+        "Maelstrom (best follow-up) or Bonebreaker/Earthsplitter"
+      ],
+      "note": "Combo-starters each grant a 26% buff to the next skill used. Bonebreaker is the only skill playable stand-alone/charged, since it skips the 26% debuff and uses under 50% stamina."
+    },
+    {
+      "name": "Dive",
+      "steps": [
+        "engage (often from horseback)",
+        "Maelstrom"
+      ],
+      "note": "Maelstrom grants CC immunity on cast; target artillery, exotics, or isolated pike units - not built for frontline-to-frontline trading, more of a flanking tool."
+    },
+    {
+      "name": "Escape",
+      "steps": [
+        "Mighty Mjölnir charge"
+      ],
+      "note": "Faster than sprinting (costs stamina)."
+    },
+    {
+      "name": "Forge of War two-phase CC",
+      "steps": [
+        "cast",
+        "CC-recover",
+        "melee Concussed phase",
+        "ground-smash knockback phase"
+      ],
+      "note": "Can stop a mounted enemy (though they can escape by self-dismounting before it lands). Good in frontline-to-frontline, flanking, and 1v1s."
+    },
+    {
+      "name": "Titanic Shockwave upgrade",
+      "steps": [
+        "Earthsplitter (with Titanic Shockwave equipped)"
+      ],
+      "note": "Turns Earthsplitter's knockback hit into \"a big-area CC\" per JUBAI - meta-defining for the skill."
+    },
+    {
+      "name": "Grab utility play",
+      "steps": [
+        "trap-and-drop wall climbers (offense) or CC-then-grab climbers (defense)"
+      ],
+      "note": "\"A bit coinflip since teamplay will disrupt it but not always the case.\""
+    },
+    {
+      "name": "Flameshackle block-break",
+      "steps": [
+        "Maelstrom hit (any)",
+        "guard broken"
+      ],
+      "note": "House [jc008titanSQ]: \"Flameshackle armor set bonus works on maul earthsplitter 1 and dismount\" (does not work on earthsplitter 3rd stage or ult) - \"so basically you can block break everything with the malestorm hit... works better than on bastard sword.\""
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "-Ups- (Maul)",
+        "href": "https://www.youtube.com/@-Ups-",
+        "desc": "Tournament Maul POVs - Amya's General Hero Guide learn-from list."
+      },
+      {
+        "label": "FaZe_JUBAI (Maul)",
+        "href": "https://www.youtube.com/@FaZe_JUBAI",
+        "desc": "Tournament Maul POVs - Amya's General Hero Guide learn-from list. Handle plausibly matches the guide's contributor JUBAI (username-match only, not independently confirmed)."
+      },
+      {
+        "label": "buminnkagancb (Maul)",
+        "href": "https://www.youtube.com/@buminnkagancb",
+        "desc": "Tournament Maul POVs - Amya's General Hero Guide learn-from list."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Maul counts as a heavy armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Yellow Sky Rises",
+        "effect": "When a skill consumes stamina, damage taken is reduced by 10% and damage dealt is increased by 8% for 5 seconds. Stacks up to 3 times. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Swarming the Earth",
+        "effect": "When using [Maelstrom], the third hit grants 10% all defense values. The fourth hit grants immunity to control effects except [Winded] and increases all defense values by 18%. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Bare-Chested Brawler",
+        "effect": "Stamina cost for all Maul skills is reduced by 30%. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "musket",
   "className": "Musket",
-  "weaponArchetype": "Musket · ranged explosive/anti-exo",
+  "weaponArchetype": "Musket",
   "tier": {
     "tier": "AA",
     "positionInTier": 1,
@@ -10,19 +10,24 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "No",
+    "needed": "optional",
     "name": "Musketeer's Armour",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full Agility for Hero-killer (OP flags this as \"really out-dated playstyle\") / Full HP (bomb build) — OP links a \"here\" reference for this reasoning.",
-    "runes": "unknown",
+    "attribute": "Full Agility for Hero-killer (really out-dated playstyle) / Full HP (bomb build). - Amya",
+    "runes": "known - Chaos season set below",
     "bestGender": "Female",
-    "genderNote": null,
+    "genderNote": "Best Gender (Animation Change depending of it): Female - no reason given, and no wiki corroboration found.",
     "armorSets": [
       {
-        "name": "Carniflex",
-        "purpose": "unknown — OP names this as Best Armour with no stated rationale"
+        "name": "Carnifex's Armour",
+        "purpose": "Best Armour: Carniflex"
+      },
+      {
+        "name": "Musketeer's Armour",
+        "purpose": "The Musketeer set has fairly lackluster bonuses and so it's recommended to focus more on obtaining a great Carnifex set.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -33,7 +38,7 @@
     },
     "weaponStats": {
       "need": [
-        "Piercing DMG",
+        "Piercing Dmg",
         "Piercing Pen"
       ],
       "bonus": [
@@ -44,91 +49,166 @@
     },
     "spells": {
       "core": [],
-      "fillerNotes": "OP's stat block gives no explicit core-spells line for Musket (unlike other guides) — spells are named per-build instead: Liquid Fire and Scatter Shot (LiquidFire/Scatter Shot build), Reload (Reload build). No single unified core loadout stated."
+      "fillerNotes": "Amya's guide has no single fixed CORE list for Musket - it's structured entirely around named build variants, each with its own implied 4-skill loadout (see Builds). The wiki's Skill Selection tip supplies the underlying loadout logic instead: Blackpowder Grenade is near-mandatory (almost always the paragon pick); choose exactly one of Skirmisher or Close Combat as the control-removal/escape tool; then branch into either the hero-killing pair (Scatter Shot + Fine Gunpowder) or the support pair (Liquid Fire + Deploy Caltrops) for the remaining slots. - wiki"
     }
   },
   "verdict": null,
   "builds": [
     {
-      "name": "LiquidFire / Scatter Shot Build (Recommended Ranked/Tournaments Build)",
-      "summary": "Emerged after Zykalian Militia gained popularity for their high AoE damage. Revolves around throwing Liquid Fire (a ranged grenade dealing low initial damage but leaving targets burning) from good positioning (high ground, flanks) at range; Scatter Shot staggers and headshots to burst.",
-      "strongVs": "Zykalian Militia, T3 archers, Rattan Marksmen (one-shot via Liquid Fire regardless of numbers); adapts against Falconetti Gunners, Shenji Grenadiers, Flamers, T4 archers by scaling bomb count to target count",
-      "forWhom": "Ranked/Tournaments (OP's own labeling)",
-      "recommended": true
-    },
-    {
-      "name": "Reload build",
-      "summary": "Focuses entirely on hero-killing abilities, with just one spell change from the LiquidFire build. The reload skill extends the bomb combo, often providing the extra damage needed to finish off heroes. Standard combo: throw bomb, position behind enemy, aim down from above the head until aim-assist shows the headshot red circle, AA for headshot, move aim to center of body, follow with scatter shot (body, not head, to avoid spread-miss), reload, finish with another AA.",
-      "strongVs": "Hero-killing 1v1s/duels; extended combo chain gives enough damage to secure kills",
-      "forWhom": "Deathmatch and tournament formats like 1v1, 2v2, and 5v5 — commonly used there, though it can also be fun in siege battles",
-      "recommended": false
-    },
-    {
-      "name": "Blue Tier-lock Build",
-      "summary": "Leverages that during blue tier lock, all units are flammable, all units have a low HP pool, and range is spammed heavily, while heroes are very low impact — musket has insane impact on units while staying safe as a range + medium class in this bracket.",
-      "strongVs": "Blue tier-lock brackets specifically (flammable, low-HP unit compositions; low hero impact)",
+      "name": "LiquidFire / Scatter Shot",
+      "summary": "The most fully described build - emerged after Zykalian Militia gained popularity. Position at range/highground, throw Liquid Fire into grouped fragile units. One-shots Zykalian Militia, T3 archers, Rattan Marksmen outright; against Falconetti Gunners/Shenji Grenadiers/Flamers/T4 archers, adapt bomb count to target count.",
+      "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Support/Anti-Unit",
+      "altSkill": null
+    },
+    {
+      "name": "Reload",
+      "summary": "Commonly used in Deathmatch and tournament formats (1v1, 2v2, 5v5), though it can also be fun in siege battles. Same core kit as the LiquidFire build plus one swap into the reload skill (Fine Gunpowder) to extend the hero-kill combo chain.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Hero-Killing/Duel",
+      "altSkill": null
+    },
+    {
+      "name": "Blue Tier-lock",
+      "summary": "Posted 2025-09-19. Leverages the fact that during blue tier lock, all units are flammable, all units have low HP pools, and range is spammed heavily - heroes are very low impact, so musket having insane impact on units while being safe as a range + medium is what makes it so good.",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Tier-Lock",
+      "altSkill": null
+    },
+    {
+      "name": "Full HP (Bomb Build)",
+      "summary": "Not a separate skill loadout - Amya's freshest-dated post (2026-04-06) argues HP over Agility/Strength for the bomb build in the current low-skirmish meta: more room for risky dives, less chance of a random one-shot, and it costs nothing since your job is Liquid Fire on units, not dueling heroes. \"Agi/str doing any difference is kinda copium for 95% of cases.\"",
+      "strongVs": null,
+      "forWhom": null,
+      "recommended": false,
+      "typeLabel": "Attribute Alternative",
+      "altSkill": null
     }
   ],
   "matchups": [
     {
+      "vs": "Maul, Poleaxe (without Rough Justice)",
+      "stance": "strong-vs",
+      "why": "heavy, low-mobility weapon classes are at a disadvantage dueling a Musket. (wiki)"
+    },
+    {
       "vs": "Zykalian Militia, T3 archers, Rattan Marksmen",
       "stance": "strong-vs",
-      "why": "Fragile/low-HP, burn-vulnerable — one-shot via Liquid Fire regardless of how many there are; they also explode on burn death, adding bonus AoE damage."
+      "why": "one-shot via Liquid Fire - fragile, low-HP, burn-vulnerable, and they explode on a burn death for bonus AoE. Corroborated from the target's side: Zykalian Militia's own unit guide warns players to \"be careful about musket liquid fire, divers, and fire rune interactions.\"",
+      "build": "LIQUIDFIRE"
+    },
+    {
+      "vs": "Grouped ranged infantry",
+      "stance": "strong-vs",
+      "why": "Blackpowder Grenade and Liquid Fire are themselves ranged skills, so a Musket user can punish large stacks of lightly armoured ranged troops at low personal risk."
+    },
+    {
+      "vs": "Sheltron-formation units, siege targets",
+      "stance": "strong-vs",
+      "why": "an independent Spear Sergeant unit guide names \"musket bomb\" alongside trebuchet and scorpion fire as one of the siege-AoE templates that punishes a unit sitting in Sheltron (circle) formation. [unverified - doesn't distinguish Blackpowder Grenade from Liquid Fire]"
+    },
+    {
+      "vs": "Chain Dart & Scimitar, Pike, Dual Blades",
+      "stance": "weak-vs",
+      "why": "sprinting and rolling both interrupt an in-progress musket reload, so these high-mobility dueling classes give Musket the most trouble in a duel."
     },
     {
       "vs": "Falconetti Gunners, Shenji Grenadiers, Flamers, T4 archers",
       "stance": "weak-vs",
-      "why": "Won't be one-shot by Liquid Fire — requires adapting bomb count to target count (e.g. two bombs into 8 Shenjis may kill them, but more than that spreads the damage too much)."
+      "why": "don't one-shot via Liquid Fire - requires matching bomb count to target count to avoid over-spreading the damage.",
+      "build": "LIQUIDFIRE"
     },
     {
-      "vs": "Blue Tier-lock bracket (unit composition generally)",
-      "stance": "strong-vs",
-      "why": "All units are flammable and low-HP, and heroes are low-impact in this bracket, so Musket's unit-damage-focused kit is unusually strong here specifically."
+      "vs": "Men-at-Arms, other well-defended melee infantry",
+      "stance": "weak-vs",
+      "why": "Musket can't put out consistent unit damage/control compared to other melee classes (Nodachi, Poleaxe), so tanky infantry is hard to deal with. (wiki) [unverified beyond the wiki - Men-at-Arms's own Counters section doesn't itself name Musket or ranged classes]"
+    },
+    {
+      "vs": "Condottieri Guards, other flanking units",
+      "stance": "weak-vs",
+      "why": "\"musket units\" are named among the high-value backline targets worth a surprise flanking charge once caught out of position. (independent Condottieri Guards unit guide) [unverified - not distinguished from other ranged hero classes]"
+    },
+    {
+      "vs": "Men-at-Arms (Bot Line veterancy)",
+      "stance": "synergy",
+      "why": "Men-at-Arms's own Veterancy field names Musket directly: \"If you can't help your unit (light armor, or medium such as musket): Bot Line...\" - a Men-at-Arms unit escorted by a Musket player should run Bot Line veterancy."
+    },
+    {
+      "vs": "Javelin Sergeants (kill-confirms)",
+      "stance": "synergy",
+      "why": "Javelin Sergeants' own unit guide documents siege gameplay combining javelin throws with hero weapon skills (spear ultimate, musket shot) for kill confirms. [unverified - exact Musket ability not named beyond \"musket shot\"]"
+    },
+    {
+      "vs": "Ironcap Arquebusiers, Alchemists, Bagpipes",
+      "stance": "synergy",
+      "why": "the house's Civil War custom training-event ruleset (grey armour, grey Musket only, auto-attacks only, no abilities, no horses, no healing, no HUD) pairs Musket with exactly these three units as its designated skill-building drill loadout. - house playbook"
+    },
+    {
+      "vs": "(none documented beyond the above)",
+      "stance": "synergy",
+      "why": "no dedicated house or Amya list of units that pair with a Musket player's own warband was found. [GAP: explicit own-warband unit pairings for Musket players - vets/house question]"
     }
   ],
   "techniques": [
     {
-      "name": "Insane Combo (bomb-CC into AA lock)",
+      "name": "Animation canceling",
       "steps": [
-        "CC the target with the bomb ultimate",
-        "wait for the small window just before they naturally get up from the CC",
-        "land an auto-attack (AA) during that window to keep them locked in the combo instead of letting them get up"
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "If the target is staggered by any AA, they get up instantly instead of after the natural CC delay — the trick is timing the AA into the brief pre-recovery frame so they stay locked in the combo rather than escaping."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
     },
     {
-      "name": "Reload-build hero-kill combo",
+      "name": "Active blocking",
       "steps": [
-        "Throw bomb",
-        "position behind the enemy",
-        "aim from above their head and slowly move down until aim-assist shows the red headshot circle",
-        "auto-attack (AA) for the headshot",
-        "move aim to the center of the body",
-        "follow up with scatter shot (aim at the body, not the head — head aim can miss due to shot spread)",
-        "reload",
-        "finish with another AA"
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
       ],
-      "rhythm": null
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Insane Combo (bomb-CC lockdown)",
+      "steps": [
+        "Land an auto-attack in the brief window right before a bomb-CC'd target would naturally rise",
+        "staggering resets their get-up timer to instant"
+      ],
+      "rhythm": "keeps a bomb-CC'd target locked instead of giving them a recovery window - The trick is to land an AA during the small frame before they get up, allowing you to hit them quickly without giving them time to recover. This timing is crucial to maximize damage output while keeping the target locked in the combo."
     }
   ],
   "gameplay": [
     {
-      "text": "HP gives a bit more space for risky moves such as deeper dive-ins, running near a blob to try and throw into Zykalian for example; it also makes it less likely to be randomly one-shot by cav/stalwart/etc., allows jumping out of a wall without dying, and makes it so enemy DB/CD can't kill you in one combo anymore.",
-      "attribution": "Amya"
+      "text": "Inflicts extremely high damage at mid-range, but some attacks have a long reload. Carries several throwing weapons to disrupt the enemy.",
+      "attribution": "wiki"
     },
     {
-      "text": "Agi/str doing any difference is kinda copium for 95% of cases — we are on a meta with nearly 0 DM, no or near 0 skirmish; as musket if you can hit hero (meaning you are in main push for some reason) you are doing something wrong anyway, as you should be flanking / highground if possible to apply pressure for enemy exo/range and buy space for your team. (And even in a dreamworld where you do a lot of DM and reach 200-300k dmg on hero, it will do 0 difference in game, and that's not your job.)",
-      "attribution": "Amya"
-    },
-    {
-      "text": "The blunt pen won't allow you to kill anything more than you wouldn't already kill — you either throw the bomb on range (where you already have near-cap of pen), or you spread the dmg enough to reach minimal dmg (where more pen doesn't change anything); and if you throw into exo, you either hit low enough unit count to kill, or spread too much and pen doesn't change anything again.",
-      "attribution": "Amya"
-    },
-    {
-      "text": "Especially in this season with double bomb, your main job is Liquid Fire on Zykalian, and double bomb Viper if you can (but if you have enough space to do that, it's an enemy mistake tbh) — so damage isn't a problem; +30-50% survability is a better value than killing +1 flame/shenji on bomb every 1 out of 10 games.",
-      "attribution": "Amya"
+      "text": "The Musket is an early modern firearm which itself boasts high piercing damage and piercing penetration. Musket skills are versatile and can either be selected for a duelling focus, or more commonly, selected for the usage of strong area of effect damage skills with bombs.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -140,18 +220,324 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Musket Guide' (1292867321722834985); OP 2024-10-07 edited 2026-04-06; build posts 2024-10-07 (LiquidFire, Reload), 2025-09-19 (Blue Tier-lock), 2025-11-07 (HP/Agi/str on bomb build) edited 2026-04-06",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Musket Guide\"",
       "sourceDate": "2026-04-06",
-      "capturedAt": "2026-07-04",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
-    },
-    {
-      "source": "Amya's CB Library Discord (server 970521195558613002) — #Heroes-Guides-Tierlist; message authored 2025-04-28, in-message 'Last Update: 29/06/2026', edit timestamp 2026-06-29T13:14:44Z",
-      "sourceDate": "2026-06-29",
-      "capturedAt": "2026-07-04",
-      "authority": "tier-1"
     }
   ],
   "lastUpdated": "2026-04-06",
-  "patchNote": "Latest edit (2026-04-06) pre-dates the 2026-06-25 Chaos patch anchor by about 11 weeks — flagged in-source as pre-season/not yet re-verified against current balance."
+  "patchNote": "Amya OP and the HP/Agi/str post both last edited 06/04/2026, about eleven weeks before the 25/06/2026 Chaos patch. The tierlist entry (updated 29/06/2026) post-dates Chaos, so the AA-tier placement is current even though the guide body under it is not.",
+  "roleLabel": "Support an assault or bolster a defence!",
+  "armorClass": "Medium",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "If you're in position to hit an enemy hero at all (meaning you are in main push for some reason) you are doing something wrong anyway as you should be flanking / highground if possible to apply pressure for enemy exo/range and buy space for your team."
+      },
+      {
+        "lead": "Blue/Purple tier-lock:",
+        "text": "all units are flammable and low-HP and heroes are comparatively low-impact in that bracket - musket having insane impact on units while being safe as a range + medium is what makes it so good there."
+      },
+      {
+        "lead": "Dive discipline:",
+        "text": "HP give a bit more space to risky move such as deeper dive-in, running near blob to try and throw it into zykalian for example, also make it less likely of being randomly one shot by cav/stalwart, allow you to jump out of wall without dying and make it so enemy DB/CD can't kill u in 1 combo anymore."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Blackpowder Grenade is near-mandatory; Five Rounds Rapid (the other paragon option) has little use against units, a noticeable windup, and is easy to interrupt."
+      },
+      {
+        "lead": "Pick exactly one of Skirmisher or Close Combat -",
+        "text": "for control-effect removal - Skirmisher usually wins out for the escape against high-mobility duelists (Chain Dart & Scimitar, Pike, Spear, Dual Blades); Close Combat trades that escape for a lower cooldown and a melee-range retaliation knockdown."
+      },
+      {
+        "lead": null,
+        "text": "Despite being a ranged weapon, damage falls off sharply with range - close the distance for good damage rather than kiting at max range."
+      },
+      {
+        "lead": null,
+        "text": "Headshots increase damage; aim for them wherever possible."
+      },
+      {
+        "lead": null,
+        "text": "Deploy Caltrops, Blackpowder Grenade, and Liquid Fire can all blunt a cavalry charge."
+      },
+      {
+        "lead": null,
+        "text": "Blackpowder Grenade and Liquid Fire hit especially hard against ranged infantry specifically because they're themselves ranged skills - punish large stacks of lightly armoured ranged troops at low personal risk."
+      },
+      {
+        "lead": null,
+        "text": "Liquid Fire is especially strong against low-tier units with weak fire resistance, which matters most in the early seasonal phases when only silver-era-and-below units are available."
+      },
+      {
+        "lead": "Blackpowder Grenade's \"thrown\" status can't be removed by hero skills -",
+        "text": "a reliable duel opener: throw it, then safely close in and finish with Scatter Shot + Fine Gunpowder."
+      },
+      {
+        "lead": "Scatter Shot:",
+        "text": "aim the follow-up at the body, not the head, after an initial headshot auto-attack - the shot spread can whiff a head-aimed Scatter Shot."
+      },
+      {
+        "lead": null,
+        "text": "Agility is favored over Blunt Damage on the LiquidFire/Scatter Shot build specifically for follow-up speed, despite Blunt's higher raw kill potential on weak units."
+      },
+      {
+        "lead": null,
+        "text": "Agi/str doing any difference is kinda copium for 95% of cases - we are on a meta with nearly 0 dm, no or near 0 skirmish, so the Str/Agi debate barely matters for the bomb build."
+      },
+      {
+        "lead": "Season note (\"double bomb\" meta):",
+        "text": "main job is Liquid fire on zykalian, and double bomb viper if you can - \"+30-50% survability is a better value than killing +1 flame/shenji on bomb every 1 out 10 games.\""
+      },
+      {
+        "lead": null,
+        "text": "Musket only requires Medium armour, but the wiki recommends wearing the heaviest armour a build can afford for the extra defenses."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "LiquidFire / Scatter Shot - Support/Anti-Unit",
+      "spread": "Agility",
+      "note": "Favored over Blunt Damage specifically for auto-attack/Scatter Shot follow-up speed, despite Blunt's higher raw kill potential on weak units."
+    },
+    {
+      "build": "Reload - Hero-Killing/Duel",
+      "spread": "Full Agility",
+      "note": "Hero-killer stat pick (OP's own flag: \"really out-dated playstyle\")."
+    },
+    {
+      "build": "Full HP (Bomb Build)",
+      "spread": "Full HP",
+      "note": "Amya's freshest guidance for the bomb/support build - wiki instead argues Full Strength for the same build."
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: icon-to-ability mapping not legible for the Reload build's Insane Combo (Q/E/R/Mouse2) or the Blue Tier-lock build (Q/E/R/Mouse4) icon strips]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Headshot-into-Scatter",
+      "steps": [
+        "throw bomb",
+        "reposition behind enemy",
+        "aim from above their head, lowering slowly until aim-assist shows the red headshot circle",
+        "auto-attack for the headshot",
+        "move aim to center-mass",
+        "Scatter Shot aimed at the body, not the head",
+        "reload",
+        "finishing auto-attack"
+      ],
+      "note": "The standard hero-killing combo. Aiming the scatter shot at the head can result in a miss due to its spread, so it's safer to target the body."
+    },
+    {
+      "name": "Dive-and-burn",
+      "steps": [
+        "position on high ground or a flank at range",
+        "throw Liquid Fire onto grouped fragile targets"
+      ],
+      "note": "The blast plus fire DoT can outright delete Zykalian Militia, T3 archers, and Rattan Marksmen regardless of stack size; against tougher stacks (Falconetti Gunners, Shenji Grenadiers, Flamers, T4 archers) the bomb count has to be matched to target count or the damage spreads too thin to kill."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "Arbyz (Musket Hero Killer)",
+        "href": "https://youtube.com/@Arbyz",
+        "desc": "Tournament Musket Hero-Killer POVs - Amya's learn-from list."
+      },
+      {
+        "label": "CursedF1y (Musket Hero Killer)",
+        "href": "https://youtube.com/@CursedF1y",
+        "desc": "Tournament Musket Hero-Killer POVs - Amya's learn-from list."
+      },
+      {
+        "label": "fyteriyoku7798 (Musket Liquid Fire)",
+        "href": "https://youtube.com/@fyteriyoku7798",
+        "desc": "Tournament Musket Liquid Fire POVs - Amya's learn-from list."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Musket counts as a medium armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership / HP"
+      },
+      {
+        "grade": "A",
+        "label": "Crit Value / Piercing def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Flames of Red Cliffs",
+        "effect": "A successful [Basic Attack] creates a blast that damages surrounding enemies, inflicting 600 burning damage. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Master Inventor",
+        "effect": "Within 10 seconds of using [Blackpowder Grenade], you may use [Blackpowder Grenade] again. This can only trigger once per cooldown cycle, and the cooldown time is increased by 15 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Thunderbolt Catapults",
+        "effect": "Bullets fired from [Basic Attacks] are replaced with [Scatter Shot]. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "AOE ultimate such as shortsword and poleaxe can take the reduce + dmg to units / Other can do the both 2 cost runes combo",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": true
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": true
+          }
+        ]
+      }
+    ]
+  },
+  "aimingNotes": {
+    "lockedOnHero": "ranged class wants the firmer lock."
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "schema": "cb-academy-hero-page/v1",
+  "schema": "cb-academy-hero-page/v2",
   "slug": "glaive",
   "className": "Glaive",
-  "weaponArchetype": "Polearm · mounted brawler/team buffer",
+  "weaponArchetype": "Polearm",
   "tier": {
     "tier": "A",
     "positionInTier": 1,
@@ -10,19 +10,28 @@
     "epicSchemVariants": []
   },
   "epicSchematic": {
-    "needed": "No (but nice to have if playing heavy playstyle)",
-    "name": "Royal Sentry's",
+    "needed": "optional",
+    "name": "Royal Sentry's Armour",
     "tierDropNote": null
   },
   "loadout": {
-    "attribute": "Full STR (can go Full HP if not confident/learning)",
-    "runes": "unknown x2 (\"or\" between two unfilled options — OP offers a choice, neither specified)",
-    "bestGender": null,
-    "genderNote": "Male: Faster auto-attacks and sprint attacks. Female: Faster Arc of Steel animation (currently not used).",
+    "attribute": "Full STR (can go Full HP if not confident/learning). General-hero-guide heavy table confirms Glaive = Full Strength - the only heavy class in that table with a bare Strength recommendation. - Amya",
+    "runes": "known - Chaos season set below",
+    "bestGender": "Male",
+    "genderNote": "faster auto-attacks and sprint attacks. Female: faster Arc of Steel animation (currently not used) - Arc of Steel is rated the class's worst skill, so Male is the practically-relevant pick.",
     "armorSets": [
       {
-        "name": "Carniflex",
-        "purpose": "recommended best armour"
+        "name": "Carnifex's Armour",
+        "purpose": "Best Armour: Carniflex (recommended)"
+      },
+      {
+        "name": "Guardsman's Armour",
+        "purpose": "the strongest reforgeable craftable"
+      },
+      {
+        "name": "Royal Sentry's Armour",
+        "purpose": "No (but nice to have if playing heavy playstyle) - generally considered to have subpar bonus effects, so it is more productive to focus on obtaining a great Guardsman's set.",
+        "epic": true
       }
     ],
     "aimingFlags": {
@@ -33,8 +42,10 @@
     },
     "weaponStats": {
       "need": [
-        "Slashing Damage/Pen",
-        "Blunt Damage/Pen"
+        "Slashing Damage",
+        "Slashing Pen",
+        "Blunt Damage",
+        "Blunt Pen"
       ],
       "bonus": [
         "STR",
@@ -45,59 +56,115 @@
     },
     "spells": {
       "core": [
-        "Warlord's Greeting (Double CC, Mandatory)",
-        "Heat of Battle (Defense buff, knockback, control cleanse, spell cancel tool)",
-        "Flexible Slot: God of Battles (team damage buff) or Breaker of Shields (duel burst)",
-        "Flying Reaper (Ultimate CC, AoE damage, self-cleanse)"
+        "Warlord's Greeting",
+        "Heat of Battle",
+        "Flying Reaper"
       ],
-      "fillerNotes": null
+      "fillerNotes": "4th slot flexible: God of Battles (team damage buff) or Breaker of Shields (duel burst). Wiki agrees: God of Battles, Warlord's Greeting, and Flying Reaper are near-mandatory; the last slot is a choice of Heat of Battle, Charge, or Breaker of Shields - Heat of Battle is the most popular pick, matching Amya's own choice. - Amya"
     }
   },
   "verdict": null,
   "builds": [
     {
       "name": "Heavy Armor/Epic Armor",
-      "summary": "Safer, better survivability. You mostly play around your horse — use Right Click into horse turn and attack to optimize damage, and you can move your camera during Right Click to extend the swing and hit more targets. Once dismounted, Shift-AA into block cancels the animation and immediately goes into another Shift-AA for quick, repeated hits. When fully committing on foot, the ideal combo is Warlord's Greeting → Flying Reaper (ult) → Shift-AA chain.",
+      "summary": "Mostly played around the horse - Right Click into horse turn-and-attack is the primary damage loop, camera-draggable to extend the swing. Once dismounted, Shift-AA into block cancels the animation for repeated hits. Full-commit ground combo: Warlord's Greeting -> Flying Reaper (ult) -> Shift-AA chain. \"Learning how to space, what spell can you cancel with heat of battle, and to be pro-active while not losing horse will be key to being useful as glaive!\"",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "Safer/Survivability",
+      "altSkill": null
     },
     {
       "name": "Medium Armour",
-      "summary": "High damage, relies on proper spell use for defense. Focused on full Strength and medium armor to amplify blunt damage (especially effective with event sets like Season 6's, which allow stacking blunt bonuses). Relies on immense Turn and Attack & Right Click DMG on horse, Flying Reaper for burst and control on ground, and Heat of Battle to cancel enemy spells and survive pressure. Playstyle centers around horse mobility: Right Click into a horse turn and camera drag to extend swing range and poke from safety. Once dismounted, Shift-AA into block cancels the animation, allowing chaining of multiple Shift-AAs for burst.",
+      "summary": "Full Strength, medium armor to amplify blunt damage. Relies on Turn-and-Attack + Right-Click horseback damage for sustained pressure, Flying Reaper for burst and control on the ground, and Heat of Battle to cancel enemy spells and survive pressure while dismounted.",
       "strongVs": null,
       "forWhom": null,
-      "recommended": false
+      "recommended": false,
+      "typeLabel": "High Damage",
+      "altSkill": null
     }
   ],
-  "matchups": [],
-  "techniques": [
+  "matchups": [
     {
-      "name": "Turn and Attack (horseback)",
-      "steps": [
-        "Right Click into horse turn and attack",
-        "move camera during Right Click to extend the swing and hit more targets"
-      ],
-      "rhythm": "During Turn and Attack, damage taken is reduced by 30%; each enemy hit reduces the skill's own cooldown by 2 seconds, up to a maximum of 20 seconds — per the 2025-06-04 balance-notes image."
+      "vs": "None sourced",
+      "stance": "strong-vs",
+      "why": "[GAP: no strong-vs matchup sourced for Glaive - only the dueling weakness and one dated poison-stack counter are documented]"
     },
     {
-      "name": "Shift-AA into block (animation cancel)",
+      "vs": "Hero duels",
+      "stance": "weak-vs",
+      "why": "not enough personal damage and low mobility to win 1v1s - by design, a bad matchup."
+    },
+    {
+      "vs": "Fast control-effect classes",
+      "stance": "weak-vs",
+      "why": "Flying Reaper's noticeable windup lets them interrupt it if you throw it out recklessly - don't open blind. Seasonal runes (Demigod Authority, current season) can grant control immunity here, so this can shift season to season."
+    },
+    {
+      "vs": "Heavily poison-stacked ranged formations",
+      "stance": "weak-vs",
+      "why": "stacked poison attack-speed/damage debuffs can make a diving Glaive's damage negligible (dated 2022 footage, not re-confirmed on current patch)."
+    },
+    {
+      "vs": "Allied units/heroes standing near you for the God of Battles damage buff",
+      "stance": "synergy",
+      "why": "the buff needs you in range to land - no source names specific own-warband unit pairings beyond this. [GAP: explicit own-warband unit pairings for Glaive players - vets/house question]"
+    }
+  ],
+  "techniques": [
+    {
+      "name": "Animation canceling",
+      "steps": [
+        "Block or roll",
+        "the animation cancels",
+        "reposition or follow up",
+        "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
+      ],
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+    },
+    {
+      "name": "Active blocking",
+      "steps": [
+        "Hold block between actions",
+        "watch your block VALUE",
+        "it can be BROKEN and stagger you"
+      ],
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+    },
+    {
+      "name": "Horse-whistle CC immunity",
+      "steps": [
+        "Time the whistle on the enemy CC",
+        "summon animation = locked state",
+        "you take damage but no CC"
+      ],
+      "rhythm": "bugs out with PIN/LOCK skills, so care"
+    },
+    {
+      "name": "Walk into braced units",
+      "steps": [
+        "Walk (don't sprint) into their minimal range",
+        "destroy them from the inside"
+      ],
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+    },
+    {
+      "name": "Turn and Attack",
+      "steps": [
+        "Right Click for horse turn-and-attack",
+        "drag camera during the swing to extend its arc",
+        "hit more targets"
+      ],
+      "rhythm": "core mounted damage loop, played around constantly - Six patch changes (2025-06-04, verbatim numbered list): more damage vs multiple enemies; better hitbox; -30% damage taken while active; each unit hit reduces its cooldown by 2s (cap 20s); more damage at high horse speed; less stamina cost for Right-Click Attack on horseback."
+    },
+    {
+      "name": "Shift-AA cancel chain",
       "steps": [
         "Shift-AA",
         "into block to cancel the animation",
-        "immediately Shift-AA again",
-        "repeat to chain"
+        "immediately Shift-AA again for repeated quick hits"
       ],
-      "rhythm": "Cancels the animation for quick, repeated hits once dismounted; lets you chain multiple Shift-AAs for burst."
-    },
-    {
-      "name": "Full-commitment ground combo",
-      "steps": [
-        "Warlord's Greeting",
-        "Flying Reaper (ult)",
-        "Shift-AA chain"
-      ],
-      "rhythm": "The ideal combo when fully committing on foot."
+      "rhythm": "primary dismounted burst tool - Works once dismounted; chains for burst damage."
     }
   ],
   "gameplay": [
@@ -106,8 +173,8 @@
       "attribution": "Amya"
     },
     {
-      "text": "Learning how to space, what spell can you cancel with heat of battle, and to be pro-active while not losing horse will be key to being useful as glaive!",
-      "attribution": "Amya"
+      "text": "However glaive has lackluster dueling abilities and low mobility. Glaive offensive skills can be somewhat tricky to hit on heroes. This can be helped in group fights by using them on enemies who are already stunned by other heroes.",
+      "attribution": "wiki"
     }
   ],
   "authors": [
@@ -119,12 +186,277 @@
   ],
   "sources": [
     {
-      "source": "Amya's CB Library Discord, #Heroes-Forum, thread 'Glaive Guide' (1295477645278056533); OP 2024-10-14 edited 2026-03-26; build posts 2024-10-14 edited 2025-12-28 (x2); balance-notes image post 2025-06-04; link post 2026-04-05",
-      "sourceDate": "2026-04-05",
-      "capturedAt": "2026-07-04",
+      "source": "Amya's CB Library Discord, #Heroes-Forum, thread \"Glaive Guide\"",
+      "sourceDate": "2026-03-26",
+      "capturedAt": "2026-07-13",
       "authority": "tier-3"
     }
   ],
-  "lastUpdated": "2026-04-05",
-  "patchNote": "Latest edit (2026-04-05) pre-dates the 2026-06-25 Chaos patch anchor by about eleven weeks."
+  "lastUpdated": "2026-03-26",
+  "patchNote": "Amya OP edited 26/03/2026; build post edited 28/12/2025; balance-notes image posted 04/06/2025; thread's last activity, a linked YouTube resource, 05/04/2026 - about eleven weeks before the 25/06/2026 Chaos patch. No live Discord recency check this pass - out of scope for this consolidation.",
+  "roleLabel": "Glaive is a heavy support class, focused on helping allied units and heroes using God of Battles and stunning enemies with Flying Reaper and Warlord's Greeting.",
+  "armorClass": "Heavy",
+  "tierlistUpdated": "29/06/2026",
+  "positioning": {
+    "intro": "Where to be during a fight:",
+    "bullets": [
+      {
+        "lead": null,
+        "text": "Support your own units/heroes - stay close enough that God of Battles' damage buff actually lands on allies, not off alone as a solo skirmisher."
+      },
+      {
+        "lead": null,
+        "text": "Land your CC as a team follow-up, not a solo opener - Glaive offensive skills can be tricky to hit on heroes, so use them on enemies already stunned by other heroes."
+      },
+      {
+        "lead": null,
+        "text": "Stay mobile on horseback, commit to a dismounted burst window opportunistically, then re-mount or retreat rather than staying committed on foot."
+      },
+      {
+        "lead": null,
+        "text": "Watch out for heavily poison-stacked ranged formations - stacked poison debuffs can make a diving Glaive's damage negligible."
+      }
+    ]
+  },
+  "tips": {
+    "intro": null,
+    "bullets": [
+      {
+        "lead": "God of Battles is unique:",
+        "text": "no other weapon class in the game has a skill that directly increases allies' damage - it's the class's core team-support tool."
+      },
+      {
+        "lead": "Warlord's Greeting and Flying Reaper are your CC:",
+        "text": "Warlord's Greeting inflicts concussed, which most control-removal skills can't counter; Flying Reaper inflicts thrown and doubles as your own control-effect removal."
+      },
+      {
+        "lead": "4th slot is a choice:",
+        "text": "Heat of Battle for control removal and defense - the most popular pick; Charge for mobility to retreat or engage; or Breaker of Shields for single-target dueling damage."
+      },
+      {
+        "lead": "Arc of Steel is the worst skill in the class -",
+        "text": "arguably one of the worst weapon skills overall - very low damage, no special effects. Don't build around it."
+      },
+      {
+        "lead": "Hail of Blades is the weaker paragon:",
+        "text": "much less preferred over Flying Reaper due to low impact, weaker control effect, and ease of interruption - Flying Reaper is the default pick."
+      },
+      {
+        "lead": null,
+        "text": "Learning exactly which enemy skills you can cancel with Heat of Battle, and staying proactive without losing your horse, are the class's core skill-expression points."
+      },
+      {
+        "lead": null,
+        "text": "Flying Reaper's windup is interruptible by fast-CC classes if thrown out recklessly - don't open with it blind, wait for a window where the target is occupied or your escape/cleanse is up."
+      },
+      {
+        "lead": "Active blocking stops their CC too:",
+        "text": "block helps prevent undesired skills landing on you - Nodachi bloodthirsty CC, Glaive's own Warlord's Greeting CC, Poleaxe's kit (except pin), etc. Watch your block value."
+      }
+    ]
+  },
+  "statSpreads": [
+    {
+      "build": "Heavy Armor/Epic Armor - Safer/Survivability",
+      "spread": "Full STR (can go Full HP if not confident/learning)",
+      "note": "mostly played around the horse - Right Click into horse turn and attack is the primary damage loop"
+    },
+    {
+      "build": "Medium Armour - High Damage",
+      "spread": "Full Strength, medium armor",
+      "note": "amplifies blunt damage - Amya calls out a Season 6 event-set blunt-stacking synergy, currently-live status unconfirmed"
+    }
+  ],
+  "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "combosSignoff": "Amya",
+  "gapNotes": {
+    "controls": "[GAP: sprint-attack-cancel technique named only (JayJayAyh, see Learn More) - input steps not transcribed] [GAP: no fighting-game-notation input strings beyond the mounted Right-Click and Shift-AA chain]",
+    "runes": null
+  },
+  "clips": [],
+  "combos": [
+    {
+      "name": "Full ground-commit combo",
+      "steps": [
+        "Warlord's Greeting",
+        "Flying Reaper (ult)",
+        "Shift-AA chain"
+      ],
+      "note": "the ideal combo when fully committing on foot."
+    }
+  ],
+  "learnMore": {
+    "intro": "Watch POV from the classe you play and others classes, have some critical thinking, understand why they do what they do, what you can learn from it hero wise.",
+    "links": [
+      {
+        "label": "Vikings Damage Calculator",
+        "href": "https://docs.google.com/spreadsheets/d/12D4i_cyDDBRwOvVv2SEGaMrKYGyRRquK76Q7E5OvnA8/edit#gid=894458566",
+        "desc": "Community hero damage calculator sheet (ShallowViking). Older values, structure still useful."
+      },
+      {
+        "label": "How to gain Hero XP in the early season",
+        "href": "https://youtu.be/eFhT1Dgodao",
+        "desc": "StarBurstCB - season-start hero leveling."
+      },
+      {
+        "label": "Glaive sprint attack cancel",
+        "href": "https://youtu.be/dUBwzSRnRHQ",
+        "desc": "JayJayAyh - technique demo linked in Amya's guide thread; video content not independently transcribed."
+      }
+    ]
+  },
+  "armorStatPriority": {
+    "intro": "Glaive counts as a heavy armor class:",
+    "tiers": [
+      {
+        "grade": "S",
+        "label": "Leadership"
+      },
+      {
+        "grade": "A",
+        "label": "HP / Piercing Def / Slashing Def"
+      },
+      {
+        "grade": "B",
+        "label": "rest"
+      }
+    ],
+    "quote": {
+      "text": "Leadership increase[s] the amount of units you can take into battle, making it the best value out of every stats you could wish to get.",
+      "attribution": "Amya"
+    },
+    "craftNote": {
+      "lead": "when you want leadership: Craft > Reforge",
+      "text": "it clearly has enough data to show a increased chance of leadership when crafting. but if you aim for stats you will get higher stats cap for reforge - think about it (may not be always worth it)",
+      "attribution": "Amya, credits StanleyJohnny"
+    }
+  },
+  "weaponRunes": {
+    "seasonLine": "Chaos season (25/06/2026), fetched 13/07/2026 - runes rotate every season",
+    "items": [
+      {
+        "name": "Shaking the Realm",
+        "effect": "Gain immunity to all control effects except [Winded] when using [Hail of Blades] and [Flying Reaper]. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Solo Ride",
+        "effect": "If the duration of the [Charge] sprint exceeds 2 seconds, your Slashing Damage and Slashing Armour Penetration are increased by 25% for 5 seconds. Cost: 3 Rune Power."
+      },
+      {
+        "name": "Taking the Head",
+        "effect": "Gain immunity to all control effects except [Winded] during [Turn and Attack]. Cost: 2 Rune Power."
+      }
+    ]
+  },
+  "armorRunes": {
+    "badge": "Amya - updated 15/05/2026",
+    "intro": "This isn't by any means the ONLY build, runes should be adapted to your play-style and little preference BUT it is a \"overall best\" build for the people who don't want to spend time theory crafting or just want something to copy!",
+    "mandatoryNote": "Red = Mandatory. If you have points left, fill with anything",
+    "seasonNote": "Amya's table uses Echo-season rune names (texts final per the 14/05/2026 balance patch, news/1767). The current Chaos season (25/06/2026, news/1796) re-issued the same armor-slot set under new names (Battlefield Survival -> Severed Hair, Hwarang Resolve -> Art of Stillness, Competitive Edge -> Fight to the Death, ...).",
+    "items": [
+      {
+        "slot": "Helmet",
+        "note": "Fill with STR/AGI or supply heal depend on prefrence",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Battlefield Survival",
+            "effect": "Damage taken from Units is reduced by 20%. When Health falls below 50%, damage taken from Units is additionally reduced by 10%.",
+            "mandatory": true
+          },
+          {
+            "name": "Tempered Armor",
+            "effect": "Damage taken from Units is reduced by 20%. Upon taking damage from Units, damage taken from Units is additionally reduced by 15% for 5 seconds (triggers once every 15 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Avalon's Blessing",
+            "effect": "Restores 2% of max Health per second while inside an allied Supply Point.",
+            "mandatory": false
+          }
+        ]
+      },
+      {
+        "slot": "Body",
+        "note": null,
+        "updated": null,
+        "runes": [
+          {
+            "name": "Divine Right",
+            "effect": "When casting a non-ranged [Damage] skill, all defence values are increased by 25% for 8 seconds. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Hwarang Resolve",
+            "effect": "Damage taken is reduced by 10%; while in Knockback, Knockdown, Knockup, and Concussed states, damage taken is additionally reduced by 5% (buffed to 25% by the 14/05/2026 patch, news/1767; the Chaos re-issue Art of Stillness is back to 5%).",
+            "mandatory": true
+          },
+          {
+            "name": "Dragonblood Bath",
+            "effect": "All defences are increased by 3.5%. When Health is below 50%, all defences are increased by an additional 2.5% for 5 seconds (triggers once every 30 seconds).",
+            "mandatory": false
+          },
+          {
+            "name": "Martyr's Glory",
+            "effect": "Increases maximum Health by 5%; upon death, nearby allies instantly recover 10% of their maximum Health.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Boots",
+        "note": "Take faster bandage then it's full preference",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Relentless Crusade",
+            "effect": "Movement speed is increased by 6%. Upon death, the movement speed of surrounding allies is increased by 8% for 10 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Competitive Edge",
+            "effect": "When Health is below 25%, Hero damage taken is reduced by 50%. (14/05/2026 rework, news/1767)",
+            "mandatory": false
+          },
+          {
+            "name": "Rod of Asclepius",
+            "effect": "While bandaging, the movement speed reduction is lowered from 50% to 30%.",
+            "mandatory": false
+          },
+          {
+            "name": "Numbing Remedy",
+            "effect": "Reduces Bandage duration by 40%, while keeping the total heal amount unchanged.",
+            "mandatory": true
+          }
+        ]
+      },
+      {
+        "slot": "Bracers",
+        "note": "Heavy-strip capture leaves these unclear (not confirmed mandatory); the Medium-armor strip - relevant since Glaive is routinely built medium - explicitly marks Hero Hunter + Phalanx Breaker mandatory instead. The usual 'AOE ultimate' framing for this slot names Shortsword and Poleaxe, not Glaive, even though Flying Reaper is also an AoE ultimate - treat Gladiator's Finisher as unverified for this class.",
+        "updated": null,
+        "runes": [
+          {
+            "name": "Gladiator's Finisher",
+            "effect": "Hitting an enemy with an [Ultimate] reduces their defences by 5% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Khagan's Majesty",
+            "effect": "Upon activating an [Ultimate], all damage types are increased by 10% for 5 seconds.",
+            "mandatory": false
+          },
+          {
+            "name": "Hero Hunter",
+            "effect": "Damage dealt to Heroes is increased by 6%.",
+            "mandatory": false
+          },
+          {
+            "name": "Phalanx Breaker",
+            "effect": "Damage dealt to Units is increased by 6%.",
+            "mandatory": false
+          }
+        ]
+      }
+    ]
+  }
 }
