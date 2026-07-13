@@ -9,12 +9,12 @@
     "rarity": "T3",
     "fightRatings": null
   },
-  "pitch": "High per-shot damage ranged unit that demands close positioning to deal impact—the 2026-06-25 Piercing Bolts nerf (target count 2→1, fire rate −16%) strips away its multi-target value and may force a playstyle shift. Stack Double Fire + Bolt Penetration to recover shot count and damage scaling.",
+  "pitch": "High per-shot crossbow damage that demands close positioning — huge drop-off means you need to be near the fight to matter, even though press-2 stretches its reach further. The 2026-06-25 Piercing Bolts nerf (target count 2→1, fire rate −16%) strips its multi-target value and may force a line-clearing-to-single-target shift.",
   "doctrines": [
     {
       "tag": "mandatory",
-      "name": "Double Fire Doctrine",
-      "note": "unlocks Double Fire (unit-unique, can't combine with Focus Fire, 45s CD), +12% rate of fire, +1 shot to spell (6→7 arrows)",
+      "name": "Double Fire Doctrine V",
+      "note": "unlocks Double Fire (unit-unique, can't combine with Focus Fire, 45s CD), +12% rate of fire, +1 shot to spell (6→7 arrows) — OP flags name unconfirmed",
       "marks": [
         1
       ]
@@ -22,7 +22,7 @@
     {
       "tag": "mandatory",
       "name": "Bolt Penetration Doctrine",
-      "note": "+1 additional target penetration on top of baseline Penetrating Shots",
+      "note": "+1 additional target penetration on top of baseline Penetrating Shots — OP flags name unconfirmed",
       "marks": [
         1
       ]
@@ -37,8 +37,8 @@
     },
     {
       "tag": "top-pick",
-      "name": "Ammo Doctrine",
-      "note": "+35% ammo, +140 piercing AP",
+      "name": "New Ammo Doctrine V",
+      "note": "+35% ammo, +140 piercing AP — OP notes screenshot stat differs from ConqHub's New Ammo IV (+120 AP)",
       "marks": [
         1
       ]
@@ -53,7 +53,7 @@
     },
     {
       "tag": "top-pick",
-      "name": "Epic Crossbow II",
+      "name": "Epic Crossbow Doctrine II",
       "note": "+50 piercing DMG, +200 piercing penetration; alt if no Ammo Doctrine or no Unit Damage V",
       "marks": [
         1
@@ -69,7 +69,7 @@
     },
     {
       "tag": "filler",
-      "name": "Generic Piercing Damage Doctrine",
+      "name": "Epic Piercing Damage Doctrine",
       "note": "alternative to Accuracy/Ammo",
       "marks": [
         1
@@ -95,16 +95,16 @@
     }
   ],
   "battleRole": {
-    "positioning": "Huge damage drop-off — position within brawl range to deal impact; press 2 extends reach. {1}",
+    "positioning": "Huge damage drop-off — stay within brawl range to land impact; press 2 stretches reach further than the rest of the kit. {1}",
     "formation": null,
-    "tips": "Never overlap Double Fire with Double Shot; execute them sequentially. {1} Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to spell (6→7 arrows); Bolt Penetration is also mandatory. {1}"
+    "tips": "Never overlap Double Fire with Double Shot; fire them sequentially, one then the other. {1} Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to the spell (6→7 arrows); Bolt Penetration is equally mandatory. Accuracy and Ammo aren't strict requirements — swap for Hero DMG (pen) or any piercing DMG increase. {1}"
   },
   "matchups": {
     "cards": [],
     "pressure": null
   },
   "controls": {
-    "loop": [],
+    "loop": null,
     "loopMarks": [],
     "notes": null
   },
@@ -114,16 +114,24 @@
       "author": "Amya",
       "date": "May 2026",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "StaRBuRsT (house)",
+      "date": "Sep 2025",
+      "house": true
     }
   ],
   "gaps": [
     "Strength ratings (Blob/Flank/Skirmish/Duel) absent from all sources; fightRatings stays null.",
-    "No Counters / Loses-to / Hero-threat section in Amya guide.",
+    "No Counters / Loses-to / Hero-threat section in Amya guide — no matchup cards.",
     "No dedicated Tips & Tricks section beyond playstyle notes (OP gap, not fabricated).",
     "No formation guidance from any source.",
-    "No matchup cards (loses to, counters, synergy pairs).",
     "No control loop or ability-sequencing numbers.",
-    "Build and playstyle sourced from Amya guide edited 2026-05-27, before the 2026-06-25 Chaos patch (Piercing Bolts 2→1 target, fire rate −16%). Multi-target-penetration emphasis and Playstyle notes assume pre-patch mechanics; role guidance may need post-patch revalidation.",
-    "Doctrine name caveat in OP: 'Double Fire Doctrine' and 'Bolt Penetration Doctrine' carry OP's own '[confirm exact name]' flags — not independently verified."
+    "Build and playstyle sourced from Amya guide edited 2026-05-27, before the 2026-06-25 Chaos patch (Piercing Bolts 2→1 target, fire rate −16%). Multi-target-penetration emphasis and playstyle notes assume pre-patch mechanics; role guidance may need post-patch revalidation.",
+    "House tier chart (StaRBuRsT, Sep 2025, likely-stale/pre-patch) places it on a farm-worthy 'Meta Units - ATK' row-1 slot (~150-170 leadership) and repeats it in a separate current-meta list {2} — no detailed house build/doctrine guide exists to arbitrate against Amya's.",
+    "Tierlist links this same Amya thread to 'Black Tortoise Regiment' via the 'Best Range' B-Tier slot, but the OP text only ever names Demesne Arbalists — that second-unit association is not asserted as guide content here.",
+    "Doctrine name caveat in OP: 'Double Fire Doctrine' and 'Bolt Penetration Doctrine' carry OP's own '[confirm exact name]' flags — not independently verified.",
+    "No StarBurst house build card exists for this unit (confirmed absent)."
   ]
 }

@@ -10,7 +10,7 @@
     "leadership": 145,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/caradocs-cavalry.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

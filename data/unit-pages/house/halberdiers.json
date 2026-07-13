@@ -1,0 +1,148 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "halberdiers",
+  "name": "Halberdiers",
+  "profile": "house",
+  "header": {
+    "era": "Silver",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 165,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/halberdiers.png",
+    "metaTier": "A",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Anti-Cavalry Doctrine V",
+          "text": "-35% DMG taken from cavalry while bracing, +DMG vs cavalry while bracing. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Anti-Cavalry Brace Doctrine",
+          "text": "-30% DMG taken from cavalry when using Brace-type skills. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% DMG, alt for Piercing. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Piercing Damage Doctrine",
+          "text": "+80 piercing DMG, +120 piercing AP. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "LDS Doctrine",
+          "text": "Alt for Bleeding Brace. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Unit Damage Doctrine V",
+          "text": "Alt for Siege Fighter. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% DMG in sieges. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Bleeding Brace Doctrine",
+          "text": "Bracing inflicts bleeding on enemy cavalry: 16% max HP + 400 DMG. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). This is the Halberdiers unit (distinct from Halberd Elite, a separate shortlisted unit — not conflated here). Veterancy: Full Bot. Hero pairing: not specified in this thread. Playstyle: if you can manage to move from F2 to F2 in fight and let it brace, that's best (F2 requires all unit models to be at the X-move position); if too hard or the fight moves too fast, swap to F1 and insta-brace — also move them in F1 in case an insta-brace is needed. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Halberdiers is NOT on the 13-unit Chaos shortlist (Halberd Elite is the shortlisted unit, a different unit), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "If you can manage to move from F2 to F2 in fight and let it brace, that's the best (F2 requires all unit models to be at the X-move position). If it's too hard or the fight moves too fast, just swap to F1 and insta-brace. Also move them in F1 in case you need to insta-brace",
+      "footnoteMark": 1
+    },
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). This is the Halberdiers unit (distinct from Halberd Elite, a separate shortlisted unit — not conflated here). Veterancy: Full Bot. Hero pairing: not specified in this thread. Playstyle: if you can manage to move from F2 to F2 in fight and let it brace, that's best (F2 requires all unit models to be at the X-move position); if too hard or the fight moves too fast, swap to F1 and insta-brace — also move them in F1 in case an insta-brace is needed. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Halberdiers is NOT on the 13-unit Chaos shortlist (Halberd Elite is the shortlisted unit, a different unit), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "formation micro",
+          "text": "If you can move from F2 to F2 during the fight and let it brace, that's the best (F2 requires all unit models to be at the X-move position)."
+        },
+        {
+          "context": "fast fights",
+          "text": "If F2-to-F2 is too hard or the fight moves too fast, just swap to F1 and insta-brace; also keep them in F1 in case an insta-brace is needed."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    }
+  ]
+}

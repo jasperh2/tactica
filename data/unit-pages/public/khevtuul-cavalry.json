@@ -10,7 +10,7 @@
     "leadership": 215,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/khevtuul-cavalry.png",
     "metaTier": "D",
     "rarityTier": "T4",
     "fightRatings": null,

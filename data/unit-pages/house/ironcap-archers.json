@@ -1,0 +1,157 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "ironcap-archers",
+  "name": "Ironcap Archers",
+  "profile": "house",
+  "header": {
+    "era": "Chivalric",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 110,
+    "origin": null,
+    "noMastery": false,
+    "icon": null,
+    "metaTier": "B",
+    "rarityTier": "T2",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-16",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Bowmanship Doctrine V",
+          "text": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG. Mandatory per OP (shared guidance for all 4 covered units).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Precision Doctrine V",
+          "text": "+120 piercing DMG, +80 piercing AP, +9% rate of fire. Mandatory per OP (shared).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Projectile Doctrine V",
+          "text": "+60% ammo, +50 piercing AP. Mandatory per OP (shared).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per OP (shared).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Epic Archery Doctrine IV",
+          "text": "+100 piercing DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "LDS Doctrine",
+          "text": "Alt for piercing DMG if needed. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Whistling Arrow Doctrine V",
+          "text": "Alt for piercing, bleed on low-count/high-armor targets. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Artemis",
+          "text": "Alt for piercing, double shoot, exploits same low-count/high-armor angle. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "COMBINED THREAD: OP's own \"Units covered\" line names all four — Vassal Longbowmen + Imperial Archers + Vanguard Archer + Ironcap Archer — confirming the tierlist's link map for this batch. All four are treated identically by the OP: one shared Playstyle argument and one shared Doctrines block, with per-unit differences limited to Tier only (Ironcap Archer: T2 · Mastery, the highest tier of the four). Veterancy (shared, per OP verbatim): \"Most ranged units have either 2 viable lines with different jobs, or only one line (boost in DMG). Standard archers fall in the second category, easily understandable: just go the DMG line.\" Hero pairing: not specified in this thread. This guide is actually an anti-recommendation essay rather than a standard build guide: OP argues standard/non-exotic ranged units (this unit included) are largely non-viable in the current meta due to game pace, low translated impact of ranged damage, no unique role in higher-level play, being an appealing-but-skill-stunting trap for new players, and a bait effect on teammates; verbatim final thought: \"archers might feel easy, but they teach you nothing and contribute even less. If you're serious about improving or contributing to wins, step into melee, cav, or exotic range and start learning the real game.\" Tip (shared, per OP verbatim): \"Some Archer who have Arrow-rain in their veterancy won't be able to equip arrow rain doctrine, just equip more piercing if it's the case\" — relevant to Ironcap Archer's veterancy setup if its line includes Arrow Rain, not separately confirmed either way in this thread. Any Ironcap-specific nuance beyond the Tier line is not separately confirmed by the OP — all guidance is written as applying equally to all four covered units. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor by 9 days; Ironcap Archers is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Most ranged units have either 2 viable lines with different jobs, or only one line (boost in DMG). Standard archers fall in the second category, easily understandable: just go the DMG line.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Backline ranged suppression with arcing arrow fire",
+      "rationale": "COMBINED THREAD: OP's own \"Units covered\" line names all four — Vassal Longbowmen + Imperial Archers + Vanguard Archer + Ironcap Archer — confirming the tierlist's link map for this batch. All four are treated identically by the OP: one shared Playstyle argument and one shared Doctrines block, with per-unit differences limited to Tier only (Ironcap Archer: T2 · Mastery, the highest tier of the four). Veterancy (shared, per OP verbatim): \"Most ranged units have either 2 viable lines with different jobs, or only one line (boost in DMG). Standard archers fall in the second category, easily understandable: just go the DMG line.\" Hero pairing: not specified in this thread. This guide is actually an anti-recommendation essay rather than a standard build guide: OP argues standard/non-exotic ranged units (this unit included) are largely non-viable in the current meta due to game pace, low translated impact of ranged damage, no unique role in higher-level play, being an appealing-but-skill-stunting trap for new players, and a bait effect on teammates; verbatim final thought: \"archers might feel easy, but they teach you nothing and contribute even less. If you're serious about improving or contributing to wins, step into melee, cav, or exotic range and start learning the real game.\" Tip (shared, per OP verbatim): \"Some Archer who have Arrow-rain in their veterancy won't be able to equip arrow rain doctrine, just equip more piercing if it's the case\" — relevant to Ironcap Archer's veterancy setup if its line includes Arrow Rain, not separately confirmed either way in this thread. Any Ironcap-specific nuance beyond the Tier line is not separately confirmed by the OP — all guidance is written as applying equally to all four covered units. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor by 9 days; Ironcap Archers is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "general (shared guidance, anti-recommendation)",
+          "text": "Game pace no longer suits standard ranged: leadership changes and offensive doctrines drive fast, high-pressure engagements with no safe window for traditional ranged to set up and contribute (per OP, shared for all 4 covered units)."
+        },
+        {
+          "context": "general (shared guidance)",
+          "text": "High ranged damage numbers do not translate to impact — most damage is chip, healed off, or spread across tanks, while the team is short a frontline/cav unit that could have broken a phalanx, won a skirmish, or secured a flank."
+        },
+        {
+          "context": "veterancy (shared)",
+          "text": "Standard archers have only one viable veterancy job (boost in DMG) — go the DMG line."
+        },
+        {
+          "context": "doctrine tip (shared)",
+          "text": "Some archers whose veterancy already includes Arrow Rain won't be able to also equip the Arrow Rain doctrine — equip more piercing instead if that's the case."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-16",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@
     "leadership": 60,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/alchemists.png",
     "metaTier": "D",
     "rarityTier": "T3",
     "fightRatings": null,

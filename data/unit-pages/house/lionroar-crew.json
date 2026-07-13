@@ -1,0 +1,143 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "lionroar-crew",
+  "name": "Lionroar Crew",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Ranged Infantry",
+    "typeClass": "cannon",
+    "leadership": 325,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/lionroar-crew.png",
+    "metaTier": "A",
+    "rarityTier": "T5",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lionroar Crew - Veteran",
+          "text": "Unit-unique: -2s cannon deploy time. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Health & Blunt Defence Doctrine IV",
+          "text": "+440 HP, +115 blunt defence. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Blue Lioncrew Doctrine",
+          "text": "Priority HP / defensive unique slot. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Health & Resistance Doctrine V",
+          "text": "+300 HP, -5% DMG taken. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "-16% leadership cost. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Health & Ammo Doctrine",
+          "text": "+300 HP, +15% ammo, alt slot 5. Filler. OP note: \"confirm exact name.\"",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Lionroar Crew - Blood of Iron",
+          "text": "+500 cannon endurance, alt for the unique slot. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Full Top for most situations / Full Bot if using the re-build tech (mostly only competitive). Hero pairing: not specified in this thread. 'Don't put': damage doctrines -- OP verbatim: \"don't scale because they don't apply to the cannons the unit places, stack HP / Special instead.\" Playstyle: Lionroar Crew is a slow-moving unit (especially with cannons deployed) that joins the 'Exotics' community category (units with unique abilities that significantly influence battles, similar to Zykalian Militia, Flamers, Shenji, etc.) -- demands strong teamwork and protection to be effective; if well-guarded, has tremendous potential to impact the battlefield. While its ability to destroy towers/objectives was nerfed, it still excels at some map structures: the bridge on Wall Fort, some gates in other maps, unlocking new strategies. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). OP also links an external Imgur 'Reference image' album not opened/transcribed (out of scope for this read-only capture). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Lionroar Crew is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top for most situations / Full Bot if you use the re-build tech (mostly only competitive)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Full Top for most situations / Full Bot if using the re-build tech (mostly only competitive). Hero pairing: not specified in this thread. 'Don't put': damage doctrines -- OP verbatim: \"don't scale because they don't apply to the cannons the unit places, stack HP / Special instead.\" Playstyle: Lionroar Crew is a slow-moving unit (especially with cannons deployed) that joins the 'Exotics' community category (units with unique abilities that significantly influence battles, similar to Zykalian Militia, Flamers, Shenji, etc.) -- demands strong teamwork and protection to be effective; if well-guarded, has tremendous potential to impact the battlefield. While its ability to destroy towers/objectives was nerfed, it still excels at some map structures: the bridge on Wall Fort, some gates in other maps, unlocking new strategies. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). OP also links an external Imgur 'Reference image' album not opened/transcribed (out of scope for this read-only capture). Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Lionroar Crew is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "Demands strong teamwork and protection to be effective. If well-guarded, has tremendous potential to impact the battlefield."
+        },
+        {
+          "context": "objectives",
+          "text": "While its ability to destroy towers and other objectives was nerfed, it still excels at taking out some map structures (the bridge on Wall Fort, some gates in other maps), which can unlock great new strategies."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -58,7 +58,7 @@
     },
     {
       "tag": "filler",
-      "name": "Piercing Defence Doctrine V",
+      "name": "Epic Piercing Defence Doctrine",
       "note": null,
       "marks": [
         1
@@ -161,6 +161,7 @@
   "gaps": [
     "Source dated Aug 2020 (Unfit Chaos) predates the 2025 Sipahis/Azaps rework — veterancy mechanics may have changed; treat recommendations as directional.",
     "Amya's guide (2026-05-27 edit) predates the 2026-06-25 Chaos patch — doctrine/build guidance may be stale for current season.",
+    "No house guide, house card, or formation guidance exists for this unit.",
     "Example build was excised per editorial rules (concept deleted).",
     "Incidental mentions in pixlnickz (Sipahis guide, 'love Azaps') and EvolozGaming (Rattan Roundshields guide, live match context) contribute no unique mechanical insight."
   ]

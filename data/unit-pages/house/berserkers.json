@@ -1,0 +1,192 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "berserkers",
+  "name": "Berserkers",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 245,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/berserkers.png",
+    "metaTier": "AA",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 9,
+        "raw": "9/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 3,
+        "raw": "3/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-28",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Linebreaker Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Berserk Unique Doctrine",
+          "text": "For cooldown reduction. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": null,
+          "text": "-5% dmg taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": null,
+          "text": "+All Def & +HP. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": null,
+          "text": "Slashing DMG doctrine. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Piercing Defence Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": null,
+          "text": "Movement Speed Doctrines — do not use.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Top-line or Mix-line (bot until +25% rage, rest top). Berserkers have a 3.08s cooldown on skill 2 (Berserker Assault); with the 20% CD reduction unique doctrine it drops to 2s. Combo per OP: if going for free DPS, insta-rage gives best DPS, but the real combo is press 2 (Battle Madness) before engaging, instantly press 1 after to cancel it, press 2 when reaching target, then spam press 3 (Rage) so you rage with max DMG-reduction passive, then keep pressing 2 once then 3 while fighting. Tips & Tricks: keep the defence passive (Battle Madness) up by playing 2 into charge into 1 into 2 into 3, repeat the 2-3 pattern; a 'fast combo' variant is 2 in void before engaging, then 2-1-2-3 to use Frenzy at max stacks. Edit timestamp (2026-05-28) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Berserkers is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top-line or Mix-line (bot until +25% rage, rest top)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Top-line or Mix-line (bot until +25% rage, rest top). Berserkers have a 3.08s cooldown on skill 2 (Berserker Assault); with the 20% CD reduction unique doctrine it drops to 2s. Combo per OP: if going for free DPS, insta-rage gives best DPS, but the real combo is press 2 (Battle Madness) before engaging, instantly press 1 after to cancel it, press 2 when reaching target, then spam press 3 (Rage) so you rage with max DMG-reduction passive, then keep pressing 2 once then 3 while fighting. Tips & Tricks: keep the defence passive (Battle Madness) up by playing 2 into charge into 1 into 2 into 3, repeat the 2-3 pattern; a 'fast combo' variant is 2 in void before engaging, then 2-1-2-3 to use Frenzy at max stacks. Edit timestamp (2026-05-28) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Berserkers is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Big burst units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Debuff & burst units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "\"No 'counter' but the unit is just a great flank unit that provides lots of DPS in a fight\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "role",
+          "text": "Won't do well face to face — it's a flanking unit."
+        },
+        {
+          "context": "combo",
+          "text": "Press 2 (Battle Madness) before engaging, instantly press 1 after to cancel it, press 2 when reaching target, then spam press 3 (Rage) so you rage with max DMG-reduction passive, then keep pressing 2 once then 3 while fighting."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

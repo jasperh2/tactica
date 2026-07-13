@@ -10,7 +10,7 @@
     "leadership": 135,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/ironcap-spearmen.png",
     "metaTier": "C",
     "rarityTier": "T3",
     "fightRatings": null,

@@ -10,7 +10,7 @@
     "leadership": 230,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/huskarls.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

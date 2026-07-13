@@ -10,7 +10,7 @@
     "leadership": 180,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/incendiary-archers.png",
     "metaTier": "C",
     "rarityTier": "T3",
     "fightRatings": null,

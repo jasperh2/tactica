@@ -10,7 +10,7 @@
     "leadership": 155,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/squires.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

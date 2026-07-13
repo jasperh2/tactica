@@ -1,0 +1,176 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "symmachean-paladins",
+  "name": "Symmachean Paladins",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 235,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/symmachean-paladins.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Skirmish": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Duelling": {
+        "value": 5,
+        "raw": "5/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Iron Damage Doctrine V",
+          "text": "Ironsides. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Anti-Infantry Doctrine V",
+          "text": "+200 dmg infantry, +250 block. Mandatory per Amya; slot can be swapped for an LS doctrine if more sustain is needed.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Noble Blood Doctrine I",
+          "text": "Chivalric bleed/speed buff. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Top pick.",
+          "tag": "top-pick"
+        }
+      ],
+      "note": "Veterancy: Topline (recommended) averages 1.68% heal/s, more offensive nodes, CD on bleed; Bot line averages 1.2% heal/s, more defensive nodes, more armor. Hero pairing: Any. Playstyle: don't charge in unless you have a lot of front-lane support (it will stack them); once in the fight, hold V to unlock the counter-attack stance; after pressing heal (2), cancel the animation with a V; unique bleed skill on units that damaged you recently — focus on taking aggro and activating it, and remember you can disengage and play around your healing; good tanking loop is Ironside doctrine into disengage into heal and repeat; Paladins are considered the best unit in the game for X+V cancel (V, then as soon as the damage pop-up shows, X-move and instantly V again, repeat) to raise DPS by cancelling most of the attack animation — only do this when free to DPS, since it stops blocking/counter-attack. Example build: Anti-Infantry Doctrine V (or an LS doctrine if available), Unit Damage Doctrine V, Iron Damage Doctrine V (Ironsides), Noble Blood Doctrine I, Siege Fighter Doctrine. \"Origin\", \"Filler\", and \"Don't put\" are literal X placeholders in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Symmachean Paladins is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Topline (Recommended): Average 1.68% Heal per second / More Offensive Nodes / CD on Bleed. Bot line: Average 1.2% Heal per second / More Defensive Nodes / More Armor",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": "Veterancy: Topline (recommended) averages 1.68% heal/s, more offensive nodes, CD on bleed; Bot line averages 1.2% heal/s, more defensive nodes, more armor. Hero pairing: Any. Playstyle: don't charge in unless you have a lot of front-lane support (it will stack them); once in the fight, hold V to unlock the counter-attack stance; after pressing heal (2), cancel the animation with a V; unique bleed skill on units that damaged you recently — focus on taking aggro and activating it, and remember you can disengage and play around your healing; good tanking loop is Ironside doctrine into disengage into heal and repeat; Paladins are considered the best unit in the game for X+V cancel (V, then as soon as the damage pop-up shows, X-move and instantly V again, repeat) to raise DPS by cancelling most of the attack animation — only do this when free to DPS, since it stops blocking/counter-attack. Example build: Anti-Infantry Doctrine V (or an LS doctrine if available), Unit Damage Doctrine V, Iron Damage Doctrine V (Ironsides), Noble Blood Doctrine I, Siege Fighter Doctrine. \"Origin\", \"Filler\", and \"Don't put\" are literal X placeholders in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Symmachean Paladins is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High damage units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Cavalry."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Pikes."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Don't charge in unless you have plenty of front-lane support with you — charging alone will stack the enemy against you."
+        },
+        {
+          "context": "sustain loop",
+          "text": "Once in the fight hold V for the counter-attack stance; after pressing heal (2), cancel the animation with V so the heal still lands."
+        },
+        {
+          "context": "DPS technique",
+          "text": "X+V cancel: press V, then as soon as the damage pop-up appears, X-move and instantly V again, repeating to cancel most of the attack animation and raise DPS — only do this when free to DPS, since it forgoes blocking and counter-attack."
+        },
+        {
+          "context": "bleed skill",
+          "text": "Unique bleed skill triggers on units that damaged you recently — focus on taking aggro and activating it; you can disengage and play around your own healing."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

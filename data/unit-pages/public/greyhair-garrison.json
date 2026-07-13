@@ -10,7 +10,7 @@
     "leadership": 200,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/greyhair-garrison.png",
     "metaTier": "C",
     "rarityTier": "T4",
     "fightRatings": null,

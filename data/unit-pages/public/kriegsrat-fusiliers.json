@@ -10,7 +10,7 @@
     "leadership": 245,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/kriegsrat-fusiliers.png",
     "metaTier": "C",
     "rarityTier": "T4",
     "fightRatings": null,

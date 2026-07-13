@@ -10,7 +10,7 @@
     "leadership": 300,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/kheshigs.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

@@ -10,7 +10,7 @@
     "leadership": 105,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/javelin-militia.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

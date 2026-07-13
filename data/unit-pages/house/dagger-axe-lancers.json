@@ -1,0 +1,185 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "dagger-axe-lancers",
+  "name": "Dagger Axe Lancers",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 245,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/dagger-axe-lancers.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 2,
+        "raw": "2/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-28",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lancer's Last Stand",
+          "text": "Unit-unique: +40% DMG at <60% headcount. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Charge CD Doctrine",
+          "text": "-14s charge CD, +100 piercing DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Charge Defence Doctrine",
+          "text": "-50% DMG taken while charging, -6s charge CD. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Sprint Doctrine",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "+225 Charge DMG Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Piercing DMG",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "-DMG Taken doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Slashing DMG or Hero DMG",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: Any. Guide edit (2026-06-28) post-dates the 2026-06-25 Chaos patch anchor -- current-season source, not stale. Playstyle kit: the unit's old \"short charge\" trait (max dmg even with 0 momentum) was removed; new play is to press 2 early and maintain the charge if you can wipe in one go. Takes 1.5s to reach final stance for full charge damage; ~10s to push through a blob before 2 ends. Most fights: go in / try to go behind the push with your hero while daggeraxe stand on the opposite side of the push; X-move or press 2 when daggeraxe are 2-3s from impact, let them go through the blob (they follow your hero). Avoid charging in first and then pressing 2 like before; if you can't make good use of the follow-charge, use a normal 1 charge and bring them back with skill 2 (priority should always be to use 2). Better, if possible, to dodge pikes / enter the fight from a better angle when you can charge somewhere and then follow up with 2. Lancer's Last Stand TRICK: if you spawn with it, swap away and swap back; if you just lost a unit, take this one out from supply (best to have it out, swap to another unit, then swap back) -- the 40%-at-60%-headcount doctrine then applies to 100% of the unit. No separate \"Example Build\" section given beyond the doctrine list. CONFLICT LOGGED: this doctrine block and Tips & Tricks text are near-identical to Amya's Tiger and Leopard Cavalry guide -- see provenance.conflicts, flagged for vet review, recorded as-is per source.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Charge cavalry, breaks formations with couched-lance impact",
+      "rationale": "Veterancy: Top Line. Hero pairing: Any. Guide edit (2026-06-28) post-dates the 2026-06-25 Chaos patch anchor -- current-season source, not stale. Playstyle kit: the unit's old \"short charge\" trait (max dmg even with 0 momentum) was removed; new play is to press 2 early and maintain the charge if you can wipe in one go. Takes 1.5s to reach final stance for full charge damage; ~10s to push through a blob before 2 ends. Most fights: go in / try to go behind the push with your hero while daggeraxe stand on the opposite side of the push; X-move or press 2 when daggeraxe are 2-3s from impact, let them go through the blob (they follow your hero). Avoid charging in first and then pressing 2 like before; if you can't make good use of the follow-charge, use a normal 1 charge and bring them back with skill 2 (priority should always be to use 2). Better, if possible, to dodge pikes / enter the fight from a better angle when you can charge somewhere and then follow up with 2. Lancer's Last Stand TRICK: if you spawn with it, swap away and swap back; if you just lost a unit, take this one out from supply (best to have it out, swap to another unit, then swap back) -- the 40%-at-60%-headcount doctrine then applies to 100% of the unit. No separate \"Example Build\" section given beyond the doctrine list. CONFLICT LOGGED: this doctrine block and Tips & Tricks text are near-identical to Amya's Tiger and Leopard Cavalry guide -- see provenance.conflicts, flagged for vet review, recorded as-is per source.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general playstyle",
+          "text": "Old \"short charge\" trait (max dmg even with 0 momentum) was removed. New play: press 2 early and maintain the charge if you can wipe in one go."
+        },
+        {
+          "context": "timing",
+          "text": "Takes 1.5s to reach final stance for full charge damage; about 10s to push through a blob before 2 ends."
+        },
+        {
+          "context": "engage",
+          "text": "Most fights, go in / try to go behind the push with your hero, while your daggeraxe stand on the opposite side of the push. X-move or press 2 when daggeraxe are 2-3s away from impact, let them go through the blob (they follow your hero)."
+        },
+        {
+          "context": "caution",
+          "text": "Avoid charging in first and then pressing 2 like before. If you can't make good use of the follow-charge, use a normal 1 charge and bring them back with skill 2 (priority should always be to use 2). Better to dodge pikes / enter the fight from a better angle when you can charge and follow up with 2."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

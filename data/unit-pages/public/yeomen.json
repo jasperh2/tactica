@@ -10,7 +10,7 @@
     "leadership": 225,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/yeomen.png",
     "metaTier": "B",
     "rarityTier": "T4",
     "fightRatings": {

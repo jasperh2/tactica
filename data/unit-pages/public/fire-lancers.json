@@ -10,7 +10,7 @@
     "leadership": 285,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/fire-lancers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

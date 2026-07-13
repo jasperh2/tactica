@@ -1,0 +1,1162 @@
+/**
+ * heroes/hero-page-v2.css — hero detail page v2, the nine-block layout from
+ * design/handoff-hero-page-v2/Hero Page v2 Shortsword.dc.html (Claude Design, imported
+ * 2026-07-13). Everything is scoped under `.hv2-page` (hero.html's `#hero-v2-page`) with its own
+ * Discord-dark token set, same self-containment discipline as unit-page.css's `.v2-page` block —
+ * nothing here touches the academy nav, the gate, or the hidden v1 tree.
+ *
+ * READABILITY: layout/structure follow the design file exactly; the ink ramp + body-copy sizes
+ * follow the unit-page v2 corrections Jasper made 2026-07-07 ("greys too dark, copy too
+ * small/thin") — lightened inks, reading copy at 500 weight and 13.5px+, only the uppercase mono
+ * micro-labels stay small. Those corrections supersede the design file's literal values.
+ */
+
+/* The v2 sheet is a dense 1440px surface — let it break out of the 1120px reading column, but
+   only when the v2 tree is the one being shown. */
+.hero-page:has(#hero-v2-page:not([hidden])) {
+  max-width: 1500px;
+}
+
+.hv2-page {
+  /* ---- design tokens (scoped; ink ramp = the readability-corrected unit-v2 set) ---- */
+  --app-bg: #1e1f22;
+  --panel: #2b2d31;
+  --panel-2: #202225;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.12);
+  --gold: #e6b352;
+  --gold-bright: #f5cd72;
+  --gold-deep: #d6a244;
+  --gold-soft: rgba(227, 173, 77, 0.14);
+  --gold-border: rgba(227, 173, 77, 0.3);
+  --stripe: rgba(227, 173, 77, 0.05);
+  --ink: #f2f3f5;
+  --ink-2: #d9dce1;
+  --ink-3: #b4b8c0;
+  --ink-4: #9aa0a9;
+  --red: #f08582;
+  --red-soft: rgba(224, 96, 95, 0.16);
+  --green: #74c795;
+  --green-soft: rgba(90, 169, 119, 0.16);
+  --neutral: #b0b6be;
+  --neutral-soft: rgba(153, 160, 168, 0.15);
+  --hv2-radius: 4px;
+  --hv2-radius-sm: 3px;
+  --hv2-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --hv2-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --hv2-serif: 'Spectral', Georgia, serif;
+
+  background: var(--app-bg);
+  color: var(--ink);
+  font-family: var(--hv2-sans);
+  border-radius: 8px;
+  padding: 30px 34px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hv2-page *,
+.hv2-page *::before,
+.hv2-page *::after {
+  box-sizing: border-box;
+}
+
+.hv2-page p {
+  margin: 0;
+}
+
+/* ---- inline SVG icon base ---- */
+.hv2-ic {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  color: inherit;
+  flex: none;
+}
+
+.hv2-ic svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- shared atoms ---- */
+
+.hv2-diamond {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.hv2-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.hv2-micro-label {
+  font-family: var(--hv2-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--ink-4);
+  margin-bottom: 10px;
+}
+
+.hv2-micro-inline {
+  margin-bottom: 0;
+}
+
+.hv2-author {
+  font-family: var(--hv2-mono);
+  font-style: normal;
+  font-size: 11px;
+  color: var(--gold-deep);
+  white-space: nowrap;
+}
+
+.hv2-strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hv2-unknown {
+  font-style: italic;
+  color: var(--ink-3);
+}
+
+.hv2-prose {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.hv2-note {
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.hv2-empty {
+  background: var(--panel-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--hv2-radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-4);
+}
+
+.hv2-gap {
+  font-family: var(--hv2-mono);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink-4);
+  margin-top: 10px;
+}
+
+.hv2-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-family: var(--hv2-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hv2-badge-gold {
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+}
+
+.hv2-badge-dim {
+  color: var(--ink-3);
+  background: var(--neutral-soft);
+}
+
+.hv2-pill {
+  display: inline-flex;
+  padding: 4px 9px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+
+.hv2-pill-strong {
+  font-weight: 600;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.hv2-chipline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hv2-tile {
+  flex: none;
+  border-radius: var(--hv2-radius);
+  border: 1px solid var(--line-strong);
+  background: var(--panel-2);
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 6px, transparent 6px 12px);
+  display: grid;
+  place-items: center;
+  font-family: var(--hv2-mono);
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.hv2-tile-gold {
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+.hv2-tile-lg {
+  width: 66px;
+  height: 66px;
+  font-size: 17px;
+}
+
+/* Real weapon-class art layered over the initials fallback: the img is opaque (same well color)
+   so the coded initials only show when the file is missing and the img removes itself. */
+.hv2-tile-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.hv2-tile-icon img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--panel-2);
+}
+
+.hv2-tile-sm {
+  width: 34px;
+  height: 34px;
+  font-size: 10px;
+}
+
+/* ---- panels + section titles ---- */
+
+.hv2-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--hv2-radius);
+  padding: 17px 19px;
+}
+
+.hv2-sec-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 11px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hv2-sec-accent {
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
+  background: var(--gold);
+  flex: none;
+}
+
+.hv2-sec-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.hv2-sec-meta {
+  font-family: var(--hv2-mono);
+  font-size: 9.5px;
+  color: var(--ink-4);
+}
+
+.hv2-sec-spacer {
+  flex: 1;
+}
+
+.hv2-sec-anchor {
+  font-family: var(--hv2-mono);
+  font-size: 9.5px;
+  color: var(--ink-4);
+}
+
+/* ---- eyebrow ---- */
+
+.hv2-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.hv2-crest {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #0c0a07;
+  display: grid;
+  place-items: center;
+}
+
+.hv2-crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hv2-crest.is-ph::after {
+  content: 'IM';
+  font-family: var(--hv2-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.hv2-eyebrow-brand {
+  font-family: var(--hv2-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
+.hv2-eyebrow-dim {
+  font-family: var(--hv2-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--ink-4);
+}
+
+.hv2-eyebrow-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---- Block 1 · header ---- */
+
+.hv2-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hv2-header-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hv2-name {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.05;
+}
+
+.hv2-archetype {
+  margin: 7px 0 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.hv2-chip-row {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.hv2-chip {
+  min-width: 76px;
+  padding: 8px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv2-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hv2-chip-gold {
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
+}
+
+.hv2-chip-value {
+  font-family: var(--hv2-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hv2-chip-gold .hv2-chip-value {
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.hv2-chip-label {
+  font-family: var(--hv2-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-4);
+  text-align: center;
+}
+
+.hv2-header .hv2-divider {
+  margin: 15px 0 13px;
+}
+
+.hv2-header-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.hv2-header-line {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.hv2-header-line-dim {
+  color: var(--ink-3);
+}
+
+.hv2-header-line-strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hv2-header-line-gold {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.hv2-header-drop-note {
+  color: var(--ink-3);
+}
+
+.hv2-header-freshness {
+  font-family: var(--hv2-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+/* ---- Block 2 · battle role ---- */
+
+.hv2-role-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.hv2-role-line-text {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.hv2-role-line-lead {
+  color: var(--gold);
+}
+
+.hv2-role-quotes {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--hv2-radius-sm);
+  padding: 17px 19px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.hv2-role-quote {
+  font-family: var(--hv2-serif);
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--ink);
+}
+
+/* ---- Blocks 3/4 · positioning | tips ---- */
+
+.hv2-cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.hv2-block-intro {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.hv2-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.hv2-bullets-tight {
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hv2-bullet {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.hv2-bullet .hv2-diamond {
+  margin-top: 6px;
+}
+
+.hv2-bullet-text {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.58;
+  color: var(--ink-2);
+}
+
+.hv2-bullet-lead {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---- Block 5 · armor & stats ---- */
+
+.hv2-armor-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr 1.15fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv2-set-list,
+.hv2-rune-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hv2-set-row,
+.hv2-rune-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 11px 0;
+}
+
+.hv2-set-row + .hv2-set-row,
+.hv2-rune-row + .hv2-rune-row {
+  border-top: 1px solid var(--line);
+}
+
+.hv2-set-row:first-child,
+.hv2-rune-row:first-child {
+  padding-top: 2px;
+}
+
+.hv2-set-row:last-child,
+.hv2-rune-row:last-child {
+  padding-bottom: 3px;
+}
+
+.hv2-set-name-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.hv2-set-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-set-desc {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.hv2-spread-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv2-spread-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hv2-spread-build {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  width: 118px;
+  flex: none;
+}
+
+.hv2-spread-value {
+  font-family: var(--hv2-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.hv2-spread-note {
+  color: var(--ink-4);
+  font-family: var(--hv2-sans);
+}
+
+.hv2-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hv2-ladder-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2.5px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 8px 11px;
+}
+
+.hv2-ladder-grade {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--hv2-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-4);
+}
+
+.hv2-ladder-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.hv2-ladder-s {
+  border-left-color: var(--gold);
+}
+
+.hv2-ladder-s .hv2-ladder-grade {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-bright);
+}
+
+.hv2-ladder-s .hv2-ladder-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-ladder-a {
+  border-left-color: var(--neutral);
+}
+
+.hv2-ladder-a .hv2-ladder-grade {
+  background: var(--neutral-soft);
+  color: var(--ink-2);
+}
+
+.hv2-serif-quote {
+  margin-top: 11px;
+  font-family: var(--hv2-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.hv2-weapon-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hv2-runes-panel {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv2-radius-sm);
+  padding: 14px 15px;
+  align-self: stretch;
+}
+
+.hv2-runes-panel .hv2-divider {
+  margin: 12px 0;
+}
+
+.hv2-runes-panel .hv2-empty,
+.hv2-runes-panel .hv2-pill {
+  background: var(--app-bg);
+}
+
+.hv2-runes-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 11px;
+}
+
+.hv2-runes-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.hv2-runes-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-runes-value {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.hv2-runes-intro {
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.hv2-runes-mandatory {
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---- Block 6 · controls & combos ---- */
+
+.hv2-controls-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.3fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv2-aim-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hv2-aim-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+.hv2-aim-row + .hv2-aim-row {
+  border-top: 1px solid var(--line);
+}
+
+.hv2-aim-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.hv2-aim-note {
+  padding: 0 0 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+.hv2-onoff {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-family: var(--hv2-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+}
+
+.hv2-onoff .hv2-ic {
+  width: 10px;
+  height: 10px;
+}
+
+.hv2-onoff.hv2-on {
+  font-weight: 700;
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
+}
+
+.hv2-skill-line .hv2-pill {
+  padding: 5px 10px;
+}
+
+.hv2-clip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hv2-clip {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.hv2-keys {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 4px 0 10px;
+}
+
+.hv2-key {
+  min-width: 32px;
+  min-height: 34px;
+  padding: 5px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hv2-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.hv2-key-arrow {
+  color: var(--gold-deep);
+  font-family: var(--hv2-mono);
+  font-size: 13px;
+  flex: none;
+}
+
+.hv2-combo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.hv2-combo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv2-combo-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  width: 132px;
+  flex: none;
+}
+
+.hv2-combo-chain {
+  font-family: var(--hv2-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 260px;
+}
+
+.hv2-combo-note {
+  color: var(--ink-4);
+  font-family: var(--hv2-sans);
+}
+
+/* ---- Block 7 · builds ---- */
+
+.hv2-build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+
+.hv2-build-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv2-radius-sm);
+  padding: 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv2-build-rec {
+  border-color: rgba(227, 173, 77, 0.25);
+}
+
+.hv2-build-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hv2-build-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-build-type {
+  margin-top: 2px;
+  font-family: var(--hv2-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-4);
+}
+
+.hv2-badge-rec {
+  padding: 3px 8px;
+  font-size: 9px;
+}
+
+.hv2-badge-rec .hv2-ic {
+  width: 10px;
+  height: 10px;
+}
+
+.hv2-build-summary {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.hv2-build-foot {
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hv2-build-foot-line {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.hv2-build-alt-label {
+  font-family: var(--hv2-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  margin-bottom: 2px;
+}
+
+/* ---- Block 8 · matchups ---- */
+
+.hv2-mu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv2-mu-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hv2-mu-head .hv2-ic {
+  width: 13px;
+  height: 13px;
+}
+
+.hv2-mu-head-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.hv2-green {
+  color: var(--green);
+}
+
+.hv2-red {
+  color: var(--red);
+}
+
+.hv2-goldc {
+  color: var(--gold);
+}
+
+.hv2-mu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hv2-mu-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2.5px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 9px 11px;
+}
+
+.hv2-mu-strong {
+  border-left-color: var(--green);
+}
+
+.hv2-mu-weak {
+  border-left-color: var(--red);
+}
+
+.hv2-mu-syn {
+  border-left-color: var(--gold);
+}
+
+.hv2-mu-vs {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv2-mu-why {
+  margin-top: 3px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+/* ---- Block 9 · footer ---- */
+
+.hv2-footer {
+  padding: 2px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv2-footer-credit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv2-footer-mono {
+  font-family: var(--hv2-mono);
+  font-size: 10.5px;
+  color: var(--ink-4);
+}
+
+.hv2-philosophy {
+  font-family: var(--hv2-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/* ---- responsive collapse (the academy site is verified down to 390px) ---- */
+
+@media (max-width: 1080px) {
+  .hv2-armor-grid,
+  .hv2-mu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .hv2-page {
+    padding: 20px 16px 24px;
+  }
+
+  .hv2-cols-2,
+  .hv2-controls-grid,
+  .hv2-role-quotes {
+    grid-template-columns: 1fr;
+  }
+}

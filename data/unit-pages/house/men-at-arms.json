@@ -1,0 +1,190 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "men-at-arms",
+  "name": "Men-at-Arms",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 215,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/men-at-arms.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Stamina Doctrine V",
+          "text": "-24% charge CD, +1 charge target. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Charge Doctrine V",
+          "text": "+250 charge dmg, +450 charge block break. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Iron Damage Doctrine V",
+          "text": "Ironsides. Mandatory per Amya; can replace with Epic Leadership Doctrine.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Anti-Infantry Doctrine",
+          "text": "+200 dmg infantry, +250 block. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Noble Blood Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler; alt for Ironside.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: if you can help your unit (heavy armor, or fighting medium armor) go Top Line + rest Mid until 3/3 piercing dmg, rest non-selected line; if you can't help your unit (light armor, or medium such as musket) go Bot Line + rest Mid until 3/3 piercing dmg, rest non-selected line. Hero pairing: Any. Playstyle kit: relies heavily on Cover Commander as main DPS tool (mini-charge CD 9s, not the first ability); focus charge-related doctrines especially +1 hit on charge; always use Cover Commander mode, never V; can charge to engage but better to activate Cover Commander and move in/out of combat; triggering Charge then Cover Commander (no V/X-move) stacks a mini-charge on next impact; reset Cover Commander every ~2s for the hidden damage-reduction passive (40%->0%, decaying 4-6s). Example build: Stamina Doctrine V, Charge Doctrine V, Iron Damage Doctrine V (or Epic Leadership Doctrine), Unit Damage Doctrine V or Siege Fighter Doctrine, Anti-Infantry Doctrine or Noble Blood Doctrine. \"Don't put\" section is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Men-at-Arms is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "If you can help your unit (heavy armor, or fighting medium armor): Top Line + rest Mid until 3/3 piercing dmg, rest non-selected line. If you can't help your unit (light armor, or medium such as musket): Bot Line + rest Mid until 3/3 piercing dmg, rest non-selected line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": "Veterancy: if you can help your unit (heavy armor, or fighting medium armor) go Top Line + rest Mid until 3/3 piercing dmg, rest non-selected line; if you can't help your unit (light armor, or medium such as musket) go Bot Line + rest Mid until 3/3 piercing dmg, rest non-selected line. Hero pairing: Any. Playstyle kit: relies heavily on Cover Commander as main DPS tool (mini-charge CD 9s, not the first ability); focus charge-related doctrines especially +1 hit on charge; always use Cover Commander mode, never V; can charge to engage but better to activate Cover Commander and move in/out of combat; triggering Charge then Cover Commander (no V/X-move) stacks a mini-charge on next impact; reset Cover Commander every ~2s for the hidden damage-reduction passive (40%->0%, decaying 4-6s). Example build: Stamina Doctrine V, Charge Doctrine V, Iron Damage Doctrine V (or Epic Leadership Doctrine), Unit Damage Doctrine V or Siege Fighter Doctrine, Anti-Infantry Doctrine or Noble Blood Doctrine. \"Don't put\" section is a literal X placeholder in the OP — not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Men-at-Arms is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High burst units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Spacing units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Low-tier units relying on hit-to-debuff; heroes."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general playstyle",
+          "text": "Rely heavily on Cover Commander as main DPS tool; always use Cover Commander mode, never V."
+        },
+        {
+          "context": "engage",
+          "text": "Can charge to engage, but usually better to activate Cover Commander and move in and out of combat."
+        },
+        {
+          "context": "sustain",
+          "text": "Reset Cover Commander every ~2s to keep the hidden damage-reduction passive high (40% decaying to 0% over 4-6s)."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

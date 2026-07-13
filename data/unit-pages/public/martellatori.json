@@ -10,7 +10,7 @@
     "leadership": 30,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/martellatori.png",
     "metaTier": "D",
     "rarityTier": "T1",
     "fightRatings": null,

@@ -1,0 +1,135 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "prefecture-pikemen",
+  "name": "Prefecture Pikemen",
+  "profile": "house",
+  "header": {
+    "era": "Silver",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 165,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/prefecture-pikemen.png",
+    "metaTier": "B",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Hero Damage Doctrine V",
+          "text": "+115 hero DMG, +110 all AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Piercing Damage Doctrine",
+          "text": "+80 piercing DMG, +120 piercing AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Mobility Doctrine V",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "BloodThirsty",
+          "text": "Lifesteal & DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        }
+      ],
+      "note": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Playstyle: F3 Column for buffs; wait for raid glow; charge, then press 2 after impact; try to leave if you can and repeat, otherwise let them die as heroes. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Prefecture Pikemen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Bot Line. Hero pairing: not specified in this thread. Playstyle: F3 Column for buffs; wait for raid glow; charge, then press 2 after impact; try to leave if you can and repeat, otherwise let them die as heroes. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' are literal X placeholders in the OP. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor by about a month; Prefecture Pikemen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "setup",
+          "text": "F3 Column for buffs; wait for raid glow."
+        },
+        {
+          "context": "engage",
+          "text": "Charge, then press 2 after impact."
+        },
+        {
+          "context": "disengage",
+          "text": "Try to leave if you can and repeat, otherwise let them die as heroes."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

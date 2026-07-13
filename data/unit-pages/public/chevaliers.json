@@ -10,7 +10,7 @@
     "leadership": 340,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/chevaliers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

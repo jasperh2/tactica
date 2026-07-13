@@ -10,7 +10,7 @@
     "leadership": 225,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/prefecture-heavy-cavalry.png",
     "metaTier": "D",
     "rarityTier": "T4",
     "fightRatings": null,

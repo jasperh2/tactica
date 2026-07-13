@@ -40,11 +40,7 @@
     ],
     "pressure": null
   },
-  "controls": {
-    "loop": [],
-    "loopMarks": [],
-    "notes": null
-  },
+  "controls": null,
   "footnotes": [
     {
       "mark": 1,
@@ -64,6 +60,7 @@
     "No fight-type ratings recorded (unit-strengths.json has zero entry).",
     "A house-authored unit guide/card is confirmed to have existed in Discord (discord-guide-inventory.md, dated 2025-11-25) but its content was never captured to disk.",
     "Only substantive sources found: two incidental mentions in Amya's hero guides (musket.md, longbow.md), citing Falconetti Gunners as a reference point for the hero's own kit — not an analysis of the unit itself.",
+    "A StarBurst video passing mention (Artillery Raid comp guide, 2024-07-20) names Falconetti as a raid-warband option with no further detail — excluded as non-substantive.",
     "An Evo Loz Gaming video mention (2020-07-07, about Ironcap Swordsmen) is excluded: the transcript's own Gaps section flags the 'Falconet/Gunners' identification as ASR-uncertain and possibly referring to Falconet artillery pieces, not this unit."
   ]
 }

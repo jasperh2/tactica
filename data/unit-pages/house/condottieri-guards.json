@@ -1,0 +1,143 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "condottieri-guards",
+  "name": "Condottieri Guards",
+  "profile": "house",
+  "header": {
+    "era": "Silver",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 160,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/condottieri-guards.png",
+    "metaTier": "A",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Defence Doctrine V",
+          "text": "+80 all defences, -5% DMG taken. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Charge CD Doctrine",
+          "text": "-24% charge CD, +1 charge target. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "LDS Doctrine",
+          "text": "-16% leadership cost. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% DMG in sieges, alt for LDS or fills the free slot. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Damage-reduction doctrine",
+          "text": "Another -5% DMG taken doctrine, alt for LDS or fills the free slot. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Epic Blunt Damage Doctrine",
+          "text": "+90 blunt DMG, alt for LDS or fills the free slot. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: charge launches the Shock Shieldbash after it; press 2 is the main DPS spell. Usually: charge, let the attack animation play out, then press 2. Alternative: X-move/Flank, press 2, then charge when in melee. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Condottieri Guards is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": "No \"Top Pick\" doctrine tier present — OP only gives Mandatory / Filler / Don't put (not fabricated). Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: charge launches the Shock Shieldbash after it; press 2 is the main DPS spell. Usually: charge, let the attack animation play out, then press 2. Alternative: X-move/Flank, press 2, then charge when in melee. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Condottieri Guards is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Charge launches the Shock Shieldbash after it; press 2 is the main DPS spell."
+        },
+        {
+          "context": "combo",
+          "text": "Usually: charge, let the attack animation play out, then press 2. Alternative: X-move/Flank, press 2, then charge once in melee."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

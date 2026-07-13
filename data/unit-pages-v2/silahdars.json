@@ -42,7 +42,7 @@
     },
     {
       "tag": "top-pick",
-      "name": "Health & Resistance Doctrine",
+      "name": "Health & Resistance Doctrine V",
       "note": "+300 HP, −5% dmg taken",
       "marks": [
         1
@@ -58,7 +58,7 @@
     },
     {
       "tag": "filler",
-      "name": "Health & All Defences Doctrine",
+      "name": "Health & Defence Doctrine V (All)",
       "note": "+440 HP, +40 all defences",
       "marks": [
         1
@@ -66,7 +66,7 @@
     },
     {
       "tag": "filler",
-      "name": "Health & Piercing Defence Doctrine",
+      "name": "Health & Defence Doctrine V (Piercing)",
       "note": "+440 HP, +125 piercing defence",
       "marks": [
         1

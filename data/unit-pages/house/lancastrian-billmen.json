@@ -1,0 +1,184 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "lancastrian-billmen",
+  "name": "Lancastrian Billmen",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": null,
+    "leadership": 220,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/lancastrian-billmen.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lancastrian Billmen Unique Doctrine 1",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Lancastrian Billmen Unique Doctrine 2",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% dmg — infantry-focused alt. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Anti-Cavalry Doctrine",
+          "text": "Cav-focused build, doctrine 1 of 2.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Anti-Cavalry Doctrine",
+          "text": "Cav-focused build, doctrine 2 of 2.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Mobility Doctrine",
+          "text": "Infantry-focused alt. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": null,
+          "text": "DMG Reduction Doctrines — infantry-focused alt. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: OP defers entirely to 'the graph under the post' (a follow-up post by @JayJayAyh, 2026-05-24, an 'EU1 8.5K+ graph') — graph image not transcribed at capture, so veterancy split is not captured in text form here; not fabricated. 'Origin' and 'Don't put' are literal X placeholders in the OP. Example build (cav-focused) per OP: Lancastrian Billmen Unique Doctrine 1, Lancastrian Billmen Unique Doctrine 2, Unit Damage Doctrine V, Anti-Cavalry Doctrine, Anti-Cavalry Doctrine (second) or Epic Leadership Doctrine; cav-focused build uses 2x Cav DMG Reduction doctrines, inf-focused build replaces slots 1-2 with Bloodthirsty / Mobility / DMG Reduction doctrines. Playstyle: they indeed got buffed (per OP, referring to a prior balance pass, not necessarily Chaos) — huge bleed dmg, survive a bit more now; play like any pikes (play around your Stalwart or any current-meta shield); make sure to be braced when cav arrive; never move formation while fighting or you lose all dmg; use the 2 on cooldown, you stay braced during it (press 2 is a huge burst). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Lancastrian Billmen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: OP defers entirely to 'the graph under the post' (a follow-up post by @JayJayAyh, 2026-05-24, an 'EU1 8.5K+ graph') — graph image not transcribed at capture, so veterancy split is not captured in text form here; not fabricated. 'Origin' and 'Don't put' are literal X placeholders in the OP. Example build (cav-focused) per OP: Lancastrian Billmen Unique Doctrine 1, Lancastrian Billmen Unique Doctrine 2, Unit Damage Doctrine V, Anti-Cavalry Doctrine, Anti-Cavalry Doctrine (second) or Epic Leadership Doctrine; cav-focused build uses 2x Cav DMG Reduction doctrines, inf-focused build replaces slots 1-2 with Bloodthirsty / Mobility / DMG Reduction doctrines. Playstyle: they indeed got buffed (per OP, referring to a prior balance pass, not necessarily Chaos) — huge bleed dmg, survive a bit more now; play like any pikes (play around your Stalwart or any current-meta shield); make sure to be braced when cav arrive; never move formation while fighting or you lose all dmg; use the 2 on cooldown, you stay braced during it (press 2 is a huge burst). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Lancastrian Billmen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High burst & block units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "High range & spacing units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Cav & low HP pool units."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "playstyle",
+          "text": "Play like any pikes (play around your Stalwart or any current meta shield); make sure to be braced when cav arrive."
+        },
+        {
+          "context": "positioning",
+          "text": "Never move formation while fighting or you will lose all damage."
+        },
+        {
+          "context": "combo",
+          "text": "Use the 2 on cooldown — you stay braced during it, and press 2 is a huge burst."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

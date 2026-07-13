@@ -10,7 +10,7 @@
     "leadership": 170,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/demesne-arquebusiers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

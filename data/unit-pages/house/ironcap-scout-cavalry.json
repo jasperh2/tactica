@@ -1,0 +1,147 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "ironcap-scout-cavalry",
+  "name": "Ironcap Scout Cavalry",
+  "profile": "house",
+  "header": {
+    "era": "Chivalric",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 120,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/ironcap-scout-cavalry.png",
+    "metaTier": "B",
+    "rarityTier": "T2",
+    "fightRatings": null,
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-16",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Sword Cavalry Speed Doctrine",
+          "text": "+30% movement speed, +90 slashing DMG, +60 slashing AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Victory Rush Doctrine",
+          "text": "Mandatory per Amya (no further effect text given in OP).",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Hero Damage Doctrine V",
+          "text": "+115 hero DMG, +110 all AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Sword Cav Sprint Extra-Attack Doctrine",
+          "text": "Sword cav archetype-shared: while Sprint is active, extra attack deals double DMG, can't trigger when using active. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 6,
+          "name": "Generic DMG doctrines",
+          "text": "Alt if you don't have the Sprint extra-attack + Sword Cav Speed combo. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Mobility Doctrine V",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: Charge is a close-up spell, not the main DMG tool like other cav — Charge or X-move in, then press 2. With the recommended doctrine set, the X-move while Sprint is active is insanely strong (core value of the Sprint Extra-Attack + Sword Cavalry Speed combo); without those doctrines, replace with other DMG doctrines. Follow-up post (2025-03-17) attaches a video clip 'Clap-2.mp4', not transcribed. Thread title is 'Ironcap Scouts' (tierlist assigns this to 'Ironcap Scout Cavalry'); thread tags T2/Cavalry. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' beyond what's listed are literal X placeholders in the OP. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor by 9 days; Ironcap Scout Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Melee cavalry, flanks and runs down routing infantry",
+      "rationale": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: Charge is a close-up spell, not the main DMG tool like other cav — Charge or X-move in, then press 2. With the recommended doctrine set, the X-move while Sprint is active is insanely strong (core value of the Sprint Extra-Attack + Sword Cavalry Speed combo); without those doctrines, replace with other DMG doctrines. Follow-up post (2025-03-17) attaches a video clip 'Clap-2.mp4', not transcribed. Thread title is 'Ironcap Scouts' (tierlist assigns this to 'Ironcap Scout Cavalry'); thread tags T2/Cavalry. No dedicated Tips & Tricks section beyond the Playstyle bullets (OP gap, not fabricated). 'Filler'/'Don't put' beyond what's listed are literal X placeholders in the OP. Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor by 9 days; Ironcap Scout Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Charge is a close-up spell and not your main way of doing DMG like other cav. Charge or X-move in, then press 2."
+        },
+        {
+          "context": "combo",
+          "text": "With the recommended set of doctrines, the X-move while Sprint is active is insanely strong."
+        },
+        {
+          "context": "fallback",
+          "text": "If you don't have the Sprint Extra-Attack + Sword Cavalry Speed combo, replace with other DMG doctrines."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-16",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

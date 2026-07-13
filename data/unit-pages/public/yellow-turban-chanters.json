@@ -10,7 +10,7 @@
     "leadership": 95,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/yellow-turban-chanters.png",
     "metaTier": "C",
     "rarityTier": "T3",
     "fightRatings": null,

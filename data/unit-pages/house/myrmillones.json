@@ -1,0 +1,174 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "myrmillones",
+  "name": "Myrmillones",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 245,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/myrmillones.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "CCi Doctrine (Stand Fast)",
+          "text": "Mandatory — must activate during the charge.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Block Doctrine",
+          "text": "+300 block, -90 flat dmg. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 5,
+          "name": "Damage Reduction Doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Unit-unique doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: Any. Playstyle: press 1 (Shield Sortie/charge) for a huge shock attack, then stand in BLOCK formation — don't cancel until you can safely retreat; CC-Immunity (Stand Fast) is mandatory since it's activated during the charge; charge in, hold formation until you can escape, repeat. \"Origin\" and \"Don't put\" are literal X placeholders in the OP; \"Tips & Tricks\" is a single literal X bullet — none fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Myrmillones is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "Veterancy: Top Line. Hero pairing: Any. Playstyle: press 1 (Shield Sortie/charge) for a huge shock attack, then stand in BLOCK formation — don't cancel until you can safely retreat; CC-Immunity (Stand Fast) is mandatory since it's activated during the charge; charge in, hold formation until you can escape, repeat. \"Origin\" and \"Don't put\" are literal X placeholders in the OP; \"Tips & Tricks\" is a single literal X bullet — none fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Myrmillones is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Anything that can dodge the charge."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Spread units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Not much — stalwarts only if they misplay CC-immunity timing, phalanx (per Amya's own hedge)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Press 1 (Shield Sortie) to charge in; huge shock attack follows, then hold BLOCK formation."
+        },
+        {
+          "context": "disengage",
+          "text": "Don't cancel block formation until you're sure you can retreat safely; charge in, hold, escape, repeat."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@
     "leadership": 225,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/banner-guards.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

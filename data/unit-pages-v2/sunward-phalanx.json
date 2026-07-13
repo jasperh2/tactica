@@ -18,7 +18,7 @@
   "doctrines": [
     {
       "tag": "mandatory",
-      "name": "Bloodthirsty Doctrine",
+      "name": "Epic Bloodthirsty Doctrine",
       "note": "lifesteal",
       "marks": [
         1
@@ -43,14 +43,15 @@
     {
       "tag": "top-pick",
       "name": "Epic Polearm Doctrine",
-      "note": null,
+      "note": "oneshots hero divers, turn 180° and re-brace if flanked — house benches it for cav-kill priority {3}",
       "marks": [
-        1
+        1,
+        3
       ]
     },
     {
       "tag": "top-pick",
-      "name": "Sunward Phalanx: Overwhelm",
+      "name": "Overwhelm",
       "note": "totem",
       "marks": [
         1
@@ -110,9 +111,9 @@
     }
   ],
   "battleRole": {
-    "positioning": "Sit one pike-length behind your front line and control distance — never lead with it; set brace range accounting for enemy long pikes. {2}",
+    "positioning": "Sit one pike-length behind your front line and control distance — never lead with it; set brace range accounting for enemy long pikes. {2} In overlap play, spread the models and sit them on your Modaos — good in overlap, not solo. {3}",
     "formation": "Default F1 (spread): CC only disables part of the line, the rest keeps fighting. {2} F2 (block) only in narrow terrain that denies flanks, to concentrate center damage. {2}",
-    "tips": "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat — expect the second, timed CC. {2}"
+    "tips": "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat — expect the second, timed CC. {2} Take it on defence 15-starts (spawn with it or supply-pull nearby); skip far-spawn maps — among the slowest units even with mobility doctrine. {3}"
   },
   "matchups": {
     "cards": [
@@ -123,6 +124,24 @@
         "house": false,
         "marks": [
           1
+        ]
+      },
+      {
+        "name": "Bastard Sword",
+        "rel": "hero-threat",
+        "why": "mount ult knocks the braced line, cav rides over — spacing denies it",
+        "house": true,
+        "marks": [
+          3
+        ]
+      },
+      {
+        "name": "Modao",
+        "rel": "pairs",
+        "why": "overlap anchor — sit spread on them",
+        "house": true,
+        "marks": [
+          3
         ]
       },
       {
@@ -151,7 +170,7 @@
     "loopMarks": [
       1
     ],
-    "notes": "Instant brace (1 → V) — pikes drop with CC applied immediately; ramming while braced adds zero damage. {2} Pike rotation (V) — every model faces the nearest enemy, ~doubles contact. {2} Ares' Flurry (2) — big damage, forces overextension; advance backwards after. {2} Double-C brace: 3–4× area coverage, minimal DPS loss. {1}"
+    "notes": "Instant brace (1 → V) — pikes drop with CC applied immediately; ramming while braced adds zero damage. {2} Pike rotation (V) — every model faces the nearest enemy, ~doubles contact. {2} Ares' Flurry (2) — big damage, forces overextension; advance backwards after. {2} Double-C brace: 3–4× area coverage, minimal DPS loss. {1} Anti-BS counter: advance backwards → X (cancels pike animation) → long-press V on the Bastard Sword. {3}"
   },
   "footnotes": [
     {
@@ -165,9 +184,16 @@
       "author": "Herlajis",
       "date": "Oct 2024",
       "house": false
+    },
+    {
+      "mark": 3,
+      "author": "house guide",
+      "date": "Jun 2026",
+      "house": true
     }
   ],
   "gaps": [
+    "A StarBurst house card ('Sunward Phalanx: Titanic', 2024-09-16) is known to exist but was never captured — would outrank Amya for the build if recovered.",
     "Skill-2 name unarbitrated: 'Ares' Flurry' (Amya) vs 'Area's Fury' (Herlajis transcript)."
   ]
 }

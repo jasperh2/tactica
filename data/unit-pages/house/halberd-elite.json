@@ -1,0 +1,175 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "halberd-elite",
+  "name": "Halberd Elite",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 225,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/halberd-elite.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Flank": {
+        "value": 3,
+        "raw": "3/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 2,
+        "raw": "2/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). \"Cloud Cleave\" cooldown 6s→5s; Cloud Cleave + Storm Surge armour penetration +10%"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Halberd Elite Unique Epic Doctrine",
+          "text": "+300 block. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% dmg. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Toughness Doctrine",
+          "text": "-33% dmg taken first 8 hits. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "-5% DMG Taken Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Other Halberd Elite Epic Unique",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "-5% DMG Taken Doctrine",
+          "text": "A second copy. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Bot Line -- \"Top is playable too, but I personally think the CCi is too important. You can try top or just trust and go bot.\" Hero pairing: X (no specifics given by OP). \"Replace -5% DMG Taken slot with LS doctrine if needed.\" Example build per OP: Halberd Elite Unique Epic Doctrine (+300 block), Unit Damage Doctrine V, Epic Bloodthirsty Doctrine, Toughness Doctrine (-33% dmg taken first 8 hits), -5% DMG Taken Doctrine or Siege Fighter Doctrine. \"Don't put\" slot is a literal X placeholder in the OP -- not filled in, not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line (\"Top is playable too, but I personally think the CCi is too important. You can try top or just trust and go bot.\")",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Bot Line -- \"Top is playable too, but I personally think the CCi is too important. You can try top or just trust and go bot.\" Hero pairing: X (no specifics given by OP). \"Replace -5% DMG Taken slot with LS doctrine if needed.\" Example build per OP: Halberd Elite Unique Epic Doctrine (+300 block), Unit Damage Doctrine V, Epic Bloodthirsty Doctrine, Toughness Doctrine (-33% dmg taken first 8 hits), -5% DMG Taken Doctrine or Siege Fighter Doctrine. \"Don't put\" slot is a literal X placeholder in the OP -- not filled in, not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: X (no specifics given by OP)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "This unit ignores block, it needs front lane, you are too low HP to do anything alone."
+        },
+        {
+          "context": "engage",
+          "text": "X-move in, press 2 so your unit \"grabs\" the enemy."
+        },
+        {
+          "context": "follow-up",
+          "text": "Press 1 after; the 2 resets CC and gives you 30% dmg reduction."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

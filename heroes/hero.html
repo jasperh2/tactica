@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <title>Hero — Immortals Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../shared/academy.css" />
   <link rel="stylesheet" href="./heroes.css" />
+  <link rel="stylesheet" href="./hero-page-v2.css" />
 </head>
 <body>
   <div id="nav-root"></div>
 
   <main class="hero-page" id="app-shell">
     <p class="empty-state hero-not-found" id="hero-not-found" hidden></p>
+
+    <!-- V2 layout — the nine-block hero page (design/handoff-hero-page-v2/Hero Page v2
+         Shortsword.dc.html, imported 2026-07-13). hero-page-v2.boot.mjs builds the ENTIRE tree
+         into this single root for every class; the v1 tree below stays hidden as the rollback
+         path (swap the boot import at the bottom of this file to go back). Blocks whose content
+         the hero-content collection pass hasn't delivered yet render honest labeled empty
+         states — see the extension contract in hero-page-v2.mjs. -->
+    <div id="hero-v2-page" class="hv2-page" hidden></div>
 
     <div id="hero-content" hidden>
       <!-- H1 — Header -->
@@ -133,7 +144,9 @@
     mountNav('heroes');
   </script>
   <script type="module">
-    import { boot } from './hero-page.boot.mjs';
+    // v2 nine-block layout (all classes). Rollback: import { boot } from './hero-page.boot.mjs'
+    // and remove the #hero-v2-page root above.
+    import { boot } from './hero-page-v2.boot.mjs';
     boot();
   </script>
 </body>

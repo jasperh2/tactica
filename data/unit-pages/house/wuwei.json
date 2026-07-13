@@ -1,0 +1,176 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "wuwei",
+  "name": "WuWei",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 235,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/wuwei.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Flank": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Skirmish": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Wuwei Unique Doctrine",
+          "text": "Brutal Sweep restores 10% max HP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Toughness Doctrine",
+          "text": "-33% dmg taken, gone after 8 hits. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% all-type dmg in sieges. Top pick.",
+          "tag": "top-pick"
+        }
+      ],
+      "note": "Veterancy: Full Top. Hero pairing: Any. \"Filler\" doctrine section is a literal X placeholder in the OP -- not fabricated here. \"Don't put\": DMG reduction like the -5% one, per Amya you're getting one-shot anyway. Playstyle kit: go with frontline; most of the time press 1 then quickly press 2; when cooldowns reset, spam 1 and 2 again (killing enemies resets cooldowns); if fighting a heavy armor unit, let skill 1 land its hit first to apply the armor debuff, then resume spamming 1 and 2; be careful about not over-extending, sometimes better to X-move back before pressing 1-2 once more. Example build per OP: Unit Damage Doctrine V, Toughness Doctrine (-33% dmg taken first 8 hits), Wuwei Unique Doctrine (Brutal Sweep +10% HP), Epic Combat Doctrine (3/6/9), Siege Fighter Doctrine. \"Origin\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- WuWei is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Full Top. Hero pairing: Any. \"Filler\" doctrine section is a literal X placeholder in the OP -- not fabricated here. \"Don't put\": DMG reduction like the -5% one, per Amya you're getting one-shot anyway. Playstyle kit: go with frontline; most of the time press 1 then quickly press 2; when cooldowns reset, spam 1 and 2 again (killing enemies resets cooldowns); if fighting a heavy armor unit, let skill 1 land its hit first to apply the armor debuff, then resume spamming 1 and 2; be careful about not over-extending, sometimes better to X-move back before pressing 1-2 once more. Example build per OP: Unit Damage Doctrine V, Toughness Doctrine (-33% dmg taken first 8 hits), Wuwei Unique Doctrine (Brutal Sweep +10% HP), Epic Combat Doctrine (3/6/9), Siege Fighter Doctrine. \"Origin\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- WuWei is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Block, spacing, burst units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Rattan pikes, cavalry."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "\"Nearly nothing but insane dmg if free dps\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Go with frontline; most of the time press 1, then quickly press 2."
+        },
+        {
+          "context": "sustain",
+          "text": "When cooldowns reset, spam 1 and 2 again -- killing enemies resets cooldowns."
+        },
+        {
+          "context": "vs heavy armor",
+          "text": "Let skill 1 land its hit first to apply the armor debuff, then resume spamming 1 and 2."
+        },
+        {
+          "context": "caution",
+          "text": "Be careful about not over-extending; sometimes it's better to X-move back before pressing 1-2 once more."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

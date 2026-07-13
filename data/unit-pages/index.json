@@ -11,8 +11,8 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 60,
-      "icon": null,
-      "richness": "full",
+      "icon": "assets/unit-icons/alchemists.png",
+      "richness": "stats-only",
       "presentSections": []
     },
     {
@@ -23,7 +23,7 @@
       "classBucket": "ranged",
       "era": "Feudal",
       "leadership": 45,
-      "icon": null,
+      "icon": "assets/unit-icons/archer-militia.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -37,7 +37,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 235,
-      "icon": null,
+      "icon": "assets/unit-icons/armiger-lancers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -51,7 +51,7 @@
       "classBucket": "ranged",
       "era": "Heroic",
       "leadership": 205,
-      "icon": null,
+      "icon": "assets/unit-icons/aschigaru-muskets.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -65,7 +65,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 230,
-      "icon": null,
+      "icon": "assets/unit-icons/axe-raiders.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -97,8 +97,8 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 90,
-      "icon": null,
-      "richness": "full",
+      "icon": "assets/unit-icons/bagpipers.png",
+      "richness": "stats-only",
       "presentSections": []
     },
     {
@@ -109,7 +109,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 225,
-      "icon": null,
+      "icon": "assets/unit-icons/banner-guards.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -141,7 +141,7 @@
       "classBucket": "ranged",
       "era": "Chivalric",
       "leadership": 60,
-      "icon": null,
+      "icon": "assets/unit-icons/black-dragon-archers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -155,7 +155,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 80,
-      "icon": null,
+      "icon": "assets/unit-icons/black-dragon-javelineers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -169,7 +169,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 80,
-      "icon": null,
+      "icon": "assets/unit-icons/black-dragon-pikemen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -183,7 +183,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 80,
-      "icon": null,
+      "icon": "assets/unit-icons/black-dragon-spearmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -200,7 +200,9 @@
       "icon": "assets/unit-icons/camel-lancers.png",
       "richness": "full",
       "presentSections": [
-        "doctrines"
+        "doctrines",
+        "battleRole",
+        "matchups"
       ]
     },
     {
@@ -211,7 +213,7 @@
       "classBucket": "cavalry",
       "era": "Silver",
       "leadership": 145,
-      "icon": null,
+      "icon": "assets/unit-icons/caradocs-cavalry.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -225,7 +227,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 305,
-      "icon": null,
+      "icon": "assets/unit-icons/cataphract-lancers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -239,7 +241,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 340,
-      "icon": null,
+      "icon": "assets/unit-icons/chevaliers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -271,7 +273,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 230,
-      "icon": null,
+      "icon": "assets/unit-icons/companion-cavalry.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -323,7 +325,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 250,
-      "icon": null,
+      "icon": "assets/unit-icons/crescent-monks.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -337,7 +339,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 145,
-      "icon": null,
+      "icon": "assets/unit-icons/cudgel-monks.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -384,7 +386,7 @@
       "classBucket": "ranged",
       "era": "Chivalric",
       "leadership": 90,
-      "icon": null,
+      "icon": "assets/unit-icons/demesne-archers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -398,7 +400,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 170,
-      "icon": null,
+      "icon": "assets/unit-icons/demesne-arquebusiers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -412,7 +414,7 @@
       "classBucket": "ranged",
       "era": "Chivalric",
       "leadership": 110,
-      "icon": null,
+      "icon": "assets/unit-icons/demesne-crossbowmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -426,7 +428,7 @@
       "classBucket": "melee",
       "era": "Chivalric",
       "leadership": 105,
-      "icon": null,
+      "icon": "assets/unit-icons/demesne-javelineers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -440,7 +442,7 @@
       "classBucket": "melee",
       "era": "Feudal",
       "leadership": 55,
-      "icon": null,
+      "icon": "assets/unit-icons/demesne-pikemen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -468,7 +470,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 165,
-      "icon": null,
+      "icon": "assets/unit-icons/dimachaeri.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -496,7 +498,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 310,
-      "icon": null,
+      "icon": "assets/unit-icons/empire-chariot.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -524,7 +526,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 140,
-      "icon": null,
+      "icon": "assets/unit-icons/feathered-crossbowmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -538,7 +540,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 285,
-      "icon": null,
+      "icon": "assets/unit-icons/fire-lancers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -570,7 +572,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 200,
-      "icon": null,
+      "icon": "assets/unit-icons/greyhair-garrison.png",
       "richness": "full",
       "presentSections": [
         "battleRole"
@@ -603,7 +605,7 @@
       "era": "Heroic",
       "leadership": 230,
       "icon": "assets/unit-icons/halberdier-sergeants.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
         "battleRole"
       ]
@@ -634,7 +636,7 @@
       "classBucket": "melee",
       "era": "Golden",
       "leadership": 295,
-      "icon": null,
+      "icon": "assets/unit-icons/hashashins.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -648,7 +650,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 50,
-      "icon": null,
+      "icon": "assets/unit-icons/helot-auxiliaries.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -662,7 +664,7 @@
       "classBucket": "ranged",
       "era": "Golden",
       "leadership": 310,
-      "icon": null,
+      "icon": "assets/unit-icons/houndsmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -676,7 +678,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 230,
-      "icon": null,
+      "icon": "assets/unit-icons/huskarls.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -707,7 +709,7 @@
       "classBucket": "ranged",
       "era": "Heroic",
       "leadership": 235,
-      "icon": null,
+      "icon": "assets/unit-icons/imperial-archers.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -737,7 +739,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 240,
-      "icon": null,
+      "icon": "assets/unit-icons/imperial-javelineers.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -791,7 +793,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 180,
-      "icon": null,
+      "icon": "assets/unit-icons/incendiary-archers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -823,7 +825,7 @@
       "classBucket": "ranged",
       "era": "Chivalric",
       "leadership": 110,
-      "icon": null,
+      "icon": "assets/unit-icons/ironcap-archers.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -839,7 +841,7 @@
       "classBucket": "ranged",
       "era": "Chivalric",
       "leadership": 120,
-      "icon": null,
+      "icon": "assets/unit-icons/ironcap-arquebusiers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -853,7 +855,7 @@
       "classBucket": "cavalry",
       "era": "Chivalric",
       "leadership": 90,
-      "icon": null,
+      "icon": "assets/unit-icons/ironcap-bowriders.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -882,7 +884,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 135,
-      "icon": null,
+      "icon": "assets/unit-icons/ironcap-spearmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -896,7 +898,7 @@
       "classBucket": "melee",
       "era": "Chivalric",
       "leadership": 100,
-      "icon": null,
+      "icon": "assets/unit-icons/ironcap-swordsmen.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -914,7 +916,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 170,
-      "icon": null,
+      "icon": "assets/unit-icons/jangjus.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -928,7 +930,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 180,
-      "icon": null,
+      "icon": "assets/unit-icons/janissaries.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -942,7 +944,7 @@
       "classBucket": "melee",
       "era": "Chivalric",
       "leadership": 105,
-      "icon": null,
+      "icon": "assets/unit-icons/javelin-militia.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -974,7 +976,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 300,
-      "icon": null,
+      "icon": "assets/unit-icons/kheshigs.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -988,7 +990,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 215,
-      "icon": null,
+      "icon": "assets/unit-icons/khevtuul-cavalry.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1002,7 +1004,7 @@
       "classBucket": "cavalry",
       "era": "Silver",
       "leadership": 140,
-      "icon": null,
+      "icon": "assets/unit-icons/khorchins.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1030,7 +1032,7 @@
       "classBucket": "ranged",
       "era": "Heroic",
       "leadership": 245,
-      "icon": null,
+      "icon": "assets/unit-icons/kriegsrat-fusiliers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1044,7 +1046,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 220,
-      "icon": null,
+      "icon": "assets/unit-icons/laconic-javelins.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1076,7 +1078,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 165,
-      "icon": null,
+      "icon": "assets/unit-icons/landsknechts.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1090,7 +1092,7 @@
       "classBucket": "ranged",
       "era": "Feudal",
       "leadership": 50,
-      "icon": null,
+      "icon": "assets/unit-icons/levy-bowmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1151,7 +1153,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 30,
-      "icon": null,
+      "icon": "assets/unit-icons/martellatori.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1233,7 +1235,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 95,
-      "icon": null,
+      "icon": "assets/unit-icons/naginata-monks.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1263,7 +1265,9 @@
       "leadership": 235,
       "icon": "assets/unit-icons/onna-musha.png",
       "richness": "full",
-      "presentSections": []
+      "presentSections": [
+        "veterancy"
+      ]
     },
     {
       "slug": "order-of-the-dragon",
@@ -1341,7 +1345,7 @@
       "classBucket": "ranged",
       "era": "Golden",
       "leadership": 280,
-      "icon": null,
+      "icon": "assets/unit-icons/pavise-crossbowmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1369,7 +1373,7 @@
       "classBucket": "melee",
       "era": "Chivalric",
       "leadership": 110,
-      "icon": null,
+      "icon": "assets/unit-icons/pike-militia.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1383,7 +1387,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 180,
-      "icon": null,
+      "icon": "assets/unit-icons/prefecture-archers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1411,7 +1415,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 225,
-      "icon": null,
+      "icon": "assets/unit-icons/prefecture-heavy-cavalry.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1442,7 +1446,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 90,
-      "icon": null,
+      "icon": "assets/unit-icons/psiloi-slingers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1456,7 +1460,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 130,
-      "icon": null,
+      "icon": "assets/unit-icons/qins-footbow.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1510,6 +1514,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1521,7 +1526,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 295,
-      "icon": null,
+      "icon": "assets/unit-icons/rattan-rangers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1559,6 +1564,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -1584,7 +1590,7 @@
       "classBucket": "melee",
       "era": "Golden",
       "leadership": 305,
-      "icon": null,
+      "icon": "assets/unit-icons/retiarii.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1598,7 +1604,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 145,
-      "icon": null,
+      "icon": "assets/unit-icons/ronin.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1642,7 +1648,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 80,
-      "icon": null,
+      "icon": "assets/unit-icons/sea-stag-deathdealers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1670,7 +1676,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 40,
-      "icon": null,
+      "icon": "assets/unit-icons/serfs.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1738,7 +1744,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 150,
-      "icon": null,
+      "icon": "assets/unit-icons/silla-guards.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1752,7 +1758,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 215,
-      "icon": null,
+      "icon": "assets/unit-icons/sipahis.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -1820,7 +1826,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 80,
-      "icon": null,
+      "icon": "assets/unit-icons/spear-militia.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1852,7 +1858,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 155,
-      "icon": null,
+      "icon": "assets/unit-icons/squires.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1884,7 +1890,7 @@
       "classBucket": "ranged",
       "era": "Heroic",
       "leadership": 215,
-      "icon": null,
+      "icon": "assets/unit-icons/swinefeathers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1898,7 +1904,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 65,
-      "icon": null,
+      "icon": "assets/unit-icons/sword-militia.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1948,7 +1954,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 40,
-      "icon": null,
+      "icon": "assets/unit-icons/tenant-farmers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1962,7 +1968,7 @@
       "classBucket": "ranged",
       "era": "Golden",
       "leadership": 280,
-      "icon": null,
+      "icon": "assets/unit-icons/tercio-arquebusiers.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -1976,7 +1982,7 @@
       "classBucket": "cavalry",
       "era": "Golden",
       "leadership": 310,
-      "icon": null,
+      "icon": "assets/unit-icons/tiger-and-leopard-cavalry.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -1993,7 +1999,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 220,
-      "icon": null,
+      "icon": "assets/unit-icons/tiger-fists.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -2007,7 +2013,7 @@
       "classBucket": "melee",
       "era": "Heroic",
       "leadership": 225,
-      "icon": null,
+      "icon": "assets/unit-icons/tseregs.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -2021,7 +2027,7 @@
       "classBucket": "ranged",
       "era": "Silver",
       "leadership": 150,
-      "icon": null,
+      "icon": "assets/unit-icons/vanguard-archers.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -2036,7 +2042,7 @@
       "classBucket": "melee",
       "era": "Golden",
       "leadership": 290,
-      "icon": null,
+      "icon": "assets/unit-icons/varangian-guards.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -2054,7 +2060,7 @@
       "classBucket": "ranged",
       "era": "Heroic",
       "leadership": 245,
-      "icon": null,
+      "icon": "assets/unit-icons/vassal-longbowmen.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -2069,7 +2075,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 30,
-      "icon": null,
+      "icon": "assets/unit-icons/village-watchmen.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -2083,7 +2089,7 @@
       "classBucket": "melee",
       "era": "Golden",
       "leadership": 305,
-      "icon": null,
+      "icon": "assets/unit-icons/white-plume-guards.png",
       "richness": "full",
       "presentSections": [
         "doctrines",
@@ -2115,7 +2121,7 @@
       "classBucket": "melee",
       "era": "Rustic",
       "leadership": 40,
-      "icon": null,
+      "icon": "assets/unit-icons/woodcutters.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -2185,6 +2191,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
+        "matchups",
         "controls"
       ]
     },
@@ -2196,7 +2203,7 @@
       "classBucket": "melee",
       "era": "Silver",
       "leadership": 95,
-      "icon": null,
+      "icon": "assets/unit-icons/yellow-turban-chanters.png",
       "richness": "stats-only",
       "presentSections": [
         "battleRole"
@@ -2210,7 +2217,7 @@
       "classBucket": "cavalry",
       "era": "Heroic",
       "leadership": 225,
-      "icon": null,
+      "icon": "assets/unit-icons/yeomen.png",
       "richness": "full",
       "presentSections": [
         "doctrines",

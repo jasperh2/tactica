@@ -1,0 +1,184 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "shieldmaidens",
+  "name": "Shieldmaidens",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 280,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/shieldmaidens.png",
+    "metaTier": "B",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "CCi Doctrine (Stand Fast)",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Spear Doctrine I",
+          "text": "+400 block. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Block Doctrine",
+          "text": "+300 block, -90 flat dmg. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Steadfast Doctrine",
+          "text": "+130 def, -6% dmg taken. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "X",
+          "text": "OP's explicit \"Don't put\" — literal X placeholder in the source, not filled in by Amya.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Bot Line. Hero pairing: Any. \"CC-immunity doctrine is mandatory (1 more button but too op). Then there are different builds which involve full DMG, full block, etc. Favourite of the main shieldmaidens players: 1x CCi + 1x Unit DMG V (can also be block/def) + 1x Block (400 block) or Leadership + 1x Block (300 block, -90 dmg) + 1x Block or Steadfast (+130 def, -6% dmg).\" Weapon-swap mechanic underpins the whole build: spear-mode swap-after-hit restores 2% max health/s per soldier for 10s; sword-mode swap-after-hit gives +500 Piercing/Slashing Armour Penetration per soldier for 10s; the swap itself carries a CC-immunity effect (resets stance, removes existing CC) and can be stacked indefinitely off a single random hit. \"When you have time\": sword mode, charge (spell 1, 20% atk buff), swap to spear, spell 1 to enter formation, spell 2 cover-commander, swap back to sword and freeze inputs — don't X-move or shield-bash or cover-commander cancels (CC-immunity doctrine is safe to use). \"When you DON'T have time\": start in spear mode, spell 1 formation, spell 2 cover-commander, swap to sword and freeze inputs, same cancel risk. On downtime, weapon-swap back-to-back after landing at least one hit on first engage; repeat each time both swaps are off cooldown — high skill-cap in optimising. Cover-commander's hidden passive damage-reduction decays over time (theory value 60%->30% over 5s per OP), so reset it before a fight when possible. Sword-mode's shield-bash (spell 2) ends in a weaker cover-commander than the spear-mode version — \"don't get baited!\" One of the most micro-intensive units in the game per the OP's own framing (\"together with phalanx, by far the most micro intensive... of the game\"). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Shieldmaidens is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bot Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "Veterancy: Bot Line. Hero pairing: Any. \"CC-immunity doctrine is mandatory (1 more button but too op). Then there are different builds which involve full DMG, full block, etc. Favourite of the main shieldmaidens players: 1x CCi + 1x Unit DMG V (can also be block/def) + 1x Block (400 block) or Leadership + 1x Block (300 block, -90 dmg) + 1x Block or Steadfast (+130 def, -6% dmg).\" Weapon-swap mechanic underpins the whole build: spear-mode swap-after-hit restores 2% max health/s per soldier for 10s; sword-mode swap-after-hit gives +500 Piercing/Slashing Armour Penetration per soldier for 10s; the swap itself carries a CC-immunity effect (resets stance, removes existing CC) and can be stacked indefinitely off a single random hit. \"When you have time\": sword mode, charge (spell 1, 20% atk buff), swap to spear, spell 1 to enter formation, spell 2 cover-commander, swap back to sword and freeze inputs — don't X-move or shield-bash or cover-commander cancels (CC-immunity doctrine is safe to use). \"When you DON'T have time\": start in spear mode, spell 1 formation, spell 2 cover-commander, swap to sword and freeze inputs, same cancel risk. On downtime, weapon-swap back-to-back after landing at least one hit on first engage; repeat each time both swaps are off cooldown — high skill-cap in optimising. Cover-commander's hidden passive damage-reduction decays over time (theory value 60%->30% over 5s per OP), so reset it before a fight when possible. Sword-mode's shield-bash (spell 2) ends in a weaker cover-commander than the spear-mode version — \"don't get baited!\" One of the most micro-intensive units in the game per the OP's own framing (\"together with phalanx, by far the most micro intensive... of the game\"). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Shieldmaidens is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High burst units such as Claymores, Yorkist, ..."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Spacing units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "\"Not much counter, the unit is great to buff the blob, kill heroes diving, take care of rattan pikes or other low tier flanking units\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "when you have time",
+          "text": "Be in sword mode; spell 1 to charge (void-cast for 20% atk buff to allies+self); spell 3 to swap to spear; spell 1 to enter formation, wait for the defence buff; spell 2 to activate cover-commander; spell 3 to swap back to sword and DON'T touch anything else (X-move or shield-bash cancels cover-commander; CC-immunity doctrine is still safe to use)."
+        },
+        {
+          "context": "when you don't have time",
+          "text": "Be in spear mode; spell 1 to enter formation, wait for the defence buff; spell 2 to activate cover-commander; spell 3 to swap to sword and freeze inputs the same way as the 'have time' line."
+        },
+        {
+          "context": "downtime / sustained fight",
+          "text": "Weapon-swap back-to-back after landing at least one hit on the first engage; repeat every time both swaps are off cooldown again. High skill-cap in optimising the loop."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

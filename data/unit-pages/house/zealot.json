@@ -1,0 +1,186 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "zealot",
+  "name": "Zealot",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 235,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/zealot.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Paradox Doctrine (3/6/9)",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Zealot unique doctrine (+300 block)",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Noble Blood Doctrine (Melee)",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Devastation Doctrine / -5% DMG Taken",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: Any. \"Don't put\" is a literal X placeholder in the OP -- Amya did not fill this in; not fabricated here, left blank per anti-fabrication rule. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Zealot is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Top Line. Hero pairing: Any. \"Don't put\" is a literal X placeholder in the OP -- Amya did not fill this in; not fabricated here, left blank per anti-fabrication rule. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Zealot is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High burst units like claymores / yorkist."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "CCi units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Shield units, big blob impact (CC + tanking), and any units that are weak to fire."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "base form",
+          "text": "Press 1 (Righteous Charge): charge that knocks down enemies, or acts as a dash if used from melee range. Press 2 (Zeal Whirlwind): close-range slam."
+        },
+        {
+          "context": "transformed form (Inquisitor, activate Press 3 / Judgment Day when fully charged)",
+          "text": "Press 2 remains the slam. Press 1 (Dies irae) becomes a vacuum that partially pulls enemies toward you. During the transformation you are immobilized and vulnerable, so it is best to activate Press 3 outside of fights to heal and then return to fight. Never transform mid-fight -- once the transformation animation starts, you cannot cancel it; you are stuck until the animation finishes."
+        },
+        {
+          "context": "engage (not transformed, or transformed but without spell)",
+          "text": "It is BETTER to X-move close to a fight and let enemies aggro you rather than pressing V. Try this in a custom game vs AI to see how much better it is."
+        },
+        {
+          "context": "fire mode",
+          "text": "You can ENRAGE Zealots yourself before a fight with a Scorpio (likely the Scorpio siege engine's fire effect, per in-thread cross-reference -- not independently verified). Once \"fire\" mode is ON, it stays until the end of the game, even if you swap units or die."
+        },
+        {
+          "context": "Malice passive",
+          "text": "The description says \"get kills\" but actually counts artillery/treb kills, hero kills, AND taking hits (any damage amount) toward Mad Malice."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

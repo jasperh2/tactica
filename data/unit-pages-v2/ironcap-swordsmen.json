@@ -37,7 +37,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Charge CD Doctrine",
+      "name": "Stamina Doctrine V",
       "note": "−24% charge CD, +1 charge target",
       "marks": [
         1
@@ -181,6 +181,7 @@
     "No formation guidance — no source specifies F1/F2 doctrine or spacing strategy.",
     "No hero-pairing recommendations — Amya guide explicitly notes this absent.",
     "No dedicated tips & tricks beyond playstyle loops — Evo transcript is 2020 vintage and may not reflect current balance.",
-    "Amya guide last edited 2026-05-27, predating the 2026-06-25 Chaos patch; unit not on changed-units shortlist but doctrine/build recency unverified."
+    "Amya guide last edited 2026-05-27, predating the 2026-06-25 Chaos patch; unit not on changed-units shortlist but doctrine/build recency unverified.",
+    "No house sources (house cards, house guides, house playbook) — all content is public-academy tier."
   ]
 }

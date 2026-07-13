@@ -10,7 +10,7 @@
     "leadership": 130,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/qins-footbow.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

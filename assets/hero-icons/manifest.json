@@ -1,0 +1,66 @@
+{
+  "schema": "cb-hero-icons/v1",
+  "source": "https://imgur.com/a/conquerors-blade-hero-weapons-xxRsfuS (supplied by Jasper 2026-07-13)",
+  "icons": {
+    "shortsword": {
+      "imgurId": "9stjLuC",
+      "note": "labeled \"Shortsword\""
+    },
+    "glaive": {
+      "imgurId": "7VrKPUN",
+      "note": "labeled \"Glaive\""
+    },
+    "pike": {
+      "imgurId": "1z5MFU2",
+      "note": "labeled \"Pike\""
+    },
+    "dual-blades": {
+      "imgurId": "zNCQm9F",
+      "note": "labeled \"Duel Blades\""
+    },
+    "musket": {
+      "imgurId": "LtNsatc",
+      "note": "labeled \"Musket\""
+    },
+    "shortbow": {
+      "imgurId": "nVlPANx",
+      "note": "album label \"Shortsword\" is a typo; visual = 3-arrow recurve = shortbow (matches conqsite short-bow.png)"
+    },
+    "nodachi": {
+      "imgurId": "OZmUKiJ",
+      "note": "labeled \"Nodachi\""
+    },
+    "poleaxe": {
+      "imgurId": "Negemzm",
+      "note": "labeled \"Poleaxe\""
+    },
+    "spear": {
+      "imgurId": "5r8bIxN",
+      "note": "labeled \"Spear\""
+    },
+    "maul": {
+      "imgurId": "Ja8IhKi",
+      "note": "labeled \"Maul\""
+    },
+    "chaindart": {
+      "imgurId": "d5k4pt3",
+      "note": "labeled \"Chaindart & Schimitar\""
+    },
+    "longsword": {
+      "imgurId": "CSdhoAf",
+      "note": "labeled \"Longsword\""
+    },
+    "longbow": {
+      "imgurId": "S2JEmfc",
+      "note": "unlabeled; visual = bow + eagle = longbow (matches conqsite bow.png); baked-in \"Bow\" caption cropped off"
+    },
+    "bastard-sword": {
+      "imgurId": "kr5hCpP",
+      "note": "unlabeled; visual = thorn-wrapped straight sword = bastard sword (matches conqsite bastard-sword.png)"
+    },
+    "spear-and-shield": {
+      "imgurId": "O2j9iHV",
+      "note": "unlabeled; visual = spear crossing round shield = spear & shield (matches conqsite spear-and-shield.png)"
+    }
+  }
+}

@@ -10,7 +10,7 @@
     "leadership": 50,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/levy-bowmen.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

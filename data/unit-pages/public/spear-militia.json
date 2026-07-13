@@ -10,7 +10,7 @@
     "leadership": 80,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/spear-militia.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

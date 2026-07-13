@@ -10,7 +10,7 @@
     "leadership": 305,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/retiarii.png",
     "metaTier": "D",
     "rarityTier": "T5",
     "fightRatings": null,

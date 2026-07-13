@@ -10,7 +10,7 @@
     "leadership": 180,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/prefecture-archers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

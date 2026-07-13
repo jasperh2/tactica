@@ -1,0 +1,159 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "coutiliers",
+  "name": "Coutiliers",
+  "profile": "house",
+  "header": {
+    "era": "Chivalric",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 115,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/coutiliers.png",
+    "metaTier": "S",
+    "rarityTier": "T2",
+    "fightRatings": null,
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-28",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lancer's Last Stand",
+          "text": "Lancer-archetype: +40% DMG at <60% headcount. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Lancer Charge Doctrine V",
+          "text": "-14s charge CD, +100 piercing DMG. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Charge Defence Doctrine",
+          "text": "-50% DMG taken while charging, -6s charge CD. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Mobility Doctrine V",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Alt for Sprint or Last Stand. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Epic Assault Doctrine",
+          "text": "Filler (alt).",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Health & Resistance Doctrine V",
+          "text": "-5% DMG taken, alt. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Hero Damage Doctrine V",
+          "text": "Filler (alt).",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: with Mastery and the doctrines shown, the unit gets 0s CD on charge — you can spam charge and make full use of Mastery. Like any lancer cav, the goal is to start the charge far enough away to load the \"Chargers\" trait to its max (increases DMG & speed every 1.5s, 0.5s with the boots rune, up to 3 levels). This unit shines with the 2 T5 charge-CD reductions: 0 CD on charge, spam X-move and charge again to micro as much as desired. Tips & Tricks — Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost a unit, take this one from supply (best to have it out, swap to another unit, then swap back) — taking a unit from supply after it's already out applies the 40%-damage-at-60%-count doctrine to 100% of the unit. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Charge cavalry, breaks formations with couched-lance impact",
+      "rationale": "Veterancy: Top Line. Hero pairing: not specified in this thread. Playstyle: with Mastery and the doctrines shown, the unit gets 0s CD on charge — you can spam charge and make full use of Mastery. Like any lancer cav, the goal is to start the charge far enough away to load the \"Chargers\" trait to its max (increases DMG & speed every 1.5s, 0.5s with the boots rune, up to 3 levels). This unit shines with the 2 T5 charge-CD reductions: 0 CD on charge, spam X-move and charge again to micro as much as desired. Tips & Tricks — Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost a unit, take this one from supply (best to have it out, swap to another unit, then swap back) — taking a unit from supply after it's already out applies the 40%-damage-at-60%-count doctrine to 100% of the unit. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-06-28) POST-dates the 2026-06-25 Chaos patch anchor — this guide is current-season, not flagged pre-patch.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "charging",
+          "text": "Start the charge far enough away to load the \"Chargers\" trait to its max (DMG & speed increase every 1.5s, 0.5s with the boots rune, up to 3 levels)."
+        },
+        {
+          "context": "with Mastery + doctrines",
+          "text": "The unit reaches 0s CD on charge with Mastery and the listed doctrines — spam charge and make full use of it."
+        },
+        {
+          "context": "trick: Lancer's Last Stand",
+          "text": "If you spawn with it, swap away then back; if you just lost a unit, pull this one from supply (best to have it out, swap to another unit, then swap back) — taking a unit from supply after it's already out applies the 40%-damage-at-<60%-count doctrine to 100% of the unit."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-28",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

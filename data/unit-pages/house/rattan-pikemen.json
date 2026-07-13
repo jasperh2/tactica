@@ -1,0 +1,147 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "rattan-pikemen",
+  "name": "Rattan Pikemen",
+  "profile": "house",
+  "header": {
+    "era": "Chivalric",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 95,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/rattan-pikemen.png",
+    "metaTier": "Best Filler (top pick, unlettered)",
+    "rarityTier": "T2",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-11-07",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Poison duration 6s→4s; poison damage per stack 250→140 (same poison nerf as Roundshields)"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Pike Assault Doctrine",
+          "text": "Allows the unit to use the Pike Assault order; flat charge damage. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Poison Doctrine V",
+          "text": "+140 all armour penetration, +60 poison damage, stacks up to 2x. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Health & Blunt Defence Doctrine IV",
+          "text": "+440 HP, +125 blunt defence. Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Health & Defence Doctrine IV",
+          "text": "+440 HP, +40 all defences. Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "-16% leadership cost. Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Unit Damage Doctrine V",
+          "text": "\"Dream setup\" per Amya guide — replaces the Leadership doctrine, rarely achievable since most warbands need Doctrine V slotted elsewhere.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "generic damage doctrine (in place of Poison Doctrine V)",
+          "text": "Don't put — Amya guide verbatim: \"Don't put DMG but Poison V.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "No StarBurst house card exists for this unit (confirmed genuine gap — full #vet-and-docs scroll-through + 14-result server-wide Discord search for 'Rattan' surfaced only unrelated 2023-2025 text chat, no card image). This build is Amya-guide-only. Per Amya (OP-emphasis, italicized in source): the Charge doctrine is a must-have — it's a flat damage number (same value vs Phalanx or vs T2 pikes), enabling wins against matchups you'd never expect (Iron Reapers, even Yanyuedao at their prime) with the right charge.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Bottom Line (\"for poison, obviously\" — per OP)",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "No StarBurst house card exists for this unit (confirmed genuine gap — full #vet-and-docs scroll-through + 14-result server-wide Discord search for 'Rattan' surfaced only unrelated 2023-2025 text chat, no card image). This build is Amya-guide-only. Per Amya (OP-emphasis, italicized in source): the Charge doctrine is a must-have — it's a flat damage number (same value vs Phalanx or vs T2 pikes), enabling wins against matchups you'd never expect (Iron Reapers, even Yanyuedao at their prime) with the right charge.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "general",
+          "text": "Passive poison effect deals large damage and significantly reduces enemy damage. Pike has good attack range — always try to flank."
+        },
+        {
+          "context": "DPS optimization",
+          "text": "X-move and press V; when the auto-attack damage pop-up appears, X-move and press V again to cancel the tail end of the auto-attack animation."
+        },
+        {
+          "context": "engage rhythm",
+          "text": "The auto-attack \"explodes\" with poison — main damage source is poison. Stack poison (roughly 4-5 auto-attacks), then back off for a few seconds and re-engage. No need to perma-front-line during blob fights."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2024-11-07",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

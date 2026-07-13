@@ -10,7 +10,7 @@
     "leadership": 305,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/white-plume-guards.png",
     "metaTier": "To place (new/recently buffed, unlettered)",
     "rarityTier": "T5",
     "fightRatings": {

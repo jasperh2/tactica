@@ -10,7 +10,7 @@
     "leadership": 310,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/tiger-and-leopard-cavalry.png",
     "metaTier": "To place (new/recently buffed, unlettered)",
     "rarityTier": "T5",
     "fightRatings": {

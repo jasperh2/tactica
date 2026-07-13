@@ -99,15 +99,8 @@
     "formation": null,
     "tips": "Less value on Artemis and Arrow Rain than a typical archer build, since the Longbow carries its own arrow-rain-like spell. {1}"
   },
-  "matchups": {
-    "cards": [],
-    "pressure": null
-  },
-  "controls": {
-    "loop": [],
-    "loopMarks": [],
-    "notes": null
-  },
+  "matchups": null,
+  "controls": null,
   "footnotes": [
     {
       "mark": 1,
@@ -121,6 +114,9 @@
     "No Counters section in the Amya guide — no 'Loses to / Struggles vs / This unit counters' block was ever filled in, so matchups are entirely unknown.",
     "No hero pairing specified anywhere in the source thread.",
     "'Don't put' doctrine slot is a literal unfilled 'X' placeholder in the OP — Amya never specified an avoid pick, so none is listed here.",
+    "No house card exists for this unit — Amya's own guide note confirms 'no StarBurst house card exists for this unit.'",
+    "No house-playbook, house-guide, or confirmed video-transcript content found; only a single Amya guide thread and the tierlist row contribute.",
+    "One StarBurst video (2024-07-20 artillery-raid guide) mentions 'Longbowmen' in a generic PvE archer-role context — not confirmed to be specifically this unit vs. a generic archer reference, so excluded from the page rather than cited as unit-specific.",
     "No control/ability-loop sequence given beyond 'press 1 is the main dps spell' — too thin to construct an input loop without inventing steps."
   ]
 }

@@ -1,0 +1,181 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "yeomen",
+  "name": "Yeomen",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 225,
+    "origin": null,
+    "noMastery": false,
+    "icon": null,
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Lancer's Last Stand",
+          "text": "Lancer-archetype: +40% DMG at <60% headcount. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Lancer Charge Doctrine V",
+          "text": "-14s charge CD, +100 piercing DMG. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Epic Charge Defence Doctrine",
+          "text": "-50% DMG taken while charging, -6s charge CD. Mandatory per Amya. OP note: \"confirm exact name.\"",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Sprint Doctrine",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s. Top pick. OP note: \"confirm exact name.\"",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "+225 Charge DMG Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Piercing DMG doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "-DMG Taken doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": "Hero DMG",
+          "text": "Don't put, per OP.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: everything works, but start by Top Line. Playstyle kit: as any lancer cav, the goal is enough charge time to load the long-charge trait — get to max speed before impact. Use the rune (if still available in future seasons) that makes the lancer-cav trait change every 0.5s instead of 1.5s, loading the long-charge trait much faster. Once at max speed (similar to Xuanjia but far less pronounced), X-move to a side and the unit retains enough momentum for huge damage. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). 'Don't put' is filled with 'Hero DMG' per OP (unlike most other guides in this batch where it's a literal X placeholder). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yeomen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Everything works, but start by Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Charge cavalry, breaks formations with couched-lance impact",
+      "rationale": "Veterancy: everything works, but start by Top Line. Playstyle kit: as any lancer cav, the goal is enough charge time to load the long-charge trait — get to max speed before impact. Use the rune (if still available in future seasons) that makes the lancer-cav trait change every 0.5s instead of 1.5s, loading the long-charge trait much faster. Once at max speed (similar to Xuanjia but far less pronounced), X-move to a side and the unit retains enough momentum for huge damage. No dedicated Tips & Tricks section beyond the Playstyle notes (OP gap, not fabricated). 'Don't put' is filled with 'Hero DMG' per OP (unlike most other guides in this batch where it's a literal X placeholder). Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yeomen is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "charge setup",
+          "text": "As any lancer cavalry, the goal is to have enough charge time to load the long-charge trait — get to max speed before impact."
+        },
+        {
+          "context": "rune tech",
+          "text": "Use the rune (if still available) that makes the lancer-cav trait change every 0.5s instead of 1.5s, so the long-charge trait loads much faster."
+        },
+        {
+          "context": "combo",
+          "text": "Once at max speed (kinda like Xuanjia, but way less), X-move to a side and the unit will still have enough momentum for huge damage."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

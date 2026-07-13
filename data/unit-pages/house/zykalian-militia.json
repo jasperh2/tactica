@@ -1,0 +1,217 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "zykalian-militia",
+  "name": "Zykalian Militia",
+  "profile": "house",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 175,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/zykalian-militia.png",
+    "metaTier": "S",
+    "rarityTier": "T3",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 0,
+        "raw": "0/10"
+      },
+      "Skirmish": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Duelling": {
+        "value": 0,
+        "raw": "0/10"
+      }
+    },
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-09-21",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Throwing-skill cooldowns 10s→16s (both skills); reload time +33%; poison stack count 20→8"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": null,
+          "text": "Increases ammo by 20%.",
+          "tag": null
+        },
+        {
+          "order": 2,
+          "name": null,
+          "text": "Increases damage dealt to units by 95. If a Hellfire unit equips this Doctrine, the effect changes to: Increases damage vs units by 10%.",
+          "tag": null
+        },
+        {
+          "order": 3,
+          "name": null,
+          "text": "Increases damage dealt to heroes by 95 points. Increases all armour penetration by 90 points.",
+          "tag": null
+        },
+        {
+          "order": 4,
+          "name": null,
+          "text": "Increases all types of damage inflicted in sieges by 8%.",
+          "tag": null
+        },
+        {
+          "order": 5,
+          "name": null,
+          "text": "Unlocks Sprint. Increases movement speed by 15% for 8 seconds.",
+          "tag": null
+        },
+        {
+          "order": 6,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit damage, +80 all-type damage. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 7,
+          "name": "Epic Blunt Damage Doctrine",
+          "text": "+90 blunt damage. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 8,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% damage in sieges (matches house-card doctrine 4). Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 9,
+          "name": "Mobility Doctrine V",
+          "text": "+7% movement speed, unlocks Sprint +15% for 12s (extends house-card doctrine 5’s 8s Sprint). Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 10,
+          "name": "Scorching Doctrine V",
+          "text": "+50 burning DPS. Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 11,
+          "name": "Zykalian Supply Doctrine",
+          "text": "Unit-unique: +20% ammo (matches house-card doctrine 1). Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 12,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9 hits, alt for Scorching / Siege. Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 13,
+          "name": "Epic Leadership Doctrine",
+          "text": "Alt if needed. Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 14,
+          "name": "Blunt Pen / Hero DMG doctrines",
+          "text": "Don't put per Amya guide.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "House card is the only one of the six captured this session with all five doctrine lines fully legible (no cut-off text). Unit has 2 mastery lines (not 3), both branching from a shared base node. StarBurst caption: 'Zykalian Militia // cocos // ball boys' (informal in-house nickname, meaning not explained in-channel; included verbatim for context, not interpreted).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "6 points Top / 9 points Bottom. Last 2 points are personal preference: +2 Top = 288 fire damage; +2 Bottom = +40% ammo.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "House card is the only one of the six captured this session with all five doctrine lines fully legible (no cut-off text). Unit has 2 mastery lines (not 3), both branching from a shared base node. StarBurst caption: 'Zykalian Militia // cocos // ball boys' (informal in-house nickname, meaning not explained in-channel; included verbatim for context, not interpreted).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 3
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general rotation (PRE-2026-06 NERF — see gap note)",
+          "text": "Press V to hit the front line, press 2 to hit the back line and apply a debuff, then reposition to keep DPS up. Try to NOT use spell 1 — use V instead (less ammo consumption, more spread)."
+        },
+        {
+          "context": "priority override",
+          "text": "If the enemy blob has flamers/Zykalian units of their own, ignore the above priority and try to snipe them with spell 2 as a hard priority."
+        },
+        {
+          "context": "general (PRE-2026-06 NERF — see gap note)",
+          "text": "Be careful about musket liquid fire, divers, and fire-rune interactions. ALWAYS cycle V and 2 — playing Zykalian from far away using only spell 2 loses 50% of the unit's potential damage. ALWAYS X-move after shooting — don't stand still."
+        }
+      ],
+      "footnoteMark": 3
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "house build guide",
+      "date": "2024-09-21",
+      "house": true
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "creator guide",
+      "date": "2025-03-25",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

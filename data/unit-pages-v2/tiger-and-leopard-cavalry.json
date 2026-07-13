@@ -18,7 +18,7 @@
   "doctrines": [
     {
       "tag": "mandatory",
-      "name": "Lancer's Last Stand",
+      "name": "Lancer-Last Stand",
       "note": "+40% DMG at <60% headcount; swap out then back to apply to full strength",
       "marks": [
         1
@@ -50,7 +50,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Toughness Doctrine",
+      "name": "Toughness Doctrine V",
       "note": "−33% DMG taken on first hit, scales down through 8 hits",
       "marks": [
         1
@@ -90,7 +90,7 @@
     },
     {
       "tag": "avoid",
-      "name": "Slashing Damage Doctrine",
+      "name": "Epic Slashing Damage Doctrine",
       "note": null,
       "marks": [
         1
@@ -98,7 +98,7 @@
     },
     {
       "tag": "avoid",
-      "name": "Hero Damage Doctrine",
+      "name": "Hero Damage Doctrine V",
       "note": null,
       "marks": [
         1
@@ -121,7 +121,7 @@
     "tips": "Respect the passive and charge from as far as you can — the longer the charge, the more speed and passive damage stack. {1} Ability rotation: press 1 (simple charge) → 2 (area impact, similar to Liaos or Kheshig) → 3 (crowd control cleanse and charge again); typical play is 1 → 2 → 3 repeat. {1}"
   },
   "matchups": {
-    "cards": [],
+    "cards": null,
     "pressure": null
   },
   "controls": {
@@ -145,6 +145,7 @@
   ],
   "gaps": [
     "No counters section, hero pairing, or conditional matchups in any source.",
+    "No house-card or house-guide content exists for this unit (confirmed new-season unit without legacy house docs).",
     "No dedicated video transcript captured — Denetax noted this as a strong candidate that was passed over.",
     "Doctrine list and Tips near-identical to Dagger-Axe Lancers guide; recorded as given, not cross-checked.",
     "Battle role positioning and formation guidance absent entirely.",

@@ -10,7 +10,7 @@
     "leadership": 165,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/dimachaeri.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

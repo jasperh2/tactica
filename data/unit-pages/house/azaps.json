@@ -1,0 +1,174 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "azaps",
+  "name": "Azaps",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 225,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/azaps.png",
+    "metaTier": "A",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 6,
+        "raw": "6/10"
+      },
+      "Duelling": {
+        "value": 7,
+        "raw": "7/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Iron Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Anti-Infantry Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Siege Fighter Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Defence Doctrine V",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 6,
+          "name": "Piercing Defence Doctrine V",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line. Doctrine 'Don't put' and 'Tips & Tricks' sections are literal X placeholders in the OP — not fabricated here. Example build per OP: Unit Damage Doctrine V, Iron Damage Doctrine V, Anti-Infantry Doctrine V (+200 dmg to infantry), Siege Fighter Doctrine, Defence Doctrine V / Piercing Defence Doctrine V / Epic Leadership Doctrine. Playstyle kit: X-move in, press 2 and Ironside when the first line will take dmg, let the 2 run out (auto second phase), press 3 when 5s left on skill 2. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Azaps is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": "Veterancy: Top Line. Doctrine 'Don't put' and 'Tips & Tricks' sections are literal X placeholders in the OP — not fabricated here. Example build per OP: Unit Damage Doctrine V, Iron Damage Doctrine V, Anti-Infantry Doctrine V (+200 dmg to infantry), Siege Fighter Doctrine, Defence Doctrine V / Piercing Defence Doctrine V / Epic Leadership Doctrine. Playstyle kit: X-move in, press 2 and Ironside when the first line will take dmg, let the 2 run out (auto second phase), press 3 when 5s left on skill 2. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset — Azaps is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Any high def/HP units, block units with CCi."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Anything with range like phalanx."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Some burst units, good flanking units overall — winning certain matchups heavily depends on the enemy misplaying (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "X-move in."
+        },
+        {
+          "context": "combo",
+          "text": "Press 2 and Ironside when the first line will take damage; let the 2 run out (it auto does the second phase); when you see 5s left on skill 2, press 3."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@
     "leadership": 290,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/varangian-guards.png",
     "metaTier": "A",
     "rarityTier": "T5",
     "fightRatings": {

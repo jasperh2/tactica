@@ -1,0 +1,137 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "rattan-vipers",
+  "name": "Rattan Vipers",
+  "profile": "house",
+  "header": {
+    "era": "Silver",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 155,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/rattan-vipers.png",
+    "metaTier": "A",
+    "rarityTier": "T3",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-13",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Projectile Doctrine V",
+          "text": "+60% ammo, +50 piercing AP. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Poisons Doctrine V",
+          "text": "+140 all AP, +60 poison DMG, stacks up to 2x. NOT mandatory per OP verbatim: \"most of their strength comes from the Poison Barrage passive, you rarely stack poison on the same unit repeatedly.\" Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 3,
+          "name": "Epic Archery Doctrine IV",
+          "text": "+100 piercing DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Precision Doctrine V",
+          "text": "+120 piercing DMG, +80 piercing AP, +9% rate of fire. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Bowmanship Doctrine V",
+          "text": "Arrow Rain +75% base piercing per hit, +150 piercing DMG. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line maximizes Poison Barrage (spell 2) -- 3 volleys by default, with Vet ROF + a ROF doctrine = 4 volleys, all applying the Poison Spread passive; Bottom Line is about constant DPS, hitting isolated units repeatedly to stack the poison passive on them. Top Line is overall better since it massively increases impact during blob pushes; Bot Line is situational vs small groups (rare). Hero pairing: not specified in this thread. OP verbatim notes: \"Top Line Doctrines build is kinda whatever as long as you have at least one ROF doctrine (Precision V has +9% ROF) because that will add +1 volley to spell 2.\" \"Poison V allocation tip: if you only have one Poison V doctrine across your warband, prioritize Rattan RoundShield and Rattan Pikes first -- Vipers benefit less from it than the others.\" Playstyle: Mastery (poison barrage / spell 2) allows a really great poke of poison AOE damage; the barrage spreads a lot even if only a few arrows hit, or the unit is already half dead -- the value stays the same. No dedicated Tips & Tricks section beyond the Playstyle/Doctrine notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-06-13) pre-dates the 2026-06-25 Chaos patch anchor by about 12 days; Rattan Vipers is NOT on the 13-unit Chaos shortlist (the shortlist's Rattan-family entries are Rattan Roundshields and Rattan Pikemen, both confirmed distinct units from Rattan Vipers), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line: maximizing the Poison Barrage (spell 2). 3 volleys by default. With Vet ROF + a ROF doctrine = 4 volleys, all applying Poison Spread passive. Bottom Line: more about constant DPS, hitting isolated units repeatedly to stack the poison passive on them. Top Line is overall better since it massively increases impact during blob pushes. Bot Line is situational vs small groups (rare).",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Backline ranged suppression with arcing arrow fire",
+      "rationale": "Veterancy: Top Line maximizes Poison Barrage (spell 2) -- 3 volleys by default, with Vet ROF + a ROF doctrine = 4 volleys, all applying the Poison Spread passive; Bottom Line is about constant DPS, hitting isolated units repeatedly to stack the poison passive on them. Top Line is overall better since it massively increases impact during blob pushes; Bot Line is situational vs small groups (rare). Hero pairing: not specified in this thread. OP verbatim notes: \"Top Line Doctrines build is kinda whatever as long as you have at least one ROF doctrine (Precision V has +9% ROF) because that will add +1 volley to spell 2.\" \"Poison V allocation tip: if you only have one Poison V doctrine across your warband, prioritize Rattan RoundShield and Rattan Pikes first -- Vipers benefit less from it than the others.\" Playstyle: Mastery (poison barrage / spell 2) allows a really great poke of poison AOE damage; the barrage spreads a lot even if only a few arrows hit, or the unit is already half dead -- the value stays the same. No dedicated Tips & Tricks section beyond the Playstyle/Doctrine notes (OP gap, not fabricated). 'Don't put' is a literal X placeholder in the OP. Edit timestamp (2026-06-13) pre-dates the 2026-06-25 Chaos patch anchor by about 12 days; Rattan Vipers is NOT on the 13-unit Chaos shortlist (the shortlist's Rattan-family entries are Rattan Roundshields and Rattan Pikemen, both confirmed distinct units from Rattan Vipers), so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "blob push",
+          "text": "Mastery (poison barrage / spell 2) allows for a really great poke of poison AOE damage."
+        },
+        {
+          "context": "ability value",
+          "text": "The barrage spreads a lot even if only a few arrows hit, or the unit is already half dead -- the value stays the same."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-13",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

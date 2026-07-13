@@ -10,7 +10,7 @@
     "leadership": 215,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/sipahis.png",
     "metaTier": "B",
     "rarityTier": "T4",
     "fightRatings": {

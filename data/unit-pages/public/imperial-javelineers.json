@@ -10,7 +10,7 @@
     "leadership": 240,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/imperial-javelineers.png",
     "metaTier": "C",
     "rarityTier": "T4",
     "fightRatings": null,

@@ -1,0 +1,154 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "fortebraccio-pikemen",
+  "name": "Fortebraccio Pikemen",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 235,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/fortebraccio-pikemen.png",
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Anti-Cavalry Doctrine",
+          "text": "-40% cav dmg taken while bracing, +16% dmg vs cav bracing. Mandatory.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Epic Polearm Doctrine",
+          "text": "Pike Charge. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Epic Polearm Doctrine",
+          "text": "+80 piercing dmg, +120 piercing AP. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "Lifesteal + 12% dmg, alt for sustain. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Anti-Cavalry Doctrine",
+          "text": "Lower tier, -30% cav dmg taken while bracing. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Epic Bleed after hit Doctrines",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 9,
+          "name": null,
+          "text": "-5% DMG reduction Doctrines — do not use.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Top Line. GAP: no fight-type Strength ratings block, Hero pairing, or Counters — OP left literal X placeholders for all of these; not fabricated here. Example build per OP: Epic Polearm Doctrine (Pike Charge), Unit Damage Doctrine V, Anti-Cavalry Doctrine (-40% cav dmg bracing), Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP), Anti-Cavalry Doctrine (lower tier, -30%) or Epic Bloodthirsty Doctrine. Per OP: Pike Charge is pretty good to counter divers and re-brace after; replace Pike Charge with Epic Leadership Doctrine if you don't like it, or with another piercing dmg doctrine; replace piercing dmg or Pike Charge with Epic Bloodthirsty Doctrine if sustain is needed. Playstyle: always play in F1 (very rare case where F2 works if heavily covered); use long range to be behind Spartan / with phalanx and add heavy anti-cav while still adding DPS to the front line; very good field unit. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Fortebraccio Pikemen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions). 'Tips & Tricks' is also a literal X placeholder in the OP.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "Always play them in F1 (very rare case where you can play them in F2 if heavily covered)",
+      "footnoteMark": 1
+    },
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "Veterancy: Top Line. GAP: no fight-type Strength ratings block, Hero pairing, or Counters — OP left literal X placeholders for all of these; not fabricated here. Example build per OP: Epic Polearm Doctrine (Pike Charge), Unit Damage Doctrine V, Anti-Cavalry Doctrine (-40% cav dmg bracing), Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP), Anti-Cavalry Doctrine (lower tier, -30%) or Epic Bloodthirsty Doctrine. Per OP: Pike Charge is pretty good to counter divers and re-brace after; replace Pike Charge with Epic Leadership Doctrine if you don't like it, or with another piercing dmg doctrine; replace piercing dmg or Pike Charge with Epic Bloodthirsty Doctrine if sustain is needed. Playstyle: always play in F1 (very rare case where F2 works if heavily covered); use long range to be behind Spartan / with phalanx and add heavy anti-cav while still adding DPS to the front line; very good field unit. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation (Fortebraccio Pikemen is not on the 13-unit Chaos shortlist, so staleAsOfPatch not forced, noting pre-patch authorship per instructions). 'Tips & Tricks' is also a literal X placeholder in the OP.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "formation",
+          "text": "Always play them in F1 (very rare case where you can play them in F2 if heavily covered)."
+        },
+        {
+          "context": "positioning",
+          "text": "Use your long range to be behind Spartan / with phalanx and add heavy anti-cav while still adding DPS to the front line. Very good field unit."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    }
+  ]
+}

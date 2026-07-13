@@ -1,0 +1,246 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "yorkist-household-knights",
+  "name": "Yorkist Household Knights",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 265,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/yorkist-household-knights.png",
+    "metaTier": "S",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Skirmish": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Duelling": {
+        "value": 10,
+        "raw": "10/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2025-12-19",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Leadership 245→265; max roster 20→18"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": null,
+          "text": "Reduces unit's Leadership cost by 16%.",
+          "tag": null
+        },
+        {
+          "order": 2,
+          "name": "Knight's Resolve",
+          "text": "Increases Movement Speed by 20% while active.",
+          "tag": null
+        },
+        {
+          "order": 3,
+          "name": null,
+          "text": "Increases damage dealt to units by 105 points. Increases all types of damage by 60 points.",
+          "tag": null
+        },
+        {
+          "order": 4,
+          "name": null,
+          "text": "Deal 20% more damage to targets currently regenerating Health.",
+          "tag": null
+        },
+        {
+          "order": 5,
+          "name": null,
+          "text": "After every 3 attacks, the next attack's damage will be increased by 11%. Every 6 attacks, 15% maximum health will be restored. Every 9 attacks, a [illegible — source card image clips before this doctrine's final clause renders].",
+          "tag": null
+        },
+        {
+          "order": 6,
+          "name": "Yorkist Household Knights: Oathbound",
+          "text": "Heals while 2+ models are on ground. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 7,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 8,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit boost. Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 9,
+          "name": "Yorkist Household Knights: Sunmirage",
+          "text": "Knight's Resolve: +20% movement speed while active. Top pick per Amya guide (matches house-card doctrine 2).",
+          "tag": "top-pick"
+        },
+        {
+          "order": 10,
+          "name": "Epic Leadership Doctrine",
+          "text": "Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 11,
+          "name": "Hero Damage Doctrine V",
+          "text": "Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 12,
+          "name": "DMG Reduction Doctrines",
+          "text": "Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 13,
+          "name": "Healing Punisher Doctrine",
+          "text": "Deal +20% damage to targets currently regenerating health (matches house-card doctrine 4). Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 14,
+          "name": "Other movement speed doctrines",
+          "text": "Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 15,
+          "name": "Flatland Doctrine V",
+          "text": "+15% movement speed — explicitly called out by Amya as a mistake pick.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Two independent capture paths of this same card (house-cards/yorkist-household-knights.md via OneMoreTime direct, and the untracked top-level knowledge/vets-and-docs/yorkist-household-knights.md via Immortals-server forward) match node-for-node and line-for-line — treated as one source per unit-db-sources.md §6, not two competing ones. Card header literally reads 'Yorkist Cavlary,' not 'Household Knights'; identity match is HIGH-confidence (corroborated by a #meta-units tier-board portrait labeled '...orkist Household Knigh[t]' and the absence of any competing 'Yorkist'-named unit) but not 1:1 icon-confirmed — see identityProvenance for the naming-mismatch flag. Amya guide's example build: Epic Leadership Doctrine, Unit Damage Doctrine V, Yorkist Household Knights: Oathbound, Epic Combat Doctrine (3/6/9), Hero Damage Doctrine V. Amya notes many doctrine combinations work as long as Unit Damage V + a movement-speed doctrine are included. [VERIFY: Jasper] doctrine 5's illegible final clause (same recurring StarBurst card-clipping issue as Iron Reapers and Liao Rangers).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Full Top = good horse play and \"INSANE ground Yorkist\"",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Two independent capture paths of this same card (house-cards/yorkist-household-knights.md via OneMoreTime direct, and the untracked top-level knowledge/vets-and-docs/yorkist-household-knights.md via Immortals-server forward) match node-for-node and line-for-line — treated as one source per unit-db-sources.md §6, not two competing ones. Card header literally reads 'Yorkist Cavlary,' not 'Household Knights'; identity match is HIGH-confidence (corroborated by a #meta-units tier-board portrait labeled '...orkist Household Knigh[t]' and the absence of any competing 'Yorkist'-named unit) but not 1:1 icon-confirmed — see identityProvenance for the naming-mismatch flag. Amya guide's example build: Epic Leadership Doctrine, Unit Damage Doctrine V, Yorkist Household Knights: Oathbound, Epic Combat Doctrine (3/6/9), Hero Damage Doctrine V. Amya notes many doctrine combinations work as long as Unit Damage V + a movement-speed doctrine are included. [VERIFY: Jasper] doctrine 5's illegible final clause (same recurring StarBurst card-clipping issue as Iron Reapers and Liao Rangers).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "On cav: any pikes. On ground: Stalwart if CC’d (crowd-controlled)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Rattan Pikes."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Everything — better trade depending on ground or horse."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 3
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "on horse",
+          "text": "Multiple spells: 1 = dismount, 2 = charge, 3 = follow-commander charge. Cover Commander is the main way to play — stay near it until it dies. Dismount situations are now rare (only vs anti-cav units that can disrupt)."
+        },
+        {
+          "context": "on horse, 1v1",
+          "text": "Charge in with spell 2 into dismount — better success rate than Cover Commander alone."
+        },
+        {
+          "context": "on ground (after dismount)",
+          "text": "Absolute best-in-class on ground. Don't hesitate to dismount and press spell 2. Keep the hero frontline but not far from the unit, or the unit stops attacking and just runs — test engagement range in custom games."
+        },
+        {
+          "context": "Cover Commander tech",
+          "text": "Cover Commander can be a bit bugged at the start — don't spam it. When flanking, turn it ON beforehand and confirm it's glowing red."
+        },
+        {
+          "context": "post-dismount spell 2",
+          "text": "After dismounting and activating spell 2, enemies will run at the unit and it grants strong defense (duration 15s). Don't X-move or use spell V or the buff cancels — keep the unit close to the hero, don't run too far."
+        }
+      ],
+      "footnoteMark": 3
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "house build guide",
+      "date": "2026-03-26",
+      "house": true
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "creator guide",
+      "date": "2025-12-19",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

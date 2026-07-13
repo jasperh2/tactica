@@ -10,7 +10,7 @@
     "leadership": 215,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/swinefeathers.png",
     "metaTier": "C",
     "rarityTier": "T4",
     "fightRatings": null,

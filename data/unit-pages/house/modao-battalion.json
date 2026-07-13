@@ -1,0 +1,194 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "modao-battalion",
+  "name": "Modao Battalion",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Pike/Polearm Infantry",
+    "typeClass": "anti-cav",
+    "leadership": 310,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/modao-battalion.png",
+    "metaTier": "S",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Flank": {
+        "value": 1,
+        "raw": "1/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 3,
+        "raw": "3/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Bloodthirsty Doctrine",
+          "text": "12% lifesteal for 6s after dealing damage, +12% dmg when HP > 60%. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Toughness Doctrine V",
+          "text": "-33% dmg taken on first 8 hits. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Anti-Cavalry Doctrine V",
+          "text": "-40% dmg taken from cav while bracing, +16% dmg vs cav while bracing. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Hero DMG Doctrine V",
+          "text": "\"Pen will make a huge diff when hitting high-tier units.\" Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Defence Doctrine V",
+          "text": "+80 def, -5% dmg taken. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "DMG Taken Reduction",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "2x cav DMG reduction doctrines stacked",
+          "text": "\"2x cav DMG reduction at the same time, you already good with 1x.\" OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "No mastery (per Overview). Veterancy: Mix -- 17 top, rest bot. Hero pairing: Heavy. Tips & Tricks: you can reset the Toughness Doctrine (-33% dmg taken on first 8 hits) by swapping the unit at supply and re-taking it; Modao Defense and Modao March both increase piercing defense and slashing defense by 100 for 3 seconds with each hit, stacking up to 15 times. Example build per OP: Epic Bloodthirsty Doctrine (12% lifesteal for 6s after dealing damage, +12% dmg when HP > 60%), Anti-Cavalry Doctrine V (-40% dmg taken from cav while bracing, +16% dmg vs cav while bracing), Unit Damage Doctrine IV (+115 dmg to units, +70 all-type dmg), Toughness Doctrine V (-33% dmg taken on first 8 hits), Defence Doctrine V (+80 def, -5% dmg taken). Edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor per the guide's own framing -- doctrine/build guidance reflects the current season at capture time (not staleAsOfPatch; Modao Battalion is not on the 13-unit Chaos shortlist, so no forced flag either way).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Mix: 17 top, rest bot",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Anti-cavalry pike/polearm line, braces against charges",
+      "rationale": "No mastery (per Overview). Veterancy: Mix -- 17 top, rest bot. Hero pairing: Heavy. Tips & Tricks: you can reset the Toughness Doctrine (-33% dmg taken on first 8 hits) by swapping the unit at supply and re-taking it; Modao Defense and Modao March both increase piercing defense and slashing defense by 100 for 3 seconds with each hit, stacking up to 15 times. Example build per OP: Epic Bloodthirsty Doctrine (12% lifesteal for 6s after dealing damage, +12% dmg when HP > 60%), Anti-Cavalry Doctrine V (-40% dmg taken from cav while bracing, +16% dmg vs cav while bracing), Unit Damage Doctrine IV (+115 dmg to units, +70 all-type dmg), Toughness Doctrine V (-33% dmg taken on first 8 hits), Defence Doctrine V (+80 def, -5% dmg taken). Edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor per the guide's own framing -- doctrine/build guidance reflects the current season at capture time (not staleAsOfPatch; Modao Battalion is not on the 13-unit Chaos shortlist, so no forced flag either way).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Claymores, Yorkist, and more if a hero jumps you while fighting you."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Rattan pikes, hero dive, block units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Cav, low dmg units; \"this unit is a 'support/tank' unit for blob fight\" (per Amya)."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Heavy (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "vs infantry",
+          "text": "X-move in, engage with skill 2, instantly press skill 3 right after, then skill 2 again, then brace."
+        },
+        {
+          "context": "blob fight sustain",
+          "text": "Each time skill 2 comes back off cooldown, press skill 2 and re-brace -- this is for the best burst possible in blob fights."
+        },
+        {
+          "context": "positioning",
+          "text": "Don't hesitate to X-move to re-stack your unit."
+        },
+        {
+          "context": "vs cavalry",
+          "text": "If cavalry is coming, you NEED to be braced. Brace 1-2s before cav hit."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

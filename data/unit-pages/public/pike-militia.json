@@ -10,7 +10,7 @@
     "leadership": 110,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/pike-militia.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

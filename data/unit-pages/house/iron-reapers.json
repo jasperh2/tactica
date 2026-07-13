@@ -1,0 +1,242 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "iron-reapers",
+  "name": "Iron Reapers",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 270,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/iron-reapers.png",
+    "metaTier": "AA",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 7,
+        "raw": "7/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-09-16",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Leadership 285→270; Health 8051→10451; \"Very Heavy Armour\" now reduces artillery damage"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": null,
+          "text": "Increases health by 400 points. Increases all defences by 35 points.",
+          "tag": null
+        },
+        {
+          "order": 2,
+          "name": null,
+          "text": "In basic attack, every 6 seconds, you can trigger a heavy attack with high [icon] and [icon] effects. This attack applies [icon] to the units, reducing their [illegible — icon-embedded gap in source card image].",
+          "tag": null
+        },
+        {
+          "order": 3,
+          "name": null,
+          "text": "After every 3 attacks, the next attack's damage will be increased by 11%. Every 6 attacks, 15% maximum health will be restored. Every 9 [illegible — source card image clips before this doctrine's remainder renders].",
+          "tag": null
+        },
+        {
+          "order": 4,
+          "name": null,
+          "text": "Reduces unit's Leadership cost by 16%.",
+          "tag": null
+        },
+        {
+          "order": 5,
+          "name": null,
+          "text": "Increases all types of damage inflicted in sieges by 8%.",
+          "tag": null
+        },
+        {
+          "order": 6,
+          "name": "Linebreaker Doctrine V",
+          "text": "Mandatory per Amya guide + implied by house-card tanky build.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 7,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 8,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya guide.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 9,
+          "name": "Purple Slashing Damage Doctrine",
+          "text": "Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 10,
+          "name": "-5% DMG taken doctrines",
+          "text": "Top pick per Amya guide.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 11,
+          "name": "Movement Speed After Hit",
+          "text": "Filler per Amya guide; speed increases DPS because 20-30% of fight time is spent walking to the next auto-attack target.",
+          "tag": "filler"
+        },
+        {
+          "order": 12,
+          "name": "Piercing Def",
+          "text": "Filler per Amya guide.",
+          "tag": "filler"
+        },
+        {
+          "order": 13,
+          "name": "Slashing & Blunt Defence",
+          "text": "Don't put, per Amya guide.",
+          "tag": "avoid"
+        }
+      ],
+      "note": "House card (StarBurst, 2024-09-16): tanky 'starting a climb' build, front-loaded investment across all three lines, both capstones unallocated in the captured screenshot (possibly a planned, not spent, allocation — a near-identical tree was separately posted on Immortals #units, 2024-11-08, corroborating the node-for-node allocation). Amya guide (2024-10-07) gives an alternate mastery rule of thumb (+14 Middle Line up to the +1-target-per-strike node, rest Bottom) and notes speed indirectly boosts DPS since ~20-30% of fight time is spent walking to the next target — not a restatement of the doctrine bullets. [VERIFY: Jasper] doctrine 2 and 3's illegible clauses (icon-embedded / clipped in the source card image, unrecoverable via zoom).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "+14 points Middle Line (until reaching the Line point that grants +1 target per strike), rest into Bottom",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "House card (StarBurst, 2024-09-16): tanky 'starting a climb' build, front-loaded investment across all three lines, both capstones unallocated in the captured screenshot (possibly a planned, not spent, allocation — a near-identical tree was separately posted on Immortals #units, 2024-11-08, corroborating the node-for-node allocation). Amya guide (2024-10-07) gives an alternate mastery rule of thumb (+14 Middle Line up to the +1-target-per-strike node, rest Bottom) and notes speed indirectly boosts DPS since ~20-30% of fight time is spent walking to the next target — not a restatement of the doctrine bullets. [VERIFY: Jasper] doctrine 2 and 3's illegible clauses (icon-embedded / clipped in the source card image, unrecoverable via zoom).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Units that can kite it, or heavy-burst units (e.g. Queen’s Knights, Yorkist)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Debuff units (Rattan Pikes); big-range units like Phalanx or Stalwart if they kite well."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Any block units; deals insane damage to units like Spartans / Imperial Spear Guards."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 3
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "blob fight / vs brace units, can't burst (most cases)",
+          "text": "Full Sword stance (Devastation on engage if available). X-move in, use the heavy-armour passive (wait for a CC or a few hits before pressing Tiger Step)."
+        },
+        {
+          "context": "blob fight / brace units",
+          "text": "Press 2 for damage + CC immunity; also resets the damage-reduction trait (press early if CC is incoming)."
+        },
+        {
+          "context": "blob fight / brace units",
+          "text": "Wait for the enemy to hit you enough to trigger the passive, or let Tiger Step expire (12s); reset the passive again via Charge into a C-cancelled auto-attack, or X+V if the hero can stay close."
+        },
+        {
+          "context": "1v1 / vs a blocking unit — rarely used but good to know",
+          "text": "Start with flails; close and charge so the enemy can't sidestep (use Devastation before swapping weapons if available)."
+        },
+        {
+          "context": "1v1 / vs a blocking unit",
+          "text": "Switch to swords and click Tiger Step to skip the weapon-swap animation; leave the unit to fight until the target dies before resetting (can back off early). Only worth it when you can kill rapidly, or in a skirmish vs a blocking unit — otherwise the heavy-armour trait goes unused. Helps the hero break shield formations or stun high-DPS units."
+        },
+        {
+          "context": "general tech",
+          "text": "Pressing C (follow) cancels the auto-attack animation, improving trades vs Stalwart or Claymore (more DPS for allies too) — train in custom battle first."
+        },
+        {
+          "context": "vs artillery",
+          "text": "The heavy-armour trait works against artillery (trebuchet counts as artillery in-game) — press Charge to tank a trebuchet shot if the heavy trait is not currently active."
+        }
+      ],
+      "footnoteMark": 3
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "house build guide",
+      "date": "2024-09-16",
+      "house": true
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "creator guide",
+      "date": "2024-10-07",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@
     "leadership": 95,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/naginata-monks.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

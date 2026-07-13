@@ -1,0 +1,159 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "sipahis",
+  "name": "Sipahis",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 215,
+    "origin": null,
+    "noMastery": false,
+    "icon": null,
+    "metaTier": "B",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 4,
+        "raw": "4/10"
+      },
+      "Duelling": {
+        "value": 1,
+        "raw": "1/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Paradox Doctrine",
+          "text": "3/6/9. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Devastation Doctrine",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Healing Punisher Doctrine",
+          "text": "+20% DMG vs healing units. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Health & Resistance Doctrine V",
+          "text": "-5% DMG taken, alt for Leadership. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line -- \"Bot Line would be better if it actually worked, but it's bugged and simply doesn't work\" (per Amya). Hero pairing: Any. \"Don't put\" section is a literal X placeholder in the OP -- not fabricated here. Playstyle kit: cav has a charge on press 1 (Quick Charge) and a stomp on press 2 (Croupade); after press 1, a follow-up spell shows up for another sort of stomp; most of the time press 2 first because it gives a defence buff as starter, then press 1, then the follow-up spell. No separate \"Tips & Tricks\" or \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Sipahis is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line (\"Bot Line would be better if it actually worked, but it's bugged and simply doesn't work\")",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Top Line -- \"Bot Line would be better if it actually worked, but it's bugged and simply doesn't work\" (per Amya). Hero pairing: Any. \"Don't put\" section is a literal X placeholder in the OP -- not fabricated here. Playstyle kit: cav has a charge on press 1 (Quick Charge) and a stomp on press 2 (Croupade); after press 1, a follow-up spell shows up for another sort of stomp; most of the time press 2 first because it gives a defence buff as starter, then press 1, then the follow-up spell. No separate \"Tips & Tricks\" or \"Example Build\" section given beyond the doctrine list. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Sipahis is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "kit overview",
+          "text": "Charge on press 1 (Quick Charge) and a stomp on press 2 (Croupade); after press 1, a follow-up spell shows up for another sort of stomp."
+        },
+        {
+          "context": "combo order",
+          "text": "Most of the time, press 2 first because it gives a defence buff as starter, then press 1, then the follow-up spell."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

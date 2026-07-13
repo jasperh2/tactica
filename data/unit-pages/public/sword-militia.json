@@ -10,7 +10,7 @@
     "leadership": 65,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/sword-militia.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

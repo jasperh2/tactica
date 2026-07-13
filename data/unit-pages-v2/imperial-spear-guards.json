@@ -14,7 +14,7 @@
       "flank": 2
     }
   },
-  "pitch": "A frontline anchor with a shield wall that blocks ranged fire and soaks damage for your team. Its one real weakness is heavy block-break units like Iron Reapers and Liaos; against pikes and non-block-breaking threats, it trades damage to let your cavalry enter the fight.",
+  "pitch": "A frontline shield anchor that plants under Cover Commander to soak ranged fire and melee for your team while your DPS works safely behind it. Heavy block-break (Iron Reapers, Liaos) and poison/exotic debuffs go through its armor, but it shrugs off pikes and lets your cavalry punish anyone baited into hitting the wall.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -26,7 +26,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Block Doctrine",
+      "name": "Block Doctrine V",
       "note": "+300 block, −90 flat dmg taken",
       "marks": [
         1
@@ -34,7 +34,7 @@
     },
     {
       "tag": "top-pick",
-      "name": "Steadfast Doctrine",
+      "name": "Steadfast Doctrine V",
       "note": "+130 def, −6% dmg taken",
       "marks": [
         1
@@ -42,7 +42,7 @@
     },
     {
       "tag": "top-pick",
-      "name": "Health & Resistance Doctrine",
+      "name": "Health & Resistance Doctrine V",
       "note": "+300 HP, −5% dmg taken",
       "marks": [
         1
@@ -50,7 +50,7 @@
     },
     {
       "tag": "top-pick",
-      "name": "Awareness Doctrine",
+      "name": "Awareness Doctrine V",
       "note": "−500 cav charge dmg, −20% rear attacks",
       "marks": [
         1
@@ -58,7 +58,7 @@
     },
     {
       "tag": "filler",
-      "name": "Unit DMG V",
+      "name": "Unit Damage Doctrine V",
       "note": null,
       "marks": [
         1
@@ -84,9 +84,9 @@
     }
   ],
   "battleRole": {
-    "positioning": "Plant on the frontline and keep Cover Commander active to tank ranged fire and enemy melee blobs. {2} Think about X-moving in to ensure you take the frontline — don't let your team get exposed. {2} Against heavy CC, you need Cover Commander's CC-immunity buff to avoid getting scattered. {2}",
-    "formation": "F2 (block) to group tightly and concentrate center damage; use this when your position denies flanking. {2} Otherwise stay mobile and reposition left/right to cover allies or intercept incoming threats like Imperial Pike advances from the side. {2}",
-    "tips": "Advance is a safe approach against brace-heavy pikes like Halberdiers — it knocks them down frontally and lets you hold the line without taking a beating. {2} After Cover Commander scatter, use Advance (once or twice quickly) to reform in tight formation, then snap back to Cover Commander within 1–1.5 seconds or you'll eat sustained damage without the defense buff. {2} CCi doctrine is mandatory when fighting on walls (trebs) or when enemy cavalry charge is incoming — the CC immunity buys you time. {1}"
+    "positioning": "Plant on the frontline and keep Cover Commander active to tank ranged fire and enemy melee blobs. {2} Think about X-moving in to ensure you take the frontline — don't let your team get exposed. {2} Against heavy CC, you need Cover Commander's CC-immunity buff to avoid getting scattered. {2} Before committing, scout for priority objectives (fire units, war rockets, mass-CC units) via tab, and only advance once the team is grouped. {2}",
+    "formation": "F2 (block) to group tightly and concentrate center damage; use this when your position denies flanking. {2} Otherwise stay mobile and reposition left/right to cover allies or intercept incoming threats like Imperial Pike advances from the side. {2} Tight formations invite hero CC — Iron Reapers punish this specifically by stacking, charging, and popping Tiger Step's 12s CC-immunity to force through the shield wall. {3}",
+    "tips": "Advance is a safe approach against brace-heavy pikes like Halberdiers — it knocks them down frontally and lets you hold the line without taking a beating. {2} After Cover Commander scatter, use Advance (once or twice quickly) to reform in tight formation, then snap back to Cover Commander within 1–1.5 seconds or you'll eat sustained damage without the defense buff. {2} CCi doctrine is mandatory when fighting on walls (trebs) or when enemy cavalry charge is incoming — the CC immunity buys you time. {1} Split pushes across two simultaneous fronts rather than massing into one choke point — a single-choke siege-tower rush is the canonical failure case. {2} Don't over-expose to save minor chip damage, don't waste Advance on trivial troop counts, never leave the unit on Cover Commander and walk off alone, and don't sit passive on a point before it's actually cleared. {2}"
   },
   "matchups": {
     "cards": [
@@ -127,25 +127,34 @@
         ]
       },
       {
-        "name": "Pikes (Halberdiers, Pike units)",
-        "rel": "counters",
-        "why": "you soak damage and let your cavalry enter when the pike is baited into hitting you",
+        "name": "Condottieri Guards",
+        "rel": "counters-you",
+        "why": "route a CC-supported flank around the shield wall in loose F1 to stagger-lock it from the side rather than charging head-on",
+        "house": false,
+        "marks": [
+          5
+        ]
+      },
+      {
+        "name": "Bastard Sword",
+        "rel": "pairs",
+        "why": "heavy hero pairing",
         "house": false,
         "marks": [
           1
         ]
       },
       {
-        "name": "Bastard Sword",
+        "name": "Spear Sergeants",
         "rel": "pairs",
-        "why": "heavy hero pairing recommended per Amya",
-        "house": false,
+        "why": "both tanky units picked together for TW push/defence hero pairing",
+        "house": true,
         "marks": [
-          1
+          8
         ]
       }
     ],
-    "pressure": "You pressure: Silahdars (they prefer Death Strike over Decapitate into you, trading damage efficiency). Fragile shield units (Men-at-Arms) cannot hold the line the way you can."
+    "pressure": "You pressure: Silahdars (they prefer Death Strike over Decapitate into you, trading damage efficiency) {7} and Azaps (piercing resistance is specifically prioritized to answer your shield-wall/pike-line class). Fragile shield units (Men-at-Arms) cannot hold the line the way you can. {6} Vs pikes (Halberdiers, pike units): soak the bait and let your cavalry enter when the pike commits into you. {1}"
   },
   "controls": {
     "loop": [
@@ -158,7 +167,7 @@
     "loopMarks": [
       2
     ],
-    "notes": "Core micro: When winning the push, F2 + X forward, then snap back to Cover Commander immediately — this moves you forward while staying behind your unit (if you move without the unit, they follow from behind and you get exposed). {2} When losing the push, hold and use your hero weapon kit to stall until reinforcements arrive. {2} Vertra-Lock Shields trait (35% frontal reduction) is good only versus small groups for a few seconds; overall 35% frontal reduction helps but is inefficient versus bigger blobs. {2} Cover Commander grants more stats, CC immunity, applies CC effects to enemies while taking less damage from them. {2} Make doctrines as tanky as possible: tank trebs with CCi, tank cav charges with CCi, mitigate high-damage dealers (Reapers, Zweihanders) with stacking defenses. {2}"
+    "notes": "Core micro: When winning the push, F2 + X forward, then snap back to Cover Commander immediately — this moves you forward while staying behind your unit (if you move without the unit, they follow from behind and you get exposed). {2} When losing the push, hold and use your hero weapon kit to stall until reinforcements arrive. {2} Vertra-Lock Shields trait (35% frontal reduction) is good only versus small groups for a few seconds; overall 35% frontal reduction helps but is inefficient versus bigger blobs. {2} Cover Commander grants more stats, CC immunity, applies CC effects to enemies while taking less damage from them. {2} Make doctrines as tanky as possible: tank trebs with CCi, tank cav charges with CCi, mitigate high-damage dealers (Reapers, Zweihanders) with stacking defenses. {2} Cover Commander's hero buff grants roughly 24% unit-damage resist, making the hero itself hard to kill for supply-block and artillery-dive duty — X-ing off the unit strips that buff and exposes the hero. {8}"
   },
   "footnotes": [
     {
@@ -187,25 +196,34 @@
     },
     {
       "mark": 5,
+      "author": "IndigenousPonchoGames",
+      "date": "Jun 2020",
+      "house": false
+    },
+    {
+      "mark": 6,
       "author": "Knightstalker",
       "date": "May 2021",
       "house": false
     },
     {
-      "mark": 6,
+      "mark": 7,
       "author": "Superkitowiec",
       "date": "May 2022",
       "house": false
     },
     {
-      "mark": 7,
-      "author": "Amya tierlist",
+      "mark": 8,
+      "author": "house guide",
       "date": "Jun 2026",
-      "house": false
+      "house": true
     }
   ],
   "gaps": [
+    "No house-playbook card captured; data/unit-db.json confirms no StarBurst card exists for this unit at all.",
+    "Amya guide edit timestamp (2026-06-25T02:28:04Z) lands on the Chaos patch anchor UTC early hours — treated as borderline rather than assumed current-patch.",
     "Formation guidance (F1 vs F2 in what terrain) comes only from the Herlajis video; no secondary source confirms.",
-    "Ability/trait names from older video transcripts (2021–2023) may be stale; 'Vertra-Lock Shields', third ability in damage list — vet sanity check recommended post-capture."
+    "Ability/trait names from older video transcripts (2021–2023) may be stale; 'Vertra-Lock Shields', third ability in damage list — vet sanity check recommended post-capture.",
+    "House Q&A dispute unresolved: one house post claims ISG lacks self-heal (losing out to Spear Sergeants for lifesaver-doctrine hunters), a second house member directly disputed this in-thread ('isg also self heal') without the original claim being withdrawn."
   ]
 }

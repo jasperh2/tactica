@@ -14,7 +14,7 @@
       "flank": 9
     }
   },
-  "pitch": "A mobile flanking unit with incredible damage output and sustain that can single-handedly swing fights through smart positioning and combo execution. Loses to anti-tank units and risks chaos if Frenzy activates near pikes, but top-tier in skirmish or when caught in a flank.",
+  "pitch": "A mobile flanking unit with incredible damage output and sustain that can single-handedly swing fights through smart positioning and combo execution. Loses to pikes, cavalry, and big burst units, so save it for flanks and hero-fight swings rather than a frontal push.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -34,7 +34,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Berserk Unique Doctrine",
+      "name": "Berserker's Doctrine",
       "note": "20% cooldown reduction",
       "marks": [
         1
@@ -66,7 +66,7 @@
     },
     {
       "tag": "filler",
-      "name": "Slashing Damage Doctrine",
+      "name": "Epic Slashing Damage Doctrine",
       "note": null,
       "marks": [
         1
@@ -118,10 +118,11 @@
       {
         "name": "Pike units",
         "rel": "counters-you",
-        "why": "infantry pikes and halberdiers counter melee charges; formation-breach tricks can let even blue-tier halberdiers kill Berserkers {3}",
+        "why": "hard counter to the unit; formation-breach tricks can let even blue-tier Halberdiers kill Berserkers",
         "house": false,
         "marks": [
-          3
+          2,
+          4
         ]
       },
       {
@@ -136,10 +137,19 @@
       {
         "name": "Imperial Javelineers",
         "rel": "counters-you",
-        "why": "best direct counter beyond pikes — excel at taking down high-health targets",
+        "why": "best direct counter beyond pikes/cavalry — excels at taking down high-health targets",
         "house": false,
         "marks": [
           2
+        ]
+      },
+      {
+        "name": "Prefecture Pikemen",
+        "rel": "counters-you",
+        "why": "decent at killing Berserkers when charging into them",
+        "house": false,
+        "marks": [
+          3
         ]
       },
       {
@@ -154,10 +164,10 @@
       {
         "name": "Men-at-Arms",
         "rel": "counters-you",
-        "why": "frontal push from Berserkers obliterates them — can't hold the line against T4 units",
+        "why": "a frontal (not even flanking) Berserkers push obliterates them — can't hold a line the way top-tier T4 units can",
         "house": false,
         "marks": [
-          2
+          5
         ]
       }
     ],
@@ -193,7 +203,19 @@
     {
       "mark": 3,
       "author": "superkitowiec",
+      "date": "Jul 2021",
+      "house": false
+    },
+    {
+      "mark": 4,
+      "author": "superkitowiec",
       "date": "Sep 2022",
+      "house": false
+    },
+    {
+      "mark": 5,
+      "author": "knightstalker",
+      "date": "May 2021",
       "house": false
     }
   ],

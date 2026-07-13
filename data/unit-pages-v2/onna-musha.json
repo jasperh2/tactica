@@ -11,7 +11,24 @@
   },
   "pitch": "A Heroic-era anti-cavalry pike line that braces against charges, sitting at C-tier — meta but very situational rather than a priority pick. Documentation is thin: the only build guidance on file is a single house veterancy screenshot from June 2023, well before the current balance state.",
   "doctrines": [],
-  "veterancy": [],
+  "veterancy": [
+    {
+      "label": "Top branch",
+      "recommended": true,
+      "body": "Spend 3/3 → 2/2 → 3/3 → 3/3 → 2/2, leave the last two nodes unspent (0/3, 0/1). Captured from a level-24, 5-star veterancy screenshot — likely stale, predates the 2026-06-22 content cutoff by roughly three years.",
+      "marks": [
+        1
+      ]
+    },
+    {
+      "label": "Bottom branch",
+      "recommended": false,
+      "body": "Spend 3/3 → 3/3 → 3/3, leave the last four nodes unspent (0/3, 0/1, 0/3, 0/1). Same source and same staleness caveat as the top branch — captured as one half of a single build, not a competing alternative.",
+      "marks": [
+        1
+      ]
+    }
+  ],
   "battleRole": {
     "positioning": null,
     "formation": null,
@@ -26,9 +43,17 @@
     "loopMarks": [],
     "notes": null
   },
-  "footnotes": [],
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "[IM] Liri",
+      "date": "Jun 2023",
+      "house": true
+    }
+  ],
   "gaps": [
     "No Amya guide exists for this unit — the tierlist row is the only Amya-sourced content (C tier, T4, no mastery).",
+    "No house card, video transcript, or battle-role/positioning/formation guidance found anywhere on disk — Battle role, Matchups, and Controls have zero source material.",
     "Fight ratings (Blob/Flank/Skirmish/Duelling) not captured — Onna-musha is absent from unit-strengths.json.",
     "The only veterancy build on file is a house screenshot from 21 June 2023 (~3 years stale) — balance patches since then may have changed the tree; treat as a rough starting point, not a current recommendation.",
     "Confirmed NOT on the 13-unit [Chaos: A Realm Divided] (2026-06-25) balance-change list, so the stale veterancy build is at least not invalidated by that specific patch."

@@ -1,0 +1,181 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "yanyuedao-cavalry",
+  "name": "Yanyuedao Cavalry",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Cavalry",
+    "typeClass": "cav",
+    "leadership": 320,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/yanyuedao-cavalry.png",
+    "metaTier": "A",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Skirmish": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Duelling": {
+        "value": 4,
+        "raw": "4/10"
+      }
+    },
+    "classBucket": "cavalry"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Yanyuedao Blue Slashing Doctrine",
+          "text": "Mandatory per Amya. OP note: \"confirm exact name.\"",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Toughness Doctrine V",
+          "text": "-33% DMG taken. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Healing Punisher Doctrine",
+          "text": "+20% DMG vs healing units. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Yanyuedao Resistance Doctrine",
+          "text": "-15% DMG taken. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Yanyuedao CCi Doctrine",
+          "text": "Unit-unique control immunity, alt for Leadership. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Veterancy: Top Line (Overwhelming) recommended for Spartan kill / blob charge (65% minimum dmg, not affected by dmg reduction), or Bot Line for skirmish / higher dmg output on smaller unit packs. Hero pairing: Any (per Amya). Example build per OP: Yanyuedao Blue Slashing Doctrine, Unit Damage Doctrine V, Toughness Doctrine V (-33% DMG taken), Healing Punisher Doctrine (+20% DMG vs healing units), Epic Leadership Doctrine. Playstyle kit: despite CCi on first strike, always enter via Mounting Dread from flank/behind; charge 1 (Dread Unleashed) from optimal distance, release at max potential (cav strikes twice on impact, can cancel charge once second hit registers); often better to release ~70% charge if timing is right rather than wait for 100%; excels on smaller maps where lancers/specialized cav are hindered by terrain. Press 1 releases a first then second slash — X-move away after the first if needed, otherwise wait for the second then X-move (repress 1 to recharge ASAP). Press 2 (Rushing Blow) as a momentum builder on straight-line actions or as an escape (moves unit in its facing direction). Tips: learn full timing of the 1 — releasing it last moment allows re-triggering right after the double slash; when entering a blob facing pikes/stalwart/speed-bonus units, X-move side to side repeatedly to stop moving (minor dmg loss vs large dodge value). 'Don't put' is a literal X placeholder in the OP — not fabricated. Thread alt-romanization note: thread title is 'Yuanyuedao Enforcers / Yuandao / YYD' (Amya renamed the post 2024-12-30 but kept this title); tierlist and this record track the unit as 'Yanyuedao Cavalry' — same unit, alternate romanization, not a rename. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yanyuedao Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line (Overwhelming) recommended for Spartan kill / blob charge (65% minimum dmg, not affected by dmg reduction), or Bot Line for skirmish / higher dmg output on smaller unit packs",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: Top Line (Overwhelming) recommended for Spartan kill / blob charge (65% minimum dmg, not affected by dmg reduction), or Bot Line for skirmish / higher dmg output on smaller unit packs. Hero pairing: Any (per Amya). Example build per OP: Yanyuedao Blue Slashing Doctrine, Unit Damage Doctrine V, Toughness Doctrine V (-33% DMG taken), Healing Punisher Doctrine (+20% DMG vs healing units), Epic Leadership Doctrine. Playstyle kit: despite CCi on first strike, always enter via Mounting Dread from flank/behind; charge 1 (Dread Unleashed) from optimal distance, release at max potential (cav strikes twice on impact, can cancel charge once second hit registers); often better to release ~70% charge if timing is right rather than wait for 100%; excels on smaller maps where lancers/specialized cav are hindered by terrain. Press 1 releases a first then second slash — X-move away after the first if needed, otherwise wait for the second then X-move (repress 1 to recharge ASAP). Press 2 (Rushing Blow) as a momentum builder on straight-line actions or as an escape (moves unit in its facing direction). Tips: learn full timing of the 1 — releasing it last moment allows re-triggering right after the double slash; when entering a blob facing pikes/stalwart/speed-bonus units, X-move side to side repeatedly to stop moving (minor dmg loss vs large dodge value). 'Don't put' is a literal X placeholder in the OP — not fabricated. Thread alt-romanization note: thread title is 'Yuanyuedao Enforcers / Yuandao / YYD' (Amya renamed the post 2024-12-30 but kept this title); tierlist and this record track the unit as 'Yanyuedao Cavalry' — same unit, alternate romanization, not a rename. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; Yanyuedao Cavalry is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "Despite CCi on the first strike, always use Mounting Dread to enter the fight from flank or behind the enemy pack."
+        },
+        {
+          "context": "combo",
+          "text": "Charge your 1 (Dread Unleashed) from optimal distance and release at max potential for the highest damage. Cav strikes twice on impact; you can cancel the charge as soon as the second hit registers."
+        },
+        {
+          "context": "charge timing",
+          "text": "Don't overcommit always trying to charge to 100%. Often better to release at around 70% if the timing is right, than waiting for 100% and missing a good opportunity."
+        },
+        {
+          "context": "map choice",
+          "text": "Excels on smaller maps where lancers or other specialized cav are hindered by environmental constraints — very versatile in such scenarios."
+        },
+        {
+          "context": "combo",
+          "text": "Pressing 1 releases a first slash then a second; X-move away after the first if needed, but in most cases wait for the second and X-move away (repress 1 to charge it again as soon as possible)."
+        },
+        {
+          "context": "combo",
+          "text": "2 (Rushing Blow) should be used as a momentum builder on straight-line actions, or as an escape after the first few X-moves (each model moves in the direction it is facing)."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

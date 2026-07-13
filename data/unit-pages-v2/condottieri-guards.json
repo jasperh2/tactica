@@ -9,7 +9,7 @@
     "rarity": "T3",
     "fightRatings": null
   },
-  "pitch": "A cost-effective shielded melee line with charge-into-skill combo damage and surprising reach for newer players. Keep them mobile — their weakness is sustained pressure and pike formations they can't break through.",
+  "pitch": "A cost-effective, forgiving shielded melee line built to charge into Shock Attack for burst damage, at its best as a flanking cleanup unit rather than a frontline vanguard. Its low cost makes it a fine trade to buy time or map control, but an unsupported charge into a braced pike line or tight shield wall gets it wiped.",
   "doctrines": [
     {
       "tag": "mandatory",
@@ -29,7 +29,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Charge CD Doctrine",
+      "name": "Stamina Doctrine V",
       "note": "−24% charge CD, +1 charge target",
       "marks": [
         1
@@ -79,16 +79,16 @@
     }
   ],
   "battleRole": {
-    "positioning": "Exploit the unit's speed for lateral repositioning and flanking — reposition unseen, hit targets from the rear or sides for bonus flank damage. {2} Spread into loose formation vs tight shield walls (e.g. Imperial Spears) — route the charge around the line, envelop from the side, and stagger-lock with Shock Attack. {2}",
+    "positioning": "Exploit the unit's speed for lateral repositioning and flanking — reposition unseen, hit targets from the rear or sides for bonus flank damage; even without a clean flank route, walking the sides of a fight instead of piling onto the center usually nets bonus damage. {2} Spread into loose formation vs tight shield walls (e.g. Imperial Spears) — route the charge around the line, envelop from the side, and stagger-lock with Shock Attack. {2} Map-specific flank timing matters — e.g. on Valley Fortress, stage near a captured point and scout for the stall between pushes; flanking while the enemy is actively pushing a point is poor team play. {2}",
     "formation": null,
-    "tips": "Alternative engagement order: move/flank first, press Shock Attack, then charge into melee once in position — lets you hit backline/high-value targets from behind. {2} Even without an open flank route, walking the sides of a fight instead of charging straight at the center usually nets bonus flank damage. {2} Cost-effective unit: sacrificing Condottieri Guards to secure map control or an objective trade is often a net win given the 175 leadership cost. {2}"
+    "tips": "Alternative engagement order: move/flank first, press Shock Attack, then charge into melee once in position — lets you hit backline/high-value targets from behind. {2} Cost-effective unit: sacrificing Condottieri Guards to secure map control or an objective trade is often a net win given the low leadership cost — one clip nets 175 leadership spent for a 700-leadership kill. {2} Recommended attack-roster farm pick in its era/tier bracket, alongside Halberdiers and Prefecture Guards — flagged likely-stale, pre-dates the current patch. {3}"
   },
   "matchups": {
     "cards": [
       {
         "name": "Fortebraccio Pikemen",
         "rel": "counters-you",
-        "why": "braced pike formation eats unsupported charges; breaks only with CC support.",
+        "why": "one of the game's strongest braces — an unsupported charge gets Condottieri wiped almost instantly; even minor melee-hero CC flips the fight once the pike formation breaks.",
         "house": false,
         "marks": [
           2
@@ -97,7 +97,16 @@
       {
         "name": "Imperial Spears",
         "rel": "counters-you",
-        "why": "tight shield-wall formation — head-on charge yields little; requires flank spread-and-envelop.",
+        "why": "tight shield-wall formation — head-on charge with no CC yields little; requires flank spread-and-envelop instead.",
+        "house": false,
+        "marks": [
+          2
+        ]
+      },
+      {
+        "name": "Pavese Crossbowmen",
+        "rel": "pairs",
+        "why": "high-value flank target — a surprise charge on an unprotected backline crossbow unit is a clean net win even on a losing trade.",
         "house": false,
         "marks": [
           2
@@ -109,12 +118,12 @@
   "controls": {
     "loop": [
       "Charge",
-      "Shock Attack"
+      "2"
     ],
     "loopMarks": [
       1
     ],
-    "notes": "Primary combo: charge launches the Shock Shieldbash after it; {1} Shock Attack (press 2) is your main DPS spell. {1} Cost-effective: with low leadership, sacrificing the unit to secure map/objective trades (175 leadership for 700 leadership's enemy value) is a clear net win. {2}"
+    "notes": "Primary combo: charge launches the Shock Shieldbash after it; {1} Shock Attack (press 2) is your main DPS spell — usually let the charge's attack animation play out, then press 2. {1} Alternative: X-move/Flank, press 2, then charge once in melee. {1}"
   },
   "footnotes": [
     {
@@ -128,6 +137,12 @@
       "author": "Indigenous Poncho",
       "date": "Jun 2020",
       "house": false
+    },
+    {
+      "mark": 3,
+      "author": "house guide",
+      "date": "Sep 2025",
+      "house": true
     }
   ],
   "gaps": [
@@ -135,6 +150,8 @@
     "No dedicated 'top-pick' doctrine tier — only Mandatory/Filler; Amya did not specify relative picks within each tier.",
     "No hero pairing guidance given.",
     "No formation recommendations in any source.",
-    "Indigenous Poncho video (2020, Season 3) — stat comparisons and patch-era mechanics should be vet-checked; newer sources may supersede."
+    "Indigenous Poncho video (2020, Season 3) — stat comparisons and patch-era mechanics should be vet-checked; newer sources may supersede.",
+    "No house-card build data captured for this unit (confirmed via exhaustive RAW search) — a house farm-tier list flags it as a Row 1 attack-meta pick (marked 'likely-stale', pre-dates the 2026-06-22 patch cutoff) but gives no build/matchup specifics.",
+    "Two Evoloz Gaming cross-references (about other units) note Condottieri as a high-HP (~8,000-10,000), burst-capable comparison point but add no new build/matchup guidance for this unit."
   ]
 }

@@ -1,0 +1,174 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "white-plume-guards",
+  "name": "White Plume Guards",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 305,
+    "origin": null,
+    "noMastery": true,
+    "icon": null,
+    "metaTier": "To place (new/recently buffed, unlettered)",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 9,
+        "raw": "9/10"
+      },
+      "Flank": {
+        "value": 2,
+        "raw": "2/10"
+      },
+      "Skirmish": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Duelling": {
+        "value": 3,
+        "raw": "3/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-25",
+      "2026-06-29"
+    ],
+    "patchState": "new-this-season",
+    "patchNote": "New this season ([Chaos: A Realm Divided] Season Announcement) — no prior doc to compare against."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Spear Doctrine VI",
+          "text": "CCi / Stand Fast",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": null,
+          "text": "Their 2 Unique Doctrines",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Awareness Doctrine",
+          "text": "-500 cav charge dmg, -20% rear attacks",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Block Doctrine",
+          "text": "+300 block, -90 flat dmg taken — \"this -90 dmg is calculated at the end of all calculation, making it very good\"",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Steadfast Doctrine",
+          "text": "+130 def, -6% dmg taken",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Health & Resistance Doctrine",
+          "text": "+300 HP, -5% dmg taken",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Unit DMG V",
+          "text": "filler slot",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": null,
+          "text": "Hero DMG / Piercing DMG / Pen — do not use",
+          "tag": "avoid"
+        }
+      ],
+      "note": "No Mastery (T5). Veterancy: Bot Line. CC-immunity (doctrine + Press 1) is the core value: tank trebs when fighting on walls, eat cav charges or fall back. Kit per OP: White Plume Defense (1) CC-immune +1400 block restore, +80% Def 10s / Shattering Bash (2) knockdown AoE + 4% HP restore / Long Live the Han (3) 10s last-stand + death immunity, 20% HP restore after.",
+      "footnoteMark": 1
+    },
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "No Mastery (T5). Veterancy: Bot Line. CC-immunity (doctrine + Press 1) is the core value: tank trebs when fighting on walls, eat cav charges or fall back. Kit per OP: White Plume Defense (1) CC-immune +1400 block restore, +80% Def 10s / Shattering Bash (2) knockdown AoE + 4% HP restore / Long Live the Han (3) 10s last-stand + death immunity, 20% HP restore after.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "High minimum DMG: Liao's, Iron Reapers, Rattans"
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Units that can get through you: Queen's / Reapers / .."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Everything (per Amya): you soak dmg for the team, and your team cav can enter front if you are baiting enemy pike into hitting you."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "role",
+          "text": "Front-line for your team, protect the dps."
+        },
+        {
+          "context": "positioning",
+          "text": "You are fixing the front-lane, don't bait your dps units and don't get flanked."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-25",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

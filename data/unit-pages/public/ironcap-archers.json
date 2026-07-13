@@ -10,7 +10,7 @@
     "leadership": 110,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/ironcap-archers.png",
     "metaTier": "B",
     "rarityTier": "T2",
     "fightRatings": null,

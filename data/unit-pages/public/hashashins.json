@@ -10,7 +10,7 @@
     "leadership": 295,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/hashashins.png",
     "metaTier": "D",
     "rarityTier": "T5",
     "fightRatings": null,

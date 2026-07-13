@@ -10,7 +10,7 @@
     "leadership": 220,
     "origin": null,
     "noMastery": true,
-    "icon": null,
+    "icon": "assets/unit-icons/laconic-javelins.png",
     "metaTier": "D",
     "rarityTier": "T4",
     "fightRatings": null,

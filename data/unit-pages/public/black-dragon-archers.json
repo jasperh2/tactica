@@ -10,7 +10,7 @@
     "leadership": 60,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/black-dragon-archers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

@@ -10,7 +10,7 @@
     "leadership": 100,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/ironcap-swordsmen.png",
     "metaTier": "B",
     "rarityTier": "T2",
     "fightRatings": null,

@@ -1,0 +1,192 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "symmachean-stalwarts",
+  "name": "Symmachean Stalwarts",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 240,
+    "origin": null,
+    "noMastery": false,
+    "icon": "assets/unit-icons/symmachean-stalwarts.png",
+    "metaTier": "AA",
+    "rarityTier": "T4",
+    "fightRatings": {
+      "Blob": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Flank": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Skirmish": {
+        "value": 10,
+        "raw": "10/10"
+      },
+      "Duelling": {
+        "value": 10,
+        "raw": "10/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-27",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Brace damage hitbox −12%; stab damage hitbox −18%"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Spear Doctrine (CCi / Stand Fast)",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Unit Damage Doctrine V",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Stalwarts Brace Doctrine (brace dmg)",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 4,
+          "name": "Epic Spear Doctrine (+400 block)",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Defence Doc V",
+          "text": "-6% DMG taken & +80 all def stats. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Awareness Doctrine V",
+          "text": "-500 cav charge / -20% rear; situational vs divers + cav flank + reapers diving in. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Noble Blood Doctrine I",
+          "text": "Only effective vs vipers / AOE comps, otherwise your blocking dmg won't apply. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Epic Spear Doctrine II (+250 block + 100% regen)",
+          "text": "OP's explicit \"Don't put\" — \"block regen is near useless and better alternative for block.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: Middle for +1 target, then rest top. Hero pairing: Any. Playstyle kit: X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up; CCi (Stand Fast) is the reset button — pop it vs polearm ulting you, enemy Imperial Pike, or cavalry charge; never V with Stalwart, only brace; loop is X-move in or advance, brace, repeat. \"CCi is mandatory in every build (resets block AND breaks CC). A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack.\" Formation tip: use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that. Guide edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor, so doctrine guidance reflects the current season; the shortlist's own assessment of the patch's hitbox-only nerf (Brace damage hitbox −12%, stab damage hitbox −18%) is \"no skill/mechanic change — existing doctrine likely still holds, just slightly weaker\" (docs/vet-docs/changed-units-shortlist.md), so this build is not flagged stale.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Middle for +1 target, then rest top.",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": {
+      "text": "The biggest tip is using the F3 formation to move, into transitioning to F2 and insta bracing, this will make it so that the stalwart is very stacked and give you insane DMG, when bracing with F2 only the back row stalwart will be useless — this tech fix it.",
+      "footnoteMark": 1
+    },
+    "battleRole": {
+      "role": "Frontline shield-wall anchor, holds the line and blocks ranged fire",
+      "rationale": "Veterancy: Middle for +1 target, then rest top. Hero pairing: Any. Playstyle kit: X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up; CCi (Stand Fast) is the reset button — pop it vs polearm ulting you, enemy Imperial Pike, or cavalry charge; never V with Stalwart, only brace; loop is X-move in or advance, brace, repeat. \"CCi is mandatory in every build (resets block AND breaks CC). A LOT of viable doctrine combos exist; personal pick is 1x Unit Damage V + full block stack.\" Formation tip: use F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart for much higher damage; bracing with F2 only, the back-row Stalwart is otherwise wasted, and this tech fixes that. Guide edit timestamp (2026-06-27) POST-dates the 2026-06-25 Chaos patch anchor, so doctrine guidance reflects the current season; the shortlist's own assessment of the patch's hitbox-only nerf (Brace damage hitbox −12%, stab damage hitbox −18%) is \"no skill/mechanic change — existing doctrine likely still holds, just slightly weaker\" (docs/vet-docs/changed-units-shortlist.md), so this build is not flagged stale.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Nothing (per Amya)."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Heavy block-break units such as Claymore & Reapers if they have Linebreaker."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Everything with a good CCi doctrine timing."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Any (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage / sustain loop",
+          "text": "X-move in and brace; stay braced and X-move again, or use Advance and re-brace, every time the brace cooldown is up. Loop: X-move in or advance, brace, repeat."
+        },
+        {
+          "context": "CC / reset",
+          "text": "CCi (Stand Fast) is the reset button: pop it versus a polearm ulting you, an enemy Imperial Pike, or a cavalry charge — it resets both your block bar and any CC on you."
+        },
+        {
+          "context": "formation tech",
+          "text": "Use the F3 formation to move, then transition to F2 and insta-brace — this stacks the Stalwart and gives much higher damage. Bracing with F2 only otherwise wastes the back-row Stalwart; this tech fixes that."
+        },
+        {
+          "context": "general",
+          "text": "Never use V with Stalwart — only brace."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-06-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": []
+}

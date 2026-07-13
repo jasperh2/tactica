@@ -1,0 +1,153 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "siphonarioi",
+  "name": "Siphonarioi",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Ranged Infantry",
+    "typeClass": "special",
+    "leadership": 300,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/siphonarioi.png",
+    "metaTier": "A",
+    "rarityTier": "T5",
+    "fightRatings": null,
+    "classBucket": "ranged"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-27",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Siphonarioi Flamethrower Doctrine",
+          "text": "Unit-unique: +200 blunt DMG when hellfire strikes target. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Siphonarioi Hellfire Doctrine",
+          "text": "Unit-unique: +2s flame duration. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Unit Damage Doctrine V",
+          "text": "+120 unit DMG, +80 all-type — put highest tier you have. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Siege Fighter Doctrine",
+          "text": "+8% DMG in sieges, flat ~+72 on base ~900. Mandatory per OP.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 5,
+          "name": "Epic Leadership Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Mobility Doctrine V",
+          "text": "Sprint. Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 7,
+          "name": "Older Ammunition Doctrine",
+          "text": "Preferred for TW. Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Random HP doctrine",
+          "text": "Fallback if no ammo doc, free slot anyway. Filler.",
+          "tag": "filler"
+        }
+      ],
+      "note": "Dual-titled thread \"Flamers / Siphonarioi\" — treated as one unit with a common nickname (\"Flamers\"), not a combined two-unit guide: no second unit's stats/doctrines are ever distinguished in the OP. Veterancy: Top Line. Hero pairing: not specified in this thread. Follow-up doctrine-ordering tip (2026-04-06, per OP, verbatim): \"Unit DMG V > Unit DMG III > Unit DMG IV > ... rest is normal order — for some reason unit dmg 3 is better than unit dmg 4...\" Playstyle: 2->1 combo maximizes damage but shouldn't be overused — only for (1) defending/attacking a chokepoint like a gate, or (2) when your 1 will hit the unit cap. Even at a gate chokepoint, 1->2 is better (longer CC uptime; noted as pre-Spartans-release advice). In open space, do NOT use 2->1 — too much space/bigger frontlines; instead 2 -> reposition -> 1 diagonal/straight (situational), or 2->1 diagonal, or 2 diagonal->1 straight. 2->1 doesn't add much extra damage: burn duration + CC resets by ticks from 1, only extra impact-DMG ticks are gained from 2. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Siphonarioi is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "Top Line",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Dual-titled thread \"Flamers / Siphonarioi\" — treated as one unit with a common nickname (\"Flamers\"), not a combined two-unit guide: no second unit's stats/doctrines are ever distinguished in the OP. Veterancy: Top Line. Hero pairing: not specified in this thread. Follow-up doctrine-ordering tip (2026-04-06, per OP, verbatim): \"Unit DMG V > Unit DMG III > Unit DMG IV > ... rest is normal order — for some reason unit dmg 3 is better than unit dmg 4...\" Playstyle: 2->1 combo maximizes damage but shouldn't be overused — only for (1) defending/attacking a chokepoint like a gate, or (2) when your 1 will hit the unit cap. Even at a gate chokepoint, 1->2 is better (longer CC uptime; noted as pre-Spartans-release advice). In open space, do NOT use 2->1 — too much space/bigger frontlines; instead 2 -> reposition -> 1 diagonal/straight (situational), or 2->1 diagonal, or 2 diagonal->1 straight. 2->1 doesn't add much extra damage: burn duration + CC resets by ticks from 1, only extra impact-DMG ticks are gained from 2. \"Don't put\" is a literal X placeholder in the OP — not fabricated. Edit timestamp (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor; Siphonarioi is NOT on the 13-unit Chaos shortlist, so staleAsOfPatch is not forced — noting pre-patch authorship per instructions only.",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": {
+      "steps": [
+        {
+          "context": "chokepoint (gate)",
+          "text": "2 -> 1 combo maximizes damage, but only use in 2 situations: defending/attacking a chokepoint, or when your 1 will hit the unit cap. Even at a gate, 1 -> 2 is better for longer CC uptime (pre-Spartans-release note)."
+        },
+        {
+          "context": "open space",
+          "text": "Do NOT use 2 -> 1 in open space — too much room to move, bigger frontlines. Instead: 2 -> reposition -> 1 diagonal/straight (situational, mixed vet can be better than full Top here), or 2 -> 1 diagonal, or 2 diagonal -> 1 straight."
+        },
+        {
+          "context": "damage math",
+          "text": "2 -> 1 doesn't add much extra damage: burn duration + CC gets reset by ticks from 1 — the only gain from 2 is extra impact-damage ticks."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-27",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No fight-type strength ratings exist for this unit — the source guide thread omits the ratings block.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "imperial-javelineers",
+  "name": "Imperial Javelineers",
+  "profile": "house",
+  "header": {
+    "era": "Heroic",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 240,
+    "origin": null,
+    "noMastery": false,
+    "icon": null,
+    "metaTier": "C",
+    "rarityTier": "T4",
+    "fightRatings": null,
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Base Piercing Damage 1201→1351; \"Flying Shield\" damage +13% and now applies Knockback"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Melee skirmisher, throws javelins before closing to melee",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": null,
+    "controls": null
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "Imperial Javelineers is below the B-tier+ rich-data gate (metaTier: C) — identity/tier only, no build/usage/fightRatings guide exists in this pipeline.",
+      "house": false
+    }
+  ]
+}

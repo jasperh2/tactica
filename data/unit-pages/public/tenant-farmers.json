@@ -10,7 +10,7 @@
     "leadership": 40,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/tenant-farmers.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,

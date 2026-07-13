@@ -34,7 +34,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Companion Cavalry: Conquest",
+      "name": "Conquest",
       "note": "+100 piercing/slashing/blunt DMG on 3, +Sworn Guard 18s",
       "marks": [
         1
@@ -42,7 +42,7 @@
     },
     {
       "tag": "mandatory",
-      "name": "Companion Cavalry: Billowing Winds",
+      "name": "Billowing Winds",
       "note": "+9% movement speed, +10% unit DMG",
       "marks": [
         1

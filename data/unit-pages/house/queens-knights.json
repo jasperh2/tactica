@@ -1,0 +1,124 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "queens-knights",
+  "name": "Queens Knights",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "shields",
+    "leadership": 280,
+    "origin": null,
+    "noMastery": true,
+    "icon": "assets/unit-icons/queens-knights.png",
+    "metaTier": "S",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 5,
+        "raw": "5/10"
+      },
+      "Flank": {
+        "value": 8,
+        "raw": "8/10"
+      },
+      "Skirmish": {
+        "value": 9,
+        "raw": "9/10"
+      },
+      "Duelling": {
+        "value": 10,
+        "raw": "10/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2024-10-07",
+      "2026-06-29"
+    ],
+    "patchState": "changed-by-patch",
+    "patchNote": "Changed by [Chaos: A Realm Divided] Season Announcement (2026-06-25). Base Block 750→950, Block recovery 27→47; \"Run 'Em Through\" invincibility 1s→1.6s but max stab hits reduced 3→2 (target limit for 2nd hit +1); basic attacks vs blocking units no longer trigger weapon-bounce Dazed"
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": null,
+    "veterancy": null,
+    "formation": null,
+    "battleRole": {
+      "role": "Mobile shielded melee, trades some defense for speed",
+      "rationale": null,
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Block units."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "High-count units."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Low-count units."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Any hero, per Amya guide."
+        }
+      ],
+      "footnoteMark": 2
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "general (PRE-2026-06 REWORK — see gap note)",
+          "text": "Press 1: dashes forward twice (occasionally three times) dealing big damage; the unit is fully invincible during the dash. Press 2: a small shieldbash — okay-ish damage, good block/counter. Timing on press 1 is everything; no simple rule, learned per matchup. Rarely, pressing 2 before 1 can change the matchup entirely."
+        },
+        {
+          "context": "general (PRE-2026-06 REWORK — see gap note)",
+          "text": "Huge block and defense make the unit fairly tanky — retreat after one dash-forward with spell 1 to preserve the unit rather than pushing deeper into a bad trade."
+        }
+      ],
+      "footnoteMark": 2
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "creator guide",
+      "date": "2024-10-07",
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No build (doctrines/mastery) guide has been captured for this unit yet.",
+      "house": false
+    },
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

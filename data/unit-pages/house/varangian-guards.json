@@ -1,0 +1,186 @@
+{
+  "schema": "cb-academy-unit-page/v1",
+  "slug": "varangian-guards",
+  "name": "Varangian Guards",
+  "profile": "house",
+  "header": {
+    "era": "Golden",
+    "class": "Melee Infantry",
+    "typeClass": "special",
+    "leadership": 290,
+    "origin": null,
+    "noMastery": true,
+    "icon": null,
+    "metaTier": "A",
+    "rarityTier": "T5",
+    "fightRatings": {
+      "Blob": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Flank": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Skirmish": {
+        "value": 7,
+        "raw": "7/10"
+      },
+      "Duelling": {
+        "value": 6,
+        "raw": "6/10"
+      }
+    },
+    "classBucket": "melee"
+  },
+  "lastUpdated": {
+    "newestDate": "2026-06-29",
+    "sourceSpan": [
+      "2026-05-26",
+      "2026-06-29"
+    ],
+    "patchState": "no-change-signal",
+    "patchNote": "Not on the changed-units shortlist — no patch signal contradicts this guidance, but it was not re-verified after the patch (governing sources predate it)."
+  },
+  "verdict": {
+    "state": "absent",
+    "text": null
+  },
+  "panels": {
+    "doctrines": {
+      "entries": [
+        {
+          "order": 1,
+          "name": "Epic Combat Doctrine",
+          "text": "3/6/9-hit damage boost. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 2,
+          "name": "Iron Damage Doctrine V",
+          "text": "Ironsides. Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 3,
+          "name": "Linebreaker Doctrine",
+          "text": "Mandatory per Amya.",
+          "tag": "mandatory"
+        },
+        {
+          "order": 4,
+          "name": "Unit Damage Doctrine V",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 5,
+          "name": "Anti-Infantry Doctrine",
+          "text": "Top pick.",
+          "tag": "top-pick"
+        },
+        {
+          "order": 6,
+          "name": "Epic Leadership Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 7,
+          "name": "Damage Reduction Doctrine",
+          "text": "Filler.",
+          "tag": "filler"
+        },
+        {
+          "order": 8,
+          "name": "Movement speed after hit",
+          "text": "OP's explicit \"Don't put.\"",
+          "tag": "avoid"
+        }
+      ],
+      "note": "Veterancy: 5 points top, rest mid and top (of the mid) when it splits into 2 ways. Capstone unlocks \"Axes of the North\" (+15% dmg to infantry, renames the unit). Hero pairing: Medium or Heavy armors. Playstyle kit: 1 (Raging Onslaught, switch to axes) -> X-move in -> 3 -> 2 -> 1 -> V -> 1 -> V -> 1 -> V (repeat); can press V between spell steps to add one AA. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Iron Damage Doctrine V (Ironsides), Linebreaker Doctrine, Anti-Infantry Doctrine or Epic Leadership Doctrine. \"Tips & Tricks\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Varangian Guards is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMark": 1
+    },
+    "veterancy": {
+      "recommendations": [
+        {
+          "author": null,
+          "recommendation": "5 points top, rest mid and top (of the mid) when it splits into 2 ways. Capstone unlocks \"Axes of the North\" (+15% dmg to infantry, renames the unit).",
+          "rationale": null,
+          "corroborates": []
+        }
+      ],
+      "footnoteMarks": [
+        1
+      ]
+    },
+    "formation": null,
+    "battleRole": {
+      "role": "Unique kit that doesn't fit the standard type/weapon pairing",
+      "rationale": "Veterancy: 5 points top, rest mid and top (of the mid) when it splits into 2 ways. Capstone unlocks \"Axes of the North\" (+15% dmg to infantry, renames the unit). Hero pairing: Medium or Heavy armors. Playstyle kit: 1 (Raging Onslaught, switch to axes) -> X-move in -> 3 -> 2 -> 1 -> V -> 1 -> V -> 1 -> V (repeat); can press V between spell steps to add one AA. Example build per OP: Unit Damage Doctrine V, Epic Combat Doctrine (3/6/9), Iron Damage Doctrine V (Ironsides), Linebreaker Doctrine, Anti-Infantry Doctrine or Epic Leadership Doctrine. \"Tips & Tricks\" is a literal X placeholder in the OP -- not fabricated here. Edit timestamp (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; doctrine/build guidance flagged for revalidation against current season (not staleAsOfPatch per arbitration ruleset -- Varangian Guards is not on the 13-unit Chaos shortlist, so no forced flag, but noting pre-patch authorship per instructions).",
+      "footnoteMarks": [
+        2,
+        1
+      ]
+    },
+    "matchups": {
+      "entries": [
+        {
+          "relation": "loses-to",
+          "unit": null,
+          "text": "Rare units that have more burst than them, like Claymores or Yorkist."
+        },
+        {
+          "relation": "struggles-vs",
+          "unit": null,
+          "text": "Debuff units and units that space you, such as phalanx."
+        },
+        {
+          "relation": "counters",
+          "unit": null,
+          "text": "Heavy block units, stacked units."
+        },
+        {
+          "relation": "pairs-with",
+          "unit": null,
+          "text": "Hero pairing: Medium or Heavy armors (per Amya)."
+        }
+      ],
+      "footnoteMark": 1
+    },
+    "controls": {
+      "steps": [
+        {
+          "context": "engage",
+          "text": "1 (Raging Onslaught, switch to axes), X-move in, then 3 -> 2 -> 1 -> V -> 1 -> V -> 1 -> V (repeat); can press V between spell steps to add one AA."
+        },
+        {
+          "context": "practice",
+          "text": "Go into custom battle to understand how to optimise dmg and not cancel it too early."
+        }
+      ],
+      "footnoteMark": 1
+    }
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "creator guide",
+      "date": "2026-05-26",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "unit-db identity",
+      "date": null,
+      "house": false
+    }
+  ],
+  "media": [],
+  "gaps": [
+    {
+      "note": "No dedicated formation guidance exists in unit-db for this unit (only captured for units whose guide states one).",
+      "house": false
+    }
+  ]
+}

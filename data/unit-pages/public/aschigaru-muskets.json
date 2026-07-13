@@ -10,7 +10,7 @@
     "leadership": 205,
     "origin": null,
     "noMastery": false,
-    "icon": null,
+    "icon": "assets/unit-icons/aschigaru-muskets.png",
     "metaTier": null,
     "rarityTier": null,
     "fightRatings": null,
