@@ -12,9 +12,23 @@
  */
 
 /* The v2 sheet is a dense 1440px surface — let it break out of the 1120px reading column, but
-   only when the v2 tree is the one being shown. */
+   only when the v2 tree is the one being shown (rollback path). */
 .hero-page:has(#hero-v2-page:not([hidden])) {
   max-width: 1500px;
+}
+
+/* v3 is FULL-BLEED (Jasper, 2026-07-14: "stretch to the width of my screen", no
+   page-inside-a-page): the reading-column cap and shell padding go away entirely — the
+   .hv3-page surface provides its own gutters — and the body behind it takes the same
+   app background so there is no darker void framing the page. Scoped to hero.html's v3
+   tree only; the heroes index, unit pages, and the nav header are untouched. */
+.hero-page:has(#hero-v3-page:not([hidden])) {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+body:has(#hero-v3-page:not([hidden])) {
+  background: #1e1f22; /* = .hv3-page --app-bg */
 }
 
 .hv3-page {
@@ -49,8 +63,9 @@
   background: var(--app-bg);
   color: var(--ink);
   font-family: var(--hv3-sans);
-  border-radius: 8px;
-  padding: 30px 34px 36px;
+  /* full-bleed surface: no card radius, viewport-scaled gutters (Jasper, 2026-07-14) */
+  border-radius: 0;
+  padding: 28px clamp(28px, 3.2vw, 64px) 44px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -100,7 +115,7 @@
 
 .hv3-micro-label {
   font-family: var(--hv3-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.13em;
   color: var(--ink-4);
@@ -114,7 +129,7 @@
 .hv3-author {
   font-family: var(--hv3-mono);
   font-style: normal;
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--gold-deep);
   white-space: nowrap;
 }
@@ -138,7 +153,7 @@
 
 .hv3-note {
   margin-top: 10px;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.55;
   color: var(--ink-3);
@@ -152,7 +167,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.45;
   color: var(--ink-4);
@@ -160,7 +175,7 @@
 
 .hv3-gap {
   font-family: var(--hv3-mono);
-  font-size: 10.5px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--ink-4);
   margin-top: 10px;
@@ -173,7 +188,7 @@
   padding: 2px 7px;
   border-radius: 3px;
   font-family: var(--hv3-mono);
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -296,7 +311,7 @@
 
 .hv3-sec-meta {
   font-family: var(--hv3-mono);
-  font-size: 9.5px;
+  font-size: 10.5px;
   color: var(--ink-4);
 }
 
@@ -306,7 +321,7 @@
 
 .hv3-sec-anchor {
   font-family: var(--hv3-mono);
-  font-size: 9.5px;
+  font-size: 10.5px;
   color: var(--ink-4);
 }
 
@@ -514,7 +529,7 @@
 
 .hv3-role-quote {
   font-family: var(--hv3-serif);
-  font-size: 15.5px;
+  font-size: 16px;
   line-height: 1.72;
   color: var(--ink);
 }
@@ -530,7 +545,7 @@
 
 .hv3-block-intro {
   margin: 0 0 12px;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--ink-3);
 }
@@ -614,14 +629,14 @@
 }
 
 .hv3-set-name {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
 
 .hv3-set-desc {
   margin-top: 3px;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.5;
   color: var(--ink-3);
@@ -640,7 +655,7 @@
 }
 
 .hv3-spread-build {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
   width: 118px;
@@ -649,7 +664,7 @@
 
 .hv3-spread-value {
   font-family: var(--hv3-mono);
-  font-size: 11px;
+  font-size: 13.5px;
   color: var(--ink-2);
   line-height: 1.45;
 }
@@ -685,13 +700,13 @@
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.04);
   font-family: var(--hv3-mono);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--ink-4);
 }
 
 .hv3-ladder-label {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--ink-2);
 }
@@ -725,7 +740,7 @@
   margin-top: 11px;
   font-family: var(--hv3-serif);
   font-style: italic;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   color: var(--ink-2);
 }
@@ -775,7 +790,7 @@
 }
 
 .hv3-runes-value {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.55;
   color: var(--ink-2);
@@ -783,7 +798,7 @@
 
 .hv3-runes-intro {
   margin-bottom: 7px;
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.55;
   color: var(--ink-3);
@@ -791,7 +806,7 @@
 
 .hv3-runes-mandatory {
   margin-bottom: 4px;
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.5;
   color: var(--ink-2);
@@ -824,14 +839,14 @@
 }
 
 .hv3-aim-label {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--ink-2);
 }
 
 .hv3-aim-note {
   padding: 0 0 7px;
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.5;
   color: var(--ink-4);
@@ -844,7 +859,7 @@
   padding: 3px 9px;
   border-radius: 3px;
   font-family: var(--hv3-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
   color: var(--ink-3);
   background: var(--panel-2);
@@ -874,7 +889,7 @@
 }
 
 .hv3-clip {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--gold);
 }
@@ -895,7 +910,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--hv3-mono);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink);
   background: var(--panel-2);
@@ -925,7 +940,7 @@
 }
 
 .hv3-combo-name {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
   width: 132px;
@@ -934,7 +949,7 @@
 
 .hv3-combo-chain {
   font-family: var(--hv3-mono);
-  font-size: 11px;
+  font-size: 12.5px;
   color: var(--ink-2);
   line-height: 1.5;
   flex: 1;
@@ -977,7 +992,7 @@
 }
 
 .hv3-build-name {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -985,7 +1000,7 @@
 .hv3-build-type {
   margin-top: 2px;
   font-family: var(--hv3-mono);
-  font-size: 8.5px;
+  font-size: 9.5px;
   letter-spacing: 0.08em;
   color: var(--ink-4);
 }
@@ -1001,7 +1016,7 @@
 }
 
 .hv3-build-summary {
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.55;
   color: var(--ink-2);
@@ -1017,7 +1032,7 @@
 }
 
 .hv3-build-foot-line {
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.5;
   color: var(--ink-3);
@@ -1025,7 +1040,7 @@
 
 .hv3-build-alt-label {
   font-family: var(--hv3-mono);
-  font-size: 8.5px;
+  font-size: 9.5px;
   letter-spacing: 0.08em;
   color: var(--gold-deep);
   margin-bottom: 2px;
@@ -1053,7 +1068,7 @@
 }
 
 .hv3-mu-head-label {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.13em;
 }
@@ -1097,14 +1112,14 @@
 }
 
 .hv3-mu-vs {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
 
 .hv3-mu-why {
   margin-top: 3px;
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 500;
   line-height: 1.45;
   color: var(--ink-3);
@@ -1128,14 +1143,14 @@
 
 .hv3-footer-mono {
   font-family: var(--hv3-mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   color: var(--ink-4);
 }
 
 .hv3-philosophy {
   font-family: var(--hv3-serif);
   font-style: italic;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ink-3);
 }
@@ -1146,7 +1161,7 @@
 .hv3-runes-season {
   margin-bottom: 8px;
   font-family: var(--mono, ui-monospace, monospace);
-  font-size: 10.5px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--ink-3);
@@ -1162,7 +1177,7 @@
 }
 
 .hv3-rune-sub-name {
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -1178,7 +1193,7 @@
 
 .hv3-combo-signoff {
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 11.5px;
   text-align: right;
 }
 
@@ -1258,7 +1273,7 @@
 }
 .hv3-general-sep-label {
   font-family: var(--hv3-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.13em;
   color: var(--ink-4);
@@ -1266,7 +1281,7 @@
 }
 .hv3-general-chain {
   font-family: var(--hv3-mono);
-  font-size: 10.5px;
+  font-size: 12.5px;
   line-height: 1.5;
   color: var(--ink-4);
   margin: 2px 0 0 16px;
@@ -1294,7 +1309,7 @@
   margin-bottom: 8px;
 }
 .hv3-runes-card-title {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -1314,7 +1329,7 @@
   gap: 8px;
 }
 .hv3-rune-slot-name {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
@@ -1337,7 +1352,7 @@
   margin-bottom: 10px;
 }
 .hv3-learn-col-label {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.13em;
   color: var(--ink-4);
@@ -1351,7 +1366,7 @@
   padding: 1px 6px;
   border-radius: 3px;
   font-family: var(--hv3-mono);
-  font-size: 10px;
+  font-size: 11.5px;
   color: var(--ink-2);
   background: var(--app-bg);
   border: 1px solid var(--line-strong);
@@ -1369,13 +1384,13 @@
   border-left: 2.5px solid var(--gold);
 }
 .hv3-ask-name {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 3px;
 }
 .hv3-ask-desc {
-  font-size: 11.5px;
+  font-size: 13.5px;
   line-height: 1.45;
   color: var(--ink-3);
 }
