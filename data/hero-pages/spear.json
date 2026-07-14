@@ -119,7 +119,8 @@
         "reposition or follow up",
         "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina.",
+      "general": true
     },
     {
       "name": "Active blocking",
@@ -128,7 +129,8 @@
         "watch your block VALUE",
         "it can be BROKEN and stagger you"
       ],
-      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you.",
+      "general": true
     },
     {
       "name": "Horse-whistle CC immunity",
@@ -137,7 +139,8 @@
         "summon animation = locked state",
         "you take damage but no CC"
       ],
-      "rhythm": "bugs out with PIN/LOCK skills, so care"
+      "rhythm": "bugs out with PIN/LOCK skills, so care",
+      "general": true
     },
     {
       "name": "Walk into braced units",
@@ -145,7 +148,8 @@
         "Walk (don't sprint) into their minimal range",
         "destroy them from the inside"
       ],
-      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk. Demonstrated specifically ON Spear (BirdOfQin, 2024-10-09): \"I'm using a medium armor class (Spear) and my block value isn't even fazed by the fortes.\""
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk. Demonstrated specifically ON Spear (BirdOfQin, 2024-10-09): \"I'm using a medium armor class (Spear) and my block value isn't even fazed by the fortes.\"",
+      "general": true
     }
   ],
   "gameplay": [
@@ -231,6 +235,7 @@
   },
   "statSpreads": [],
   "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "askChannel": "#heroes",
   "combosSignoff": "Amya",
   "gapNotes": {
     "controls": "[GAP: \"DRILLLLL\" -> official ability name unconfirmed - Gungnir's Gift is the better-reasoned candidate over Return of Jangar, but this is inference, not confirmation] [GAP: Assisted Aiming on Units / Locked on Units - fields present but left blank by the OP]",

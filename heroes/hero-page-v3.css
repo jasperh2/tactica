@@ -1,0 +1,1415 @@
+/**
+ * heroes/hero-page-v3.css — hero detail page v3, the layout from
+ * design/handoff-hero-page-v3/Hero Page v3 Shortsword.dc.html (Claude Design, imported
+ * 2026-07-14). Everything is scoped under `.hv3-page` (hero.html's `#hero-v3-page`) with its own
+ * Discord-dark token set, same self-containment discipline as unit-page.css's `.v2-page` block —
+ * nothing here touches the academy nav, the gate, or the hidden v1 tree.
+ *
+ * READABILITY: layout/structure follow the design file exactly; the ink ramp + body-copy sizes
+ * follow the unit-page v2 corrections Jasper made 2026-07-07 ("greys too dark, copy too
+ * small/thin") — lightened inks, reading copy at 500 weight and 13.5px+, only the uppercase mono
+ * micro-labels stay small. Those corrections supersede the design file's literal values.
+ */
+
+/* The v2 sheet is a dense 1440px surface — let it break out of the 1120px reading column, but
+   only when the v2 tree is the one being shown. */
+.hero-page:has(#hero-v2-page:not([hidden])) {
+  max-width: 1500px;
+}
+
+.hv3-page {
+  /* ---- design tokens (scoped; ink ramp = the readability-corrected unit-v2 set) ---- */
+  --app-bg: #1e1f22;
+  --panel: #2b2d31;
+  --panel-2: #202225;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.12);
+  --gold: #e6b352;
+  --gold-bright: #f5cd72;
+  --gold-deep: #d6a244;
+  --gold-soft: rgba(227, 173, 77, 0.14);
+  --gold-border: rgba(227, 173, 77, 0.3);
+  --stripe: rgba(227, 173, 77, 0.05);
+  --ink: #f2f3f5;
+  --ink-2: #d9dce1;
+  --ink-3: #b4b8c0;
+  --ink-4: #9aa0a9;
+  --red: #f08582;
+  --red-soft: rgba(224, 96, 95, 0.16);
+  --green: #74c795;
+  --green-soft: rgba(90, 169, 119, 0.16);
+  --neutral: #b0b6be;
+  --neutral-soft: rgba(153, 160, 168, 0.15);
+  --hv3-radius: 4px;
+  --hv3-radius-sm: 3px;
+  --hv3-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --hv3-sans: 'Hanken Grotesk', system-ui, sans-serif;
+  --hv3-serif: 'Spectral', Georgia, serif;
+
+  background: var(--app-bg);
+  color: var(--ink);
+  font-family: var(--hv3-sans);
+  border-radius: 8px;
+  padding: 30px 34px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hv3-page *,
+.hv3-page *::before,
+.hv3-page *::after {
+  box-sizing: border-box;
+}
+
+.hv3-page p {
+  margin: 0;
+}
+
+/* ---- inline SVG icon base ---- */
+.hv3-ic {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  color: inherit;
+  flex: none;
+}
+
+.hv3-ic svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---- shared atoms ---- */
+
+.hv3-diamond {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.hv3-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.hv3-micro-label {
+  font-family: var(--hv3-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--ink-4);
+  margin-bottom: 10px;
+}
+
+.hv3-micro-inline {
+  margin-bottom: 0;
+}
+
+.hv3-author {
+  font-family: var(--hv3-mono);
+  font-style: normal;
+  font-size: 11px;
+  color: var(--gold-deep);
+  white-space: nowrap;
+}
+
+.hv3-strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hv3-unknown {
+  font-style: italic;
+  color: var(--ink-3);
+}
+
+.hv3-prose {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.hv3-note {
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.hv3-empty {
+  background: var(--panel-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--hv3-radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-4);
+}
+
+.hv3-gap {
+  font-family: var(--hv3-mono);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink-4);
+  margin-top: 10px;
+}
+
+.hv3-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-family: var(--hv3-mono);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hv3-badge-gold {
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+}
+
+.hv3-badge-dim {
+  color: var(--ink-3);
+  background: var(--neutral-soft);
+}
+
+.hv3-pill {
+  display: inline-flex;
+  padding: 4px 9px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+
+.hv3-pill-strong {
+  font-weight: 600;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.hv3-chipline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hv3-tile {
+  flex: none;
+  border-radius: var(--hv3-radius);
+  border: 1px solid var(--line-strong);
+  background: var(--panel-2);
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 6px, transparent 6px 12px);
+  display: grid;
+  place-items: center;
+  font-family: var(--hv3-mono);
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.hv3-tile-gold {
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+.hv3-tile-lg {
+  width: 66px;
+  height: 66px;
+  font-size: 17px;
+}
+
+/* Real weapon-class art layered over the initials fallback: the img is opaque (same well color)
+   so the coded initials only show when the file is missing and the img removes itself. */
+.hv3-tile-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.hv3-tile-icon img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--panel-2);
+}
+
+.hv3-tile-sm {
+  width: 34px;
+  height: 34px;
+  font-size: 10px;
+}
+
+/* ---- panels + section titles ---- */
+
+.hv3-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius);
+  padding: 17px 19px;
+}
+
+.hv3-sec-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 11px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hv3-sec-accent {
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
+  background: var(--gold);
+  flex: none;
+}
+
+.hv3-sec-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.hv3-sec-meta {
+  font-family: var(--hv3-mono);
+  font-size: 9.5px;
+  color: var(--ink-4);
+}
+
+.hv3-sec-spacer {
+  flex: 1;
+}
+
+.hv3-sec-anchor {
+  font-family: var(--hv3-mono);
+  font-size: 9.5px;
+  color: var(--ink-4);
+}
+
+/* ---- eyebrow ---- */
+
+.hv3-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.hv3-crest {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #0c0a07;
+  display: grid;
+  place-items: center;
+}
+
+.hv3-crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hv3-crest.is-ph::after {
+  content: 'IM';
+  font-family: var(--hv3-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.hv3-eyebrow-brand {
+  font-family: var(--hv3-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
+.hv3-eyebrow-dim {
+  font-family: var(--hv3-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--ink-4);
+}
+
+.hv3-eyebrow-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---- Block 1 · header ---- */
+
+.hv3-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hv3-header-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hv3-name {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.05;
+}
+
+.hv3-archetype {
+  margin: 7px 0 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.hv3-chip-row {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.hv3-chip {
+  min-width: 76px;
+  padding: 8px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hv3-chip-gold {
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
+}
+
+.hv3-chip-value {
+  font-family: var(--hv3-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hv3-chip-gold .hv3-chip-value {
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.hv3-chip-label {
+  font-family: var(--hv3-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  color: var(--ink-4);
+  text-align: center;
+}
+
+.hv3-header .hv3-divider {
+  margin: 15px 0 13px;
+}
+
+.hv3-header-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.hv3-header-line {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.hv3-header-line-dim {
+  color: var(--ink-3);
+}
+
+.hv3-header-line-strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hv3-header-line-gold {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.hv3-header-drop-note {
+  color: var(--ink-3);
+}
+
+.hv3-header-freshness {
+  font-family: var(--hv3-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+/* ---- Block 2 · battle role ---- */
+
+.hv3-role-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.hv3-role-line-text {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.hv3-role-line-lead {
+  color: var(--gold);
+}
+
+.hv3-role-quotes {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--hv3-radius-sm);
+  padding: 17px 19px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.hv3-role-quote {
+  font-family: var(--hv3-serif);
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--ink);
+}
+
+/* ---- Blocks 3/4 · positioning | tips ---- */
+
+.hv3-cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.hv3-block-intro {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.hv3-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.hv3-bullets-tight {
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hv3-bullet {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.hv3-bullet .hv3-diamond {
+  margin-top: 6px;
+}
+
+.hv3-bullet-text {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.58;
+  color: var(--ink-2);
+}
+
+.hv3-bullet-lead {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ---- Block 5 · armor & stats ---- */
+
+.hv3-armor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv3-set-list,
+.hv3-rune-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hv3-set-row,
+.hv3-rune-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 11px 0;
+}
+
+.hv3-set-row + .hv3-set-row,
+.hv3-rune-row + .hv3-rune-row {
+  border-top: 1px solid var(--line);
+}
+
+.hv3-set-row:first-child,
+.hv3-rune-row:first-child {
+  padding-top: 2px;
+}
+
+.hv3-set-row:last-child,
+.hv3-rune-row:last-child {
+  padding-bottom: 3px;
+}
+
+.hv3-set-name-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.hv3-set-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-set-desc {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.hv3-spread-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv3-spread-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hv3-spread-build {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  width: 118px;
+  flex: none;
+}
+
+.hv3-spread-value {
+  font-family: var(--hv3-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.hv3-spread-note {
+  color: var(--ink-4);
+  font-family: var(--hv3-sans);
+}
+
+.hv3-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hv3-ladder-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2.5px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 8px 11px;
+}
+
+.hv3-ladder-grade {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--hv3-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-4);
+}
+
+.hv3-ladder-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.hv3-ladder-s {
+  border-left-color: var(--gold);
+}
+
+.hv3-ladder-s .hv3-ladder-grade {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-bright);
+}
+
+.hv3-ladder-s .hv3-ladder-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-ladder-a {
+  border-left-color: var(--neutral);
+}
+
+.hv3-ladder-a .hv3-ladder-grade {
+  background: var(--neutral-soft);
+  color: var(--ink-2);
+}
+
+.hv3-serif-quote {
+  margin-top: 11px;
+  font-family: var(--hv3-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.hv3-weapon-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hv3-runes-panel {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius-sm);
+  padding: 14px 15px;
+  align-self: stretch;
+}
+
+.hv3-runes-panel .hv3-divider {
+  margin: 12px 0;
+}
+
+.hv3-runes-panel .hv3-empty,
+.hv3-runes-panel .hv3-pill {
+  background: var(--app-bg);
+}
+
+.hv3-runes-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 11px;
+}
+
+.hv3-runes-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.hv3-runes-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-runes-value {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.hv3-runes-intro {
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+.hv3-runes-mandatory {
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---- Block 6 · controls & combos ---- */
+
+.hv3-controls-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.3fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv3-aim-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hv3-aim-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+.hv3-aim-row + .hv3-aim-row {
+  border-top: 1px solid var(--line);
+}
+
+.hv3-aim-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.hv3-aim-note {
+  padding: 0 0 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+.hv3-onoff {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-family: var(--hv3-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+}
+
+.hv3-onoff .hv3-ic {
+  width: 10px;
+  height: 10px;
+}
+
+.hv3-onoff.hv3-on {
+  font-weight: 700;
+  color: var(--gold-bright);
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
+}
+
+.hv3-skill-line .hv3-pill {
+  padding: 5px 10px;
+}
+
+.hv3-clip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hv3-clip {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.hv3-keys {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 4px 0 10px;
+}
+
+.hv3-key {
+  min-width: 32px;
+  min-height: 34px;
+  padding: 5px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--hv3-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.hv3-key-arrow {
+  color: var(--gold-deep);
+  font-family: var(--hv3-mono);
+  font-size: 13px;
+  flex: none;
+}
+
+.hv3-combo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.hv3-combo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv3-combo-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  width: 132px;
+  flex: none;
+}
+
+.hv3-combo-chain {
+  font-family: var(--hv3-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 260px;
+}
+
+.hv3-combo-note {
+  color: var(--ink-4);
+  font-family: var(--hv3-sans);
+}
+
+/* ---- Block 7 · builds ---- */
+
+.hv3-build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
+
+.hv3-build-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius-sm);
+  padding: 13px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv3-build-rec {
+  border-color: rgba(227, 173, 77, 0.25);
+}
+
+.hv3-build-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hv3-build-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-build-type {
+  margin-top: 2px;
+  font-family: var(--hv3-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-4);
+}
+
+.hv3-badge-rec {
+  padding: 3px 8px;
+  font-size: 9px;
+}
+
+.hv3-badge-rec .hv3-ic {
+  width: 10px;
+  height: 10px;
+}
+
+.hv3-build-summary {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.hv3-build-foot {
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hv3-build-foot-line {
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.hv3-build-alt-label {
+  font-family: var(--hv3-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  margin-bottom: 2px;
+}
+
+/* ---- Block 8 · matchups ---- */
+
+.hv3-mu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hv3-mu-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hv3-mu-head .hv3-ic {
+  width: 13px;
+  height: 13px;
+}
+
+.hv3-mu-head-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.hv3-green {
+  color: var(--green);
+}
+
+.hv3-red {
+  color: var(--red);
+}
+
+.hv3-goldc {
+  color: var(--gold);
+}
+
+.hv3-mu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hv3-mu-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2.5px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 9px 11px;
+}
+
+.hv3-mu-strong {
+  border-left-color: var(--green);
+}
+
+.hv3-mu-weak {
+  border-left-color: var(--red);
+}
+
+.hv3-mu-syn {
+  border-left-color: var(--gold);
+}
+
+.hv3-mu-vs {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-mu-why {
+  margin-top: 3px;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+/* ---- Block 9 · footer ---- */
+
+.hv3-footer {
+  padding: 2px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hv3-footer-credit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv3-footer-mono {
+  font-family: var(--hv3-mono);
+  font-size: 10.5px;
+  color: var(--ink-4);
+}
+
+.hv3-philosophy {
+  font-family: var(--hv3-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/* ---- v2 extensions (2026-07-14): weapon-rune detail, per-slot rune picks, craft note,
+   combos sign-off, learn-more panel ------------------------------------------------------- */
+
+.hv3-runes-season {
+  margin-bottom: 8px;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+
+.hv3-rune-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 7px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line-strong);
+}
+
+.hv3-rune-sub-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hv3-runes-season-note {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.hv3-craft-note {
+  margin-top: 8px;
+}
+
+.hv3-combo-signoff {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.hv3-learn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hv3-learn-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hv3-learn-desc {
+  margin-top: 0;
+}
+
+/* ---- responsive collapse (the academy site is verified down to 390px) ---- */
+
+@media (max-width: 1080px) {
+  .hv3-armor-grid,
+  .hv3-mu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .hv3-page {
+    padding: 20px 16px 24px;
+  }
+
+  .hv3-cols-2,
+  .hv3-controls-grid,
+  .hv3-role-quotes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================================================
+ * v3 LAYOUT DELTAS — design/handoff-hero-page-v3/Hero Page v3 Shortsword.dc.html
+ * ============================================================================================ */
+
+/* Eyebrow: right-aligned season label (derived from the weapon-runes season line). */
+.hv3-eyebrow-season {
+  font-family: var(--hv3-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* Block 4 shell: ARMOR & STATS (wide) beside POSITIONING & TIPS. */
+.hv3-main-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Tips & Tricks — the class-specific / GENERAL separator (Jasper, 2026-07-14).
+ * Class-specific bullets sit above; cross-class advice below the labeled hairline. */
+.hv3-general-sep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 13px 0 11px;
+}
+.hv3-general-sep::before,
+.hv3-general-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+.hv3-general-sep-label {
+  font-family: var(--hv3-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--ink-4);
+  white-space: nowrap;
+}
+.hv3-general-chain {
+  font-family: var(--hv3-mono);
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink-4);
+  margin: 2px 0 0 16px;
+}
+
+/* Block 5 · RUNES — horizontal band: two intro cards, then the armor-slot card rail. */
+.hv3-runes-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: 16px;
+  margin-bottom: 14px;
+  align-items: stretch;
+}
+.hv3-runes-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius-sm);
+  padding: 12px 14px;
+}
+.hv3-runes-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.hv3-runes-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.hv3-rune-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+.hv3-rune-slot-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--hv3-radius-sm);
+  padding: 12px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hv3-rune-slot-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Block 8 · LEARN MORE — three columns: replays+study links / TW recordings / who to ask. */
+.hv3-learn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.hv3-learn-col {
+  display: flex;
+  flex-direction: column;
+}
+.hv3-learn-col-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.hv3-learn-col-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--ink-4);
+}
+.hv3-learn-col .hv3-empty {
+  margin-top: auto;
+}
+.hv3-ask-chip {
+  display: inline-flex;
+  vertical-align: baseline;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: var(--hv3-mono);
+  font-size: 10px;
+  color: var(--ink-2);
+  background: var(--app-bg);
+  border: 1px solid var(--line-strong);
+}
+.hv3-ask-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 9px 11px;
+}
+.hv3-ask-card + .hv3-ask-card {
+  margin-top: 8px;
+}
+.hv3-ask-card.hv3-ask-primary {
+  border-left: 2.5px solid var(--gold);
+}
+.hv3-ask-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.hv3-ask-desc {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+/* v3 responsive: the new grids collapse with the existing ones. */
+@media (max-width: 1100px) {
+  .hv3-main-grid,
+  .hv3-runes-intro-grid,
+  .hv3-learn-grid {
+    grid-template-columns: 1fr;
+  }
+  .hv3-rune-slot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .hv3-rune-slot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tips & Tricks — full-width panel between Matchups and Learn More (design update 2026-07-14):
+ * tip bullets flow in a three-column grid; the GENERAL separator spans the whole grid. */
+.hv3-tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px 20px;
+  align-items: start;
+}
+.hv3-grid-span {
+  grid-column: 1 / -1;
+}
+@media (max-width: 1100px) {
+  .hv3-tips-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../shared/academy.css" />
   <link rel="stylesheet" href="./heroes.css" />
-  <link rel="stylesheet" href="./hero-page-v2.css" />
+  <link rel="stylesheet" href="./hero-page-v3.css" />
 </head>
 <body>
   <div id="nav-root"></div>
@@ -17,12 +17,16 @@
   <main class="hero-page" id="app-shell">
     <p class="empty-state hero-not-found" id="hero-not-found" hidden></p>
 
-    <!-- V2 layout — the nine-block hero page (design/handoff-hero-page-v2/Hero Page v2
-         Shortsword.dc.html, imported 2026-07-13). hero-page-v2.boot.mjs builds the ENTIRE tree
-         into this single root for every class; the v1 tree below stays hidden as the rollback
-         path (swap the boot import at the bottom of this file to go back). Blocks whose content
-         the hero-content collection pass hasn't delivered yet render honest labeled empty
-         states — see the extension contract in hero-page-v2.mjs. -->
+    <!-- V3 layout — design/handoff-hero-page-v3/Hero Page v3 Shortsword.dc.html (imported
+         2026-07-14). hero-page-v3.boot.mjs builds the ENTIRE tree into this single root for
+         every class. Tips & Tricks renders class-specific tips above the GENERAL separator and
+         cross-class advice below it (Jasper, 2026-07-14). The v2 root below and the v1 tree
+         under it stay hidden as rollback paths (swap the boot import + stylesheet to go back). -->
+    <div id="hero-v3-page" class="hv3-page" hidden></div>
+
+    <!-- V2 layout (ROLLBACK) — the nine-block hero page (design/handoff-hero-page-v2/Hero Page
+         v2 Shortsword.dc.html, imported 2026-07-13). To roll back: link hero-page-v2.css and
+         import { boot } from './hero-page-v2.boot.mjs' at the bottom of this file. -->
     <div id="hero-v2-page" class="hv2-page" hidden></div>
 
     <div id="hero-content" hidden>
@@ -144,9 +148,9 @@
     mountNav('heroes');
   </script>
   <script type="module">
-    // v2 nine-block layout (all classes). Rollback: import { boot } from './hero-page.boot.mjs'
-    // and remove the #hero-v2-page root above.
-    import { boot } from './hero-page-v2.boot.mjs';
+    // v3 layout (all classes). Rollback: import { boot } from './hero-page-v2.boot.mjs' (and
+    // swap the stylesheet link back to hero-page-v2.css), or './hero-page.boot.mjs' for v1.
+    import { boot } from './hero-page-v3.boot.mjs';
     boot();
   </script>
 </body>

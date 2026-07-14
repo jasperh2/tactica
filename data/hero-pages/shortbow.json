@@ -121,7 +121,8 @@
         "reposition or follow up",
         "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina.",
+      "general": true
     },
     {
       "name": "Active blocking",
@@ -130,7 +131,8 @@
         "watch your block VALUE",
         "it can be BROKEN and stagger you"
       ],
-      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you. Short Bow carries no shield of its own (\"You don't have a shield\", b12 PDF), so this is a fallback tool rather than a kit centerpiece here."
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you. Short Bow carries no shield of its own (\"You don't have a shield\", b12 PDF), so this is a fallback tool rather than a kit centerpiece here.",
+      "general": true
     },
     {
       "name": "Horse-whistle CC immunity",
@@ -139,7 +141,8 @@
         "summon animation = locked state",
         "you take damage but no CC"
       ],
-      "rhythm": "bugs out with PIN/LOCK skills, so care"
+      "rhythm": "bugs out with PIN/LOCK skills, so care",
+      "general": true
     },
     {
       "name": "Walk into braced units",
@@ -147,7 +150,8 @@
         "Walk (don't sprint) into their minimal range",
         "destroy them from the inside"
       ],
-      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - of limited relevance to Short Bow, a kiting ranged class that generally avoids walking into braced units at all."
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - of limited relevance to Short Bow, a kiting ranged class that generally avoids walking into braced units at all.",
+      "general": true
     },
     {
       "name": "AA-spell rotation",
@@ -261,6 +265,7 @@
     }
   ],
   "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "askChannel": "#heroes",
   "combosSignoff": "b12 PDF",
   "gapNotes": {
     "controls": "[GAP: per-skill cooldowns and numeric effect/damage values unvalidated for all 8 named Short Bow skills] [GAP: no single reconciled 4-skill core loadout across Amya's two build posts and the b12 PDF's rotation]",

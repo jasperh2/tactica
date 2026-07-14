@@ -103,7 +103,7 @@
     },
     {
       "name": "The Unkillable Bastard",
-      "summary": "Heavy HP, heavy armor, explicitly not Strength. \"This build is all about getting Flat damage reduction + AOE CC... Your goal is to constantly debuff as many enemy troop[s]...\" - house playbook \"\"Damage was never an issue with the class... just build sustain, no need to deal damage for 150% of the hp bar.\"\"",
+      "summary": "Heavy HP and heavy armour, not Strength. Stacks flat damage reduction and AoE CC, fights inside its own unit blob, and debuffs every enemy troop in reach. Damage stays high enough on a full tank build. - house playbook",
       "strongVs": null,
       "forWhom": null,
       "recommended": false,
@@ -164,7 +164,7 @@
     {
       "vs": "Your own unit blob",
       "stance": "synergy",
-      "why": "Unkillable Bastard doctrine: \"You always fight within your unit in the middle of the blob\" - dive artillery/specials and disengage rather than die. [GAP: no explicit own-warband unit-TYPE pairing for BS players - vets/house question, same gap shape as shortsword.md]",
+      "why": "Unkillable Bastard doctrine: fight inside your own unit's blob, dive artillery and specials, disengage rather than die. [GAP: no explicit own-warband unit-TYPE pairing for BS players - vets/house question, same gap shape as shortsword.md]",
       "build": "UNKILLABLE BASTARD"
     }
   ],
@@ -177,7 +177,8 @@
         "reposition or follow up",
         "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina.",
+      "general": true
     },
     {
       "name": "Active blocking",
@@ -186,7 +187,8 @@
         "watch your block VALUE",
         "it can be BROKEN and stagger you"
       ],
-      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you.",
+      "general": true
     },
     {
       "name": "Horse-whistle CC immunity",
@@ -195,7 +197,8 @@
         "summon animation = locked state",
         "you take damage but no CC"
       ],
-      "rhythm": "bugs out with PIN/LOCK skills, so care"
+      "rhythm": "bugs out with PIN/LOCK skills, so care",
+      "general": true
     },
     {
       "name": "Walk into braced units",
@@ -203,7 +206,8 @@
         "Walk (don't sprint) into their minimal range",
         "destroy them from the inside"
       ],
-      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk.",
+      "general": true
     },
     {
       "name": "Riposte dash rhythm",
@@ -227,7 +231,7 @@
       "attribution": "Amya"
     },
     {
-      "text": "A demon king leads his troops. You always fight within your unit in the middle of the blob. This is a heavy HP heavy armour build, don't go for strength. Your goal is to constantly debuff as many enemy troop[s as possible]. Damage was never an issue with the class and you still do a lot of damage, just not 60k with 1 ult. In league if you already have enough damage to one shot someone just build sustain no need to deal damage for 150% of the hp bar right?",
+      "text": "The Unkillable Bastard build fights inside your own unit, in the middle of the blob. Build heavy HP and heavy armour, not strength. Your job is constant AoE debuff on as many enemy troops as you can reach. Damage is not the problem on this class, you still hit hard on a tank build. In league, once you have enough damage to kill a hero, extra damage is wasted, build sustain instead.",
       "attribution": "FinalAffliction"
     }
   ],
@@ -264,7 +268,7 @@
       },
       {
         "lead": "\"Unkillable Bastard\":",
-        "text": "embedded in your own unit's blob, not on its edge - \"You always fight within your unit in the middle of the blob\" (linked Google Doc's preview text, FinalAffliction). Used to dive artillery and specials and disengage rather than die."
+        "text": "embedded in your own unit's blob, not on its edge. Dive artillery and specials, then disengage rather than die."
       }
     ]
   },
@@ -307,7 +311,7 @@
     {
       "build": "The Unkillable Bastard",
       "spread": "Heavy HP, heavy armor",
-      "note": "explicitly NOT Strength - \"This is a heavy HP heavy armour build, don't go for strength.\""
+      "note": "not Strength - the build survives on flat damage reduction, damage was never the class's problem"
     },
     {
       "build": "Wave Build",
@@ -326,6 +330,7 @@
     }
   ],
   "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "askChannel": "#heroes",
   "combosSignoff": "Amya, FinalAffliction",
   "gapNotes": {
     "controls": "[GAP: no fighting-game-notation input strings beyond the Riposte dash-rhythm and cancel/escape sequences] [GAP: full node roster incomplete - only ~18 named Core/Optional nodes surfaced via targeted research]",

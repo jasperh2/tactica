@@ -149,7 +149,8 @@
         "reposition or follow up",
         "Training room: try roll-canceling, dismount-canceling and blocking on every skill to learn which are cancelable."
       ],
-      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina."
+      "rhythm": "Amya: EVERY CLASS CAN DO IT! - Blocking is the primary cancel; roll canceling interrupts full spells, dismounts, and creates movement otherwise impossible. Costs extra stamina.",
+      "general": true
     },
     {
       "name": "Active blocking",
@@ -158,7 +159,8 @@
         "watch your block VALUE",
         "it can be BROKEN and stagger you"
       ],
-      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you."
+      "rhythm": "Don't get \"Block checked\" - Being an active blocker prevents undesired skills landing on you.",
+      "general": true
     },
     {
       "name": "Horse-whistle CC immunity",
@@ -167,7 +169,8 @@
         "summon animation = locked state",
         "you take damage but no CC"
       ],
-      "rhythm": "bugs out with PIN/LOCK skills, so care"
+      "rhythm": "bugs out with PIN/LOCK skills, so care",
+      "general": true
     },
     {
       "name": "Walk into braced units",
@@ -175,7 +178,8 @@
         "Walk (don't sprint) into their minimal range",
         "destroy them from the inside"
       ],
-      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk."
+      "rhythm": "brace damage scales with your speed towards them - For braced units like Forte, Halberds, Phalanx - niche: enemy hero outnumbered, unaware or afk.",
+      "general": true
     },
     {
       "name": "Q-spell invis-window timing",
@@ -335,6 +339,7 @@
     }
   ],
   "runesNote": "runes rotate every season - names change, effects re-issue under new names",
+  "askChannel": "#heroes",
   "combosSignoff": "Amya",
   "gapNotes": {
     "controls": "[GAP: \"Kick\" and \"Ambush\" as used in the Dual Blades combo guide do not map to a confirmed wiki skill name]",
