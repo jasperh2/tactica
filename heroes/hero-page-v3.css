@@ -63,9 +63,10 @@ body:has(#hero-v3-page:not([hidden])) {
   background: var(--app-bg);
   color: var(--ink);
   font-family: var(--hv3-sans);
-  /* full-bleed surface: no card radius, viewport-scaled gutters (Jasper, 2026-07-14) */
+  /* full-bleed surface: no card radius, ~150px side gutters on wide screens, scaling
+     down on narrow windows (Jasper, 2026-07-14) */
   border-radius: 0;
-  padding: 28px clamp(28px, 3.2vw, 64px) 44px;
+  padding: 28px clamp(28px, 8vw, 150px) 44px;
   display: flex;
   flex-direction: column;
   gap: 16px;
