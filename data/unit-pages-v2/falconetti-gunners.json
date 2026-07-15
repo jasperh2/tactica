@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "falconetti-gunners",
   "name": "Falconetti Gunners",
   "headerMeta": "Golden era · Ranged Infantry · special · 300 leadership",
@@ -41,6 +41,10 @@
     "pressure": null
   },
   "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
   "footnotes": [
     {
       "mark": 1,
@@ -56,11 +60,11 @@
     }
   ],
   "gaps": [
-    "No dedicated Amya unit guide exists (richDataEligible: false in unit-db.json) — no doctrines, veterancy, battle-role, or control-loop data available anywhere on disk.",
-    "No fight-type ratings recorded (unit-strengths.json has zero entry).",
-    "A house-authored unit guide/card is confirmed to have existed in Discord (discord-guide-inventory.md, dated 2025-11-25) but its content was never captured to disk.",
-    "Only substantive sources found: two incidental mentions in Amya's hero guides (musket.md, longbow.md), citing Falconetti Gunners as a reference point for the hero's own kit — not an analysis of the unit itself.",
+    "No dedicated Amya unit guide exists for this unit - no doctrines, veterancy, battle-role, or control-loop data is available from any source.",
+    "No fight-type ratings recorded for this unit.",
+    "A house-authored unit guide/card is known to have existed in the house Discord (dated 2025-11-25), but its content wasn't saved anywhere we could recover it.",
+    "Only substantive sources found: two incidental mentions in Amya's Musket and Longbow hero guides, citing Falconetti Gunners as a reference point for the hero's own kit - not an analysis of the unit itself.",
     "A StarBurst video passing mention (Artillery Raid comp guide, 2024-07-20) names Falconetti as a raid-warband option with no further detail — excluded as non-substantive.",
-    "An Evo Loz Gaming video mention (2020-07-07, about Ironcap Swordsmen) is excluded: the transcript's own Gaps section flags the 'Falconet/Gunners' identification as ASR-uncertain and possibly referring to Falconet artillery pieces, not this unit."
+    "An Evo Loz Gaming video mention (2020-07-07, about Ironcap Swordsmen) is excluded: the source itself flags the 'Falconet/Gunners' name as uncertain and possibly referring to Falconet artillery pieces, not this unit."
   ]
 }

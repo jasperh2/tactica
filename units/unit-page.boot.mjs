@@ -74,6 +74,16 @@ function doctrineIconsPath() {
   return new URL('data/doctrine-icons.json', SITE_ROOT_URL).href;
 }
 
+/** Path to the shared GENERAL-band content file (site/data/unit-general.json, schema
+ * cb-unit-general/1). Fetched once per page load alongside the unit record and handed to the v2
+ * renderer, which resolves the record's own `general[]` key list against it (Phase D v3
+ * field-surfacing pass, phase-d-class-contract.md #6). A fetch failure just means the GENERAL band
+ * renders nothing (buildGeneralBlocks degrades an empty/missing blocks map gracefully) — same
+ * graceful-missing contract as doctrineIconsPath above. */
+function unitGeneralPath() {
+  return new URL('data/unit-general.json', SITE_ROOT_URL).href;
+}
+
 /** Reads `?u=<slug>` from the current page URL. Returns null if absent/empty. */
 export function slugFromLocation(locationHref) {
   const url = new URL(locationHref);
@@ -951,6 +961,8 @@ function showV1Layout(hostRefs) {
  *     falling back to the v1 fetch (rather than rendering nothing) preserves whatever identity/
  *     stats page already exists for it.
  * Matches the section ids declared in units/unit.html (both the v1 tree and the v2 tree).
+ * Also fetches site/data/unit-general.json once, alongside the record, for the v2 renderer's
+ * GENERAL band (Phase D v3 field-surfacing pass) — see unitGeneralPath's doc comment.
  */
 export async function boot() {
   const mainEl = document.getElementById('unit-main');
@@ -960,11 +972,12 @@ export async function boot() {
     return;
   }
 
-  const [v2Result, houseResult, publicResult, doctrineIconsResult] = await Promise.all([
+  const [v2Result, houseResult, publicResult, doctrineIconsResult, unitGeneralResult] = await Promise.all([
     fetchJson(v2ProfilePath(slug)),
     fetchJson(houseProfilePath(slug)),
     fetchJson(publicProfilePath(slug)),
     fetchJson(doctrineIconsPath()),
+    fetchJson(unitGeneralPath()),
   ]);
 
   // Doctrine name->slug icon map for the v2 renderer (empty on any fetch failure — the renderer
@@ -973,6 +986,11 @@ export async function boot() {
     doctrineIconsResult && doctrineIconsResult.ok && doctrineIconsResult.data
       ? doctrineIconsResult.data.nameToSlug || {}
       : {};
+
+  // Raw unit-general.json payload for the v2 renderer's GENERAL band (empty on fetch failure — the
+  // renderer's buildGeneralBlocks degrades that to "no blocks", so the band just doesn't render).
+  const unitGeneralFile =
+    unitGeneralResult && unitGeneralResult.ok && unitGeneralResult.data ? unitGeneralResult.data : {};
 
   const hostRefs = {
     v2Page: document.getElementById('unit-v2-page'),
@@ -997,7 +1015,7 @@ export async function boot() {
     // (see unit-page-v2.boot.mjs's renderUnitPageV2 doc comment), so it takes the root element, not
     // the per-section host map the previous v2 layout used. The doctrine icon map lets its doctrine
     // tiles resolve real art by name.
-    renderUnitPageV2(v2Record, hostRefs.v2Page, doctrineIconMap);
+    renderUnitPageV2(v2Record, hostRefs.v2Page, doctrineIconMap, unitGeneralFile);
     return;
   }
 

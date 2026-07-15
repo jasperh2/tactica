@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "rattan-roundshields",
   "name": "Rattan Roundshields",
   "headerMeta": "Chivalric era · Melee Infantry (shields) · 115 leadership · T2 · Mastery",
@@ -9,19 +9,36 @@
     "rarity": "T2",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A nimble shielded melee unit that debuffs on charge, with exceptional piercing defense for its cost—but insufficient penetration to threaten heavy armor. Post-patch (Jun 2026), verify whether the leadership increase from 100→115 still justifies its role as a pike-trader.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Iron Health Doctrine V",
       "name": "Iron Health Doctrine V",
+      "effect": "Unlocks Ironsides: +175 piercing/slashing/blunt defence for 12s.",
+      "tag": "mandatory",
       "note": "Unit-unique: +300 HP, unlocks Ironsides (+175 piercing/slashing/blunt defence for 12s)",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Poisons Doctrine V",
       "name": "Poisons Doctrine V",
+      "effect": "+140 all armour penetration, +60 poison DMG per stack, stacks up to 2x.",
+      "tag": "mandatory",
       "note": "Post-patch: +140 all AP, +60 poison DMG, stacks 2×; duration 6s→4s {2}",
       "marks": [
         1,
@@ -29,40 +46,50 @@
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Charge Doctrine V",
       "name": "Charge Doctrine V",
+      "effect": "+250 charge DMG, +450 charge block break.",
+      "tag": "mandatory",
       "note": "+250 charge DMG, +450 charge block break",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Charge Defence Doctrine",
       "name": "Charge Defence Doctrine",
+      "effect": "-40% DMG taken while charging. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "−40% DMG taken while charging",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Stamina Doctrine V",
       "name": "Stamina Doctrine V",
+      "effect": "-24% charge CD, +1 charge target. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "−24% charge CD, +1 charge target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "LDS Doctrine",
       "name": "LDS Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": "Alternative if Charge DMG/Block Break needs doubling down",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "HP Doctrines",
       "name": "HP Doctrines",
+      "effect": "Alt for Charge Defence: more fire resistance but worse trade vs Stalwart / Shieldmaiden charges. Top pick.",
+      "tag": "top-pick",
       "note": "Alternative for Charge Defence: more fire resistance but weaker vs Stalwart/Shieldmaiden charges",
       "marks": [
         1
@@ -82,8 +109,10 @@
   "battleRole": {
     "positioning": "Use as a mobile flank striker or engagement opener — not a primary frontline holder. Same charge-centric playstyle as Rattan Pikemen: apply poison debuff on entry, disengage only if survival is assured. {1}",
     "formation": null,
-    "tips": "Charge the engagement to apply debuff; the unit's value is upfront poison application and initial shock, not sustained melee holding. At ~8,000 HP with low slashing defense, the unit collapses quickly in prolonged grind — pick fights, don't hold the line. {3}"
+    "tips": "Charge the engagement to apply debuff; the unit's value is upfront poison application and initial shock, not sustained melee holding. At ~8,000 HP with low slashing defense, the unit collapses quickly in prolonged grind — pick fights, don't hold the line. {3}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -114,7 +143,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -127,6 +157,11 @@
     ],
     "notes": "Goal: charge to apply poison debuff, then use Ironsides (unlocked by Iron Health Doctrine V) when taking hits. The unit depends on the initial charge's shock value and poison-stacking damage, not on sustained damage output — armor penetration is low, so expect 600–1,000 damage per hit on armored targets, requiring many swings to break through. {3}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -151,7 +186,13 @@
     "No fight-type strength ratings (Blob/Duel/Skirmish/Flank) in the Amya guide — unit's viability in different engagement types is not quantified.",
     "Amya's guide (edited 2026-05-27) predates the 2026-06-25 Chaos patch nerf (leadership 100→115, poison duration/damage reduced). No post-patch revision visible; cost-efficiency claims require validation against new leadership cost.",
     "Evo Loz Gaming's 2021 video reflects balance state from 5+ years ago; playstyle remarks are stale and tactical context is historical reference only.",
-    "No house card exists. No house guide covers this unit. No dedicated counters section in Amya guide (generic absence, not data gap per unit-db conflict log).",
+    "No house card exists. No house guide covers this unit. No dedicated counters section in the Amya guide either - a plain absence, not a data conflict.",
     "Hero pairing not specified in any source."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "Leadership 100→115; poison duration 6s→4s; poison damage per stack 250→140",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

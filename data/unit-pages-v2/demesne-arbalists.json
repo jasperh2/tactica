@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "demesne-arbalists",
   "name": "Demesne Arbalists",
   "headerMeta": "Silver era · Ranged Infantry · Crossbow · 160 leadership · Tier 3 / Mastery",
@@ -9,67 +9,98 @@
     "rarity": "T3",
     "fightRatings": null
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [],
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "High per-shot crossbow damage that demands close positioning — huge drop-off means you need to be near the fight to matter, even though press-2 stretches its reach further. The 2026-06-25 Piercing Bolts nerf (target count 2→1, fire rate −16%) strips its multi-target value and may force a line-clearing-to-single-target shift.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Double Fire Doctrine V",
       "name": "Double Fire Doctrine V",
+      "effect": "Alt for Epic Crossbow V -- older Double Fire variant, fires 2 bolts for 8s, 45s CD. Filler.",
+      "tag": "mandatory",
       "note": "unlocks Double Fire (unit-unique, can't combine with Focus Fire, 45s CD), +12% rate of fire, +1 shot to spell (6→7 arrows) — OP flags name unconfirmed",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Bolt Penetration Doctrine",
       "name": "Bolt Penetration Doctrine",
+      "effect": "Huge per Amya: +1 additional target penetration on top of baseline Penetrating Shots. Mandatory per Amya. OP note: \"confirm exact name.\"",
+      "tag": "mandatory",
       "note": "+1 additional target penetration on top of baseline Penetrating Shots — OP flags name unconfirmed",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "New Ammo Doctrine V",
       "name": "New Ammo Doctrine V",
+      "effect": null,
+      "tag": "top-pick",
       "note": "+35% ammo, +140 piercing AP — OP notes screenshot stat differs from ConqHub's New Ammo IV (+120 AP)",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Accuracy Doctrine",
       "name": "Accuracy Doctrine",
+      "effect": "+40% shooting accuracy, +80 piercing DMG. Top pick.",
+      "tag": "top-pick",
       "note": "+40% shooting accuracy, +80 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Crossbow Doctrine II",
       "name": "Epic Crossbow Doctrine II",
+      "effect": "+50 piercing DMG, +200 piercing pen; alt if no Ammo doctrine or no Unit DMG V. Top pick.",
+      "tag": "top-pick",
       "note": "+50 piercing DMG, +200 piercing penetration; alt if no Ammo Doctrine or no Unit Damage V",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "filler",
       "note": "pen-focused alternative to Accuracy/Ammo",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Piercing Damage Doctrine",
       "name": "Epic Piercing Damage Doctrine",
+      "effect": "+90 piercing dmg. Top pick.",
+      "tag": "filler",
       "note": "alternative to Accuracy/Ammo",
       "marks": [
         1
@@ -97,17 +128,28 @@
   "battleRole": {
     "positioning": "Huge damage drop-off — stay within brawl range to land impact; press 2 stretches reach further than the rest of the kit. {1}",
     "formation": null,
-    "tips": "Never overlap Double Fire with Double Shot; fire them sequentially, one then the other. {1} Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to the spell (6→7 arrows); Bolt Penetration is equally mandatory. Accuracy and Ammo aren't strict requirements — swap for Hero DMG (pen) or any piercing DMG increase. {1}"
+    "tips": "Never overlap Double Fire with Double Shot; fire them sequentially, one then the other. {1} Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to the spell (6→7 arrows); Bolt Penetration is equally mandatory. Accuracy and Ammo aren't strict requirements — swap for Hero DMG (pen) or any piercing DMG increase. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": null,
     "loopMarks": [],
     "notes": null
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -123,7 +165,7 @@
     }
   ],
   "gaps": [
-    "Strength ratings (Blob/Flank/Skirmish/Duel) absent from all sources; fightRatings stays null.",
+    "Strength ratings (Blob/Flank/Skirmish/Duel) absent from all sources.",
     "No Counters / Loses-to / Hero-threat section in Amya guide — no matchup cards.",
     "No dedicated Tips & Tricks section beyond playstyle notes (OP gap, not fabricated).",
     "No formation guidance from any source.",
@@ -133,5 +175,11 @@
     "Tierlist links this same Amya thread to 'Black Tortoise Regiment' via the 'Best Range' B-Tier slot, but the OP text only ever names Demesne Arbalists — that second-unit association is not asserted as guide content here.",
     "Doctrine name caveat in OP: 'Double Fire Doctrine' and 'Bolt Penetration Doctrine' carry OP's own '[confirm exact name]' flags — not independently verified.",
     "No StarBurst house build card exists for this unit (confirmed absent)."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "\"Piercing Bolts\" target count 2→1; fire rate −16%",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

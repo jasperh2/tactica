@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "spear-sergeants",
   "name": "Spear Sergeants",
   "headerMeta": "Heroic era · Melee Infantry / Shields · 215 leadership · Honour Tree · Mastery available",
@@ -14,68 +14,93 @@
       "flank": 2
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honour Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A low-cost shield-wall anchor that toggles Cover Commander to stack a debuff on whatever hits it next, holding lines in PvE and early progression more than it wins competitive TW. Good players now hunt it with lifesaver doctrine, and house Q&A rates it behind ISG for that reason.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Spear Doctrine VI",
       "name": "Epic Spear Doctrine VI",
+      "effect": "Unlocks CCi (crowd-control immunity) / Stand Fast.",
+      "tag": "mandatory",
       "note": "Cover Commander / Stand Fast",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "Awareness Doctrine",
+      "name": "Awareness Doctrine",
+      "effect": "-500 cavalry charge DMG, -20% rear attacks.",
       "tag": "top-pick",
-      "name": "Awareness Doctrine V",
       "note": "−500 cav charges, −20% rear attacks",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Noble Blood Doctrine",
       "name": "Noble Blood Doctrine",
+      "effect": "Taking 100 melee DMG triggers bleed; while bleeding, +15% DMG and +15% movement speed.",
+      "tag": "top-pick",
       "note": "100 melee dmg taken → bleed, +15% dmg/move while bleeding",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alternative to Noble Blood",
       "marks": [
         1
       ]
     },
     {
+      "ref": "Tank doctrines",
+      "name": "Tank doctrines",
+      "effect": null,
       "tag": "filler",
-      "name": "Tank Doctrines",
       "note": "alt build: DMG taken / full block",
-      "marks": [
-        1
-      ]
-    },
-    {
-      "tag": "avoid",
-      "name": "Unspecified anti-unit doctrines",
-      "note": "OP left this as a literal placeholder, never filled in",
       "marks": [
         1
       ]
@@ -104,8 +129,10 @@
   "battleRole": {
     "positioning": "In Cover Commander, stand at the edge of the unit's cluster rather than the middle — models in the middle can get flanked from behind as the formation wraps around a target. {6} Don't push in hard until you've stacked the −10%-per-hit penetration debuff (up to −50% at 5 stacks) on what's about to hit you. {1}",
     "formation": "Line and Block: shield wall highly resistant to ranged damage, even from high-tier ranged units, despite visual gaps in the line. {6} Sheltron (tight circle): generally a poor PvP choice for shield units — the tight radius fits under siege AoE templates (musket bombs, trebuchets, scorpion bolts) — though this unit benefits from it somewhat more than comparable shield units, and it's strong in PvE (AI loops around the circle while models keep stabbing, including turning inward). {6} Advance holds the current formation while moving — in sheltron the models keep the circle shape and stab inward; in line they hold on approach but break on contact (unlike Stalwarts, which keep pushing through). {6} Formation-lock note: models keep fighting whoever engaged them and won't reposition mid-fight — switching to any other formation immediately forces a break-and-reposition. {6}",
-    "tips": "Stay on Cover Commander, toggling it off and back on every 2 seconds to refresh the buff granted at activation. {1} While in Cover Commander: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; the decay rate is 6 seconds. {1} In live PvP, actively swap between shield-wall and Cover Commander rather than locking into one for a whole engagement — e.g. hold a capture point in shield wall, flick to Cover Commander to screen from cavalry threatening from behind. {6} An apparent stagger/stun proc on hit has been observed even without a brace node slotted — flagged as an undocumented quirk, not a confirmed mechanic. {6}"
+    "tips": "Stay on Cover Commander, toggling it off and back on every 2 seconds to refresh the buff granted at activation. {1} While in Cover Commander: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; the decay rate is 6 seconds. {1} In live PvP, actively swap between shield-wall and Cover Commander rather than locking into one for a whole engagement — e.g. hold a capture point in shield wall, flick to Cover Commander to screen from cavalry threatening from behind. {6} An apparent stagger/stun proc on hit has been observed even without a brace node slotted — flagged as an undocumented quirk, not a confirmed mechanic. {6}",
+    "pve": "Solid for expeditions and quest content in general - line formation holds against AI pushes too, aside from one enemy that's been seen clipping straight through it, a known bug. {6}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -123,8 +150,7 @@
         "why": "Azaps guides name Spear Sergeants (with Imperial Spears, pike militia) as the reason to run piercing defense over blunt",
         "house": false,
         "marks": [
-          4,
-          5
+          4
         ]
       },
       {
@@ -143,10 +169,30 @@
         "why": "line-formation shield wall blocks incoming fire; Advance is best used to close the distance on ranged units or heavy frontal-damage dealers like pikemen",
         "marks": [
           6
+        ],
+        "house": false
+      },
+      {
+        "name": "Shortsword (Stoneguard)",
+        "rel": "hero-threat",
+        "why": "Stoneguard players deliberately fight inside low-damage units like this one to stack the 15-hit Ironsides heal and out-sustain the chip damage",
+        "house": false,
+        "marks": [
+          8
+        ]
+      },
+      {
+        "name": "Longsword",
+        "rel": "pairs",
+        "why": "named alongside Spartans and ISG as a tanky pick to go aggressive with in a push or defence",
+        "house": true,
+        "marks": [
+          7
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": "Same unit as Stalwarts or Loyal Guards under a different name depending on server or season, one step before the Season 5 backtrack upgrade - Paladins cost only 5 more leadership and are strictly stronger, so treat this as more of a new-player and PvE pick than a competitive one. {6}"
   },
   "controls": {
     "loop": [
@@ -159,6 +205,13 @@
     ],
     "notes": "Cover Commander: toggle off/on every 2s to refresh the buff — damage taken 60%→40% and damage dealt +45%→+30%, both decaying over 6s. {1} Per-hit penetration debuff: −10%, stacking to −50% at 5 stacks — don't commit until it's stacked on the target. {1} Advance: holds formation while moving; in sheltron the unit keeps its circle and stabs inward, in line it holds until contact then breaks. {6}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -185,15 +238,21 @@
       "house": false
     },
     {
-      "mark": 5,
-      "author": "pixlnickz",
-      "date": "May 2026",
-      "house": false
-    },
-    {
       "mark": 6,
       "author": "KnightStalker",
       "date": "May 2021",
+      "house": false
+    },
+    {
+      "mark": 7,
+      "author": "StaRBuRsT",
+      "date": "Oct 2025",
+      "house": true
+    },
+    {
+      "mark": 8,
+      "author": "SanY",
+      "date": "May 2026",
       "house": false
     }
   ],
@@ -202,6 +261,7 @@
     "House Q&A's ISG-over-Spear-Sergeants claim was directly disputed in-thread by another house member (\"isg also self heal\") and never walked back — recorded as an open disagreement, not resolved.",
     "StaRBuRsT's 2025-09-22 attack-meta farm list places Spear Sergeants in its era/tier row but is marked likely-stale (pre-dates the 2026-06-22 patch cutoff) and adds no build detail beyond that placement, so it isn't cited as a claim.",
     "Amya's doctrine/build guidance was last edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch — may be stale for the current season, with no post-patch update visible.",
-    "KnightStalker's undocumented stagger/stun proc (no brace node slotted) is presented as a surprising discovery, not a confirmed mechanic — unverified against current patch notes."
+    "KnightStalker's undocumented stagger/stun proc (no brace node slotted) is presented as a surprising discovery, not a confirmed mechanic — unverified against current patch notes.",
+    "Amya's OP left the 'Don't put' doctrine slot as a literal 'X' placeholder, never filled in - no specific doctrine to avoid was ever named, so it's dropped from doctrines[] rather than given an invented ref."
   ]
 }

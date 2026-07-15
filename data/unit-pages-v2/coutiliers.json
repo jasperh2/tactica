@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "coutiliers",
   "name": "Coutiliers",
   "headerMeta": "Chivalric era · Charge cavalry · 115 leadership · T2 mastery",
@@ -9,75 +9,106 @@
     "rarity": "T2",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A lancer cavalry unit that excels with zero-cooldown charge spam when stacking Mastery and the two T5 charge-reduction doctrines. Load the Chargers trait to maximum stacks from far away; pair with the Lancer's Last Stand swap-trick to activate full-unit damage buffs after losses.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Lancer-Last Stand",
       "name": "Lancer-Last Stand",
+      "effect": "+40% DMG when unit headcount is below 60%.",
+      "tag": "mandatory",
       "note": "+40% DMG at <60% headcount",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Lancer Charge Doctrine V",
       "name": "Lancer Charge Doctrine V",
+      "effect": "-14s charge CD, +100 piercing DMG.",
+      "tag": "mandatory",
       "note": "−14s charge CD, +100 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Charge Defence Doctrine",
       "name": "Epic Charge Defence Doctrine",
+      "effect": "-50% DMG taken while charging, -6s charge CD.",
+      "tag": "mandatory",
       "note": "−50% DMG taken while charging, −6s charge CD",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Mobility Doctrine V",
       "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "top-pick",
       "note": "+7% movement speed, unlocks Sprint +15% for 12s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alternative to Sprint or Last Stand",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Assault Doctrine",
       "name": "Epic Assault Doctrine",
+      "effect": "Filler (alt).",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Health & Resistance Doctrine V",
       "name": "Health & Resistance Doctrine V",
+      "effect": "+300 HP, -5% DMG taken.",
+      "tag": "filler",
       "note": "−5% DMG taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -99,6 +130,7 @@
     "formation": null,
     "tips": "With Mastery + the four listed charge doctrines, this unit reaches 0s charge CD — spam X-move and charge to loop. {1} Apply Lancer's Last Stand swap-trick: if spawned with it active, swap to another unit then back; if just lost the unit, pull from supply and swap back to apply the 40%-damage buff to 100% of headcount, not just the damaged remainder. {1}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
     "pressure": null
@@ -113,6 +145,11 @@
     ],
     "notes": "Zero cooldown on charge is the core identity — achieved by stacking the Lancer Charge Doctrine (−14s), Epic Charge Defence (−6s), and Mastery synergy. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -126,6 +163,6 @@
     "No counter units identified or discussed in source",
     "No hero-pairing recommendations given",
     "No matchup analysis (pairs-with or pressures)",
-    "No captured video transcript — Coutiliers-specific guidance transcripts not available in the 20-channel scan"
+    "No dedicated video guide covers Coutiliers specifically."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "orochi-samurai",
   "name": "Orochi Samurai",
   "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 295 leadership · Seasonal unit · T5",
@@ -14,75 +14,108 @@
       "flank": 4
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Chaindart, any lock-ult class",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit - Golden Era",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A high-minimum-damage skirmisher that punches through armor and disarms on every hit, but folds once both abilities are on cooldown against anything with stun or daze. Master the 1→2 combo to bypass its animation weakness and one-shot isolated heroes.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal +12% dmg, alt for sustain",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Polearm Doctrine",
       "name": "Epic Polearm Doctrine",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "top-pick",
       "note": "+80 piercing dmg, +120 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Health & Resistance Doctrine V",
       "name": "Health & Resistance Doctrine V",
+      "effect": "+300 HP, -5% DMG taken.",
+      "tag": "top-pick",
       "note": "+300 HP, −5% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Piercing Damage Doctrine",
       "name": "Epic Piercing Damage Doctrine",
+      "effect": "+90 piercing dmg. Top pick.",
+      "tag": "top-pick",
       "note": "+90 piercing dmg",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Defence Doctrine",
       "name": "Defence Doctrine",
+      "effect": "+80 def, -5% dmg taken. Filler.",
+      "tag": "filler",
       "note": "+80 def, −5% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "filler",
       "note": "+8% all-type dmg in sieges",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Brace Doctrines",
       "name": "Brace Doctrines",
+      "effect": "Avoid — only affect F1/F2/F3 formation brace, which Orochi never uses.",
+      "tag": "avoid",
       "note": "only affect F1/F2/F3 formation brace — Orochi never uses one",
       "marks": [
         1
@@ -110,8 +143,10 @@
   "battleRole": {
     "positioning": "Pair with Chaindart or any lock-ult hero class {1}. Look for isolated targets to catch with a hero-diving one-shot rather than committing to the front of a blob {1}.",
     "formation": null,
-    "tips": "If ability 1 is on cooldown and only 2 is up, only engage where the enemy lacks stun/daze — otherwise avoid the blob fight entirely {1}. Ability 1 (Piercing Strike) phases through enemy units regardless of type, letting ability 2 (Storm Pound) land and maximize DPS from inside the formation {1}. Ability 2 has a short activation range and can whiff if the unit is dazed, perma-stunned, or knocked down right as it triggers {1}. Neither ability cleanses existing CC {1}."
+    "tips": "If ability 1 is on cooldown and only 2 is up, only engage where the enemy lacks stun/daze — otherwise avoid the blob fight entirely {1}. Ability 1 (Piercing Strike) phases through enemy units regardless of type, letting ability 2 (Storm Pound) land and maximize DPS from inside the formation {1}. Ability 2 has a short activation range and can whiff if the unit is dazed, perma-stunned, or knocked down right as it triggers {1}. Neither ability cleanses existing CC {1}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -133,7 +168,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: units with high damage reduction such as Spartan Chosen and Iron Reapers — Orochi's high minimum damage cuts through their damage reduction {1}. Also beats Sipahis badly, cited by name as one of the high-damage, low-speed anti-cav units that punish it hardest {2}."
+    "pressure": "You pressure: units with high damage reduction such as Spartan Chosen and Iron Reapers — Orochi's high minimum damage cuts through their damage reduction {1}. Also beats Sipahis badly, cited by name as one of the high-damage, low-speed anti-cav units that punish it hardest {2}.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -145,6 +181,14 @@
     ],
     "notes": "1→2 combo: use ability 1, then trigger ability 2 right before the second strike of 1 lands — this makes 2 CC-immune for the rest of 1's duration, ensuring the hit lands even through stun/daze; pull out and repeat {1}. Ability 1 (Piercing Strike) has speed modifiers that deal significant damage to charging units {1}. Ability 2 (Storm Pound) blocks and procs the parry passive, with block that regenerates quickly — similar to Zweihander's 2 ability {1}. Both abilities carry a disarm effect that prevents enemy attacks for a set duration; if disarm lands mid-animation, only the next animation is halted {1}."
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -160,8 +204,8 @@
     }
   ],
   "gaps": [
-    "No house-card build or house-specific control guide captured for this unit.",
-    "No dedicated video-transcript control guide — only a cross-unit matchup namecheck (PixlNickz) and a queued-but-uncaptured tutorial video (warmontygamer) exist.",
+    "No house-card build or house-specific control guide exists for this unit.",
+    "No dedicated video guide covers unit control - only a cross-unit matchup namecheck (PixlNickz) and an unreviewed tutorial video (warmontygamer) exist.",
     "Formation guidance absent from all sources.",
     "Amya guide edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season."
   ]

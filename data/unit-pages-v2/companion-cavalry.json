@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "companion-cavalry",
   "name": "Companion Cavalry",
   "headerMeta": "Heroic era · Cavalry/Lance · 230 leadership · Tier 4",
@@ -14,59 +14,104 @@
       "flank": 4
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [
+      {
+        "season": "S21 (2024-10-24)",
+        "tier": "T4 and T5 - both listed for the same date, source doesn't resolve which",
+        "marks": [
+          2
+        ]
+      },
+      {
+        "season": "Meta Units - ATK board (30 Jun 2025, fwd. from 29 Jun 2025 KP HC)",
+        "tier": "no letter grade - included in this meta-relevant units list",
+        "marks": [
+          2
+        ]
+      }
+    ]
+  },
   "pitch": "A mid-tier seasonal cavalry with a complex stacking rotation that rewards precision positioning. No published counters exist — guides pre-date the current patch, so matchup weaknesses are unconfirmed.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9 hits",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Conquest",
       "name": "Conquest",
+      "effect": "Unit-unique: global +100 piercing/slashing/blunt DMG on press 3, +Sworn Guard buff 18s. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "+100 piercing/slashing/blunt DMG on 3, +Sworn Guard 18s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Billowing Winds",
       "name": "Billowing Winds",
+      "effect": "Unit-unique: +9% movement speed, +10% unit DMG. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "+9% movement speed, +10% unit DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Health & Resistance Doctrine V",
       "name": "Health & Resistance Doctrine V",
+      "effect": "+300 HP, -5% DMG taken.",
+      "tag": "filler",
       "note": "−5% DMG taken, alt for Leadership",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "DMG reduction & tank doctrines",
       "name": "DMG reduction & tank doctrines",
+      "effect": "OP's explicit \"Don't put\" -- \"not worth it.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -108,18 +153,31 @@
     ],
     "notes": "Ability 3 applies global +100 all DMG stats and Sworn Guard buff (18s duration) — can activate mid-combat or even while hero is fighting. Ability 2 is Storm Pound. If you need immediate actions, prioritize ability 2 over full combo optimization. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
       "author": "Amya",
       "date": "May 2026",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "StarBurst",
+      "date": "2024-2025 (recorded Jul 2026)",
+      "house": true
     }
   ],
   "gaps": [
     "No Counters / matchup cards from any source — the Amya guide omits this section entirely.",
     "Guide last edited 2026-05-26, pre-dates the 2026-06-25 Chaos patch; doctrine/build relevance unconfirmed post-patch.",
     "No separate Tips & Tricks or formation guidance in the source.",
-    "Video transcripts for this unit are queued but not captured; no video-sourced content available."
+    "Season 21 tier history conflicts within its own source (both Tier 4 and Tier 5 for the same date) - not resolved, recorded as-is."
   ]
 }

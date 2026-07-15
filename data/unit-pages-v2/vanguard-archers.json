@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "vanguard-archers",
   "name": "Vanguard Archers",
   "headerMeta": "Silver era · Ranged Infantry · special · 150 leadership · T3M",
@@ -12,64 +12,80 @@
   "pitch": "A standard archer unit rated tier-C in the current meta. As of Amya's 2026-06-16 edit (pre-patch), ranged infantry lack the early-game tempo to compete — focus damage is chip or healed, leaving frontline and cavalry to carry games.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Bowmanship Doctrine V",
       "name": "Bowmanship Doctrine V",
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Precision Doctrine V",
       "name": "Precision Doctrine V",
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Projectile Doctrine V",
       "name": "Projectile Doctrine V",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": "+60% ammo, +50 piercing AP.",
       "tag": "mandatory",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Archery Doctrine IV",
       "name": "Epic Archery Doctrine IV",
+      "effect": "+100 piercing DMG. Top pick.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "LDS Doctrine",
       "name": "LDS Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Whistling Arrow Doctrine V",
       "name": "Whistling Arrow Doctrine V",
+      "effect": "Every 3 hits inflicts bleeding for 12% of target's current HP; can trigger in concert with allied units at weak points.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Artemis",
       "name": "Artemis",
+      "effect": "Unlocks Double Strings: fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -89,17 +105,25 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": null
+    "tips": null,
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": null,
-    "pressure": null
+    "pressure": null,
+    "siblings": "Covered in the same combined guide as Vassal Longbowmen, Imperial Archers, and Ironcap Archer - identical playstyle argument and doctrine build shared across all four. Tier is the only thing that's called out per unit, and Vanguard Archer sits at T3M."
   },
   "controls": {
     "loop": null,
     "loopMarks": null,
     "notes": null
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -116,5 +140,11 @@
     "Veterancy note shared across 4 units; unit-specific recommendation would require another source.",
     "Guide last edited 2026-06-16, 9 days before the Chaos patch (2026-06-25) — doctrine/build may be stale.",
     "No house-playbook, video transcripts, or other builders covered this unit."
-  ]
+  ],
+  "identity": {
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  }
 }

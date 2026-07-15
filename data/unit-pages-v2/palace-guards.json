@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "palace-guards",
   "name": "Palace Guards",
   "headerMeta": "Heroic era · Melee infantry · shields · 230 leadership · T4M",
@@ -9,35 +9,58 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T4",
+        "marks": [
+          4
+        ]
+      }
+    ],
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A shield-line brawler built around Guard the Front, a charge-counter gimmick that only pays off once fully mastered — skip the mastery and the unit \"doesn't exist.\" It's not a pike unit either: holding brace instead of cycling it wastes the whole unit's damage.",
   "doctrines": [
     {
-      "tag": "top-pick",
+      "ref": "Anti-Infantry Doctrine V",
       "name": "Anti-Infantry Doctrine V",
+      "effect": "+200 DMG vs infantry, +250 block.",
+      "tag": "top-pick",
       "note": "block matters more here than any defense stat",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Breakthrough",
       "name": "Breakthrough",
+      "effect": null,
+      "tag": "filler",
       "note": "all damage types",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Iron Sights",
       "name": "Iron Sights",
+      "effect": null,
+      "tag": "filler",
       "note": "damage + defense",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "filler",
       "note": "fallback substitute for the all-damage-type pick",
       "marks": [
         2
@@ -48,8 +71,10 @@
   "battleRole": {
     "positioning": "Cycle brace and unbrace rather than holding it — this is not a damage-soak unit, and sitting braced only lets a few reaching models fight while the rest stand idle. {2} Only hold brace continuously when defending while outnumbered or engaging too early, and only to refresh crowd-control immunity, not to brawl. {1}",
     "formation": null,
-    "tips": "Engagement loop: charge in (hero assists), brace on impact, unbrace, brawl, repeat once the brace cooldown clears. {1} Counter-engagement: brace ahead of an incoming charge, unbrace once it lands and continue the brawl, use your hero to disrupt the charge. {1} A time-saving variant — push to fix distance then brace before the full cycle — only holds up if the unit won't take heavy incidental damage while walking unbraced. {1} Unit Mastery is treated as a hard prerequisite: without it, skip the unit entirely. {1}"
+    "tips": "Engagement loop: charge in (hero assists), brace on impact, unbrace, brawl, repeat once the brace cooldown clears. {1} Counter-engagement: brace ahead of an incoming charge, unbrace once it lands and continue the brawl, use your hero to disrupt the charge. {1} A time-saving variant — push to fix distance then brace before the full cycle — only holds up if the unit won't take heavy incidental damage while walking unbraced. {1} Unit Mastery is treated as a hard prerequisite: without it, skip the unit entirely. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -71,7 +96,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: Wuwei Mansion Guards — a decisively winnable matchup if played correctly (not just a costly trade), and the margin survives an early or imperfect unbrace."
+    "pressure": "You pressure: Wuwei Mansion Guards — a decisively winnable matchup if played correctly (not just a costly trade), and the margin survives an early or imperfect unbrace.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -85,6 +111,37 @@
     ],
     "notes": "Charge-type attacks, including charge cavalry, pass through Guard the Front for **zero damage** — but this is not blanket anti-cavalry; non-charge cavalry ignores it. {1} Unbracing isn't just for brawling — it also **refreshes crowd-control immunity** for the next brace cycle. {1} Don't sit permanently braced vs Wuwei Mansion Guards: stack up, brace before their sweep ability lands, then unbrace for full-unit damage. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Herlajis - Palace Guards unit control guide",
+        "url": "https://www.youtube.com/watch?v=zJKKNXNpHps",
+        "stamps": [
+          "00:03 Guard the Front counters charge units, not non-charge cav like Yendao",
+          "00:40 engagement loop: charge, brace on impact, unbrace, brawl, repeat",
+          "01:49 defense: rebrace to refresh CC immunity instead of brawling",
+          "03:16 doctrine priority (Anti-Infantry, Breakthrough, Iron Sights); mastery is a hard prerequisite"
+        ],
+        "marks": [
+          1
+        ]
+      },
+      {
+        "label": "Herlajis - countering Wuwei Mansion Guards with Palace Guards",
+        "url": "https://www.youtube.com/watch?v=qRQDg97TDlY",
+        "stamps": [
+          "00:14 don't leave Palace Guards permanently braced except when defending or outnumbered",
+          "00:49 vs Wuwei Mansion Guards: stack up, brace before impact, unbrace after their sweep ends",
+          "01:18 doctrine build: Siege Fight replaces the all-damage-type pick if you don't have it"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -112,7 +169,7 @@
     }
   ],
   "gaps": [
-    "No amya-guide or house-card content exists for this unit — every prose source is a Herlajis or Superkitowiec video transcript plus the Amya tierlist row; unit-db has fightRatings/build/usage all null (richDataEligible: false).",
+    "No amya-guide or house-card content exists for this unit - every prose source is a Herlajis or Superkitowiec video transcript plus the Amya tierlist row; there's no fight-rating, build, or usage data for it from any source.",
     "The doctrine the source calls the single highest-priority pick ('turns the unit from great to amazing in 7 seconds') is never named in the transcript audio — omitted rather than guessed at.",
     "No veterancy (top-line/bottom-line) recommendation exists in any source for this unit.",
     "No formation (F1/F2) guidance exists in any source for this unit.",

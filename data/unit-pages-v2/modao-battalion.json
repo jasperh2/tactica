@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "modao-battalion",
   "name": "Modao Battalion",
   "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 310 leadership · Seasonal (S19: Alexander)",
@@ -14,67 +14,98 @@
       "flank": 1
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Heavy",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "An anti-cavalry support pikeman that stacks massive flat damage reduction through two defense-stacking abilities and doctrine builds, enabling it to tank anything while respecting that pikeman units don't lead charges. Played correctly it beats cavalry decisively; played wrong (sent in first or alone on a flank) it dies instantly.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Toughness Doctrine V",
       "name": "Toughness Doctrine V",
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires.",
+      "tag": "mandatory",
       "note": "−33% dmg taken on first 8 hits",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Anti-Cavalry Doctrine V",
       "name": "Anti-Cavalry Doctrine V",
+      "effect": "-40% DMG taken from cavalry while bracing, +16% DMG vs cavalry while bracing.",
+      "tag": "top-pick",
       "note": "−40% dmg taken from cav while bracing, +16% dmg vs cav while bracing",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "top-pick",
       "note": "penetration makes a huge difference against high-tier units",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Defence Doctrine V",
       "name": "Defence Doctrine V",
+      "effect": "+80 all defences, -5% DMG taken.",
+      "tag": "filler",
       "note": "+80 def, −5% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "DMG Taken Reduction",
       "name": "DMG Taken Reduction",
+      "effect": "Filler.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "2× cavalry DMG reduction doctrines stacked",
       "name": "2× cavalry DMG reduction doctrines stacked",
+      "effect": "\"2x cav DMG reduction at the same time, you already good with 1x.\" OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": "already good with 1x",
       "marks": [
         1
@@ -103,8 +134,10 @@
   "battleRole": {
     "positioning": "Support the front line, not the front line itself — you don't go first, others do, so shield moves, you follow. Always watch your back for incoming cavalry. {2} Against infantry: X-move in, engage with skill 2, instantly press skill 3 right after, then skill 2 again, then brace for best burst. {1}",
     "formation": "No formation guidance in sources.",
-    "tips": "When skill 2 comes off cooldown each time, press skill 2 and re-brace — sustains best burst in blob fights. {1} Maintain formation with X to prevent spreading — skill 2 targets nearest enemies and causes spread in open areas, leaving gaps cavalry punishes. {2} Brace 1–2s before cavalry arrives — non-negotiable. {1} Reset Toughness Doctrine's first-8-hits mitigation by swapping the unit at supply and re-taking it. {1} Modao Defense and Modao March each add 100 piercing/slashing defense for 3s per hit, stacking to 15 — two stacks alone exceed the entire bottom vet line's defensive value (32% infantry / 45% cavalry mitigation with doctrines). {2}"
+    "tips": "When skill 2 comes off cooldown each time, press skill 2 and re-brace — sustains best burst in blob fights. {1} Maintain formation with X to prevent spreading — skill 2 targets nearest enemies and causes spread in open areas, leaving gaps cavalry punishes. {2} Brace 1–2s before cavalry arrives — non-negotiable. {1} Reset Toughness Doctrine's first-8-hits mitigation by swapping the unit at supply and re-taking it. {1} Modao Defense and Modao March each add 100 piercing/slashing defense for 3s per hit, stacking to 15 — two stacks alone exceed the entire bottom vet line's defensive value (32% infantry / 45% cavalry mitigation with doctrines). {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -198,7 +231,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -213,6 +247,28 @@
     ],
     "notes": "Five engagement combos depend on scenario {2}: full engagement (charge → stab → brace), soft engagement for high-damage targets (charge → brace), defense (brace → wait → stab → brace, looping — only stab once brace is nearly off cooldown), full counter-engagement (brace → wait → charge → stab → brace), soft counter-engagement (brace → wait → charge → brace → stab → brace). Core discipline: cycle skill 2 (stab) and skill 3 to build and maintain the 15-stack defense bonus, minimizing time spent without flat reduction. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Herlajis - Madao Battalion unit control guide",
+        "url": "https://youtu.be/mTwmD-ew4eM",
+        "stamps": [
+          "00:13 doctrine strategy - flat DMG reduction beats relying on the bottom vet line",
+          "00:59 Madao March/Defense stacking, up to 15 stacks of 100 all-def",
+          "02:06 five engagement combos by scenario",
+          "03:29 defense combo: brace, wait, stab, brace",
+          "07:11 reform with X when the formation spreads in open fights"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -237,13 +293,32 @@
       "author": "Svarthe",
       "date": "Nov 2023",
       "house": true
+    },
+    {
+      "mark": 5,
+      "author": "hero-weapons guide",
+      "date": "Apr 2026",
+      "house": true
+    },
+    {
+      "mark": 6,
+      "author": "denetax",
+      "date": "undated",
+      "house": false
+    },
+    {
+      "mark": 7,
+      "author": "Amya",
+      "date": "May 2025",
+      "house": false
     }
   ],
   "gaps": [
-    "No house-card build data exists — Modao's house card was never captured.",
+    "No house-card build data exists for Modao Battalion.",
     "Formation guidance absent — all sources focus on unit control, not F1/F2 orientation.",
     "Skill names inconsistently referenced across sources ('Modao March', 'Modao Defense', 'skill 2', 'skill 3') — exact ability names unconfirmed from UI.",
-    "Herlajis transcript has unintelligible ASR on the alternate cavalry-focused epic doctrine name ([01:50]-[02:01]) — needs vet confirmation.",
-    "Svarthe's Camel Lancers/Speed Doctrine claim (2023) predates the 2026 patch anchor and is likely superseded — treat as historical, not current meta."
+    "Herlajis' transcript has unintelligible auto-captions on the alternate cavalry-focused epic doctrine name ([01:50]-[02:01]) - needs vet confirmation.",
+    "Svarthe's Camel Lancers/Speed Doctrine claim (2023) predates the 2026 patch anchor and is likely superseded — treat as historical, not current meta.",
+    "Three more incidental mentions turned up but aren't folded into matchups/controls above: the Bastard Sword hero guide frames Modao as a braced-pike target with a 'mount ult' horse-charge-knockdown-plus-Cross-Execution theory, unverified {5}; the Longbow hero guide's community-sourced content lists Modao as a low-micromanagement anchor unit alongside Halberdiers, Camels and Forte {6}; and Sunward Phalanx's own guide names Modao as sharing its V-hold-then-click spacing technique {7}."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "royal-longbowmen",
   "name": "Royal Longbowmen",
   "headerMeta": "Golden era · Ranged Infantry · special · 315 leadership · Seasonal",
@@ -9,75 +9,102 @@
     "rarity": "T5",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A standard backline archer whose press-1 arrow spell carries the whole kit — no unusual mechanics, no documented gimmick. No source has ever logged its fight-type ratings or a single counter, so there is no data on what actually beats it.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Artemis",
       "name": "Artemis",
+      "effect": "Unlocks Double Strings: fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch.",
+      "tag": "mandatory",
       "note": "double shoot during press 1, exploits low-count / high-armor targets",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Precision Doctrine V",
       "name": "Precision Doctrine V",
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire.",
+      "tag": "mandatory",
       "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Projectile Doctrine V",
       "name": "Projectile Doctrine V",
+      "effect": "+60% ammo, +50 piercing AP.",
+      "tag": "mandatory",
       "note": "+60% ammo, +50 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Their Unique Doctrine",
       "name": "Their Unique Doctrine",
+      "effect": null,
+      "tag": "mandatory",
       "note": "+15% range and DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Archery Doctrine IV",
       "name": "Epic Archery Doctrine IV",
+      "effect": "+100 piercing DMG. Top pick.",
+      "tag": "top-pick",
       "note": "+100 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "LDS Doctrine",
       "name": "LDS Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alt for piercing DMG if needed",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Whistling Arrow Doctrine V",
       "name": "Whistling Arrow Doctrine V",
+      "effect": "Every 3 hits inflicts bleeding for 12% of target's current HP; can trigger in concert with allied units at weak points.",
+      "tag": "filler",
       "note": "alt for piercing, bleed on low-count / high-armor targets",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Bowmanship Doctrine V",
       "name": "Bowmanship Doctrine V",
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG.",
+      "tag": "filler",
       "note": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG",
       "marks": [
         1
@@ -97,10 +124,17 @@
   "battleRole": {
     "positioning": "Usual archer positioning — no unit-specific placement guidance given beyond the standard backline archer role. {1}",
     "formation": null,
-    "tips": "Less value on Artemis and Arrow Rain than a typical archer build, since the Longbow carries its own arrow-rain-like spell. {1}"
+    "tips": "Less value on Artemis and Arrow Rain than a typical archer build, since the Longbow carries its own arrow-rain-like spell. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": null,
   "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -110,7 +144,7 @@
     }
   ],
   "gaps": [
-    "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) given by Amya or anywhere else — data was never captured for this unit.",
+    "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) given by Amya or anywhere else.",
     "No Counters section in the Amya guide — no 'Loses to / Struggles vs / This unit counters' block was ever filled in, so matchups are entirely unknown.",
     "No hero pairing specified anywhere in the source thread.",
     "'Don't put' doctrine slot is a literal unfilled 'X' placeholder in the OP — Amya never specified an avoid pick, so none is listed here.",

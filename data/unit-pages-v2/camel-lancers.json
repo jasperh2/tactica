@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "camel-lancers",
   "name": "Camel Lancers",
   "headerMeta": "Heroic era · Cavalry · 235 leadership · E-tier (T4M)",
@@ -9,11 +9,30 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": null,
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "Tier 4",
+        "marks": [
+          3
+        ]
+      }
+    ],
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A niche, bottom-tier cavalry unit — house opinion ranks it below Modao Battalion for TW defence duty. Coverage is thin: the only playstyle claim on record predates the 2026-06-22 patch cutoff, so treat any doctrine or positioning advice here as unconfirmed against current balance.",
   "doctrines": [
     {
-      "tag": "top-pick",
+      "ref": "Speed Doctrine",
       "name": "Speed Doctrine",
+      "effect": null,
+      "tag": "top-pick",
       "note": "pre-patch house claim, unconfirmed against current balance {2}",
       "marks": [
         2
@@ -24,8 +43,10 @@
   "battleRole": {
     "positioning": "In Territory Wars, take the top lower line except the last point {2}.",
     "formation": null,
-    "tips": null
+    "tips": null,
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -38,9 +59,18 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -59,15 +89,22 @@
       "author": "StarBurst / KP HC",
       "date": "Oct 2024",
       "house": true
+    },
+    {
+      "mark": 4,
+      "author": "denetax.fr",
+      "date": "Jan 2026",
+      "house": false
     }
   ],
   "gaps": [
     "No per-unit Amya guide exists — only tier placement (E: Camels, T4M) {1}.",
     "House doctrine and TW-line claims sourced from Svarthe (Nov 2023) but flagged stale — pre-dates the 2026-06-22 patch cutoff; no current-meta cross-check available {2}.",
     "StarBurst/KP HC Season 21 meta post (Oct 2024) places it at Tier 4 but gives no build, doctrine, or matchup detail, and the unit is absent from every later meta list in the same document {3}.",
-    "No fight-type ratings recorded anywhere (fightRatings: null in unit-db).",
+    "No fight-type ratings recorded anywhere for this unit.",
     "No formation recommendations or control-loop mechanics in any source.",
     "No veterancy details from any source.",
-    "No pressure rating or additional matchup data beyond the single Modao Battalion claim."
+    "No pressure rating or additional matchup data beyond the single Modao Battalion claim.",
+    "A community Longbow-hero guide groups Camel Lancers as a low-micro-friendly pairing but the same source separately says avoid cavalry - self-contradictory and unverified against Amya/house material, so not used as a matchup card {4}."
   ]
 }

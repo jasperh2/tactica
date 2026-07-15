@@ -1045,3 +1045,357 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================================
+ * V3 ADDITIONS (Phase D, 2026-07-14) - unit-page-v3 renderer extensions.
+ * New elements only; the V2 rules above are untouched. Same .v2-page token set,
+ * same cs- naming convention. See phase-d-class-contract.md for the locked
+ * class list this section implements.
+ * ========================================================================= */
+
+/* ---- doctrine effect subline (official card text, secondary to cs-doc-note) ---- */
+.v2-page .cs-doc-effect {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-4);
+  margin-top: 4px;
+}
+
+/* ---- header identity chips (small pills near cs-id) ---- */
+.v2-page .cs-id-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.v2-page .cs-id-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+}
+
+.v2-page .cs-id-chip-label {
+  font-family: var(--cs-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-id-chip-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.v2-page .cs-id-chip-pairing {
+  border-color: var(--gold-soft);
+}
+
+.v2-page .cs-id-chip-pairing .cs-id-chip-value {
+  color: var(--gold-bright);
+}
+
+.v2-page .cs-id-chip-mastery {
+  border-color: var(--green-soft);
+}
+
+.v2-page .cs-id-chip-mastery .cs-id-chip-value {
+  color: var(--green);
+}
+
+/* ---- patch freshness strip (full-width, under header, before the three-band grid) ---- */
+.v2-page .cs-patch {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--neutral);
+  border-radius: var(--cs-radius-sm);
+  padding: 12px 18px;
+}
+
+.v2-page .cs-patch-kind {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-family: var(--cs-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral);
+  background: var(--neutral-soft);
+}
+
+.v2-page .cs-patch-summary {
+  flex: 1;
+  min-width: 240px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.v2-page .cs-patch-season {
+  flex: none;
+  font-family: var(--cs-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ink-4);
+  white-space: nowrap;
+}
+
+.v2-page .cs-patch-nerf {
+  border-left-color: var(--red);
+}
+
+.v2-page .cs-patch-nerf .cs-patch-kind {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.v2-page .cs-patch-buff {
+  border-left-color: var(--green);
+}
+
+.v2-page .cs-patch-buff .cs-patch-kind {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.v2-page .cs-patch-adjust {
+  border-left-color: var(--gold);
+}
+
+.v2-page .cs-patch-adjust .cs-patch-kind {
+  color: var(--gold);
+  background: var(--gold-soft);
+}
+
+/* ---- tested numbers chip row (header stat area or its own thin panel) ---- */
+.v2-page .cs-numbers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.v2-page .cs-number {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+  min-width: 120px;
+}
+
+.v2-page .cs-number-label {
+  font-family: var(--cs-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-number-value {
+  font-family: var(--cs-mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---- learn more band (full-width, after battle role, before footer) ---- */
+.v2-page .cs-learn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.v2-page .cs-learn-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 13px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.v2-page .cs-learn-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.v2-page .cs-learn-video {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+  padding: 12px 14px;
+}
+
+.v2-page .cs-learn-video-label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.v2-page .cs-learn-video-label:hover {
+  color: var(--gold);
+}
+
+.v2-page .cs-learn-video-label:focus-visible {
+  color: var(--gold);
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.v2-page .cs-learn-stamps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.v2-page .cs-learn-stamp {
+  font-family: var(--cs-mono);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.v2-page .cs-learn-ask {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.v2-page .cs-learn-ask-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-family: var(--cs-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+}
+
+/* ---- GENERAL band (full-width, last content before footer) ----
+ * Mirrors hero-page-v3's .hv3-general-sep treatment: thin rule + tracked, muted
+ * uppercase label. This is the specific-above/GENERAL-below split landing on
+ * unit pages (2026-07-14); the band below reads as a visible step down from the
+ * unit-specific panels above it - no gold accent, no cs-bar, dimmer ink ramp. */
+.v2-page .cs-general-sep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 2px;
+  font-family: var(--cs-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.v2-page .cs-general-sep::before,
+.v2-page .cs-general-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.v2-page .cs-general {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.v2-page .cs-general-block {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--cs-radius-sm);
+  padding: 16px 18px;
+}
+
+.v2-page .cs-general-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-2);
+  margin-bottom: 8px;
+}
+
+.v2-page .cs-general-body {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+.v2-page .cs-general-foot {
+  margin-top: 8px;
+  font-family: var(--cs-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-4);
+}
+
+/* ---- v3 responsive additions (new media query blocks; existing breakpoints untouched) ---- */
+@media (max-width: 1080px) {
+  .v2-page .cs-learn-videos {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .v2-page .cs-patch {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .v2-page .cs-patch-season {
+    order: -1;
+  }
+
+  .v2-page .cs-general {
+    grid-template-columns: 1fr;
+  }
+
+  .v2-page .cs-learn-videos {
+    grid-template-columns: 1fr;
+  }
+}

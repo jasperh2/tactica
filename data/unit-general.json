@@ -1,0 +1,193 @@
+{
+  "schema": "cb-unit-general/1",
+  "blocks": {
+    "roster-priority": {
+      "title": "Doctrine-up & farm priority",
+      "appliesTo": "all",
+      "as_of": "Current: house Q&A, Chaos season (28-29 Jun 2026, postdates the 25/06/2026 patch anchor). The Sep 2025 farm chart and Nov 2023 doctrine claims are earlier-season history only, cross-check both against current meta before acting on them.",
+      "body": "Wondering what's safe to sink mastery scrolls and doctrine slots into first? Current house answer, Jun 2026: Iron Reapers, Queen's Knights, Liao Rangers, Stalwarts, Paladins, Dagger Axe Lancers (good for purple meta), Spartans, Modao Battalion. Both new T5 units will also be broken and need good docs. For purple meta specifically: IPG, Stalwart, Paladin, Zykalian Militia. As StaRBuRsT put it, \"Are the quick once off my head but I'm probably missing some\" - some house build cards are outdated too, so double check before you commit. {1}\n\nDoctrine slot calls from the same thread: Claymores go top and are 100% worth taking, expect them heavy in Purple Lock and Gold this season. Zealots split opinion - most people go top, but StaRBuRsT plays bot \"for some unknown reason\" and YeetusMcFeetus votes bot too unless something changed this season. Billmen have around 4 different builds floating around house leadership. Wuxing Pikemen: run the fire-blast slot, bottom, it synergizes with their mastery - start with 2 in the blob to strip 200+ defence plus burn, then finish with Wuxing Blast. On Phalanx: skip charge doctrine, that's a wasted slot, prioritize instant cav-killing and survivability, and don't take anything that's just self heal right now. {1}\n\nMap awareness matters as much as a fixed roster. Phalanx overlaps well with Modao but doesn't hold up solo - spread the Phalanx models out and look for Modaos to sit spread on, since a Bastard Sword can mount-ult them and get run over by cav while they're knocked. Skip Phalanx if spawn is far from the fight, they're among the slowest units to get where you need to be even with mobility doctrine - but starting 15 on defence makes Phalanx make more sense, since you can spawn with the unit or pull supply nearby. On curved-path maps like Western City, Dagger Axe Lancers flank well; on more open maps, charger cav does the job better. One correction landed in-thread too: ISG got called \"over spear sergeants atm\" because good players hunt self-healing units, but jc008titanSQ pushed back - \"isg also self heal\" - and the original claim was never walked back, so treat both sides as live opinions, not settled. {1}\n\nAgainst a Bastard Sword mount-ult specifically, one house technique: advance Phalanx backwards, press X to cancel the pike-raise animation, then long-press V - \"They disappear... The long V gives like a 0 sec cooldown on attacks and the attack from max pike range which is really nice as well.\" This is a technique note, not a doctrine change - charge doctrine on Phalanx is fine for quickly turning the unit around, but is still considered a wasted slot overall. {1}\n\nOlder guidance exists too, kept here for context rather than current meta. A Sep 2025 farm-priority chart recommended, roughly by era tier: Condottieri Guards, Halbediers, Prefecture Guards and Demesne Arbalists early, then Men-at-Arms, Spear Sergeants, Paladins, ISG, IPG and Stalwarts, then Shieldmaidens, Spartan Chosen, Orochi Samurai, Sunward Phalanx, Iron Reapers, Yanyuedao Cavalry and Winged Hussars further up. {2} And back in Nov 2023, Svarthe posted his own doctrine takes as \"I claim\" statements, his own opinions rather than verified house consensus: full mastery Spear Sergeants tank cavalry charges well, Rattan Vipers beat Namkhan Archers at wall pushes, Modao Battalion beats Camel Lancers in TW defence and should run Speed Doctrine, Camel Lancers should run Speed Doctrine too on the top lower line except the last point, full mastery Rattan Pikes pairs well with MMAs and Iron Reapers, Iron Reapers should run almost full bottom line for wall pushing, and split vet-line Tercio has a spot in initial gate and breach defence. {3}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "house Q&A (Bohemiansnacksody, StaRBuRsT, FinalAffliction)",
+          "date": "28-29 Jun 2026",
+          "house": true
+        },
+        {
+          "mark": 2,
+          "author": "StaRBuRsT",
+          "date": "22 Sep 2025",
+          "house": true
+        },
+        {
+          "mark": 3,
+          "author": "Svarthe",
+          "date": "25 Nov 2023",
+          "house": true
+        }
+      ]
+    },
+    "meta-history": {
+      "title": "Season meta history",
+      "appliesTo": "all",
+      "as_of": "Four distinct dated snapshots forming a timeline, not one current list: S21 (24 Oct 2024), a 30 Jun 2025 board, a 29 Sep 2025 board, and a Chaos-season 30 Jun 2026 board.",
+      "body": "StarBurst's tier boards give a rough season-by-season read on what's considered strong. Season 21 (24 Oct 2024) put Sunward Phalanx, Iron Reapers, Queen's Knights, ISG, Xuanji Heavy Cavalry and a handful of others at the top tier. A 30 Jun 2025 \"Meta Units - ATK\" board listed Stalwarts, Paladins, ISG, Spear Sergeants, Wuwei Mansion Guard, MMA/Fortebraccio, Dagger-axe Lancers, Yeomen, Companion Cavalry and Myrmillones. A later 29 Sep 2025 \"current meta\" board named Condottier Guards, Halberdiers, Prefecture Guards, Demesne Arbalists/MMA, Spear Sergeants, Paladins, ISG, IPG, Stalwarts/Shieldmaidens, Spartan Chosen, Orochi Samurai, Sunward Phalanx, Iron Reapers and Winged Hussars, several still flagged TBD on the board itself. {1}\n\nThe freshest snapshot: a 30 Jun 2026 pass through that same recurring \"Meta Units - ATK\" board recorded it as Stalwarts, ISG, Claymores, Zealot, Berserkers, Paladins, IPG, Zykalian Militia, Yorkist Household Knights, Dagger-axe Lancers, Fortebraccio and Lancastrian Billmen. Read this as the newest dated snapshot of the three above, not a conflicting list - the three are the same recurring board at different points in time. {2}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "house recon (StarBurst et al.)",
+          "date": "Sep 2024 - Jun 2026, recorded 3 Jul 2026",
+          "house": true
+        },
+        {
+          "mark": 2,
+          "author": "house recon note",
+          "date": "board dated 30 Jun 2026",
+          "house": true
+        }
+      ]
+    },
+    "event-rulesets": {
+      "title": "Custom training-event rulesets",
+      "appliesTo": "all",
+      "as_of": "Civil War/Maul Ball posted 21 Dec 2022; Valley Fortress posted 7 Jun 2022; scrim-organization steps posted 12 Oct 2023. Not re-confirmed against a newer post as of the 2026-07-04 capture, still the reference version unless house leadership says otherwise.",
+      "body": "Civil War: grey armour and grey musket only, no abilities, auto attacks only, no horses, no healing, no HUD - turn it off with End. Units: Ironcap Arquebusiers, Alchemists, Bagpipes. Play it on a small, open field-battle map, Stone Steps works great. {1}\n\nMaul Ball: attackers and defenders set up goal posts with Fortebraccio. The quarterback uses a Maul, the ball is a longsword, and you get 7 attempts. Defenders can use any Heavy Weapon to stop the Maul advancing, attackers can use any Heavy Weapon to stop defenders interrupting the Maul carrier. {1}\n\nValley Fortress custom scrim: 1 attack and 1 defense round on the Valley Fortress map, max Tier 3 units, no trebuchets, 700 leadership cap, and artillery capped to blue quality, 1 piece for defense, 2 for attack. {2}\n\nRunning a scrim day to day: prep a plan first and write down what group 1, 2 and 3 are each doing. Players who voted on the original scrim message get priority into F15, everyone else in the call who voted moves down a channel, then gets split into groups and filled out with tentatives. Tell groups to plan comps in the Warband Builder so callers get a clear overview of what units are coming. Announce the scrim name and password, then go. {3}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "Dutchknight",
+          "date": "21 Dec 2022",
+          "house": true
+        },
+        {
+          "mark": 2,
+          "author": "Jok'air (via Diyu)",
+          "date": "7 Jun 2022",
+          "house": true
+        },
+        {
+          "mark": 3,
+          "author": "StarBurst",
+          "date": "12 Oct 2023",
+          "house": true
+        }
+      ]
+    },
+    "siege-economy": {
+      "title": "Siege macro: wall pushes, supply blocking, shotcalling",
+      "appliesTo": "all",
+      "as_of": "Core macro doctrine, not seasonal. StarBurst's map-agnostic video (undated, added Jul 2026) corroborates the house's own 2022-2026 Discord doctrine almost line for line; dates below are per-quote, not one season.",
+      "body": "Five steps to a wall push: climb with unit and hero to make space and create chaos for defenders; build and push siege towers immediately, in parallel; sweep the wall for enemy artillery and destroy it; use your own artillery on anything you can't melee-reach; then don't stop, clear the whole wall so no surviving defender artillery can shoot your towers. Never push into live enemy artillery, that's \"the worst thing we can do\" - either build artillery to kill theirs first, or if there's no time, send heroes in to dive and destroy it. Group your units tight on the way to a point rather than spreading thin. {1}\n\nOnce defenders have no artillery left, stop camping the gate and start pushing onto points - \"having Spartans just standing AFK in the gate is completely useless... use them to farm rage\" instead. Dive priority or special units the moment you spot them, don't hesitate. {1}\n\nWhy block supply: it keeps defenders fighting without a unit to pull, a numbers edge like 10 v 15, forces them to physically leave the fight to resupply elsewhere, and burns their muster timer, opening bigger gaps for your next push. Execute it by dancing, not camping - once your unit's already engaged, peel a low-micro unit off to the supply point, Spartans, Reapers and Stalkers all work, and just re-enter every 3-4 seconds to flip the contest circle yellow. You don't need to sit still on it. {1}\n\nUnit-pull economy: engage a unit, once it's spent send it back to supply and pull a fresh one while your next unit advances - that gets you three units' worth of pressure against an enemy who can only field one at a time while their supply's blocked. Home-point pushes follow the same shape as any X-point push: kill or dive their artillery first, push with units without overcommitting, then once you're past the point build grapeshot and aim it at heroes, not units. Don't let defenders interrupt the capture, bodyguard it rather than personally standing on it. On breach pushes specifically, run past engaged enemies to reach supply rather than stopping to fight, stopping \"slows down the entire push.\" {1}\n\nThis lines up with live house Discord doctrine too. On supply blocking: \"with isg the 24% dmg is really meaningul in gold era... with spear seargents they're good for pushing in a blob, but not as good as using hero to distrupt enemy or supply block\" - and a warning that a Death Bringer sitting on a supply point makes it a bad idea to contest unless you're a Shortsword running Ironsides, if you're on a heavy your only value there becomes formation disruption. On home point pushes, a house after-action framework asks whether the problem is wall possession and landing towers, capping X, holding X, blocking supply once X is capped, capping the homebase, or how arty gets used, especially at home point, and whether the push was properly set up before it went in. {2}\n\nOn chokepoint positioning: it's better to accept a brace-stance unit partially facing a wall or fence, even losing about a quarter of its firing arc, than to reposition into a more exposed facing - \"Missing 1/4 of he unit because they are facing the wall is still more beneficial than setting the fortes up in f2 or f3.\" One siege-ladder timing note too: units can already use their abilities before the whole formation finishes climbing the ladder. On command structure, a proposed trial two-gate setup: a left-gate push straight onto supply to pull defenders out of position, plus a small group and muster taking walls around it, with a second push through the right gate plus supply as the flank - run with per-gate squad callers reporting up to one coordinator watching the whole map. {3}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "StarBurst (video, StarBurstCB)",
+          "date": "undated, added Jul 2026",
+          "house": false
+        },
+        {
+          "mark": 2,
+          "author": "house Discord (jc008titanSQ, Bohemiansnacksody, Svarthe)",
+          "date": "2025-2026",
+          "house": true
+        },
+        {
+          "mark": 3,
+          "author": "house Discord (Coffeefuelledgaming/Dutchknight, StaRBuRsT, Jamlarr, EloIndoril)",
+          "date": "2022-2026",
+          "house": true
+        }
+      ]
+    },
+    "game-mechanics": {
+      "title": "Doctrine roll & universal combat mechanics",
+      "appliesTo": "all",
+      "as_of": "Mechanic behavior, not seasonal balance. Doctrine-roll RNG confirmed Oct 2021, still holds at the 2026-07-04 capture. Epic Assault Doctrine unlock posted Nov 2023, flagged likely-stale since unlock methods can shift between patches. Spear-mode/commander-swap AP mechanic posted 3 Jan 2026, current.",
+      "body": "Every doctrine roll is an independent 1-in-10 shot at an epic, and none of the usual workaround theories change that. Tested and confirmed no: exiting the game doesn't reset it, going to character select doesn't reset it, opening doctrines before and after a daily reset doesn't reset it, opening doctrines 24 hours apart doesn't reset it, and burning 5 rolls on one character then switching to an alt doesn't guarantee an epic on the alt either. It's a flat, independent chance no matter how you time or sequence your rolls. {1}\n\nHow to get an epic Assault Doctrine specifically: from infantry execution. {2}\n\nTwo combat mechanics worth knowing regardless of what unit you're playing. First hits landed while in spear mode strip 50% of the enemy's AP for a short while, believed to apply only to Slash and Pierce damage. And swapping a commander from Spear to Sword gives 30% increased AP against Slashing and Piercing damage for the first 10 seconds after the swap - this stacks if you're running a full bottom vet line. {3}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "BNDT_Wojdylo",
+          "date": "27 Oct 2021",
+          "house": true
+        },
+        {
+          "mark": 2,
+          "author": "StaRBuRsT",
+          "date": "14 Nov 2023",
+          "house": true
+        },
+        {
+          "mark": 3,
+          "author": "Svarthe",
+          "date": "3 Jan 2026",
+          "house": true
+        }
+      ]
+    },
+    "progression-economy": {
+      "title": "Mastery, gathering & store economy",
+      "appliesTo": "all",
+      "as_of": "Mastery-scroll costs posted 17 Apr 2024, likely stale and economy-patch-sensitive, verify in-game. Horse-farming math posted 22 Aug 2024 for one specific mount-unlock event, treat the structure as durable, not the exact numbers, these events re-run with different values. Gathering regions and store priority posted 17 Jun 2025. Supply-dump advice posted 30 Nov 2025.",
+      "body": "Mastery scroll costs by unit rarity: purple units need 195 green scrolls total, 10/20/25/40/40/60 across the six mastery levels, plus 30 blue scrolls, which also convert to a 150 green-equivalent. Blue units need 120 green total, 5/10/15/25/25/40, plus 20 blue, 100 green-equivalent. Green units need 75 green total, 5/10/10/15/15/20, plus 10 blue, 50 green-equivalent. Verify current costs in-game before budgeting off these numbers, they're economy-patch-sensitive. {1}\n\nFor seasonal mount-unlock events built like the 2024 one: you need 3,000 PvE points over 14 days, a normal win is worth 50 and your first win of the day is worth 150 instead. Get your first win plus 2 more each day, 150+50+50=250, and 14 days gets you 3,500, comfortably clearing 3,000, so you only actually need to grind about 12 of the 14 days. The daily first win also has a shot at an epic horse attire. The durable takeaway is the event shape, bonus first win plus a multi-day point target, not the exact numbers, since these events tend to re-run with different values each time. {2}\n\nExotic gathering regions worth knowing: Minium in the west, spanning Yew, Augolia and Turul Varos; Tungsten in the east, spanning Anliang and Xalcheng; Bison Hide on the south-west coast; Cloud Cotton on the east coast; plus Mountain Wolf Fur, Mountain Bauxite, Mountain Phosphorus and Mountain Cotton as ungrouped mountain gatherables. {3}\n\nFor new-player store spending: buy Artificer's Stone, Rare Scholastic Selection, Large Chest of Resources and Powdered Silver if you're taking one of those resource types. Uncommon Scroll of Mastery and Registrar's Memoirs are solid new-player picks. Wise Key is explicitly flagged a bad purchase despite sitting in that same category. {4}\n\nManaging your own supply dump: always clear out blue and green artillery, Hwacha, Cannons, Scorpio and Ballista, that's one player's personal call, feel free to disagree. Worth keeping: exotics like Linseed Oil, Flax, Hemp, Charcoal, Nitre, Coal, Black Manganese, Alum and Furs, roughly 4,000-8,000 of each in case future crafting or fief quests need them. Anything else is your own call. {5}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "Admq (via TheDarkPaladin, StaRBuRsT)",
+          "date": "17 Apr 2024",
+          "house": true
+        },
+        {
+          "mark": 2,
+          "author": "ZNineFallen (via StaRBuRsT)",
+          "date": "22 Aug 2024",
+          "house": true
+        },
+        {
+          "mark": 3,
+          "author": "StaRBuRsT",
+          "date": "17 Jun 2025",
+          "house": true
+        },
+        {
+          "mark": 4,
+          "author": "StaRBuRsT",
+          "date": "17 Jun 2025",
+          "house": true
+        },
+        {
+          "mark": 5,
+          "author": "StaRBuRsT",
+          "date": "30 Nov 2025",
+          "house": true
+        }
+      ]
+    },
+    "hero-xp-farming": {
+      "title": "Hero XP & honor farming routes",
+      "appliesTo": "all",
+      "as_of": "StarBurstCB YouTube guides: earlier auto-caption version published 26 Jun 2024, fuller manually-captioned re-upload published 16 Sep 2024. Farming routes and UI steps may have shifted since, treat as reference and verify against current UI.",
+      "body": "Once you've earned all 72 attribute points, your hero XP cap per level settles at 60k and stays there. To speed leveling up: run any premium card, 30% hero XP in battles and 50% XP on handing in dailies or fief quests, marshal handbooks, ideally purple super XP cards, and unit XP cards while farming. Playing in a group adds a 5% fellowship bonus. Mercenary units carry a special Exemplar trait worth a 10% hero XP bonus that doesn't stack - you only need them in your warband while sieging, not actively fighting with them; Naginata Monks are one confirmed example. {1}{2}\n\nDaily quests are the best XP source early season, 8,000 XP per completion, 12,000 for the five-wins quest, and dailies can be turned in twice a day - they reset 6pm CET, so play evening or afternoon for max progress. Weekly quests pay well too: \"win three Sieges\" gives 6,000 hero XP, and \"on campaign\" quests give 5,000 each - Bandit raids count as Expeditions, so you can knock out on-campaign and punitive Expedition quests at the same time. Most fief quests that don't give house XP give hero XP instead, usually 2,500, with a few, like two barbs or blue Rebel Cavalry trophies, giving 3,000. Once house XP caps for the week, spend remaining quests on the hero-XP ones instead, premium cards also boost quest hand-in XP. Turning in any horse can drop mercenary boxes, which include Military Tokens worth 3,000 hero XP each, and mercenary boxes from fief quests have good odds of dropping them. {1}\n\nHonor and mastery scrolls have their own farming route: find your camp on the map by its red flag, open Supply dump twice, choose Unmounts, and pick up some of the camp's NPC quest units. If you're out of those, grab five serfs from your warband instead and head to a stud farm - five level-7 serfs running Labor Doctrine, vetted into the two max-labor nodes, then use the Requisition Order option, or Gather, at the stud farm, pay the tax, and collect, that yields 100 horses. That alone doesn't give scrolls though - fill your wagon with the loot, open your inventory's house tab, find a matching fief quest and use \"goto\" to auto-travel there, then hand it in at the quest board. Not every fief quest is worth the same honor either, values vary, some as low as 500-600, and carry tier-level multipliers. {3}",
+      "footnotes": [
+        {
+          "mark": 1,
+          "author": "StarBurstCB",
+          "date": "published 16 Sep 2024",
+          "house": false
+        },
+        {
+          "mark": 2,
+          "author": "StarBurstCB",
+          "date": "published 26 Jun 2024",
+          "house": false
+        },
+        {
+          "mark": 3,
+          "author": "StarBurstCB",
+          "date": "published 26 Jun 2024",
+          "house": false
+        }
+      ]
+    }
+  }
+}

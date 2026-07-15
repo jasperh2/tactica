@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "imperial-pike-guards",
   "name": "Imperial Pike Guards",
   "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 240 leadership · Honour Unit",
@@ -14,75 +14,117 @@
       "flank": 3
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honour Unit",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T4",
+        "marks": [
+          4
+        ]
+      }
+    ]
+  },
   "pitch": "A high-DPS pike line that runs over cavalry and anything charging it, trading survivability for lethality on advance-based play. It falls apart against crowd control that baits the advance or chains it down — disengage early or lose the unit.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Polearm Doctrine (Pike Charge)",
       "name": "Epic Polearm Doctrine (Pike Charge)",
+      "effect": "Pike Charge doctrine: unlocks a charge order that can one-shot diving heroes; allows a 180 degree turn to re-brace if flanked.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+115 unit dmg, +70 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Imperial Pike Guards Attack Doctrine",
       "name": "Imperial Pike Guards Attack Doctrine",
+      "effect": "-7s Advance CD. Top pick.",
+      "tag": "top-pick",
       "note": "−7s Advance CD",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Rare Polearm Doctrine",
       "name": "Rare Polearm Doctrine",
+      "effect": "+100 dmg while bracing, affects Advance. Top pick.",
+      "tag": "top-pick",
       "note": "+100 dmg while bracing, flat amount that also affects Advance",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP)",
       "name": "Epic Polearm Doctrine (+80 piercing dmg, +120 piercing AP)",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "top-pick",
       "note": "lifesteal + 12% dmg; swap in for Brace DMG or Advance CD if you need more sustain",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "DMG reduction doctrines",
       "name": "DMG reduction doctrines",
+      "effect": null,
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Anti-cav doctrines, bleed on hit",
       "name": "Anti-cav doctrines, bleed on hit",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -114,6 +156,7 @@
     "formation": "Dispersed: wide spread, cuts incoming ranged fire, good for walking into a large group. Line: wide-front blocking or clearing, including bracing against a wall. Skirmish/Circle: tightest formation, best for locking down a small area and concentrating fire on one target. {3}",
     "tips": "First tick of Advance can be 'bugged' and hit for insane damage. {1} Brace (Stand Firm) works in or out of formation; Advance runs over heroes and most units, and cavalry stand almost no chance against it. {3} Don't hesitate to disengage from your initial CC/advance if you can save the unit. {1}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -157,6 +200,14 @@
     ],
     "notes": "Charge in or X-move in. {1} Advance when near melee range; wait for hits to stack. {1} Press 3 after the stack; kill count reduces Advance CD (sometimes to zero), allowing immediate re-advance. {1} Brace Damage (Rare Polearm) is a flat amount affecting Advance — top-pick status. {1} Brace (Stand Firm) works in any formation or out of formation; stun-immunity is formation-dependent — top line while advancing, bottom line while braced. {3}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -175,11 +226,17 @@
       "author": "Lone Raider (BigDaddyYT)",
       "date": "Aug 2022",
       "house": false
+    },
+    {
+      "mark": 4,
+      "author": "house guide (discord-guide-inventory)",
+      "date": "Jul 2026",
+      "house": true
     }
   ],
   "gaps": [
     "Edit timestamp (2026-06-16) pre-dates the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season; no post-Chaos update visible.",
-    "'With / without pen' follow-up post's images were not transcribed — actual penetration vs. no-penetration damage numbers are not captured.",
+    "The 'with / without pen' follow-up post has images, but the actual penetration vs. no-penetration damage numbers in them aren't available here.",
     "BigDaddyYT transcript auto-captions are garbled in places (e.g. exact name of the 'Relentless'-type trait and the top-line stun-immunity ability are unconfirmed verbatim); treat as paraphrase pending a vet sanity check.",
     "House Q&A {2} lists IPG as safe to doctrine up for purple meta (alongside Stalwart/Paladin/Zykalian) — a general investment-priority remark, not a named doctrine or detailed house tactic; no house build card exists for this unit."
   ]

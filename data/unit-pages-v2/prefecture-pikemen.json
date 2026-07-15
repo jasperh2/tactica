@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "prefecture-pikemen",
   "name": "Prefecture Pikemen",
   "headerMeta": "Silver era · Pike/Polearm infantry · anti-cav · 165 leadership · T3 Tier",
@@ -9,43 +9,66 @@
     "rarity": "T3",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree unit",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A cost-effective anti-cavalry line held by pike bracing and lifesteal damage. Weak in a solo fight without setup, so position behind allies and wait for raid glow before committing.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "mandatory",
       "note": "+115 hero DMG, +110 all AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Piercing Damage Doctrine",
       "name": "Piercing Damage Doctrine",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "mandatory",
       "note": "+80 piercing DMG, +120 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Mobility Doctrine V",
       "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "mandatory",
       "note": "+7% movement speed, unlocks Sprint +15% for 12s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal & damage",
       "marks": [
         1
@@ -65,11 +88,22 @@
   "battleRole": {
     "positioning": "Position one pike-length behind your front line. Wait for raid glow before charging; time the charge so the brace lands as enemies engage {1}.",
     "formation": null,
-    "tips": "Charge, then press 2 after impact. Try to disengage and reset for another cycle; if pinned, sacrifice the unit rather than die in place. Expect slower mobility even with Sprint — avoid leading attacks into prepared defenses."
+    "tips": "Charge, then press 2 after impact. Try to disengage and reset for another cycle; if pinned, sacrifice the unit rather than die in place. Expect slower mobility even with Sprint — avoid leading attacks into prepared defenses.",
+    "pve": null
   },
+  "numbers": [
+    {
+      "label": "Post-charge passive (early hits)",
+      "value": "~3,000 dmg per hit, first few hits after charge (2021 testing, unverified vs current patch)",
+      "marks": [
+        2
+      ]
+    }
+  ],
   "matchups": {
     "cards": [],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -83,11 +117,22 @@
     ],
     "notes": "Set F3 Column formation to access hero buffs. Engage on raid-glow call; brace (1 → V) to trigger anti-cavalry mitigation, then press 2 (ability) on impact. Disengage and reset position after each cycle."
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
       "author": "Amya",
       "date": "May 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "SuperKitowiec",
+      "date": "Jul 2021",
       "house": false
     }
   ],
@@ -97,6 +142,8 @@
     "Counters (loses-to / struggles-vs / this-unit-counters) section missing from source.",
     "Hero pairing not specified in source.",
     "Filler and 'don't-put' doctrine slots left as placeholders (X) in source.",
-    "Source edited 2026-05-27; no post-2026-06-25 season update captured."
+    "Source edited 2026-05-27; no post-2026-06-25 season update exists yet.",
+    "A SuperKitowiec video guide (2021-07-16) calls this unit a 'pike unit without brace' driven entirely by its charge - this conflicts with the pitch/tips/controls text above ('pike bracing', 'brace (1 -> V)'). Flagged here for a vet re-check rather than silently resolved. {2}",
+    "The same source adds more color not folded into the matchups/battle-role text above: bad vs shields ('very small block break'), decent vs Berserkers, a Season 8 buff to charge/turning speed/hitbox plus a new passive ('Three Bristles', unconfirmed - see numbers), and two engine quirks - a post-charge freeze, and a stronger 'Push Off Pike' wedge-charge variant that only fires in proper wedge formation. {2}"
   ]
 }

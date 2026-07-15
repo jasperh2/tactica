@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "xuanjia-heavy-cavalry",
   "name": "Xuanjia Heavy Cavalry",
   "headerMeta": "Golden era · Cavalry · 295 leadership · C-tier (T5)",
@@ -36,6 +36,10 @@
     "loopMarks": [],
     "notes": null
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
   "footnotes": [
     {
       "mark": 1,
@@ -46,10 +50,10 @@
   ],
   "gaps": [
     "No dedicated vets-and-docs guide exists — only incidental mentions in Yeomen and Longsword hero guides.",
-    "No doctrine recommendations captured from any source.",
-    "No veterancy guidance captured from any source.",
+    "No doctrine recommendations exist from any source.",
+    "No veterancy guidance exists from any source.",
     "No battle-role positioning, formation, or control-loop mechanics documented.",
-    "No fight-type ratings (blob/duel/skirm/flank) — unit-db marks richDataEligible: false (C-tier gate).",
+    "No fight-type ratings (blob/duel/skirm/flank) are available - this unit sits below the data-richness bar we use for that section (C-tier).",
     "No build data or usage patterns documented.",
     "Incidental playstyle note: momentum-based (comparison to Yeomen: 'kinda like Xuanjia, but WAY less').",
     "No house-playbook card or house-specific guidance found."

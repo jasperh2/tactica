@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "ironcap-scout-cavalry",
   "name": "Ironcap Scout Cavalry",
   "headerMeta": "Chivalric era · Cavalry · 120 leadership · B tier filler · T2 mastery",
@@ -9,59 +9,86 @@
     "rarity": "T2",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A cost-effective sword cavalry whose core damage engine is the X-move during Sprint, not Charge. Master the Sprint extra-attack synergy to unlock a strong flanker; without it, you're paying for generic cavalry damage.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Sword Cavalry Speed Doctrine",
       "name": "Sword Cavalry Speed Doctrine",
+      "effect": "+30% movement speed, +90 slashing DMG, +60 slashing AP. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "+30% movement speed, +90 slashing DMG, +60 slashing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Victory Rush Doctrine V",
       "name": "Victory Rush Doctrine V",
+      "effect": "Mandatory per Amya (no further effect text given in OP).",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "mandatory",
       "note": "+115 hero DMG, +110 all AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Sword Cav Sprint Extra-Attack Doctrine",
       "name": "Sword Cav Sprint Extra-Attack Doctrine",
+      "effect": "Sword cav archetype-shared: while Sprint is active, extra attack deals double DMG, can't trigger when using active. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "while Sprint is active, extra attack deals double DMG; can't trigger when using active",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Generic DMG doctrines",
       "name": "Generic DMG doctrines",
+      "effect": "Alt if you don't have the Sprint extra-attack + Sword Cav Speed combo. Filler.",
+      "tag": "filler",
       "note": "if Sprint extra-attack + Sword Cav Speed combo unavailable",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Mobility Doctrine V",
       "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "filler",
       "note": "+7% movement speed, unlocks Sprint +15% for 12s",
       "marks": [
         1
@@ -79,8 +106,14 @@
     }
   ],
   "battleRole": null,
+  "numbers": [],
   "matchups": null,
   "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -90,12 +123,12 @@
     }
   ],
   "gaps": [
-    "No fight-type ratings (Blob/Duel/Skirmish/Flank) in any source; unit-db records null.",
+    "No fight-type ratings (Blob/Duel/Skirmish/Flank) in any source.",
     "No counter units, threat units, or synergy matchups documented.",
     "No battle-role guidance: positioning, formation picks, or scenario tips absent from source.",
     "Veterancy bottom line not elaborated — only Top Line recommended by Amya.",
     "No controls loop or ability rotation documented.",
     "Amya guide edited 2026-06-16, 9 days before the 2026-06-25 Chaos patch; unit not on shortlist but doctrine/playstyle guidance may be stale.",
-    "Intrix Gaming video ('Ironcap Scout Cavalry Unit Review — The Glass Cannon', 2020-05-10) queued for transcription but not captured; would add matchup and scenario context."
+    "An Intrix Gaming video ('Ironcap Scout Cavalry Unit Review - The Glass Cannon', 2020-05-10) exists and would add matchup and scenario context, but isn't reflected here yet."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "claymores",
   "name": "Claymores",
   "headerMeta": "Heroic era · Melee Infantry · special · 235 leadership · Seasonal & Honour Unit",
@@ -14,83 +14,126 @@
       "flank": 7
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Seasonal & Honour Unit",
+      "unlock": [
+        "Unlocked through challenges across three tiers - the fourth tier unlocks the unit's unique doctrine (skill cooldown reduction)"
+      ],
+      "marks": [
+        1,
+        3
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A damage dealer and team buffer wrapped in a brutally long cooldown cycle — activate For Freedom!, execute your combo, and vanish before the 10-second Crippling debuff lands, or lose the unit almost instantly. The unit is really bad without For Freedom! up, so the whole combo exists to protect that buff window.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Linebreaker Doctrine V",
       "name": "Linebreaker Doctrine V",
+      "effect": "Every 3 attacks: block-break boost vs enemy units, 2s.",
+      "tag": "mandatory",
       "note": "block-break boost every 3 attacks, 2s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "stacking: every 3rd atk +11% dmg, every 6th +15% HP, every 9th 2.5s CCi",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Unique Doctrine for Claymores",
       "name": "Unique Doctrine for Claymores",
+      "effect": null,
+      "tag": "top-pick",
       "note": "+5% DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "top-pick",
       "note": "for penetration",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Mobility Doctrines",
       "name": "Mobility Doctrines",
+      "effect": null,
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Unshakable Ward",
       "name": "Unshakable Ward",
+      "effect": "Immune to daze & knock for 7s + immune to fire/bleed dmg. Top pick.",
+      "tag": "top-pick",
       "note": "immune to daze & knock 7s + immune to fire/bleed dmg",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Health & Defence Doctrine V (Piercing)",
       "name": "Health & Defence Doctrine V (Piercing)",
+      "effect": "+440 HP, +125 piercing defence. Filler.",
+      "tag": "filler",
       "note": "for the HP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Movement Speed after hit Doctrine",
       "name": "Movement Speed after hit Doctrine",
+      "effect": "Filler.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Flat defence doctrines",
       "name": "Flat defence doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": "already reach minimum dmg taken often",
       "marks": [
         1
@@ -120,8 +163,10 @@
   "battleRole": {
     "positioning": "Approach as a flanker anchored to your team — stick with allies to apply team buffs and survive the cooldown cycle. {3} Never solo-flank blindly; vulnerable to skill-cancel CC/daze. {3} For Freedom! increases targets hit by regular attacks/skills; time key skills when allies are nearby. {3}",
     "formation": null,
-    "tips": "Open: X-move in, press 3 (For Freedom!) to buff yourself before taking any hits. {1} Combo: instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat (preferred). {1} Exit: get out and wait for cooldown if possible — it's better than anything. {1} Train the combo in custom game first. {1} Fearless Heart triggers on offensive skills — 10% damage reduction for 5s, restores up to 750 HP, reduces melee damage taken by the unit and nearby allies by 20%; while For Freedom! active, healing sometimes doubled and melee reduction increases to 35%. {3} On For Freedom! expiry: 10-second Crippling debuff heavily drops movement speed, attack rate, and damage while raising damage taken — pull out 2–3s early using the buff's own speed boost; if still fighting on expiry, expect to lose the unit almost instantly. {3} Skills can't be used while Crippling is active; any in-progress charge is canceled. {3}"
+    "tips": "Open: X-move in, press 3 (For Freedom!) to buff yourself before taking any hits. {1} Combo: instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland Charge) or retreat (preferred). {1} Exit: get out and wait for cooldown if possible — it's better than anything. {1} Train the combo in custom game first. {1} Fearless Heart triggers on offensive skills — 10% damage reduction for 5s, restores up to 750 HP, reduces melee damage taken by the unit and nearby allies by 20%; while For Freedom! active, healing sometimes doubled and melee reduction increases to 35%. {3} On For Freedom! expiry: 10-second Crippling debuff heavily drops movement speed, attack rate, and damage while raising damage taken — pull out 2–3s early using the buff's own speed boost; if still fighting on expiry, expect to lose the unit almost instantly. {3} Skills can't be used while Crippling is active; any in-progress charge is canceled. {3}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -152,7 +197,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: nearly everything — Claymores counter \"near everything\" per Amya {1}. House leadership predicts a heavy-meta run in Purple Lock and Gold this season {2}."
+    "pressure": "You pressure: nearly everything — Claymores counter \"near everything\" per Amya {1}. House leadership predicts a heavy-meta run in Purple Lock and Gold this season {2}.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -166,6 +212,13 @@
     ],
     "notes": "For Freedom! — signature 15-second buff: increases movement speed, damage, max HP, massively boosts Charge's block-break, adds snare to Claymore Strike, boosts Fearless Heart's effect, increases targets hit by attacks/skills; activation animation cancelable with a skill or V; can be activated mid-charge. {3} Highland Charge — standard infantry charge with a slow swing at the end; charging point-blank skips the charge animation for an immediate swing (~5% damage bonus over regular attacks only); triggers Fearless Heart after the swing. {3} Claymore Strike — three strikes, each dealing 20 bonus damage, short activation range (outside it the unit swings in air); also triggers Fearless Heart. {3} Passive \"battle happy\" trait grants up to 200 armor on hits — avoid engaging before stacks accumulate. {3}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -195,7 +248,7 @@
   "gaps": [
     "Formation guidance absent — no source specifies F1/F2 or spacing geometry.",
     "Exact For Freedom! damage bonus varies per skill/veterancy line; in-game description claims +40% but actual bonus not uniformly applicable.",
-    "Skill ability names need vet sanity check against in-game text: SuperKitowiec's transcript uses 'Feor Freedom' and 'Fearless Heart' as ASR best-guesses; primary source uses 'For Freedom!' (matching Amya). Confirmed secondary source confirms the core mechanics match.",
-    "No house-card build captured; house leadership (Bohemiansnacksody, StaRBuRsT) confirms top-vet preference and predicts a heavy-meta season but supplies no doctrine details beyond veterancy line choice."
+    "Skill names vary by source: one video transcript spells them 'Feor Freedom' and 'Fearless Heart', but the primary source (matching Amya) uses 'For Freedom!' - go with that one. The core mechanics match either way.",
+    "No house-card build exists; house leadership (Bohemiansnacksody, StaRBuRsT) confirms top-vet preference and predicts a heavy-meta season but supplies no doctrine details beyond veterancy line choice."
   ]
 }

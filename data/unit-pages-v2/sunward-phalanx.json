@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "sunward-phalanx",
   "name": "Sunward Phalanx",
   "headerMeta": "Golden era · Pike/Polearm infantry · anti-cav · 295 leadership · Seasonal (S19: Alexander)",
@@ -14,35 +14,58 @@
       "flank": 1
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Medium & Heavy armors",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit (Season 19: Alexander)",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A premier point-holder that deletes cavalry and anything without block the moment it braces. Never flank or solo it — overlap with Modao, keep the models spread, and leave it home on far-spawn maps; its one real enemy is a Bastard Sword mount ult.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "+100 DMG during brace",
       "name": "+100 DMG during brace",
+      "effect": "Top pick.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Polearm Doctrine",
       "name": "Epic Polearm Doctrine",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "top-pick",
       "note": "oneshots hero divers, turn 180° and re-brace if flanked — house benches it for cav-kill priority {3}",
       "marks": [
         1,
@@ -50,24 +73,30 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Overwhelm",
       "name": "Overwhelm",
+      "effect": "Totem doctrine. Top pick.",
+      "tag": "top-pick",
       "note": "totem",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Sunward Phalanx: Glory",
       "name": "Sunward Phalanx: Glory",
+      "effect": "-20% DMG taken. Filler.",
+      "tag": "filler",
       "note": "−20% DMG taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Anti-Cavalry Doctrine",
       "name": "Anti-Cavalry Doctrine",
+      "effect": "-30% to -35% DMG taken from cavalry while bracing (tier varies by card copy).",
+      "tag": "filler",
       "note": "−35% DMG taken; skippable — bottom-vet mitigation already suffices {2}",
       "marks": [
         1,
@@ -75,16 +104,20 @@
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Piercing Damage Doctrine",
       "name": "Piercing Damage Doctrine",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Tank Doctrines",
       "name": "Tank Doctrines",
+      "effect": "OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -113,8 +146,10 @@
   "battleRole": {
     "positioning": "Sit one pike-length behind your front line and control distance — never lead with it; set brace range accounting for enemy long pikes. {2} In overlap play, spread the models and sit them on your Modaos — good in overlap, not solo. {3}",
     "formation": "Default F1 (spread): CC only disables part of the line, the rest keeps fighting. {2} F2 (block) only in narrow terrain that denies flanks, to concentrate center damage. {2}",
-    "tips": "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat — expect the second, timed CC. {2} Take it on defence 15-starts (spawn with it or supply-pull nearby); skip far-spawn maps — among the slowest units even with mobility doctrine. {3}"
+    "tips": "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat — expect the second, timed CC. {2} Take it on defence 15-starts (spawn with it or supply-pull nearby); skip far-spawn maps — among the slowest units even with mobility doctrine. {3}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -154,7 +189,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: Iron Reapers, Azaps, Varangian Guards — each cites Phalanx range; Claymores conditionally (\"depending on how they play\")."
+    "pressure": "You pressure: Iron Reapers, Azaps, Varangian Guards — each cites Phalanx range; Claymores conditionally (\"depending on how they play\").",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -172,6 +208,13 @@
     ],
     "notes": "Instant brace (1 → V) — pikes drop with CC applied immediately; ramming while braced adds zero damage. {2} Pike rotation (V) — every model faces the nearest enemy, ~doubles contact. {2} Ares' Flurry (2) — big damage, forces overextension; advance backwards after. {2} Double-C brace: 3–4× area coverage, minimal DPS loss. {1} Anti-BS counter: advance backwards → X (cancels pike animation) → long-press V on the Bastard Sword. {3}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -193,7 +236,7 @@
     }
   ],
   "gaps": [
-    "A StarBurst house card ('Sunward Phalanx: Titanic', 2024-09-16) is known to exist but was never captured — would outrank Amya for the build if recovered.",
+    "A StarBurst house card ('Sunward Phalanx: Titanic', 2024-09-16) is known to exist, but we don't have its contents - it would outrank Amya's guide for the build if it turns up.",
     "Skill-2 name unarbitrated: 'Ares' Flurry' (Amya) vs 'Area's Fury' (Herlajis transcript)."
   ]
 }

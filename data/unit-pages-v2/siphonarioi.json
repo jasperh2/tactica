@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "siphonarioi",
   "name": "Siphonarioi",
   "headerMeta": "Golden era · Ranged infantry (Exotic) · special · 300 leadership · Seasonal (Season V: Legacy of Fire)",
@@ -9,67 +9,96 @@
     "rarity": "T5",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit (Season V: Legacy of Fire)",
+      "unlock": [
+        "Season 5 Legacy of Fire veterancy line - you need Ball Boys unlocked first"
+      ],
+      "marks": [
+        1,
+        2
+      ]
+    }
+  },
   "pitch": "A unique flamethrower unit that puts out heavy sustained damage and crowd control from range, but it is genuinely fragile — even grey-tier trash kills it the moment it's exposed. Screen it behind a shield or infantry line and work it at chokepoints; caught alone in open ground with no frontline, it dies fast.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Siphonarioi Flamethrower Doctrine",
       "name": "Siphonarioi Flamethrower Doctrine",
+      "effect": "Unit-unique: +200 blunt DMG when hellfire strikes target. Mandatory per OP.",
+      "tag": "mandatory",
       "note": "unit-unique — +200 blunt DMG when hellfire strikes target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Siphonarioi Hellfire Doctrine",
       "name": "Siphonarioi Hellfire Doctrine",
+      "effect": "Unit-unique: +2s flame duration. Mandatory per OP.",
+      "tag": "mandatory",
       "note": "unit-unique — +2s flame duration",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type — put highest tier you have",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "mandatory",
       "note": "+8% DMG in sieges, flat ~+72 on base ~900",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Mobility Doctrine V",
       "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "top-pick",
       "note": "Sprint",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Older Ammunition Doctrine",
       "name": "Older Ammunition Doctrine",
+      "effect": "Preferred for TW. Filler.",
+      "tag": "filler",
       "note": "preferred for TW",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Random HP doctrine",
       "name": "Random HP doctrine",
+      "effect": "Fallback if no ammo doc, free slot anyway. Filler.",
+      "tag": "filler",
       "note": "fallback if no ammo doctrine, free slot anyway",
       "marks": [
         1
@@ -99,6 +128,15 @@
     "formation": "Staggered formation or a single-file line. {2}",
     "tips": "Never aim the direct-fire stream flat along the ground — angle it upward at a wall or raised surface near the enemy so it arcs down onto upper body/head level for more hits and kills. {2} Best worked at chokepoints (gatehouses, breaches, narrow corridors/stairwells), laying Scorched ground-fire to zone the area while it keeps pumping flame into a contained kill zone until it needs to resupply. {2} 2 → 1 combo maximizes damage but shouldn't be overused — only for defending/attacking a chokepoint like a gate, or when your 1 will hit the unit cap; even at a gate, 1 → 2 is better for longer CC uptime (noted as a pre-Spartans-release read). {1} In open space, do not use 2 → 1 — too much room to move and bigger frontlines; instead 2 → reposition → 1 diagonal/straight (situational — mixed vet can beat full Top line here), or 2 → 1 diagonal, or 2 diagonal → 1 straight. {1} 2 → 1 doesn't add much extra damage: burn duration and CC get reset by ticks from 1, so the only real gain from 2 is extra impact-damage ticks. {1}"
   },
+  "numbers": [
+    {
+      "label": "Models per unit",
+      "value": "7",
+      "marks": [
+        2
+      ]
+    }
+  ],
   "matchups": {
     "cards": [
       {
@@ -123,6 +161,38 @@
     ],
     "notes": "Direct-fire (1) is a targeted flame stream; Scorched (2) sprays hellfire across an area of terrain and is used to zone ground. {2} Ammo and health both burn fast — plan resupply trips rather than fighting to empty. {2} A shield-screened Siphonarioi grinding a chokepoint has been clocked around 76 kills in a single engagement before needing to fall back and resupply; poor cooldown timing (Scorched fired too early, direct fire off-target) lets even a cavalry push finish it off. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Amya's 2→1 combo demo clip",
+        "url": "https://www.youtube.com/watch?v=659TygoLtPw&feature=youtu.be",
+        "stamps": [],
+        "marks": [
+          1
+        ]
+      },
+      {
+        "label": "KingzinHD - Siphonarioi Flamers tutorial and overview",
+        "url": "https://www.youtube.com/watch?v=DwfC_pMf2Mk",
+        "stamps": [
+          "00:13 unit overview intro",
+          "01:08 unlock line and unit stats",
+          "02:32 veterancy line comparison, top vs bottom",
+          "07:24 formations, staggered and single-file",
+          "08:18 ability breakdown - aim upward at a wall to angle shots onto targets",
+          "09:26 match-clip examples, good and bad usage",
+          "14:35 closing summary"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -138,12 +208,13 @@
     }
   ],
   "gaps": [
-    "No fight-type Strength ratings (Blob/Flank/Skirmish/Duelling) given in the Amya guide thread — fightRatings is null, not estimated.",
+    "No fight-type strength ratings (Blob/Flank/Skirmish/Duelling) given in the Amya guide thread - not estimated, just genuinely absent.",
     "No dedicated Counters section from Amya (no 'this unit counters / loses to / struggles vs' block) and no hero-pairing recommendation given anywhere in the thread.",
-    "Leadership conflict: data/unit-db.json (ConqHub, tier-2) records 300; the ConstantBufferCast transcript states 330 (caption-derived, tier-3) — unarbitrated, unit-db value used above.",
+    "Leadership conflict: ConqHub (a stats reference) records 300; the ConstantBufferCast video states 330 (caption-derived) - unresolved, we use 300 above.",
     "Amya's doctrine/build guidance was last edited 2026-05-27, which pre-dates the 2026-06-25 Chaos patch anchor — flagged for revalidation, though Siphonarioi is not on the 13-unit Chaos shortlist.",
     "'Don't put' doctrine slot is a literal placeholder ('X') in the Amya OP — never filled in, not fabricated here.",
     "Ability names ('direct fire', 'Scorched') are inferred from the transcript narrator's informal phrasing, not confirmed in-game tooltip text; numeric veterancy bonuses (240/480/60/70) are as spoken by auto-captions, not cross-checked against the live veterancy tree.",
-    "No house-guide, house-card, or house-playbook content exists for this unit — the one house-classified source found (guides-house/immortals/dragon-cav-how-to-use.md) is about a different unit (Dragon Cav) and only namechecks Siphonarioi in a single aside, with no doctrine/build/tactical content to use."
+    "No house-guide, house-card, or house-playbook content exists for this unit - the one house source that turned up is actually about a different unit (Dragon Cav) and only namechecks Siphonarioi in passing, with no doctrine, build, or tactical content to use.",
+    "No PvE-specific tips, deeper tier history, or a sibling-unit comparison in any source for this unit."
   ]
 }

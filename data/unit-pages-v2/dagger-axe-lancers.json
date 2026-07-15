@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "dagger-axe-lancers",
   "name": "Dagger Axe Lancers",
   "headerMeta": "Heroic era · Cavalry · charge cav · 245 leadership · T4M",
@@ -14,75 +14,115 @@
       "flank": 7
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": null,
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T4",
+        "marks": [
+          3
+        ]
+      }
+    ],
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A charge cavalry unit built around Lancer's Last Stand — big flank damage once spaced correctly, but weak in a straight duel. Not an every-map pick: open maps favor heavier chargers, while curved terrain like Western City lets it flank-path into the fight for real value.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Lancer-Last Stand",
       "name": "Lancer-Last Stand",
+      "effect": "+40% DMG when unit headcount is below 60%.",
+      "tag": "mandatory",
       "note": "unit-unique, +40% DMG at <60% headcount",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Charge CD Doctrine",
       "name": "Epic Charge CD Doctrine",
+      "effect": "-14s charge CD, +100 piercing DMG.",
+      "tag": "mandatory",
       "note": "−14s charge CD, +100 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Charge Defence Doctrine",
       "name": "Epic Charge Defence Doctrine",
+      "effect": "-50% DMG taken while charging, -6s charge CD.",
+      "tag": "mandatory",
       "note": "−50% DMG taken while charging, −6s charge CD",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Sprint Doctrine",
       "name": "Sprint Doctrine",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "top-pick",
       "note": "+7% movement speed, unlocks Sprint +15% for 12s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "+225 Charge DMG Doctrine",
       "name": "+225 Charge DMG Doctrine",
+      "effect": "Top pick.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Piercing DMG",
       "name": "Piercing DMG",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": "Filler.",
       "tag": "filler",
-      "name": "−DMG Taken doctrines",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "−DMG Taken doctrines",
+      "name": "−DMG Taken doctrines",
+      "effect": "Filler.",
+      "tag": "filler",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Slashing DMG or Hero DMG",
       "name": "Slashing DMG or Hero DMG",
+      "effect": "OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -102,11 +142,14 @@
   "battleRole": {
     "positioning": "Go in / try to go behind the push with your hero, while the lancers stand on the opposite side of the push — they follow your hero, so send them \"away\" into the fight. {1} On curved-path maps like Western City, take a flanking route rather than a direct charge; on more open maps, heavier charger cavalry is more effective and Dagger Axes see less play. {2}",
     "formation": null,
-    "tips": "Charge takes 1.5s to reach final stance for full damage — you have about 10s to push through a blob before skill 2 ends. {1} X-move and/or press 2 when the lancers are 2–3s from impact so they carry through the blob. {1} Dodge pikes and enter from a better angle when you can charge in and follow up with 2. {1} Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost the unit, pull it from supply (best to have it out, swap to another unit, then swap back) so the 40%-at-<60%-headcount bonus applies to the full unit instead of a partial one. {1}"
+    "tips": "Charge takes 1.5s to reach final stance for full damage — you have about 10s to push through a blob before skill 2 ends. {1} X-move and/or press 2 when the lancers are 2–3s from impact so they carry through the blob. {1} Dodge pikes and enter from a better angle when you can charge in and follow up with 2. {1} Lancer's Last Stand trick: if you spawn with it, swap away and swap back; if you just lost the unit, pull it from supply (best to have it out, swap to another unit, then swap back) so the 40%-at-<60%-headcount bonus applies to the full unit instead of a partial one. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -118,6 +161,14 @@
     ],
     "notes": "Old \"short charge\" trait (max damage at zero momentum) was removed — new play is to press 2 early and maintain the charge if you can wipe in one go. {1} Prioritize the follow-charge (charge then skill 2) over charging in first and pressing 2 after; if you can't make good use of the follow-charge, fall back to a normal 1-charge and recall with skill 2 — prio should always be to use 2. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -130,13 +181,19 @@
       "author": "house guide",
       "date": "Jun 2026",
       "house": true
+    },
+    {
+      "mark": 3,
+      "author": "StarBurst / KP HC",
+      "date": "Oct 2024",
+      "house": true
     }
   ],
   "gaps": [
     "No Counters section in Amya's OP (no Loses to / Struggles vs / This unit counters lines) — matchup cards omitted rather than invented.",
     "No formation guidance (F1/F2) in any source.",
-    "unit-db flags Amya's Lancer's Last Stand doctrine block and Tips & Tricks text as near-identical to her separate Tiger and Leopard Cavalry guide — recorded as given per-unit, not merged, pending vet review of which unit it actually belongs to.",
-    "A gameplay video possibly covering this unit ('Dagger AXE Lancers - A GREAT Cavalry Unit!', evolozgaming, 2022-12-21) was found but never transcribed — commentary-style, not confirmed as a structured control guide.",
-    "No dedicated house build card (StarBurst or otherwise) has been captured for this unit."
+    "Amya's Lancer's Last Stand doctrine block and Tips & Tricks text are near-identical to her separate Tiger and Leopard Cavalry guide - recorded as given per-unit, not merged, since which unit it actually belongs to is unclear.",
+    "A gameplay video possibly covering this unit ('Dagger AXE Lancers - A GREAT Cavalry Unit!', evolozgaming, 2022-12-21) exists but is commentary-style, not a structured control guide, so it's not used as a source here.",
+    "No dedicated house build card (StarBurst or otherwise) exists for this unit."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "javelin-sergeants",
   "name": "Javelin Sergeants",
   "headerMeta": "Heroic era · Melee Infantry · special · 230 leadership · T4 · Mastery",
@@ -17,56 +17,70 @@
   "pitch": "A backline javelin-thrower with exceptional hero-kill potential and poke pressure on grouped enemies. Extremely vulnerable in melee — position on elevation, throw at range, and retreat before contact; its sole counter is most other units at close range.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit dmg, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Javelin Doctrine",
       "name": "Javelin Doctrine",
+      "effect": null,
+      "tag": "mandatory",
       "note": "javelins render enemies immobile 1.5s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Javelin Doctrine",
       "name": "Javelin Doctrine",
+      "effect": null,
+      "tag": "mandatory",
       "note": "+250 javelin damage, +30 ammo",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Javelin Doctrine",
       "name": "Javelin Doctrine",
+      "effect": null,
+      "tag": "top-pick",
       "note": "+300 javelin block break, +100 piercing dmg",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Polearm Doctrine",
       "name": "Polearm Doctrine",
+      "effect": "+60 piercing dmg, +180 piercing AP. Top pick.",
+      "tag": "top-pick",
       "note": "+60 piercing dmg, +180 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Damage doctrines",
       "name": "Damage doctrines",
+      "effect": "Filler.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Tank doctrines",
       "name": "Tank doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -95,8 +109,10 @@
   "battleRole": {
     "positioning": "Backline thrower, never lead or enter melee. Elevation extends throw range beyond the displayed red-zone — repositioning to high ground is a repeatable way to hit targets that would otherwise be out of range. {2} Throw, confirm kill or harass, retreat before the unit closes to contact. {2}",
     "formation": "F3 (skirmish) — mandatory before using Marksman Target Throw (ability 3), or most of the volley will miss or not fire at all; F3 ensures the unit faces the target before triggering. {2}",
-    "tips": "Two targets pierced per javelin (vs Imperial Javelins' single hit), making Sergeants superior against grouped/stacked enemies. {2} AoE throw (ability 1) into targeted throw (ability 3) is the core combo — tag spread groups with AoE, then immediate targeted follow-up for rapid double damage application. {2} Ammo doctrine and bottom-line veterancy are prioritized — the +10 ammo doctrine and extra throw count directly scale kill potential before resupply. {2}"
+    "tips": "Two targets pierced per javelin (vs Imperial Javelins' single hit), making Sergeants superior against grouped/stacked enemies. {2} AoE throw (ability 1) into targeted throw (ability 3) is the core combo — tag spread groups with AoE, then immediate targeted follow-up for rapid double damage application. {2} Ammo doctrine and bottom-line veterancy are prioritized — the +10 ammo doctrine and extra throw count directly scale kill potential before resupply. {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -118,7 +134,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: backline ranged and grouped units; from elevation can harass targets beyond normal range. Struggles to apply pressure if forced into melee."
+    "pressure": "You pressure: backline ranged and grouped units; from elevation can harass targets beyond normal range. Struggles to apply pressure if forced into melee.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -131,6 +148,11 @@
     ],
     "notes": "Default ability 1 (AoE throw) — targets nearest enemy in range when unit isn't facing a specific target; low setup friction for reactive poke. {2} Marksman Target Throw (ability 3) — requires F3 formation or significant portion of the volley whiffs. {2} Ammo is central to the unit — the +10 ammo doctrine and bottom-line veterancy (five throws per cycle, up to six with Honor-tree node) are close to mandatory because more throws per engagement window directly scales kill potential. {2}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -149,5 +171,11 @@
     "No house-guide, StarBurst card, or multi-channel video-transcript coverage — all build/veterancy/matchup content is from two sources (Amya + one 2020 transcript).",
     "Hero pairing not specified by Amya (OP left literal 'X').",
     "Top-line vs bottom-line veterancy preference is based on a 2020 guide and pre-patch Amya edit (2026-05-26); post-2026-06-25-patch impact on the playstyle preference is unconfirmed."
-  ]
+  ],
+  "identity": {
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  }
 }

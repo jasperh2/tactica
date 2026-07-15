@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "rattan-pikemen",
   "name": "Rattan Pikemen",
   "headerMeta": "Chivalric era · Pike/Polearm infantry · anti-cav · 95 leadership · Honour Tree (T2, Mastery)",
@@ -9,59 +9,91 @@
     "rarity": "T2",
     "fightRatings": null
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honour Tree",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [],
+    "mastery": {
+      "has": true,
+      "marks": [],
+      "order": [
+        "bottom Bottom Line ('for poison, obviously' — per Amya guide). No node-by-node allocation grid was given in this guide (unlike the house-cards this session), only the line recommendation."
+      ]
+    }
+  },
   "pitch": "A cheap poison pike line that wins fights on stacked damage-over-time rather than the hit itself — stack 4-5 autos, back off, let the poison finish the job. Its charge doctrine hits for a flat number regardless of target, turning a filler unit into a surprise giant-killer against Iron Reapers or even Yanyuedao.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Pike Assault Doctrine",
       "name": "Pike Assault Doctrine",
+      "effect": "Allows the unit to use the Pike Assault order; flat charge damage. Mandatory per Amya guide.",
+      "tag": "mandatory",
       "note": "flat charge damage, enables the Pike Assault order",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Poisons Doctrine V",
       "name": "Poisons Doctrine V",
+      "effect": "+140 all armour penetration, +60 poison DMG per stack, stacks up to 2x.",
+      "tag": "mandatory",
       "note": "+140 all AP, +60 poison damage, stacks up to 2x",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Health & Blunt Defence Doctrine IV",
       "name": "Health & Blunt Defence Doctrine IV",
+      "effect": null,
+      "tag": "top-pick",
       "note": "+440 HP, +125 blunt defence",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Health & Defence Doctrine IV",
       "name": "Health & Defence Doctrine IV",
+      "effect": "+440 HP, +40 all defences. Top pick per Amya guide.",
+      "tag": "top-pick",
       "note": "+440 HP, +40 all defences",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": "-16% leadership cost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "filler",
       "note": "\"dream setup\" replacing Leadership doctrine — rarely achievable since most warbands need Doctrine V slotted elsewhere",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "generic damage doctrine in place of Poison Doctrine V",
       "name": "generic damage doctrine in place of Poison Doctrine V",
+      "effect": "Don't put — Amya guide verbatim: \"Don't put DMG but Poison V.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -81,8 +113,10 @@
   "battleRole": {
     "positioning": "Good attack range on the pike — always look to flank rather than sit static. {1}",
     "formation": null,
-    "tips": "No need to perma-front-line during blob fights — back off a few seconds after stacking poison, then re-engage. {1} With the charge doctrine slotted, it can win matchups you wouldn't expect, including against Iron Reapers or Yanyuedao at their prime. {1}"
+    "tips": "No need to perma-front-line during blob fights — back off a few seconds after stacking poison, then re-engage. {1} With the charge doctrine slotted, it can win matchups you wouldn't expect, including against Iron Reapers or Yanyuedao at their prime. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -104,7 +138,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -116,6 +151,11 @@
     ],
     "notes": "X-move then V to cancel the tail of the auto-attack animation once the damage pop-up shows, keeping the poison-stacking loop tight. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -137,11 +177,18 @@
     }
   ],
   "gaps": [
-    "No doctrines+mastery house card exists for this unit in either reviewed Discord server (StarBurst's card library or Immortals #units) — confirmed genuine gap, not a capture miss.",
+    "No doctrines-and-mastery house card exists for this unit in either Discord server checked (StarBurst's card library or the Immortals units channel) - genuinely doesn't exist, not just missed.",
     "Svarthe's 2023 house claim ('Full Mastery Rattan Pikes with MMAs and/or Iron Reapers') predates the current doctrine system and 'Rattan Pikes' as a name for this unit was never independently confirmed — flagged as likely-stale above.",
-    "No video-transcript coverage: all 20+ channels grepped; only sibling Rattan-family units (Roundshields, Vipers, Marksmen) found, zero hits on Rattan Pikemen itself.",
-    "No fightRatings (blob/duel/skirm/flank) entry exists in unit-strengths.json for this unit.",
+    "No video guide covers this unit specifically - only sibling Rattan-family units (Roundshields, Vipers, Marksmen) turn up in the video sources we checked, not Rattan Pikemen itself.",
+    "No fight-rating (blob/duel/skirm/flank) entry exists for this unit from any source.",
     "No formation (F1/F2) guidance found in any source.",
-    "Incoming Chaos-patch nerf (2026-06-22 shortlist): poison duration 6s→4s, poison damage per stack 250→140 — not yet reflected in the Amya guide's playstyle text or Poison Doctrine V numbers above; both predate the nerf."
-  ]
+    "Incoming Chaos-patch nerf (2026-06-22 shortlist): poison duration 6s→4s, poison damage per stack 250→140 — not yet reflected in the Amya guide's playstyle text or Poison Doctrine V numbers above; both predate the nerf.",
+    "No hero-pairing line in the Amya guide either, unlike most other Amya guides on this site - so no hero pairing is listed here."
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "Poison duration 6s→4s; poison damage per stack 250→140 (same poison nerf as Roundshields)",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

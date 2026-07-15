@@ -1,6 +1,6 @@
 {
   "schema": "cb-academy-unit-index/v1",
-  "generated": "2026-07-07",
+  "generated": "2026-07-15",
   "count": 149,
   "units": [
     {
@@ -745,8 +745,7 @@
         "doctrines",
         "veterancy",
         "battleRole",
-        "matchups",
-        "controls"
+        "matchups"
       ]
     },
     {
@@ -1266,7 +1265,9 @@
       "icon": "assets/unit-icons/onna-musha.png",
       "richness": "full",
       "presentSections": [
-        "veterancy"
+        "veterancy",
+        "battleRole",
+        "matchups"
       ]
     },
     {
@@ -1969,7 +1970,7 @@
       "era": "Golden",
       "leadership": 280,
       "icon": "assets/unit-icons/tercio-arquebusiers.png",
-      "richness": "stats-only",
+      "richness": "full",
       "presentSections": [
         "battleRole"
       ]

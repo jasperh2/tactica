@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "imperial-javelineers",
   "name": "Imperial Javelineers",
   "headerMeta": "Heroic era · Javelin/Melee infantry · skirmisher · 240 leadership · T4 mastery",
@@ -9,67 +9,82 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": null,
+    "tierHistory": null,
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "Javelin infantry that throws before closing to melee, excelling at pressuring squishy targets and poking units during downtime. The 2026-06-25 patch buffed their Flying Shield with +13% damage and Knockback, shifting them from pure poke to area control.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit dmg, +80 all-type",
       "marks": [
         1
       ]
     },
     {
+      "ref": "Javelin Doctrine (Immobilize)",
+      "name": "Javelin Doctrine (Immobilize)",
+      "effect": "Javelins render enemies immobile for 1.5s. Mandatory per Amya.",
       "tag": "mandatory",
-      "name": "Javelin Doctrine",
       "note": "1.5s immobilize on javelin hit",
       "marks": [
         1
       ]
     },
     {
+      "ref": "Javelin Damage Doctrine",
+      "name": "Javelin Damage Doctrine",
+      "effect": "+250 javelin DMG, +30 ammo.",
       "tag": "mandatory",
-      "name": "Javelin Doctrine",
       "note": "+250 javelin damage, +30 ammo",
       "marks": [
         1
       ]
     },
     {
+      "ref": "Javelin Doctrine (Block Break)",
+      "name": "Javelin Doctrine (Block Break)",
+      "effect": "+300 javelin block break, +100 piercing dmg. Top pick.",
       "tag": "top-pick",
-      "name": "Javelin Doctrine",
       "note": "+300 javelin block break, +100 piercing dmg",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Polearm Doctrine",
       "name": "Polearm Doctrine",
+      "effect": "+60 piercing dmg, +180 piercing AP. Top pick.",
+      "tag": "top-pick",
       "note": "+60 piercing dmg, +180 piercing AP",
       "marks": [
         1
       ]
     },
     {
+      "ref": "DMG doctrines",
+      "name": "DMG doctrines",
+      "effect": "Filler.",
       "tag": "filler",
-      "name": "Pierce Defense",
-      "note": "mitigate ranged damage taken {2}",
+      "note": null,
       "marks": [
-        2
+        1
       ]
     },
     {
-      "tag": "filler",
-      "name": "Health Doctrine",
-      "note": "or Breakthrough — Breakthrough is optional swap {2}",
-      "marks": [
-        2
-      ]
-    },
-    {
-      "tag": "avoid",
+      "ref": "Tank doctrines",
       "name": "Tank doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -79,27 +94,20 @@
   "veterancy": [
     {
       "label": "Top line",
-      "recommended": false,
-      "body": "Double Shot for more raw javelin damage, but the two separate throws feel clunky compared to both landing together. {2}",
+      "recommended": true,
+      "body": "Amya calls Top Line for this unit - no extra detail given on why.",
       "marks": [
-        1,
-        2
-      ]
-    },
-    {
-      "label": "Bottom line",
-      "recommended": false,
-      "body": "Heal + extra ammo (five throws, six with Honor-tree node) — favors throw count over burst. {2}",
-      "marks": [
-        2
+        1
       ]
     }
   ],
   "battleRole": {
     "positioning": "Position in the push targeting important units, especially heroes. {1} Shield throw + kite/run-away is Imperial Javs' unique strength to trade favorably into certain matchups. {1}",
-    "formation": "F3 (skirmish) formation before using the targeted throw ability (Marksman Target Throw) — if not facing the target, most throws will miss. {2}",
-    "tips": "Marksman Target Throw fails when the unit isn't facing the target; manipulate to F3 first. {2} Against a group, use the AoE throw first, then follow up with targeted throw for a rapid one-two. {2} Throwing from elevation extends range beyond the displayed red-zone (max range) marker — the higher the position, the farther the throw. {2}"
+    "formation": null,
+    "tips": null,
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -112,18 +120,15 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": "Javelin Sergeants pierce 2 targets per javelin throw; Imperial Javs only hit one - Sergeants edge out vs grouped or stacked enemies. {2}"
   },
-  "controls": {
-    "loop": [
-      "AoE throw",
-      "targeted throw"
-    ],
-    "loopMarks": [
-      2
-    ],
-    "notes": "Combo sequence: AoE throw first to tag a spread group, then targeted throw immediately after. {2} Ammo doctrine and bottom-line veterancy prioritize throw count. {2} Default (ability 1) throw in melee range targets the nearest enemy. {2}"
+  "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
   },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -139,9 +144,17 @@
     }
   ],
   "gaps": [
-    "Fight ratings (blob/duel/skirmish/flank) recorded in unit-strengths.json as 4/2/5/1 but flagged out-of-scope (below B-tier threshold) — not authoritative for this unit's current tier.",
-    "No house-card, house guide, or house-playbook mentions — house playstyle unpopulated.",
-    "2026-06-25 patch added Knockback to Flying Shield; tactical crowd-control use of the new effect is not documented in any source.",
-    "No glyph icon available — placeholder pending."
-  ]
+    "Fight ratings (Blob 4/Duel 2/Skirm 5/Flank 1) do exist in Amya's guide, but aren't shown on this page since this unit falls below the bar we use for showing that section - a deliberate choice, not missing data.",
+    "No house-card, house guide, or house-playbook mentions found anywhere - no house playstyle notes exist for this unit.",
+    "2026-06-25 patch added Knockback to Flying Shield; no source documents the new crowd-control use in practice yet.",
+    "Amya's guide was last edited 2026-05-26, before the 2026-06-25 Chaos patch - doctrine/build picks may be stale for the current season.",
+    "Earlier doctrine picks (Pierce Defense/Health Doctrine), both veterancy lines, formation, and controls-loop guidance turned out to be HandBananaPvP content about Javelin Sergeants, not this unit - dropped from this page. Only the pierce-count comparison between the two units carries over.",
+    "No dedicated Imperial Javelineers video exists; the HandBananaPvP guide that used to be linked here is actually a Javelin Sergeants guide, a different unit."
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Buff/Rework",
+    "summary": "Base Piercing Damage 1201→1351; \"Flying Shield\" damage +13% and now applies Knockback",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

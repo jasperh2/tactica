@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "sipahis",
   "name": "Sipahis",
   "headerMeta": "Heroic era · Melee Cavalry (Steel Mace/Blunt) · 215 leadership · T4 · Mastery",
@@ -14,27 +14,52 @@
       "flank": 2
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Blood of the Empire · Heroic Era",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A charge-and-stomp disruptor rather than a killer: Quick Charge leaps knock down and chain into Impassioned for a second wave of knockdowns and a 50% damage-taken debuff, while Croupade grinds out 12 seconds of stomps and stacking defense. It folds instantly against high-damage low-speed anti-cav like Stalwarts and Fortebraccio if you charge into their brace, so it wins by disrupting shielded infantry and simple cavalry matchups, not by trading into anti-cav.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Paradox Doctrine",
       "name": "Paradox Doctrine",
+      "effect": "3/6/9. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "3/6/9",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Devastation",
       "name": "Devastation",
+      "effect": "Increases DMG dealt to units by 120, increases all types of DMG by 80.",
+      "tag": "mandatory",
       "note": "disputed — Sipahis don't auto-attack between Croupade stomps, so a later source calls it near-useless now {2}",
       "marks": [
         1,
@@ -42,24 +67,30 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Healing Punisher Doctrine",
       "name": "Healing Punisher Doctrine",
+      "effect": "+20% DMG to targets currently regenerating health.",
+      "tag": "top-pick",
       "note": "+20% DMG vs healing units",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Health & Resistance Doctrine V",
       "name": "Health & Resistance Doctrine V",
+      "effect": "+300 HP, -5% DMG taken.",
+      "tag": "filler",
       "note": "−5% DMG taken, alt for Leadership",
       "marks": [
         1
@@ -87,8 +118,18 @@
   "battleRole": {
     "positioning": "Wait until the enemy has just finished dealing their brace/stomp damage, then trigger Impassioned so every model leaps again — including ones still mid-air — for roughly double leap damage in one move; follow up with Croupade to clean up if it's safe. {2} Charging in a straight line and letting the unit jump as often as possible keeps it effective; charging near a unit or barricade makes models leap in random directions instead. {2}",
     "formation": null,
-    "tips": "Croupade stomps knock down and stack a 20% defense boost per stomp for 12 seconds. {2} Quick Charge leaps trample and knock down everything hit; Impassioned's final leap hits slightly harder and applies 50% increased damage taken to everyone hit, for 4.5 seconds. {2} You can charge or Croupade into most braced formations for disruption value even without a clean kill — the exceptions are named in Matchups. {2}"
+    "tips": "Croupade stomps knock down and stack a 20% defense boost per stomp for 12 seconds. {2} Quick Charge leaps trample and knock down everything hit; Impassioned's final leap hits slightly harder and applies 50% increased damage taken to everyone hit, for 4.5 seconds. {2} You can charge or Croupade into most braced formations for disruption value even without a clean kill — the exceptions are named in Matchups. {2}",
+    "pve": null
   },
+  "numbers": [
+    {
+      "label": "Bottom-line damage stack",
+      "value": "~161% extra damage (10%+6%+10%+15% nodes, 30% unit trait, 50% skill, 25% mastery, 15% unit tree)",
+      "marks": [
+        2
+      ]
+    }
+  ],
   "matchups": {
     "cards": [
       {
@@ -137,7 +178,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: shield units in general (charging is safe against all but Stalwarts) and simple shielded infantry, which Croupade handles well while supporting your team."
+    "pressure": "You pressure: shield units in general (charging is safe against all but Stalwarts) and simple shielded infantry, which Croupade handles well while supporting your team.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -151,6 +193,11 @@
     ],
     "notes": "Press 2 (Croupade) first for its defense buff as a starter, then press 1 (Quick Charge), then the follow-up spell Quick Charge unlocks. {1} During a charge, Impassioned becomes available for a final leap dealing extra damage, knocking down everyone hit, and applying +50% damage taken for 4.5s. {2} Croupade stomps for 12 seconds, each stomp knocking down and stacking +20% defense. {2} Mastery: Croupade gains +5% damage per enemy hit, stacking 5× to +25%; Glory of Empire grants CC immunity while leaping in any skill plus reduced piercing damage taken (amount undisclosed); Cool Under Fire triggers unit-wide +defense and +movement speed for 10s on first damage taken, resetting on Croupade activation; a rare Assassin's trait grants +30% damage dealt for an unspecified duration after a Croupade kill on a hero. {2}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -172,6 +219,7 @@
     "No formation guidance (F1/F2 or equivalent) exists in any source.",
     "Amya's guide was last edited 2026-05-26, pre-dating the 2026-06-25 Chaos patch anchor; doctrine/build guidance is unconfirmed against the current patch.",
     "No house-playbook content exists for this unit — all sourcing is public-academy.",
-    "\"Falconers\" and \"Imperial Pikes\" are the transcript's spoken names; unit-db has no exact-match unit for the former and two plausible Imperial pike units for the latter (Imperial Pike Guards is the only pike-classed one) — kept as-spoken rather than silently renamed."
+    "'Falconers' and 'Imperial Pikes' are the transcript's spoken names; there's no exact-match unit for the former, and two plausible Imperial pike units for the latter (Imperial Pike Guards is the only pike-classed one) - kept as-spoken rather than silently renamed.",
+    "Origin kind 'seasonal' is inferred: Amya's OP only says 'Blood of the Empire - Heroic Era', not 'Seasonal Unit' - Azaps' own write-up confirms Blood of the Empire = Season 3, used here to disambiguate."
   ]
 }

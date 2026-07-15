@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "yorkist-household-knights",
   "name": "Yorkist Household Knights",
   "headerMeta": "Heroic era · Cavalry · unique kit (mounted/dismount) · 265 leadership · Seasonal",
@@ -14,35 +14,58 @@
       "flank": 10
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal unit.",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "An all-around cavalry threat that trades well on flank and in duels whether mounted or dismounted, countering almost anything it meets. Its one real check is pikes on horse or a well-timed CC chaining into Stalwart on the ground.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Yorkist Household Knights-Oathbound",
       "name": "Yorkist Household Knights-Oathbound",
+      "effect": "Heals while 2+ models are on ground. Mandatory per Amya guide.",
+      "tag": "mandatory",
       "note": "heals while 2+ models are on ground",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9-hit boost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Yorkist Household Knights-Sunmirage",
       "name": "Yorkist Household Knights-Sunmirage",
+      "effect": "Knight's Resolve: +20% movement speed while active. Top pick per Amya guide (matches house-card doctrine 2).",
+      "tag": "top-pick",
       "note": "Knight's Resolve — +20% movement speed while active",
       "marks": [
         1,
@@ -50,8 +73,10 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": "house card gives the raw number: −16% leadership cost {2}",
       "marks": [
         1,
@@ -59,24 +84,30 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "DMG Reduction Doctrines",
       "name": "DMG Reduction Doctrines",
+      "effect": null,
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Healing Punisher Doctrine",
       "name": "Healing Punisher Doctrine",
+      "effect": "+20% DMG to targets currently regenerating health.",
+      "tag": "filler",
       "note": "+20% damage to targets currently regenerating health",
       "marks": [
         1,
@@ -84,16 +115,20 @@
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Other movement speed doctrines",
       "name": "Other movement speed doctrines",
+      "effect": "Filler per Amya guide.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Flatland Doctrine V",
       "name": "Flatland Doctrine V",
+      "effect": "+15% movement speed.",
+      "tag": "avoid",
       "note": "+15% movement speed — explicit mistake pick",
       "marks": [
         1
@@ -114,8 +149,10 @@
   "battleRole": {
     "positioning": "Cover Commander is the core playstyle: stay around the commander fully until they die. {1} When flanking, toggle Cover Commander ON beforehand and confirm the red glow — it grants strong defense for 15s, but X-move, spell V, or spell 1 cancels it. {1}",
     "formation": null,
-    "tips": "On horse: spell 1 = dismount (now rare, only vs anti-cav that can disrupt), spell 2 = charge, spell 3 = follow-commander charge; in a mounted 1v1, charge with spell 2 then dismount for a better success rate than Cover Commander alone. {1} On ground: don't hesitate to dismount and press spell 2 — keep the hero frontline but close to the unit, or it stops attacking and just runs; test engagement range in custom games. {1} Doctrine 5's per-attack scaling: +11% damage every 3rd attack, 15% max-health restore every 6th. {2}"
+    "tips": "On horse: spell 1 = dismount (now rare, only vs anti-cav that can disrupt), spell 2 = charge, spell 3 = follow-commander charge; in a mounted 1v1, charge with spell 2 then dismount for a better success rate than Cover Commander alone. {1} On ground: don't hesitate to dismount and press spell 2 — keep the hero frontline but close to the unit, or it stops attacking and just runs; test engagement range in custom games. {1} Doctrine 5's per-attack scaling: +11% damage every 3rd attack, 15% max-health restore every 6th. {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -146,7 +183,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: everything — Yorkist counters everything, the trade just depends on ground vs. horse."
+    "pressure": "You pressure: everything — Yorkist counters everything, the trade just depends on ground vs. horse.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -159,6 +197,11 @@
     ],
     "notes": "Cover Commander toggle (red glow = active): stay with commander, grants a 15s defense buff, cancelled by X-move, spell V, or spell 1. {1} Spell 2 (charge) into dismount outperforms Cover Commander alone in a mounted 1v1. {1} Post-dismount spell 2 makes enemies rush you; don't cancel the buff by moving away. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -175,10 +218,16 @@
   ],
   "gaps": [
     "No formation guidance from any source (formation field null).",
-    "Video-transcript channels (all 20+) and house-playbook/immortals guides contain zero unit content for Yorkist — only Amya's guide and the house build-card were recovered.",
+    "Video guide channels (all 20+) and house-playbook guides contain zero unit content for Yorkist - only Amya's guide and the house build-card were found.",
     "House card's doctrine 5 final clause is cut off in the source image ('Every 9 attacks, a...') — not recoverable via lightbox zoom.",
-    "Unit-identity caveat: the house card itself is captioned 'Yorkist Cavlary,' never 'Household Knights'; the match rests on a #meta-units tier-board portrait clipped to '...orkist Household Knigh[t]' and the absence of any competing 'Yorkist'-named unit — high-confidence, not 1:1 icon-confirmed.",
-    "unit-db records hasMastery: false, but the house card shows a fully-invested offense mastery line with capstone taken — this contradiction is unresolved in any source.",
+    "Unit-identity caveat: the house card itself is captioned 'Yorkist Cavlary,' never 'Household Knights'; the match rests on a house tier-board portrait clipped to '...orkist Household Knigh[t]' and the absence of any competing 'Yorkist'-named unit - high-confidence, not 1:1 icon-confirmed.",
+    "One source says this unit has no mastery tree, but the house card shows a fully-invested offense mastery line with capstone taken - this contradiction is unresolved.",
     "Leadership rose 245→265 and max roster fell 20→18 in the 2026-06-25 patch; both the Amya guide (Dec 2025) and house card (Mar 2026) predate this change and don't account for it in build or slotting advice."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "Leadership 245→265; max roster 20→18",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

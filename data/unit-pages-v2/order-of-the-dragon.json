@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "order-of-the-dragon",
   "name": "Order of the Dragon",
   "headerMeta": "Golden era · Heavy Cavalry · charge/RTS-control · 310 leadership · Seasonal (T5)",
@@ -14,43 +14,68 @@
       "flank": 8
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A burst/pickoff cavalry unit best pulled out in siege chaos to melt one or two isolated units and leave — not a blob fighter. Its charge-momentum tech is the whole skill ceiling, and it dies fast if slowed, stunned, or stuck in a prolonged group fight.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9 hit damage boost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Order of the Dragon Unique Doctrine",
       "name": "Order of the Dragon Unique Doctrine",
+      "effect": "+15% movement speed during Emperor's Expedition. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "+15% movement speed during Emperor's Expedition",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "+15% Piercing/Slashing Pen Doctrine",
       "name": "+15% Piercing/Slashing Pen Doctrine",
+      "effect": "Active when HP above 40%. Top pick.",
+      "tag": "top-pick",
       "note": "active when HP above 40%",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Flatland Doctrine V",
       "name": "Flatland Doctrine V",
+      "effect": "+15% movement speed.",
+      "tag": "top-pick",
       "note": "+15% movement speed, special cav surge — house guide names this as the hero-damage swap-in {3}",
       "marks": [
         1,
@@ -58,8 +83,10 @@
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "house author runs leadership specifically for sieges {3}",
       "marks": [
         1,
@@ -67,16 +94,20 @@
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Other Movement Speed Doctrine",
       "name": "Other Movement Speed Doctrine",
+      "effect": "For a full movement-speed build (replaces the piercing/slashing pen doctrine per OP). Filler.",
+      "tag": "filler",
       "note": "replaces piercing/slashing pen for full movement-speed build",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "-5% DMG Taken Doctrine",
       "name": "-5% DMG Taken Doctrine",
+      "effect": "-5% DMG taken.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -96,11 +127,14 @@
   "battleRole": {
     "positioning": "Deploy on the flank where the high skirmish (7/10) and flank (8/10) ratings matter — avoid prolonged 1v1 duels (3/10) and direct front-line infantry engagement. {1} Terrible in a blob fight: too many slows in the game, and if the unit gets stuck, stunned, or slowed by anything the whole unit is gone. {3} In sieges, pull it when there's chaos or disorganization and use it as a burst/pickoff tool on 1-2 isolated units, then leave rather than commit to a sustained fight. {3}",
     "formation": null,
-    "tips": "Press 1 for RTS view control mode: damage boost and charge stance {1}. Press 2 for sweep ability (like Khevtuul/Kriegsbruders): area threat {1}. Press 3 to heal: sustain for extended engagements {1}. Plan the route with Z first, which also helps deploy the unit closer to the action before using ability 1 {3}."
+    "tips": "Press 1 for RTS view control mode: damage boost and charge stance {1}. Press 2 for sweep ability (like Khevtuul/Kriegsbruders): area threat {1}. Press 3 to heal: sustain for extended engagements {1}. Plan the route with Z first, which also helps deploy the unit closer to the action before using ability 1 {3}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -113,6 +147,46 @@
     ],
     "notes": "Ability loop: (1) RTS view for damage + charge stance, (2) sweep for area control, (3) heal for sustain. {1} Left-click cancel timing (place behind the unit, click on first slash, click again to cancel) is what preserves momentum for a wipe — most fights need this charge effect to land. {3} On a captured Tzsum replay, the hero-mounted variant rode in with the early push toward the outer palisade and stayed with its own retinue at the right gate rather than detaching solo, with artillery softening the gate approach ahead of the break-in. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "FinalAffliction - route planning clip",
+        "url": "https://www.youtube.com/watch?v=-ZjdrIUU50M",
+        "stamps": [],
+        "marks": [
+          3
+        ]
+      },
+      {
+        "label": "FinalAffliction - left-click cancelling technique",
+        "url": "https://youtu.be/VYUAkJKg6yM?t=32",
+        "stamps": [
+          "00:32 left-click cancel on first slash"
+        ],
+        "marks": [
+          3
+        ]
+      },
+      {
+        "label": "FinalAffliction - CC Territory War clip",
+        "url": "https://www.youtube.com/watch?v=nK4VQZCNBNk",
+        "stamps": [],
+        "marks": [
+          3
+        ]
+      },
+      {
+        "label": "FinalAffliction - Tsum Territory War clip",
+        "url": "https://www.youtube.com/watch?v=DyCZaTL9kmw",
+        "stamps": [],
+        "marks": [
+          3
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -137,8 +211,9 @@
     "No matchups / counter units sourced — Amya's thread had no 'Counters' section; house how-to guide and replay notes give playstyle, not named matchups.",
     "No formation guidance (F1/F2 etc) — structural absence across all sources.",
     "Amya's guide last edited 2026-05-26, pre-dating the Chaos patch (2026-06-25) and thus potentially stale; unit is not on the 13-unit Chaos shortlist, so revalidation deferred.",
-    "No house-card variant exists for this unit (confirmed absence, not a capture gap).",
-    "'Dragon Cav' (the house nickname used in the how-to guide) is treated by house authors as a plausible-but-not-independently-confirmed match to Order of the Dragon; aliases.json arbitrates the match at the data layer, so it is folded in here, but the underlying guide never states the identity with certainty.",
-    "House 'ls' gear stat (787 quoted in a doctrine discussion) is not expanded in the source thread and isn't independently confirmed, so it's omitted rather than guessed."
+    "No house-card variant exists for this unit - genuinely absent, not just missing from our notes.",
+    "'Dragon Cav' (the house nickname used in the how-to guide) is treated by house authors as a plausible-but-not-independently-confirmed match to Order of the Dragon; that identification is used here, but the underlying guide never states it with certainty.",
+    "House 'ls' gear stat (787 quoted in a doctrine discussion) is not expanded in the source thread and isn't independently confirmed, so it's omitted rather than guessed.",
+    "Two copies of the same FinalAffliction how-to-use post differ slightly in wording for the left-click-cancelling clause - kept as-is, not reconciled."
   ]
 }

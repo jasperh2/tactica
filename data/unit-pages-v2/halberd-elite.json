@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "halberd-elite",
   "name": "Halberd Elite",
   "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 225 leadership · T4",
@@ -9,59 +9,82 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A shield-line shredder that ignores block and demands the front lane, with the staying power to punish grouped enemies. Recently buffed on cooldown and armour penetration, but needs support — the 30% mitigation window from ability 2 is its only defence.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Halberd Elite Unique Epic Doctrine",
       "name": "Halberd Elite Unique Epic Doctrine",
+      "effect": "+300 block. Mandatory per OP.",
+      "tag": "mandatory",
       "note": "+300 block {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal + 12% dmg {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Toughness Doctrine V",
       "name": "Toughness Doctrine V",
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires.",
+      "tag": "top-pick",
       "note": "−33% dmg taken first 8 hits {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "−5% DMG Taken Doctrine",
       "name": "−5% DMG Taken Doctrine",
+      "effect": "-5% DMG taken.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "filler",
       "note": "+8% all-type dmg in sieges {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Another −5% DMG Taken Doctrine",
       "name": "Another −5% DMG Taken Doctrine",
+      "effect": "-5% DMG taken.",
+      "tag": "filler",
       "note": "or LS doctrine if needed {1}",
       "marks": [
         1
@@ -83,6 +106,7 @@
     "formation": null,
     "tips": "X-move in, press 2 to grab the enemy, then press 1; ability 2 resets CC and grants 30% dmg reduction. {1} Cloud Cleave cooldown recently buffed to 5s with +10% armour penetration. {2}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -108,6 +132,11 @@
     ],
     "notes": "Ability 2 grabs enemy and resets CC. {1} Ability 1 follows, resetting the CC chain and applying 30% dmg reduction. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -123,10 +152,16 @@
     }
   ],
   "gaps": [
-    "Fightratings (blob/duel/skirm/flank) authored pre-patch (Amya guide OP 2025-06-30); unit patch-changed 2026-06-25 — rating stale.",
+    "The fight ratings come from an Amya guide written 2025-06-30, before this unit was changed in the 25/06/2026 patch, so treat them as stale.",
     "Hero pairing details marked X (unfilled) in source; no recommendation extracted.",
     "No counters section in source; no matchup data besides the Wuwei comparison.",
     "No formation guidance in any source.",
     "No house-cards, house-playbook, or video-transcript content exists for this unit."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Buff",
+    "summary": "\"Cloud Cleave\" cooldown 6s→5s; Cloud Cleave + Storm Surge armour penetration +10%",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

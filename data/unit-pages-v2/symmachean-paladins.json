@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "symmachean-paladins",
   "name": "Symmachean Paladins",
   "headerMeta": "Heroic era · Melee Infantry (Sword & Shield) · shields · 235 leadership · T4 · Mastery",
@@ -14,67 +14,95 @@
       "flank": 3
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A shielded sustain-tank that lives on its unique heal and rewards X+V animation-canceling for extra DPS when it's safe to drop block. Cavalry and maul-wielding heroes are its hard counter, punished further by a 20% back-hit weak spot everyone already plays around.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Iron Damage Doctrine V",
       "name": "Iron Damage Doctrine V",
+      "effect": null,
+      "tag": "mandatory",
       "note": "Ironsides",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Anti-Infantry Doctrine V",
       "name": "Anti-Infantry Doctrine V",
+      "effect": "+200 DMG vs infantry, +250 block.",
+      "tag": "mandatory",
       "note": "+200 dmg to infantry, +250 block — swap for an LS doctrine if more sustain is needed",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Noble Blood Doctrine I",
       "name": "Noble Blood Doctrine I",
+      "effect": null,
+      "tag": "top-pick",
       "note": "Chivalric bleed/speed buff",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "top-pick",
       "note": "+8% all-type dmg in sieges",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Range-Damage Mitigation Doctrine",
       "name": "Range-Damage Mitigation Doctrine",
+      "effect": null,
+      "tag": "filler",
       "note": null,
       "marks": [
         2
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Block-Increase Doctrine",
       "name": "Block-Increase Doctrine",
+      "effect": null,
+      "tag": "filler",
       "note": "close to mandatory when paired with piercing-damage doctrine slots",
       "marks": [
         2
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Tank Doctrines",
       "name": "Tank Doctrines",
+      "effect": "OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         2
@@ -105,6 +133,7 @@
     "formation": "Block/shield-wall (F2) for both charging and holding while attacking — but charging from this tight formation exposes the whole unit to hero CC chains (e.g. maul dismount-stun into a short-sword follow-up). Charging from the spread formation (F1) instead trades a little charge damage for CC safety and still naturally surrounds the target on landing. {2}",
     "tips": "X+V cancel: press V the instant an X-move lands damage, then repeat — cancels most of the attack animation for higher DPS, but every X drops the unit's block. Only run this when free of threats; against big enemy numbers, hold V alone (auto-fight/counter-attack stance) since it never drops block. {1}{2} Cancel the heal (skill 2) with an instant V-press right after — the heal still resolves. {1} Weak Spot: back hits take 20% bonus damage and opponents actively play around it; the bottom-line veterancy cuts that to roughly 10%. {2}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -159,6 +188,22 @@
     ],
     "notes": "Symmachean Brotherhood — models attack on slow, non-simultaneous timing, which is what makes the X+V cancel pattern possible but also means every X-move drops block. {2} Auto-fight on V (counter-attack stance) is the safer default vs large enemy numbers — slower kill, less damage taken. {1}{2} Heal ability is unique for also healing nearby allied units and heroes (5% max health per tick, on top of the ~250 HP/s standard regen most units get). {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "SuperKitowiec - Symmachean Paladins Guide",
+        "url": "https://www.youtube.com/watch?v=nRcD2NvErPY",
+        "stamps": [],
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -193,9 +238,9 @@
   ],
   "gaps": [
     "House sources rate Paladins a doctrine-investment priority in both regular and purple metas {3} and place it in a farm-worthy attack-tier row {4}, but give no doctrine specifics beyond Amya/HandBananaPvP above — investment signal only, not build guidance.",
-    "A StarBurst house card for this unit is contested: data/unit-db.json states none exists, but a house Discord inventory records a dated card row (\"Paladins,\" 2024-11-23, \"YOU MUST HAVE MASTERY\") whose image was never fully re-captured {5} — unresolved; would outrank Amya for the build if recovered.",
+    "A StarBurst house card for this unit is contested: one house inventory records a dated card row ('Paladins,' 2024-11-23, 'YOU MUST HAVE MASTERY') but the image was never fully recovered {5} - unresolved; it would outrank Amya's guide for the build if it turns up.",
     "HandBananaPvP transcript (2020) pre-dates most patch history — exact doctrine/veterancy percentages are approximate and should be sanity-checked against current tooltips.",
-    "Origin/era not specified in Amya's source (literal placeholder in the OP); era/leadership taken from unit-db.",
-    "A SuperKitowiec YouTube guide is linked from Amya's thread but has no transcript captured anywhere in this repo — unviewed, not used."
+    "Origin/era not specified in Amya's source (literal placeholder in the OP); era/leadership taken from our own unit reference data instead.",
+    "A SuperKitowiec YouTube guide is linked from Amya's thread, but we don't have a transcript of it - unviewed, not used here."
   ]
 }

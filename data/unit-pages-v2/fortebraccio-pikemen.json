@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "fortebraccio-pikemen",
   "name": "Fortebraccio Pikemen",
   "headerMeta": "Heroic era · Pike/Polearm infantry · anti-cav · 235 leadership",
@@ -9,27 +9,51 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal unit from the Heroic Era.",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T4",
+        "marks": [
+          5
+        ]
+      }
+    ]
+  },
   "pitch": "A strong anti-cavalry pike line that thrives in open fields when played in dispersed F1 formation. Requires careful positioning and a bug-workaround on brace commands to prevent cavalry from walking through.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Anti-Cavalry Doctrine",
       "name": "Anti-Cavalry Doctrine",
+      "effect": "-30% to -35% DMG taken from cavalry while bracing (tier varies by card copy).",
+      "tag": "mandatory",
       "note": "−40% cavalry damage taken while bracing, +16% damage vs. cavalry while bracing {1}; or lower tier (−30% cavalry damage) if needed for other slots {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Polearm Doctrine (Pike Charge)",
       "name": "Epic Polearm Doctrine (Pike Charge)",
+      "effect": "Pike Charge doctrine: unlocks a charge order that can one-shot diving heroes; allows a 180 degree turn to re-brace if flanked.",
+      "tag": "top-pick",
       "note": "Counters diving heroes and re-braces after impact {1,2}",
       "marks": [
         1,
@@ -37,40 +61,50 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Polearm Doctrine (Piercing Damage)",
       "name": "Epic Polearm Doctrine (Piercing Damage)",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "top-pick",
       "note": "+80 piercing damage, +120 piercing armor pen {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "top-pick",
       "note": "Lifesteal + 12% damage; swap in if sustain is a priority over raw output {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "Substitute for Pike Charge if you prefer flat regroup benefits {1}",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "−5% Damage Reduction Doctrines",
       "name": "−5% Damage Reduction Doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Stun / Static Doctrines",
       "name": "Stun / Static Doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": "The unit already has sufficient cavalry damage; widespread crowd-control immunity makes these underperform {2}",
       "marks": [
         2
@@ -90,8 +124,10 @@
   "battleRole": {
     "positioning": "Place in F1 super-dispersed formation in open areas to maximize anti-cavalry coverage without allowing a single hero disruption to unbrace the whole unit {2}. In siege or street maps with tight corridors, F2 line formation works {1,2}, but avoid stacking — keep units spread forward and back to limit how many can be hit and unbraced by a breakthrough {2}.",
     "formation": "F1 super-dispersed (open field) or F2 line staggered (siege) — never tight block formation {1,2}",
-    "tips": "The instant-brace command has a known bug: always press V (ready) before brace to mitigate it — without V, the unit often continues moving to its last-ordered location instead of bracing, letting cavalry walk through {2}. Use the follow-the-front-line routine: gather formation, advance (X), follow (F), press V, then brace — repeat every reposition {2}. Staggered spacing allows front rows to act as a wall absorbing charges while rear rows stay braced and functional {2}. Use long-range positioning behind Spartans or phalanx formations to add anti-cavalry protection while dealing heavy front-line damage {1}."
+    "tips": "The instant-brace command has a known bug: always press V (ready) before brace to mitigate it — without V, the unit often continues moving to its last-ordered location instead of bracing, letting cavalry walk through {2}. Use the follow-the-front-line routine: gather formation, advance (X), follow (F), press V, then brace — repeat every reposition {2}. Staggered spacing allows front rows to act as a wall absorbing charges while rear rows stay braced and functional {2}. Use long-range positioning behind Spartans or phalanx formations to add anti-cavalry protection while dealing heavy front-line damage {1}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -122,7 +158,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: Heavy anti-cavalry front-line support for slow-moving units (Spartans, phalanx formations) while being immobile yourself {1}"
+    "pressure": "You pressure: Heavy anti-cavalry front-line support for slow-moving units (Spartans, phalanx formations) while being immobile yourself {1}",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -136,6 +173,36 @@
     ],
     "notes": "Repositioning sequence (gather formation → advance (X) → follow (F) → ready (V) → brace → hold) {2}. Deliberately avoid Stun or anti-cavalry-damage doctrines in favor of flat damage that boosts minimum output vs. both unit types {2}."
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Herlajis - Fortebraccio unit control beginner guide",
+        "url": "https://www.youtube.com/watch?v=0A4EyixNiys",
+        "stamps": [
+          "00:38 fix the instant-brace bug, press V before brace",
+          "02:53 staggered formation lets front rows wall for the rest",
+          "03:42 doctrine priorities: Pike Defense, Brace Damage, epic Breakthrough",
+          "04:10 why to skip Stun/Static doctrines"
+        ],
+        "marks": [
+          2
+        ]
+      },
+      {
+        "label": "Coffee Fuelled Gaming - chokepoint wall-facing beats exposed repositioning (Forte)",
+        "url": "https://www.youtube.com/watch?v=h5BglArqNLo",
+        "stamps": [],
+        "marks": [
+          6
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [
+    "event-rulesets",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -160,12 +227,38 @@
       "author": "PixLNickz (Nick)",
       "date": "May 2026",
       "house": false
+    },
+    {
+      "mark": 5,
+      "author": "StarBurst (house meta history)",
+      "date": "Oct 2024",
+      "house": true
+    },
+    {
+      "mark": 6,
+      "author": "house guide",
+      "date": "Sep 2022",
+      "house": true
+    },
+    {
+      "mark": 7,
+      "author": "SuperKitowiec",
+      "date": "May 2022",
+      "house": false
+    },
+    {
+      "mark": 8,
+      "author": "BirdOfQin",
+      "date": "Oct 2024",
+      "house": false
     }
   ],
   "gaps": [
     "No fight-type strength ratings (blob/duel/skirm/flank) — Amya's guide left literal X placeholders; no other source provides numerical assessments.",
     "No hero-pairing recommendations — Amya listed hero pairing as literal X placeholder.",
     "No explicit counter list — Amya left all three counters fields (loses to, struggles vs, counters) as literal X placeholders. Matchups inferred from video context (CC heroes break formation; pikes wreck unsupported cavalry) rather than direct source claim.",
-    "Doctrine/build guidance pre-dates the 2026-06-25 Chaos patch anchor (Amya's edit: 2026-05-26) — may be stale for current season balance."
+    "Doctrine/build guidance pre-dates the 2026-06-25 Chaos patch anchor (Amya's edit: 2026-05-26) — may be stale for current season balance.",
+    "Herlajis' beginner guide (cited in Learn More) has two doctrine picks the auto-captions couldn't cleanly make out ('epic po arm breakthrough' / 'AIC po four') - unconfirmed. {2}",
+    "Two more incidental mentions turned up but aren't folded into the matchup cards above: SuperKitowiec's Silahdars guide names Fortebraccio as a heavy-infantry escort option {7}; BirdOfQin's Spear tips-forum post describes walking into a static, AFK-braced Fortebraccio to punish it at minimal risk {8}."
   ]
 }

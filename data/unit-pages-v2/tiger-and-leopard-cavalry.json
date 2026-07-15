@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "tiger-and-leopard-cavalry",
   "name": "Tiger and Leopard Cavalry",
   "headerMeta": "Golden era · Cavalry · charge · 310 leadership · Chaos Season (T5)",
@@ -14,91 +14,114 @@
       "duel": 4
     }
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": {
+      "kind": "seasonal",
+      "text": "Chaos Season",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": []
+  },
   "pitch": "A newly-buffed elite lancer cavalry that stacks passive damage the longer it charges. Build for maximum charge-cooldown reduction and respect the damage scaling — start charges as far as you can and watch the passive stack.",
   "doctrines": [
     {
+      "ref": "Lancer's Last Stand",
+      "name": "Lancer's Last Stand",
+      "effect": "+40% DMG when unit headcount is below 60%.",
       "tag": "mandatory",
-      "name": "Lancer-Last Stand",
-      "note": "+40% DMG at <60% headcount; swap out then back to apply to full strength",
+      "note": "Swap out then back to apply to full strength",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "Epic Charge CD Doctrine",
+      "name": "Epic Charge CD Doctrine",
+      "effect": "-14s charge CD, +100 piercing DMG.",
       "tag": "mandatory",
-      "name": "Lancer Charge Doctrine V",
-      "note": "−14s charge CD, +100 piercing DMG",
+      "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Charge Defence Doctrine",
       "name": "Epic Charge Defence Doctrine",
-      "note": "−50% DMG taken while charging, −6s charge CD",
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": "-50% DMG taken while charging, -6s charge CD.",
       "tag": "mandatory",
-      "name": "Toughness Doctrine V",
-      "note": "−33% DMG taken on first hit, scales down through 8 hits",
+      "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
-      "name": "Sprint Doctrine",
-      "note": "+7% movement speed, unlocks Sprint +15% for 12s",
+      "ref": "Toughness Doctrine",
+      "name": "Toughness Doctrine",
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires.",
+      "tag": "mandatory",
+      "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "Mobility Doctrine V",
+      "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
       "tag": "top-pick",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "+225 Charge DMG Doctrine",
       "name": "+225 Charge DMG Doctrine",
+      "effect": "Top pick.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "Piercing DMG",
+      "name": "Piercing DMG",
+      "effect": "Filler.",
       "tag": "filler",
-      "name": "Piercing Damage Doctrine",
       "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "-DMG Taken doctrines",
+      "name": "-DMG Taken doctrines",
+      "effect": "Filler.",
       "tag": "filler",
-      "name": "−DMG Taken Doctrines",
       "note": null,
       "marks": [
         1
       ]
     },
     {
+      "ref": "Slashing DMG or Hero DMG",
+      "name": "Slashing DMG or Hero DMG",
+      "effect": "OP's explicit \"Don't put.\"",
       "tag": "avoid",
-      "name": "Epic Slashing Damage Doctrine",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
-      "tag": "avoid",
-      "name": "Hero Damage Doctrine V",
       "note": null,
       "marks": [
         1
@@ -118,11 +141,14 @@
   "battleRole": {
     "positioning": "No explicit positioning guidance in sources.",
     "formation": null,
-    "tips": "Respect the passive and charge from as far as you can — the longer the charge, the more speed and passive damage stack. {1} Ability rotation: press 1 (simple charge) → 2 (area impact, similar to Liaos or Kheshig) → 3 (crowd control cleanse and charge again); typical play is 1 → 2 → 3 repeat. {1}"
+    "tips": "Respect the passive and charge from as far as you can — the longer the charge, the more speed and passive damage stack. {1} Ability rotation: press 1 (simple charge) → 2 (area impact, similar to Liaos or Kheshig) → 3 (crowd control cleanse and charge again); typical play is 1 → 2 → 3 repeat. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": null,
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -135,6 +161,11 @@
     ],
     "notes": "Ability 1: simple charge. {1} Ability 2: area-impact damage, similar to Liaos or Kheshig. {1} Ability 3: crowd control cleanse + charge out. {1} Charge length scales both movement speed and passive damage — longer charge = bigger payoff. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -146,7 +177,7 @@
   "gaps": [
     "No counters section, hero pairing, or conditional matchups in any source.",
     "No house-card or house-guide content exists for this unit (confirmed new-season unit without legacy house docs).",
-    "No dedicated video transcript captured — Denetax noted this as a strong candidate that was passed over.",
+    "No dedicated video guide exists yet - Denetax noted this as a strong candidate that was passed over.",
     "Doctrine list and Tips near-identical to Dagger-Axe Lancers guide; recorded as given, not cross-checked.",
     "Battle role positioning and formation guidance absent entirely.",
     "MetaTier 'To place' — awaiting Amya's standard ~1-week post-patch update."

@@ -13,19 +13,24 @@
 // "Insufficient-data rule" — isInsufficientV2 detects that shape so the DOM layer can fall back to
 // the existing v1 identity-only page instead of rendering an empty v2 guide grid.
 
-/** The exact schema tag a v2 unit-page record carries (contract: SKILL.md's JSON contract block). */
+/** The schema tags the cheat-sheet renderer accepts. v3 is a strict superset of the v2 contract
+ * (docs/specs/unit-page-v3-template.md) rendered by the SAME layout, so both route here. V2_SCHEMA
+ * is kept as the historical name; RENDERABLE_SCHEMAS is the routing set. */
 export const V2_SCHEMA = 'cb-unit-page-v2/1';
+export const V3_SCHEMA = 'cb-unit-page-v3/1';
+export const RENDERABLE_SCHEMAS = new Set([V2_SCHEMA, V3_SCHEMA]);
 
 /**
- * True when `record` is a v2-schema unit page (any shape — full or insufficient). Used by the boot
- * module to decide "v2 layout" vs "current v1 layout" per the task's dispatch rule: only records
- * carrying this exact schema string route to the v2 renderer; anything else (missing schema,
- * v1's own schema string, a future schema) keeps rendering through the v1 path unchanged.
+ * True when `record` carries a schema the cheat-sheet renderer handles (v2 OR its v3 superset,
+ * full or insufficient). Used by the boot module to decide "cheat-sheet layout" vs "current v1
+ * layout": only records carrying a renderable schema route to the v2/v3 renderer; anything else
+ * (missing schema, v1's own schema string, a future schema) keeps rendering through v1 unchanged.
+ * Name kept as isV2Schema for call-site stability.
  * @param {unknown} record
  * @returns {boolean}
  */
 export function isV2Schema(record) {
-  return Boolean(record) && typeof record === 'object' && /** @type {any} */ (record).schema === V2_SCHEMA;
+  return Boolean(record) && typeof record === 'object' && RENDERABLE_SCHEMAS.has(/** @type {any} */ (record).schema);
 }
 
 /**
@@ -319,4 +324,123 @@ export function seasonLabelV2(headerMeta) {
     headerMeta.match(/Season\s*(\d+)\s*[:·-]\s*([A-Za-z][\w '-]*)/i);
   if (!match) return null;
   return `SEASON ${match[1]} · ${match[2].trim().toUpperCase()}`;
+}
+
+// ============================================================================
+// v3 identity/patch/numbers/learnMore/general helpers (Phase D — the v3 field-surfacing pass,
+// 2026-07-14, phase-d-class-contract.md). Same honest-absence discipline as every helper above:
+// each function returns null/[]/false rather than a fabricated placeholder when the record carries
+// no data for that field, so the DOM layer renders nothing (hidden, not stubbed).
+// ============================================================================
+
+/**
+ * True when `value` is a string with real (post-trim) content — the shared honest-absence guard
+ * reused by the header identity chips, patch strip, and doctrine effect subline below (null,
+ * undefined, or whitespace-only all count as "no data", not "empty string worth rendering").
+ * @param {unknown} value
+ * @returns {boolean}
+ */
+export function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
+/**
+ * The header hero-pairing identity chip's value text (e.g. "Medium & Heavy armors", "Any"), from
+ * `identity.heroPairing.text`. Returns null when absent/blank so the DOM layer hides the whole
+ * `.cs-id-chip-pairing` chip rather than rendering an empty one (class-contract #2).
+ * @param {{heroPairing?: {text?: string}}|null|undefined} identity
+ * @returns {string|null}
+ */
+export function heroPairingChipText(identity) {
+  const text = identity && identity.heroPairing ? identity.heroPairing.text : null;
+  return isNonEmptyString(text) ? text : null;
+}
+
+/**
+ * The header mastery identity chip's value text: "Yes" when the unit has a mastery tree with no
+ * captured path detail, or "Yes · N-step path" when `mastery.order[]` names N ordered allocation
+ * steps (a count, never a fabricated summary of what those steps say — the chip is a small header
+ * slot, not a mastery-tree panel). Returns null when `mastery.has` isn't exactly `true`, matching
+ * the contract's "hidden when neither exists" rule (class-contract #2).
+ * @param {{has?: boolean, order?: string[]}|null|undefined} mastery
+ * @returns {string|null}
+ */
+export function masteryChipText(mastery) {
+  if (!mastery || mastery.has !== true) return null;
+  if (Array.isArray(mastery.order) && mastery.order.length > 0) return `Yes · ${mastery.order.length}-step path`;
+  return 'Yes';
+}
+
+/**
+ * CSS class suffix for the patch-freshness strip's kind modifier, matching class-contract #3's
+ * `.cs-patch-nerf` / `.cs-patch-buff` / `.cs-patch-adjust`. A case-insensitive substring match (not
+ * an exact-value lookup) because the compiled `patch.kind` field carries free text like "Nerf" or
+ * "Buff/Rework" (see data/unit-pages-v2/iron-reapers.json) — anything that isn't recognizably a
+ * nerf or a buff falls back to the neutral "adjust" modifier rather than guessing.
+ * @param {unknown} kind
+ * @returns {'nerf'|'buff'|'adjust'}
+ */
+export function patchKindClass(kind) {
+  const lower = typeof kind === 'string' ? kind.toLowerCase() : '';
+  if (lower.includes('nerf')) return 'nerf';
+  if (lower.includes('buff')) return 'buff';
+  return 'adjust';
+}
+
+/**
+ * Display label for the patch strip's `.cs-patch-kind` pill ("NERF" / "BUFF" / "CHANGED"), derived
+ * from the same classification as patchKindClass so the pill text and the strip's color modifier
+ * never disagree.
+ * @param {unknown} kind
+ * @returns {'NERF'|'BUFF'|'CHANGED'}
+ */
+export function patchKindLabel(kind) {
+  const cls = patchKindClass(kind);
+  if (cls === 'nerf') return 'NERF';
+  if (cls === 'buff') return 'BUFF';
+  return 'CHANGED';
+}
+
+/**
+ * True when the Learn More band (class-contract #5) has anything to show: at least one video link
+ * or an ask-channel. Both absent means the whole band is omitted (hidden, not an empty panel).
+ * @param {{videos?: unknown[], askChannel?: unknown}|null|undefined} learnMore
+ * @returns {boolean}
+ */
+export function hasLearnMoreContent(learnMore) {
+  const videos = learnMore && Array.isArray(learnMore.videos) ? learnMore.videos : [];
+  return videos.length > 0 || isNonEmptyString(learnMore && learnMore.askChannel);
+}
+
+/**
+ * Resolves a v3 record's `general[]` key list against the site's shared `unit-general.json` file
+ * (schema cb-unit-general/1, `{blocks: {key: {title, body, footnotes, as_of}}}`) into an ordered
+ * array of renderable blocks — the specific/GENERAL separator pattern's GENERAL half (class-
+ * contract #6). Preserves the record's own key order. A key with no match in `generalFile.blocks`
+ * (a stale/renamed key, or a fetch that came back empty) is skipped, not thrown on or rendered as a
+ * broken block — missing-key tolerance, the same honest-absence discipline as every other v3 helper
+ * here. `generalFile` may be null/malformed (e.g. the fetch failed) — this degrades to an empty
+ * blocks map rather than crashing the page (class-contract's "Handle fetch failure gracefully").
+ * @param {{general?: unknown}|null|undefined} record
+ * @param {{blocks?: Record<string, {title?: string, body?: string, footnotes?: object[]}>}|null|undefined} generalFile
+ * @returns {Array<{key: string, title: string, body: string, footnotes: object[]}>}
+ */
+export function buildGeneralBlocks(record, generalFile) {
+  const keys = record && Array.isArray(record.general) ? record.general : [];
+  const blocksMap =
+    generalFile && typeof generalFile === 'object' && generalFile.blocks && typeof generalFile.blocks === 'object'
+      ? generalFile.blocks
+      : {};
+  const blocks = [];
+  for (const key of keys) {
+    const raw = blocksMap[key];
+    if (!raw || typeof raw !== 'object') continue; // missing-key tolerance: skip silently, never fabricate
+    blocks.push({
+      key,
+      title: isNonEmptyString(raw.title) ? raw.title : '',
+      body: isNonEmptyString(raw.body) ? raw.body : '',
+      footnotes: Array.isArray(raw.footnotes) ? raw.footnotes : [],
+    });
+  }
+  return blocks;
 }

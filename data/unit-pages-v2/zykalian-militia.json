@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "zykalian-militia",
   "name": "Zykalian Militia",
   "headerMeta": "Silver era · Ranged Infantry (special) · 175 leadership · T3 Seasonal (S: Legacy of Fire)",
@@ -14,27 +14,67 @@
       "flank": 0
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit (Season V: Legacy of Fire)",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T4",
+        "marks": [
+          8
+        ]
+      }
+    ],
+    "mastery": {
+      "has": true,
+      "marks": [],
+      "order": [
+        "base 1/1",
+        "top 1/1 → 3/3 → 1/1 → 2/3 → 0/1 → 0/2 → capstone 0/1 (not taken)",
+        "bottom 1/1 → 1/1 → 3/3 → 1/1 → 3/3 → 0/2 → capstone 0/1 (not taken)",
+        "top Amya guide alt allocation: 6 points Top / 9 points Bottom; last 2 points personal preference (+2 Top = 288 fire damage; +2 Bottom = +40% ammo)."
+      ]
+    }
+  },
   "pitch": "A grenade-throwing exotic that shreds blobs from range but has zero flank or duelling presence — cycle V and ability 2 and keep moving, or die to any diver that reaches it. The 2026-06 nerf (cooldowns 10s→16s, reload +33%, poison cap 20→8) stretches that rotation out, so pre-patch pacing guidance no longer holds at face value.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Blunt Damage Doctrine",
       "name": "Epic Blunt Damage Doctrine",
+      "effect": "+90 blunt DMG.",
+      "tag": "mandatory",
       "note": "+90 blunt DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "mandatory",
       "note": "+8% DMG in sieges",
       "marks": [
         1,
@@ -42,8 +82,10 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Mobility Doctrine V",
       "name": "Mobility Doctrine V",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "top-pick",
       "note": "+7% movement speed, unlocks Sprint +15% for 12s {1} / 8s {2} — unarbitrated",
       "marks": [
         1,
@@ -51,16 +93,20 @@
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Scorching Doctrine V",
       "name": "Scorching Doctrine V",
+      "effect": "+50 burning DPS. Top pick per Amya guide.",
+      "tag": "top-pick",
       "note": "+50 burning DPS",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Zykalian Supply Doctrine",
       "name": "Zykalian Supply Doctrine",
+      "effect": "Unit-unique: +20% ammo (matches house-card doctrine 1). Filler per Amya guide.",
+      "tag": "filler",
       "note": "unit-unique: +20% ammo",
       "marks": [
         1,
@@ -68,24 +114,30 @@
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "filler",
       "note": "3/6/9 hits, alternative to Scorching or Siege",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Blunt Penetration / Hero DMG doctrines",
       "name": "Blunt Penetration / Hero DMG doctrines",
+      "effect": "Don't put per Amya guide.",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -113,8 +165,10 @@
   "battleRole": {
     "positioning": "Deploy on a protected flank behind blob formations {1}. Maintain constant X-movement after each V or ability-2 cast — never stand still {1}. Reposition to keep DPS pressure up {1}.",
     "formation": null,
-    "tips": "Press V to damage front-line blob (less ammo, more spread than spell 1). Press ability-2 to hit back line and apply debuff; hard-priority target if enemy has flamers or rival Zykalian units {1}. ALWAYS cycle V and ability-2 {1}; solitary spell-2 play loses 50% potential damage. Post-patch, that rotation now runs on a tighter timing budget {3, 4}. Avoid spell 1 to preserve ammo economy {1}."
+    "tips": "Press V to damage front-line blob (less ammo, more spread than spell 1). Press ability-2 to hit back line and apply debuff; hard-priority target if enemy has flamers or rival Zykalian units {1}. ALWAYS cycle V and ability-2 {1}; solitary spell-2 play loses 50% potential damage. Post-patch, that rotation now runs on a tighter timing budget {3, 4}. Avoid spell 1 to preserve ammo economy {1}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -154,7 +208,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: blob frontlines and ranged backlines via V and ability-2 rotation, applying fire DPS and poison debuff {1}."
+    "pressure": "You pressure: blob frontlines and ranged backlines via V and ability-2 rotation, applying fire DPS and poison debuff {1}.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -168,6 +223,14 @@
     ],
     "notes": "Core loop is **V (grenade) → ability-2 (debuff + back-line pressure) → X-move instantly**. Post-patch, ability cooldowns stretch from 10s to 16s {3, 4}, requiring tighter sequencing. Spell 1 is a trap in normal play (ammo sink); reserve it only for overstacked poison refresh if needed. Hero pairing: any {1}. Leadership priority (purple-tier-lock meta): Zykalian ranks top-tier alongside Imperial Pike Guards, Stalwarts, Paladins for doctrine investment {5}."
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -210,14 +273,26 @@
       "author": "Kingzin (video)",
       "date": "Feb 2022",
       "house": false
+    },
+    {
+      "mark": 8,
+      "author": "StarBurst (house meta history)",
+      "date": "Oct 2024",
+      "house": true
     }
   ],
   "gaps": [
     "No formation guidance (house card has no formation notes; Amya guide references only F1/F2 implicit in positioning, not explicit).",
     "Post-patch playbook: sources predate the 2026-06-25 nerf (cooldowns +60%, reload +33%, poison cap −60%); rotation viability and positioning urgency may shift. Doc priority flagged High.",
-    "Mobility Doctrine V Sprint duration disagreement: Amya records 12s; house-card records 8s (undated source link unclear); no patch note documents a change between them — unarbitrated in RAW.",
+    "Mobility Doctrine V Sprint duration disagreement: Amya records 12s, the house card records 8s. No patch note documents a change between them, so treat this as unresolved.",
     "No hero-specific pairing notes for Zykalian itself: Amya states 'Any' hero pairs with it; the Shortsword hero-threat entry comes from that hero's own guide, not a Zykalian-side counter.",
     "No counterplay notes from hostile matchup perspective (how to play against Zykalian) beyond the Shortsword cross-mention.",
     "House caption nicknames ('cocos', 'ball boys') recur across multiple sources but their origin/meaning is never explained in-channel — included verbatim, not interpreted."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "Throwing-skill cooldowns 10s→16s (both skills); reload time +33%; poison stack count 20→8",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

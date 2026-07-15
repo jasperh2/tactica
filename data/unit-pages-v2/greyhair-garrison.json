@@ -1,9 +1,9 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "greyhair-garrison",
   "name": "Greyhair Garrison",
-  "headerMeta": "Heroic era · Melee Infantry · special · 200 leadership · Rarity T4",
-  "date": "2026-07-04",
+  "headerMeta": "Heroic era · Melee Infantry · special · 200 leadership · T4 · No mastery",
+  "date": "2022-02-10",
   "stats": {
     "metaTier": "C",
     "rarity": "T4",
@@ -15,24 +15,38 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": "Effective at mopping up crowd-controlled enemies behind a shield screen or ranged support unit {1}"
+    "tips": "Only footage on record: this unit mops up whatever's CC'd while a Siphonarioi flamer zones the choke point with Scorched ground-fire. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": null,
   "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
       "author": "Kingzin / ConstantBufferCast",
       "date": "Feb 2022",
       "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Amya",
+      "date": "May 2026",
+      "house": false
     }
   ],
   "gaps": [
-    "No dedicated Amya unit guide exists.",
-    "No house-card or house-guide coverage.",
-    "No veterancy, doctrine, matchup, or control-loop content available.",
-    "No confirmed tier placement — 'Grandpa' row in amya-tierlist.md is an unresolved alias candidate (C-tier, T4), documented in docs/reviews/tierlist-join-audit.md as suggestive but not proof of identity.",
+    "No dedicated Amya unit guide exists for this unit.",
+    "No house-card or house-guide coverage found anywhere.",
+    "No doctrine, veterancy, matchup, or control-loop content available.",
+    "Tier placement unconfirmed. The 'Grandpa' row in Amya's tierlist (C, T4) is the only candidate match on record - that's tier placement only, not confirmed proof of identity.",
     "No fight-type ratings recorded.",
-    "Only source of substantive content: one incidental mention in a Siphonarioi guide video (Feb 2022), describing the unit's utility as cleanup support behind shield/ranged screens."
+    "Only real content: one incidental clip-description line in a 2022 Siphonarioi tutorial video, crediting this unit with mop-up duty behind flamer ground-fire.",
+    "A second 'grandpa' nickname sighting turns up in Spartan Chosen's own guide, comparing that unit's Press 1 to 'the grandpa one' {2} - doesn't name Greyhair Garrison and isn't proof of identity, same caveat as the tierlist row above."
   ]
 }

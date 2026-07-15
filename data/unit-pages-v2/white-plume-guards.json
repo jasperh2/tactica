@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "white-plume-guards",
   "name": "White Plume Guards",
   "headerMeta": "Golden era · Melee infantry · Tower Shield · 305 leadership · Chaos Season",
@@ -14,67 +14,98 @@
       "flank": 2
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Chaos Season",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A tower-shield frontline anchor that soaks damage for the team, holding the wall so your own cavalry and DPS can work behind it. It folds against high-minimum-damage units that punch straight through block — Liao Rangers, Iron Reapers, and Rattan Roundshields all beat it, and anything that can simply get through you (Queen's Knights, Reapers) causes it real trouble.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Spear Doctrine VI",
       "name": "Epic Spear Doctrine VI",
+      "effect": "Unlocks CCi (crowd-control immunity) / Stand Fast.",
+      "tag": "mandatory",
       "note": "CCi / Stand Fast",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Their 2 Unique Doctrines",
       "name": "Their 2 Unique Doctrines",
+      "effect": null,
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Awareness Doctrine V",
       "name": "Awareness Doctrine V",
+      "effect": "-500 cavalry charge DMG, -20% rear attacks.",
+      "tag": "mandatory",
       "note": "−500 cav charge dmg, −20% rear attacks",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Block Doctrine V",
       "name": "Block Doctrine V",
+      "effect": "+300 block, -90 flat DMG taken (applied after all other reductions).",
+      "tag": "top-pick",
       "note": "+300 block, −90 flat dmg taken — calculated at the end of all other calculations",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Steadfast Doctrine V",
       "name": "Steadfast Doctrine V",
+      "effect": "+130 all defences, -6% DMG taken.",
+      "tag": "top-pick",
       "note": "+130 def, −6% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Health & Resistance Doctrine V",
       "name": "Health & Resistance Doctrine V",
+      "effect": "+300 HP, -5% DMG taken.",
+      "tag": "top-pick",
       "note": "+300 HP, −5% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Hero DMG / Piercing DMG / Pen",
       "name": "Hero DMG / Piercing DMG / Pen",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -94,8 +125,10 @@
   "battleRole": {
     "positioning": "Front-line for your team, protecting your DPS — you're fixing the front lane. Don't bait your own DPS units into the fight and don't let this unit get flanked. {1}",
     "formation": null,
-    "tips": "CCi doctrine is key for tanking trebuchets while fighting on a wall, and equally key for eating cavalry charges (or just to fall back safely). {1}"
+    "tips": "CCi doctrine is key for tanking trebuchets while fighting on a wall, and equally key for eating cavalry charges (or just to fall back safely). {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -135,7 +168,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -148,6 +182,11 @@
     ],
     "notes": "White Plume Defense (1) — CC immune, instantly restores 1,400 Block, +80% Defense and reduced Block consumption for 10s. Cooldown 15s. {1} Shattering Bash (2) — knockdown + massive damage in range, restores 4% Max Health, +150% Defense, reduced Block consumption on hit; boosted while in Long Live the Han. Cooldown 18s, Duration 3s. {1} Long Live the Han (3) — consumes all Resolve for a 10s Last Stand: Health can't drop below 10%, death immunity; instantly restores 20% Max Health on end. Cooldown 50s, Duration 10s. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -164,9 +203,11 @@
   ],
   "gaps": [
     "No formation guidance (F1/F2) given by any source.",
-    "No dedicated video transcript exists — only queued/candidate mentions in two channel INDEX files, never captured.",
-    "No StarBurst house card exists for this unit (confirmed absent, not just uncaptured).",
+    "No dedicated video transcript exists - only a couple of queued or candidate mentions across video channels, never followed up.",
+    "No StarBurst house card exists for this unit - genuinely absent, not just missing from our notes.",
     "Only one veterancy line (Bot Line) is documented — no source discusses a Top Line alternative for this unit.",
-    "A house meta post (Jul 2026) lists this unit alongside Iron Reapers, Tiger/Leopard Cav, Queen's Knights, and Liao Rangers as a current T5 grind target — a tier co-mention, not a battlefield matchup, so it's not represented as a matchup card."
+    "A house meta post (Jul 2026) lists this unit alongside Iron Reapers, Tiger/Leopard Cav, Queen's Knights, and Liao Rangers as a current T5 grind target — a tier co-mention, not a battlefield matchup, so it's not represented as a matchup card.",
+    "No tier history - Chaos Season is this unit's debut season; current 'To place' entry is all that exists.",
+    "No PvE-specific guidance in any source; all guidance is PvP-oriented."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "liaos-rangers",
   "name": "Liaos Rangers",
   "headerMeta": "Golden era · Heavy Cavalry (Mace/Bludgeon) · 315 leadership · Seasonal",
@@ -14,11 +14,22 @@
       "flank": 10
     }
   },
+  "identity": {
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A top flank cavalry that clears with heavy mace bursts and cleans up isolated targets better than almost anything else in the class. A spell-2 cooldown delay softens its skirmish and duelling power, and a June-2026 block-break nerf plus new anti-hero damage reduction changes what it can now trade with.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Liao's Rangers Melee Doctrine",
       "name": "Liao's Rangers Melee Doctrine",
+      "effect": null,
+      "tag": "mandatory",
       "note": "−3s CD on press 2, stacks with house card's own −3s/level Bludgeon-cooldown doctrine",
       "marks": [
         1,
@@ -26,64 +37,80 @@
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Devastation",
       "name": "Devastation",
+      "effect": "Increases DMG dealt to units by 120, increases all types of DMG by 80.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Blue Doctrine",
       "name": "Blue Doctrine",
+      "effect": "Top pick per Amya guide.",
+      "tag": "top-pick",
       "note": "defensive slot",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "+20% dmg to healing units",
       "name": "+20% dmg to healing units",
+      "effect": "+20% DMG to targets currently regenerating health.",
+      "tag": "filler",
       "note": "alt for Devastation",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Movement speed doctrine",
       "name": "Movement speed doctrine",
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s.",
+      "tag": "filler",
       "note": "alt for Devastation",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Tankiness doctrine",
       "name": "Tankiness doctrine",
+      "effect": "Filler per Amya guide; alt for Devastation, simpler 1-2-3 combo.",
+      "tag": "filler",
       "note": "alt for Devastation; simpler 1-2-3 combo",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alt for Blue Doctrine",
       "marks": [
         1
@@ -104,11 +131,14 @@
   "battleRole": {
     "positioning": "Engage with spell 1 from mid-close range {1}. Once engaged, press 2 for a heavy burst (swiping mace around), let it run 3–4s, then press 3, then press 2 again as soon as it is off cooldown {1}.",
     "formation": null,
-    "tips": "Movement speed leverages damage, but entering a blob at very low speed can be better when enemy pikes are present — their damage buff from the unit's speed can one-shot before the speed-damage modifier pays off {1}. Recent spell-2 delay nerf still permits engagement but reduces skirmish and duelling power notably {1}."
+    "tips": "Movement speed leverages damage, but entering a blob at very low speed can be better when enemy pikes are present — their damage buff from the unit's speed can one-shot before the speed-damage modifier pays off {1}. Recent spell-2 delay nerf still permits engagement but reduces skirmish and duelling power notably {1}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -122,6 +152,14 @@
     ],
     "notes": "Spell 1 — engage. Spell 2 — heavy mace burst (3–4s). Spell 3 — queue. Spell 2 — repeat on cooldown (−3s via unique doctrine) {1}. Base card kit: +120 unit damage / +80 all-type damage; every 3 attacks the next hit deals +11%, every 6 attacks restores 15% max health; +8% siege damage; +7% move speed with a Sprint unlock (+15% for 12s) {2}."
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -144,12 +182,18 @@
   ],
   "gaps": [
     "No formation guidance in any source.",
-    "No matchup units (counters, threats, pairs) named by Amya or house card — the Amya guide's counters block is absent, treated as an intentional OP omission, not a capture gap.",
+    "No matchup units (counters, threats, pairs) named by Amya or house card - the Amya guide's counters block is absent, treated as an intentional omission, not a missing note on our end.",
     "No hero pairing specified (source shows 'X' / none).",
     "House card doctrine 2's final clause is cut off at 'Every 9 attacks, a [illegible]' — a recurring StarBurst card-export clipping pattern also seen on Iron Reapers and Yorkist cards.",
     "No video-transcript content found across 20 creator channels.",
     "June 2026 patch (block break 1400→1100, new tag: attacks vs Heroes take 60% armour penetration reduction and 40% damage reduction) postdates Amya guide (2025-05) and house card (2026-01) — no source addresses this nerf or how it changes matchups.",
-    "Skirmish cavalry type (Amya: 'low blob-fight potential') conflicts with rating entry (blob 9/10 per unit-db) — possible unit-db discrepancy.",
+    "Skirmish cavalry type (Amya says 'low blob-fight potential') conflicts with a blob rating of 9/10 recorded elsewhere - possible data discrepancy, unresolved.",
     "House roster-priority mention (StaRBuRsT, house Q&A, Jun 2026: 'safe to doctrine up ... Liao') names the unit as investment-safe but carries no unit-specific tactical detail. {3}"
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Nerf",
+    "summary": "Block break value 1400→1100 (nerf); new tag: all attacks vs Heroes take 60% armour penetration reduction and 40% damage reduction",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

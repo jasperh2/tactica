@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "yanyuedao-cavalry",
   "name": "Yanyuedao Cavalry",
   "headerMeta": "Golden era · Cavalry · 320 leadership · Seasonal (S15: Eternal)",
@@ -14,59 +14,88 @@
       "flank": 8
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit (Season XV: Eternal)",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A flank-cavalry glaive unit that opens with a charged Dread Unleashed from behind or the side, strikes twice on impact, and rides the momentum into an escape rather than overcommitting. Its damage lead comes from timing the charge release and knowing when to bail, not from raw survivability — Duelling is its weakest fight rating by a wide margin.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Yanyuedao Blue Slashing Doctrine",
       "name": "Yanyuedao Blue Slashing Doctrine",
+      "effect": "Mandatory per Amya. OP note: \"confirm exact name.\"",
+      "tag": "mandatory",
       "note": "exact name unconfirmed by source",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Toughness Doctrine V",
       "name": "Toughness Doctrine V",
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires.",
+      "tag": "mandatory",
       "note": "−33% DMG taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Healing Punisher Doctrine",
       "name": "Healing Punisher Doctrine",
+      "effect": "+20% DMG to targets currently regenerating health.",
+      "tag": "top-pick",
       "note": "+20% DMG vs healing units",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Yanyuedao Resistance Doctrine",
       "name": "Yanyuedao Resistance Doctrine",
+      "effect": "-15% DMG taken. Top pick.",
+      "tag": "top-pick",
       "note": "−15% DMG taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Yanyuedao CCi Doctrine",
       "name": "Yanyuedao CCi Doctrine",
+      "effect": "Unit-unique control immunity, alt for Leadership. Filler.",
+      "tag": "filler",
       "note": "unit-unique control immunity, alt for Leadership",
       "marks": [
         1
@@ -94,8 +123,10 @@
   "battleRole": {
     "positioning": "Enter from flank or from behind the enemy pack — despite CC-immunity on the first strike, never lead a straight charge. {1} Excels on smaller maps where lancers or other specialized cavalry are hindered by terrain; very versatile there. {1}",
     "formation": null,
-    "tips": "Charge the 1 (Dread Unleashed) from optimal distance and release at max potential; the unit strikes twice on impact and the charge can be cancelled once the second hit registers. {1} Often better to release around 70% charge if the timing is right than to wait for 100% and miss the window. {1} Learn the full timing of the 1 — releasing it at the last moment lets you re-trigger it right after the double slash. {1} Press 1 for a first slash then a second; X-move away after the first if needed, otherwise wait for the second before X-moving (repress 1 to recharge as soon as possible). {1} Press 2 (Rushing Blow) as a momentum builder on straight-line runs, or as an escape — it moves each model in the direction it's facing. {1} Entering a blob facing pikes, Stalwart, or other speed-bonus units: X-move side to side repeatedly to stop moving — the damage lost is small next to the damage dodged. {1}"
+    "tips": "Charge the 1 (Dread Unleashed) from optimal distance and release at max potential; the unit strikes twice on impact and the charge can be cancelled once the second hit registers. {1} Often better to release around 70% charge if the timing is right than to wait for 100% and miss the window. {1} Learn the full timing of the 1 — releasing it at the last moment lets you re-trigger it right after the double slash. {1} Press 1 for a first slash then a second; X-move away after the first if needed, otherwise wait for the second before X-moving (repress 1 to recharge as soon as possible). {1} Press 2 (Rushing Blow) as a momentum builder on straight-line runs, or as an escape — it moves each model in the direction it's facing. {1} Entering a blob facing pikes, Stalwart, or other speed-bonus units: X-move side to side repeatedly to stop moving — the damage lost is small next to the damage dodged. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -108,7 +139,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -122,6 +154,14 @@
     ],
     "notes": null
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -141,6 +181,8 @@
     "The guide's edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch anchor; the unit is not on the Chaos changed-units shortlist, but build/doctrine advice may still be stale for the current season.",
     "'Don't put' doctrines: the source left this as a literal placeholder, never filled in.",
     "The house farm-priority tier chart (StaRBuRsT, Sep 2025, likely-stale — pre-2026-06-22 patch cutoff) places this unit in an attack-meta 'units to farm for' row but gives no doctrine, matchup, or battle-role content beyond that placement.",
-    "Two video channels (denetax, yeqiudespotic) have queued or candidate videos for this unit but no captured transcript exists yet — a dedicated wiki-style unit-guide video is the top follow-up pick."
+    "Two video channels (denetax, yeqiudespotic) have candidate videos for this unit, but no transcript exists yet - a dedicated wiki-style unit-guide video is the top follow-up pick.",
+    "Herlajis's Palace Guards guide (2023-10-13) says non-charge cavalry like 'Yendao' bypasses their anti-charge counter and wrecks them - probably this unit given the matching Flank Cavalry archetype, but the name match isn't confirmed, so it's not added as a matchup card.",
+    "A house card-library row logs 'Yunyadao Cavalry' (2025-02-28) with the caption 'this build beats spartan's from any angle', which lines up with the Top-Line Spartan-kill veterancy note - but the name match isn't confirmed, and no doctrine or mastery details are available for that card."
   ]
 }

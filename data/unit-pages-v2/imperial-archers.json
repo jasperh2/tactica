@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "imperial-archers",
   "name": "Imperial Archers",
   "headerMeta": "Heroic era · Ranged Infantry · special · 235 leadership · T4 Mastery · C-tier",
@@ -9,67 +9,96 @@
     "rarity": "T4",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A standard archer with high theoretical damage output that struggles to convert into value in the modern meta. Leadership shifts and fast-paced engagements make traditional ranged obsolete; you're better served by a frontline or cavalry unit.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Bowmanship Doctrine V",
       "name": "Bowmanship Doctrine V",
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG.",
+      "tag": "mandatory",
       "note": "Arrow Rain deals 75% of unit's base piercing per hit, +150 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Precision Doctrine V",
       "name": "Precision Doctrine V",
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire.",
+      "tag": "mandatory",
       "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Projectile Doctrine V",
       "name": "Projectile Doctrine V",
+      "effect": "+60% ammo, +50 piercing AP.",
+      "tag": "mandatory",
       "note": "+60% ammo, +50 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Archery Doctrine IV",
       "name": "Epic Archery Doctrine IV",
+      "effect": "+100 piercing DMG. Top pick.",
+      "tag": "top-pick",
       "note": "+100 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "LDS Doctrine",
       "name": "LDS Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alt for piercing DMG if needed",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Whistling Arrow Doctrine V",
       "name": "Whistling Arrow Doctrine V",
+      "effect": "Every 3 hits inflicts bleeding for 12% of target's current HP; can trigger in concert with allied units at weak points.",
+      "tag": "filler",
       "note": "alt for piercing, bleed on low-count / high-armor targets",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Artemis",
       "name": "Artemis",
+      "effect": "Unlocks Double Strings: fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch.",
+      "tag": "filler",
       "note": "alt for piercing, double shoot, exploits same low-count / high-armor angle",
       "marks": [
         1
@@ -89,17 +118,25 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": "Some archers with Arrow Rain in veterancy cannot equip Arrow Rain doctrine — if that applies here, equip more piercing instead. {1}"
+    "tips": "Some archers with Arrow Rain in veterancy cannot equip Arrow Rain doctrine — if that applies here, equip more piercing instead. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": null,
-    "pressure": null
+    "pressure": null,
+    "siblings": "Covered in the same combined guide as Vassal Longbowmen, Vanguard Archer, and Ironcap Archer - identical playstyle argument and doctrine build across all four, tier is the only thing that's called out per unit."
   },
   "controls": {
     "loop": null,
     "loopMarks": null,
     "notes": null
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -111,8 +148,8 @@
   "gaps": [
     "Doctrine/playstyle guidance sourced from a combined thread (Vassal Longbowmen + Imperial Archers + Vanguard Archer + Ironcap Archer); no Imperial-Archers-specific advice — treat as shared across all four units.",
     "Fight-type ratings (blob/duel/skirm/flank) absent from all sources; no Strength block exists in the guide thread.",
-    "No separate Imperial Archers unit guide exists; covered in shared ironcap-archers.md thread with all four units treated identically.",
-    "Doctrine/build guidance edit-dated 2026-06-16, pre-dating Chaos patch (2026-06-25) by 9 days — no post-patch update visible at capture; guidance may be stale.",
+    "No separate Imperial Archers unit guide exists; it's covered in a shared guide thread with all four units treated identically.",
+    "Doctrine/build guidance edit-dated 2026-06-16, pre-dating the Chaos patch (2026-06-25) by 9 days - no post-patch update exists yet; guidance may be stale.",
     "No battle-role positioning, formation, or scenario guidance present in any source.",
     "No matchups, counters, or hero-threat analysis in any source.",
     "No control loop or ability timing details in any source.",

@@ -11,6 +11,15 @@
 // fully owned here, not split across HTML host stubs. unit-page.boot.mjs's boot() shows that root
 // (hides the v1 identity-only / full-guide trees) and calls renderUnitPageV2(record, root).
 //
+// v3 field-surfacing pass (Phase D, 2026-07-14, phase-d-class-contract.md): the same
+// cb-unit-page-v3/1 record now carries a handful of optional extra fields, each hidden when
+// absent — a doctrine effect subline, header identity chips (hero pairing / mastery), a patch
+// freshness strip, a tested-numbers chip row, a Learn More band (mirrors hero-page-v3.boot.mjs),
+// and a GENERAL band (the specific/GENERAL separator pattern, CLAUDE.md hard rule) resolved
+// against site/data/unit-general.json via unit-page.boot.mjs's extra fetch. Full render order:
+// eyebrow → header (+ identity chips) → patch strip → numbers → three-band grid → battleRole →
+// learn more → GENERAL band → footer.
+//
 // ESCAPING: every record-derived value is written via `.textContent` / `document.createTextNode`,
 // never `.innerHTML` — same rationale as unit-page.boot.mjs's header comment (the DOM never
 // re-parses those as markup, so there is no injection surface and pre-escaping would corrupt real
@@ -31,6 +40,13 @@ import {
   groupMatchups,
   splitIntoBullets,
   seasonLabelV2,
+  isNonEmptyString,
+  heroPairingChipText,
+  masteryChipText,
+  patchKindClass,
+  patchKindLabel,
+  hasLearnMoreContent,
+  buildGeneralBlocks,
 } from './unit-page-v2.mjs';
 import { doctrineIconPath } from './doctrine-icon.mjs';
 
@@ -204,6 +220,28 @@ function statChip(value, label, modifier) {
   return chip;
 }
 
+/** One header identity chip: small label + value, e.g. "HERO PAIRING" / "Medium & Heavy armors"
+ * (class-contract #2). */
+function identityChip(modifier, label, value) {
+  const chip = el('div', `cs-id-chip ${modifier}`);
+  chip.appendChild(el('span', 'cs-id-chip-label', label));
+  chip.appendChild(el('span', 'cs-id-chip-value', value));
+  return chip;
+}
+
+/** The `.cs-id-chips` row (hero pairing + mastery), or null when the record carries neither —
+ * identity.origin/tierHistory are the v3 record's data-only fields and are never surfaced here
+ * (task's "NEVER render data-only fields" rule). */
+function renderIdentityChips(identity) {
+  const pairingText = heroPairingChipText(identity);
+  const masteryText = masteryChipText(identity && identity.mastery);
+  if (!pairingText && !masteryText) return null;
+  const wrap = el('div', 'cs-id-chips');
+  if (pairingText) wrap.appendChild(identityChip('cs-id-chip-pairing', 'HERO PAIRING', pairingText));
+  if (masteryText) wrap.appendChild(identityChip('cs-id-chip-mastery', 'MASTERY', masteryText));
+  return wrap;
+}
+
 function renderHeader(page) {
   const section = el('section', 'cs-header');
 
@@ -214,6 +252,8 @@ function renderHeader(page) {
   const idText = el('div', 'cs-id-text');
   idText.appendChild(el('h1', 'cs-name', page.name));
   if (page.headerMeta) idText.appendChild(el('p', 'cs-meta', page.headerMeta));
+  const identityChips = renderIdentityChips(page.identity);
+  if (identityChips) idText.appendChild(identityChips);
   id.appendChild(idText);
   row.appendChild(id);
 
@@ -242,6 +282,34 @@ function renderHeader(page) {
     section.appendChild(pitch);
   }
   return section;
+}
+
+// ---- Patch freshness strip + tested-numbers chip row (class-contract #3, #4) -------------------
+
+/** The `.cs-patch` freshness strip, or null when the record carries no `patch` object / it isn't
+ * an auto-joined "changed" patch (class-contract #3: "Rendered ONLY when ... changed==true"). */
+function renderPatchStrip(page) {
+  const patch = page.patch;
+  if (!patch || patch.changed !== true) return null;
+  const strip = el('div', `cs-patch cs-patch-${patchKindClass(patch.kind)}`);
+  strip.appendChild(el('span', 'cs-patch-kind', patchKindLabel(patch.kind)));
+  if (isNonEmptyString(patch.summary)) strip.appendChild(el('span', 'cs-patch-summary', patch.summary));
+  if (isNonEmptyString(patch.patch)) strip.appendChild(el('span', 'cs-patch-season', patch.patch));
+  return strip;
+}
+
+/** The `.cs-numbers` tested-numbers chip row, or null when `numbers[]` is empty/absent. */
+function renderNumbers(page) {
+  const numbers = Array.isArray(page.numbers) ? page.numbers : [];
+  if (numbers.length === 0) return null;
+  const wrap = el('div', 'cs-numbers');
+  for (const entry of numbers) {
+    const chip = el('div', 'cs-number');
+    chip.appendChild(el('span', 'cs-number-label', entry.label || ''));
+    chip.appendChild(el('span', 'cs-number-value', entry.value || ''));
+    wrap.appendChild(chip);
+  }
+  return wrap;
 }
 
 // ---- Doctrines (timeline of tiles) -------------------------------------------------------------
@@ -278,6 +346,10 @@ function renderDoctrines(page, doctrineIconMap) {
       appendProseWithMarks(note, entry.note);
       body.appendChild(note);
     }
+    // Official card-effect text (from the doctrine registry) — secondary to the unit-specific
+    // note above, so it renders after it. Plain text, not prose-with-marks: this is verbatim card
+    // copy, not attributed guide prose (class-contract #1).
+    if (isNonEmptyString(entry.effect)) body.appendChild(el('div', 'cs-doc-effect', entry.effect));
     rowEl.appendChild(body);
     list.appendChild(rowEl);
   }
@@ -531,6 +603,99 @@ function renderBattleRole(page) {
   return section;
 }
 
+// ---- Learn More band (class-contract #5, mirrors hero-page-v3.boot.mjs's renderLearnMore) ------
+
+/** One `.cs-learn-video` card: a link (new tab) when the video has a URL, plain text otherwise,
+ * plus its `.cs-learn-stamps` timestamp list when present. */
+function learnVideoCard(video) {
+  const card = el('div', 'cs-learn-video');
+  if (isNonEmptyString(video.url)) {
+    const a = document.createElement('a');
+    a.className = 'cs-learn-video-label';
+    a.href = video.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = video.label || video.url;
+    card.appendChild(a);
+  } else {
+    card.appendChild(el('span', 'cs-learn-video-label', video.label || ''));
+  }
+  if (Array.isArray(video.stamps) && video.stamps.length > 0) {
+    const stamps = el('div', 'cs-learn-stamps');
+    for (const stamp of video.stamps) stamps.appendChild(el('div', 'cs-learn-stamp', stamp));
+    card.appendChild(stamps);
+  }
+  return card;
+}
+
+/** The `.cs-learn` band: video links + the `#units` ask chip. Returns null when the record has
+ * neither (hasLearnMoreContent), so the whole panel is omitted rather than shown empty. */
+function renderLearnMore(page) {
+  const learnMore = page.learnMore || {};
+  if (!hasLearnMoreContent(learnMore)) return null;
+  const panel = el('section', 'cs-learn');
+  panel.appendChild(panelHead('Learn more', []));
+
+  const videos = Array.isArray(learnMore.videos) ? learnMore.videos : [];
+  if (videos.length > 0) {
+    const list = el('div', 'cs-learn-videos');
+    for (const video of videos) list.appendChild(learnVideoCard(video));
+    panel.appendChild(list);
+  }
+
+  if (isNonEmptyString(learnMore.askChannel)) {
+    const ask = el('div', 'cs-learn-ask');
+    ask.appendChild(el('span', 'cs-learn-ask-chip', learnMore.askChannel));
+    panel.appendChild(ask);
+  }
+  return panel;
+}
+
+// ---- GENERAL band (class-contract #6 — specific/GENERAL separator, CLAUDE.md hard rule) --------
+
+/** One `.cs-general-block`: title + prose body (with {n} marks) + its own local footnote legend
+ * (`.cs-general-foot`) — general-block footnotes are numbered independently per block in
+ * site/data/unit-general.json, so they render inline with their own block rather than folding into
+ * the page's unrelated footer legend (class-contract #6 leaves this choice to the renderer). */
+function generalBlockEl(block) {
+  const blockEl = el('div', 'cs-general-block');
+  if (block.title) blockEl.appendChild(el('div', 'cs-general-title', block.title));
+  const body = el('div', 'cs-general-body');
+  appendProseWithMarks(body, block.body);
+  blockEl.appendChild(body);
+  if (block.footnotes.length > 0) {
+    const foot = el('div', 'cs-general-foot');
+    for (const fn of block.footnotes) {
+      const sup = document.createElement('sup');
+      sup.textContent = String(fn.mark);
+      foot.appendChild(sup);
+      foot.appendChild(document.createTextNode(` ${footnoteLegendTextV2(fn)}`));
+      appendLockIfHouse(foot, fn.house);
+    }
+    blockEl.appendChild(foot);
+  }
+  return blockEl;
+}
+
+/** The labeled separator + `.cs-general` band, LAST content before the footer. `generalFile` is
+ * the raw fetched site/data/unit-general.json payload (or null/{} on fetch failure — see boot()'s
+ * data-loading note); returns null when the record's `general[]` resolves to zero blocks, so a
+ * unit with no general[] keys (or a failed fetch) shows no separator at all. */
+function renderGeneralBand(page, generalFile) {
+  const blocks = buildGeneralBlocks(page, generalFile);
+  if (blocks.length === 0) return null;
+
+  const fragment = document.createDocumentFragment();
+  const sep = el('div', 'cs-general-sep');
+  sep.appendChild(el('span', null, 'GENERAL · APPLIES TO MOST UNITS'));
+  fragment.appendChild(sep);
+
+  const band = el('div', 'cs-general');
+  for (const block of blocks) band.appendChild(generalBlockEl(block));
+  fragment.appendChild(band);
+  return fragment;
+}
+
 // ---- Footer (footnote legend + honest gaps) ----------------------------------------------------
 
 function renderFooter(page) {
@@ -579,13 +744,22 @@ function renderFooter(page) {
  * @param {Record<string,string>} [doctrineIconMap]  normalized-doctrine-name -> icon-slug map (from
  *   site/data/doctrine-icons.json's nameToSlug); an empty map (the default) simply renders every
  *   doctrine tile as a placeholder.
+ * @param {{blocks?: Record<string, object>}} [generalFile]  the raw fetched site/data/
+ *   unit-general.json payload (schema cb-unit-general/1); an empty object (the default) simply
+ *   means the GENERAL band renders nothing (buildGeneralBlocks degrades gracefully — see its
+ *   doc comment).
  */
-export function renderUnitPageV2(page, root, doctrineIconMap = {}) {
+export function renderUnitPageV2(page, root, doctrineIconMap = {}, generalFile = {}) {
   document.title = `${page.name} — Immortals Academy`;
   root.innerHTML = '';
 
   root.appendChild(renderEyebrow(page));
   root.appendChild(renderHeader(page));
+
+  const patchStrip = renderPatchStrip(page);
+  if (patchStrip) root.appendChild(patchStrip);
+  const numbers = renderNumbers(page);
+  if (numbers) root.appendChild(numbers);
 
   // Three-band grid: doctrines | (veterancy + controls) | matchups.
   const band = el('div', 'cs-band');
@@ -598,6 +772,14 @@ export function renderUnitPageV2(page, root, doctrineIconMap = {}) {
   root.appendChild(band);
 
   root.appendChild(renderBattleRole(page));
+
+  const learnMore = renderLearnMore(page);
+  if (learnMore) root.appendChild(learnMore);
+
+  // GENERAL band — specific info above, GENERAL below a separator, LAST content before the footer
+  // (CLAUDE.md hard rule; class-contract #6).
+  const generalBand = renderGeneralBand(page, generalFile);
+  if (generalBand) root.appendChild(generalBand);
 
   const foot = renderFooter(page);
   if (foot) root.appendChild(foot);

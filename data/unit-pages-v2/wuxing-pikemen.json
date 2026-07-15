@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "wuxing-pikemen",
   "name": "Wuxing Pikemen",
   "headerMeta": "Silver era · Pike/Polearm infantry · anti-cav · 155 leadership · Honor Tree, Mastery",
@@ -9,59 +9,86 @@
     "rarity": "T3",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A mastery-driven pike unit that strips defences off the tankiest targets on the field before finishing with Wuxing Blast. Its Fiery Blast rework (radius +20%, now instant) landed after Amya's guide was last updated, so engage timing here is pre-patch and due a refresh.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Polearm Doctrine III",
       "name": "Epic Polearm Doctrine III",
+      "effect": "Allows the unit to use the Pike Assault order. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "unlocks the Pike Assault order",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Toughness Doctrine V",
       "name": "Toughness Doctrine V",
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires.",
+      "tag": "mandatory",
       "note": "−33% DMG taken, weakens each hit, gone after 8 hits",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "mandatory",
       "note": "+115 hero DMG, +110 all AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "mandatory",
       "note": "+8% DMG in sieges",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Fiery Blast doctrine slot",
       "name": "Fiery Blast doctrine slot",
+      "effect": null,
+      "tag": "filler",
       "note": "house calls this the bottom-line slot — synergises with the mastery combo {2}",
       "marks": [
         2
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "[unspecified]",
       "name": "[unspecified]",
+      "effect": null,
+      "tag": "avoid",
       "note": "Amya leaves this slot as a literal 'X' in the guide",
       "marks": [
         1
@@ -81,8 +108,10 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": "Fiery Blast now activates instantly instead of on a delay (radius also +20%) — tightens the window before the Wuxing Blast finisher versus the pre-patch timing below. {3}"
+    "tips": "Fiery Blast now activates instantly instead of on a delay (radius also +20%) — tightens the window before the Wuxing Blast finisher versus the pre-patch timing below. {3}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -104,7 +133,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -117,6 +147,13 @@
     ],
     "notes": "X-move to close, press 2 (Fiery Blast — now instant activation {3}) and let the animation play out, then press 1 (Wuxing Blast finisher). {1} House combo: land skill 2 in the blob to strip ~200 defence plus a burn tick, then finish with Wuxing Blast. {2}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -142,7 +179,13 @@
     "Amya's guide predates the 2026-06-25 Fiery Blast rework by about a month (last edit 2026-05-27); no post-patch guide update exists yet for current-meta engage timing.",
     "Amya leaves the Filler slot as a literal 'X'; a house source separately identifies the Fiery Blast doctrine as the bottom-line/filler pick. The Avoid slot remains unfilled in any source.",
     "No dedicated Counters section (Loses to / Struggles vs) in any source.",
-    "No formation guidance, positioning detail, or hero-pairing notes captured in any source.",
+    "No formation guidance, positioning detail, or hero-pairing notes exist in any source.",
     "No house card exists for this unit; exact pre-patch Fiery Blast radius value is unstated anywhere (only the +20% delta)."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Buff/Rework",
+    "summary": "\"Fiery Blast\" radius +20%, now activates instantly (was delayed)",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

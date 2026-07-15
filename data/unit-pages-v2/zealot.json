@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "zealot",
   "name": "Zealot",
   "headerMeta": "Heroic era · Melee Infantry (Two-Handed Hammer) · special · 235 leadership · Seasonal (S24: Crown and Cross)",
@@ -14,51 +14,78 @@
       "flank": 7
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit · Crown and Cross (Season 24, Heroic Era)",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A transformation-based shock hammer that crushes shield units and blob formations with knockdown while alive; activating Judgment Day mid-fight is its death sentence — heal and return, never transform under pressure. Strong against heavy-armored and fire-weak targets, it collapses against high-burst claymores and Yorkists.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Paradox Doctrine",
       "name": "Paradox Doctrine",
+      "effect": "3/6/9. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "unique doctrine, +300 block",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Noble Blood Doctrine (Melee)",
       "name": "Noble Blood Doctrine (Melee)",
+      "effect": "Top pick.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Devastation",
       "name": "Devastation",
+      "effect": "Increases DMG dealt to units by 120, increases all types of DMG by 80.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "−5% DMG Taken",
       "name": "−5% DMG Taken",
+      "effect": "-5% DMG taken.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -87,8 +114,10 @@
   "battleRole": {
     "positioning": "Stay close enough to engage with Righteous Charge (press 1 from range, or dash from melee). X-move near fights and let enemies aggro rather than pressing V immediately — the passive Malice (counts artillery, hero kills, and incoming hits) builds faster if they come to you. {1}",
     "formation": null,
-    "tips": "Never transform mid-fight. {1} Activate Judgment Day (press 3) only outside combat to heal and reposition — the transformation locks you immobile and vulnerable, and the animation can't be cancelled once started. {1} Righteous Charge (1) knocks down or dashes; Zeal Whirlwind (2) slams close-range. In Inquisitor form, press 1 becomes Dies irae (partial vacuum). {1} Malice passive counts kills AND damage-taken (any amount), not just kills — test in custom vs AI to see the difference. {1} Scorpio fire enrage applied before a fight stays until end of game, even after unit swap or death. {1}"
+    "tips": "Never transform mid-fight. {1} Activate Judgment Day (press 3) only outside combat to heal and reposition — the transformation locks you immobile and vulnerable, and the animation can't be cancelled once started. {1} Righteous Charge (1) knocks down or dashes; Zeal Whirlwind (2) slams close-range. In Inquisitor form, press 1 becomes Dies irae (partial vacuum). {1} Malice passive counts kills AND damage-taken (any amount), not just kills — test in custom vs AI to see the difference. {1} Scorpio fire enrage applied before a fight stays until end of game, even after unit swap or death. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -128,7 +157,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: shield units (CC + tanking knocks them down) and fire-weak units (big blob impact when enraged). {1}"
+    "pressure": "You pressure: shield units (CC + tanking knocks them down) and fire-weak units (big blob impact when enraged). {1}",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -140,6 +170,39 @@
     ],
     "notes": "Righteous Charge (1) — knockdown or dash depending on range; queue skill 2 while charging. {1} Zeal Whirlwind (2) — close-range slam; in Inquisitor form, dies irae becomes a partial vacuum pull. {1} Judgment Day (3) — transformation (immobilized during animation); only activate outside fights. {1} X-move + aggro-bait better than V-spam — Malice passive counts incoming damage. {1}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Amya guide - Malice passive reference clip (kills + hits tracking)",
+        "url": "https://medal.tv/fr/games/conquerors-blade/clips/IcYBwtfYDMkOldcWA?invite=cr-MSxIZ1csMzI4NDY5MDYy&v=84",
+        "stamps": [],
+        "marks": [
+          1
+        ]
+      },
+      {
+        "label": "Akers's Conqueror's Blade clip - \"T4 - Coupe avec Medal.tv\"",
+        "url": "https://medal.tv/fr/games/conquerors-blade/clips/Idt3NQtotR38HsJIU?invite=cr-MSxabTEsMzI4NDY5MDYy&v=300",
+        "stamps": [],
+        "marks": [
+          1
+        ]
+      },
+      {
+        "label": "Akers's Conqueror's Blade clip - \"T4 top Line 2 - Clipped with Medal.tv\"",
+        "url": "https://medal.tv/games/conquerors-blade/clips/IcXAqYNeKdGEs1OY1?invite=cr-MSxkeEksMzI4NDY5MDYy&v=37",
+        "stamps": [],
+        "marks": [
+          1
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -173,10 +236,10 @@
     }
   ],
   "gaps": [
-    "No video-transcript guides cover Zealot — no timing numbers, formation guidance, or scenario-specific controls captured.",
+    "No video guides cover Zealot - no timing numbers, formation guidance, or scenario-specific controls exist for it.",
     "Doctrine recommendations flagged stale: Amya's guide edited 2026-05-26, predating the 2026-06-25 Chaos patch; house veterancy split (top vs bottom) documented but no updated Amya revalidation visible.",
-    "No dedicated house-card file; unit appears on a house-curated 'Meta Units - ATK' tier board (30 Jun 2026) alongside Stalwarts, ISG, Claymores, Berserkers, Paladins, IPG, Zykalian Militia, Yorkist Household Knights, Dagger-axe Lancers, Fortebraccio, Lancastrian Billmen, but no card build is known. {4}",
-    "'Zealot' has no exact match in data/units.json per two independent house guides — flagged as a possible dataset gap, though a real in-game unit variant ('Zealot - Accursed') is confirmed via replay footage.",
-    "Replay analysis describes the 'Zealot - Accursed' variant as visually carrying 'polearm-style weapons,' conflicting with the Two-Handed Hammer identity from unit-db and Amya's guide — unreconciled; possibly a cosmetic skin or a visual misread. {5}"
+    "No dedicated house card exists; unit appears on a house-curated 'Meta Units - ATK' tier board (30 Jun 2026) alongside Stalwarts, ISG, Claymores, Berserkers, Paladins, IPG, Zykalian Militia, Yorkist Household Knights, Dagger-axe Lancers, Fortebraccio, Lancastrian Billmen, but no card build is known. {4}",
+    "'Zealot' has no exact match in the unit list per two independent house guides - flagged as a possible identification gap, though a real in-game unit variant ('Zealot - Accursed') is confirmed via replay footage.",
+    "Replay analysis describes the 'Zealot - Accursed' variant as visually carrying 'polearm-style weapons', conflicting with the Two-Handed Hammer identity from Amya's guide - unreconciled; possibly a cosmetic skin or a visual misread. {5}"
   ]
 }

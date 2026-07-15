@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "zweihanders",
   "name": "Zweihanders",
   "headerMeta": "Golden era · Melee infantry · special · 310 leadership · Seasonal",
@@ -14,59 +14,88 @@
       "flank": 3
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A high-damage duelist that cycles in and out of combat every few seconds, getting stronger at max health but vulnerable the moment it breaks formation. Stack it tight and micro its cooldown rotation — it punishes overextension with a quick wipe.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Zweihanders Unique CD Doctrine",
       "name": "Zweihanders Unique CD Doctrine",
+      "effect": "-4s Special CD. Mandatory.",
+      "tag": "mandatory",
       "note": "−4s Special CD",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9-hit damage boost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Zweihander Sword Doctrine",
       "name": "Zweihander Sword Doctrine",
+      "effect": "After Prepared Stance restores health to 100%, next skill +10% slashing damage. Top pick.",
+      "tag": "top-pick",
       "note": "after Prepared Stance restores health to 100%, next skill +10% slashing damage",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Noble Blood Doctrine",
       "name": "Noble Blood Doctrine",
+      "effect": "Taking 100 melee DMG triggers bleed; while bleeding, +15% DMG and +15% movement speed.",
+      "tag": "top-pick",
       "note": "100 melee damage taken triggers bleed; +15% damage/move while bleeding",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "-5% DMG Taken Doctrine",
       "name": "-5% DMG Taken Doctrine",
+      "effect": "-5% DMG taken.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Defence Doctrines",
       "name": "Defence Doctrines",
+      "effect": "Filler.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -88,6 +117,7 @@
     "formation": "F1 (spread) to avoid overkill and maximize damage across targets. {2} F2 (block) in tight chokepoints where enemy heroes can't flank.",
     "tips": "Prepared Stance is not a brace — it takes 15% less damage at max health but doesn't stop cavalry. Aura remains visible even after damage and movement. {2} Always rotate with defensive targets: Knight's Gambit first (no burst to soak), then brace, then Knight's Defense to maintain DPS cycle. When flanking isolated enemies, same opener applies — no initial burst, so Knight's Gambit leads. {2}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [],
     "pressure": null
@@ -103,6 +133,26 @@
     ],
     "notes": "Prepared Stance (stance, not brace) grants max-health bonus and visible aura at spawn; aura persists through damage and movement. {2} Knight's Defense blocks incoming attacks for two hits (~2 seconds), deals damage while blocking, grants CC immunity; follow with Knight's Gambit without delay or risk crowd control. {2} Knight's Gambit deals big damage, forces overextension; always retreat backwards after. {2} Rotate: when heavy-damage-dealers engage, lead with brace into Knight's Defense then Knight's Gambit; when defensive units are isolated, open with Knight's Gambit. {2} Between engagements, stay in Prepared Stance if safe — small healing window before enemy contact. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Herlajis - Zweihanders unit control guide",
+        "url": "https://youtu.be/O6vhT02dCRQ",
+        "stamps": [
+          "00:03 Prepared Stance is a stance, not a brace (15% DR at max HP)",
+          "01:20 aura persists through damage and movement - activate it on spawn",
+          "02:07 vs high-damage melee: brace into Knight's Defense, then Knight's Gambit",
+          "02:31 vs defensive units: open with Knight's Gambit instead",
+          "05:14 why bottom-line veterancy beats top-line for this unit"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -119,8 +169,15 @@
   ],
   "gaps": [
     "Herlajis transcript (Nov 2023, Season 17) predates the 2026-06-25 Chaos patch that reworked Knight's Defence (CC removal) and Prepared Stance (30% DR when fully restored) — video tactics may not reflect current mechanics.",
-    "Fight ratings (source: Amya guide OP 2024-10-07) predate the patch; unit-db flags them stale.",
+    "Fight ratings (source: Amya's guide, 2024-10-07) predate the patch and are flagged stale.",
     "No house-guide or post-patch video-transcript content found to cross-check Amya's updated guidance.",
-    "Skill-2 ability name variant: 'Knight's Gambit' (Amya) vs 'Area's Fury' / 'Ares' Fury' (Herlajis transcript) — unarbitrated."
-  ]
+    "Skill-2 ability name variant: 'Knight's Gambit' (Amya) vs 'Area's Fury' / 'Ares' Fury' (Herlajis transcript) — unarbitrated.",
+    "Herlajis's Prepared Stance damage-reduction figures (20% infantry with bottom vet + Defense doctrine, 35% extended) are pre-patch (Season 17) and likely superseded by the patch's new 30% full-HP figure - not promoted to a numbers chip pending vet reverification."
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Buff/Rework",
+    "summary": "Knight's Defence gains crowd-control removal; \"Prepared Stance\" grants 30% damage reduction when fully restored",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

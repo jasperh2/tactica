@@ -1,0 +1,53 @@
+{
+  "schema": "cb-unit-page-v3/1",
+  "slug": "tercio-arquebusiers",
+  "name": "Tercio Arquebusiers",
+  "headerMeta": "Golden era · Ranged Infantry · cannon · 280 leadership · C-tier (T5)",
+  "date": "2026-06-29",
+  "stats": {
+    "metaTier": "C",
+    "rarity": "T5",
+    "fightRatings": null
+  },
+  "pitch": "Tercio Arquebusiers sit in Amya's C tier with next to nothing else on record - no build, no matchups, no playstyle breakdown anywhere in the house archive. The one surviving note is an old, unconfirmed house claim that a split vet-line has a niche holding early Gate or breach points in Territory Wars.",
+  "doctrines": null,
+  "veterancy": null,
+  "battleRole": {
+    "positioning": "In Territory Wars, split vet-line Tercio has a spot in initial Gate or breach defence. {2}",
+    "formation": null,
+    "tips": null,
+    "pve": null
+  },
+  "numbers": [],
+  "matchups": null,
+  "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "Amya",
+      "date": "Jun 2026",
+      "house": false
+    },
+    {
+      "mark": 2,
+      "author": "Svarthe",
+      "date": "Nov 2023",
+      "house": true
+    }
+  ],
+  "gaps": [
+    "No per-unit Amya guide exists - the only Amya-sourced content is the C-tier, T5 tierlist placement {1}.",
+    "No house card, video transcript, or doctrine/build breakdown exists anywhere for this unit.",
+    "The one house claim on record (Svarthe, Nov 2023) is flagged likely-stale, and its own source note admits 'Tercio' was never independently confirmed as this unit. {2}",
+    "No fight-type ratings recorded for this unit.",
+    "Not on the 2026-06-25 Chaos patch changed-units list, so no current-balance context either way.",
+    "No doctrine, veterancy, matchup, or control-loop content available from any source."
+  ]
+}

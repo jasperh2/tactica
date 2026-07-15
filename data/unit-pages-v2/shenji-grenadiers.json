@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "shenji-grenadiers",
   "name": "Shenji Grenadiers",
   "headerMeta": "Golden era · Ranged infantry · cannon · 315 leadership · Both (Season IX & Tyranny Season)",
@@ -14,83 +14,118 @@
       "flank": 0
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Both (Season IX & Tyranny Season)",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A grenade-delivery unit rather than a shooter — its whole value is one well-timed spell-2 throw into a blobbed enemy, not its rifles. It has no listed counters or answer of its own, so its main risk is simply being caught out of position before that throw lands.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Blunt Damage Doctrine",
       "name": "Epic Blunt Damage Doctrine",
+      "effect": "+90 blunt DMG.",
+      "tag": "mandatory",
       "note": "+90 blunt DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Anti-Heavy-Shield Doctrine",
       "name": "Anti-Heavy-Shield Doctrine",
+      "effect": "+350 DMG vs heavy-shielded units like spearmen and Pavise Crossbowmen. Mandatory per OP.",
+      "tag": "mandatory",
       "note": "+350 DMG vs heavy-shielded units like spearmen and Pavise Crossbowmen",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Extra Grenade Doctrine",
       "name": "Extra Grenade Doctrine",
+      "effect": "Unit-unique: +1 grenade, enough for an additional volley. Mandatory per OP.",
+      "tag": "mandatory",
       "note": "unit-unique — +1 grenade, enough for an additional volley",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": "−16% leadership cost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Mobility",
       "name": "Mobility",
+      "effect": null,
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Tank Doctrines",
       "name": "Tank Doctrines",
+      "effect": "OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Attack Speed",
       "name": "Attack Speed",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Piercing",
       "name": "Piercing",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Blunt Pen",
       "name": "Blunt Pen",
+      "effect": "Don't put per Amya guide.",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -110,8 +145,10 @@
   "battleRole": {
     "positioning": "Keep it safe rather than shooting — firing the rifles directly is near useless, so hold it back and wait for the fight to blob up before committing the grenade. {1}",
     "formation": null,
-    "tips": "Some maps let you throw grenades high up onto a wall to surprise the enemy on the other side. {1} Preferable to run two Shenji together — stacked nade volleys can wipe a blobbed fight outright. {1}"
+    "tips": "Some maps let you throw grenades high up onto a wall to surprise the enemy on the other side. {1} Preferable to run two Shenji together — stacked nade volleys can wipe a blobbed fight outright. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -124,7 +161,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -135,6 +173,11 @@
     ],
     "notes": "The loop is a single input: spell 2 fires the grenade. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -151,9 +194,9 @@
   ],
   "gaps": [
     "No 'Counters' (Loses to / Struggles vs / This unit counters) section in the source guide.",
-    "No dedicated 'Tips & Tricks' section beyond the playstyle notes captured above.",
+    "No dedicated 'Tips & Tricks' section beyond the playstyle notes given above.",
     "The guide's last edit (2026-05-27) pre-dates the 2026-06-25 Chaos patch anchor — doctrine/build guidance may be stale for the current season.",
-    "No StarBurst house card exists for this unit; a real 'Shenji Grenadiers Guide' video (2021-10-29) was searched for but never transcribed — auto-captions were too garbled (ASR word-salad) to use.",
+    "No StarBurst house card exists for this unit; a real 'Shenji Grenadiers Guide' video (2021-10-29) exists, but its auto-captions were too garbled to use.",
     "The KnightStalker damage figures (2,000-2,200 point-blank, a few hundred from the 368 grenades, a little over 400 after the grenades) are spoken readouts of an on-screen combat log from 2022, pre-dating current-season balance — not independently verified against current numbers."
   ]
 }

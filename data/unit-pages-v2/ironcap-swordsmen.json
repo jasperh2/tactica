@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "ironcap-swordsmen",
   "name": "Ironcap Swordsmen",
   "headerMeta": "Chivalric era · Melee Infantry (Sword & Shield) · charge-focused · 100 leadership · T2 Mastery",
@@ -9,67 +9,96 @@
     "rarity": "T2",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A cheap charge-cycling unit that trades sustained melee for devastating charge damage and burst CC potential. Best used hit-and-run against fragile targets; once engaged in open melee against quality units, it gets overwhelmed quickly.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Iron Health Doctrine V",
       "name": "Iron Health Doctrine V",
+      "effect": "Unlocks Ironsides: +175 piercing/slashing/blunt defence for 12s.",
+      "tag": "mandatory",
       "note": "Ironsides: +175 piercing/slashing/blunt defence for 12s",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Charge Doctrine V",
       "name": "Charge Doctrine V",
+      "effect": "+250 charge DMG, +450 charge block break.",
+      "tag": "mandatory",
       "note": "+250 charge DMG, +450 charge block break",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Charge Defence Doctrine",
       "name": "Charge Defence Doctrine",
+      "effect": "-40% DMG taken while charging. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "−40% DMG taken while charging",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Stamina Doctrine V",
       "name": "Stamina Doctrine V",
+      "effect": "-24% charge CD, +1 charge target. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "−24% charge CD, +1 charge target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": "+120 unit DMG, +80 all-type",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Piercing-Defense Doctrine",
       "name": "Piercing-Defense Doctrine",
+      "effect": null,
+      "tag": "filler",
       "note": "pushes ranged defence toward 300s — critical given ~7,600 HP and ~30s base defence {2}",
       "marks": [
         2
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Blunt-Damage Doctrines",
       "name": "Blunt-Damage Doctrines",
+      "effect": "+90 blunt DMG.",
+      "tag": "filler",
       "note": "boost charge damage (unit's charge is blunt-type) {2}",
       "marks": [
         2
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Reduced Ranged-Damage Doctrines",
       "name": "Reduced Ranged-Damage Doctrines",
+      "effect": null,
+      "tag": "filler",
       "note": null,
       "marks": [
         2
@@ -90,8 +119,10 @@
   "battleRole": {
     "positioning": "Bait or position enemies into a charge vector; charge into the back of a unit or into heroes for burst kills {2}. Unit's low base defence (~30s) means archers can tear it apart out-of-position {2}.",
     "formation": null,
-    "tips": "Charge-cycle playstyle: charge, disengage, reset (~12-second cooldown), charge again {2}. Never stay in prolonged open melee against stronger units — this unit's value is almost entirely in the charge itself {2}. Charging down siege-tower chokepoints (funneled single-file) works well; fragile once committed to open combat, especially against Condottieri, Falconet/Gunner fire, or coordinated pushes {2}. Vulnerable to CC after a charge {2}."
+    "tips": "Charge-cycle playstyle: charge, disengage, reset (~12-second cooldown), charge again {2}. Never stay in prolonged open melee against stronger units — this unit's value is almost entirely in the charge itself {2}. Charging down siege-tower chokepoints (funneled single-file) works well; fragile once committed to open combat, especially against Condottieri, Falconet/Gunner fire, or coordinated pushes {2}. Vulnerable to CC after a charge {2}.",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -149,7 +180,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": "Rattan Roundshields play as the weaker sibling - similar HP and base attack, but noticeably less charge damage and not enough slashing pen to threaten anything above low/mid tier. Ironcaps land 1,000+ per hit against Condottieri where Rattans need 15-20 hits, and cut through Halberdiers far more cleanly. {3}"
   },
   "controls": {
     "loop": [
@@ -162,6 +194,25 @@
     ],
     "notes": "Charge → backline hero or unit flank → disengage and pull back → ~12-second cooldown → charge again {2}."
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Evo Loz Gaming - Ironcap Swordsmen 2-star charge guide",
+        "url": "https://www.youtube.com/watch?v=VVgijmKpKYY",
+        "stamps": [
+          "00:00 intro - cheap, charge-focused 2-star pick, solid beginner value",
+          "00:47 veterancy build - charge line + blunt-damage doctrines, trades away defense for burst",
+          "02:03 weak in prolonged melee - the charge is basically the unit's whole value",
+          "03:19 charge-cycle clips - siege chokepoints, mixed vs Iron Reapers, wiped by CC once"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -173,6 +224,12 @@
       "mark": 2,
       "author": "Evo Loz Gaming",
       "date": "Jul 2020",
+      "house": false
+    },
+    {
+      "mark": 3,
+      "author": "Evo Loz Gaming",
+      "date": "Jan 2021",
       "house": false
     }
   ],

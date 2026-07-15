@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "queens-knights",
   "name": "Queens Knights",
   "headerMeta": "Golden era · Buckler infantry · shields · 280 leadership · S-Tier · T5 · Seasonal (Lancelot Knights / Queen's Knights)",
@@ -14,83 +14,127 @@
       "flank": 8
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit, Golden Era",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": [
+      {
+        "season": "S21 (24/10/2024)",
+        "tier": "T5",
+        "marks": [
+          4
+        ]
+      }
+    ]
+  },
   "pitch": "An invincible-dash duelist that wins one-on-one trades and shreds low-count squads through pure timing. The engage kit was reworked in the 2026-06-25 patch (block, block-recovery, and Run 'Em Through invincibility windows all changed), so the timing advice below predates that change and should be treated as unverified until a post-patch source confirms it still holds.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Anti-Infantry Doctrine V",
       "name": "Anti-Infantry Doctrine V",
+      "effect": "+200 DMG vs infantry, +250 block.",
+      "tag": "mandatory",
       "note": "+200 dmg infantry, +90 block",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Iron Damage Doctrine V",
       "name": "Iron Damage Doctrine V",
+      "effect": null,
+      "tag": "mandatory",
       "note": "Ironsides",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Queen's Knight Toughness Doctrine",
       "name": "Queen's Knight Toughness Doctrine",
+      "effect": null,
+      "tag": "filler",
       "note": "−5s CD on Bash & Thrust",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Hero Damage Doctrine V",
       "name": "Hero Damage Doctrine V",
+      "effect": "+115 hero DMG, +110 all-type AP.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Piercing Damage Doctrine",
       "name": "Piercing Damage Doctrine",
+      "effect": "+80 piercing DMG, +120 piercing AP.",
+      "tag": "filler",
       "note": "+90 piercing",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "filler",
       "note": "+8% all-type dmg in sieges",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Queen's Knight Battle Doctrine",
       "name": "Queen's Knight Battle Doctrine",
+      "effect": null,
+      "tag": "avoid",
       "note": "block invuln 2s after Run 'Em Through",
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Damage Reduction Doctrines",
       "name": "Damage Reduction Doctrines",
+      "effect": "Filler.",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -110,8 +154,10 @@
   "battleRole": {
     "positioning": null,
     "formation": null,
-    "tips": "Timing on spell 1 (double-dash, invincible) is everything — no simple rule, learned per matchup; occasionally pressing 2 before 1 can flip the trade entirely. {1} Huge block and defense make it tanky enough to retreat after one dash-forward rather than push deeper into a bad trade. {1} All of this predates the 2026-06-25 rework of Base Block, Block recovery, and Run 'Em Through invincibility/stab-hit count — treat as unverified. {1}"
+    "tips": "Timing on spell 1 (double-dash, invincible) is everything — no simple rule, learned per matchup; occasionally pressing 2 before 1 can flip the trade entirely. {1} Huge block and defense make it tanky enough to retreat after one dash-forward rather than push deeper into a bad trade. {1} All of this predates the 2026-06-25 rework of Base Block, Block recovery, and Run 'Em Through invincibility/stab-hit count — treat as unverified. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -151,7 +197,8 @@
         ]
       }
     ],
-    "pressure": "House investment-priority list ranks it \"safe to doctrine up\" alongside Iron Reapers, Liaos Rangers, Symmachean Stalwarts, Symmachean Paladins, Spartans, Modao — a signal it's worth committing resources to, not a matchup claim. {3}"
+    "pressure": "House investment-priority list ranks it \"safe to doctrine up\" alongside Iron Reapers, Liaos Rangers, Symmachean Stalwarts, Symmachean Paladins, Spartans, Modao — a signal it's worth committing resources to, not a matchup claim. {3}",
+    "siblings": "Might be the same unit as Queen's Paladins under data/aliases.json's mapping, but every source here treats them as different T5 units - the Paladins house card and StarBurst's grind list keep them separate. {5}"
   },
   "controls": {
     "loop": [
@@ -163,6 +210,14 @@
     ],
     "notes": "Spell 1 — dashes forward twice (occasionally three times) dealing big damage; unit is completely invincible during this attack. {1} Spell 2 — small shieldbash, okay-ish damage, good block/counter. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority",
+    "meta-history"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -181,14 +236,32 @@
       "author": "house guide",
       "date": "Jun 2026",
       "house": true
+    },
+    {
+      "mark": 4,
+      "author": "StarBurst",
+      "date": "Oct 2024",
+      "house": true
+    },
+    {
+      "mark": 5,
+      "author": "StarBurst",
+      "date": "Jul 2026",
+      "house": true
     }
   ],
   "gaps": [
-    "No house-card doctrines+mastery build exists — confirmed genuine gap after a full #vet-and-docs scroll-through + server-wide Discord search. A card for 'Queen's Paladins' does exist but is very likely a different unit (StarBurst's own grind-target list names them separately); it is deliberately not used here.",
+    "No house-card doctrines-and-mastery build exists for this unit, confirmed after checking the house build-card channel and a wider Discord search. A card for 'Queen's Paladins' does exist but is very likely a different unit (StarBurst's own grind-target list names them separately), so it's deliberately not used here.",
     "Pre-2026-06 rework advice: the only how-to-use source (Amya) predates the 2026-06-25 patch's core skill rework (Base Block 750→950, Block recovery 27→47, Run 'Em Through invincibility 1s→1.6s but max stab hits 3→2, blocking units no longer trigger weapon-bounce Dazed). Because this is a mechanic rework and not a numeric tweak, the timing advice above may be actively wrong, not merely outdated.",
     "No veterancy guidance beyond Amya's single 'Top Line' recommendation — no second source to compare against.",
     "No positioning or formation guidance from any source.",
     "The Amya guide's fight ratings and hero-pairing note come from a thread shared with Lancelot Knights, not unit-specific to Queens Knights alone.",
     "No control loop beyond the two base abilities — no advanced sequencing or cooldown numbers available."
-  ]
+  ],
+  "patch": {
+    "changed": true,
+    "kind": "Rework",
+    "summary": "Base Block 750→950, Block recovery 27→47; \"Run 'Em Through\" invincibility 1s→1.6s but max stab hits reduced 3→2 (target limit for 2nd hit +1); basic attacks vs blocking units no longer trigger weapon-bounce Dazed",
+    "patch": "Chaos (25/06/2026)"
+  }
 }

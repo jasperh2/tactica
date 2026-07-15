@@ -1,0 +1,11 @@
+{
+  "schema": "cb-unit-page-v3/1",
+  "slug": "kriegsrat-fusiliers",
+  "insufficient": true,
+  "auto": {
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  }
+}

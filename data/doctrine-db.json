@@ -1,0 +1,671 @@
+{
+  "schema": "cb-doctrine-db/1",
+  "doctrines": {
+    "+100 DMG during brace (Blue doc)": {
+      "effect": "Top pick."
+    },
+    "+15% Piercing/Slashing Pen Doctrine": {
+      "effect": "Active when HP above 40%. Top pick."
+    },
+    "+225 Charge DMG Doctrine": {
+      "effect": "Top pick."
+    },
+    "-5% DMG Taken Doctrine": {
+      "effect": "-5% DMG taken."
+    },
+    "-5% DMG taken doctrines": {
+      "effect": "Top pick per Amya guide."
+    },
+    "-DMG Taken doctrines": {
+      "effect": "Filler."
+    },
+    "2x cav DMG reduction doctrines stacked": {
+      "effect": "\"2x cav DMG reduction at the same time, you already good with 1x.\" OP's explicit \"Don't put.\""
+    },
+    "Accuracy Doctrine": {
+      "effect": "+40% shooting accuracy, +80 piercing DMG. Top pick."
+    },
+    "Ammo Doctrine": {
+      "effect": "+35% ammo, +140 piercing AP. OP notes screenshot stat differs from ConqHub's 'New Ammo IV +120 AP'. Top pick."
+    },
+    "Anti-Cavalry Brace Doctrine": {
+      "effect": "-30% DMG taken from cavalry when using Brace-type skills. Mandatory per OP."
+    },
+    "Anti-Cavalry Doctrine": {
+      "effect": "-30% to -35% DMG taken from cavalry while bracing (tier varies by card copy)."
+    },
+    "Anti-Cavalry Doctrine V": {
+      "effect": "-40% DMG taken from cavalry while bracing, +16% DMG vs cavalry while bracing."
+    },
+    "Anti-Heavy-Shield Doctrine": {
+      "effect": "+350 DMG vs heavy-shielded units like spearmen and Pavise Crossbowmen. Mandatory per OP."
+    },
+    "Anti-Infantry Doctrine": {
+      "effect": "+200 DMG vs infantry, +250 block."
+    },
+    "Artemis": {
+      "effect": "Unlocks Double Strings: fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch."
+    },
+    "Awareness Doctrine": {
+      "effect": "-500 cavalry charge DMG, -20% rear attacks."
+    },
+    "Berserk Unique Doctrine": {
+      "effect": "For cooldown reduction. Mandatory."
+    },
+    "Bleeding Brace Doctrine": {
+      "effect": "Bracing inflicts bleeding on enemy cavalry: 16% max HP + 400 DMG. Filler."
+    },
+    "Block Doctrine": {
+      "effect": "+300 block, -90 flat DMG taken (applied after all other reductions)."
+    },
+    "Block only doctrines": {
+      "effect": "OP's explicit \"Don't put.\""
+    },
+    "BloodThirsty": {
+      "effect": "Lifesteal & DMG. Mandatory per Amya."
+    },
+    "Bloodthirsty Doctrine": {
+      "effect": "Lifesteal + 12% DMG."
+    },
+    "Blue Doctrine (defensive slot)": {
+      "effect": "Top pick per Amya guide."
+    },
+    "Blue Lioncrew Doctrine": {
+      "effect": "Priority HP / defensive unique slot. Mandatory per Amya."
+    },
+    "Blunt Pen / Hero DMG doctrines": {
+      "effect": "Don't put per Amya guide."
+    },
+    "Bolt Penetration Doctrine": {
+      "effect": "Huge per Amya: +1 additional target penetration on top of baseline Penetrating Shots. Mandatory per Amya. OP note: \"confirm exact name.\""
+    },
+    "Bowmanship Doctrine V": {
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG."
+    },
+    "Brace Doctrines": {
+      "effect": "Avoid — only affect F1/F2/F3 formation brace, which Orochi never uses."
+    },
+    "Burning Plains Doctrine": {
+      "effect": "Unit-unique, Rare/Blue: reduces Burning Plains cooldown by 4s (Outriders-specific signature skill). Mandatory per Amya."
+    },
+    "Charge CD Doctrine": {
+      "effect": "-24% charge CD, +1 charge target."
+    },
+    "Charge Defence Doctrine": {
+      "effect": "-40% DMG taken while charging. Mandatory per Amya."
+    },
+    "Charge Doctrine V": {
+      "effect": "+250 charge DMG, +450 charge block break."
+    },
+    "Companion Cavalry: Billowing Winds": {
+      "effect": "Unit-unique: +9% movement speed, +10% unit DMG. Mandatory per Amya."
+    },
+    "Companion Cavalry: Conquest": {
+      "effect": "Unit-unique: global +100 piercing/slashing/blunt DMG on press 3, +Sworn Guard buff 18s. Mandatory per Amya."
+    },
+    "DMG Reduction Doctrines": {
+      "effect": null
+    },
+    "DMG Taken Reduction": {
+      "effect": "Filler."
+    },
+    "DMG doctrines": {
+      "effect": "Filler."
+    },
+    "DMG reduction & tank doctrines": {
+      "effect": "OP's explicit \"Don't put\" -- \"not worth it.\""
+    },
+    "Damage Reduction Doctrine": {
+      "effect": "Filler."
+    },
+    "Damage Reduction Doctrines": {
+      "effect": "Filler."
+    },
+    "Damage-reduction doctrine": {
+      "effect": "Another -5% DMG taken doctrine, alt for LDS or fills the free slot. Filler."
+    },
+    "Defence Doc V": {
+      "effect": "-6% DMG taken & +80 all def stats. Top pick."
+    },
+    "Defence Doctrine": {
+      "effect": "+80 def, -5% dmg taken. Filler."
+    },
+    "Defence Doctrine V": {
+      "effect": "+80 all defences, -5% DMG taken."
+    },
+    "Defence Doctrines": {
+      "effect": "Filler."
+    },
+    "Devastation Doctrine": {
+      "effect": "Increases DMG dealt to units by 120, increases all types of DMG by 80."
+    },
+    "Devastation Doctrine / -5% DMG Taken": {
+      "effect": "Filler."
+    },
+    "Double Fire Doctrine": {
+      "effect": "Unit-unique: unlocks Double Fire, can't combine with Focus Fire, 45s CD, +12% rate of fire, +1 shot to spell (6->7 arrows). Mandatory per Amya. OP note: \"confirm exact name.\""
+    },
+    "Double Fire Doctrine V": {
+      "effect": "Alt for Epic Crossbow V -- older Double Fire variant, fires 2 bolts for 8s, 45s CD. Filler."
+    },
+    "Epic Archery Doctrine IV": {
+      "effect": "+100 piercing DMG. Top pick."
+    },
+    "Epic Assault Doctrine": {
+      "effect": "Filler (alt)."
+    },
+    "Epic Bleed after hit Doctrines": {
+      "effect": "Filler."
+    },
+    "Epic Bloodthirsty Doctrine": {
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%."
+    },
+    "Epic Blunt Damage Doctrine": {
+      "effect": "+90 blunt DMG."
+    },
+    "Epic Charge CD Doctrine": {
+      "effect": "-14s charge CD, +100 piercing DMG."
+    },
+    "Epic Charge Defence Doctrine": {
+      "effect": "-50% DMG taken while charging, -6s charge CD."
+    },
+    "Epic Combat Doctrine": {
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity."
+    },
+    "Epic Crossbow Doctrine III": {
+      "effect": "+23% rate of fire. Mandatory per Amya."
+    },
+    "Epic Crossbow Doctrine V": {
+      "effect": "Unlocks Double Shot, fires 2 bolts per shot for 8s, can't combine with Focus Fire, 60s CD. Mandatory per Amya."
+    },
+    "Epic Crossbow II": {
+      "effect": "+50 piercing DMG, +200 piercing pen; alt if no Ammo doctrine or no Unit DMG V. Top pick."
+    },
+    "Epic Leadership Doctrine": {
+      "effect": "-16% leadership cost."
+    },
+    "Epic Piercing Damage Doctrine": {
+      "effect": "+90 piercing dmg. Top pick."
+    },
+    "Epic Polearm Doctrine": {
+      "effect": "+80 piercing DMG, +120 piercing AP."
+    },
+    "Epic Polearm Doctrine III": {
+      "effect": "Allows the unit to use the Pike Assault order. Mandatory per Amya."
+    },
+    "Epic Spear Doctrine (+400 block)": {
+      "effect": "Top pick."
+    },
+    "Epic Spear Doctrine I": {
+      "effect": "+400 block. Top pick."
+    },
+    "Epic Spear Doctrine II (+250 block + 100% regen)": {
+      "effect": "OP's explicit \"Don't put\" — \"block regen is near useless and better alternative for block.\""
+    },
+    "Epic Spear Doctrine VI": {
+      "effect": "Unlocks CCi (crowd-control immunity) / Stand Fast."
+    },
+    "Extra Grenade Doctrine": {
+      "effect": "Unit-unique: +1 grenade, enough for an additional volley. Mandatory per OP."
+    },
+    "Flatland Doctrine V": {
+      "effect": "+15% movement speed."
+    },
+    "Generic DMG doctrines": {
+      "effect": "Alt if you don't have the Sprint extra-attack + Sword Cav Speed combo. Filler."
+    },
+    "Generic Piercing Damage Doctrine": {
+      "effect": "Alt for Accuracy/Ammo. Filler."
+    },
+    "Gunsight Doctrine V": {
+      "effect": "+40% shooting accuracy, +80 piercing DMG. OP notes \"likely same doctrine as 'Accuracy Doctrine' on Demesne Arbalists.\" Mandatory per Amya."
+    },
+    "HP Doctrines": {
+      "effect": "Alt for Charge Defence: more fire resistance but worse trade vs Stalwart / Shieldmaiden charges. Top pick."
+    },
+    "Halberd Elite Unique Epic Doctrine": {
+      "effect": "+300 block. Mandatory per OP."
+    },
+    "Healing Punisher Doctrine": {
+      "effect": "+20% DMG to targets currently regenerating health."
+    },
+    "Health & All Defences Doctrine": {
+      "effect": "+440 HP, +40 all defences. Filler."
+    },
+    "Health & Ammo Doctrine": {
+      "effect": "+300 HP, +15% ammo, alt slot 5. Filler. OP note: \"confirm exact name.\""
+    },
+    "Health & Blunt Defence Doctrine IV": {
+      "effect": null
+    },
+    "Health & Defence Doctrine IV": {
+      "effect": "+440 HP, +40 all defences. Top pick per Amya guide."
+    },
+    "Health & Piercing Defence Doctrine": {
+      "effect": "+440 HP, +125 piercing defence. Filler."
+    },
+    "Health & Piercing Defence Doctrine V": {
+      "effect": "For the HP. Filler."
+    },
+    "Health & Resistance Doctrine": {
+      "effect": "+300 HP, -5% DMG taken."
+    },
+    "Hero DMG": {
+      "effect": "Don't put, per OP."
+    },
+    "Hero DMG Doctrine V": {
+      "effect": "\"Pen will make a huge diff when hitting high-tier units.\" Top pick."
+    },
+    "Hero Damage Doctrine V": {
+      "effect": "+115 hero DMG, +110 all-type AP."
+    },
+    "Hero Damage V": {
+      "effect": "For PEN mostly. Top pick."
+    },
+    "Imperial Pike Guards Attack Doctrine": {
+      "effect": "-7s Advance CD. Top pick."
+    },
+    "Iron Damage Doctrine V": {
+      "effect": null
+    },
+    "Iron Health Doctrine V": {
+      "effect": "Unlocks Ironsides: +175 piercing/slashing/blunt defence for 12s."
+    },
+    "Javelin Block Break Doctrine": {
+      "effect": "+300 javelin block break, +100 piercing DMG. Mandatory per Amya."
+    },
+    "Javelin Damage Doctrine": {
+      "effect": "+250 javelin DMG, +30 ammo."
+    },
+    "Javelin Doctrine (Block Break)": {
+      "effect": "+300 javelin block break, +100 piercing dmg. Top pick."
+    },
+    "Javelin Doctrine (Immobilize)": {
+      "effect": "Javelins render enemies immobile for 1.5s. Mandatory per Amya."
+    },
+    "Javelin Immobilize Doctrine": {
+      "effect": "Rare/Blue: javelins render enemies immobile for 1.5s, same doctrine as on Imperial Javelineers. Mandatory per Amya."
+    },
+    "Knight's Resolve": {
+      "effect": "Increases Movement Speed by 20% while active."
+    },
+    "Lancastrian Billmen Unique Doctrine 1": {
+      "effect": "Mandatory."
+    },
+    "Lancastrian Billmen Unique Doctrine 2": {
+      "effect": "Mandatory."
+    },
+    "Lancer's Last Stand": {
+      "effect": "+40% DMG when unit headcount is below 60%."
+    },
+    "Leadership Doctrine": {
+      "effect": "Filler."
+    },
+    "Liao's Rangers Unique Doctrine": {
+      "effect": "-3s cooldown on press 2. Mandatory per Amya guide."
+    },
+    "Linebreaker Doctrine V": {
+      "effect": "Every 3 attacks: block-break boost vs enemy units, 2s."
+    },
+    "Lionroar Crew - Blood of Iron": {
+      "effect": "+500 cannon endurance, alt for the unique slot. Filler."
+    },
+    "Lionroar Crew - Veteran": {
+      "effect": "Unit-unique: -2s cannon deploy time. Mandatory per Amya."
+    },
+    "Mobility Doctrine": {
+      "effect": "Infantry-focused alt. Filler."
+    },
+    "Mobility Doctrine V": {
+      "effect": "+7% movement speed, unlocks Sprint: +15% movement speed for 12s."
+    },
+    "Mobility doctrine": {
+      "effect": "Filler."
+    },
+    "Movement Speed After Hit": {
+      "effect": "Filler per Amya guide; speed increases DPS because 20-30% of fight time is spent walking to the next auto-attack target."
+    },
+    "Movement Speed after hit Doctrine": {
+      "effect": "Filler."
+    },
+    "Movement speed after hit": {
+      "effect": "OP's explicit \"Don't put.\""
+    },
+    "New Ammo Doctrine IV": {
+      "effect": "+35% ammo, +120 piercing AP. Mandatory per Amya."
+    },
+    "Noble Blood Doctrine": {
+      "effect": "Taking 100 melee DMG triggers bleed; while bleeding, +15% DMG and +15% movement speed."
+    },
+    "Noble Blood Doctrine (Melee)": {
+      "effect": "Top pick."
+    },
+    "Noble Blood Doctrine I": {
+      "effect": null
+    },
+    "Older Ammunition Doctrine": {
+      "effect": "Preferred for TW. Filler."
+    },
+    "Order of the Dragon Unique Doctrine": {
+      "effect": "+15% movement speed during Emperor's Expedition. Mandatory per Amya."
+    },
+    "Other Halberd Elite Epic Unique": {
+      "effect": "Filler."
+    },
+    "Other Movement Speed Doctrine": {
+      "effect": "For a full movement-speed build (replaces the piercing/slashing pen doctrine per OP). Filler."
+    },
+    "Other movement speed doctrines": {
+      "effect": "Filler per Amya guide."
+    },
+    "Paradox Doctrine": {
+      "effect": "3/6/9. Mandatory per Amya."
+    },
+    "Paradox Doctrine (3/6/9)": {
+      "effect": "Mandatory per Amya."
+    },
+    "Piercing DMG": {
+      "effect": "Filler."
+    },
+    "Piercing DMG doctrines": {
+      "effect": "Filler."
+    },
+    "Piercing Damage Doctrine": {
+      "effect": "+80 piercing DMG, +120 piercing AP."
+    },
+    "Piercing Def": {
+      "effect": "Filler per Amya guide."
+    },
+    "Piercing Defence Doctrine": {
+      "effect": "Filler."
+    },
+    "Piercing Defence Doctrine V": {
+      "effect": "Filler."
+    },
+    "Pike Assault Doctrine": {
+      "effect": "Allows the unit to use the Pike Assault order; flat charge damage. Mandatory per Amya guide."
+    },
+    "Poison Doctrine V": {
+      "effect": "+140 all armour penetration, +60 poison DMG per stack, stacks up to 2x."
+    },
+    "Polearm Doctrine": {
+      "effect": "+60 piercing dmg, +180 piercing AP. Top pick."
+    },
+    "Precision Doctrine V": {
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire."
+    },
+    "Projectile Doctrine V": {
+      "effect": "+60% ammo, +50 piercing AP."
+    },
+    "Purple Slashing Damage Doctrine": {
+      "effect": "Top pick per Amya guide."
+    },
+    "Random HP doctrine": {
+      "effect": "Fallback if no ammo doc, free slot anyway. Filler."
+    },
+    "Rare Polearm Doctrine": {
+      "effect": "+100 dmg while bracing, affects Advance. Top pick."
+    },
+    "Scorching Doctrine V": {
+      "effect": "+50 burning DPS. Top pick per Amya guide."
+    },
+    "Siege Fighter Doctrine": {
+      "effect": "+8% all-type DMG in sieges."
+    },
+    "Siphonarioi Flamethrower Doctrine": {
+      "effect": "Unit-unique: +200 blunt DMG when hellfire strikes target. Mandatory per OP."
+    },
+    "Siphonarioi Hellfire Doctrine": {
+      "effect": "Unit-unique: +2s flame duration. Mandatory per OP."
+    },
+    "Slashing & Blunt Defence": {
+      "effect": "Don't put, per Amya guide."
+    },
+    "Slashing DMG or Hero DMG": {
+      "effect": "OP's explicit \"Don't put.\""
+    },
+    "Spartan Chosen: Mountain Crusher": {
+      "effect": "Spartan Vengeance +15% block-break & dmg. Filler."
+    },
+    "Stalwarts Brace Doctrine (brace dmg)": {
+      "effect": "Top pick."
+    },
+    "Stamina Doctrine V": {
+      "effect": "-24% charge CD, +1 charge target. Mandatory per Amya."
+    },
+    "Steadfast Doctrine": {
+      "effect": "+130 all defences, -6% DMG taken."
+    },
+    "Sunward Phalanx: Glory": {
+      "effect": "-20% DMG taken. Filler."
+    },
+    "Sunward Phalanx: Overwhelm": {
+      "effect": "Totem doctrine. Top pick."
+    },
+    "Sword Cav Sprint Extra-Attack Doctrine": {
+      "effect": "Sword cav archetype-shared: while Sprint is active, extra attack deals double DMG, can't trigger when using active. Mandatory per Amya."
+    },
+    "Sword Cavalry Speed Doctrine": {
+      "effect": "+30% movement speed, +90 slashing DMG, +60 slashing AP. Mandatory per Amya."
+    },
+    "Tank Doctrines": {
+      "effect": "OP's explicit \"Don't put.\""
+    },
+    "Tank doctrines": {
+      "effect": null
+    },
+    "Tank doctrines, Attack speed, piercing, blunt pen": {
+      "effect": "OP's explicit \"Don't put.\""
+    },
+    "Tankiness doctrine": {
+      "effect": "Filler per Amya guide; alt for Devastation, simpler 1-2-3 combo."
+    },
+    "Toughness Doctrine": {
+      "effect": "-33% DMG taken on first hit, scaling down over 8 hits until it expires."
+    },
+    "Unit Damage Doctrine V": {
+      "effect": "+120 unit DMG, +80 all-type DMG."
+    },
+    "Unit-unique doctrine": {
+      "effect": "+15% Range and DMG. Mandatory per OP."
+    },
+    "Unit-unique doctrines": {
+      "effect": "Filler."
+    },
+    "Unshakable Ward Doctrine": {
+      "effect": "Immune to daze & knock for 7s + immune to fire/bleed dmg. Top pick."
+    },
+    "Victory Rush Doctrine": {
+      "effect": "Mandatory per Amya (no further effect text given in OP)."
+    },
+    "Whistling Arrow Doctrine V": {
+      "effect": "Every 3 hits inflicts bleeding for 12% of target's current HP; can trigger in concert with allied units at weak points."
+    },
+    "Wuwei Unique Doctrine": {
+      "effect": "Brutal Sweep restores 10% max HP. Mandatory per Amya."
+    },
+    "X": {
+      "effect": "OP's explicit \"Don't put\" — literal X placeholder in the source, not filled in by Amya."
+    },
+    "Yanyuedao Blue Slashing Doctrine": {
+      "effect": "Mandatory per Amya. OP note: \"confirm exact name.\""
+    },
+    "Yanyuedao CCi Doctrine": {
+      "effect": "Unit-unique control immunity, alt for Leadership. Filler."
+    },
+    "Yanyuedao Resistance Doctrine": {
+      "effect": "-15% DMG taken. Top pick."
+    },
+    "Yorkist Household Knights: Oathbound": {
+      "effect": "Heals while 2+ models are on ground. Mandatory per Amya guide."
+    },
+    "Yorkist Household Knights: Sunmirage": {
+      "effect": "Knight's Resolve: +20% movement speed while active. Top pick per Amya guide (matches house-card doctrine 2)."
+    },
+    "Zealot unique doctrine (+300 block)": {
+      "effect": "Mandatory per Amya."
+    },
+    "Zweihander Sword Doctrine": {
+      "effect": "After Prepared Stance restores health to 100%, next skill +10% slashing damage. Top pick."
+    },
+    "Zweihanders Unique CD Doctrine": {
+      "effect": "-4s Special CD. Mandatory."
+    },
+    "Zykalian Supply Doctrine": {
+      "effect": "Unit-unique: +20% ammo (matches house-card doctrine 1). Filler per Amya guide."
+    },
+    "[unnamed:berserkers:6]": {
+      "effect": "+All Def & +HP. Top pick."
+    },
+    "[unnamed:berserkers:7]": {
+      "effect": "Slashing DMG doctrine. Filler."
+    },
+    "[unnamed:claymores:4]": {
+      "effect": "Unique Doctrine for 5% DMG. Top pick."
+    },
+    "[unnamed:iron-reapers:2]": {
+      "effect": "In basic attack, every 6 seconds, you can trigger a heavy attack with high [icon] and [icon] effects. This attack applies [icon] to the units, reducing their [illegible — icon-embedded gap in source card image]."
+    },
+    "[unnamed:yorkist-household-knights:3]": {
+      "effect": "Increases damage dealt to units by 105 points. Increases all types of damage by 60 points."
+    },
+    "[unnamed:zykalian-militia:2]": {
+      "effect": "Increases damage dealt to units by 95. If a Hellfire unit equips this Doctrine, the effect changes to: Increases damage vs units by 10%."
+    },
+    "[unnamed:zykalian-militia:5]": {
+      "effect": "Unlocks Sprint. Increases movement speed by 15% for 8 seconds."
+    },
+    "generic damage doctrine (in place of Poison Doctrine V)": {
+      "effect": "Don't put — Amya guide verbatim: \"Don't put DMG but Poison V.\""
+    },
+    "Anti-cav doctrines, bleed on hit": {
+      "effect": null
+    },
+    "Attack Speed": {
+      "effect": null
+    },
+    "Block-Increase Doctrine": {
+      "effect": null
+    },
+    "Breakthrough": {
+      "effect": null
+    },
+    "DMG reduction doctrines": {
+      "effect": null
+    },
+    "Defence boost": {
+      "effect": null
+    },
+    "Epic Assassination Doctrine": {
+      "effect": null
+    },
+    "Epic Piercing Defence Doctrine": {
+      "effect": null
+    },
+    "Epic Polearm Doctrine (Pike Charge)": {
+      "effect": "Pike Charge doctrine: unlocks a charge order that can one-shot diving heroes; allows a 180 degree turn to re-brace if flanked."
+    },
+    "Epic Slashing Damage Doctrine": {
+      "effect": null
+    },
+    "Fiery Blast doctrine slot": {
+      "effect": null
+    },
+    "Flat DMG-reduction doctrines (e.g. the −5% one)": {
+      "effect": null
+    },
+    "Flat defence doctrines": {
+      "effect": null
+    },
+    "Health Doctrine": {
+      "effect": null
+    },
+    "Hero DMG / Piercing DMG / Pen": {
+      "effect": null
+    },
+    "Hero DMG/Piercing DMG/Penetration": {
+      "effect": null
+    },
+    "Iron Sights": {
+      "effect": null
+    },
+    "Javelin Doctrine": {
+      "effect": null
+    },
+    "Lancastrian Billmen-Full Bloom": {
+      "effect": null
+    },
+    "Lancastrian Billmen-Rotroot": {
+      "effect": null
+    },
+    "Liao's Rangers Melee Doctrine": {
+      "effect": null
+    },
+    "Mobility": {
+      "effect": null
+    },
+    "Mobility Doctrines": {
+      "effect": null
+    },
+    "Movement Speed Doctrines": {
+      "effect": null
+    },
+    "New Ammo Doctrine V": {
+      "effect": null
+    },
+    "Pierce Defense": {
+      "effect": null
+    },
+    "Piercing": {
+      "effect": null
+    },
+    "Piercing Defence": {
+      "effect": null
+    },
+    "Piercing-Defense Doctrine": {
+      "effect": null
+    },
+    "Pike Defence Doctrine": {
+      "effect": null
+    },
+    "Pole-Arm Breakthrough Doctrine": {
+      "effect": null
+    },
+    "Queen's Knight Battle Doctrine": {
+      "effect": null
+    },
+    "Queen's Knight Toughness Doctrine": {
+      "effect": null
+    },
+    "Range-Damage Mitigation Doctrine": {
+      "effect": null
+    },
+    "Reduced Ranged-Damage Doctrines": {
+      "effect": null
+    },
+    "Speed Doctrine": {
+      "effect": null
+    },
+    "Stun / Static Doctrines": {
+      "effect": null
+    },
+    "Stun-on-brace doctrine": {
+      "effect": null
+    },
+    "Their 2 Unique Doctrines": {
+      "effect": null
+    },
+    "Their Unique Doctrine": {
+      "effect": null
+    },
+    "Unique Doctrine for Claymores": {
+      "effect": null
+    },
+    "Unspecified anti-unit doctrines": {
+      "effect": null
+    },
+    "[unspecified]": {
+      "effect": null
+    }
+  }
+}

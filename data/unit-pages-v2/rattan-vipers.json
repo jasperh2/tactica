@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "rattan-vipers",
   "name": "Rattan Vipers",
   "headerMeta": "Silver era · Ranged infantry · special · 155 leadership · Honor Tree",
@@ -9,51 +9,80 @@
     "rarity": "T3",
     "fightRatings": null
   },
+  "identity": {
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honor Tree unit.",
+      "unlock": [
+        "Routes through Rattan Marksmen to reach Vipers on the tech tree."
+      ],
+      "marks": [
+        1,
+        2
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "Rattan Vipers are a poison-stacking support archer that wins by neutering enemy damage output rather than by killing directly. Keep it shooting instead of meleeing — especially against large shields — and feed it a rate-of-fire doctrine for the extra Poison Barrage volley, since ammo consumption is the main thing that shuts it down.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Projectile Doctrine V",
       "name": "Projectile Doctrine V",
+      "effect": "+60% ammo, +50 piercing AP.",
+      "tag": "mandatory",
       "note": "+60% ammo, +50 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Poisons Doctrine V",
       "name": "Poisons Doctrine V",
+      "effect": "+140 all armour penetration, +60 poison DMG per stack, stacks up to 2x.",
+      "tag": "top-pick",
       "note": "+140 all AP, +60 poison DMG, stacks up to 2x — most of the unit's strength comes from the Poison Barrage passive, rarely worth stacking on one target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Archery Doctrine IV",
       "name": "Epic Archery Doctrine IV",
+      "effect": "+100 piercing DMG. Top pick.",
+      "tag": "top-pick",
       "note": "+100 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Precision Doctrine V",
       "name": "Precision Doctrine V",
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire.",
+      "tag": "top-pick",
       "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Bowmanship Doctrine V",
       "name": "Bowmanship Doctrine V",
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG.",
+      "tag": "top-pick",
       "note": "Arrow Rain +75% base piercing per hit, +150 piercing DMG",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -83,8 +112,10 @@
   "battleRole": {
     "positioning": "Use ordinary circle targeting (ability slot 1) to keep the unit shooting instead of dropping bows for melee when enemies close — explicitly recommended against large-shield units so the archers don't waste bow-guard uptime. {2}",
     "formation": null,
-    "tips": "Ammo consumption is the unit's known weak point; a Sprint-type doctrine has been suggested as a way to manage it. {2}"
+    "tips": "Ammo consumption is the unit's known weak point; a Sprint-type doctrine has been suggested as a way to manage it. {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -95,15 +126,30 @@
         "marks": [
           3
         ]
+      },
+      {
+        "name": "Musket",
+        "rel": "hero-threat",
+        "why": "secondary double-bomb target behind Zykalian Militia when the enemy leaves it exposed - situational, not the main priority",
+        "house": false,
+        "marks": [
+          4
+        ]
       }
     ],
-    "pressure": "You pressure: large shield/spear lines and cavalry (attrition without landing meaningful damage once stacked, cavalry survivable only behind cover), Iron Reapers and Claymores (lose most damage output mid-charge once poison stacks apply), Shenji Grenadiers and Glaive-wielding heroes (\"completely useless\" against a properly stacked engagement) — per a 2022 source flagged for a current-patch sanity check. {2}"
+    "pressure": "You pressure: large shield/spear lines and cavalry (attrition without landing meaningful damage once stacked, cavalry survivable only behind cover), Iron Reapers and Claymores (lose most damage output mid-charge once poison stacks apply), Shenji Grenadiers and Glaive-wielding heroes (\"completely useless\" against a properly stacked engagement) — per a 2022 source flagged for a current-patch sanity check. {2}",
+    "siblings": "If your warband's only got one Poison V doctrine, give it to Rattan Roundshields or Rattan Pikemen first - Vipers get less value out of it than they do. {1}"
   },
   "controls": {
     "loop": [],
     "loopMarks": [],
     "notes": "Poison Barrage (spell 2) fires 3 volleys by default; Vet ROF plus a rate-of-fire doctrine (e.g. Precision V's +9%) adds a 4th, each volley applying the Poison Spread passive. {1} Poison stacks up to 5 times, cutting a fully-stacked target's damage output by roughly 71% on average per the source's own testing. {2} No input-loop press-sequence is documented for this unit — only the circle-targeting mode setting covered under battle role."
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -122,13 +168,20 @@
       "author": "house guide (Svarthe)",
       "date": "Nov 2023",
       "house": true
+    },
+    {
+      "mark": 4,
+      "author": "Amya",
+      "date": "Apr 2026",
+      "house": false
     }
   ],
   "gaps": [
-    "No Strength-by-fight-type ratings exist for this unit in the Amya guide or unit-db (fightRatings null) — recorded as a gap, not fabricated.",
+    "No strength-by-fight-type ratings exist for this unit in the Amya guide or elsewhere - recorded as a real gap, not fabricated.",
     "Amya's OP gives no Counters section and no Hero-pairing for this unit — both explicit source gaps.",
-    "A 2022 video source gives a different doctrine build (Accuracy/Arrow Rain mandatory, Breakthrough/Epic Archery filling remaining slots, a Sprint-type suggestion) than the current Amya/unit-db list and flags itself as pre-patch — left out of the doctrines list rather than merged, since the two builds aren't cleanly reconcilable.",
+    "A 2022 video source gives a different doctrine build (Accuracy/Arrow Rain mandatory, Breakthrough/Epic Archery filling remaining slots, a Sprint-type suggestion) than the current build listed above, and flags itself as pre-patch - left out of the doctrines list rather than merged, since the two builds aren't cleanly reconcilable.",
     "No StarBurst house card exists for Rattan Vipers (confirmed absence across both reviewed Discord card libraries) — would outrank Amya's build if one were ever found.",
-    "A second Rattan Vipers video (superkitowiec, 2021) exists but its auto-captions were too garbled to transcribe — logged as uncaptured, not fabricated."
+    "A second Rattan Vipers video (superkitowiec, 2021) exists, but its auto-captions were too garbled to use.",
+    "Amya's guide was last edited 2026-06-13, about 12 days before the 2026-06-25 Chaos patch anchor - flagged in-source for revalidation, though this unit isn't on the Chaos changed-units shortlist."
   ]
 }

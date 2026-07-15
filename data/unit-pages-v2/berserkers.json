@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "berserkers",
   "name": "Berserkers",
   "headerMeta": "Heroic era · Melee infantry · special · 245 leadership · Seasonal (S7: Wolves of Ragnarok)",
@@ -14,75 +14,108 @@
       "flank": 9
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Wolves of Ragnarok (Season VII)",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A mobile flanking unit with incredible damage output and sustain that can single-handedly swing fights through smart positioning and combo execution. Loses to pikes, cavalry, and big burst units, so save it for flanks and hero-fight swings rather than a frontal push.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Epic Combat Doctrine",
       "name": "Epic Combat Doctrine",
+      "effect": "After every 3 attacks: next attack's DMG +11%. Every 6 attacks: restores 15% max HP. Every 9 attacks: 2.5s CC immunity.",
+      "tag": "mandatory",
       "note": "3/6/9-hit damage boost",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Linebreaker Doctrine V",
       "name": "Linebreaker Doctrine V",
+      "effect": "Every 3 attacks: block-break boost vs enemy units, 2s.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Berserker's Doctrine",
       "name": "Berserker's Doctrine",
+      "effect": "For cooldown reduction. Mandatory.",
+      "tag": "mandatory",
       "note": "20% cooldown reduction",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Defence boost",
       "name": "Defence boost",
+      "effect": null,
+      "tag": "top-pick",
       "note": "−5% dmg taken",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Defence boost",
       "name": "Defence boost",
+      "effect": null,
+      "tag": "top-pick",
       "note": "+All Def & +HP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Slashing Damage Doctrine",
       "name": "Epic Slashing Damage Doctrine",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": null,
       "tag": "filler",
-      "name": "Piercing Defence Doctrine",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Piercing Defence Doctrine",
+      "name": "Piercing Defence Doctrine",
+      "effect": "Filler.",
+      "tag": "filler",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Movement Speed Doctrines",
       "name": "Movement Speed Doctrines",
+      "effect": null,
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -111,8 +144,10 @@
   "battleRole": {
     "positioning": "Won't do well face to face — use as a flanking elite strike-force or special-ops unit. High mobility and ranged resistance let it capture uncontested points or rapidly reinforce a hero fight. Watch the map; pull Berserkers to swing a losing fight decisively. {2}",
     "formation": null,
-    "tips": "Control Frenzy timing carefully — unit loses direct control during activation and may attack the nearest target instead of your chosen one. {2} The 3.08s cooldown on Berserker Assault (skill 2) drops to 2s with the unique doctrine's 20% reduction. {1} Hiding Berserkers before a surprise charge (behind a corner, under stairs, inside a shield wall) lets enemies hesitate to commit. {2} Check for pikes and cavalry first — those are the hard counters; if absent, charge confidently. {2}"
+    "tips": "Control Frenzy timing carefully — unit loses direct control during activation and may attack the nearest target instead of your chosen one. {2} The 3.08s cooldown on Berserker Assault (skill 2) drops to 2s with the unique doctrine's 20% reduction. {1} Hiding Berserkers before a surprise charge (behind a corner, under stairs, inside a shield wall) lets enemies hesitate to commit. {2} Check for pikes and cavalry first — those are the hard counters; if absent, charge confidently. {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -171,7 +206,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: no specific units named — a great flank unit that provides lots of DPS in a fight."
+    "pressure": "You pressure: no specific units named — a great flank unit that provides lots of DPS in a fight.",
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -187,6 +223,11 @@
     ],
     "notes": "Combo: press 2 (Battle Madness) before engaging, instantly press 1 to cancel it, press 2 when reaching target, spam press 3 (Rage) so you rage with max DMG-reduction passive, then keep pressing 2 once and 3 while fighting. {1} Fast-combo variant: 2 in void before engaging, then 2-1-2-3 to activate Frenzy at max stacks. {1} Abilities: Odin's Charge (charges in, knocks enemies down, generates rage), Berserker Assault (AoE, strong after a charge into a group or knocking a hero for quick execution), Frenzy (signature — heals ~4,500 HP on bot line / ~6,500 on top line, grants +50% damage dealt but takes +50% damage). {2}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -222,6 +263,6 @@
   "gaps": [
     "Amya's doctrine/build guidance (May 2026) predates the Chaos patch (Jun 2026) and has no post-patch update — current season viability unconfirmed.",
     "Numeric stats from the 2021 crazymetalord video (HP, armor, damage, Frenzy heal) are 5+ years old — recommend vet sanity check against current tooltips.",
-    "No house-specific build data (card, Q&A, playbook) was captured for Berserkers — all guidance is public-academy-source."
+    "No house-specific build data (card, Q&A, playbook) exists for Berserkers - all guidance here is from public sources."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "azaps",
   "name": "Azaps",
   "headerMeta": "Heroic era · Melee Infantry · shields · 225 leadership · Seasonal (Blood of the Empire S3) & Honor Tree",
@@ -14,59 +14,93 @@
       "flank": 7
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "seasonal",
+      "text": "Seasonal Unit & Honor Tree - Blood of the Empire Season 3 & Heroic Era",
+      "unlock": [
+        "Normal unit-challenge tree: 3-day contract -> experience boost -> permanent unlock",
+        "Unlock doctrine reduces 'on watch' (counter-stance) cooldown by ~4s"
+      ],
+      "marks": [
+        1,
+        2
+      ]
+    }
+  },
   "pitch": "A mobile shielded melee that trades some defense for speed, excelling as a flanker and duelist against isolated targets. It struggles hard against high-defense units, block-equipped troops, and ranged pressure — never lead with it into pikes or high-armor walls.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Iron Damage Doctrine V",
       "name": "Iron Damage Doctrine V",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": null,
       "tag": "mandatory",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Anti-Infantry Doctrine V",
       "name": "Anti-Infantry Doctrine V",
+      "effect": "+200 DMG vs infantry, +250 block.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": "+120 unit DMG, +80 all-type DMG.",
       "tag": "top-pick",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Defence Doctrine V",
       "name": "Defence Doctrine V",
-      "note": null,
-      "marks": [
-        1
-      ]
-    },
-    {
+      "effect": "+80 all defences, -5% DMG taken.",
       "tag": "filler",
-      "name": "Epic Piercing Defence Doctrine",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "avoid",
+      "ref": "Epic Piercing Defence Doctrine",
+      "name": "Epic Piercing Defence Doctrine",
+      "effect": null,
+      "tag": "filler",
+      "note": null,
+      "marks": [
+        1
+      ]
+    },
+    {
+      "ref": "Tank Doctrines",
       "name": "Tank Doctrines",
+      "effect": "OP's explicit \"Don't put.\"",
+      "tag": "avoid",
       "note": null,
       "marks": [
         1
@@ -87,8 +121,18 @@
   "battleRole": {
     "positioning": "Mobile flanker — send it around to catch isolated units or soak up burst before your main line engages. {1} Pair with a tankier unit in early game to soak initial contact. {2}",
     "formation": null,
-    "tips": "Slashing-focused: slashing penetration/damage doctrines vastly outperform blunt. {2} Squishy without veterancy — full top tree is essential for survival at T4/T5 tier. {2} Iron Reapers is a tough matchup at high investment; comfortable 1v1 against Spear Sergeants / Imperial Spears once Counter Strike upgrades are complete. {2}"
+    "tips": "Slashing-focused: slashing penetration/damage doctrines vastly outperform blunt. {2} Squishy without veterancy — full top tree is essential for survival at T4/T5 tier. {2} Iron Reapers is a tough matchup at high investment; comfortable 1v1 against Spear Sergeants / Imperial Spears once Counter Strike upgrades are complete. {2}",
+    "pve": null
   },
+  "numbers": [
+    {
+      "label": "Base HP without veterancy",
+      "value": "~6,500, 2020 creator recall - unverified, likely predates the 2025 rework",
+      "marks": [
+        2
+      ]
+    }
+  ],
   "matchups": {
     "cards": [
       {
@@ -129,7 +173,8 @@
         ]
       }
     ],
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -144,6 +189,24 @@
     ],
     "notes": "X-move in → press 2 (damage ability) and Ironside together when the first line will take damage. {1} Let skill 2 run out (auto-executes second phase). {1} When ~5s remain on the follow-up cooldown, press 3 (likely a finisher or repositioning ability). {1} Counter Strike auto-triggers on attack if top veterancy is complete; use knockdown immunity window to reposition if surrounded. {2}"
   },
+  "learnMore": {
+    "videos": [
+      {
+        "label": "Unfit Chaos - Azaps quick start guide",
+        "url": "https://www.youtube.com/watch?v=wRZnTQWtQBQ",
+        "stamps": [
+          "01:06 veterancy tree overview, top vs bottom line",
+          "03:14 doctrine priorities, slashing focus",
+          "04:56 base HP and early matchup impressions"
+        ],
+        "marks": [
+          2
+        ]
+      }
+    ],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,

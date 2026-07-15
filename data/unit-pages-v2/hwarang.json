@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "hwarang",
   "name": "Hwarang",
   "headerMeta": "Golden era · Ranged infantry · special · 295 leadership · Seasonal (Silla: Hwarang's Oath)",
@@ -9,59 +9,84 @@
     "rarity": "T5",
     "fightRatings": null
   },
+  "identity": {
+    "heroPairing": null,
+    "origin": {
+      "kind": "seasonal",
+      "text": "Silla: Hwarang's Oath",
+      "marks": [
+        1
+      ]
+    },
+    "tierHistory": []
+  },
   "pitch": "A stacking ranged DPS unit that unlocks advanced abilities at 40 kills (unit or hero), then deletes at range with Arrow Rain and Artemis. Its weakness is the pre-stack grind and vulnerability to early pressure.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Bowmanship Doctrine V",
       "name": "Bowmanship Doctrine V",
+      "effect": "Arrow Rain deals 75% of the unit's base piercing DMG per hit, +150 piercing DMG.",
+      "tag": "mandatory",
       "note": "Arrow Rain deals 75% base piercing per hit, +150 piercing DMG; shoot anywhere with increased range, aim-bots closest target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Projectile Doctrine V",
       "name": "Projectile Doctrine V",
+      "effect": "+60% ammo, +50 piercing AP.",
+      "tag": "mandatory",
       "note": "+60% ammo, +50 piercing AP",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Precision Doctrine V",
       "name": "Precision Doctrine V",
+      "effect": "+120 piercing DMG, +80 piercing AP, +9% rate of fire.",
+      "tag": "mandatory",
       "note": "+120 piercing DMG, +80 piercing AP, +9% rate of fire",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Artemis",
       "name": "Artemis",
+      "effect": "Unlocks Double Strings: fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch.",
+      "tag": "top-pick",
       "note": "unit-unique: Double Strings — fires 2 arrows per shot for 12s, 40s CD; can't combine with other actives except Overwatch",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "top-pick",
       "note": "only unit in the game where Leadership outvalues Unit DMG V",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Whistling Arrow Doctrine V",
       "name": "Whistling Arrow Doctrine V",
+      "effect": "Every 3 hits inflicts bleeding for 12% of target's current HP; can trigger in concert with allied units at weak points.",
+      "tag": "top-pick",
       "note": "alt for Artemis: every 3 hits inflict bleeding for 12% current health; GREAT in duo-Hwarang — replace Artemis on at least one unit to compound bleed across both",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "filler",
       "note": "fallback if not running Leadership",
       "marks": [
         1
@@ -89,11 +114,14 @@
   "battleRole": {
     "positioning": "Blob formation once stacked (40 unit kills or 8 hero kills, or a mix). Reposition with Skill 2 to dodge threats. {1}",
     "formation": null,
-    "tips": "Normal combo: 1 → Arrow Rain → V+Artemis → 1 (wait for each step to end). Artemis and Arrow Rain do NOT stack. Arrow Rain: 160 meter range, 14s duration. Spell 1: 7s duration. Can play without Artemis and skip that step. {1}"
+    "tips": "Normal combo: 1 → Arrow Rain → V+Artemis → 1 (wait for each step to end). Artemis and Arrow Rain do NOT stack. Arrow Rain: 160 meter range, 14s duration. Spell 1: 7s duration. Can play without Artemis and skip that step. {1}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": null,
-    "pressure": null
+    "pressure": null,
+    "siblings": null
   },
   "controls": {
     "loop": [
@@ -109,6 +137,11 @@
     ],
     "notes": "Stack first (40 unit kills or 8 hero kills, or a mix; stacks even when unit isn't deployed) to unlock advanced abilities. {1} Skill 1 ignores most shields and does insane DMG. Skill 2 repositions and dodges threats. {1} Arrow Rain is MANDATORY — normal V is really bad on Hwarang; Arrow Rain lets you shoot anywhere with increased range, aim-bots closest target in the circle. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [],
   "footnotes": [
     {
       "mark": 1,
@@ -124,7 +157,8 @@
     "No Tips & Tricks section in source beyond Playstyle/Ability-infos.",
     "Doctrine 'Don't put' is a literal X placeholder in source — Amya did not fill this in.",
     "Edit (2026-05-27) pre-dates 2026-06-25 Chaos patch; doctrine guidance may be stale, but Hwarang is NOT on the Chaos changed-units shortlist.",
-    "StarBurst house card ('Top line', 2025-04-22) is known to exist but was never captured — doctrine text/mastery tree unavailable.",
-    "3 video channels (nobuunaga, intrix_gaming, hitokiribattosaitv) mention Hwarang in INDEX notes only; no transcript content exists on disk."
+    "A StarBurst house card ('Top line', 2025-04-22) is known to exist, but its doctrine text and mastery tree aren't available here.",
+    "Hwarang gets a passing mention on 3 video channels (nobuunaga, intrix_gaming, hitokiribattosaitv), but none of them have dedicated guide content for this unit.",
+    "No hero pairing given in source."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "men-at-arms",
   "name": "Men-at-Arms",
   "headerMeta": "Heroic era · Melee infantry (Sword & Shield) · shields · 215 leadership · Honour Tree",
@@ -14,67 +14,102 @@
       "flank": 4
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    },
+    "origin": {
+      "kind": "honor-tree",
+      "text": "Honour Tree",
+      "marks": [
+        1
+      ]
+    },
+    "mastery": {
+      "has": true,
+      "marks": []
+    }
+  },
   "pitch": "A self-healing shield-and-sword line-holder whose entire kit runs through Cover Commander — cycle it every ~2s to keep its hidden damage-reduction passive up, and never V. It's the mandatory stepping stone to Paladins and folds fast to high-burst pressure, unable to hold a line the way top-tier T4 infantry can.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Stamina Doctrine V",
       "name": "Stamina Doctrine V",
+      "effect": "-24% charge CD, +1 charge target. Mandatory per Amya.",
+      "tag": "mandatory",
       "note": "−24% charge cooldown, +1 charge target",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Charge Doctrine V",
       "name": "Charge Doctrine V",
+      "effect": "+250 charge DMG, +450 charge block break.",
+      "tag": "mandatory",
       "note": "+250 charge dmg, +450 charge block break",
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Iron Damage Doctrine V",
       "name": "Iron Damage Doctrine V",
+      "effect": null,
+      "tag": "mandatory",
       "note": "Ironsides — replaceable with Epic Leadership Doctrine",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "top-pick",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Anti-Infantry Doctrine V",
       "name": "Anti-Infantry Doctrine V",
+      "effect": "+200 DMG vs infantry, +250 block.",
+      "tag": "top-pick",
       "note": "+200 dmg vs infantry, +250 block",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Noble Blood Doctrine",
       "name": "Noble Blood Doctrine",
+      "effect": "Taking 100 melee DMG triggers bleed; while bleeding, +15% DMG and +15% movement speed.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": "alt for Ironsides",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Siege Fighter Doctrine",
       "name": "Siege Fighter Doctrine",
+      "effect": "+8% all-type DMG in sieges.",
+      "tag": "filler",
       "note": "+8% all-type dmg in sieges",
       "marks": [
         1
@@ -126,8 +161,10 @@
   "battleRole": {
     "positioning": "Doctrines carry over on promotion to Paladins, so worth setting early even though this unit itself isn't strong. {2} Useful as a flanker, a temporary shield wall in front of pikes, or an opportunistic charger — not a line-holder. {2}",
     "formation": "F3 (tight shield-plate) blocks ranged well: move to contact, hit V to concentrate fire, move in again, repeat — front-loads burst before spreading. {2} F2 (wider block) covers more frontage and suits charges, but is less effective than F3 funneling a chokepoint like a siege tower. {2} Open/Skirmish formation takes reduced ranged dmg — useful vs archers; press V to regroup overextended units. {2}",
-    "tips": "Cover Commander (order 2) is the best movement order before F3 unlocks — keeps formation compact, but the unit is aggressive and auto-engages, and won't disengage without explicit recall. {2} Reset Cover Commander every ~2s: the hidden dmg-reduction passive decays from 40% to 0% over 4-6s. {1}{2} Charging in tight shield formation concentrates hits on a small area — effective vs heroes, but doesn't reliably solo-kill one; more effective wiping lighter unshielded units. {2} Forgetting to press V after contact overcharges and can lose ~half the unit's strength. {2}"
+    "tips": "Cover Commander (order 2) is the best movement order before F3 unlocks — keeps formation compact, but the unit is aggressive and auto-engages, and won't disengage without explicit recall. {2} Reset Cover Commander every ~2s: the hidden dmg-reduction passive decays from 40% to 0% over 4-6s. {1}{2} Charging in tight shield formation concentrates hits on a small area — effective vs heroes, but doesn't reliably solo-kill one; more effective wiping lighter unshielded units. {2} Forgetting to press V after contact overcharges and can lose ~half the unit's strength. {2}",
+    "pve": null
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -158,7 +195,8 @@
         ]
       }
     ],
-    "pressure": "You pressure: Low-tier units relying on hit-to-debuff, and heroes. {1} Charging into Berserkers is comparatively safe — blunt favors the charger. {2}"
+    "pressure": "You pressure: Low-tier units relying on hit-to-debuff, and heroes. {1} Charging into Berserkers is comparatively safe — blunt favors the charger. {2}",
+    "siblings": "Paladins' own veterancy block bonus stacks on top of whatever block you've already banked through the Honour Tree/MAA node upgrades - the two add up instead of overwriting each other."
   },
   "controls": {
     "loop": [
@@ -171,6 +209,13 @@
     ],
     "notes": "Always fight in Cover Commander mode, never V — Cover Commander is the main DPS tool. {1} Charging in (no V/X-move) before Cover Commander stacks a mini-charge on the next impact; mini-charge cooldown in Cover Commander mode is 9 seconds. {1} Can charge to engage, but it's often better to simply activate Cover Commander and move in and out of combat. {1} Reset Cover Commander roughly every 2 seconds — a hidden passive gives dmg reduction that decays from 40% to 0% over 4-6s if not refreshed. {1}{2}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -183,6 +228,12 @@
       "author": "KnightStalker Online",
       "date": "May 2021",
       "house": false
+    },
+    {
+      "mark": 3,
+      "author": "HandBananaPvP",
+      "date": "Nov 2020",
+      "house": false
     }
   ],
   "gaps": [
@@ -191,6 +242,6 @@
     "Amya's guide edit (2026-05-26) pre-dates the 2026-06-25 Chaos patch — doctrine/build guidance is flagged for revalidation against the current season.",
     "Two more video-transcript mentions exist (HandBananaPvP's Paladins guide, StarBurstCB's Artillery Raid PvE guide) but are tie-in references to another unit's guide, not MAA-specific content — not built into battle role or controls.",
     "A house-playbook farm chart lists an unresolved 'MMA' abbreviation the source itself declines to confirm as Men-at-Arms — not used as a claim on this page.",
-    "No house-card build data exists for this unit and no house-classified build guidance was captured beyond a single tangential Q&A mention of MAA as a self-healing unit archetype."
+    "No house-card build data exists for this unit, and no house build guidance exists beyond a single tangential Q&A mention of MAA as a self-healing unit archetype."
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schema": "cb-unit-page-v2/1",
+  "schema": "cb-unit-page-v3/1",
   "slug": "lancastrian-billmen",
   "name": "Lancastrian Billmen",
   "headerMeta": "Heroic era · Melee infantry (Bill/Polearm) · anti-cav · 220 leadership · T4",
@@ -14,67 +14,91 @@
       "flank": 2
     }
   },
+  "identity": {
+    "heroPairing": {
+      "text": "Any",
+      "marks": [
+        1
+      ]
+    }
+  },
   "pitch": "A bracing bill/pike line that leans on heavy bleed damage and eats cavalry charges when held still. Its two veterancy lines are a genuine fork rather than an upgrade — bleed-focused micro play versus tankier anti-cav stability — but breaking formation mid-fight or getting caught by burst/block units loses it fast.",
   "doctrines": [
     {
-      "tag": "mandatory",
+      "ref": "Lancastrian Billmen-Full Bloom",
       "name": "Lancastrian Billmen-Full Bloom",
+      "effect": null,
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Lancastrian Billmen-Rotroot",
       "name": "Lancastrian Billmen-Rotroot",
+      "effect": null,
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Unit Damage Doctrine V",
       "name": "Unit Damage Doctrine V",
+      "effect": "+120 unit DMG, +80 all-type DMG.",
+      "tag": "mandatory",
       "note": null,
       "marks": [
         1
       ]
     },
     {
-      "tag": "mandatory",
+      "ref": "Epic Bloodthirsty Doctrine",
       "name": "Epic Bloodthirsty Doctrine",
+      "effect": "12% lifesteal for 6s after dealing damage, +12% DMG when HP above 60%.",
+      "tag": "mandatory",
       "note": "lifesteal + 12% dmg — infantry-focused build slot",
       "marks": [
         1
       ]
     },
     {
-      "tag": "top-pick",
+      "ref": "Anti-Cavalry Doctrine (x2)",
       "name": "Anti-Cavalry Doctrine (x2)",
+      "effect": "-30% to -35% DMG taken from cavalry while bracing (tier varies by card copy).",
+      "tag": "top-pick",
       "note": "cav-focused build — both copies",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Mobility Doctrine",
       "name": "Mobility Doctrine",
+      "effect": "Infantry-focused alt. Filler.",
+      "tag": "filler",
       "note": "infantry-focused build slot",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "DMG Reduction Doctrines",
       "name": "DMG Reduction Doctrines",
+      "effect": null,
+      "tag": "filler",
       "note": "infantry-focused build slot",
       "marks": [
         1
       ]
     },
     {
-      "tag": "filler",
+      "ref": "Epic Leadership Doctrine",
       "name": "Epic Leadership Doctrine",
+      "effect": "-16% leadership cost.",
+      "tag": "filler",
       "note": null,
       "marks": [
         1
@@ -105,6 +129,7 @@
     "formation": null,
     "tips": "The lower line rewards short, well-timed engagements over prolonged brawling since bleed stacks compound with time; the upper line's value is control and battlefield presence rather than direct damage. {2}"
   },
+  "numbers": [],
   "matchups": {
     "cards": [
       {
@@ -157,6 +182,13 @@
     ],
     "notes": "Ability 2 — huge burst, stays braced through the animation; use on cooldown. {1}"
   },
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "general": [
+    "roster-priority"
+  ],
   "footnotes": [
     {
       "mark": 1,
@@ -178,10 +210,11 @@
     }
   ],
   "gaps": [
-    "Veterancy graph itself was never transcribed (Amya's post defers to a follow-up graph image); the two-line split and each line's feel come only from HitokiriBattosai's video, not from the graph's actual numbers.",
+    "The veterancy graph's actual numbers aren't available (Amya's post just points to a follow-up image); the two-line split and each line's feel come only from HitokiriBattosai's video, not the graph itself.",
     "Doctrine/build guidance pre-dates the 2026-06-25 Chaos patch anchor by 30 days — flagged for revalidation, though the unit isn't on the 13-unit Chaos changed-units list.",
     "House Q&A (Bohemiansnacksody/StaRBuRsT, Jun 2026) confirms the unit has 'like 4 builds' but gives no doctrine specifics or new strategy detail beyond that.",
     "No StarBurst house card exists for this unit and no dedicated house-playbook guide was found.",
-    "No formation guidance (F1 vs F2) in any source."
+    "No formation guidance (F1 vs F2) in any source.",
+    "No origin/unlock text - OP's guide leaves 'Origin' as a literal 'X' placeholder; no tested numeric data beyond the 4 fight ratings; no PvE note or sibling-unit comparison in any source."
   ]
 }
