@@ -1,6 +1,6 @@
 {
   "schema": "cb-academy-unit-index/v1",
-  "generated": "2026-07-15",
+  "generated": "2026-08-11",
   "count": 149,
   "units": [
     {
@@ -66,10 +66,8 @@
       "era": "Heroic",
       "leadership": 230,
       "icon": "assets/unit-icons/axe-raiders.png",
-      "richness": "stats-only",
-      "presentSections": [
-        "battleRole"
-      ]
+      "richness": "full",
+      "presentSections": []
     },
     {
       "slug": "azaps",

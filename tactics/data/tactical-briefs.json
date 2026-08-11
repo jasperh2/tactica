@@ -1,0 +1,1338 @@
+{
+  "schema": "cb-tactical-briefs/1",
+  "generatedDate": "2026-08-11",
+  "generator": "tools/gen-tactical-briefs/gen.mjs",
+  "notes": "Compact tactical context for Claude Design tactics-tool exports - what each token DOES, not its stat sheet. units{} keyed by roster CODE, heroes{} keyed by weapon-class slug. Every field traces to source; see source.file per entry and README.md for the anti-fabrication + tag-grounding policy. Absent fields (role/positioning/doesInFight) mean the source genuinely has nothing to say there, not a generator gap.",
+  "coverage": {
+    "units": {
+      "rosterTotal": 56,
+      "withBrief": 56,
+      "empty": 0,
+      "unresolved": 0
+    },
+    "heroes": {
+      "weaponClassTotal": 15,
+      "withBrief": 15,
+      "empty": 0,
+      "rosterHeroCodesTotal": 11,
+      "rosterHeroCodesUnresolved": 0
+    }
+  },
+  "units": {
+    "AZA": {
+      "code": "AZA",
+      "slug": "azaps",
+      "name": "Azaps",
+      "role": "A mobile shielded melee that trades some defense for speed, excelling as a flanker and duelist against isolated targets.",
+      "positioning": "Mobile flanker - send it around to catch isolated units or soak up burst before your main line engages.",
+      "doesInFight": [
+        "Slashing-focused: slashing penetration/damage doctrines vastly outperform blunt.",
+        "Squishy without veterancy - full top tree is essential for survival at T4/T5 tier."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/azaps.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "BER": {
+      "code": "BER",
+      "slug": "berserkers",
+      "name": "Berserkers",
+      "role": "A mobile flanking unit with incredible damage output and sustain that can single-handedly swing fights through smart positioning and combo execution.",
+      "positioning": "Won't do well face to face - use as a flanking elite strike-force or special-ops unit.",
+      "doesInFight": [
+        "Control Frenzy timing carefully - unit loses direct control during activation and may attack the nearest target instead of your chosen one.",
+        "The 3.08s cooldown on Berserker Assault (skill 2) drops to 2s with the unique doctrine's 20% reduction."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/berserkers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "CLA": {
+      "code": "CLA",
+      "slug": "claymores",
+      "name": "Claymores",
+      "role": "A damage dealer and team buffer wrapped in a brutally long cooldown cycle - activate For Freedom!, execute your combo, and vanish before the...",
+      "positioning": "Approach as a flanker anchored to your team - stick with allies to apply team buffs and survive the cooldown cycle.",
+      "doesInFight": [
+        "Open: X-move in, press 3 (For Freedom!) to buff yourself before taking any hits.",
+        "Combo: instantly press 2 (Claymore Strike) when in melee, let them hit once, press V (makes press 2 hit once again), into 1 (Highland..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/claymores.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "CC": {
+      "code": "CC",
+      "slug": "companion-cavalry",
+      "name": "Companion Cavalry",
+      "role": "A mid-tier seasonal cavalry with a complex stacking rotation that rewards precision positioning.",
+      "positioning": "X-move in and position for stacking rotation. Press 3 for buffs even while hero fighting - it applies global +100 DMG stats wherever you are.",
+      "doesInFight": [
+        "Optimal vs low-armor/low-HP targets: press 1 for chip DMG before the combo. For standard foes, go directly to the 2-stack."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/companion-cavalry.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "CG": {
+      "code": "CG",
+      "slug": "condottieri-guards",
+      "name": "Condottieri Guards",
+      "role": "A cost-effective, forgiving shielded melee line built to charge into Shock Attack for burst damage, at its best as a flanking cleanup unit rather...",
+      "positioning": "Exploit the unit's speed for lateral repositioning and flanking - reposition unseen, hit targets from the rear or sides for bonus flank damage; even...",
+      "doesInFight": [
+        "Alternative engagement order: move/flank first, press Shock Attack, then charge into melee once in position - lets you hit...",
+        "Cost-effective unit: sacrificing Condottieri Guards to secure map control or an objective trade is often a net win given the low leadership..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/condottieri-guards.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "COU": {
+      "code": "COU",
+      "slug": "coutiliers",
+      "name": "Coutiliers",
+      "role": "A lancer cavalry unit that excels with zero-cooldown charge spam when stacking Mastery and the two T5 charge-reduction doctrines.",
+      "positioning": "Open on charge from far enough away to fully load Chargers (DMG & speed increases stack every 1.5s, 0.5s with boots rune, max 3 stacks).",
+      "doesInFight": [
+        "With Mastery + the four listed charge doctrines, this unit reaches 0s charge CD - spam X-move and charge to loop.",
+        "Apply Lancer's Last Stand swap-trick: if spawned with it active, swap to another unit then back; if just lost the unit, pull from supply..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/coutiliers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "DAL": {
+      "code": "DAL",
+      "slug": "dagger-axe-lancers",
+      "name": "Dagger Axe Lancers",
+      "role": "A charge cavalry unit built around Lancer's Last Stand - big flank damage once spaced correctly, but weak in a straight duel.",
+      "positioning": "Go in / try to go behind the push with your hero, while the lancers stand on the opposite side of the push - they follow your hero, so send them...",
+      "doesInFight": [
+        "Charge takes 1.5s to reach final stance for full damage - you have about 10s to push through a blob before skill 2 ends.",
+        "X-move and/or press 2 when the lancers are 2–3s from impact so they carry through the blob."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/dagger-axe-lancers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "DA": {
+      "code": "DA",
+      "slug": "demesne-arbalists",
+      "name": "Demesne Arbalists",
+      "role": "High per-shot crossbow damage that demands close positioning - huge drop-off means you need to be near the fight to matter, even though press-2...",
+      "positioning": "Huge damage drop-off - stay within brawl range to land impact; press 2 stretches reach further than the rest of the kit.",
+      "doesInFight": [
+        "Never overlap Double Fire with Double Shot; fire them sequentially, one then the other.",
+        "Either Double Fire + rate-of-fire doctrine or basic rate-of-fire adds +1 shot to the spell (6→7 arrows); Bolt Penetration is equally..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/demesne-arbalists.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "FP": {
+      "code": "FP",
+      "slug": "fortebraccio-pikemen",
+      "name": "Fortebraccio Pikemen",
+      "role": "A strong anti-cavalry pike line that thrives in open fields when played in dispersed F1 formation.",
+      "positioning": "Place in F1 super-dispersed formation in open areas to maximize anti-cavalry coverage without allowing a single hero disruption to unbrace the whole...",
+      "doesInFight": [
+        "The instant-brace command has a known bug: always press V (ready) before brace to mitigate it - without V, the unit often continues moving...",
+        "Use the follow-the-front-line routine: gather formation, advance (X), follow (F), press V, then brace - repeat every reposition."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/fortebraccio-pikemen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "HE": {
+      "code": "HE",
+      "slug": "halberd-elite",
+      "name": "Halberd Elite",
+      "role": "A shield-line shredder that ignores block and demands the front lane, with the staying power to punish grouped enemies.",
+      "positioning": "Front lane only - low HP solo.",
+      "doesInFight": [
+        "X-move in, press 2 to grab the enemy, then press 1; ability 2 resets CC and grants 30% dmg reduction.",
+        "Cloud Cleave cooldown recently buffed to 5s with +10% armour penetration."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/halberd-elite.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "HAL": {
+      "code": "HAL",
+      "slug": "halberdiers",
+      "name": "Halberdiers",
+      "role": "A cost-effective anti-cavalry pike unit and top-rated warband filler that deals far more damage in phalanx than most players realize, dominating once...",
+      "positioning": "Pair Halberdiers with another unit that screens them from flanks - they cannot solo-hold a line.",
+      "doesInFight": [
+        "Braced Halberdiers automatically face nearby enemies, reducing the need to worry about flanking or hero dives on artillery/ranged allies.",
+        "Charge ability should only be used from F1 with immediate post-hit brace; attempting it from phalanx makes the unit try to re-form..."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/halberdiers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "HWA": {
+      "code": "HWA",
+      "slug": "hwarang",
+      "name": "Hwarang",
+      "role": "A stacking ranged DPS unit that unlocks advanced abilities at 40 kills (unit or hero), then deletes at range with Arrow Rain and Artemis.",
+      "positioning": "Blob formation once stacked (40 unit kills or 8 hero kills, or a mix). Reposition with Skill 2 to dodge threats.",
+      "doesInFight": [
+        "Normal combo: 1 → Arrow Rain → V+Artemis → 1 (wait for each step to end). Artemis and Arrow Rain do NOT stack."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/hwarang.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-05-27",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "IPG": {
+      "code": "IPG",
+      "slug": "imperial-pike-guards",
+      "name": "Imperial Pike Guards",
+      "role": "A high-DPS pike line that runs over cavalry and anything charging it, trading survivability for lethality on advance-based play.",
+      "positioning": "Charge in or X-move in to close to melee range - the unit does more damage the faster the enemy is closing, so bait charges rather than lead...",
+      "doesInFight": [
+        "First tick of Advance can be 'bugged' and hit for insane damage.",
+        "Brace (Stand Firm) works in or out of formation; Advance runs over heroes and most units, and cavalry stand almost no chance against it."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/imperial-pike-guards.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "ISG": {
+      "code": "ISG",
+      "slug": "imperial-spear-guards",
+      "name": "Imperial Spear Guards",
+      "role": "A frontline shield anchor that plants under Cover Commander to soak ranged fire and melee for your team while your DPS works safely behind it.",
+      "positioning": "Plant on the frontline and keep Cover Commander active to tank ranged fire and enemy melee blobs.",
+      "doesInFight": [
+        "Advance is a safe approach against brace-heavy pikes like Halberdiers - it knocks them down frontally and lets you hold the line without...",
+        "After Cover Commander scatter, use Advance (once or twice quickly) to reform in tight formation, then snap back to Cover Commander within..."
+      ],
+      "tags": [
+        "front-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/imperial-spear-guards.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "IR": {
+      "code": "IR",
+      "slug": "iron-reapers",
+      "name": "Iron Reapers",
+      "role": "A press-one-button burst blob that cycles a CC-immune weapon-swap window and a heavy-armour damage-reduction passive to break blocking units and...",
+      "positioning": "X-move in and let the heavy-armour passive build (wait for a CC or a few hits before pressing Tiger Step).",
+      "doesInFight": [
+        "Tiger Step (skill 2) carries undocumented CC immunity and isn't cancelled by movement orders or weapon swaps for its 12s duration - usable...",
+        "Heavy trait: 8-hit bonus damage reduction per model, reset by Charge or Tiger Step - press early if CC is incoming."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/iron-reapers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "IA": {
+      "code": "IA",
+      "slug": "ironcap-archers",
+      "name": "Ironcap Archers",
+      "role": "A cheap filler ranged unit that lags behind meta in impact.",
+      "positioning": null,
+      "doesInFight": [],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/ironcap-archers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "ISC": {
+      "code": "ISC",
+      "slug": "ironcap-scout-cavalry",
+      "name": "Ironcap Scout Cavalry",
+      "role": "A cost-effective sword cavalry whose core damage engine is the X-move during Sprint, not Charge.",
+      "positioning": null,
+      "doesInFight": [],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/ironcap-scout-cavalry.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "IS": {
+      "code": "IS",
+      "slug": "ironcap-swordsmen",
+      "name": "Ironcap Swordsmen",
+      "role": "A cheap charge-cycling unit that trades sustained melee for devastating charge damage and burst CC potential.",
+      "positioning": "Bait or position enemies into a charge vector; charge into the back of a unit or into heroes for burst kills.",
+      "doesInFight": [
+        "Charge-cycle playstyle: charge, disengage, reset (~12-second cooldown), charge again.",
+        "Never stay in prolonged open melee against stronger units - this unit's value is almost entirely in the charge itself."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/ironcap-swordsmen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "JS": {
+      "code": "JS",
+      "slug": "javelin-sergeants",
+      "name": "Javelin Sergeants",
+      "role": "A backline javelin-thrower with exceptional hero-kill potential and poke pressure on grouped enemies.",
+      "positioning": "Backline thrower, never lead or enter melee.",
+      "doesInFight": [
+        "Two targets pierced per javelin (vs Imperial Javelins' single hit), making Sergeants superior against grouped/stacked enemies.",
+        "AoE throw (ability 1) into targeted throw (ability 3) is the core combo - tag spread groups with AoE, then immediate targeted follow-up for..."
+      ],
+      "tags": [
+        "back-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/javelin-sergeants.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "LAN": {
+      "code": "LAN",
+      "slug": "lancastrian-billmen",
+      "name": "Lancastrian Billmen",
+      "role": "A bracing bill/pike line that leans on heavy bleed damage and eats cavalry charges when held still.",
+      "positioning": "Play like any pikes - hold formation around your Stalwart or current-meta shield, and be braced before cavalry arrives.",
+      "doesInFight": [
+        "The lower line rewards short, well-timed engagements over prolonged brawling since bleed stacks compound with time; the upper line's value..."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/lancastrian-billmen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "LR": {
+      "code": "LR",
+      "slug": "liaos-rangers",
+      "name": "Liaos Rangers",
+      "role": "A top flank cavalry that clears with heavy mace bursts and cleans up isolated targets better than almost anything else in the class.",
+      "positioning": "Engage with spell 1 from mid-close range.",
+      "doesInFight": [
+        "Movement speed leverages damage, but entering a blob at very low speed can be better when enemy pikes are present - their damage buff from...",
+        "Recent spell-2 delay nerf still permits engagement but reduces skirmish and duelling power notably."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/liaos-rangers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "LC": {
+      "code": "LC",
+      "slug": "lionroar-crew",
+      "name": "Lionroar Crew",
+      "role": "A slow, high-impact exotic unit that places deployable cannons to control objectives and deny enemy positioning.",
+      "positioning": "Protect the crew - keep it behind your frontline, especially when cannons are deployed.",
+      "doesInFight": [
+        "Unit excels at taking out map structures (the bridge on Wall Fort, gates in other maps) even after tower-destruction nerfs, unlocking new...",
+        "Pair with other units for protection; it alone will not survive focused fire."
+      ],
+      "tags": [
+        "back-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/lionroar-crew.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "MAA": {
+      "code": "MAA",
+      "slug": "men-at-arms",
+      "name": "Men-at-Arms",
+      "role": "A self-healing shield-and-sword line-holder whose entire kit runs through Cover Commander - cycle it every ~2s to keep its hidden damage-reduction...",
+      "positioning": "Doctrines carry over on promotion to Paladins, so worth setting early even though this unit itself isn't strong.",
+      "doesInFight": [
+        "Cover Commander (order 2) is the best movement order before F3 unlocks - keeps formation compact, but the unit is aggressive and...",
+        "Reset Cover Commander every ~2s: the hidden dmg-reduction passive decays from 40% to 0% over 4-6s."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/men-at-arms.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "MB": {
+      "code": "MB",
+      "slug": "modao-battalion",
+      "name": "Modao Battalion",
+      "role": "An anti-cavalry support pikeman that stacks massive flat damage reduction through two defense-stacking abilities and doctrine builds, enabling it to...",
+      "positioning": "Support the front line, not the front line itself - you don't go first, others do, so shield moves, you follow.",
+      "doesInFight": [
+        "When skill 2 comes off cooldown each time, press skill 2 and re-brace - sustains best burst in blob fights.",
+        "Maintain formation with X to prevent spreading - skill 2 targets nearest enemies and causes spread in open areas, leaving gaps cavalry..."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/modao-battalion.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "MYR": {
+      "code": "MYR",
+      "slug": "myrmillones",
+      "name": "Myrmillones",
+      "role": "A commitment-based shield unit built around one big shock hit - it goes all-in on the charge and has to hold its ground until the retreat window is...",
+      "positioning": "Commit to the charge fully, then hold formation until retreat is certain - breaking the stance early is the main way this unit dies.",
+      "doesInFight": [],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/myrmillones.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "OD": {
+      "code": "OD",
+      "slug": "order-of-the-dragon",
+      "name": "Order of the Dragon",
+      "role": "A burst/pickoff cavalry unit best pulled out in siege chaos to melt one or two isolated units and leave - not a blob fighter.",
+      "positioning": "Deploy on the flank where the high skirmish (7/10) and flank (8/10) ratings matter - avoid prolonged 1v1 duels (3/10) and direct front-line infantry...",
+      "doesInFight": [
+        "Press 1 for RTS view control mode: damage boost and charge stance.",
+        "Press 2 for sweep ability (like Khevtuul/Kriegsbruders): area threat."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/order-of-the-dragon.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "OS": {
+      "code": "OS",
+      "slug": "orochi-samurai",
+      "name": "Orochi Samurai",
+      "role": "A high-minimum-damage skirmisher that punches through armor and disarms on every hit, but folds once both abilities are on cooldown against anything...",
+      "positioning": "Pair with Chaindart or any lock-ult hero class.",
+      "doesInFight": [
+        "If ability 1 is on cooldown and only 2 is up, only engage where the enemy lacks stun/daze - otherwise avoid the blob fight entirely.",
+        "Ability 1 (Piercing Strike) phases through enemy units regardless of type, letting ability 2 (Storm Pound) land and maximize DPS from..."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/orochi-samurai.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "OUT": {
+      "code": "OUT",
+      "slug": "outriders",
+      "name": "Outriders",
+      "role": "A javelin skirmisher that can hang back and poke or commit into melee off the same skill, making it a flexible Best-Filler pick rather than a...",
+      "positioning": null,
+      "doesInFight": [],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/outriders.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "PP": {
+      "code": "PP",
+      "slug": "prefecture-pikemen",
+      "name": "Prefecture Pikemen",
+      "role": "A cost-effective anti-cavalry line held by pike bracing and lifesteal damage.",
+      "positioning": "Position one pike-length behind your front line. Wait for raid glow before charging; time the charge so the brace lands as enemies engage.",
+      "doesInFight": [
+        "Charge, then press 2 after impact. Try to disengage and reset for another cycle; if pinned, sacrifice the unit rather than die in place."
+      ],
+      "tags": [
+        "anti-cavalry",
+        "back-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/prefecture-pikemen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "QK": {
+      "code": "QK",
+      "slug": "queens-knights",
+      "name": "Queens Knights",
+      "role": "An invincible-dash duelist that wins one-on-one trades and shreds low-count squads through pure timing.",
+      "positioning": null,
+      "doesInFight": [
+        "Timing on spell 1 (double-dash, invincible) is everything - no simple rule, learned per matchup; occasionally pressing 2 before 1 can flip...",
+        "Huge block and defense make it tanky enough to retreat after one dash-forward rather than push deeper into a bad trade."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/queens-knights.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "RM": {
+      "code": "RM",
+      "slug": "rattan-marksmen",
+      "name": "Rattan Marksmen",
+      "role": "A high-per-shot poison crossbow line built entirely around Double Shot's double-bolt window, stacking poison and accuracy doctrines to punish...",
+      "positioning": null,
+      "doesInFight": [
+        "Detailed how-to-use is deferred entirely to an external build video (\"How to use Rattan Marskmen correct | Conquerors blade Tutorial\"..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/rattan-marksmen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "RP": {
+      "code": "RP",
+      "slug": "rattan-pikemen",
+      "name": "Rattan Pikemen",
+      "role": "A cheap poison pike line that wins fights on stacked damage-over-time rather than the hit itself - stack 4-5 autos, back off, let the poison finish...",
+      "positioning": "Good attack range on the pike - always look to flank rather than sit static.",
+      "doesInFight": [],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/rattan-pikemen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "RR": {
+      "code": "RR",
+      "slug": "rattan-roundshields",
+      "name": "Rattan Roundshields",
+      "role": "A nimble shielded melee unit that debuffs on charge, with exceptional piercing defense for its cost - but insufficient penetration to threaten heavy...",
+      "positioning": "Use as a mobile flank striker or engagement opener - not a primary frontline holder.",
+      "doesInFight": [
+        "Charge the engagement to apply debuff; the unit's value is upfront poison application and initial shock, not sustained melee holding."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/rattan-roundshields.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "RV": {
+      "code": "RV",
+      "slug": "rattan-vipers",
+      "name": "Rattan Vipers",
+      "role": "Rattan Vipers are a poison-stacking support archer that wins by neutering enemy damage output rather than by killing directly.",
+      "positioning": "Use ordinary circle targeting (ability slot 1) to keep the unit shooting instead of dropping bows for melee when enemies close - explicitly...",
+      "doesInFight": [
+        "Ammo consumption is the unit's known weak point; a Sprint-type doctrine has been suggested as a way to manage it."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/rattan-vipers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "RL": {
+      "code": "RL",
+      "slug": "royal-longbowmen",
+      "name": "Royal Longbowmen",
+      "role": "A standard backline archer whose press-1 arrow spell carries the whole kit - no unusual mechanics, no documented gimmick.",
+      "positioning": "Usual archer positioning - no unit-specific placement guidance given beyond the standard backline archer role.",
+      "doesInFight": [
+        "Less value on Artemis and Arrow Rain than a typical archer build, since the Longbow carries its own arrow-rain-like spell."
+      ],
+      "tags": [
+        "back-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/royal-longbowmen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SG": {
+      "code": "SG",
+      "slug": "shenji-grenadiers",
+      "name": "Shenji Grenadiers",
+      "role": "A grenade-delivery unit rather than a shooter - its whole value is one well-timed spell-2 throw into a blobbed enemy, not its rifles.",
+      "positioning": "Keep it safe rather than shooting - firing the rifles directly is near useless, so hold it back and wait for the fight to blob up before committing...",
+      "doesInFight": [
+        "Some maps let you throw grenades high up onto a wall to surprise the enemy on the other side.",
+        "Preferable to run two Shenji together - stacked nade volleys can wipe a blobbed fight outright."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/shenji-grenadiers.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SHI": {
+      "code": "SHI",
+      "slug": "shieldmaidens",
+      "name": "Shieldmaidens",
+      "role": "A hyper-micro shield anchor that buffs the blob and shreds diving heroes when run at full capacity - the weapon-swap loop between cover-commander...",
+      "positioning": "Plant via spell 1 (circle placement, +250 defence buff once settled), then spell 2 cover-commander and swap to sword mode - lock inputs and hold.",
+      "doesInFight": [
+        "Weapon-swap (spell 3) is the core loop and carries CC-immunity, resetting stance and removing existing CC on every swap.",
+        "Spear→sword after any hit: +500 Piercing/Slashing Armour Penetration per soldier for 10s."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/shieldmaidens.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SIL": {
+      "code": "SIL",
+      "slug": "silahdars",
+      "name": "Silahdars",
+      "role": "A skill-dependent curve-sword bruiser that explodes through careful ability timing and team support, excelling in blob and sustained fights but...",
+      "positioning": "Find heavy infantry anchors (Fortebraccio, Palace Guards, Grayhairs) and follow their engage - you are a support burst, not a primary frontline.",
+      "doesInFight": [
+        "Spells last 6s with 40% damage reduction for 3s after - rotate them so you always have one active and skip downtime gaps.",
+        "Sideways Sweep and Deathstrike both last 6s; do not cancel them early."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/silahdars.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SIP": {
+      "code": "SIP",
+      "slug": "sipahis",
+      "name": "Sipahis",
+      "role": "A charge-and-stomp disruptor rather than a killer: Quick Charge leaps knock down and chain into Impassioned for a second wave of knockdowns and a 50%...",
+      "positioning": "Wait until the enemy has just finished dealing their brace/stomp damage, then trigger Impassioned so every model leaps again - including ones still...",
+      "doesInFight": [
+        "Croupade stomps knock down and stack a 20% defense boost per stomp for 12 seconds.",
+        "Quick Charge leaps trample and knock down everything hit; Impassioned's final leap hits slightly harder and applies 50% increased damage..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/sipahis.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SIPH": {
+      "code": "SIPH",
+      "slug": "siphonarioi",
+      "name": "Siphonarioi",
+      "role": "A unique flamethrower unit that puts out heavy sustained damage and crowd control from range, but it is genuinely fragile - even grey-tier trash...",
+      "positioning": "Backline support, never frontline - even grey-tier enemies maul it if exposed, so it always needs a friendly screen (shields or other infantry) in...",
+      "doesInFight": [
+        "Never aim the direct-fire stream flat along the ground - angle it upward at a wall or raised surface near the enemy so it arcs down onto...",
+        "Best worked at chokepoints (gatehouses, breaches, narrow corridors/stairwells), laying Scorched ground-fire to zone the area while it keeps..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/siphonarioi.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SC": {
+      "code": "SC",
+      "slug": "spartan-chosen",
+      "name": "Spartan Chosen",
+      "role": "A heavily armored shield-wall anchor that thrives in blob and skirmish but crumbles to huge burst damage from units like Iron Reapers, Claymores, or...",
+      "positioning": "Frontline anchor - hold the line and block ranged fire.",
+      "doesInFight": [
+        "Ability 1 (No Mercy) redirects to your facing and stabs in front; each stab heals 5% HP.",
+        "Ability 2 (shield advance) requires re-pressing during the advance to stab; the 3rd press jumps forward with big damage."
+      ],
+      "tags": [
+        "front-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/spartan-chosen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SS": {
+      "code": "SS",
+      "slug": "spear-sergeants",
+      "name": "Spear Sergeants",
+      "role": "A low-cost shield-wall anchor that toggles Cover Commander to stack a debuff on whatever hits it next, holding lines in PvE and early progression...",
+      "positioning": "In Cover Commander, stand at the edge of the unit's cluster rather than the middle - models in the middle can get flanked from behind as the...",
+      "doesInFight": [
+        "Stay on Cover Commander, toggling it off and back on every 2 seconds to refresh the buff granted at activation.",
+        "While in Cover Commander: damage taken drops 60% immediately, decaying to 40% over time; damage dealt rises 45%, decaying to 30%; the decay..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/spear-sergeants.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SUN": {
+      "code": "SUN",
+      "slug": "sunward-phalanx",
+      "name": "Sunward Phalanx",
+      "role": "A premier point-holder that deletes cavalry and anything without block the moment it braces.",
+      "positioning": "Sit one pike-length behind your front line and control distance - never lead with it; set brace range accounting for enemy long pikes.",
+      "doesInFight": [
+        "Blue bar eats exactly one CC (even hero ults), then needs 30s out of combat - expect the second, timed CC.",
+        "Take it on defence 15-starts (spawn with it or supply-pull nearby); skip far-spawn maps - among the slowest units even with mobility..."
+      ],
+      "tags": [
+        "anti-cavalry",
+        "back-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/sunward-phalanx.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SYM": {
+      "code": "SYM",
+      "slug": "symmachean-paladins",
+      "name": "Symmachean Paladins",
+      "role": "A shielded sustain-tank that lives on its unique heal and rewards X+V animation-canceling for extra DPS when it's safe to drop block.",
+      "positioning": "Don't charge in unless you have significant front-line support - going alone stacks the enemy against you.",
+      "doesInFight": [
+        "X+V cancel: press V the instant an X-move lands damage, then repeat - cancels most of the attack animation for higher DPS, but every X...",
+        "Cancel the heal (skill 2) with an instant V-press right after - the heal still resolves."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/symmachean-paladins.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "SYMM": {
+      "code": "SYMM",
+      "slug": "symmachean-stalwarts",
+      "name": "Symmachean Stalwarts",
+      "role": "A near-unbreakable frontal wall that wins blobs, skirmishes, and duels through disciplined brace timing - invincible from the front, but a charge...",
+      "positioning": "Hold chokepoints and block ranged fire as the frontline shield-wall anchor - invincible from the front, but never advance into open space without map...",
+      "doesInFight": [
+        "X-move in and brace, stay braced and X-move again or use Advance and re-brace every time brace cooldown is up.",
+        "CCi (Stand Fast) is your reset button - pop it vs polearm ulting you, enemy Imperial Pike, cavalry charge, or any CC; it resets both block..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/symmachean-stalwarts.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "TLC": {
+      "code": "TLC",
+      "slug": "tiger-and-leopard-cavalry",
+      "name": "Tiger and Leopard Cavalry",
+      "role": "A newly-buffed elite lancer cavalry that stacks passive damage the longer it charges.",
+      "positioning": null,
+      "doesInFight": [
+        "Respect the passive and charge from as far as you can - the longer the charge, the more speed and passive damage stack.",
+        "Ability rotation: press 1 (simple charge) → 2 (area impact, similar to Liaos or Kheshig) → 3 (crowd control cleanse and charge again)..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/tiger-and-leopard-cavalry.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "VG": {
+      "code": "VG",
+      "slug": "varangian-guards",
+      "name": "Varangian Guards",
+      "role": "A dual-form axe-and-shield bruiser that shields up to block, then switches to wide-arc axe swings that chain into a free passive sweep for continuous...",
+      "positioning": null,
+      "doesInFight": [
+        "Ability chain for sustained fights: ability 1 block/bash, into ability 2's axe-spin, into the passive 'Great Sweep' area attack, then...",
+        "Ability 1's block stance drains stamina faster ('reduced tensor'); consider burning its charge before engaging a ranged unit."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/varangian-guards.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "WPG": {
+      "code": "WPG",
+      "slug": "white-plume-guards",
+      "name": "White Plume Guards",
+      "role": "A tower-shield frontline anchor that soaks damage for the team, holding the wall so your own cavalry and DPS can work behind it.",
+      "positioning": "Front-line for your team, protecting your DPS - you're fixing the front lane.",
+      "doesInFight": [
+        "CCi doctrine is key for tanking trebuchets while fighting on a wall, and equally key for eating cavalry charges (or just to fall back..."
+      ],
+      "tags": [
+        "front-line"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/white-plume-guards.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-07-01",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "WUW": {
+      "code": "WUW",
+      "slug": "wuwei",
+      "name": "WuWei",
+      "role": "A widely-considered-overtuned purple-tier infantry unit whose entire winning pattern is one dead-simple two-button combo - no hidden trick, no...",
+      "positioning": "Go in with your frontline rather than solo-committing; don't over-extend, and it's fine to X-move back before pressing 1-2 again if you push too far.",
+      "doesInFight": [
+        "Against heavy-armor targets, let skill 1 land first to apply its armor debuff, then resume spamming 1 and 2.",
+        "Performs at a very high level even undermaxed - an under-leveled copy with only a moderate doctrine set still cleared 40-60+ unit kills per..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/wuwei.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "WP": {
+      "code": "WP",
+      "slug": "wuxing-pikemen",
+      "name": "Wuxing Pikemen",
+      "role": "A mastery-driven pike unit that strips defences off the tankiest targets on the field before finishing with Wuxing Blast.",
+      "positioning": null,
+      "doesInFight": [
+        "Fiery Blast now activates instantly instead of on a delay (radius also +20%) - tightens the window before the Wuxing Blast finisher versus..."
+      ],
+      "tags": [
+        "anti-cavalry"
+      ],
+      "source": {
+        "file": "data/unit-pages-v2/wuxing-pikemen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "YC": {
+      "code": "YC",
+      "slug": "yanyuedao-cavalry",
+      "name": "Yanyuedao Cavalry",
+      "role": "A flank-cavalry glaive unit that opens with a charged Dread Unleashed from behind or the side, strikes twice on impact, and rides the momentum into...",
+      "positioning": "Enter from flank or from behind the enemy pack - despite CC-immunity on the first strike, never lead a straight charge.",
+      "doesInFight": [
+        "Charge the 1 (Dread Unleashed) from optimal distance and release at max potential; the unit strikes twice on impact and the charge can be...",
+        "Often better to release around 70% charge if the timing is right than to wait for 100% and miss the window."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/yanyuedao-cavalry.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "YEO": {
+      "code": "YEO",
+      "slug": "yeomen",
+      "name": "Yeomen",
+      "role": "A lancer cavalry unit whose whole kit is about buying enough room to reach max charge speed before impact - rush the charge and it does nothing...",
+      "positioning": "Like any lancer cavalry, hold approach until there's enough room to reach max speed before impact - commit late, not early.",
+      "doesInFight": [
+        "Run the rune that speeds up the lancer-cav trait cycle from every 1.5s to every 0.5s (if still available), so the long-charge trait loads...",
+        "Once at max speed, an X-move to a side still carries enough momentum for huge damage - a smaller version of the Xuanjia trick."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/yeomen.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-05-26",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "YHK": {
+      "code": "YHK",
+      "slug": "yorkist-household-knights",
+      "name": "Yorkist Household Knights",
+      "role": "An all-around cavalry threat that trades well on flank and in duels whether mounted or dismounted, countering almost anything it meets.",
+      "positioning": "Cover Commander is the core playstyle: stay around the commander fully until they die.",
+      "doesInFight": [
+        "On horse: spell 1 = dismount (now rare, only vs anti-cav that can disrupt), spell 2 = charge, spell 3 = follow-commander charge; in a...",
+        "On ground: don't hesitate to dismount and press spell 2 - keep the hero frontline but close to the unit, or it stops attacking and just..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/yorkist-household-knights.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "ZEA": {
+      "code": "ZEA",
+      "slug": "zealot",
+      "name": "Zealot",
+      "role": "A transformation-based shock hammer that crushes shield units and blob formations with knockdown while alive; activating Judgment Day mid-fight is...",
+      "positioning": "Stay close enough to engage with Righteous Charge (press 1 from range, or dash from melee).",
+      "doesInFight": [
+        "Never transform mid-fight.",
+        "Activate Judgment Day (press 3) only outside combat to heal and reposition - the transformation locks you immobile and vulnerable, and the..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/zealot.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-30",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "ZWE": {
+      "code": "ZWE",
+      "slug": "zweihanders",
+      "name": "Zweihanders",
+      "role": "A high-damage duelist that cycles in and out of combat every few seconds, getting stronger at max health but vulnerable the moment it breaks...",
+      "positioning": "Stack tight on formation - the aura persists even after damage, so spawn and activate Prepared Stance immediately, then advance to any engagement.",
+      "doesInFight": [
+        "Prepared Stance is not a brace - it takes 15% less damage at max health but doesn't stop cavalry.",
+        "Always rotate with defensive targets: Knight's Gambit first (no burst to soak), then brace, then Knight's Defense to maintain DPS cycle."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/zweihanders.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    },
+    "ZM": {
+      "code": "ZM",
+      "slug": "zykalian-militia",
+      "name": "Zykalian Militia",
+      "role": "A grenade-throwing exotic that shreds blobs from range but has zero flank or duelling presence - cycle V and ability 2 and keep moving, or die to any...",
+      "positioning": "Deploy on a protected flank behind blob formations. Maintain constant X-movement after each V or ability-2 cast - never stand still.",
+      "doesInFight": [
+        "Press V to damage front-line blob (less ammo, more spread than spell 1).",
+        "ALWAYS cycle V and ability-2"
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/unit-pages-v2/zykalian-militia.json",
+        "schema": "cb-unit-page-v3/1",
+        "recordDate": "2026-06-29",
+        "resolvedBy": "roster-slug"
+      }
+    }
+  },
+  "unitsEmpty": [],
+  "unitsUnresolved": [],
+  "heroes": {
+    "bastard-sword": {
+      "slug": "bastard-sword",
+      "name": "Bastard Sword",
+      "rosterCodes": [],
+      "role": "A build-defined heavy hitter: Riposte dueling, Divine-Thrust block-breaking, or unkillable in-blob AoE CC - pick one job and fully exploit it.",
+      "positioning": "Riposte build: stay close - \"being close let you hit AND wave\" (Amya); the build's payoff requires proximity for both single-target hits and the...",
+      "doesInFight": [
+        "Take the Siege Breaker node/bonus and Arcing Smite - for a Flameshackle build (Amya, corrected spelling of her \"Arcing smith\"/\"siege...",
+        "Stamina management and positioning - are what separate \"1M dmg or 3M dmg\" in a fight on the Riposte build (Amya)."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/bastard-sword.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-04-28"
+      }
+    },
+    "chaindart": {
+      "slug": "chaindart",
+      "name": "Chaindart",
+      "rosterCodes": [],
+      "role": "The chain dart & scimitar places an intense focus on hero dueling.",
+      "positioning": "Utility deployment, not a frontline or blob pick: great to protect important units such as exotics (low life, high impact units) and to defend supply...",
+      "doesInFight": [
+        "Scorpion's Snare cancels anything, - even CCi (crowd-control-immune) heroes - a standout utility callout.",
+        "Trap Prey dismounts mounted enemies - that's Amya's own note, the wiki's own Trap Prey tooltip text doesn't spell out a dismount clause."
+      ],
+      "tags": [
+        "blocks-supply"
+      ],
+      "source": {
+        "file": "data/hero-pages/chaindart.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-06-09"
+      }
+    },
+    "dual-blades": {
+      "slug": "dual-blades",
+      "name": "Dual Blades",
+      "rosterCodes": [
+        "DB"
+      ],
+      "role": "Dual Blades (DB) is the ultimate high-skill weapon.",
+      "positioning": "Final point cap.",
+      "doesInFight": [
+        "Don't sprint-AA unless needed. Use normal walk + roll cancel for DPS.",
+        "\"Kick\" vs \"Ambush\": \"Kick > Ambush (nearly same damage, but Kick stuns and have highen pen)\" - preference note between the two combo terms..."
+      ],
+      "tags": [
+        "blocks-supply"
+      ],
+      "source": {
+        "file": "data/hero-pages/dual-blades.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-06-09"
+      }
+    },
+    "glaive": {
+      "slug": "glaive",
+      "name": "Glaive",
+      "rosterCodes": [
+        "GL"
+      ],
+      "role": "Glaive is a heavy support class, focused on helping allied units and heroes using God of Battles and stunning enemies with Flying Reaper and...",
+      "positioning": "Support your own units/heroes - stay close enough that God of Battles' damage buff actually lands on allies, not off alone as a solo skirmisher.",
+      "doesInFight": [
+        "God of Battles is unique: no other weapon class in the game has a skill that directly increases allies' damage - it's the class's core...",
+        "Warlord's Greeting and Flying Reaper are your CC: Warlord's Greeting inflicts concussed, which most control-removal skills can't counter..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/glaive.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "longbow": {
+      "slug": "longbow",
+      "name": "Longbow",
+      "rosterCodes": [
+        "LB"
+      ],
+      "role": "What the Bow is well suited to be is supporting an attack from just behind the front line, using a combination of terrain and defensive units to...",
+      "positioning": "Elevation matters: fire from higher ground than the target for bonus damage - firing from lower ground costs damage.",
+      "doesInFight": [
+        "Light-Footed's brief invincibility is explicitly good for dodging Dual Blades or Maul ultimates, or for disengage/chasing a fleeing target.",
+        "Charge every shot when the situation allows: a fully-charged shot both hits harder and flies straighter (drops/curves less) than an..."
+      ],
+      "tags": [
+        "back-line"
+      ],
+      "source": {
+        "file": "data/hero-pages/longbow.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "longsword": {
+      "slug": "longsword",
+      "name": "Longsword",
+      "rosterCodes": [
+        "LS"
+      ],
+      "role": "Tank - no other viable play styles.",
+      "positioning": "Go first in, frontline, in any push or defence - it's Longsword's role to pull enemy and unit attention while pushing forward 24/7. - house playbook",
+      "doesInFight": [
+        "You're faster than you look: you move at ordinary speed even while blocking with right click, and 20% faster for 10s after using a skill...",
+        "Mercy of Heaven is your sustain tool: time the heal to land on your frontline at crucial moments, not on cooldown."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/longsword.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "maul": {
+      "slug": "maul",
+      "name": "Maul",
+      "rosterCodes": [
+        "ML"
+      ],
+      "role": "Maul is a bruiser class offering mobility and constant DPS/high burst depending on build.",
+      "positioning": "Maelstrom and the dive combo point at flanking/backline dives (arty, exotics, isolated pike), not static frontline holding.",
+      "doesInFight": [
+        "Core skill expression is the dash-auto-attack-animation-cancel loop (auto-attack, side-roll the instant the damage number pops, repeat)...",
+        "Mountain Breaker and Mighty Mjölnir both grant a 26% buff to whatever's combo'd after them - plan the rotation around this."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/maul.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "musket": {
+      "slug": "musket",
+      "name": "Musket",
+      "rosterCodes": [
+        "MU"
+      ],
+      "role": "Support an assault or bolster a defence!",
+      "positioning": "If you're in position to hit an enemy hero at all (meaning you are in main push for some reason) you are doing something wrong anyway as you should...",
+      "doesInFight": [
+        "Blackpowder Grenade is near-mandatory; Five Rounds Rapid (the other paragon option) has little use against units, a noticeable windup, and...",
+        "Pick exactly one of Skirmisher or Close Combat - for control-effect removal - Skirmisher usually wins out for the escape against..."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/musket.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-04-06"
+      }
+    },
+    "nodachi": {
+      "slug": "nodachi",
+      "name": "Nodachi",
+      "rosterCodes": [
+        "ND"
+      ],
+      "role": "The nodachi is a large two-handed sword that excels at cutting down lightly protected units.",
+      "positioning": "Fight to the sides or behind your own units, using Tiger's Claw/Avalanche/Fearless & Steadfast from that position rather than out in the open.",
+      "doesInFight": [
+        "Bloodthirsty is \"the near mandatory skill for nodachi users\" - mobility, a control effect, and a control-effect removal in one low-cooldown...",
+        "Skill picks beyond Bloodthirsty (wiki): Tiger's Claw is the highest-damaging non-paragon skill and has a wide pushback, \"an extremely..."
+      ],
+      "tags": [
+        "blocks-supply"
+      ],
+      "source": {
+        "file": "data/hero-pages/nodachi.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-05-19"
+      }
+    },
+    "pike": {
+      "slug": "pike",
+      "name": "Pike",
+      "rosterCodes": [
+        "PK"
+      ],
+      "role": "Pike users are extremely maneuverable and chain low cooldown skills to outfight the enemy.",
+      "positioning": "Hero-duel and pick class first, anti-unit second - less effective against enemy units than most other weapon classes, so don't try to anchor a line...",
+      "doesInFight": [
+        "Passive: using skills can stack buffs and change the effects of other skills - normal attacks add a Strong as a Storm effect, increasing...",
+        "Use your dismount to stun hero's mix in auto attacks into your combos roll and block to cancel animations and never be stationary as pike."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/pike.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "poleaxe": {
+      "slug": "poleaxe",
+      "name": "Poleaxe",
+      "rosterCodes": [
+        "PA"
+      ],
+      "role": "The poleaxe is a two-handed polearm focused around dealing large amounts of control effects against both units and heroes.",
+      "positioning": "Tank anchor for Longsword: Poleaxe is one of the two named tank anchor classes a Longsword player pairs with to absorb and pull focus.",
+      "doesInFight": [
+        "Pushback: instantly removes you from CC while stunning enemies hit - a crucial survival and disruption tool.",
+        "Block stops almost everything: Poleaxe's entire kit of CC skills --except pin--, per BirdOfQin's active-blocking rundown. \"Pin\" isn't a..."
+      ],
+      "tags": [
+        "blocks-supply"
+      ],
+      "source": {
+        "file": "data/hero-pages/poleaxe.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-03-26"
+      }
+    },
+    "shortbow": {
+      "slug": "shortbow",
+      "name": "Shortbow",
+      "rosterCodes": [
+        "SB"
+      ],
+      "role": "The Shortbow in Conqueror's Blade is a nimble ranged Hero class which shines in close-to-mid range combat.",
+      "positioning": "Optimal range: fight around a ~5-10 meter sweet spot - inside ~5m you risk getting melee'd, beyond ~10-15m your damage/accuracy fall off.",
+      "doesInFight": [
+        "Damage profile: poison-mark-then-AA-detonate can hit any target for -40% to -60% of their HP, but kills get harder to close out as the...",
+        "Angry Hornets has a wide splash - don't fire it at a target that hasn't closed distance yet, or the spread is wasted."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/shortbow.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-06-09"
+      }
+    },
+    "shortsword": {
+      "slug": "shortsword",
+      "name": "Shortsword",
+      "rosterCodes": [],
+      "role": "Shortsword is a brawler class focused on tanking and disruption.",
+      "positioning": "Frontline, inside the fight - absorb damage, disrupt, make them waste effort killing you.",
+      "doesInFight": [
+        "Disruption and pressure over damage; create chaos, let units take the kills.",
+        "Shielded Charge is the mobility tool - engage, catch, or escape; don't burn it without a plan."
+      ],
+      "tags": [
+        "blocks-supply",
+        "front-line"
+      ],
+      "source": {
+        "file": "data/hero-pages/shortsword.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-05-21"
+      }
+    },
+    "spear": {
+      "slug": "spear",
+      "name": "Spear",
+      "rosterCodes": [
+        "SP"
+      ],
+      "role": "Spear users have excellent mounted attack capabilities and the ability to deal great burst damage to enemy heroes.",
+      "positioning": "Look for undefended prey; poke from horseback to bait cooldowns before committing to a dismount engage.",
+      "doesInFight": [
+        "Piercing Damage is the top-priority weapon stat - \"like oxygen, maximize this\".",
+        "Assisted Aiming on Hero is a deliberate tradeoff, not a strict upgrade."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/spear.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-06-29"
+      }
+    },
+    "spear-and-shield": {
+      "slug": "spear-and-shield",
+      "name": "Spear & Shield",
+      "rosterCodes": [],
+      "role": "The Shield & Spear excels at both defensive maneuvers and aggressive counter-offensives.",
+      "positioning": "Front-lane, CC heroes and units on cooldown - use sidesteps to cut through units any time you need to chase a hero or exotic unit.",
+      "doesInFight": [
+        "Weapon-stat priority: Blunt DMG&Pen leads the bonus list ahead of raw STR/AGI - denetax.fr flips this to Blunt as the MAIN stat instead",
+        "Crit Value is a weak stat here: you already sit at 100% crit rate on your main dps spell (not named by Amya)."
+      ],
+      "tags": [],
+      "source": {
+        "file": "data/hero-pages/spear-and-shield.json",
+        "schema": "cb-academy-hero-page/v2",
+        "recordDate": "2026-05-02"
+      }
+    }
+  },
+  "heroesEmpty": [],
+  "heroesRosterUnresolved": []
+}

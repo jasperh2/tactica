@@ -56,6 +56,18 @@
   gap: 16px;
 }
 
+/* [hidden] cascade guard (cascade-bug fix, 2026-08-11, preventive): same unconditional
+   `display: flex` cascade bug as .v2-page/.hv3-page - an author-origin normal declaration always
+   beats the user-agent stylesheet's `[hidden] { display: none }` regardless of specificity, so
+   the `hidden` attribute on #hero-v2-page would be a no-op. This tree is dormant today
+   (hero.html does not link this stylesheet) but reproduces instantly the moment anyone follows
+   hero.html's documented rollback path back to v2, so the guard goes in now rather than waiting
+   for that to bite. Specificity (0,2,0) beats the bare `.hv2-page` class (0,1,0) regardless of
+   source order. */
+.hv2-page[hidden] {
+  display: none;
+}
+
 .hv2-page *,
 .hv2-page *::before,
 .hv2-page *::after {

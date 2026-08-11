@@ -1,0 +1,43 @@
+{
+  "schema": "cb-unit-page-v3/1",
+  "slug": "axe-raiders",
+  "name": "Axe Raiders",
+  "headerMeta": "Heroic era · Melee Infantry · special · 230 leadership",
+  "date": "2022-02-10",
+  "stats": {
+    "metaTier": null,
+    "rarity": null,
+    "fightRatings": null
+  },
+  "pitch": null,
+  "doctrines": [],
+  "veterancy": [],
+  "battleRole": {
+    "positioning": null,
+    "formation": null,
+    "tips": null
+  },
+  "matchups": {
+    "cards": [],
+    "pressure": "You pressure: Siphonarioi - a hard counter, since you can leap directly over or through shield lines to reach them exposed behind the wall. {1}",
+    "siblings": null
+  },
+  "controls": null,
+  "learnMore": {
+    "videos": [],
+    "askChannel": "#units"
+  },
+  "footnotes": [
+    {
+      "mark": 1,
+      "author": "KingzinHD (ConstantBufferCast)",
+      "date": "Feb 2022",
+      "house": false
+    }
+  ],
+  "gaps": [
+    "No dedicated guide, house card, or tierlist placement exists for this unit - no doctrines, veterancy, battle-role, or control-loop data from any source.",
+    "No fight-type ratings recorded and not placed on the current tier list.",
+    "Only source found: a single line in a Siphonarioi guide video naming Axe Raiders as a hard counter - not a guide about Axe Raiders itself."
+  ]
+}

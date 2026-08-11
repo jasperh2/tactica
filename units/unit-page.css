@@ -82,6 +82,17 @@
   gap: 20px;
 }
 
+/* [hidden] cascade guard (cascade-bug fix, 2026-08-11): the unconditional `display: flex` above
+   is an author-origin normal declaration, which always beats the user-agent stylesheet's
+   `[hidden] { display: none }` regardless of specificity - so setting the `hidden` attribute (or
+   toggling the `.hidden` IDL property, same underlying attribute) on #unit-v2-page was a no-op.
+   Result: an empty ~66px dark box rendered above the real v1 content on every stats-only unit
+   page. This selector's specificity (0,2,0) beats the bare `.v2-page` class (0,1,0) regardless of
+   source order, so unit-page.boot.mjs's showV1Layout/showV2Layout can actually hide it again. */
+.v2-page[hidden] {
+  display: none;
+}
+
 .v2-page *,
 .v2-page *::before,
 .v2-page *::after {

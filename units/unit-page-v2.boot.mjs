@@ -470,14 +470,21 @@ function matchupGroupHead(label, kind, count) {
   return head;
 }
 
-/** One matchup card: name (+ house lock) + why-line, colored left border set by `kind`. */
+/** One matchup card: name (+ house lock) + why-line, colored left border set by `kind`. The why-
+ * line's inline {n} marks are parsed via appendProseWithMarks, matching every other prose field in
+ * this file (regression: this used to assign card.why straight to el()'s textContent argument, so
+ * a literal "{1}" showed up in the rendered text instead of becoming a superscript). */
 function matchupCard(card, kind) {
   const cardEl = el('div', `cs-mu-card is-${kind}`);
   const name = el('div', 'cs-mu-name');
   name.appendChild(document.createTextNode(card.name || ''));
   appendLockIfHouse(name, card.house);
   cardEl.appendChild(name);
-  if (card.why) cardEl.appendChild(el('div', 'cs-mu-why', card.why));
+  if (card.why) {
+    const why = el('div', 'cs-mu-why');
+    appendProseWithMarks(why, card.why);
+    cardEl.appendChild(why);
+  }
   return cardEl;
 }
 

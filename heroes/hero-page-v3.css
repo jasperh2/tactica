@@ -72,6 +72,16 @@ body:has(#hero-v3-page:not([hidden])) {
   gap: 16px;
 }
 
+/* [hidden] cascade guard (cascade-bug fix, 2026-08-11): the unconditional `display: flex` above
+   is an author-origin normal declaration, which always beats the user-agent stylesheet's
+   `[hidden] { display: none }` regardless of specificity - so hero-page-v3.boot.mjs setting
+   rootEl.hidden = true (missing ?h=, or a 404'd slug lookup, before #hero-not-found shows) was a
+   no-op: an empty dark flex box still rendered. This selector's specificity (0,2,0) beats the
+   bare `.hv3-page` class (0,1,0) regardless of source order, so hidden actually stays hidden. */
+.hv3-page[hidden] {
+  display: none;
+}
+
 .hv3-page *,
 .hv3-page *::before,
 .hv3-page *::after {

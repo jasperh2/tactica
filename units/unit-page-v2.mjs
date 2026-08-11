@@ -376,7 +376,11 @@ export function masteryChipText(mastery) {
  * `.cs-patch-nerf` / `.cs-patch-buff` / `.cs-patch-adjust`. A case-insensitive substring match (not
  * an exact-value lookup) because the compiled `patch.kind` field carries free text like "Nerf" or
  * "Buff/Rework" (see data/unit-pages-v2/iron-reapers.json) — anything that isn't recognizably a
- * nerf or a buff falls back to the neutral "adjust" modifier rather than guessing.
+ * nerf or a buff falls back to the neutral "adjust" modifier rather than guessing. Feeds ONLY the
+ * colour modifier now — patchKindLabel below exact-matches "Rework"/"Buff/Rework" to their own
+ * label text, so the two are allowed to diverge (e.g. plain "Rework" labels REWORK but still
+ * colours as the neutral "adjust" modifier, since a rework alone reads as neither a clear buff nor
+ * a clear nerf).
  * @param {unknown} kind
  * @returns {'nerf'|'buff'|'adjust'}
  */
@@ -388,13 +392,21 @@ export function patchKindClass(kind) {
 }
 
 /**
- * Display label for the patch strip's `.cs-patch-kind` pill ("NERF" / "BUFF" / "CHANGED"), derived
- * from the same classification as patchKindClass so the pill text and the strip's color modifier
- * never disagree.
+ * Display label for the patch strip's `.cs-patch-kind` pill. Preserves the full 4-value
+ * `changeKind` enum text (docs/specs/unit-db-schema.md: "Buff" | "Nerf" | "Rework" | "Buff/Rework")
+ * instead of collapsing it through patchKindClass's 3-bucket nerf/buff/adjust match — "Rework" and
+ * "Buff/Rework" are exact-matched to their own labels FIRST so "Rework" is never lost (regression:
+ * it used to fall through patchKindClass's substring test, match neither "nerf" nor "buff", and
+ * land on the generic "CHANGED", silently dropping the word). Anything outside those two exact
+ * forms defers to patchKindClass's classification ("NERF"/"BUFF"), or "CHANGED" when that's
+ * neither.
  * @param {unknown} kind
- * @returns {'NERF'|'BUFF'|'CHANGED'}
+ * @returns {'NERF'|'BUFF'|'BUFF/REWORK'|'REWORK'|'CHANGED'}
  */
 export function patchKindLabel(kind) {
+  const value = typeof kind === 'string' ? kind.trim() : '';
+  if (/^buff\/rework$/i.test(value)) return 'BUFF/REWORK';
+  if (/^rework$/i.test(value)) return 'REWORK';
   const cls = patchKindClass(kind);
   if (cls === 'nerf') return 'NERF';
   if (cls === 'buff') return 'BUFF';

@@ -235,13 +235,20 @@ function offsetObjectGeometry(clone, kf, dx, dy) {
  * Clones a whole tactic (playbook) as an independent copy: a collision-free id derived from
  * `existingTactics`, every object re-id'd from a fresh o1.. counter, and keyframes/notes deep-
  * copied. The clone starts UNLOCKED (a fork is meant to be edited) regardless of the source's
- * lock state. Pure — the source is never mutated.
+ * lock state. Pure — the source is never mutated. Drops `continuesFrom` (export gap 1 provenance
+ * link, 2026-08-11): every object gets a NEW id assigned purely by array position, so a source
+ * object's old `continuesFrom` id could now coincidentally collide with a DIFFERENT clone's id —
+ * a false continuity claim, not just a stale one — so it is stripped rather than carried through.
  * @param {Tactic} source @param {Tactic[]} existingTactics @param {string} [name]
  * @returns {Tactic}
  */
 export function cloneTactic(source, existingTactics, name) {
   let counter = 1;
-  const objects = (source.objects ?? []).map((obj) => deepCloneObject(obj, `o${counter++}`));
+  const objects = (source.objects ?? []).map((obj) => {
+    const clone = deepCloneObject(obj, `o${counter++}`);
+    delete clone.continuesFrom;
+    return clone;
+  });
   return {
     id: nextTacticId(existingTactics),
     name: name && name.trim() ? name.trim() : `${source.name} copy`,
@@ -268,6 +275,7 @@ export function duplicateObjectsInTactic(tactic, ids, kf, dx = 3, dy = 3) {
   const clones = sources.map((obj) => {
     const clone = deepCloneObject(obj, `o${nextId++}`);
     clone.appearsAt = kf;
+    clone.continuesFrom = obj.id; // provenance link (export gap 1) — see keyframeOps.duplicate
     offsetObjectGeometry(clone, kf, dx, dy);
     return clone;
   });
@@ -390,7 +398,12 @@ function rename(tactic, n, name) {
  * rekeyed to n+1 — so editing or deleting on the duplicate never reaches back into the source
  * frame. This is the deliberate "carry content to the next frame" gesture (contrast keyframeOps.add,
  * which makes an empty frame). Objects on frames strictly after `n` shift appearsAt/positions +1 to
- * make room. The source keyframe's note (if any) is COPIED onto the duplicate.
+ * make room. The source keyframe's note (if any) is COPIED onto the duplicate. Each clone also
+ * carries `continuesFrom: <source id>` (export gap 1, 2026-08-11): the ONE moment this tool
+ * actually knows two objects are "the same" logical unit across frames is right here, at cloning
+ * time — everywhere else (a fresh manual placement, a frame added via keyframeOps.add) genuinely
+ * has no such link and must not claim one. exporter.mjs reads this to make continuity explicit
+ * instead of leaving the animator to guess from a silently-empty frame.
  * @param {Tactic} tactic @param {number} n @returns {Tactic}
  */
 function duplicate(tactic, n) {
@@ -410,7 +423,7 @@ function duplicate(tactic, n) {
   const clones = [];
   for (const obj of tactic.objects) {
     if (obj.appearsAt !== n) continue;
-    const clone = { ...obj, id: `o${nextId}`, appearsAt: n + 1 };
+    const clone = { ...obj, id: `o${nextId}`, appearsAt: n + 1, continuesFrom: obj.id };
     nextId += 1;
     if (obj.positions) {
       const pos = obj.positions[n];

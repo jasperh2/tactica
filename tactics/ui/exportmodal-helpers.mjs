@@ -2,7 +2,14 @@
 // Split out of exportmodal.mjs per the file-size budget (200-400 lines target); still
 // [ui-export]-owned, no cross-panel imports. Functions here either build markup strings
 // (pure) or fetch/encode bytes for the zip (impure but side-effect-free/idempotent).
-import { buildPlaybook, buildIconsManifest, buildExportReadme, packageEntries } from '../core/exporter.mjs';
+import {
+  buildPlaybook,
+  buildIconsManifest,
+  buildExportReadme,
+  packageEntries,
+  fetchTacticalBriefs,
+  scopeTacticalBriefs,
+} from '../core/exporter.mjs';
 import { createZip } from '../core/zip.mjs';
 import { renderFrame } from './render.mjs';
 
@@ -230,6 +237,14 @@ function findRosterEntry(roster, code) {
  * successful. Bug this fixes: previously `mapPng ?? new Uint8Array()` shipped a silent 0-byte
  * map/<id>.png with no signal anywhere that the fetch failed (see exportmodal.mjs's
  * downloadZipPackage, which now aborts the download and shows an error instead of proceeding).
+ *
+ * tactical-briefs.json is fetched + scoped alongside the other assets and is purely additive:
+ * fetchTacticalBriefs() already resolves null (never rejects) on any failure — network error,
+ * non-2xx, malformed JSON — and scopeTacticalBriefs returns null on a null doc or when nothing
+ * placed resolves to a brief. packageEntries omits the file entirely on a null/undefined
+ * `tacticalBriefs` (no entry, never an empty one). Unlike the map asset, briefs have no
+ * equivalent "failed" flag — there is no degraded artifact to warn about, just an honestly
+ * absent optional file, so a failed/slow briefs fetch can never fail or stall the export itself.
  * @returns {Promise<{bytes:Uint8Array, playbook:object, fileName:string, mapPngFailed:boolean}>}
  */
 export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, frames, overlays }) {
@@ -237,14 +252,16 @@ export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, 
   const manifest = buildIconsManifest(tactic, roster);
   const readme = buildExportReadme(tactic, mapMeta);
 
-  const [framePngs, overlayPngs, mapPng, iconPngs] = await Promise.all([
+  const [framePngs, overlayPngs, mapPng, iconPngs, briefsDoc] = await Promise.all([
     canvasesToPngBytes(frames),
     canvasesToPngBytes(overlays),
     fetchAssetBytes(mapMeta.asset),
     buildIconPngs(manifest, roster),
+    fetchTacticalBriefs(),
   ]);
 
   const mapPngFailed = mapPng === null;
+  const tacticalBriefs = scopeTacticalBriefs(tactic, roster, briefsDoc);
 
   const entries = packageEntries({
     playbook,
@@ -255,6 +272,7 @@ export async function assembleExportZip({ doc, layers, tactic, mapMeta, roster, 
     icons: manifest,
     iconPngs,
     mapFileName: `${mapMeta.id}.png`,
+    tacticalBriefs,
   });
 
   const bytes = createZip(entries);
